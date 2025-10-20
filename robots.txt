@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://industry5.pro/sitemap.xml
