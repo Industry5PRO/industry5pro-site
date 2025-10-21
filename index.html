@@ -9,7 +9,7 @@
   <meta property="og:description" content="Capture a consult in minutes. We design practical AI, IoT, cloud, and CX that deliver measurable outcomes." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://industry5.pro" />
-  <meta property="og:image" content="/assets/og-1200x630.png" />
+  <meta property="og:image" content="/assets/featured-newsletter-1200x630.png" />
   <link rel="icon" href="/assets/favicon.ico" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
   <style>
@@ -43,6 +43,17 @@
     .two-col{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
     @media (max-width:900px){.two-col{grid-template-columns:1fr}}
     iframe{width:100%;border:0;border-radius:12px;min-height:720px;background:#0f131b}
+    /* Featured Newsletter card */
+.ln-card{display:block;text-decoration:none;color:#e8eef9;background:#0f131b;border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden}
+.ln-thumb{position:relative;width:100%;aspect-ratio:1200/630;background-size:cover;background-position:center}
+.ln-thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.25))}
+.ln-body{padding:12px 14px}
+.ln-title{font-weight:800;margin:0 0 4px}
+.ln-sub{color:#a9b3c4;margin:0}
+.ln-card:hover{transform:translateY(-1px);transition:transform .15s ease}
+@media (max-width:640px){
+  .ln-thumb{background-image:url('/assets/featured-newsletter-600x315.png')!important}
+}
   </style>
   <script>
   // === Configure these two values ===
@@ -105,18 +116,18 @@
    class="card"
    style="background:#0f131b;display:block;text-decoration:none">
         <!-- Featured Newsletter (add this under Featured Video) -->
-    <section class="section card" id="featured-newsletter">
-      <h2>Featured Newsletter</h2>
-      <p>AI/IoT/Cloud/Cyber: Weekly ROI — KPI-first briefs that turn complexity into outcomes.</p>
-      <div class="cta-row">
-        <a class="btn primary"
-           href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7386431336334438401"
-           target="_blank" rel="noopener">
-          Subscribe on LinkedIn
-        </a>
-      </div>
-    </section>
-
+<section class="section card" id="featured-newsletter">
+  <h2>Featured Newsletter</h2>
+  <p>AI/IoT/Cloud/Cyber: Weekly ROI — KPI-first briefs that turn complexity into outcomes.</p>
+  <div class="cta-row">
+    <a class="btn primary"
+       href="https://www.linkedin.com/newsletters/7386431336334438401/"
+       target="_blank" rel="noopener">
+      Subscribe on LinkedIn
+    </a>
+  </div>
+</section>
+          
         <div class="card">
           <p>Prefer a live walkthrough? Book below or send a quick brief and we’ll tailor a plan to your KPIs.</p>
           <div class="cta-row">
