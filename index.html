@@ -69,6 +69,26 @@
     font-weight:900;
     opacity:.6;
   }
+    @media (max-width:640px){
+      .ln-thumb{background-image:url('/assets/featured-newsletter-600x315.png')!important}
+    }
+
+    /* Make tile titles green & slightly larger */
+    .kpi-title{
+      color: var(--green);
+      font-weight: 800;
+      font-size: 1.125rem; /* ~18px */
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* Center the text inside the oval pills */
+    .pill{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;   /* centers text horizontally */
+      text-align: center;
+    }
   </style>
   <script>
   // === Configure these two values ===
@@ -181,7 +201,7 @@
 
   <div class="grid" style="margin-top:12px">
     <!-- AI Voice & Process Automation -->
-   <a class="card" data-appointment target="_blank" rel="noopener">
+   <div class="card">
   <strong class="kpi-title">AI Voice & Process Flow</strong>
   <ul class="kpi-list">
     <li><b>Deflection:</b> 15–30% in 60–90 days</li>
@@ -191,10 +211,10 @@
     <li><b>Cost-to-serve:</b> ↓ 20–40%</li>
   </ul>
   <div class="pill" style="margin-top:8px">Pilot → ROI ≤ 90 days</div>
-</a>
+</div>
 
     <!-- Cybersecurity & Compliance -->
-    <a class="card" data-appointment target="_blank" rel="noopener">
+    <div class="card">
 <strong class="kpi-title">Cybersecurity & Compliance</strong>
 <ul class="kpi-list">
   <li><b>MFA coverage:</b> ≥ 95% in 30 days</li>
@@ -203,10 +223,11 @@
   <li><b>Endpoint coverage:</b> 100%</li>
   <li><b>Critical vulns:</b> SLA ≤ 14 days</li>
 </ul>
-<div class="pill" style="margin-top:8px">Zero-Trust starter in 30 days</div>
-
+<div class="pill" style="margin-top:8px">Zero-Trust starter in 30 days</div> 
+</div>
+    
     <!-- Cloud & Resilience -->
-    <a class="card" data-appointment target="_blank" rel="noopener">
+    <div class="card">
     <strong class="kpi-title">Cloud & Resilience</strong>
 <ul class="kpi-list">
   <li><b>Availability:</b> 99.95–99.99%</li>
@@ -216,9 +237,10 @@
   <li><b>Runbook drill:</b> ≤ 2 hrs</li>
 </ul>
 <div class="pill" style="margin-top:8px">DR playbook in 2 weeks</div>
-
+</div>
+    
     <!-- IoT / Edge & Predictive Maintenance -->
-    <a class="card" data-appointment target="_blank" rel="noopener">
+    <div class="card">
    <strong class="kpi-title">IoT / Edge & Predictive Maintenance</strong>
 <ul class="kpi-list">
   <li><b>Unplanned downtime:</b> ↓ 40–60%</li>
