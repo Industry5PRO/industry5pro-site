@@ -89,6 +89,16 @@
       justify-content: center;   /* centers text horizontally */
       text-align: center;
     }
+    /* Make the 4 KPI tiles equal height and push the pill to the bottom */
+.tile{display:flex;flex-direction:column}
+.tile .kpi-list{margin-top:8px;flex-grow:1}
+.tile .pill{margin-top:auto}
+
+/* Force 30/60/90 row to be horizontal */
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:700px){
+  .kpis{grid-template-columns:1fr} /* stack on small screens only */
+}
   </style>
   <script>
   // === Configure these two values ===
@@ -201,7 +211,7 @@
 
   <div class="grid" style="margin-top:12px">
     <!-- AI Voice & Process Automation -->
-   <div class="card">
+   <div class="card tile">
   <strong class="kpi-title">AI Voice & Process Flow</strong>
   <ul class="kpi-list">
     <li><b>Deflection:</b> 15–30% in 60–90 days</li>
@@ -210,11 +220,12 @@
     <li><b>CSAT:</b> +5–10 pts</li>
     <li><b>Cost-to-serve:</b> ↓ 20–40%</li>
   </ul>
-  <div class="pill" style="margin-top:8px">Pilot → ROI ≤ 90 days</div>
-</div>
+  <a class="pill" data-appointment href="#" target="_blank" rel="noopener" style="margin-top:8px">
+  Pilot → ROI ≤ 90 days
+</a>
 
     <!-- Cybersecurity & Compliance -->
-    <div class="card">
+    <div class="card tile">
 <strong class="kpi-title">Cybersecurity & Compliance</strong>
 <ul class="kpi-list">
   <li><b>MFA coverage:</b> ≥ 95% in 30 days</li>
@@ -223,11 +234,12 @@
   <li><b>Endpoint coverage:</b> 100%</li>
   <li><b>Critical vulns:</b> SLA ≤ 14 days</li>
 </ul>
-<div class="pill" style="margin-top:8px">Zero-Trust starter in 30 days</div> 
-</div>
+<a class="pill" data-appointment href="#" target="_blank" rel="noopener" style="margin-top:8px">
+  Pilot → ROI ≤ 90 days
+</a>
     
     <!-- Cloud & Resilience -->
-    <div class="card">
+    <div class="card tile">
     <strong class="kpi-title">Cloud & Resilience</strong>
 <ul class="kpi-list">
   <li><b>Availability:</b> 99.95–99.99%</li>
@@ -236,11 +248,12 @@
   <li><b>Change failure rate:</b> ↓ 30%</li>
   <li><b>Runbook drill:</b> ≤ 2 hrs</li>
 </ul>
-<div class="pill" style="margin-top:8px">DR playbook in 2 weeks</div>
-</div>
+<a class="pill" data-appointment href="#" target="_blank" rel="noopener" style="margin-top:8px">
+  Pilot → ROI ≤ 90 days
+</a>
     
     <!-- IoT / Edge & Predictive Maintenance -->
-    <div class="card">
+    <div class="card tile">
    <strong class="kpi-title">IoT / Edge & Predictive Maintenance</strong>
 <ul class="kpi-list">
   <li><b>Unplanned downtime:</b> ↓ 40–60%</li>
@@ -249,16 +262,22 @@
   <li><b>Shrinkage/inventory error:</b> ↓ 10–20%</li>
   <li><b>Payback:</b> ≤ 90 days (pilot line)</li>
 </ul>
-<div class="pill" style="margin-top:8px">Sensor → Alert → Ticket in 30 days</div>
-    </a>
-  </div>
+<a class="pill" data-appointment href="#" target="_blank" rel="noopener" style="margin-top:8px">
+  Pilot → ROI ≤ 90 days
+</a>
 
   <!-- 30/60/90 framing -->
   <div class="kpis" style="margin-top:14px">
-    <div class="k"><strong>30 days</strong><br/>MVP live • controls on • baseline KPIs</div>
-    <div class="k"><strong>60 days</strong><br/>Scale to 1–2 teams/sites • tune thresholds</div>
-    <div class="k"><strong>90 days</strong><br/>Verified ROI • next-wave roadmap</div>
-  </div>
+  <a class="k" data-appointment href="#" target="_blank" rel="noopener">
+    <strong>30 days</strong><br/>MVP live • controls on • baseline KPIs
+  </a>
+  <a class="k" data-appointment href="#" target="_blank" rel="noopener">
+    <strong>60 days</strong><br/>Scale to 1–2 teams/sites • tune thresholds
+  </a>
+  <a class="k" data-appointment href="#" target="_blank" rel="noopener">
+    <strong>90 days</strong><br/>Verified ROI • next-wave roadmap
+  </a>
+</div>
     </section>
  
     <section class="section card" id="products">
