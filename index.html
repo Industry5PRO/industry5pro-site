@@ -47,7 +47,7 @@
   <script>
   // === Configure these two values ===
   const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform?usp=header';
-  const NEWSLETTER_URL = 'https://www.linkedin.com/pulse/cloud-chaos-real-roi-what-aws-outage-taught-us-louis-tortora-lbome';
+  const NEWSLETTER_URL = 'https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7386431336334438401';
     // Attach on load
     document.addEventListener('DOMContentLoaded',()=>{
       // Update all anchors that should route to the form
@@ -103,6 +103,19 @@
           <img src="/assets/og-1200x630.png" alt="Featured video thumbnail" style="width:100%;border-radius:8px 8px 6px 6px;display:block"/>
           <div style="padding:12px 10px;font-weight:700">Watch now</div>
         </a>
+        <!-- Featured Newsletter (add this under Featured Video) -->
+    <section class="section card" id="featured-newsletter">
+      <h2>Featured Newsletter</h2>
+      <p>AI/IoT/Cloud/Cyber: Weekly ROI — KPI-first briefs that turn complexity into outcomes.</p>
+      <div class="cta-row">
+        <a class="btn primary"
+           href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7386431336334438401"
+           target="_blank" rel="noopener">
+          Subscribe on LinkedIn
+        </a>
+      </div>
+    </section>
+
         <div class="card">
           <p>Prefer a live walkthrough? Book below or send a quick brief and we’ll tailor a plan to your KPIs.</p>
           <div class="cta-row">
@@ -196,5 +209,6 @@
   const ft = document.getElementById('featured-thumb');
   if(ft) ft.href = FEATURED_VIDEO_URL;
 </script>
+  
 </body>
 </html>
