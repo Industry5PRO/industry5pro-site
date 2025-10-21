@@ -54,7 +54,21 @@
     @media (max-width:640px){
       .ln-thumb{background-image:url('/assets/featured-newsletter-600x315.png')!important}
     }
-  
+  /* KPI list with checkmarks (white text) */
+  .kpi-title{color:#fff;font-weight:800}
+  .kpi-list{list-style:none;margin:8px 0 0;padding-left:0}
+  .kpi-list li{
+    position:relative;
+    margin:6px 0;
+    padding-left:28px;
+    color:#fff; /* sub-KPIs in white */
+  }
+  .kpi-list li::before{
+    content:"✓";
+    position:absolute; left:0; top:.1rem;
+    font-weight:900;
+    opacity:.6;
+  }
   </style>
   <script>
   // === Configure these two values ===
@@ -167,55 +181,53 @@
 
   <div class="grid" style="margin-top:12px">
     <!-- AI Voice & Process Automation -->
-    <a class="card" data-appointment target="_blank" rel="noopener">
-      <strong>AI Voice & Process Flow</strong>
-      <ul class="clean" style="margin-top:8px">
-        <li><b>Deflection:</b> 15–30% in 60–90 days</li>
-        <li><b>AHT:</b> ↓ 20–35%</li>
-        <li><b>FCR:</b> +8–15 pts</li>
-        <li><b>CSAT:</b> +5–10 pts</li>
-        <li><b>Cost-to-serve:</b> ↓ 20–40%</li>
-      </ul>
-      <div class="pill" style="margin-top:8px">Pilot → ROI ≤ 90 days</div>
-    </a>
+   <a class="card" data-appointment target="_blank" rel="noopener">
+  <strong class="kpi-title">AI Voice & Process Flow</strong>
+  <ul class="kpi-list">
+    <li><b>Deflection:</b> 15–30% in 60–90 days</li>
+    <li><b>AHT:</b> ↓ 20–35%</li>
+    <li><b>FCR:</b> +8–15 pts</li>
+    <li><b>CSAT:</b> +5–10 pts</li>
+    <li><b>Cost-to-serve:</b> ↓ 20–40%</li>
+  </ul>
+  <div class="pill" style="margin-top:8px">Pilot → ROI ≤ 90 days</div>
+</a>
 
     <!-- Cybersecurity & Compliance -->
     <a class="card" data-appointment target="_blank" rel="noopener">
-      <strong>Cybersecurity & Compliance</strong>
-      <ul class="clean" style="margin-top:8px">
-        <li><b>MFA coverage:</b> ≥ 95% in 30 days</li>
-        <li><b>Phish click rate:</b> &lt; 2%</li>
-        <li><b>MTTD:</b> &lt; 1 hr • <b>MTTR:</b> &lt; 24 hrs</li>
-        <li><b>Endpoint coverage:</b> 100%</li>
-        <li><b>Critical vulns:</b> SLA ≤ 14 days</li>
-      </ul>
-      <div class="pill" style="margin-top:8px">Zero-Trust starter in 30 days</div>
-    </a>
+<strong class="kpi-title">Cybersecurity & Compliance</strong>
+<ul class="kpi-list">
+  <li><b>MFA coverage:</b> ≥ 95% in 30 days</li>
+  <li><b>Phish click rate:</b> &lt; 2%</li>
+  <li><b>MTTD:</b> &lt; 1 hr • <b>MTTR:</b> &lt; 24 hrs</li>
+  <li><b>Endpoint coverage:</b> 100%</li>
+  <li><b>Critical vulns:</b> SLA ≤ 14 days</li>
+</ul>
+<div class="pill" style="margin-top:8px">Zero-Trust starter in 30 days</div>
 
     <!-- Cloud & Resilience -->
     <a class="card" data-appointment target="_blank" rel="noopener">
-      <strong>Cloud & Resilience</strong>
-      <ul class="clean" style="margin-top:8px">
-        <li><b>Availability:</b> 99.95–99.99%</li>
-        <li><b>RTO:</b> ≤ 60 min • <b>RPO:</b> ≤ 15 min</li>
-        <li><b>Cost optimization:</b> ↓ 10–25%</li>
-        <li><b>Change failure rate:</b> ↓ 30%</li>
-        <li><b>Runbook drill:</b> ≤ 2 hrs</li>
-      </ul>
-      <div class="pill" style="margin-top:8px">DR playbook in 2 weeks</div>
-    </a>
+    <strong class="kpi-title">Cloud & Resilience</strong>
+<ul class="kpi-list">
+  <li><b>Availability:</b> 99.95–99.99%</li>
+  <li><b>RTO:</b> ≤ 60 min • <b>RPO:</b> ≤ 15 min</li>
+  <li><b>Cost optimization:</b> ↓ 10–25%</li>
+  <li><b>Change failure rate:</b> ↓ 30%</li>
+  <li><b>Runbook drill:</b> ≤ 2 hrs</li>
+</ul>
+<div class="pill" style="margin-top:8px">DR playbook in 2 weeks</div>
 
     <!-- IoT / Edge & Predictive Maintenance -->
     <a class="card" data-appointment target="_blank" rel="noopener">
-      <strong>IoT / Edge & Predictive Maintenance</strong>
-      <ul class="clean" style="margin-top:8px">
-        <li><b>Unplanned downtime:</b> ↓ 40–60%</li>
-        <li><b>OEE:</b> +5–12 pts</li>
-        <li><b>Truck rolls:</b> ↓ 15–30%</li>
-        <li><b>Shrinkage/inventory error:</b> ↓ 10–20%</li>
-        <li><b>Payback:</b> ≤ 90 days (pilot line)</li>
-      </ul>
-      <div class="pill" style="margin-top:8px">Sensor → Alert → Ticket in 30 days</div>
+   <strong class="kpi-title">IoT / Edge & Predictive Maintenance</strong>
+<ul class="kpi-list">
+  <li><b>Unplanned downtime:</b> ↓ 40–60%</li>
+  <li><b>OEE:</b> +5–12 pts</li>
+  <li><b>Truck rolls:</b> ↓ 15–30%</li>
+  <li><b>Shrinkage/inventory error:</b> ↓ 10–20%</li>
+  <li><b>Payback:</b> ≤ 90 days (pilot line)</li>
+</ul>
+<div class="pill" style="margin-top:8px">Sensor → Alert → Ticket in 30 days</div>
     </a>
   </div>
 
