@@ -155,6 +155,16 @@
   display: inline-block;
   margin-top: 4px;
 }
+    /* Center + style "Industries we serve" cards */
+#verticals .card{
+  text-align: center;
+  text-decoration: none;   /* remove underline on the whole card link */
+}
+#verticals .card strong{
+  color: var(--green);
+  font-weight: 800;
+  font-size: 1.125rem;     /* match tile title size */
+}
   </style>
   <script>
   // === Configure these two values ===
@@ -414,15 +424,37 @@
     <section class="section card" id="verticals">
       <h2>Industries we serve</h2>
       <div class="grid">
-        <a class="card" data-appointment target="_blank" rel="noopener"><strong>Manufacturing</strong></a>
-        <a class="card" data-appointment target="_blank" rel="noopener"><strong>Healthcare & Life Sciences</strong></a>
-        <a class="card" data-appointment target="_blank" rel="noopener"><strong>Logistics & Fleet</strong></a>
-        <a class="card" data-appointment target="_blank" rel="noopener"><strong>Retail & Restaurants</strong></a>
-        <a class="card" data-appointment target="_blank" rel="noopener"><strong>Hospitality</strong></a>
-        <a class="card" data-appointment target="_blank" rel="noopener"><strong>Professional Services</strong></a>
-        <a class="card" data-appointment target="_blank" rel="noopener"><strong>Education</strong></a>
-        <a class="card" data-appointment target="_blank" rel="noopener"><strong>Public Sector</strong></a>
-      </div>
+        <a class="card" data-appointment href="#" target="_blank" rel="noopener">
+  <strong>Manufacturing</strong>
+</a>
+
+<a class="card" data-appointment href="#" target="_blank" rel="noopener">
+  <strong>Healthcare &amp; Life Sciences</strong>
+</a>
+
+<a class="card" data-appointment href="#" target="_blank" rel="noopener">
+  <strong>Logistics &amp; Fleet</strong>
+</a>
+
+<a class="card" data-appointment href="#" target="_blank" rel="noopener">
+  <strong>Retail &amp; Restaurants</strong>
+</a>
+
+<a class="card" data-appointment href="#" target="_blank" rel="noopener">
+  <strong>Hospitality</strong>
+</a>
+
+<a class="card" data-appointment href="#" target="_blank" rel="noopener">
+  <strong>Professional Services</strong>
+</a>
+
+<a class="card" data-appointment href="#" target="_blank" rel="noopener">
+  <strong>Education</strong>
+</a>
+
+<a class="card" data-appointment href="#" target="_blank" rel="noopener">
+  <strong>Public Sector</strong>
+</a>
     </section>
 
     <section class="section two-col" id="book">
