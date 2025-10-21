@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Industry5.pro • AI & ROI‑First, Human‑Centered</title>
+  <meta name="description" content="Industry5.pro is an AI‑first, supplier‑agnostic advisory. We turn AI, IoT & cloud into measurable ROI—human‑centered, built on trust, paid by results." />
+  <meta property="og:title" content="Industry5.pro • AI & ROI‑First" />
+  <meta property="og:description" content="Capture a consult in minutes. We design practical AI, IoT, cloud, and CX that deliver measurable outcomes." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://industry5.pro" />
+  <meta property="og:image" content="/assets/og-1200x630.png" />
+  <link rel="icon" href="/assets/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <style>
+    .hero-banner{background:url('/assets/hero-banner.webp') center/cover no-repeat;border-radius:16px;min-height:320px;display:flex;align-items:flex-end;padding:24px;border:1px solid rgba(255,255,255,.08)}
+    :root { --green:#85BB65; --ink:#0b1220; --muted:#a9b3c4; --bg:#0e1117; --card:#141821; }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:#e8eef9;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial}
+    a{color:#b0ff95}
+    .wrap{max-width:1080px;margin:0 auto;padding:28px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#e8eef9}
+    .logo{width:44px;height:44px;border-radius:12px;background:conic-gradient(from 210deg,var(--green),#9be27c,#4caf50);box-shadow:0 0 0 2px rgba(133,187,101,.25)}
+    .title{font-weight:800;font-size:20px}
+    nav a{margin-left:14px;text-decoration:none;color:#d5dcef;font-weight:600}
+    .hero{margin:36px 0;padding:28px;border:1px solid rgba(255,255,255,.08);border-radius:16px;background:var(--card)}
+    h1{font-size:clamp(28px,5vw,44px);line-height:1.1;margin:0 0 8px}
+    p.lead{font-size:clamp(16px,1.8vw,20px);color:#d5dcef;margin:0}
+    .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.12);text-decoration:none;font-weight:800}
+    .btn.primary{background:var(--green);color:#0a0f14;border-color:rgba(133,187,101,.6)}
+    .btn.secondary{background:#0f131b;color:#e8eef9}
+    .section{margin:28px 0}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(133,187,101,.12);color:#dff5d6;border:1px solid rgba(133,187,101,.35);font-weight:700}
+    .kpis{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+    .k{flex:1 1 160px;background:#0f131b;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:12px}
+    ul.clean{padding-left:18px;margin:10px 0}
+    .footer{margin:32px 0;color:var(--muted);font-size:14px}
+    .two-col{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+    @media (max-width:900px){.two-col{grid-template-columns:1fr}}
+    iframe{width:100%;border:0;border-radius:12px;min-height:720px;background:#0f131b}
+  </style>
+  <script>
+  // === Configure these two values ===
+  const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform?usp=header';
+  const NEWSLETTER_URL = 'https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7386431336334438401';
+    // Attach on load
+    document.addEventListener('DOMContentLoaded',()=>{
+      // Update all anchors that should route to the form
+      document.querySelectorAll('[data-appointment]')?.forEach(a=>{ a.href = FORM_URL; });
+      const formFrame = document.getElementById('gf');
+      if(formFrame){
+        try{
+          const u = new URL(FORM_URL, location.href);
+          if(u.pathname.includes('/viewform') && !u.searchParams.has('embedded')){ u.searchParams.set('embedded','true'); }
+          formFrame.src = u.toString();
+        }catch{ formFrame.src = FORM_URL; }
+      }
+      const nl = document.getElementById('newsletter-link');
+      if(nl) nl.href = NEWSLETTER_URL;
+    });
+  </script>
+  <!-- Calendly Inline Embed -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="#top" aria-label="Industry5.pro">
+        <img src="/assets/logo-512.png" class="logo" alt="Industry5.pro logo" />
+        <div class="title">Industry5.pro</div>
+      </a>
+      <nav>
+        <a href="#what">What we do</a>
+        <a href="#products">Products</a>
+        <a href="#verticals">Verticals</a>
+        <a href="#book">Book</a>
+        <a href="#blog">Blog</a>
+      </nav>
+    </header>
+
+    <section class="hero hero-banner" id="top">
+      <div>
+        <h1>AI & ROI‑First. Human‑Centered.</h1>
+        <p class="lead">Unbiased, supplier‑agnostic advisory. We turn AI, IoT, cloud, and CX into measurable outcomes. Built on trust. Paid by results.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book via Calendly (30 min)</a>
+          <a class="btn secondary request-cta" data-appointment target="_blank" rel="noopener">Request an appointment (Google Form)</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section card" id="featured">
+      <h2>Featured Video</h2>
+      <p>One-minute breakdowns on how we turn AI & IoT into ROI. New clips weekly.</p>
+      <div class="two-col">
+        <a id="featured-thumb" href="https://www.linkedin.com/pulse/cloud-chaos-real-roi-what-aws-outage-taught-us-louis-tortora-lbome" target="_blank" rel="noopener" class="card"> target="_blank" rel="noopener" class="card" style="background:#0f131b;display:block;text-decoration:none">
+          <img src="/assets/og-1200x630.png" alt="Featured video thumbnail" style="width:100%;border-radius:8px 8px 6px 6px;display:block"/>
+          <div style="padding:12px 10px;font-weight:700">Watch now</div>
+        </a>
+        <!-- Featured Newsletter (add this under Featured Video) -->
+    <section class="section card" id="featured-newsletter">
+      <h2>Featured Newsletter</h2>
+      <p>AI/IoT/Cloud/Cyber: Weekly ROI — KPI-first briefs that turn complexity into outcomes.</p>
+      <div class="cta-row">
+        <a class="btn primary"
+           href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7386431336334438401"
+           target="_blank" rel="noopener">
+          Subscribe on LinkedIn
+        </a>
+      </div>
+    </section>
+
+        <div class="card">
+          <p>Prefer a live walkthrough? Book below or send a quick brief and we’ll tailor a plan to your KPIs.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Open Calendly</a>
+            <a class="btn secondary request-cta" data-appointment target="_blank" rel="noopener">Open Google Form</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section two-col" id="what">
+      <div class="card">
+        <h2>What we do</h2>
+        <p>We design and deploy practical AI agents, automation, IoT/edge, and cloud‑based CX that move KPIs you care about: faster response, lower cost‑to‑serve, higher revenue, and resilient networks.</p>
+        <div class="kpis">
+          <div class="k"><strong>12–20%</strong><br/>Throughput gains</div>
+          <div class="k"><strong>40–60%</strong><br/>Downtime reduction</div>
+          <div class="k"><strong>90 days</strong><br/>Pilot → ROI proof</div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Mission</h2>
+        <p><span class="pill">AI & ROI‑First</span> with a <strong>human‑centered</strong> approach. Clear plans, measurable wins, zero hype. <em>Sin humo, con resultados.</em></p>
+        <p id="newsletter"><a id="newsletter-link" href="#" target="_blank" rel="noopener">Read our LinkedIn newsletter →</a></p>
+      </div>
+    </section>
+ 
+    <section class="section card" id="products">
+      <h2>Core products we help with</h2>
+      <div class="grid">
+        <a class="card" data-appointment target="_blank" rel="noopener"><strong>AI Agents & Automation</strong><br/><span class="muted">Copilots, agentic workflows, RAG, governance</span></a>
+        <a class="card" data-appointment target="_blank" rel="noopener"><strong>Contact Center & CX</strong><br/><span class="muted">CCaaS, WEM, bots, deflection, QA</span></a>
+        <a class="card" data-appointment target="_blank" rel="noopener"><strong>IoT / Edge Connectivity</strong><br/><span class="muted">Sensors, SD‑WAN, 5G/LTE, telemetry</span></a>
+        <a class="card" data-appointment target="_blank" rel="noopener"><strong>Cloud & Data</strong><br/><span class="muted">Data foundations, analytics, integration</span></a>
+        <a class="card" data-appointment target="_blank" rel="noopener"><strong>Security & Compliance</strong><br/><span class="muted">MDR/XDR, SASE, audit‑ready posture</span></a>
+        <a class="card" data-appointment target="_blank" rel="noopener"><strong>Connectivity & NaaS</strong><br/><span class="muted">Dedicated Internet, DIA, failover</span></a>
+        <a class="card" data-appointment target="_blank" rel="noopener"><strong>UCaaS / VoIP</strong><br/><span class="muted">Unified comms that just work</span></a>
+        <a class="card" data-appointment target="_blank" rel="noopener"><strong>TEM</strong><br/><span class="muted">Telecom expense management</span></a>
+        <a class="card" data-appointment target="_blank" rel="noopener"><strong>CRM Integration</strong><br/><span class="muted">Automations where sellers live</span></a>
+      </div>
+    </section>
+
+    <section class="section card" id="verticals">
+      <h2>Industries we serve</h2>
+      <div class="grid">
+        <a class="card" data-appointment target="_blank" rel="noopener"><strong>Manufacturing</strong></a>
+        <a class="card" data-appointment target="_blank" rel="noopener"><strong>Healthcare & Life Sciences</strong></a>
+        <a class="card" data-appointment target="_blank" rel="noopener"><strong>Logistics & Fleet</strong></a>
+        <a class="card" data-appointment target="_blank" rel="noopener"><strong>Retail & Restaurants</strong></a>
+        <a class="card" data-appointment target="_blank" rel="noopener"><strong>Hospitality</strong></a>
+        <a class="card" data-appointment target="_blank" rel="noopener"><strong>Professional Services</strong></a>
+        <a class="card" data-appointment target="_blank" rel="noopener"><strong>Education</strong></a>
+        <a class="card" data-appointment target="_blank" rel="noopener"><strong>Public Sector</strong></a>
+      </div>
+    </section>
+
+    <section class="section two-col" id="book">
+      <div class="card">
+        <h2>Book a conversation</h2>
+        <p>Prefer a quick slot? Use Calendly. Want to outline needs first? Use the form. Both land on our calendar and we reply quickly.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Open Calendly</a>
+          <a class="btn secondary request-cta" data-appointment target="_blank" rel="noopener">Open Google Form</a>
+        </div>
+        <div class="calendly-inline-widget" data-url="https://calendly.com/industry5pro/30min" style="min-width:320px;height:700px;margin-top:12px"></div>
+      </div>
+      <div class="card">
+        <h2>Quick form</h2>
+        <p>If you prefer a short intake, complete the form below and we will follow up with a tailored plan.</p>
+        <iframe id="gf" title="Industry5.pro — Appointment Request"></iframe>
+      </div>
+    </section>
+
+    <section class="section card" id="blog">
+      <h2>Blog & Newsletter</h2>
+      <p>We organize long‑form posts here and link deeper dives in our LinkedIn newsletter.</p>
+      <ul class="clean">
+        <li><a id="newsletter-link" href="#" target="_blank" rel="noopener">Subscribe on LinkedIn</a></li>
+        <li><em>Coming soon:</em> Selected posts will live here for easy sharing.</li>
+      </ul>
+    </section>
+
+    <div class="footer">
+      © <span id="y"></span> Industry5.pro · Orlando, FL · <a href="mailto:lou@industry5.pro">lou@industry5.pro</a> · <a href="tel:+14076945495">407‑694‑5495</a>
+    </div>
+  </div>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+  <script>
+  // Featured video link — paste a public LinkedIn or YouTube URL
+  const FEATURED_VIDEO_URL = 'https://www.linkedin.com/pulse/cloud-chaos-real-roi-what-aws-outage-taught-us-louis-tortora-lbome';
+  const ft = document.getElementById('featured-thumb');
+  if(ft) ft.href = FEATURED_VIDEO_URL;
+</script>
+  
+</body>
+</html>
