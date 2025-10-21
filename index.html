@@ -122,6 +122,28 @@
 /* Green heads, white subtext inside the flow boxes */
 .k-head{color:var(--green);font-weight:800}
 .k-sub{color:#fff}
+    /* Make 30/60/90 headings match tile title size */
+.k-head{
+  color: var(--green);
+  font-weight: 800;
+  font-size: 1.125rem; /* same as .kpi-title */
+}
+
+/* Core Products: title size + link-only on title */
+.prod-title{
+  font-size: 1.125rem;      /* match size */
+  font-weight: 800;
+  color: var(--green);
+  text-decoration: none;    /* no underline on title */
+  display:inline-block;
+}
+.prod-title:hover{opacity:.9}
+
+/* Core Products: subtext white, never linked/underlined */
+.prod-sub{
+  color: #fff;
+  text-decoration: none;
+}
   </style>
   <script>
   // === Configure these two values ===
@@ -314,16 +336,68 @@
     <section class="section card" id="products">
       <h2>Core products we help with</h2>
       <div class="grid">
-        <a class="card" data-appointment target="_blank" rel="noopener"><strong>AI Agents & Automation</strong><br/><span class="muted">Copilots, agentic workflows, RAG, governance</span></a>
-        <a class="card" data-appointment target="_blank" rel="noopener"><strong>Contact Center & CX</strong><br/><span class="muted">CCaaS, WEM, bots, deflection, QA</span></a>
-        <a class="card" data-appointment target="_blank" rel="noopener"><strong>IoT / Edge Connectivity</strong><br/><span class="muted">Sensors, SD‑WAN, 5G/LTE, telemetry</span></a>
-        <a class="card" data-appointment target="_blank" rel="noopener"><strong>Cloud & Data</strong><br/><span class="muted">Data foundations, analytics, integration</span></a>
-        <a class="card" data-appointment target="_blank" rel="noopener"><strong>Security & Compliance</strong><br/><span class="muted">MDR/XDR, SASE, audit‑ready posture</span></a>
-        <a class="card" data-appointment target="_blank" rel="noopener"><strong>Connectivity & NaaS</strong><br/><span class="muted">Dedicated Internet, DIA, failover</span></a>
-        <a class="card" data-appointment target="_blank" rel="noopener"><strong>UCaaS / VoIP</strong><br/><span class="muted">Unified comms that just work</span></a>
-        <a class="card" data-appointment target="_blank" rel="noopener"><strong>TEM</strong><br/><span class="muted">Telecom expense management</span></a>
-        <a class="card" data-appointment target="_blank" rel="noopener"><strong>CRM Integration</strong><br/><span class="muted">Automations where sellers live</span></a>
-      </div>
+     <div class="card">
+  <a class="prod-title" data-appointment href="#" target="_blank" rel="noopener">
+    AI Agents & Automation
+  </a><br/>
+  <span class="prod-sub">Copilots, agentic workflows, RAG, governance</span>
+</div>
+
+<div class="card">
+  <a class="prod-title" data-appointment href="#" target="_blank" rel="noopener">
+    Contact Center & CX
+  </a><br/>
+  <span class="prod-sub">CCaaS, WEM, bots, deflection, QA</span>
+</div>
+
+<div class="card">
+  <a class="prod-title" data-appointment href="#" target="_blank" rel="noopener">
+    IoT / Edge Connectivity
+  </a><br/>
+  <span class="prod-sub">Sensors, SD-WAN, 5G/LTE, telemetry</span>
+</div>
+
+<div class="card">
+  <a class="prod-title" data-appointment href="#" target="_blank" rel="noopener">
+    Cloud & Data
+  </a><br/>
+  <span class="prod-sub">Data foundations, analytics, integration</span>
+</div>
+
+<div class="card">
+  <a class="prod-title" data-appointment href="#" target="_blank" rel="noopener">
+    Security & Compliance
+  </a><br/>
+  <span class="prod-sub">MDR/XDR, SASE, audit-ready posture</span>
+</div>
+
+<div class="card">
+  <a class="prod-title" data-appointment href="#" target="_blank" rel="noopener">
+    Connectivity & NaaS
+  </a><br/>
+  <span class="prod-sub">Dedicated Internet, DIA, failover</span>
+</div>
+
+<div class="card">
+  <a class="prod-title" data-appointment href="#" target="_blank" rel="noopener">
+    UCaaS / VoIP
+  </a><br/>
+  <span class="prod-sub">Unified comms that just work</span>
+</div>
+
+<div class="card">
+  <a class="prod-title" data-appointment href="#" target="_blank" rel="noopener">
+    TEM
+  </a><br/>
+  <span class="prod-sub">Telecom expense management</span>
+</div>
+
+<div class="card">
+  <a class="prod-title" data-appointment href="#" target="_blank" rel="noopener">
+    CRM Integration
+  </a><br/>
+  <span class="prod-sub">Automations where sellers live</span>
+</div>
     </section>
 
     <section class="section card" id="verticals">
