@@ -354,36 +354,39 @@
 </div>
     </section>
     
- <section class="section card" id="featured-video">
-  <h2>Featured: Supermetrics Launch</h2>
-   <section class="section card" id="featured-video">
-  <h2>Featured: Supermetrics Launch</h2>
-  <p class="prod-sub" style="margin-top:6px;color:#b9c2cf">
+ <section class="section card" id="featured-video" style="padding:22px 20px 24px">
+  <h2 style="margin:0 0 4px">Featured: Supermetrics Launch</h2>
+  <p class="prod-sub" style="margin:0 0 14px; color:#b9c2cf">
     From spreadsheet stress to dashboard success
   </p>
-  <div class="grid">
-  <div class="grid">
-    <!-- Entire card links to your Supermetrics page -->
-    <a href="/supermetrics.html"
-       class="card"
-       style="display:block; padding:0; border:1px solid rgba(255,255,255,.12);
-              border-radius:12px; overflow:hidden; position:relative; text-decoration:none;">
 
-      <!-- SQUARE container matches 1920x1920 -->
-      <div style="position:relative; width:100%; aspect-ratio:1/1; overflow:hidden; background:#000;">
-        <video
-          src="/videos/supermetrics-launch.mp4"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-          poster="/images/supermetrics/Pre-built data sources.png"
-          style="position:absolute; inset:0; width:100%; height:100%;
-                 object-fit:contain; display:block; pointer-events:none; background:#000;">
-        </video>
+  <div class="grid" style="gap:16px; align-items:start;">
+    <!-- LEFT: Video card (safe structure: div.card -> a -> video) -->
+    <div class="card" style="padding:0; border:1px solid rgba(255,255,255,.12); border-radius:12px; overflow:hidden;">
+      <a href="/supermetrics.html" style="display:block; text-decoration:none; position:relative;">
+        <!-- Square container matches 1920x1920; full video visible -->
+        <div style="position:relative; width:100%; aspect-ratio:1/1; overflow:hidden; background:#000;">
+          <video id="smVideo"
+            src="/videos/supermetrics-launch.mp4"
+            autoplay muted loop playsinline preload="metadata"
+            poster="/images/supermetrics/Pre-built data sources.png"
+            style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; display:block; background:#000; pointer-events:none;">
+          </video>
+        </div>
+      </a>
+    </div>
+
+    <!-- RIGHT: Copy + buttons (optional, delete this whole block if you want full-width video) -->
+    <div class="card" style="border:1px solid rgba(255,255,255,.12); border-radius:12px;">
+      <h3 style="margin:0 0 6px">Automate reporting, reclaim hours</h3>
+      <p class="prod-sub" style="margin:0 0 12px; color:#b9c2cf">
+        Supermetrics connects 150+ sources to Looker Studio, Sheets, and BigQuery so you ship dashboards, not spreadsheets.
+      </p>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn primary" href="/supermetrics.html">See the Supermetrics page</a>
+        <a class="btn ghost" href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7387596956627259392" target="_blank" rel="noopener">View on LinkedIn</a>
       </div>
-    </a>
+    </div>
   </div>
 </section>
 
