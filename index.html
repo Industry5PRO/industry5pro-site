@@ -590,25 +590,58 @@
 
     </section>
 
-    <section class="section two-col" id="book">
-      <div class="card">
-        <h2>Book a conversation</h2>
-        <p>Prefer a quick slot? Use Calendly. Want to outline needs first? Use the form. Both land on our calendar and we reply quickly.</p>
-        <div class="cta-row">
-          <a class="btn primary" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Open Calendly</a>
-          <a class="btn secondary request-cta" data-appointment target="_blank" rel="noopener">Open Google Form</a>
-        </div>
-        <div class="calendly-inline-widget" data-url="https://calendly.com/industry5pro/30min" style="min-width:320px;height:700px;margin-top:12px"></div>
-      </div>
-      <section id="book">   <!-- add id -->
+  <section class="section card" id="book" style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);border-radius:14px;padding:22px 20px;margin:18px 20px">
+  <h2 style="margin:0 0 10px">Book a conversation</h2>
+  <p class="prod-sub" style="margin:0 0 14px;color:#b9c2cf">
+    Prefer a quick slot? Use Calendly. Want to outline needs first? Use the form.
+  </p>
 
-</section>
-      <div class="card">
-        <h2>Quick form</h2>
-        <p>If you prefer a short intake, complete the form below and we will follow up with a tailored plan.</p>
-        <iframe id="gf" title="Industry5.pro — Appointment Request"></iframe>
+  <div class="book-grid">
+    <!-- Left: Calendly -->
+    <div class="book-col">
+      <div class="calendly-inline-widget"
+           data-url="https://calendly.com/industry5pro/30min"
+           style="min-width:320px;height:780px;border-radius:12px;overflow:hidden;background:#0a0f19"></div>
+    </div>
+
+    <!-- Right: Quick Form (Google Form embed) -->
+    <aside class="book-col">
+      <div class="quick-card" style="border:1px solid rgba(255,255,255,.12);border-radius:12px;overflow:hidden;background:rgba(255,255,255,.03)">
+        <div style="padding:14px 14px 0;font-weight:700">Quick form</div>
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform?embedded=true"
+          style="width:100%;height:740px;border:0"
+          title="Industry5.pro quick form"
+          loading="lazy">
+        </iframe>
+        <div style="padding:0 14px 14px;color:#b9c2cf;font-size:.95rem">
+          Submitting the form won’t auto-redirect. After sending, you can return to our site any time.
+        </div>
       </div>
-    </section>
+    </aside>
+  </div>
+</section>
+
+<!-- Keep Calendly script ONCE on the page -->
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+<!-- Redirect after booking -->
+<script>
+  window.addEventListener('message', function (e) {
+    if (e && e.data && e.data.event === 'calendly.event_scheduled') {
+      window.location.href = '/thankyou.html';
+    }
+  });
+</script>
+
+<style>
+  /* Responsive two-column layout for the booking section */
+  .book-grid{display:grid;gap:16px}
+  @media (min-width: 1000px){
+    .book-grid{grid-template-columns: 1fr minmax(360px, 480px)}
+  }
+  .book-col{min-width:0}
+</style>
 
     <section class="section card" id="blog">
       <h2>Blog & Newsletter</h2>
