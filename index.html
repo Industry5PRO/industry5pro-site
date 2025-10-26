@@ -191,6 +191,14 @@
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </head>
+  <script>
+  // Redirect to your confirmation page after a booking
+  window.addEventListener('message', function (e) {
+    if (e && e.data && e.data.event === 'calendly.event_scheduled') {
+      window.location.href = '/thankyou.html';  // uses your new slug
+    }
+  });
+</script>
 <body>
   <div class="wrap">
     <header>
@@ -592,6 +600,12 @@
         </div>
         <div class="calendly-inline-widget" data-url="https://calendly.com/industry5pro/30min" style="min-width:320px;height:700px;margin-top:12px"></div>
       </div>
+      <section id="book">   <!-- add id -->
+  <!-- your existing Calendly embed lives here -->
+  <div class="calendly-inline-widget"
+       data-url="https://calendly.com/industry5pro/30min"
+       style="min-width:320px;height:780px;"></div>
+</section>
       <div class="card">
         <h2>Quick form</h2>
         <p>If you prefer a short intake, complete the form below and we will follow up with a tailored plan.</p>
