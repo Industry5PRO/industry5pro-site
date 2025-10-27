@@ -3,746 +3,180 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Industry5.pro • 🧭Advisory-first. 🙆🏻‍♀️Human-centered. 🚀Outcome-obsessed.</title>
-  <meta name="description" content="Industry5.pro is an Advisory‑first, supplier‑agnostic advisory. We turn AI, IoT & cloud into measurable ROI—human‑centered, built on trust, paid by results." />
-  <meta property="og:title" content="Industry5.pro • Advisory & ROI‑First" />
+  <title>Industry5.pro • 🧭 Advisory-first. 🙆🏻‍♀️ Human-centered. 🚀 Outcome-obsessed.</title>
+
+  <meta name="description" content="Industry5.pro is an advisory-first, supplier-agnostic consultancy. We turn AI, IoT, cloud, and CX into measurable ROI—human-centered, built on trust, paid by results." />
+  <meta property="og:title" content="Industry5.pro • 🧭 Advisory-first. 🙆🏻‍♀️ Human-centered. 🚀 Outcome-obsessed." />
   <meta property="og:description" content="Capture a consult in minutes. We design practical AI, IoT, cloud, and CX that deliver measurable outcomes." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://industry5.pro" />
   <meta property="og:image" content="/assets/featured-newsletter-1200x630.png" />
   <link rel="icon" href="/assets/favicon.ico" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
   <style>
-    .hero-banner{background:url('/assets/hero-banner.webp') center/cover no-repeat;border-radius:16px;min-height:320px;display:flex;align-items:flex-end;padding:24px;border:1px solid rgba(255,255,255,.08)}
     :root { --green:#85BB65; --ink:#0b1220; --muted:#a9b3c4; --bg:#0e1117; --card:#141821; }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{margin:0;background:var(--bg);color:#e8eef9;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial}
-    a{color:#b0ff95}
+    a{color:#b0ff95;text-decoration:none}
     .wrap{max-width:1080px;margin:0 auto;padding:28px}
+
     header{display:flex;align-items:center;justify-content:space-between;gap:16px}
     .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#e8eef9}
     .logo{width:44px;height:44px;border-radius:12px;background:conic-gradient(from 210deg,var(--green),#9be27c,#4caf50);box-shadow:0 0 0 2px rgba(133,187,101,.25)}
     .title{font-weight:800;font-size:20px}
-    nav a{margin-left:14px;text-decoration:none;color:#d5dcef;font-weight:600}
-    .hero{margin:36px 0;padding:28px;border:1px solid rgba(255,255,255,.08);border-radius:16px;background:var(--card)}
-    h1{font-size:clamp(28px,5vw,44px);line-height:1.1;margin:0 0 8px}
-    p.lead{font-size:clamp(16px,1.8vw,20px);color:#d5dcef;margin:0}
+    nav a{margin-left:14px;color:#d5dcef;font-weight:600}
+
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px}
+    .section{margin:28px 0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+
+    /* Hero */
+    .hero{margin:36px 0}
+    .hero .hero-grid{
+      display:grid;
+      grid-template-columns: minmax(0,1fr) 320px; /* fixed small right column */
+      gap:18px; align-items:center;
+    }
+    .hero h1{font-size:clamp(28px,5vw,44px);line-height:1.1;margin:0 0 8px}
+    .lead{font-size:clamp(16px,1.8vw,20px);color:#d5dcef;margin:0}
     .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.12);text-decoration:none;font-weight:800}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.12);font-weight:800}
     .btn.primary{background:var(--green);color:#0a0f14;border-color:rgba(133,187,101,.6)}
     .btn.secondary{background:#0f131b;color:#e8eef9}
-    .section{margin:28px 0}
-    .card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(133,187,101,.12);color:#dff5d6;border:1px solid rgba(133,187,101,.35);font-weight:700}
-    .kpis{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
-    .k{flex:1 1 160px;background:#0f131b;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:12px}
-    ul.clean{padding-left:18px;margin:10px 0}
-    .footer{margin:32px 0;color:var(--muted);font-size:14px}
-    .two-col{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
-    @media (max-width:900px){.two-col{grid-template-columns:1fr}}
+    .hero-photo{display:flex;justify-content:flex-end}
+    .hero-photo img{width:100%;max-width:320px;height:auto;object-fit:contain;filter:drop-shadow(0 10px 20px rgba(0,0,0,.35))}
+    @media (max-width:900px){
+      .hero .hero-grid{grid-template-columns:1fr}
+      .hero-photo{display:none}
+    }
+
+    /* Book section: Calendly + Form */
+    .book-grid{display:grid;gap:16px}
+    @media(min-width:1000px){ .book-grid{grid-template-columns: 1fr minmax(360px,480px)} }
     iframe{width:100%;border:0;border-radius:12px;min-height:720px;background:#0f131b}
-    /* Featured Newsletter card */
-    .ln-card{display:block;text-decoration:none;color:#e8eef9;background:#0f131b;border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden}
-    .ln-thumb{position:relative;width:100%;aspect-ratio:1200/630;background-size:cover;background-position:center}
-    .ln-thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.25))}
-    .ln-body{padding:12px 14px}
-    .ln-title{font-weight:800;margin:0 0 4px}
-    .ln-sub{color:#a9b3c4;margin:0}
-    .ln-card:hover{transform:translateY(-1px);transition:transform .15s ease}
-    @media (max-width:640px){
-      .ln-thumb{background-image:url('/assets/featured-newsletter-600x315.png')!important}
-    }
-  
-  /* KPI list with checkmarks (white text) */
-  .kpi-title{color:#fff;font-weight:800}
-  .kpi-list{list-style:none;margin:8px 0 0;padding-left:0}
-  .kpi-list li{
-    position:relative;
-    margin:6px 0;
-    padding-left:28px;
-    color:#fff; /* sub-KPIs in white */
-  }
-  .kpi-list li::before{
-    content:"✓";
-    position:absolute; left:0; top:.1rem;
-    font-weight:900;
-    opacity:.6;
-  }
-    @media (max-width:640px){
-      .ln-thumb{background-image:url('/assets/featured-newsletter-600x315.png')!important}
-    }
 
-    /* Make tile titles green & slightly larger */
-    .kpi-title{
-      color: var(--green);
-      font-weight: 800;
-      font-size: 1.125rem; /* ~18px */
-      display: block;
-      margin-top: 2px;
-    }
-
-    /* Center the text inside the oval pills */
-    .pill{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;   /* centers text horizontally */
-      text-align: center;
-    }
-    /* Make the 4 KPI tiles equal height and push the pill to the bottom */
-.tile{display:flex;flex-direction:column}
-.tile .kpi-list{margin-top:8px;flex-grow:1}
-.tile .pill{margin-top:auto}
-
-/* Force 30/60/90 row to be horizontal */
-.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-@media (max-width:700px){
-  .kpis{grid-template-columns:1fr} /* stack on small screens only */
-}
-    /* Equal-height tiles; pill pinned to bottom */
-.tile{display:flex;flex-direction:column;height:100%}
-.tile .kpi-list{margin-top:8px;flex-grow:1}
-.tile .pill{margin-top:auto;align-self:flex-start}
-
-/* Keep the grid horizontal (2–4 per row depending on width) */
-.what-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-
-/* 30→60→90 horizontal flow with arrows; stacks on small screens */
-.kpis.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:stretch}
-.kpis.flow .k{position:relative;display:flex;flex-direction:column;justify-content:center;text-align:center}
-.kpis.flow .k:not(:last-child)::after{
-  content:"›"; position:absolute; right:-8px; top:50%; transform:translateY(-50%);
-  opacity:.45; font-size:24px
-}
-@media (max-width:700px){
-  .kpis.flow{grid-template-columns:1fr}
-  .kpis.flow .k:not(:last-child)::after{display:none}
-}
-
-/* Green heads, white subtext inside the flow boxes */
-.k-head{color:var(--green);font-weight:800}
-.k-sub{color:#fff}
-    /* Make 30/60/90 headings match tile title size */
-.k-head{
-  color: var(--green);
-  font-weight: 800;
-  font-size: 1.125rem; /* same as .kpi-title */
-}
-
-/* Core Products: title size + link-only on title */
-.prod-title{
-  font-size: 1.125rem;      /* match size */
-  font-weight: 800;
-  color: var(--green);
-  text-decoration: none;    /* no underline on title */
-  display:inline-block;
-}
-.prod-title:hover{opacity:.9}
-
-/* Core Products: subtext white, never linked/underlined */
-.prod-sub{
-  color: #fff;
-  text-decoration: none;
-}
-    /* Center content inside Core Products cards */
-#products .card{
-  text-align: center;
-}
-#products .prod-title{ /* keep title centered & tidy */
-  display: inline-block;
-}
-#products .prod-sub{
-  display: inline-block;
-  margin-top: 4px;
-}
-    /* Center + style "Industries we serve" cards */
-#verticals .card{
-  text-align: center;
-  text-decoration: none;   /* remove underline on the whole card link */
-}
-#verticals .card strong{
-  color: var(--green);
-  font-weight: 800;
-  font-size: 1.125rem;     /* match tile title size */
-}
+    /* Footer social */
+    .footer{margin:32px 0;color:var(--muted);font-size:14px}
+    .social{display:flex;gap:10px;flex-wrap:wrap}
+    .social a{padding:8px 12px;border:1px solid rgba(255,255,255,.14);border-radius:999px;color:#e8eef9;background:rgba(255,255,255,.04)}
   </style>
-  <script>
-  // === Configure these two values ===
-  const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform?usp=header';
-  const NEWSLETTER_URL = 'https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7386431336334438401';
-    // Attach on load
-    document.addEventListener('DOMContentLoaded',()=>{
-      // Update all anchors that should route to the form
-      document.querySelectorAll('[data-appointment]')?.forEach(a=>{ a.href = FORM_URL; });
-      const formFrame = document.getElementById('gf');
-      if(formFrame){
-        try{
-          const u = new URL(FORM_URL, location.href);
-          if(u.pathname.includes('/viewform') && !u.searchParams.has('embedded')){ u.searchParams.set('embedded','true'); }
-          formFrame.src = u.toString();
-        }catch{ formFrame.src = FORM_URL; }
-      }
-      const nl = document.getElementById('newsletter-link');
-      if(nl) nl.href = NEWSLETTER_URL;
-    });
-  </script>
-  <!-- Calendly Inline Embed -->
-  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </head>
-  <script>
-  // Redirect to your confirmation page after a booking
-  window.addEventListener('message', function (e) {
-    if (e && e.data && e.data.event === 'calendly.event_scheduled') {
-      window.location.href = '/thankyou.html';  // uses your new slug
-    }
-  });
-</script>
 <body>
   <div class="wrap">
+    <!-- Header -->
     <header>
-      <a class="brand" href="#top" aria-label="Industry5.pro">
-        <img src="/assets/logo-512.png" class="logo" alt="Industry5.pro logo" />
-        <div class="title">Industry5.pro</div>
+      <a class="brand" href="/">
+        <span class="logo"></span>
+        <span class="title">Industry5.pro</span>
       </a>
       <nav>
-        <a href="#what">What we do</a>
         <a href="#products">Products</a>
-        <a href="#industries">Industries</a>
+        <a href="#verticals">Industries</a>
         <a href="#book">Book</a>
-        <a href="#blog">Blog</a>
       </nav>
     </header>
 
-    <section class="hero hero-banner" id="top">
-     <div class="hero">
-  <div class="hero-grid">
-    <!-- Left: copy + CTAs -->
-    <div class="hero-copy">
-      <h1>Global Technology Consultant</h1>
-      <p class="lead">🧭 Advisory-first. 🙆🏻‍♀️ Human-centered. 🚀 Outcome-obsessed.</p>
-      <div class="cta-row">
-        <!-- keep your existing buttons here -->
-      </div>
-    </div>
-
-    <!-- Right: portrait -->
-    <div class="hero-photo">
-      <img
-        src="/assets/lou-portrait@2x.png"
-        alt="Louis Tortora"
-        width="520" height="520"
-        loading="eager" decoding="async" />
-    </div>
-  </div>
-</div>
-<section class="hero card" id="top">
-  <div class="hero-grid">
-    <!-- Left: copy + CTAs -->
-    <div class="hero-copy">
-      <h1>Global Technology Consultant</h1>
-      <p class="lead">🧭 Advisory-first. 🙆🏻‍♀️ Human-centered. 🚀 Outcome-obsessed.</p>
-      <div class="cta-row">
-        <!-- keep your existing buttons here (Calendly / Form, etc.) -->
-      </div>
-    </div>
-
-    <!-- Right: portrait -->
-    <figure class="hero-photo">
-      <img
-        src="/assets/lou-portrait@2x.png"
-        alt="Louis Tortora"
-        width="360" height="360"
-        loading="eager" decoding="async" />
-    </figure>
-  </div>
-</section>
-
-    </section>
-
-    <section class="section card" id="featured">
-      <h2>Featured Video</h2>
-      <p>One-minute breakdowns on how we turn AI & IoT into ROI. New clips weekly.</p>
-      <div class="two-col">
-        <a id="featured-thumb"
-   href="https://www.linkedin.com/in/louis-tortora5/"
-   target="_blank" rel="noopener"
-   class="card"
-   style="background:#0f131b;display:block;text-decoration:none">
-         <div style="
-  position:relative;
-  width:100%;
-  padding-top:52.5%; /* 1200x630 aspect */
-  background:#0f131b;
-  border-radius:8px 8px 6px 6px;
-  display:flex;align-items:center;justify-content:center;
-  border:1px dashed rgba(255,255,255,.25);
-">
-  <span style="opacity:.65;font-weight:700">Video coming soon</span>
-</div>
-  <div style="padding:12px 10px;font-weight:700">View on LinkedIn</div>
-</a>
-        <!-- Featured Newsletter (add this under Featured Video) -->
-          
-        <div class="card">
-          <p>Prefer a live walkthrough? Book below or send a quick brief and we’ll tailor a plan to your KPIs.</p>
+    <!-- HERO -->
+    <section class="card hero" id="top">
+      <div class="hero-grid">
+        <div>
+          <h1>Global Technology Consultant</h1>
+          <p class="lead">🧭 Advisory-first. 🙆🏻‍♀️ Human-centered. 🚀 Outcome-obsessed.</p>
           <div class="cta-row">
-            <a class="btn primary" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Open Calendly</a>
-            <a class="btn secondary request-cta" data-appointment target="_blank" rel="noopener">Open Google Form</a>
+            <a class="btn primary" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book via Calendly (30 min)</a>
+            <a class="btn secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform" target="_blank" rel="noopener">Open Google Form</a>
           </div>
         </div>
+        <figure class="hero-photo">
+          <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora" width="320" height="320" loading="eager" decoding="async" />
+        </figure>
       </div>
     </section>
-    
-<section class="section card" id="featured-newsletter">
-  <h2>Featured Newsletter</h2>
-  <p>AI/IoT/Cloud/Cyber: Weekly ROI — KPI-first briefs that turn complexity into outcomes.</p>
-  <a class="ln-card"
-     href="https://www.linkedin.com/pulse/cloud-chaos-real-roi-what-aws-outage-taught-us-louis-tortora-lbome/"
-     target="_blank" rel="noopener">
-    <div class="ln-thumb" style="background-image:url('/assets/featured-newsletter-1200x630.png')"></div>
-    <div class="ln-body">
-      <p class="ln-title">Cloud Chaos, Real ROI: What the AWS Outage Taught Us</p>
-      <p class="ln-sub">Safeguarding your business in times of crisis</p>
-    </div>
-  </a>
-  <div class="cta-row">
-    <a class="btn primary"
-       href="https://www.linkedin.com/newsletters/7386431336334438401/"
-       target="_blank" rel="noopener">
-      Subscribe on LinkedIn
-    </a>
-  </div>
-</section>
-    <section class="section card" id="what">
-  <h2>What we do</h2>
-  <p class="muted" style="margin-top:-6px">Four core solutions with KPI targets that tie directly to ROI. All tiles route to the intake form.</p>
 
-  <div class="what-grid" style="margin-top:12px">
-  <!-- AI Voice & Process Automation -->
-  <div class="card tile">
-    <strong class="kpi-title">AI Voice & Process Flow</strong>
-    <ul class="kpi-list">
-      <li><b>Deflection:</b> 15–30% in 60–90 days</li>
-      <li><b>AHT:</b> ↓ 20–35%</li>
-      <li><b>FCR:</b> +8–15 pts</li>
-      <li><b>CSAT:</b> +5–10 pts</li>
-      <li><b>Cost-to-serve:</b> ↓ 20–40%</li>
-    </ul>
-    <a class="pill" data-appointment href="#" target="_blank" rel="noopener" style="margin-top:8px">
-      Pilot → ROI ≤ 90 days
-    </a>
-  </div>
-
-  <!-- Cybersecurity & Compliance -->
-  <div class="card tile">
-    <strong class="kpi-title">Cybersecurity & Compliance</strong>
-    <ul class="kpi-list">
-      <li><b>MFA coverage:</b> ≥ 95% in 30 days</li>
-      <li><b>Phish click rate:</b> &lt; 2%</li>
-      <li><b>MTTD:</b> &lt; 1 hr • <b>MTTR:</b> &lt; 24 hrs</li>
-      <li><b>Endpoint coverage:</b> 100%</li>
-      <li><b>Critical vulns:</b> SLA ≤ 14 days</li>
-    </ul>
-    <a class="pill" data-appointment href="#" target="_blank" rel="noopener" style="margin-top:8px">
-      Zero-Trust starter in 30 days
-    </a>
-  </div>
-
-  <!-- Cloud & Resilience -->
-  <div class="card tile">
-    <strong class="kpi-title">Cloud & Resilience</strong>
-    <ul class="kpi-list">
-      <li><b>Availability:</b> 99.95–99.99%</li>
-      <li><b>RTO:</b> ≤ 60 min • <b>RPO:</b> ≤ 15 min</li>
-      <li><b>Cost optimization:</b> ↓ 10–25%</li>
-      <li><b>Change failure rate:</b> ↓ 30%</li>
-      <li><b>Runbook drill:</b> ≤ 2 hrs</li>
-    </ul>
-    <a class="pill" data-appointment href="#" target="_blank" rel="noopener" style="margin-top:8px">
-      DR playbook in 2 weeks
-    </a>
-  </div>
-
-  <!-- IoT / Edge & Predictive Maintenance -->
-  <div class="card tile">
-    <strong class="kpi-title">IoT / Edge & Predictive Maintenance</strong>
-    <ul class="kpi-list">
-      <li><b>Unplanned downtime:</b> ↓ 40–60%</li>
-      <li><b>OEE:</b> +5–12 pts</li>
-      <li><b>Truck rolls:</b> ↓ 15–30%</li>
-      <li><b>Shrinkage/inventory error:</b> ↓ 10–20%</li>
-      <li><b>Payback:</b> ≤ 90 days (pilot line)</li>
-    </ul>
-    <a class="pill" data-appointment href="#" target="_blank" rel="noopener" style="margin-top:8px">
-      Sensor → Alert → Ticket in 30 days
-    </a>
-  </div>
-</div>
-
-  <!-- 30/60/90 framing -->
- <div class="kpis flow" style="margin-top:14px">
-  <a class="k" data-appointment href="#" target="_blank" rel="noopener">
-    <span class="k-head">30 days</span><br/>
-    <span class="k-sub">MVP live • controls on • baseline KPIs</span>
-  </a>
-  <a class="k" data-appointment href="#" target="_blank" rel="noopener">
-    <span class="k-head">60 days</span><br/>
-    <span class="k-sub">Scale to 1–2 teams/sites • tune thresholds</span>
-  </a>
-  <a class="k" data-appointment href="#" target="_blank" rel="noopener">
-    <span class="k-head">90 days</span><br/>
-    <span class="k-sub">Verified ROI • next-wave roadmap</span>
-  </a>
-</div>
-    </section>
-    
- <section class="section card" id="featured-video" style="padding:22px 20px 24px">
-  <h2 style="margin:0 0 4px">Featured: Supermetrics Launch</h2>
-  <p class="prod-sub" style="margin:0 0 14px; color:#b9c2cf">
-    From spreadsheet stress to dashboard success
-  </p>
-
-  <div class="grid" style="gap:16px; align-items:start;">
-    <!-- LEFT: Video card (safe structure: div.card -> a -> video) -->
-    <div class="card" style="padding:0; border:1px solid rgba(255,255,255,.12); border-radius:12px; overflow:hidden;">
-      <a href="/supermetrics.html" style="display:block; text-decoration:none; position:relative;">
-        <!-- Square container matches 1920x1920; full video visible -->
-        <div style="position:relative; width:100%; aspect-ratio:1/1; overflow:hidden; background:#000;">
-          <video id="smVideo"
-            src="/videos/supermetrics-launch.mp4"
-            autoplay muted loop playsinline preload="metadata"
-            poster="/images/supermetrics/Pre-built data sources.png"
-            style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; display:block; background:#000; pointer-events:none;">
-          </video>
+    <!-- Products (keep your existing cards; shortened example with Supermetrics) -->
+    <section class="section card" id="products">
+      <h2>Core products we help with</h2>
+      <div class="grid">
+        <div class="card">
+          <a class="prod-title" data-appointment href="#" target="_blank" rel="noopener">AI Agents & Automation</a><br/>
+          <span class="prod-sub">Copilots, agentic workflows, RAG, governance</span>
         </div>
-      </a>
-    </div>
-
-    <!-- RIGHT: Copy + buttons (optional, delete this whole block if you want full-width video) -->
-    <div class="card" style="border:1px solid rgba(255,255,255,.12); border-radius:12px;">
-      <h3 style="margin:0 0 6px">Automate reporting, reclaim hours</h3>
-      <p class="prod-sub" style="margin:0 0 12px; color:#b9c2cf">
-        Supermetrics connects 150+ sources to Looker Studio, Sheets, and BigQuery so you ship dashboards, not spreadsheets.
-      </p>
-      <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="btn primary" href="/supermetrics.html">See the Supermetrics page</a>
-        <a class="btn ghost" href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7387596956627259392" target="_blank" rel="noopener">View on LinkedIn</a>
-      </div>
-
-<!-- ROI checklist (replace the bullets with this) -->
-<div class="roi-checklist" style="margin-top:10px; color:#8fa0b5; font-size:.95rem;">
-  <label style="display:flex; align-items:flex-start; gap:10px; margin:.35rem 0;">
-    <input type="checkbox" checked disabled
-           style="margin-top:.2rem; accent-color:#85BB65; width:18px; height:18px;">
-    <span>Start SMB simple, scale to enterprise governance when needed</span>
-  </label>
-
-  <label style="display:flex; align-items:flex-start; gap:10px; margin:.35rem 0;">
-    <input type="checkbox" checked disabled
-           style="margin-top:.2rem; accent-color:#85BB65; width:18px; height:18px;">
-    <span>Replace weekly spreadsheet time with scheduled refresh</span>
-  </label>
-
-  <label style="display:flex; align-items:flex-start; gap:10px; margin:.35rem 0;">
-    <input type="checkbox" checked disabled
-           style="margin-top:.2rem; accent-color:#85BB65; width:18px; height:18px;">
-    <span>Ship client dashboards faster and keep them up to date</span>
-  </label>
-</div>
-
-    </div>
-  </div>
-  
-<section class="section card" id="products">
-  <h2>Core products we help with</h2>
-
-  <!-- 4 columns on desktop; stacks on smaller screens -->
-  <div class="grid" style="gap:16px; grid-template-columns:repeat(4, minmax(0,1fr));">
-
-    <!-- Row 1 -->
-    <div class="card" style="text-align:center">
-      <a class="prod-title" data-appointment href="#" target="_blank" rel="noopener">
-        AI Agents &amp; Automation
-      </a><br/>
-      <span class="prod-sub">Copilots, agentic workflows, RAG, governance</span>
-    </div>
-
-    <div class="card" style="text-align:center">
-      <a class="prod-title" data-appointment href="#" target="_blank" rel="noopener">
-        Cloud &amp; Data
-      </a><br/>
-      <span class="prod-sub">Data foundations, analytics, integration</span>
-    </div>
-
-    <div class="card" style="text-align:center">
-      <a class="prod-title" data-appointment href="#" target="_blank" rel="noopener">
-        Connectivity &amp; NaaS
-      </a><br/>
-      <span class="prod-sub">Dedicated Internet, DIA, failover</span>
-    </div>
-
-    <div class="card" style="text-align:center">
-      <a class="prod-title" data-appointment href="#" target="_blank" rel="noopener">
-        Contact Center &amp; CX
-      </a><br/>
-      <span class="prod-sub">CCaaS, WEM, bots, deflection, QA</span>
-    </div>
-
-    <!-- Row 2 -->
-    <div class="card" style="text-align:center">
-      <a class="prod-title" data-appointment href="#" target="_blank" rel="noopener">
-        Managed IT Support (24/7)
-      </a><br/>
-      <span class="prod-sub">Hands-on support, monitoring, patching, help desk</span>
-    </div>
-
-    <div class="card" style="text-align:center">
-      <a class="prod-title" data-appointment href="#" target="_blank" rel="noopener">
-        IoT / Edge Connectivity
-      </a><br/>
-      <span class="prod-sub">Sensors, SD-WAN, 5G/LTE, telemetry</span>
-    </div>
-
-    <div class="card" style="text-align:center">
-      <a class="prod-title" data-appointment href="#" target="_blank" rel="noopener">
-        Security &amp; Compliance
-      </a><br/>
-      <span class="prod-sub">MDR/XDR, SASE, audit-ready posture</span>
-    </div>
-
-    <div class="card" style="text-align:center">
-      <a class="prod-title" data-appointment href="#" target="_blank" rel="noopener">
-        TEM
-      </a><br/>
-      <span class="prod-sub">Telecom expense management</span>
-    </div>
-
-    <!-- Row 3 -->
-    <div class="card" style="text-align:center">
-      <a class="prod-title" data-appointment href="#" target="_blank" rel="noopener">
-        UCaaS / VoIP
-      </a><br/>
-      <span class="prod-sub">Unified comms that just work</span>
-    </div>
-
-    <!-- Analytics: Supermetrics (shorter subtitle) -->
-    <div class="card" style="text-align:center">
-      <a class="prod-title" href="/supermetrics.html">
-        Analytics: Supermetrics
-      </a><br/>
-      <span class="prod-sub">Automate reporting → Looker Studio, Sheets, BigQuery, Snowflake</span>
-    </div>
-
-    <!-- 11 -->
-    <div class="card" style="text-align:center">
-      <a class="prod-title" href="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform" target="_blank" rel="noopener">
-        Mobility, Fleet &amp; Telematics
-      </a><br/>
-      <span class="prod-sub">Sensors, dash cams, ELD, routing, real-time ops</span>
-    </div>
-
-    <!-- 12 -->
-    <div class="card" style="text-align:center">
-      <a class="prod-title" href="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform" target="_blank" rel="noopener">
-        Aerial &amp; Computer Vision
-      </a><br/>
-      <span class="prod-sub">Drones, mapping, inspection, thermal &amp; defect detection</span>
-    </div>
-
-  </div>
-</section>
-
-   <section class="section card" id="industries">
-  <h2>Industries we serve</h2>
-
-  <div class="grid" style="gap:16px; grid-template-columns:repeat(4, minmax(0,1fr));">
-    <!-- Row 1 -->
-    <div class="card" style="text-align:center">
-      <a class="prod-title" href="/supermetrics.html">Agency &amp; SaaS Start-Ups</a><br/>
-      <span class="prod-sub">Automate client reporting and scale faster</span>
-    </div>
-
-    <div class="card" style="text-align:center">
-      <a class="prod-title" href="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform" target="_blank" rel="noopener">Maritime</a><br/>
-      <span class="prod-sub">Fleet ops, telematics, and port analytics</span>
-    </div>
-
-    <div class="card" style="text-align:center">
-      <a class="prod-title" href="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform" target="_blank" rel="noopener">Finance / Banking</a><br/>
-      <span class="prod-sub">Reg-ready dashboards and growth insights</span>
-    </div>
-
-    <div class="card" style="text-align:center">
-      <a class="prod-title" href="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform" target="_blank" rel="noopener">Legal &amp; Professional Services</a><br/>
-      <span class="prod-sub">Matter intake through KPI visibility</span>
-    </div>
-
-    <!-- Row 2 -->
-    <div class="card" style="text-align:center">
-      <a class="prod-title" href="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform" target="_blank" rel="noopener">Drone / Agriculture AIoT</a><br/>
-      <span class="prod-sub">Edge data → actionable field decisions</span>
-    </div>
-
-    <div class="card" style="text-align:center">
-      <a class="prod-title" href="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform" target="_blank" rel="noopener">Manufacturing</a><br/>
-      <span class="prod-sub">Throughput, quality, and downtime insights</span>
-    </div>
-
-    <div class="card" style="text-align:center">
-      <a class="prod-title" href="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform" target="_blank" rel="noopener">Retail &amp; eCommerce</a><br/>
-      <span class="prod-sub">Channel performance and merchandising</span>
-    </div>
-
-    <div class="card" style="text-align:center">
-      <a class="prod-title" href="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform" target="_blank" rel="noopener">Healthcare</a><br/>
-      <span class="prod-sub">Operational reporting and patient flows</span>
-    </div>
-
-    <!-- Row 3 -->
-    <div class="card" style="text-align:center">
-      <a class="prod-title" href="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform" target="_blank" rel="noopener">Education</a><br/>
-      <span class="prod-sub">Enrollment and outcome visibility</span>
-    </div>
-
-    <div class="card" style="text-align:center">
-      <a class="prod-title" href="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform" target="_blank" rel="noopener">Energy &amp; Utilities</a><br/>
-      <span class="prod-sub">Asset health and demand forecasting</span>
-    </div>
-
-    <div class="card" style="text-align:center">
-      <a class="prod-title" href="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform" target="_blank" rel="noopener">Logistics &amp; Supply Chain</a><br/>
-      <span class="prod-sub">OTIF, carrier, and warehouse KPIs</span>
-    </div>
-
-    <div class="card" style="text-align:center">
-      <a class="prod-title" href="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform" target="_blank" rel="noopener">Media &amp; Publishing</a><br/>
-      <span class="prod-sub">Audience growth and revenue mix</span>
-    </div>
-  </div>
-</section>
-
-    </section>
-
-  <section class="section card" id="book" style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);border-radius:14px;padding:22px 20px;margin:18px 20px">
-  <h2 style="margin:0 0 10px">Book a conversation</h2>
-  <p class="prod-sub" style="margin:0 0 14px;color:#b9c2cf">
-    Prefer a quick slot? Use Calendly. Want to outline needs first? Use the form.
-  </p>
-
-  <div class="book-grid">
-    <!-- Left: Calendly -->
-    <div class="book-col">
-      <div class="calendly-inline-widget"
-           data-url="https://calendly.com/industry5pro/30min"
-           style="min-width:320px;height:780px;border-radius:12px;overflow:hidden;background:#0a0f19"></div>
-    </div>
-
-    <!-- Right: Quick Form (Google Form embed) -->
-    <aside class="book-col">
-      <div class="quick-card" style="border:1px solid rgba(255,255,255,.12);border-radius:12px;overflow:hidden;background:rgba(255,255,255,.03)">
-        <div style="padding:14px 14px 0;font-weight:700">Quick form</div>
-        <iframe
-          src="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform?embedded=true"
-          style="width:100%;height:740px;border:0"
-          title="Industry5.pro quick form"
-          loading="lazy">
-        </iframe>
-        <div style="padding:0 14px 14px;color:#b9c2cf;font-size:.95rem">
-          Submitting the form won’t auto-redirect. After sending, you can return to our site any time.
+        <div class="card">
+          <a class="prod-title" href="/supermetrics.html">Analytics: Supermetrics</a><br/>
+          <span class="prod-sub">Automate reporting to Looker, Sheets, BigQuery, Snowflake.</span>
         </div>
+        <div class="card">
+          <a class="prod-title" data-appointment href="#" target="_blank" rel="noopener">Contact Center & CX</a><br/>
+          <span class="prod-sub">CCaaS, WEM, bots, deflection, QA</span>
+        </div>
+        <div class="card">
+          <a class="prod-title" data-appointment href="#" target="_blank" rel="noopener">IoT / Edge Connectivity</a><br/>
+          <span class="prod-sub">Sensors, SD-WAN, 5G/LTE, telemetry</span>
+        </div>
+        <!-- add the rest of your product cards here -->
       </div>
-    </aside>
-  </div>
-</section>
-
-<!-- Keep Calendly script ONCE on the page -->
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-
-<!-- Redirect after booking -->
-<script>
-  window.addEventListener('message', function (e) {
-    if (e && e.data && e.data.event === 'calendly.event_scheduled') {
-      window.location.href = '/thankyou.html';
-    }
-  });
-</script>
-
-<style>
-  /* Responsive two-column layout for the booking section */
-  .book-grid{display:grid;gap:16px}
-  @media (min-width: 1000px){
-    .book-grid{grid-template-columns: 1fr minmax(360px, 480px)}
-  }
-  .book-col{min-width:0}
-</style>
-
-    <section class="section card" id="blog">
-      <h2>Blog & Newsletter</h2>
-      <p>We organize long‑form posts here and link deeper dives in our LinkedIn newsletter.</p>
-      <ul class="clean">
-        <li><a id="newsletter-link" href="#" target="_blank" rel="noopener">Subscribe on LinkedIn</a></li>
-        <li><em>Coming soon:</em> Selected posts will live here for easy sharing.</li>
-      </ul>
     </section>
 
-    <div class="footer">
-      © <span id="y"></span> Industry5.pro · Haines City, FL · <a href="mailto:lou@industry5.pro">lou@industry5.pro</a> · <a href="tel:+14076945495">407‑694‑5495</a>
-    </div> 
+    <!-- Industries (placeholder) -->
+    <section class="section card" id="verticals">
+      <h2>Industries we serve</h2>
+      <div class="grid">
+        <a class="card" data-appointment href="#" target="_blank" rel="noopener"><strong>Manufacturing</strong></a>
+        <a class="card" data-appointment href="#" target="_blank" rel="noopener"><strong>Finance & Banking</strong></a>
+        <a class="card" data-appointment href="#" target="_blank" rel="noopener"><strong>Maritime</strong></a>
+        <a class="card" data-appointment href="#" target="_blank" rel="noopener"><strong>Public Safety & Smart City</strong></a>
+      </div>
+    </section>
+
+    <!-- Book a conversation (Calendly + Form) -->
+    <section class="section card" id="book" style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);border-radius:14px;padding:22px 20px;margin:18px 0">
+      <h2 style="margin:0 0 10px">Book a conversation</h2>
+      <p class="prod-sub" style="margin:0 0 14px;color:#b9c2cf">Prefer a quick slot? Use Calendly. Want to outline needs first? Use the form.</p>
+      <div class="book-grid">
+        <div>
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/industry5pro/30min"
+               style="min-width:320px;height:780px;border-radius:12px;overflow:hidden;background:#0a0f19"></div>
+        </div>
+        <aside>
+          <div class="card" style="border-radius:12px;overflow:hidden">
+            <div style="padding:14px 14px 0;font-weight:700">Quick form</div>
+            <iframe
+              src="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform?embedded=true"
+              title="Industry5.pro quick form" loading="lazy"></iframe>
+            <div style="padding:0 14px 14px;color:#b9c2cf;font-size:.95rem">
+              Submitting the form won’t auto-redirect. After sending, you can return to our site any time.
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div>© <span id="y"></span> Industry5.pro — Built on trust. Paid by results.</div>
+      <div class="social" style="margin-top:10px">
+        <a href="https://www.linkedin.com/in/louis-tortora5/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/profile.php?id=61582481880019" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://wa.me/14076945495" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:lou@industry5.pro">Email</a>
+      </div>
+    </footer>
   </div>
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+
+  <!-- Calendly script ONCE -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <!-- Redirect after scheduling -->
   <script>
-  // Featured video link — paste a public LinkedIn or YouTube URL
-  const FEATURED_VIDEO_URL = 'https://www.linkedin.com/pulse/cloud-chaos-real-roi-what-aws-outage-taught-us-louis-tortora-lbome';
-  const ft = document.getElementById('featured-thumb');
-  if(ft) ft.href = FEATURED_VIDEO_URL;
-</script>
-  <!-- === Social footer === -->
-<footer id="site-footer" style="padding:24px 20px">
-  <nav class="socials" aria-label="Follow Industry5.pro">
-    <!-- LinkedIn -->
-    <a class="social" href="https://www.linkedin.com/in/louis-tortora5/" target="_blank" rel="noopener" aria-label="LinkedIn">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5c0 1.38-1.12 2.5-2.48 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.5h5V24H0V8.5zM8 8.5h4.8v2.1h.07c.67-1.2 2.3-2.47 4.73-2.47 5.06 0 6 3.33 6 7.66V24h-5v-6.8c0-1.62-.03-3.7-2.25-3.7-2.25 0-2.6 1.76-2.6 3.58V24H8V8.5z"/></svg>
-    </a>
-
-    <!-- Instagram -->
-    <a class="social" href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 1.9.25 2.3.42.6.23 1.1.52 1.6.97.46.45.75 1 .97 1.6.17.4.36 1.1.42 2.3.07 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 1.9-.42 2.3a4 4 0 0 1-.97 1.6 4 4 0 0 1-1.6.97c-.4.17-1.1.36-2.3.42-1.3.07-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-1.9-.25-2.3-.42a4 4 0 0 1-1.6-.97 4 4 0 0 1-.97-1.6c-.17-.4-.36-1.1-.42-2.3C3.2 15.6 3.2 15.2 3.2 12s0-3.6.07-4.9c.06-1.2.25-1.9.42-2.3.23-.6.52-1.1.97-1.6.45-.46 1-.75 1.6-.97.4-.17 1.1-.36 2.3-.42C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.7.07-.95.05-1.47.2-1.82.33-.46.18-.8.39-1.15.74-.35.35-.56.69-.74 1.15-.13.35-.28.87-.33 1.82C3.2 9.3 3.2 9.7 3.2 12s0 2.7.07 3.9c.05.95.2 1.47.33 1.82.18.46.39.8.74 1.15.35.35.69.56 1.15.74.35.13.87.28 1.82.33 1.2.07 1.6.07 4.7.07s3.5 0 4.7-.07c.95-.05 1.47-.2 1.82-.33.46-.18.8-.39 1.15-.74.35-.35.56-.69.74-1.15.13-.35.28-.87.33-1.82.07-1.2.07-1.6.07-4.7s0-3.5-.07-4.7c-.05-.95-.2-1.47-.33-1.82-.18-.46-.39-.8-.74-1.15a3.2 3.2 0 0 0-1.15-.74c-.35-.13-.87-.28-1.82-.33-1.2-.07-1.6-.07-4.7-.07Zm0 3.2a6.6 6.6 0 1 1 0 13.2 6.6 6.6 0 0 1 0-13.2Zm0 1.8a4.8 4.8 0 1 0 0 9.6 4.8 4.8 0 0 0 0-9.6Zm6.9-.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0Z"/></svg>
-    </a>
-
-    <!-- Facebook -->
-    <a class="social" href="https://www.facebook.com/profile.php?id=61582481880019" target="_blank" rel="noopener" aria-label="Facebook">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M22.675 0h-21.35C.592 0 0 .592 0 1.325v21.351C0 23.408.592 24 1.325 24h11.49v-9.294H9.691V11.01h3.124V8.414c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.313h3.587l-.467 3.696h-3.12V24h6.117C23.408 24 24 23.408 24 22.676V1.325C24 .592 23.408 0 22.675 0z"/></svg>
-    </a>
-
-    <!-- WhatsApp -->
-    <a class="social" href="https://wa.me/14076945495" target="_blank" rel="noopener" aria-label="WhatsApp">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M.057 24l1.687-6.163A11.867 11.867 0 0 1 0 11.989C0 5.371 5.373 0 11.99 0 18.606 0 24 5.371 24 11.989S18.606 24 11.99 24a11.9 11.9 0 0 1-5.642-1.437L.057 24Zm6.597-3.807c1.676.995 3.276 1.591 5.35 1.593 5.448 0 9.884-4.429 9.884-9.88 0-5.45-4.436-9.88-9.884-9.88-5.449 0-9.88 4.43-9.88 9.88 0 2.266.738 3.891 1.977 5.59L3.5 20.5l3.154-.307zm11.387-5.464c-.066-.11-.242-.176-.506-.307-.264-.132-1.56-.77-1.8-.857-.242-.088-.418-.132-.594.132-.176.264-.682.857-.836 1.033-.154.176-.308.198-.572.066-.264-.132-1.116-.41-2.125-1.308-.785-.7-1.314-1.56-1.469-1.823-.154-.264-.017-.407.115-.539.118-.117.264-.308.396-.462.132-.154.176-.264.264-.44.088-.176.044-.33-.022-.462-.066-.132-.594-1.43-.814-1.958-.214-.514-.432-.445-.594-.453l-.506-.009c-.176 0-.462.066-.704.33-.242.264-.924.902-.924 2.202s.946 2.552 1.077 2.73c.132.176 1.862 2.842 4.508 3.986.63.27 1.122.432 1.505.553.632.202 1.206.174 1.661.105.506-.077 1.56-.638 1.78-1.255.22-.616.22-1.144.154-1.255z"/></svg>
-    </a>
-
-    <!-- Email -->
-    <a class="social" href="mailto:lou@industry5.pro" aria-label="Email">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 4h20a2 2 0 0 1 2 2v1l-12 7L0 7V6a2 2 0 0 1 2-2zm0 6.236V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-7.764l-9.386 5.52a2 2 0 0 1-2.228 0L2 10.236z"/></svg>
-    </a>
-  </nav>
-</footer>
-
-<style>
-  /* Footer social styles */
-  .socials { display:flex; gap:14px; align-items:center; flex-wrap:wrap; justify-content:center;  /* <-- center the icons row */ }
-  .social {
-    width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center;
-    border-radius:10px; border:1px solid rgba(255,255,255,.18);
-    background:rgba(255,255,255,.06); color:#fff; text-decoration:none; transition:transform .12s ease, opacity .12s ease;
-  }
-  .social:hover { transform:translateY(-1px); opacity:.9; }
-  .social svg { width:22px; height:22px; display:block; }
-  @media (max-width:640px){
-    .social { width:48px; height:48px; }
-    .social svg { width:24px; height:24px; }
-  }
-</style>
-
+    window.addEventListener('message', function (e) {
+      if (e && e.data && e.data.event === 'calendly.event_scheduled') {
+        window.location.href = '/thankyou.html';
+      }
+    });
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
