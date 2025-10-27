@@ -53,6 +53,22 @@
     .ln-card:hover{transform:translateY(-1px);transition:transform .15s ease}
     @media (max-width:640px){
       .ln-thumb{background-image:url('/assets/featured-newsletter-600x315.png')!important}
+      /* Hero layout with portrait on the right */
+.hero{margin:36px 0;padding:28px;border:1px solid rgba(255,255,255,.08);border-radius:16px;background:var(--card);min-height:340px}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center}
+.hero-copy{min-width:0}
+.hero-photo{display:flex;justify-content:flex-end}
+.hero-photo img{
+  max-width:420px; height:auto; object-fit:contain;
+  filter: drop-shadow(0 12px 24px rgba(0,0,0,.35));
+}
+
+/* Stack on mobile and hide photo to keep headline prominent */
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-photo{display:none}
+}
+
     }
   
   /* KPI list with checkmarks (white text) */
@@ -216,13 +232,28 @@
     </header>
 
     <section class="hero hero-banner" id="top">
-      <div>
-        <h1>Global Technology Consultant</h1>
-       <p class="lead">🧭 Advisory-first. 🙆🏻‍♀️ Human-centered. 🚀 Outcome-obsessed.</p>
-        <div class="cta-row">
-          <a class="btn primary" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book via Calendly (30 min)</a>
-          <a class="btn secondary request-cta" data-appointment target="_blank" rel="noopener">Request an appointment (Google Form)</a>
-        </div>
+     <div class="hero">
+  <div class="hero-grid">
+    <!-- Left: copy + CTAs -->
+    <div class="hero-copy">
+      <h1>Global Technology Consultant</h1>
+      <p class="lead">🧭 Advisory-first. 🙆🏻‍♀️ Human-centered. 🚀 Outcome-obsessed.</p>
+      <div class="cta-row">
+        <!-- keep your existing buttons here -->
+      </div>
+    </div>
+
+    <!-- Right: portrait -->
+    <div class="hero-photo">
+      <img
+        src="/assets/lou-portrait@2x.png"
+        alt="Louis Tortora"
+        width="520" height="520"
+        loading="eager" decoding="async" />
+    </div>
+  </div>
+</div>
+
       </div>
     </section>
 
