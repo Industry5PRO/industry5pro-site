@@ -15,6 +15,23 @@
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
 
   <style>
+    /* Uniform tiles: centered titles, bold, no underline */
+.grid.four{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media (max-width:1000px){ .grid.four{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:600px){ .grid.four{grid-template-columns:1fr} }
+
+.tile{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px}
+.tile-title{display:block;text-align:center;font-weight:800;color:#e8eef9;text-decoration:none;margin:0 0 6px;font-size:1rem}
+.tile-sub{display:block;text-align:center;color:#a9b3c4}
+
+/* Footer social icons centered */
+.footer .social-icons{display:flex;justify-content:center;gap:12px;margin-top:12px}
+.footer .social-icons a{
+  width:42px;height:42px;display:inline-flex;align-items:center;justify-content:center;
+  border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:#e8eef9
+}
+.footer .social-icons svg{width:20px;height:20px;display:block}
+
     :root { --green:#85BB65; --ink:#0b1220; --muted:#a9b3c4; --bg:#0e1117; --card:#141821; }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -95,40 +112,119 @@
       </div>
     </section>
 
-    <!-- Products (keep your existing cards; shortened example with Supermetrics) -->
-    <section class="section card" id="products">
-      <h2>Core products we help with</h2>
-      <div class="grid">
-        <div class="card">
-          <a class="prod-title" data-appointment href="#" target="_blank" rel="noopener">AI Agents & Automation</a><br/>
-          <span class="prod-sub">Copilots, agentic workflows, RAG, governance</span>
-        </div>
-        <div class="card">
-          <a class="prod-title" href="/supermetrics.html">Analytics: Supermetrics</a><br/>
-          <span class="prod-sub">Automate reporting to Looker, Sheets, BigQuery, Snowflake.</span>
-        </div>
-        <div class="card">
-          <a class="prod-title" data-appointment href="#" target="_blank" rel="noopener">Contact Center & CX</a><br/>
-          <span class="prod-sub">CCaaS, WEM, bots, deflection, QA</span>
-        </div>
-        <div class="card">
-          <a class="prod-title" data-appointment href="#" target="_blank" rel="noopener">IoT / Edge Connectivity</a><br/>
-          <span class="prod-sub">Sensors, SD-WAN, 5G/LTE, telemetry</span>
-        </div>
-        <!-- add the rest of your product cards here -->
-      </div>
-    </section>
+   <section class="section card" id="products">
+  <h2>Core products we help with</h2>
+  <div class="grid four">
 
-    <!-- Industries (placeholder) -->
-    <section class="section card" id="verticals">
-      <h2>Industries we serve</h2>
-      <div class="grid">
-        <a class="card" data-appointment href="#" target="_blank" rel="noopener"><strong>Manufacturing</strong></a>
-        <a class="card" data-appointment href="#" target="_blank" rel="noopener"><strong>Finance & Banking</strong></a>
-        <a class="card" data-appointment href="#" target="_blank" rel="noopener"><strong>Maritime</strong></a>
-        <a class="card" data-appointment href="#" target="_blank" rel="noopener"><strong>Public Safety & Smart City</strong></a>
-      </div>
-    </section>
+    <div class="tile">
+      <a class="tile-title" data-appointment href="#book">AI Agents & Automation</a>
+      <span class="tile-sub">Copilots, agentic workflows, RAG, governance</span>
+    </div>
+
+    <div class="tile">
+      <a class="tile-title" href="/supermetrics.html">Analytics: Supermetrics</a>
+      <span class="tile-sub">Automate reporting to Looker, Sheets, BigQuery, Snowflake</span>
+    </div>
+
+    <div class="tile">
+      <a class="tile-title" data-appointment href="#book">Contact Center & CX</a>
+      <span class="tile-sub">CCaaS, WEM, bots, deflection, QA</span>
+    </div>
+
+    <div class="tile">
+      <a class="tile-title" data-appointment href="#book">IoT & Edge Connectivity</a>
+      <span class="tile-sub">Sensors, SD-WAN, 5G/LTE, telemetry</span>
+    </div>
+
+    <div class="tile">
+      <a class="tile-title" data-appointment href="#book">Cloud & Data</a>
+      <span class="tile-sub">Data foundations, analytics, integration</span>
+    </div>
+
+    <div class="tile">
+      <a class="tile-title" data-appointment href="#book">Security & Compliance</a>
+      <span class="tile-sub">MDR/XDR, SASE, audit-ready posture</span>
+    </div>
+
+    <div class="tile">
+      <a class="tile-title" data-appointment href="#book">Connectivity & NaaS</a>
+      <span class="tile-sub">Dedicated Internet, DIA, failover</span>
+    </div>
+
+    <div class="tile">
+      <a class="tile-title" data-appointment href="#book">UCaaS / VoIP</a>
+      <span class="tile-sub">Unified communications that just work</span>
+    </div>
+
+    <div class="tile">
+      <a class="tile-title" data-appointment href="#book">TEM</a>
+      <span class="tile-sub">Telecom expense management</span>
+    </div>
+
+    <div class="tile">
+      <a class="tile-title" data-appointment href="#book">Managed IT Support 24/7</a>
+      <span class="tile-sub">Helpdesk, NOC/SOC, patch & endpoint</span>
+    </div>
+
+    <div class="tile">
+      <a class="tile-title" data-appointment href="#book">Aerial & Computer Vision</a>
+      <span class="tile-sub">Drones, PPE/zone safety, inspections</span>
+    </div>
+
+    <div class="tile">
+      <a class="tile-title" data-appointment href="#book">Fleet & Telematics</a>
+      <span class="tile-sub">GPS, dashcams, ELD, route optimization</span>
+    </div>
+
+  </div>
+</section>
+
+
+  <section class="section card" id="verticals">
+  <h2>Industries we serve</h2>
+  <div class="grid four">
+
+    <a class="tile" data-appointment href="#book"><strong class="tile-title">Manufacturing</strong>
+      <span class="tile-sub">OEE, downtime, quality</span></a>
+
+    <a class="tile" data-appointment href="#book"><strong class="tile-title">Finance & Banking</strong>
+      <span class="tile-sub">Compliance, CX, analytics</span></a>
+
+    <a class="tile" data-appointment href="#book"><strong class="tile-title">Maritime</strong>
+      <span class="tile-sub">Ship-to-shore, SD-WAN at sea</span></a>
+
+    <a class="tile" data-appointment href="#book"><strong class="tile-title">Public Safety & Smart City</strong>
+      <span class="tile-sub">Mobile command, resilient comms</span></a>
+
+    <a class="tile" data-appointment href="#book"><strong class="tile-title">Legal & Professional Services</strong>
+      <span class="tile-sub">Secure comms & workflows</span></a>
+
+    <!-- Agencies & SaaS Start-ups → send to Supermetrics affiliate, per your request -->
+    <a class="tile" href="https://partners.supermetrics.com/Industry5PRO-Agencies" target="_blank" rel="noopener nofollow sponsored">
+      <strong class="tile-title">Agencies & SaaS Start-ups</strong>
+      <span class="tile-sub">Automated reporting & KPI packs</span>
+    </a>
+
+    <a class="tile" data-appointment href="#book"><strong class="tile-title">Healthcare</strong>
+      <span class="tile-sub">Data, security, CX</span></a>
+
+    <a class="tile" data-appointment href="#book"><strong class="tile-title">Retail & eCommerce</strong>
+      <span class="tile-sub">Attribution, omnichannel CX</span></a>
+
+    <a class="tile" data-appointment href="#book"><strong class="tile-title">Logistics & Fleet</strong>
+      <span class="tile-sub">Tracking, safety, optimization</span></a>
+
+    <a class="tile" data-appointment href="#book"><strong class="tile-title">Education</strong>
+      <span class="tile-sub">Network reliability, security</span></a>
+
+    <a class="tile" data-appointment href="#book"><strong class="tile-title">Hospitality</strong>
+      <span class="tile-sub">Guest Wi-Fi, contact center</span></a>
+
+    <a class="tile" data-appointment href="#book"><strong class="tile-title">Agriculture & Drones</strong>
+      <span class="tile-sub">Sensing, aerial insights</span></a>
+
+  </div>
+</section>
 
     <!-- Book a conversation (Calendly + Form) -->
     <section class="section card" id="book" style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);border-radius:14px;padding:22px 20px;margin:18px 0">
@@ -155,16 +251,31 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-      <div>© <span id="y"></span> Industry5.pro — Built on trust. Paid by results.</div>
-      <div class="social" style="margin-top:10px">
-        <a href="https://www.linkedin.com/in/louis-tortora5/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.facebook.com/profile.php?id=61582481880019" target="_blank" rel="noopener">Facebook</a>
-        <a href="https://wa.me/14076945495" target="_blank" rel="noopener">WhatsApp</a>
-        <a href="mailto:lou@industry5.pro">Email</a>
-      </div>
-    </footer>
+<footer class="footer">
+  <div>© <span id="y"></span> Industry5.pro — Built on trust. Paid by results.</div>
+  <div class="social-icons">
+    <a href="https://www.linkedin.com/in/louis-tortora5/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <!-- LinkedIn -->
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.8 2.67 4.8 6.14V23h-4v-6.5c0-1.55-.03-3.55-2.17-3.55-2.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener" aria-label="Instagram">
+      <!-- Instagram -->
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.51 5.51 0 0 0 12 7.5zm0 2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5zM18 6.2a1 1 0 1 0 1 1 1 1 0 0 0-1-1z"/></svg>
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61582481880019" target="_blank" rel="noopener" aria-label="Facebook">
+      <!-- Facebook -->
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.07C22 6.49 17.52 2 11.93 2 6.35 2 1.86 6.49 1.86 12.07c0 5.02 3.66 9.18 8.44 9.95v-7.03H7.9V12.1h2.4V9.86c0-2.37 1.4-3.68 3.55-3.68 1.03 0 2.11.18 2.11.18v2.32h-1.19c-1.17 0-1.53.73-1.53 1.47v1.95h2.61l-.42 2.89h-2.19v7.03c4.78-.77 8.44-4.93 8.44-9.95z"/></svg>
+    </a>
+    <a href="https://wa.me/14076945495" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <!-- WhatsApp -->
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 3.9A10 10 0 0 0 2.7 17.7L2 22l4.4-1.2A10 10 0 1 0 20 3.9zm-8 16.2c-1.7 0-3.3-.5-4.7-1.6l-.3-.2-2.8.8.8-2.7-.2-.3A7.87 7.87 0 0 1 12 4.1a8 8 0 0 1 0 16zm4.5-5.3c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.6.1c-.2.2-.6.8-.7 1-.1.2-.3.2-.5.1-1-.4-2-.9-2.8-1.8-.2-.2-.4-.5-.3-.7.1-.2.3-.4.4-.6l.2-.3c.1-.2 0-.4 0-.5 0-.1-.6-1.5-.8-2.1-.2-.6-.4-.5-.6-.5h-.5c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.1 3 .9 1.6 2.1 2.2 1.9.7 2.2.8c.3.1 1.4.1 1.9-.1.6-.2 1.4-.7 1.6-1.3.2-.6.2-1.1.1-1.2z"/></svg>
+    </a>
+    <a href="mailto:lou@industry5.pro" aria-label="Email">
+      <!-- Mail -->
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    </a>
+  </div>
+</footer>
   </div>
 
   <!-- Calendly script ONCE -->
