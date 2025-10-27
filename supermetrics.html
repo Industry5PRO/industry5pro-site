@@ -91,19 +91,46 @@
   </p>
 </section>
     </div>
-<!-- Affiliate URL once, reused -->
-<!-- (No need to repeat, but OK if you do) -->
-<!-- All links open new tab and are marked sponsored/nofollow -->
 <style>
   .sm-grid{display:grid;gap:16px}
   @media(min-width:900px){.sm-grid{grid-template-columns:repeat(2,1fr)}}
-  .sm-card{position:relative;border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;background:rgba(255,255,255,.04)}
+
+  .sm-card{
+    position:relative;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:14px;
+    overflow:hidden;
+    background:rgba(255,255,255,.04)
+  }
   .sm-card img{display:block;width:100%;height:auto}
   .sm-card a{display:block;line-height:0} /* image becomes the link */
-  .sm-btn{position:absolute;left:14px;bottom:14px;padding:.55rem .8rem;border-radius:12px;
-          background:#F6252F;color:#fff;font-weight:700;text-decoration:none}
+
+  /* Centered button at bottom */
+  .sm-btn{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    bottom:14px;
+    padding:.55rem .9rem;
+    border-radius:12px;
+    background:#F6252F;
+    color:#fff;
+    font-weight:700;
+    text-decoration:none;
+    z-index:2;
+  }
+
+  /* Optional: subtle fade for readability behind the button */
+  .sm-card::after{
+    content:"";
+    position:absolute; left:0; right:0; bottom:0; height:72px;
+    background:linear-gradient(to top, rgba(10,15,25,.75), rgba(10,15,25,0));
+    z-index:1; pointer-events:none;
+  }
+
   .sm-card:hover{transform:translateY(-1px);transition:transform .12s ease}
 </style>
+
 
 <div class="sm-grid" id="sm-four">
   <figure class="sm-card">
