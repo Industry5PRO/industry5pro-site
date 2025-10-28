@@ -41,7 +41,12 @@
 
     header{display:flex;align-items:center;justify-content:space-between;gap:16px}
     .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#e8eef9}
-    .logo{width:44px;height:44px;border-radius:12px;background:conic-gradient(from 210deg,var(--green),#9be27c,#4caf50);box-shadow:0 0 0 2px rgba(133,187,101,.25)}
+    .logo{
+  width:44px;height:44px;border-radius:12px;display:block;
+  object-fit:contain;
+  filter: drop-shadow(0 0 10px rgba(133,187,101,.40));
+  background: transparent;
+}
     .title{font-weight:800;font-size:20px}
     nav a{margin-left:14px;color:#d5dcef;font-weight:600}
 
@@ -85,7 +90,11 @@
     <!-- Header -->
     <header>
       <a class="brand" href="/">
-        <span class="logo"></span>
+       <img src="/assets/industry5-logo.png"
+     alt="Industry5.pro logo"
+     class="logo"
+     width="44" height="44"
+     loading="eager" decoding="async" />
         <span class="title">Industry5.pro</span>
       </a>
       <nav>
