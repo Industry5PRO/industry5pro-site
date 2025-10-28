@@ -190,17 +190,25 @@
     Move from experimentation to execution with an outcome-first approach.
   </p>
 
-  <!-- CTAs -->
-  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;">
-    <a href="/contact"
-       style="background:#85BB65;color:#ffffff;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700;box-shadow:0 6px 16px rgba(133,187,101,0.25);transition:transform .08s ease, box-shadow .2s ease;">
-      Book an Advisory Session
-    </a>
-    <a href="/playbook"
-       style="border:2px solid #85BB65;color:#ffffff;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700;transition:background-color .2s ease, color .2s ease;">
-      See the Playbook
-    </a>
-  </div>
+<!-- CTAs (match AI Readiness hero) -->
+<div class="cta-row" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;">
+  <!-- Primary: Google Form -->
+  <a href="YOUR_GOOGLE_FORM_LINK"
+     class="btn-primary"
+     aria-label="Start the AI Readiness Assessment"
+     style="background:#85BB65;color:#ffffff;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:800;box-shadow:0 6px 16px rgba(133,187,101,0.28);transition:transform .08s ease, box-shadow .2s ease;">
+    Start the Assessment
+  </a>
+
+  <!-- Secondary: Calendly -->
+  <a href="https://calendly.com/industry5pro/30min"
+     class="btn-secondary"
+     aria-label="Book a Discovery Session"
+     style="border:2px solid #85BB65;color:#ffffff;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:800;transition:background-color .2s ease, color .2s ease;">
+    Book a Discovery Session
+  </a>
+</div>
+
 
   <small style="display:block;margin-top:10px;color:#cbd5e1;">
     Video courtesy of Bloomberg Television. Embedding permitted via official player.
@@ -403,3 +411,13 @@
   </script>
 </body>
 </html>
+<style>
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(133,187,101,0.38);
+  }
+  .btn-secondary:hover {
+    background: rgba(133,187,101,0.16);
+  }
+</style>
+
