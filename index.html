@@ -241,6 +241,183 @@
   }
 </style>
 
+<!-- =========================
+     Outcome-Obsessed (KPI grid)
+     PLACE: below Bloomberg, above Products
+========================= -->
+<section id="outcome-obsessed" class="section card" style="margin-top:22px">
+  <h2 style="margin:0 0 8px">Outcome-Obsessed</h2>
+  <p style="color:var(--muted);margin:0 0 12px">
+    Pick the KPI. We’ll map the fastest route with the right partners—measured in latency, uptime, CX, and real dollars.
+  </p>
+
+  <!-- Filter chips -->
+  <div id="oo-filters" class="oo-chips" style="display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 16px"></div>
+
+  <!-- Featured + KPI grid -->
+  <div id="oo-grid" class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px"></div>
+
+  <p style="margin:12px 0 0;color:var(--muted);font-size:.92rem">
+    Ranges reflect typical case studies; your baseline and targets are confirmed in discovery.
+  </p>
+</section>
+
+<style>
+  /* Outcome chips & cards (uses your variables + existing card/tile vibe) */
+  .oo-chip{
+    border:1px solid rgba(255,255,255,.14);
+    background:rgba(255,255,255,.04);
+    color:#e8eef9; padding:8px 12px; border-radius:999px;
+    font-weight:700; font-size:.92rem; cursor:pointer;
+  }
+  .oo-chip.active{ border-color:rgba(133,187,101,.55); background:rgba(133,187,101,.12); color:#eaffdc }
+  .oo-card{
+    background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:16px;
+    display:flex;flex-direction:column;gap:8px; min-height:170px;
+  }
+  .oo-metric{ color:#e8eef9; font-weight:800; font-size:1.05rem }
+  .oo-blurb{ color:#a9b3c4; font-size:.95rem }
+  .oo-cta{
+    margin-top:auto; display:inline-flex; justify-content:center; align-items:center;
+    padding:10px 14px; border-radius:10px; font-weight:800; text-decoration:none;
+    color:#0a0f14; background:var(--green); border:1px solid rgba(133,187,101,.6);
+  }
+  .oo-cta:hover{ box-shadow:0 10px 22px rgba(133,187,101,.28); transform:translateY(-1px) }
+  .oo-featured{
+    grid-column: span 2;
+    background:linear-gradient(180deg, rgba(133,187,101,.10), rgba(20,24,33,1));
+    border:1px solid rgba(133,187,101,.35);
+  }
+  @media (max-width:700px){ .oo-featured{ grid-column: auto } }
+  .oo-tag{ display:inline-block; font-size:.72rem; color:#cfe9c7; background:rgba(133,187,101,.15);
+           border:1px solid rgba(133,187,101,.35); border-radius:999px; padding:2px 8px }
+</style>
+
+<script>
+(function(){
+  // ---------- Config: your form links ----------
+  const AI_FORM  = "https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform?usp=header";
+  const ROI_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform?usp=header";
+
+  // Featured supplier toggle/content (image OR video). Keep enabled, swap content later.
+  const FEATURED = {
+    enabled: true,
+    type: "image", // "image" | "video"
+    title: "Featured Supplier of the Quarter",
+    metric: "Voice AI: Deflect 30–60% of routine calls",
+    blurb: "Real conversations; agents focus on edge cases. See if your flows are AI-ready.",
+    imageUrl: "/assets/featured-supplier.jpg",
+    imageAlt: "Featured supplier",
+    // If using video later: embed URL (e.g., YouTube/Vimeo embed)
+    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0",
+    ctaLabel: "Get My ROI Plan",
+    ctaUrl: ROI_FORM,
+    tags: ["ai","cx","speed"]
+  };
+
+  // KPI cards: tag-driven routing (ai -> AI_FORM; everything else -> ROI_FORM)
+  const CARDS = [
+    { id:"cx-deflect", metric:"Deflect 30–60% of routine calls", blurb:"Conversational AI resolves repeat intents; agents handle high-value work.", tags:["ai","cx","cost","speed"] },
+    { id:"cx-aht", metric:"AHT ↓ 15–35%", blurb:"Real-time assist + guided workflows reduce dead air and after-call work.", tags:["cx","cost","speed"] },
+    { id:"cx-nps", metric:"NPS/CSAT ↑ 10–20 pts", blurb:"Faster, consistent answers lift sentiment and loyalty.", tags:["cx","revenue"] },
+
+    { id:"cloud-lat", metric:"p95 latency ↓ 20–40% to cloud", blurb:"Private on-ramps + multi-cloud networking shorten the user→service path.", tags:["cloud","network","speed","risk"] },
+    { id:"cloud-cost", metric:"Cloud spend ↓ 15–35%", blurb:"Rightsizing, scheduling, storage tiering, and egress controls.", tags:["cloud","cost"] },
+    { id:"cloud-slo", metric:"SLO uptime ≥ 99.95%", blurb:"Error-budget burn tracked weekly with automated failover drills.", tags:["cloud","risk","speed"] },
+
+    { id:"net-uptime", metric:"Uptime ≥ 99.99% • Failover < 30s", blurb:"Session-persistent SD-WAN keeps POS, VoIP, and apps online.", tags:["network","risk","speed"] },
+    { id:"net-voice", metric:"VoIP MOS ≥ 4.2 • Jitter < 20 ms • Loss < 0.1%", blurb:"QoS + path steering lock in call quality for sales and support.", tags:["network","cx","speed"] },
+
+    { id:"sec-mttd", metric:"MTTD ↓ 50–80% • MTTR ↓ 40–70%", blurb:"Unified telemetry + playbooks cut detection and response time.", tags:["security","risk","speed"] },
+    { id:"sec-phish", metric:"Phish click-rate ↓ 60–90%", blurb:"Targeted awareness + reporting SLAs reduce successful phishing.", tags:["security","risk"] },
+    { id:"sec-patch", metric:"Patch SLA ≥ 95% in 14/30 days", blurb:"Automated patching closes critical/high within time-bound windows.", tags:["security","risk"] },
+
+    { id:"aiot-dt", metric:"Unplanned downtime ↓ 20–50%", blurb:"Edge sensors + alerts catch failures before they bite throughput.", tags:["aiot","network","cost","risk"] },
+    { id:"aiot-inspect", metric:"Inspection time ↓ 50–80%", blurb:"Drones + edge vision replace manual climbs and clipboards.", tags:["aiot","cost","speed"] },
+    { id:"aiot-shrink", metric:"Inventory shrink ↓ 10–30%", blurb:"Smart video + geofencing deter theft and improve recovery.", tags:["aiot","risk","cost"] }
+  ];
+
+  const FILTERS = [
+    {key:"all",label:"All"},{key:"cost",label:"Cost ↓"},{key:"revenue",label:"Revenue ↑"},
+    {key:"speed",label:"Speed ⚡"},{key:"risk",label:"Risk ⬇"},{key:"cx",label:"CX 😊"},
+    {key:"cloud",label:"Cloud"},{key:"security",label:"Security"},{key:"network",label:"Network"},
+    {key:"aiot",label:"AIoT / Field Ops"},{key:"ai",label:"AI"}
+  ];
+
+  const $filters = document.getElementById("oo-filters");
+  const $grid = document.getElementById("oo-grid");
+
+  // Render filter chips
+  let active = "all";
+  FILTERS.forEach(f=>{
+    const b=document.createElement("button");
+    b.type="button";
+    b.className="oo-chip"+(f.key===active?" active":"");
+    b.dataset.filter=f.key;
+    b.textContent=f.label;
+    $filters.appendChild(b);
+  });
+  $filters.addEventListener("click",e=>{
+    const b=e.target.closest("button.oo-chip"); if(!b) return;
+    active=b.dataset.filter;
+    [...$filters.children].forEach(x=>x.classList.toggle("active",x===b));
+    applyFilter();
+  });
+
+  // CTA routing based on tags
+  function ctaUrl(tags){ return tags.includes("ai") ? AI_FORM : ROI_FORM; }
+  function ctaLabel(tags){ return tags.includes("ai") ? "Run AI Readiness" : "Get My ROI Plan"; }
+
+  // Featured card
+  function featuredHTML(){
+    if(!FEATURED.enabled) return "";
+    const media = FEATURED.type==="video"
+      ? `<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px">
+           <iframe src="${FEATURED.videoUrl}" title="Featured" allowfullscreen
+                   style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
+         </div>`
+      : `<div style="position:relative;border-radius:12px;overflow:hidden">
+           <img src="${FEATURED.imageUrl}" alt="${FEATURED.imageAlt}" style="width:100%;height:auto;display:block">
+         </div>`;
+    return `
+      <article class="oo-card oo-featured">
+        ${media}
+        <div><span class="oo-tag">Featured</span></div>
+        <div class="oo-metric">${FEATURED.metric}</div>
+        <div class="oo-blurb">${FEATURED.blurb}</div>
+        <a class="oo-cta" href="${FEATURED.ctaUrl}" target="_blank" rel="noopener">${FEATURED.ctaLabel}</a>
+      </article>
+    `;
+  }
+
+  // KPI cards
+  function cardHTML(c){
+    return `
+      <article class="oo-card" data-tags="${c.tags.join(",")}">
+        <div class="oo-metric">${c.metric}</div>
+        <div class="oo-blurb">${c.blurb}</div>
+        <a class="oo-cta" href="${ctaUrl(c.tags)}" target="_blank" rel="noopener">${ctaLabel(c.tags)}</a>
+      </article>
+    `;
+  }
+
+  function render(){
+    $grid.innerHTML = featuredHTML() + CARDS.map(cardHTML).join("");
+  }
+
+  function applyFilter(){
+    const cards=[...$grid.querySelectorAll(".oo-card")];
+    cards.forEach(el=>{
+      const tags=(el.getAttribute("data-tags")||"").split(",");
+      const show = (active==="all") || tags.includes(active) || el.classList.contains("oo-featured");
+      el.style.display = show ? "" : "none";
+    });
+  }
+
+  render();
+  applyFilter();
+})();
+</script>
 
 
    <section class="section card" id="products">
