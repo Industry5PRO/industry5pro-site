@@ -328,6 +328,13 @@
     { id:"cloud-cost", metric:"Cloud spend ↓ 15–35%", blurb:"Rightsizing, scheduling, storage tiering, and egress controls.", tags:["cloud","cost"] },
     { id:"cloud-slo", metric:"SLO uptime ≥ 99.95%", blurb:"Error-budget burn tracked weekly with automated failover drills.", tags:["cloud","risk","speed"] },
     {
+  id: "cloud-egress",
+  metric: "Egress spend ↓ 25–60%",
+  blurb: "Peering, edge caching, data locality, and storage lifecycle policies cut cross-cloud/region transfer.",
+  tags: ["cloud","cost","speed"]
+},
+
+    {
   id: "mec-latency",
   metric: "p95 latency < 20 ms with MEC",
   blurb: "Metro-edge offload (Wavelength/MEC) brings compute closer—AR/vision start-time ↓ 30–50%.",
