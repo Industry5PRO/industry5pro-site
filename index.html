@@ -300,6 +300,7 @@
   // ---------- Config: your form links ----------
   const AI_FORM  = "https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform?usp=header";
   const ROI_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform?usp=header";
+  const CYBER_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSdOMTJRwYEtNkXtb2Zt89wK7dJs6v1oK4VkX3reSo7HRR_QjQ/viewform?usp=header";
 
   // Featured supplier toggle/content (image OR video). Keep enabled, swap content later.
   const FEATURED = {
@@ -367,8 +368,16 @@
   });
 
   // CTA routing based on tags
-  function ctaUrl(tags){ return tags.includes("ai") ? AI_FORM : ROI_FORM; }
-  function ctaLabel(tags){ return tags.includes("ai") ? "Run AI Readiness" : "Get My ROI Plan"; }
+  function ctaUrl(tags){
+  if (tags.includes("ai")) return AI_FORM;
+  if (tags.includes("security")) return CYBER_FORM; // ← sends MTTD/MTTR, Patch, Phish to Cyber Pre-Intake
+  return ROI_FORM;
+}
+  function ctaLabel(tags){
+  if (tags.includes("ai")) return "Run AI Readiness";
+  if (tags.includes("security")) return "Open Cyber Pre-Intake";
+  return "Get My ROI Plan";
+}
 
   // Featured card
   function featuredHTML(){
