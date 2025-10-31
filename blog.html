@@ -25,6 +25,34 @@ header{
   font-size:1.05rem; /* same as index */
   letter-spacing:.2px;
 }
+  /* Top nav hover glow (blog) – works for .main-nav and fallback to any header nav */
+.main-nav a, header nav a{
+  position:relative; color:#ddd;
+  transition:color .15s ease, text-shadow .15s ease;
+}
+.main-nav a:hover, header nav a:hover{
+  color:var(--accent, #85BB65);
+  text-shadow:0 0 6px rgba(133,187,101,.8), 0 0 14px rgba(133,187,101,.45);
+}
+.main-nav a::after, header nav a::after{
+  content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px; width:0; margin:auto;
+  background:var(--accent, #85BB65);
+  box-shadow:0 0 8px rgba(133,187,101,.6);
+  transition:width .18s ease;
+}
+.main-nav a:hover::after, header nav a:hover::after{ width:100%; }
+
+/* Tag filter buttons glow on hover (blog) */
+#filters .filter-btn{
+  transition: color .15s ease, border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+#filters .filter-btn:hover{
+  color:var(--accent, #85BB65);
+  border-color:var(--accent, #85BB65);
+  box-shadow:0 0 10px rgba(133,187,101,.6), 0 0 18px rgba(133,187,101,.3);
+  transform:translateY(-1px);
+}
+
 
 /* Add the green glow hover for the top nav */
 .main-nav a{
