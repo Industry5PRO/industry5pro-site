@@ -659,32 +659,7 @@
     });
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  // Desired top-to-bottom order
-  var order = [
-    '#hero',
-    '#outcome-obsessed',
-    '#bloomberg',
-    '#products',
-    '#ai-readiness',
-    '#industries',
-    '#book'
-  ];
-
-  // Re-parent into this container (use <main> if you have one; otherwise body)
-  var container = document.querySelector('main') || document.body;
-
-  order.forEach(function (sel) {
-    var el = document.querySelector(sel);
-    if (el && el !== container && el.parentNode) {
-      container.appendChild(el); // moves the node (doesn't clone)
-    }
-  });
-});
-</script>
 </body>
-  
 </html>
 <style>
   .btn-primary:hover {
