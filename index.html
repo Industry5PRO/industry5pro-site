@@ -15,6 +15,46 @@
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
 
   <style>
+    /* ===== KPI TAGS: Outcome-Obsessed ===== */
+#outcome-obsessed .tag,
+#outcome-obsessed .chip,
+#outcome-obsessed .kpi-tag,
+#outcome-obsessed .kpi-btn {
+  cursor: pointer;
+  transition: color .15s ease, border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+  /* If your tags already have borders, this will just enhance on hover */
+}
+#outcome-obsessed .tag:hover,
+#outcome-obsessed .chip:hover,
+#outcome-obsessed .kpi-tag:hover,
+#outcome-obsessed .kpi-btn:hover {
+  color: var(--accent, #85BB65);
+  border-color: var(--accent, #85BB65);
+  box-shadow: 0 0 10px rgba(133,187,101,.6), 0 0 18px rgba(133,187,101,.3);
+  transform: translateY(-1px);
+  text-shadow: 0 0 6px rgba(133,187,101,.8), 0 0 14px rgba(133,187,101,.45);
+}
+
+/* ===== PRODUCT & INDUSTRY CARDS: whole card + title glow ===== */
+#products .card,
+#verticals .card {
+  transition: box-shadow .18s ease, border-color .18s ease, transform .18s ease, color .15s ease;
+}
+#products .card:hover,
+#verticals .card:hover {
+  border-color: var(--accent, #85BB65);
+  box-shadow: 0 0 14px rgba(133,187,101,.35), 0 0 28px rgba(133,187,101,.2);
+  transform: translateY(-2px);
+}
+/* Title/link glow inside the hovered card */
+#products .card:hover h3,
+#products .card:hover h3 a,
+#verticals .card:hover h3,
+#verticals .card:hover h3 a {
+  color: var(--accent, #85BB65);
+  text-shadow: 0 0 6px rgba(133,187,101,.8), 0 0 14px rgba(133,187,101,.45);
+}
+
     /* Uniform tiles: centered titles, bold, no underline */
 .grid.four{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 @media (max-width:1000px){ .grid.four{grid-template-columns:repeat(2,1fr)} }
