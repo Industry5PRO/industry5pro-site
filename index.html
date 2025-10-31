@@ -340,6 +340,12 @@
     { id:"sec-mttd", metric:"MTTD ↓ 50–80% • MTTR ↓ 40–70%", blurb:"Unified telemetry + playbooks cut detection and response time.", tags:["security","risk","speed"] },
     { id:"sec-phish", metric:"Phish click-rate ↓ 60–90%", blurb:"Targeted awareness + reporting SLAs reduce successful phishing.", tags:["security","risk"] },
     { id:"sec-patch", metric:"Patch SLA ≥ 95% in 14/30 days", blurb:"Automated patching closes critical/high within time-bound windows.", tags:["security","risk"] },
+    {
+  id: "security-buaas",
+  metric: "Backup success ≥ 98% • RPO ≤ 4 hrs • RTO ≤ 8 hrs",
+  blurb: "Managed Backups (Backup as a Service): immutable off-site copies, tested restores, ransomware-ready.",
+  tags: ["security","risk","cost"]
+},
 
     { id:"aiot-dt", metric:"Unplanned downtime ↓ 20–50%", blurb:"Edge sensors + alerts catch failures before they bite throughput.", tags:["aiot","network","cost","risk"] },
     { id:"aiot-inspect", metric:"Inspection time ↓ 50–80%", blurb:"Drones + edge vision replace manual climbs and clipboards.", tags:["aiot","cost","speed"] },
