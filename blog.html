@@ -6,6 +6,42 @@
 <title>AI Foundations & Blog — Industry5.pro</title>
 <meta name="description" content="Scan the AI Foundations series and browse tagged articles on Network, Cloud, Security, AIoT, Analytics, Drone, FWA, Satellite, and more." />
 <style>
+  /* Header + brand (mirror index vibe) */
+header{
+  padding:24px 20px;display:flex;justify-content:space-between;align-items:center;
+  border-bottom:1px solid var(--border);
+}
+.brand{display:flex;gap:12px;align-items:center}
+
+/* REPLACE your old .brand .logo (the one with background:linear-gradient...) with this */
+.brand .logo{
+  width:28px;height:28px;object-fit:contain;
+  filter: drop-shadow(0 0 6px rgba(133,187,101,.35));
+  border-radius:6px;
+}
+
+.brand h1{
+  margin:0;
+  font-size:1.05rem; /* same as index */
+  letter-spacing:.2px;
+}
+
+/* Add the green glow hover for the top nav */
+.main-nav a{
+  margin-left:16px;color:#ddd;position:relative;
+  transition:color .15s ease, text-shadow .15s ease;
+}
+.main-nav a:hover{
+  color:var(--accent);
+  text-shadow:0 0 6px rgba(133,187,101,.8), 0 0 14px rgba(133,187,101,.45);
+}
+.main-nav a::after{
+  content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;width:0;margin:auto;
+  background:var(--accent);box-shadow:0 0 8px rgba(133,187,101,.6);
+  transition:width .18s ease;
+}
+.main-nav a:hover::after{ width:100%; }
+
   :root{
     --bg:#0b1220; --card:#141c2f; --muted:#bfc7d5; --accent:#85BB65; --ink:#ffffff;
     --border: rgba(255,255,255,.08);
@@ -69,16 +105,17 @@
 
 <header>
   <div class="brand">
-    <div class="logo"></div>
+    <img class="logo" src="/assets/logo_hero_280_glow.png" alt="Industry5.pro logo" width="28" height="28" />
     <h1>Industry5.pro</h1>
   </div>
-  <nav>
+  <nav class="main-nav">
     <a href="/index.html">Home</a>
     <a href="#articles">All Articles</a>
     <a href="#ai-foundations">AI Foundations</a>
     <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book 30 min</a>
   </nav>
 </header>
+
 
 <main>
   <div class="wrap">
