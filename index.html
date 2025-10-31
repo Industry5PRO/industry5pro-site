@@ -327,6 +327,12 @@
     { id:"cloud-lat", metric:"p95 latency ↓ 20–40% to cloud", blurb:"Private on-ramps + multi-cloud networking shorten the user→service path.", tags:["cloud","network","speed","risk"] },
     { id:"cloud-cost", metric:"Cloud spend ↓ 15–35%", blurb:"Rightsizing, scheduling, storage tiering, and egress controls.", tags:["cloud","cost"] },
     { id:"cloud-slo", metric:"SLO uptime ≥ 99.95%", blurb:"Error-budget burn tracked weekly with automated failover drills.", tags:["cloud","risk","speed"] },
+    {
+  id: "mec-latency",
+  metric: "p95 latency < 20 ms with MEC",
+  blurb: "Metro-edge offload (Wavelength/MEC) brings compute closer—AR/vision start-time ↓ 30–50%.",
+  tags: ["network","speed","cx","risk"]
+},
 
     { id:"net-uptime", metric:"Uptime ≥ 99.99% • Failover < 30s", blurb:"Session-persistent SD-WAN keeps POS, VoIP, and apps online.", tags:["network","risk","speed"] },
     { id:"net-voice", metric:"VoIP MOS ≥ 4.2 • Jitter < 20 ms • Loss < 0.1%", blurb:"QoS + path steering lock in call quality for sales and support.", tags:["network","cx","speed"] },
@@ -337,9 +343,14 @@
 
     { id:"aiot-dt", metric:"Unplanned downtime ↓ 20–50%", blurb:"Edge sensors + alerts catch failures before they bite throughput.", tags:["aiot","network","cost","risk"] },
     { id:"aiot-inspect", metric:"Inspection time ↓ 50–80%", blurb:"Drones + edge vision replace manual climbs and clipboards.", tags:["aiot","cost","speed"] },
+    {
+  id: "aiot-oee",
+  metric: "OEE ↑ 5–15%",
+  blurb: "Edge sensors + real-time alerts boost availability, throughput, and quality.",
+  tags: ["aiot","revenue","cost","speed"]
+},
     { id:"aiot-shrink", metric:"Inventory shrink ↓ 10–30%", blurb:"Smart video + geofencing deter theft and improve recovery.", tags:["aiot","risk","cost"] }
   
-
   ];
 
   const FILTERS = [
