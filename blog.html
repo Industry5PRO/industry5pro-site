@@ -174,6 +174,50 @@ footer .socials a:focus-visible{
   color: #FFD700 !important; /* gold */
   text-shadow: 0 0 6px rgba(255,215,0,.8), 0 0 14px rgba(255,215,0,.45) !important;
 }
+/* Descript: gold behaviors */
+
+/* A) Make only the word "Gold" pop gold on hover (title stays green) */
+#descript.card.clickable:hover h3{
+  color: var(--accent, #85BB65);
+  text-shadow: 0 0 6px rgba(133,187,101,.8), 0 0 14px rgba(133,187,101,.45);
+}
+#descript.card.clickable:hover h3 .gold-word{
+  color: #FFD700 !important;
+  text-shadow: 0 0 6px rgba(255,215,0,.8), 0 0 14px rgba(255,215,0,.45) !important;
+}
+
+/* B) Table inside the Descript card: gold border & glow when the card is hovered */
+#descript table{
+  border:1px solid rgba(255,255,255,.18);
+  border-collapse: collapse;
+  width:100%;
+  transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+#descript table th, #descript table td{
+  border:1px solid rgba(255,255,255,.08);
+  padding:.55rem .7rem;
+}
+#descript.card.clickable:hover table{
+  border-color:#FFD700;
+  box-shadow: 0 0 10px rgba(255,215,0,.60), 0 0 18px rgba(255,215,0,.30);
+  transform: translateY(-1px);
+}
+
+/* C) "Open via our affiliate" link: turn gold + glow on hover */
+#descript a[href*="get.descript.com"]{
+  font-weight:700;
+  text-decoration:none;
+  transition: color .15s ease, text-shadow .15s ease, box-shadow .15s ease, border-color .15s ease;
+  border-bottom:1px dashed transparent;
+}
+#descript a[href*="get.descript.com"]:hover,
+#descript a[href*="get.descript.com"]:focus-visible{
+  color:#FFD700 !important;
+  text-shadow:0 0 6px rgba(255,215,0,.8), 0 0 14px rgba(255,215,0,.45);
+  border-color:#FFD700;
+  box-shadow: 0 2px 8px rgba(255,215,0,.25);
+  outline:0;
+}
 
 </style>
 </head>
