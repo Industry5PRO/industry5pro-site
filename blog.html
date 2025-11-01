@@ -126,7 +126,30 @@ header{
     transition:transform .15s ease,border-color .15s ease,color .15s ease
   }
   footer .socials a:hover{ border-color:var(--accent); color:var(--accent); transform:translateY(-2px) }
-  footer .tagline{ text-align:center; color:#a8b3c7; margin-top:6px; }
+  footer .tagline{ text-align:center; color:#a8b3c7; margin-top:6px; }/* Affiliate tiles (e.g., Descript) — make the whole card glow/click */
+.card.clickable{
+  cursor:pointer;
+  transition: box-shadow .18s ease, border-color .18s ease, transform .18s ease, color .15s ease;
+}
+.card.clickable:hover{
+  border-color: var(--accent, #85BB65);
+  box-shadow: 0 0 14px rgba(133,187,101,.35), 0 0 28px rgba(133,187,101,.2);
+  transform: translateY(-2px);
+}
+/* Title/link glow on hover */
+.card.clickable:hover h3,
+.card.clickable:hover h3 a{
+  color: var(--accent, #85BB65);
+  text-shadow: 0 0 6px rgba(133,187,101,.8), 0 0 14px rgba(133,187,101,.45);
+}
+/* Keep the inline link looking clean */
+.card.clickable a{
+  text-decoration:none;
+}
+.card.clickable a:hover{
+  text-decoration:underline;
+}
+  
 </style>
 </head>
 <body>
@@ -284,13 +307,19 @@ header{
           <p><em>Coming soon</em></p>
         </article>
 
-        <!-- Descript story (placeholder) -->
-        <article class="card" data-tags="Analytics,AI,Descript">
-          <h3>How Descript Turns AI Content into Gold</h3>
-          <p>We built the stack. Now share it like a pro. Text-based editing, voice work, and fast story cuts.</p>
-          <div class="tags"><span class="tag">Analytics</span><span class="tag">AI</span><span class="tag">Descript</span></div>
-          <p><a href="#" target="_blank" rel="noopener">Read more</a></p>
-        </article>
+       <!-- Descript story (affiliate) -->
+<article class="card clickable" data-tags="Analytics,AI,Descript"
+         onclick="window.open('https://get.descript.com/Industry5PRO','_blank','noopener,noreferrer')">
+  <h3>How Descript Turns AI Content into Gold</h3>
+  <p>We built the stack. Now share it like a pro. Text-based editing, voice work, and fast story cuts.</p>
+  <div class="tags"><span class="tag">Analytics</span><span class="tag">AI</span><span class="tag">Descript</span></div>
+  <p style="margin:0">
+    <a href="https://get.descript.com/Industry5PRO" target="_blank" rel="noopener noreferrer sponsored">
+      Open via our affiliate
+    </a>
+  </p>
+</article>
+
 
         <!-- Satellite / maritime story (placeholder) -->
         <article class="card" data-tags="Network,Satellite,Edge/MEC">
