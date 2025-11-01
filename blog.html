@@ -626,22 +626,80 @@ header nav a:focus-visible::after{
   })();
 </script>
 <script>
-// Ensure every article shows a consistent Published date if data-pub is present
-document.querySelectorAll('article.card').forEach(card => {
-  const pub = card.getAttribute('data-pub'); // e.g., "Nov 1, 2025"
-  if (!pub) return;
+// Auto "Published:" line for every article.
+// Priority: data-pub → id map → LinkedIn ugcPost map → Pulse slug map → today.
+(function(){
+  const fmt   = { year:'numeric', month:'short', day:'numeric' };
+  const today = new Date().toLocaleDateString('en-US', fmt);
 
-  let meta = card.querySelector('.meta');
-  if (!meta) {
-    meta = document.createElement('p');
-    meta.className = 'meta';
+  // 1) Known dates by ARTICLE ID
+  const idMap = {
+    // AI Foundations
+    'af-part1': 'Oct 28, 2025', // Resilience by Design (NaaS)
+    'af-part2': 'Oct 30, 2025', // When One Cloud Fails (Multi-Cloud)
+    'af-part3': 'Nov 1, 2025',  // Security & Backup (Policy First)
+
+    // Standalone (use your actual ids if you have them)
+    'post-aws-outage': 'Oct 24, 2025', // Cloud Chaos (AWS outage)
+    'post-amzn-q3':    'Oct 31, 2025', // Amazon Q3 earnings
+  };
+
+  // 2) Known dates by LinkedIn ugcPost ID (from embedded iframes)
+  const ugcMap = {
+    '7390411903644221440': 'Nov 1, 2025', // AI Foundations Part 3
+    '7387332455696973824': 'Oct 30, 2025', // AI Foundations Part 2
+    '7387337149869686784': 'Oct 28, 2025', // AI Foundations Part 1
+    '7390051055952240641': 'Oct 31, 2025', // Amazon Q3 earnings
+    '7386400673040379904': 'Oct 24, 2025', // AWS outage analysis
+  };
+
+  // 3) Known dates by LinkedIn Pulse slug (direct article links)
+  const slugMap = {
+    'ai-foundations-part-3-security-backup': 'Nov 1, 2025',
+    'when-one-cloud-fails-designing-multi-cloud-continuity': 'Oct 30, 2025',
+    'resilience-design-how-network-as-a-service-powers-ai': 'Oct 28, 2025',
+    'amazons-blockbuster-q3-earnings-signal-ai-fueled-cloud': 'Oct 31, 2025',
+    'cloud-chaos-real-roi-what-aws-outage-taught-us': 'Oct 24, 2025',
+  };
+
+  function getUgcIdFrom(card){
+    const fr = card.querySelector('iframe[src*="linkedin.com/embed/feed/update/urn:li:ugcPost:"]');
+    if(!fr) return null;
+    const m = fr.src.match(/ugcPost:(\d+)/);
+    return m ? m[1] : null;
+  }
+
+  function getPulseSlugFrom(card){
+    const a = card.querySelector('a[href*="linkedin.com/pulse/"]');
+    if(!a) return null;
+    const m = a.href.match(/linkedin\.com\/pulse\/([^/?#]+)/);
+    return m ? m[1].replace(/\/$/, '') : null;
+  }
+
+  document.querySelectorAll('article.card').forEach(card => {
+    const explicit = card.getAttribute('data-pub');
+    const byId     = card.id && idMap[card.id];
+    const ugcId    = getUgcIdFrom(card);
+    const byUgc    = ugcId && ugcMap[ugcId];
+    const slug     = getPulseSlugFrom(card);
+    const bySlug   = slug && slugMap[slug];
+
+    const pub = explicit || byId || byUgc || bySlug || today;
+
+    let meta = card.querySelector('.meta');
+    if (!meta) {
+      meta = document.createElement('p');
+      meta.className = 'meta';
+      card.appendChild(meta);
+    }
+    meta.textContent = `Published: ${pub}.`;
     meta.style.marginTop = '8px';
     meta.style.color = '#bfc7d5';
-    card.appendChild(meta);
-  }
-  meta.textContent = `Published: ${pub}.`;
-});
+    meta.style.fontSize = '.95rem';
+  });
+})();
 </script>
+
 <script>
 // Ensure every article shows a consistent Published date if data-pub is present
 document.querySelectorAll('article.card').forEach(card => {
