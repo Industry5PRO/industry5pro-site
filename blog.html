@@ -1,781 +1,401 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>AI Foundations & Blog — Industry5.pro</title>
-<meta name="description" content="Scan the AI Foundations series and browse tagged articles on Network, Cloud, Security, AIoT, Analytics, Drone, FWA, Satellite, and more." />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Industry5.pro — AI Foundations & Blog</title>
+<meta name="color-scheme" content="dark">
 <style>
-  /* Header + brand (mirror index vibe) */
-header{
-  padding:24px 20px;display:flex;justify-content:space-between;align-items:center;
-  border-bottom:1px solid var(--border);
-}
-.brand{display:flex;gap:12px;align-items:center}
-
-/* REPLACE your old .brand .logo (the one with background:linear-gradient...) with this */
-.brand .logo{
-  width:28px;height:28px;object-fit:contain;
-  filter: drop-shadow(0 0 6px rgba(133,187,101,.35));
-  border-radius:6px;
-}
-
-.brand h1{
-  margin:0;
-  font-size:1.05rem; /* same as index */
-  letter-spacing:.2px;
-}
-  /* Top nav hover glow (blog) – works for .main-nav and fallback to any header nav */
-.main-nav a, header nav a{
-  position:relative; color:#ddd;
-  transition:color .15s ease, text-shadow .15s ease;
-}
-.main-nav a:hover, header nav a:hover{
-  color:var(--accent, #85BB65);
-  text-shadow:0 0 6px rgba(133,187,101,.8), 0 0 14px rgba(133,187,101,.45);
-}
-.main-nav a::after, header nav a::after{
-  content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px; width:0; margin:auto;
-  background:var(--accent, #85BB65);
-  box-shadow:0 0 8px rgba(133,187,101,.6);
-  transition:width .18s ease;
-}
-.main-nav a:hover::after, header nav a:hover::after{ width:100%; }
-
-/* Tag filter buttons glow on hover (blog) */
-#filters .filter-btn{
-  transition: color .15s ease, border-color .15s ease, box-shadow .15s ease, transform .15s ease;
-}
-#filters .filter-btn:hover{
-  color:var(--accent, #85BB65);
-  border-color:var(--accent, #85BB65);
-  box-shadow:0 0 10px rgba(133,187,101,.6), 0 0 18px rgba(133,187,101,.3);
-  transform:translateY(-1px);
-}
-
-
-/* Add the green glow hover for the top nav */
-.main-nav a{
-  margin-left:16px;color:#ddd;position:relative;
-  transition:color .15s ease, text-shadow .15s ease;
-}
-.main-nav a:hover{
-  color:var(--accent);
-  text-shadow:0 0 6px rgba(133,187,101,.8), 0 0 14px rgba(133,187,101,.45);
-}
-.main-nav a::after{
-  content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;width:0;margin:auto;
-  background:var(--accent);box-shadow:0 0 8px rgba(133,187,101,.6);
-  transition:width .18s ease;
-}
-.main-nav a:hover::after{ width:100%; }
-
   :root{
-    --bg:#0b1220; --card:#141c2f; --muted:#bfc7d5; --accent:#85BB65; --ink:#ffffff;
-    --border: rgba(255,255,255,.08);
+    --bg:#0b1220;
+    --panel:#0f172a;
+    --line:rgba(255,255,255,.12);
+    --text:#e6eef5;
+    --muted:#bfc7d5;
+    --accent:#85BB65;           /* money-green */
+    --gold:#FFD700;              /* yellow gold */
   }
-  *{box-sizing:border-box}
-  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
   a{color:var(--accent);text-decoration:none}
-  header{padding:24px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border)}
-  .brand{display:flex;gap:12px;align-items:center}
-  /* If you have an actual logo image, replace the gradient with: background-image:url('/path/to/logo.png'); background-size:cover; */
-  .brand .logo{width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,#9be27a,#2dbd6e)}
-  .brand h1{margin:0;font-size:1.05rem;letter-spacing:.2px}
-  nav a{margin-left:16px;color:#ddd}
-  main{padding:20px}
-  .wrap{max-width:1150px;margin:0 auto}
-  h2{color:#e9f6ec;margin:.2rem 0 .8rem}
-  h3{margin:.2rem 0 .4rem}
-  p{color:var(--muted);margin:.2rem 0 .8rem}
-  .section{margin:18px 0 28px}
-  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px}
-  .grid{display:grid;gap:16px}
-  @media (min-width: 960px){
-    .grid.cols-2{grid-template-columns:repeat(2,1fr);}
-    .grid.cols-3{grid-template-columns:repeat(3,1fr);}
+  img{max-width:100%;display:block}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(11,18,32,.95),rgba(11,18,32,.75));backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+  .wrap{max-width:1100px;margin:0 auto;padding:14px 18px;display:flex;align-items:center;gap:18px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand img{width:160px;height:auto}
+  nav{margin-left:auto;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  nav a{position:relative;color:#cfe3d4;display:inline-block;padding:4px 2px;transition:color .15s ease,text-shadow .15s ease}
+  nav a::after{
+    content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;
+    background:var(--accent);           /* green at rest (so it "closes" green) */
+    transform:scaleX(0);transform-origin:left;
+    transition:transform .22s ease, background .18s ease, box-shadow .18s ease;
   }
-  .btn{display:inline-block;background:var(--accent);color:#0b1220;font-weight:800;padding:8px 12px;border-radius:10px}
+  nav a:hover,nav a:focus-visible{
+    color:var(--gold)!important;
+    text-shadow:0 0 6px rgba(255,215,0,.85),0 0 14px rgba(255,215,0,.45);
+    outline:0;
+  }
+  nav a:hover::after,nav a:focus-visible::after{
+    background:var(--gold);
+    box-shadow:0 0 8px rgba(255,215,0,.6),0 0 16px rgba(255,215,0,.35);
+    transform:scaleX(1);
+  }
+
+  /* Page header */
+  .hero{max-width:1100px;margin:24px auto 0;padding:0 18px 8px}
+  .hero h1{margin:14px 0 6px;font-size:36px;line-height:1.2}
+  .hero p{margin:0;color:#cfd6e3}
 
   /* Filters */
-  #filters{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 16px}
-  .filter-btn{background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd;padding:6px 12px;border-radius:10px;cursor:pointer}
-  .filter-btn.active{background:var(--accent);color:#0b1220;border-color:var(--accent);font-weight:800}
-
-  /* LinkedIn embed toggle kit */
-  .li-embed{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:#0f1729}
-  .li-embed .toolbar{display:flex;gap:8px;justify-content:flex-end;padding:6px 8px;border-bottom:1px solid rgba(255,255,255,.06);background:#121b30}
-  .li-embed .toolbar button{background:transparent;border:1px solid rgba(255,255,255,.15);color:#ddd;padding:4px 8px;border-radius:8px;font-size:.85rem;cursor:pointer}
-  .li-embed .toolbar button.active{background:var(--accent);color:#0b1220;border-color:var(--accent);font-weight:800}
-  .li-embed iframe{width:100%;display:block;border:0}
-  .tags{display:flex;gap:6px;flex-wrap:wrap;margin:.4rem 0 .2rem}
-  .tag{background:#1b253b;border:1px solid var(--border);color:#cfe7d7;padding:2px 8px;border-radius:8px;font-size:.8rem}
-
-  /* Footer socials (match index vibe) */
-  footer{
-    border-top:1px solid rgba(255,255,255,.08);
-    padding:24px 20px;color:#cfd6e3;margin-top:28px
+  #filters{max-width:1100px;margin:16px auto 0;padding:0 18px 18px;border-bottom:1px solid var(--line)}
+  .filter-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+  .filter-btn{
+    display:inline-block;padding:.42rem .75rem;border:1px solid var(--line);border-radius:999px;
+    background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
+    color:#e6eef5;font-weight:700;font-size:.92rem;
+    transition:color .15s ease,border-color .15s ease,box-shadow .15s ease,transform .15s ease,text-shadow .15s ease;
   }
-  footer .socials{
-    display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;margin:10px 0 6px
+  .filter-btn.active{border-color:var(--accent);color:var(--accent)}
+  /* Gold glow on hover for chips (incl. All Articles) */
+  .filter-btn:hover,.filter-btn:focus-visible{
+    color:var(--gold)!important;border-color:var(--gold)!important;
+    text-shadow:0 0 6px rgba(255,215,0,.8),0 0 14px rgba(255,215,0,.45);
+    box-shadow:0 0 10px rgba(255,215,0,.6),0 0 18px rgba(255,215,0,.3);
+    transform:translateY(-1px);outline:0;
   }
+
+  /* Grid */
+  .grid{max-width:1100px;margin:18px auto;padding:0 18px;display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:900px){ .grid{grid-template-columns:1fr 1fr} }
+
+  /* Cards */
+  .card{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:16px;transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease}
+  .card:hover{border-color:var(--gold);box-shadow:0 0 14px rgba(255,215,0,.35),0 0 28px rgba(255,215,0,.2);transform:translateY(-2px)}
+  .card h3{margin:.2rem 0 .5rem;font-size:20px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin:.35rem 0 .6rem}
+  .tag{display:inline-block;padding:.22rem .55rem;border:1px solid var(--line);border-radius:999px;font-size:.8rem;color:#dfe7f3}
+  .meta{margin-top:8px;color:var(--muted);font-size:.95rem}
+
+  /* LinkedIn toolbar + iframes */
+  .li-embed .toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:.2rem 0 .6rem}
+  .li-view{padding:.35rem .6rem;border:1px solid var(--line);border-radius:999px;background:transparent;color:#e6eef5;font-weight:700;cursor:pointer}
+  .li-view.active{border-color:var(--accent);color:var(--accent)}
+  .li-view:hover,.li-view:focus-visible{
+    color:var(--gold)!important;border-color:var(--gold)!important;
+    text-shadow:0 0 6px rgba(255,215,0,.8),0 0 14px rgba(255,215,0,.45);
+    box-shadow:0 0 10px rgba(255,215,0,.6),0 0 18px rgba(255,215,0,.3);
+    transform:translateY(-1px);outline:0;
+  }
+  .li-embed iframe{width:504px;max-width:100%;border:0;border-radius:12px;background:#000}
+
+  /* AI Foundations series list (in-order) */
+  #ai-foundations{max-width:1100px;margin:6px auto 12px;padding:0 18px}
+  #ai-foundations .card{padding:14px}
+  #ai-foundations a{display:inline-block;transition:color .15s ease,text-shadow .15s ease,box-shadow .15s ease,transform .15s ease}
+  #ai-foundations a:hover,#ai-foundations a:focus-visible{
+    color:var(--gold)!important;text-shadow:0 0 6px rgba(255,215,0,.8),0 0 14px rgba(255,215,0,.45);
+    box-shadow:0 2px 8px rgba(255,215,0,.25);transform:translateY(-1px);outline:0;
+  }
+
+  /* Footer socials (gold ring + green icon on hover) */
+  footer{border-top:1px solid var(--line);margin-top:28px;padding:24px 20px}
+  footer .socials{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:10px}
   footer .socials a{
-    width:38px;height:38px;display:grid;place-items:center;
-    border:1px solid rgba(255,255,255,.18);border-radius:999px;
-    color:#e6eef5;font-weight:800;letter-spacing:-.02em;font-size:.9rem;
-    transition:transform .15s ease,border-color .15s ease,color .15s ease
+    width:38px;height:38px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.18);
+    border-radius:999px;color:#e6eef5;transition:color .15s ease,border-color .15s ease,box-shadow .15s ease,transform .15s ease,text-shadow .15s ease;
   }
-  footer .socials a:hover{ border-color:var(--accent); color:var(--accent); transform:translateY(-2px) }
-  footer .tagline{ text-align:center; color:#a8b3c7; margin-top:6px; }/* Affiliate tiles (e.g., Descript) — make the whole card glow/click */
-.card.clickable{
-  cursor:pointer;
-  transition: box-shadow .18s ease, border-color .18s ease, transform .18s ease, color .15s ease;
-}
-.card.clickable:hover{
-  border-color: var(--accent, #85BB65);
-  box-shadow: 0 0 14px rgba(133,187,101,.35), 0 0 28px rgba(133,187,101,.2);
-  transform: translateY(-2px);
-}
-/* Title/link glow on hover */
-.card.clickable:hover h3,
-.card.clickable:hover h3 a{
-  color: var(--accent, #85BB65);
-  text-shadow: 0 0 6px rgba(133,187,101,.8), 0 0 14px rgba(133,187,101,.45);
-}
-/* Keep the inline link looking clean */
-.card.clickable a{
-  text-decoration:none;
-}
-.card.clickable a:hover{
-  text-decoration:underline;
-}
-  /* Footer socials: gold ring + green icon on hover */
-footer .socials a{
-  transition: color .15s ease, border-color .15s ease, box-shadow .15s ease, transform .15s ease, text-shadow .15s ease;
-}
-
-footer .socials a:hover,
-footer .socials a:focus-visible{
-  /* gold ring/glow */
-  border-color:#FFD700 !important;
-  box-shadow:0 0 10px rgba(255,215,0,.65), 0 0 18px rgba(255,215,0,.35);
-  /* green icon (the letter) */
-  color:var(--accent,#85BB65) !important;
-  text-shadow:0 0 6px rgba(133,187,101,.85), 0 0 14px rgba(133,187,101,.45);
-  transform:translateY(-2px);
-  outline:0;
-}
-/* Descript card: make only the word "Gold" glow gold on hover */
-.card.clickable:hover h3 {
-  color: var(--accent, #85BB65); /* keep the title glow green */
-  text-shadow: 0 0 6px rgba(133,187,101,.8), 0 0 14px rgba(133,187,101,.45);
-}
-.card.clickable:hover h3 .gold-word {
-  color: #FFD700 !important; /* gold */
-  text-shadow: 0 0 6px rgba(255,215,0,.8), 0 0 14px rgba(255,215,0,.45) !important;
-}
-/* Descript: gold behaviors */
-
-/* A) Make only the word "Gold" pop gold on hover (title stays green) */
-#descript.card.clickable:hover h3{
-  color: var(--accent, #85BB65);
-  text-shadow: 0 0 6px rgba(133,187,101,.8), 0 0 14px rgba(133,187,101,.45);
-}
-#descript.card.clickable:hover h3 .gold-word{
-  color: #FFD700 !important;
-  text-shadow: 0 0 6px rgba(255,215,0,.8), 0 0 14px rgba(255,215,0,.45) !important;
-}
-
-/* B) Table inside the Descript card: gold border & glow when the card is hovered */
-#descript table{
-  border:1px solid rgba(255,255,255,.18);
-  border-collapse: collapse;
-  width:100%;
-  transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
-}
-#descript table th, #descript table td{
-  border:1px solid rgba(255,255,255,.08);
-  padding:.55rem .7rem;
-}
-#descript.card.clickable:hover table{
-  border-color:#FFD700;
-  box-shadow: 0 0 10px rgba(255,215,0,.60), 0 0 18px rgba(255,215,0,.30);
-  transform: translateY(-1px);
-}
-
-/* C) "Open via our affiliate" link: turn gold + glow on hover */
-#descript a[href*="get.descript.com"]{
-  font-weight:700;
-  text-decoration:none;
-  transition: color .15s ease, text-shadow .15s ease, box-shadow .15s ease, border-color .15s ease;
-  border-bottom:1px dashed transparent;
-}
-#descript a[href*="get.descript.com"]:hover,
-#descript a[href*="get.descript.com"]:focus-visible{
-  color:#FFD700 !important;
-  text-shadow:0 0 6px rgba(255,215,0,.8), 0 0 14px rgba(255,215,0,.45);
-  border-color:#FFD700;
-  box-shadow: 0 2px 8px rgba(255,215,0,.25);
-  outline:0;
-}
-/* Descript: gold behaviors */
-
-/* A) Make only the word "Gold" pop gold on hover (title stays green) */
-#descript.card.clickable:hover h3{
-  color: var(--accent, #85BB65);
-  text-shadow: 0 0 6px rgba(133,187,101,.8), 0 0 14px rgba(133,187,101,.45);
-}
-#descript.card.clickable:hover h3 .gold-word{
-  color: #FFD700 !important;
-  text-shadow: 0 0 6px rgba(255,215,0,.8), 0 0 14px rgba(255,215,0,.45) !important;
-}
-
-/* B) Table inside the Descript card: gold border & glow when the card is hovered */
-#descript table{
-  border:1px solid rgba(255,255,255,.18);
-  border-collapse: collapse;
-  width:100%;
-  transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
-}
-#descript table th, #descript table td{
-  border:1px solid rgba(255,255,255,.08);
-  padding:.55rem .7rem;
-}
-#descript.card.clickable:hover table{
-  border-color:#FFD700;
-  box-shadow: 0 0 10px rgba(255,215,0,.60), 0 0 18px rgba(255,215,0,.30);
-  transform: translateY(-1px);
-}
-
-/* C) "Open via our affiliate" link: turn gold + glow on hover */
-#descript a[href*="get.descript.com"]{
-  font-weight:700;
-  text-decoration:none;
-  transition: color .15s ease, text-shadow .15s ease, box-shadow .15s ease, border-color .15s ease;
-  border-bottom:1px dashed transparent;
-}
-#descript a[href*="get.descript.com"]:hover,
-#descript a[href*="get.descript.com"]:focus-visible{
-  color:#FFD700 !important;
-  text-shadow:0 0 6px rgba(255,215,0,.8), 0 0 14px rgba(255,215,0,.45);
-  border-color:#FFD700;
-  box-shadow: 0 2px 8px rgba(255,215,0,.25);
-  outline:0;
-}
-/* Descript title: line glows green; the word "Gold" glows gold */
-#descript:hover h3{
-  color: var(--accent, #85BB65);
-  text-shadow: 0 0 6px rgba(133,187,101,.8), 0 0 14px rgba(133,187,101,.45);
-}
-#descript:hover h3 .gold-word{
-  color: #FFD700 !important;
-  text-shadow: 0 0 6px rgba(255,215,0,.8), 0 0 14px rgba(255,215,0,.45) !important;
-}
-
-/* Affiliate link: gold on hover */
-#descript a[href*="get.descript.com"]{
-  font-weight:700;
-  text-decoration:none;
-  border-bottom:1px dashed transparent;
-  transition: color .15s ease, text-shadow .15s ease, border-color .15s ease, box-shadow .15s ease;
-}
-#descript a[href*="get.descript.com"]:hover,
-#descript a[href*="get.descript.com"]:focus-visible{
-  color:#FFD700 !important;
-  text-shadow:0 0 6px rgba(255,215,0,.8), 0 0 14px rgba(255,215,0,.45);
-  border-color:#FFD700;
-  box-shadow:0 2px 8px rgba(255,215,0,.25);
-  outline:0;
-}
-/* AI Foundations (in order) — gold hover, green at rest */
-#ai-foundations a{
-  display:inline-block; /* lets the glow show cleanly */
-  transition: color .15s ease, text-shadow .15s ease, box-shadow .15s ease, transform .15s ease;
-}
-
-/* Turn each Part link gold only on hover */
-#ai-foundations a:hover,
-#ai-foundations a:focus-visible{
-  color:#FFD700 !important; /* yellow gold */
-  text-shadow:0 0 6px rgba(255,215,0,.8), 0 0 14px rgba(255,215,0,.45);
-  box-shadow:0 2px 8px rgba(255,215,0,.25);
-  transform:translateY(-1px);
-  outline:0;
-}
-
-/* (Optional) make the whole card halo very slightly when any link hovers */
-#ai-foundations .card:hover{
-  box-shadow:0 0 10px rgba(255,215,0,.18);
-}
-/* === 1) Filters ("All Articles" + tag chips) — gold hover === */
-#filters .filter-btn{
-  transition: color .15s ease, border-color .15s ease, box-shadow .15s ease, transform .15s ease, text-shadow .15s ease;
-}
-#filters .filter-btn:hover,
-#filters .filter-btn:focus-visible{
-  color:#FFD700 !important;                 /* gold text */
-  border-color:#FFD700 !important;          /* gold ring for outlined pills */
-  text-shadow:0 0 6px rgba(255,215,0,.8), 0 0 14px rgba(255,215,0,.45);
-  box-shadow:0 0 10px rgba(255,215,0,.60), 0 0 18px rgba(255,215,0,.30);
-  transform:translateY(-1px);
-  outline:0;
-}
-
-/* === 2) Top-right nav links — gold hover + gold underline, revert to green on exit === */
-/* Base underline stays green so when hover ends it "closes" green */
-header nav a{
-  position:relative;
-  transition: color .15s ease, text-shadow .15s ease;
-}
-header nav a::after{
-  content:"";
-  position:absolute; left:0; right:0; bottom:-4px;
-  height:2px;
-  background: var(--accent, #85BB65);        /* GREEN at rest */
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .22s ease, background .18s ease, box-shadow .18s ease;
-}
-
-/* Hover: turn link + underline GOLD (animation you liked) */
-header nav a:hover,
-header nav a:focus-visible{
-  color:#FFD700 !important;
-  text-shadow:0 0 6px rgba(255,215,0,.85), 0 0 14px rgba(255,215,0,.45);
-  outline:0;
-}
-header nav a:hover::after,
-header nav a:focus-visible::after{
-  background:#FFD700;                        /* GOLD while open */
-  box-shadow:0 0 8px rgba(255,215,0,.60), 0 0 16px rgba(255,215,0,.35);
-  transform: scaleX(1);
-}
-.card .meta{
-  margin-top:8px;
-  color:#bfc7d5;
-  font-size:.95rem;
-}
-
+  footer .socials a svg{width:18px;height:18px}
+  footer .socials a:hover,footer .socials a:focus-visible{
+    border-color:var(--gold)!important;box-shadow:0 0 10px rgba(255,215,0,.65),0 0 18px rgba(255,215,0,.35);
+    color:var(--accent)!important;text-shadow:0 0 6px rgba(133,187,101,.85),0 0 14px rgba(133,187,101,.45);
+    transform:translateY(-2px);outline:0;
+  }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="brand">
-    <img class="logo" src="/assets/logo_hero_280_glow.png" alt="Industry5.pro logo" width="28" height="28" />
-    <h1>Industry5.pro</h1>
+  <div class="wrap">
+    <a class="brand" href="/"><img src="logo_hero_280_glow.png" alt="Industry5.pro logo"></a>
+    <nav aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/blog.html">All Articles</a>
+      <a href="#af-list">AI Foundations</a>
+      <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book 30 Minutes</a>
+    </nav>
   </div>
-  <nav class="main-nav">
-    <a href="/index.html">Home</a>
-    <a href="#articles">All Articles</a>
-    <a href="#ai-foundations">AI Foundations</a>
-    <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book 30 min</a>
-  </nav>
 </header>
 
+<section class="hero">
+  <h1>AI Foundations &amp; Blog</h1>
+  <p>Curated articles and series to move from pilots to measurable ROI.</p>
+</section>
 
-<main>
-  <div class="wrap">
-
-    <!-- ===============================
-         All Articles (at top) + Filters
-    ================================== -->
-    <section id="articles" class="section">
-      <h2>All Articles</h2>
-      <div id="filters">
-        <button class="filter-btn active" data-filter="All">All</button>
-        <button class="filter-btn" data-filter="AI Foundations">AI Foundations</button>
-        <button class="filter-btn" data-filter="Network">Network</button>
-        <button class="filter-btn" data-filter="Security">Security</button>
-        <button class="filter-btn" data-filter="Backup">Backup</button>
-        <button class="filter-btn" data-filter="AIoT">AIoT</button>
-        <button class="filter-btn" data-filter="AI">AI</button>
-        <button class="filter-btn" data-filter="Analytics">Analytics</button>
-        <button class="filter-btn" data-filter="Drone">Drone</button>
-        <button class="filter-btn" data-filter="FWA">FWA</button>
-        <button class="filter-btn" data-filter="Satellite">Satellite</button>
-        <button class="filter-btn" data-filter="Cloud">Cloud</button>
-        <button class="filter-btn" data-filter="Edge/MEC">Edge/MEC</button>
-        <button class="filter-btn" data-filter="NaaS">NaaS</button>
-      </div>
-
-      <div class="grid cols-2">
-        <!-- Amazon Q3 article -->
-        <article class="card" data-tags="Cloud,AI,Analytics">
-          <h3>Amazon’s Blockbuster Q3 Earnings Signal AI-Fueled Cloud</h3>
-          <p>Where the growth came from, what it signals for Cloud 2.0, and the call to action for operators.</p>
-          <div class="tags"><span class="tag">AI</span><span class="tag">Cloud</span><span class="tag">Analytics</span></div>
-          <div class="li-embed" data-type="linkedin">
-            <div class="toolbar">
-              <button class="li-view active" data-mode="teaser">Less text</button>
-              <button class="li-view" data-mode="full">Full post</button>
-              <a href="https://www.linkedin.com/pulse/amazons-blockbuster-q3-earnings-signal-ai-fueled-cloud-louis-tortora-cbpme" target="_blank" rel="noopener" style="margin-left:auto;text-decoration:none"><button>Open on LinkedIn</button></a>
-            </div>
-            <!-- Teaser -->
-            <iframe data-mode="teaser" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7390051055952240641?collapsed=1" height="561" title="LinkedIn teaser"></iframe>
-            <!-- Full -->
-            <iframe data-mode="full" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7390051055952240641" height="1065" style="display:none" title="LinkedIn full"></iframe>
-          </div>
-        </article>
-
-        <!-- AWS outage article -->
-        <article class="card" data-tags="Cloud,Network,NaaS">
-          <h3>Cloud Chaos to Real ROI: What the AWS Outage Taught Us</h3>
-          <p>Design for continuity. Multi-cloud, failover patterns, and the business case when a major provider blinks.</p>
-          <div class="tags"><span class="tag">Cloud</span><span class="tag">Network</span><span class="tag">NaaS</span></div>
-          <div class="li-embed" data-type="linkedin">
-            <div class="toolbar">
-              <button class="li-view active" data-mode="teaser">Less text</button>
-              <button class="li-view" data-mode="full">Full post</button>
-              <a href="https://www.linkedin.com/pulse/cloud-chaos-real-roi-what-aws-outage-taught-us-louis-tortora-lbome" target="_blank" rel="noopener" style="margin-left:auto;text-decoration:none"><button>Open on LinkedIn</button></a>
-            </div>
-            <!-- Teaser -->
-            <iframe data-mode="teaser" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7386400673040379904?collapsed=1" height="595" title="LinkedIn teaser"></iframe>
-            <!-- Full -->
-            <iframe data-mode="full" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7386400673040379904" height="994" style="display:none" title="LinkedIn full"></iframe>
-          </div>
-        </article>
-
-        <!-- AI Foundations Part 1 -->
-        <article id="af-part1" class="card" data-tags="AI Foundations,Network,NaaS,Edge/MEC">
-          <h3>AI Foundations — Part 1: Resilience by Design</h3>
-          <p>How Network as a Service powers real-world AI. From fiber to wavelength and placement at the edge.</p>
-          <div class="tags"><span class="tag">AI Foundations</span><span class="tag">Network</span><span class="tag">NaaS</span><span class="tag">Edge/MEC</span></div>
-          <div class="li-embed" data-type="linkedin">
-            <div class="toolbar">
-              <button class="li-view active" data-mode="teaser">Less text</button>
-              <button class="li-view" data-mode="full">Full post</button>
-              <a href="https://www.linkedin.com/pulse/resilience-design-how-network-as-a-service-powers-ai-louis-tortora-pm59e" target="_blank" rel="noopener" style="margin-left:auto;text-decoration:none"><button>Open on LinkedIn</button></a>
-            </div>
-            <!-- Teaser -->
-            <iframe data-mode="teaser" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7387337149869686784?collapsed=1" height="638" title="LinkedIn teaser"></iframe>
-            <!-- Full -->
-            <iframe data-mode="full" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7387337149869686784" height="953" style="display:none" title="LinkedIn full"></iframe>
-          </div>
-        </article>
-
-        <!-- AI Foundations Part 2 -->
-        <article id="af-part2" class="card" data-tags="AI Foundations,Cloud">
-          <h3>AI Foundations — Part 2: When One Cloud Fails</h3>
-          <p>Designing multi-cloud continuity for a connected world. Avoid outage black swans and keep CX steady.</p>
-          <div class="tags"><span class="tag">AI Foundations</span><span class="tag">Cloud</span></div>
-          <div class="li-embed" data-type="linkedin">
-            <div class="toolbar">
-              <button class="li-view active" data-mode="teaser">Less text</button>
-              <button class="li-view" data-mode="full">Full post</button>
-              <a href="https://www.linkedin.com/pulse/when-one-cloud-fails-designing-multi-cloud-continuity-louis-tortora-zaxte" target="_blank" rel="noopener" style="margin-left:auto;text-decoration:none"><button>Open on LinkedIn</button></a>
-            </div>
-            <!-- Teaser -->
-            <iframe data-mode="teaser" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7387332455696973824?collapsed=1" height="655" title="LinkedIn teaser"></iframe>
-            <!-- Full -->
-            <iframe data-mode="full" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7387332455696973824" height="991" style="display:none" title="LinkedIn full"></iframe>
-          </div>
-        </article>
-
-       <!-- AI Foundations Part 3 (live) -->
-<article id="af-part3" class="card" data-tags="AI Foundations,Security,Backup">
-  <h3>AI Foundations — Part 3: Security &amp; Backup</h3>
-  <p>Policy first, then the stack. BYOD, DLP, immutable backups, DR drills, and KPIs that prove it works.</p>
-  <div class="tags">
-    <span class="tag">AI Foundations</span><span class="tag">Security</span><span class="tag">Backup</span>
+<!-- Filters -->
+<section id="filters" aria-label="Filter articles">
+  <div class="filter-row">
+    <button class="filter-btn active" data-filter="all" type="button">All Articles</button>
+    <button class="filter-btn" data-filter="Network" type="button">Network</button>
+    <button class="filter-btn" data-filter="Security" type="button">Security</button>
+    <button class="filter-btn" data-filter="Backup" type="button">Backup</button>
+    <button class="filter-btn" data-filter="AIoT" type="button">AIoT</button>
+    <button class="filter-btn" data-filter="AI" type="button">AI</button>
+    <button class="filter-btn" data-filter="Analytics" type="button">Analytics</button>
+    <button class="filter-btn" data-filter="Drone" type="button">Drone</button>
+    <button class="filter-btn" data-filter="FWA" type="button">FWA</button>
+    <button class="filter-btn" data-filter="Satellite" type="button">Satellite</button>
+    <button class="filter-btn" data-filter="Cloud" type="button">Cloud</button>
   </div>
+</section>
 
-  <div class="li-embed" data-type="linkedin">
-    <div class="toolbar">
-      <button class="li-view active" data-mode="teaser" type="button">Less text</button>
-      <button class="li-view" data-mode="full" type="button">Full post</button>
-      <a class="li-open" href="https://www.linkedin.com/pulse/ai-foundations-part-3-security-backup-louis-tortora-bdxee"
-         target="_blank" rel="noopener">Read the article</a>
+<!-- Articles grid -->
+<section class="grid" id="all">
+  <!-- AF Part 3 -->
+  <article id="af-part3" class="card" data-tags="AI Foundations,Security,Backup,AI">
+    <h3>AI Foundations — Part 3: Security &amp; Backup</h3>
+    <p>Policy first, then the stack. BYOD, DLP, immutable backups, DR drills, and KPIs that prove it works.</p>
+    <div class="tags"><span class="tag">AI Foundations</span><span class="tag">Security</span><span class="tag">Backup</span></div>
+
+    <div class="li-embed" data-type="linkedin">
+      <div class="toolbar">
+        <button class="li-view active" data-mode="teaser" type="button">Less text</button>
+        <button class="li-view" data-mode="full" type="button">Full post</button>
+        <a class="li-open" href="https://www.linkedin.com/pulse/ai-foundations-part-3-security-backup-louis-tortora-bdxee" target="_blank" rel="noopener">Read the article</a>
+      </div>
+      <iframe data-mode="teaser" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7390411903644221440?collapsed=1" height="604" allowfullscreen title="LinkedIn teaser — Part 3"></iframe>
+      <iframe data-mode="full"   src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7390411903644221440" height="1129" allowfullscreen title="LinkedIn full — Part 3" style="display:none"></iframe>
     </div>
+  </article>
 
-    <!-- Teaser (less text) -->
-    <iframe data-mode="teaser"
-            src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7390411903644221440?collapsed=1"
-            height="604" width="504" frameborder="0" allowfullscreen
-            title="LinkedIn teaser — AI Foundations Part 3"></iframe>
+  <!-- AF Part 2 -->
+  <article id="af-part2" class="card" data-tags="AI Foundations,Cloud,Continuity,AI">
+    <h3>AI Foundations — Part 2: When One Cloud Fails (Multi-Cloud)</h3>
+    <p>Design for continuity: failovers, traffic steering, and clean SLAs. Outages become footnotes.</p>
+    <div class="tags"><span class="tag">AI Foundations</span><span class="tag">Cloud</span><span class="tag">Continuity</span></div>
 
-    <!-- Full post -->
-    <iframe data-mode="full"
-            src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7390411903644221440"
-            height="1129" width="504" frameborder="0" allowfullscreen
-            title="LinkedIn full — AI Foundations Part 3" style="display:none"></iframe>
-  </div>
-
-  <p class="meta" style="margin-top:8px;color:#bfc7d5">Published: Nov 1, 2025.</p>
-</article>
-
-
-        <!-- AI Foundations Part 4 placeholder -->
-        <article id="af-part4" class="card" data-tags="AI Foundations,AIoT,Edge/MEC">
-          <h3>AI Foundations — Part 4: From M2M to AIoT</h3>
-          <p>Industry 5.0 at the edge. Real-time signals with automated action and resilience.</p>
-          <div class="tags"><span class="tag">AI Foundations</span><span class="tag">AIoT</span><span class="tag">Edge/MEC</span></div>
-          <p><em>Coming soon</em></p>
-        </article>
-
-        <!-- AI Foundations Part 5 placeholder -->
-        <article id="af-part5" class="card" data-tags="AI Foundations,Analytics,AI">
-          <h3>AI Foundations — Part 5: Analytics & Human Time</h3>
-          <p>Supermetrics and friends. Less busywork, more creativity, and metrics that move the P and L.</p>
-          <div class="tags"><span class="tag">AI Foundations</span><span class="tag">Analytics</span><span class="tag">AI</span></div>
-          <p><em>Coming soon</em></p>
-        </article>
-
-        <!-- AI Foundations Part 6 placeholder -->
-        <article id="af-part6" class="card" data-tags="AI Foundations,Drone,AIoT,Edge/MEC">
-          <h3>AI Foundations — Part 6: Drones, Farms & Final Mile</h3>
-          <p>Visual data and edge processing in agriculture and logistics. America’s next AI frontier.</p>
-          <div class="tags"><span class="tag">AI Foundations</span><span class="tag">Drone</span><span class="tag">AIoT</span><span class="tag">Edge/MEC</span></div>
-          <p><em>Coming soon</em></p>
-        </article>
-
-       <!-- Descript story (affiliate) -->
-<article id="descript" class="card clickable" data-tags="Analytics,AI,Descript"
-         onclick="window.open('https://get.descript.com/Industry5PRO','_blank','noopener,noreferrer')">
-  <h3>How Descript Turns AI Content into <span class="gold-word">Gold</span></h3>
-  <p>We built the stack. Now share it like a pro. Text-based editing, voice work, and fast story cuts.</p>
-  <div class="tags"><span class="tag">Analytics</span><span class="tag">AI</span><span class="tag">Descript</span></div>
-  <p style="margin:0">
-    <a href="https://get.descript.com/Industry5PRO" target="_blank" rel="noopener noreferrer sponsored">
-      Get started for FREE
-    </a>
-  </p>
-</article>
-
-
-        <!-- Satellite / maritime story (placeholder) -->
-        <article class="card" data-tags="Network,Satellite,Edge/MEC">
-          <h3>Satellite Coverage for Maritime & Global Edge</h3>
-          <p>Multi-orbit with SD-WAN for resilient coverage at sea, in the air, and across global business lanes.</p>
-          <div class="tags"><span class="tag">Network</span><span class="tag">Satellite</span><span class="tag">Edge/MEC</span></div>
-          <p><a href="#" target="_blank" rel="noopener">Coming Soon</a></p>
-        </article>
+    <div class="li-embed" data-type="linkedin">
+      <div class="toolbar">
+        <button class="li-view active" data-mode="teaser" type="button">Less text</button>
+        <button class="li-view" data-mode="full" type="button">Full post</button>
+        <a class="li-open" href="https://www.linkedin.com/pulse/when-one-cloud-fails-designing-multi-cloud-continuity-louis-tortora-zaxte" target="_blank" rel="noopener">Read the article</a>
       </div>
-    </section>
+      <iframe data-mode="teaser" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7387332455696973824?collapsed=1" height="655" allowfullscreen title="LinkedIn teaser — Part 2"></iframe>
+      <iframe data-mode="full"   src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7387332455696973824" height="991" allowfullscreen title="LinkedIn full — Part 2" style="display:none"></iframe>
+    </div>
+  </article>
 
-    <!-- ===============================
-         Series view (lightweight list)
-    ================================== -->
-    <section id="ai-foundations" class="section">
-      <h2>AI Foundations — Series (in order)</h2>
-      <p>Prefer the sequential read? Jump to each part below. These links scroll to the cards above.</p>
-      <div class="card">
-        <ol style="margin:0;padding-left:20px">
-          <li><a href="#af-part1">Part 1 — Resilience by Design (NaaS)</a></li>
-          <li><a href="#af-part2">Part 2 — When One Cloud Fails (Multi-Cloud)</a></li>
-          <li><a href="#af-part3">Part 3 — Security & Backup (Policy First)</a></li>
-          <li><a href="#af-part4">Part 4 — From M2M to AIoT (Edge)</a></li>
-          <li><a href="#af-part5">Part 5 — Analytics & Human Time</a></li>
-          <li><a href="#af-part6">Part 6 — Drones, Farms & Final Mile</a></li>
-        </ol>
+  <!-- AF Part 1 -->
+  <article id="af-part1" class="card" data-tags="AI Foundations,Network,NaaS,Edge,AI">
+    <h3>AI Foundations — Part 1: Resilience by Design (NaaS)</h3>
+    <p>Internet on Demand: multi-path, cellular/FWA, satellite, and Wavelength edge for AI uptime.</p>
+    <div class="tags"><span class="tag">AI Foundations</span><span class="tag">Network</span><span class="tag">NaaS</span></div>
+
+    <div class="li-embed" data-type="linkedin">
+      <div class="toolbar">
+        <button class="li-view active" data-mode="teaser" type="button">Less text</button>
+        <button class="li-view" data-mode="full" type="button">Full post</button>
+        <a class="li-open" href="https://www.linkedin.com/pulse/resilience-design-how-network-as-a-service-powers-ai-louis-tortora-pm59e" target="_blank" rel="noopener">Read the article</a>
       </div>
-    </section>
+      <iframe data-mode="teaser" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7387337149869686784?collapsed=1" height="638" allowfullscreen title="LinkedIn teaser — Part 1"></iframe>
+      <iframe data-mode="full"   src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7387337149869686784" height="953" allowfullscreen title="LinkedIn full — Part 1" style="display:none"></iframe>
+    </div>
+  </article>
 
+  <!-- Standalone: Amazon Q3 -->
+  <article id="post-amzn-q3" class="card" data-tags="AI,Cloud,Analytics">
+    <h3>Amazon’s blockbuster Q3: AI-fueled cloud growth</h3>
+    <p>What the numbers say about AI demand, economic impact, and how to build resilient stacks.</p>
+    <div class="tags"><span class="tag">AI</span><span class="tag">Cloud</span><span class="tag">Analytics</span></div>
+
+    <div class="li-embed" data-type="linkedin">
+      <div class="toolbar">
+        <button class="li-view active" data-mode="teaser" type="button">Less text</button>
+        <button class="li-view" data-mode="full" type="button">Full post</button>
+        <a class="li-open" href="https://www.linkedin.com/pulse/amazons-blockbuster-q3-earnings-signal-ai-fueled-cloud-louis-tortora-cbpme" target="_blank" rel="noopener">Read the article</a>
+      </div>
+      <iframe data-mode="teaser" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7390051055952240641?collapsed=1" height="561" allowfullscreen title="LinkedIn teaser — Amazon Q3"></iframe>
+      <iframe data-mode="full"   src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7390051055952240641" height="1065" allowfullscreen title="LinkedIn full — Amazon Q3" style="display:none"></iframe>
+    </div>
+  </article>
+
+  <!-- Standalone: AWS outage recap -->
+  <article id="post-aws-outage" class="card" data-tags="Cloud,Continuity,Resilience">
+    <h3>Cloud Chaos → Real ROI: What the AWS outage taught us</h3>
+    <p>From incident to insight: design for failure, test failover, and ship value during turbulence.</p>
+    <div class="tags"><span class="tag">Cloud</span><span class="tag">Continuity</span><span class="tag">Resilience</span></div>
+
+    <div class="li-embed" data-type="linkedin">
+      <div class="toolbar">
+        <button class="li-view active" data-mode="teaser" type="button">Less text</button>
+        <button class="li-view" data-mode="full" type="button">Full post</button>
+        <a class="li-open" href="https://www.linkedin.com/pulse/cloud-chaos-real-roi-what-aws-outage-taught-us-louis-tortora-lbome" target="_blank" rel="noopener">Read the article</a>
+      </div>
+      <iframe data-mode="teaser" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7386400673040379904?collapsed=1" height="595" allowfullscreen title="LinkedIn teaser — AWS outage"></iframe>
+      <iframe data-mode="full"   src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7386400673040379904" height="994" allowfullscreen title="LinkedIn full — AWS outage" style="display:none"></iframe>
+    </div>
+  </article>
+
+  <!-- Placeholders: AF Part 4–6 (ready for embeds later) -->
+  <article id="af-part4" class="card" data-tags="AI Foundations,AIoT,Edge,Security">
+    <h3>AI Foundations — Part 4: From M2M to AIoT (Edge)</h3>
+    <p>From alarms to autonomy: edge AI, vision, and actions that execute when it matters.</p>
+    <div class="tags"><span class="tag">AI Foundations</span><span class="tag">AIoT</span><span class="tag">Edge</span></div>
+    <p class="meta">Published: (coming soon).</p>
+  </article>
+
+  <article id="af-part5" class="card" data-tags="AI Foundations,Analytics,AI">
+    <h3>AI Foundations — Part 5: Analytics &amp; Human Time</h3>
+    <p>Give your team time back. Decisions faster, stories clearer, and signal over noise.</p>
+    <div class="tags"><span class="tag">AI Foundations</span><span class="tag">Analytics</span></div>
+    <p class="meta">Published: (coming soon).</p>
+  </article>
+
+  <article id="af-part6" class="card" data-tags="AI Foundations,Drone,Satellite,Edge">
+    <h3>AI Foundations — Part 6: Drones, Farms &amp; Final Mile</h3>
+    <p>Eyes in the sky, hands on the ground: safer ops, faster insights, and fewer truck rolls.</p>
+    <div class="tags"><span class="tag">AI Foundations</span><span class="tag">Drone</span><span class="tag">Satellite</span></div>
+    <p class="meta">Published: (coming soon).</p>
+  </article>
+</section>
+
+<!-- AI Foundations series (in order) -->
+<section id="ai-foundations" class="section">
+  <div class="wrap" id="af-list" style="max-width:1100px;padding:0 18px">
+    <h2>AI Foundations — Series (in order)</h2>
+    <p>Prefer the sequential read? Jump to each part below. These links scroll to the cards above.</p>
+    <div class="card">
+      <ol style="margin:0;padding-left:20px">
+        <li><a href="#af-part1">Part 1 — Resilience by Design (NaaS)</a></li>
+        <li><a href="#af-part2">Part 2 — When One Cloud Fails (Multi-Cloud)</a></li>
+        <li><a href="#af-part3">Part 3 — Security &amp; Backup (Policy First)</a></li>
+        <li><a href="#af-part4">Part 4 — From M2M to AIoT (Edge)</a></li>
+        <li><a href="#af-part5">Part 5 — Analytics &amp; Human Time</a></li>
+        <li><a href="#af-part6">Part 6 — Drones, Farms &amp; Final Mile</a></li>
+      </ol>
+    </div>
   </div>
-</main>
+</section>
 
 <footer>
-  <div class="socials">
-    <a href="https://www.linkedin.com/in/louis-tortora5/" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a>
-    <a href="https://x.com/" target="_blank" rel="noopener" aria-label="X / Twitter">X</a>
-    <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
-    <a href="https://www.youtube.com/@TheTattooedExecutives" target="_blank" rel="noopener" aria-label="YouTube">YT</a>
-    <a href="https://www.facebook.com/profile.php?id=61582481880019" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
-    <a href="mailto:lou@industry5.pro" aria-label="Email">@</a>
+  <div style="text-align:center;color:#cfd6e3">© <span id="y"></span> Industry5.pro — Outcome-Obsessed. Supplier-Agnostic. Paid by results.</div>
+  <div class="socials" aria-label="Follow Industry5.pro">
+    <a href="https://www.linkedin.com/in/louis-tortora7/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5c0 1.38-1.12 2.5-2.48 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.5h5V24H0V8.5zM8 8.5h4.8v2.1h.07c.67-1.2 2.3-2.47 4.73-2.47 5.06 0 6 3.33 6 7.66V24h-5v-6.8c0-1.62-.03-3.7-2.25-3.7-2.25 0-2.6 1.76-2.6 3.58V24H8V8.5z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 1.9.25 2.3.42.6.23 1.1.52 1.6.97.46.45.75 1 .97 1.6.17.4.36 1.1.36 2.3.07 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 1.9-.42 2.3a4 4 0 0 1-.97 1.6 4 4 0 0 1-1.6.97c-.4.17-1.1.36-2.3.42-1.3.07-1.7.07-4.9.07s-3.5 0-4.9-.07c-1.2-.06-1.9-.25-2.3-.42a4 4 0 0 1-1.6-.97 4 4 0 0 1-.97-1.6c-.17-.4-.36-1.1-.42-2.3C3.2 15.6 3.2 15.2 3.2 12s0-3.6.07-4.9c.06-1.2.25-1.9.42-2.3.23-.6.52-1.1.97-1.6.45-.46 1-.75 1.6-.97.4-.17 1.1-.36 2.3-.42C8.4 2.2 8.8 2.2 12 2.2Z"/></svg>
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61582481880019" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M22.675 0h-21.35C.592 0 0 .592 0 1.325v21.351C0 23.408.592 24 1.325 24h11.49v-9.294H9.691V11.01h3.124V8.414c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.313h3.587l-.467 3.696h-3.12V24h6.117C23.408 24 24 23.408 24 22.676V1.325C24 .592 23.408 0 22.675 0z"/></svg>
+    </a>
+    <a href="https://wa.me/14076945495" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M.057 24l1.687-6.163A11.867 11.867 0 0 1 0 11.989C0 5.371 5.373 0 11.99 0 18.606 0 24 5.371 24 11.989S18.606 24 11.99 24a11.9 11.9 0 0 1-5.642-1.437L.057 24Zm6.597-3.807c1.676.995 3.276 1.591 5.35 1.593 5.448 0 9.884-4.429 9.884-9.88 0-5.45-4.436-9.88-9.884-9.88-5.449 0-9.88 4.43-9.88 9.88 0 2.266.738 3.891 1.977 5.59L3.5 20.5l3.154-.307zm11.387-5.464c-.066-.11-.242-.176-.506-.307-.264-.132-1.56-.77-1.8-.857-.242-.088-.418-.132-.594.132-.176.264-.682.857-.836 1.033-.154.176-.308.198-.572.066-.264-.132-1.116-.41-2.125-1.308-.785-.7-1.314-1.56-1.469-1.823-.154-.264-.017-.407.115-.539.118-.117.264-.308.396-.462.132-.154.176-.264.264-.44.088-.176.044-.33-.022-.462-.066-.132-.594-1.43-.814-1.958-.214-.514-.432-.445-.594-.453l-.506-.009c-.176 0-.462.066-.704.33-.242.264-.924.902-.924 2.202s.946 2.552 1.077 2.73c.132.176 1.862 2.842 4.508 3.986.63.27 1.122.432 1.505.553.632.202 1.206.174 1.661.105.506-.077 1.56-.638 1.78-1.255.22-.616.22-1.144.154-1.255z"/></svg>
+    </a>
+    <a href="mailto:lou@industry5.pro" aria-label="Email">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 4h20a2 2 0 0 1 2 2v1l-12 7L0 7V6a2 2 0 0 1 2-2zm0 6.236V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-7.764l-9.386 5.52a2 2 0 0 1-2.228 0L2 10.236z"/></svg>
+    </a>
   </div>
-  <div class="tagline">Outcome-Obsessed. Supplier-Agnostic. Paid by results.</div>
 </footer>
 
 <script>
-  (function(){
-    // Tag filter logic
-    const buttons = document.querySelectorAll('#filters .filter-btn');
-    const cards = document.querySelectorAll('#articles .card');
-    function applyFilter(tag){
-      const t = String(tag || 'All').toLowerCase();
-      cards.forEach(card => {
-        const list = (card.getAttribute('data-tags')||'').split(',').map(s=>s.trim().toLowerCase());
-        const show = (t === 'all') || list.includes(t);
-        card.style.display = show ? '' : 'none';
-      });
-    }
-    buttons.forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        buttons.forEach(b=>b.classList.remove('active'));
-        btn.classList.add('active');
-        applyFilter(btn.dataset.filter);
-      });
-    });
-    applyFilter('All');
+  // Year in footer
+  document.getElementById('y').textContent = new Date().getFullYear();
 
-    // LinkedIn embed toggles
-    document.querySelectorAll('.li-embed').forEach(box=>{
-      const views = box.querySelectorAll('.li-view');
-      const frames = box.querySelectorAll('iframe[data-mode]');
-      views.forEach(v=>{
-        v.addEventListener('click', ()=>{
-          views.forEach(x=>x.classList.remove('active'));
-          v.classList.add('active');
-          const mode = v.dataset.mode;
-          frames.forEach(f=>{
-            f.style.display = (f.dataset.mode === mode) ? 'block' : 'none';
-          });
+  // Tag filter logic
+  (function(){
+    const chips = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('article.card');
+    chips.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        chips.forEach(c=>c.classList.remove('active'));
+        btn.classList.add('active');
+        const tag = btn.dataset.filter;
+        cards.forEach(card=>{
+          if(tag==='all'){ card.style.display=''; return; }
+          const tags = (card.getAttribute('data-tags')||'').split(',').map(s=>s.trim());
+          card.style.display = tags.includes(tag) ? '' : 'none';
         });
+        // scroll back to top of grid for UX
+        document.getElementById('all').scrollIntoView({behavior:'smooth',block:'start'});
       });
     });
   })();
-</script>
-<script>
-// Auto "Published:" line for every article.
-// Priority: data-pub → id map → LinkedIn ugcPost map → Pulse slug map → today.
-(function(){
-  const fmt   = { year:'numeric', month:'short', day:'numeric' };
-  const today = new Date().toLocaleDateString('en-US', fmt);
 
-  // 1) Known dates by ARTICLE ID
-  const idMap = {
-    // AI Foundations
-    'af-part1': 'Oct 28, 2025', // Resilience by Design (NaaS)
-    'af-part2': 'Oct 30, 2025', // When One Cloud Fails (Multi-Cloud)
-    'af-part3': 'Nov 1, 2025',  // Security & Backup (Policy First)
-
-    // Standalone (use your actual ids if you have them)
-    'post-aws-outage': 'Oct 24, 2025', // Cloud Chaos (AWS outage)
-    'post-amzn-q3':    'Oct 31, 2025', // Amazon Q3 earnings
-  };
-
-  // 2) Known dates by LinkedIn ugcPost ID (from embedded iframes)
-  const ugcMap = {
-    '7390411903644221440': 'Nov 1, 2025', // AI Foundations Part 3
-    '7387332455696973824': 'Oct 30, 2025', // AI Foundations Part 2
-    '7387337149869686784': 'Oct 28, 2025', // AI Foundations Part 1
-    '7390051055952240641': 'Oct 31, 2025', // Amazon Q3 earnings
-    '7386400673040379904': 'Oct 24, 2025', // AWS outage analysis
-  };
-
-  // 3) Known dates by LinkedIn Pulse slug (direct article links)
-  const slugMap = {
-    'ai-foundations-part-3-security-backup': 'Nov 1, 2025',
-    'when-one-cloud-fails-designing-multi-cloud-continuity': 'Oct 30, 2025',
-    'resilience-design-how-network-as-a-service-powers-ai': 'Oct 28, 2025',
-    'amazons-blockbuster-q3-earnings-signal-ai-fueled-cloud': 'Oct 31, 2025',
-    'cloud-chaos-real-roi-what-aws-outage-taught-us': 'Oct 24, 2025',
-  };
-
-  function getUgcIdFrom(card){
-    const fr = card.querySelector('iframe[src*="linkedin.com/embed/feed/update/urn:li:ugcPost:"]');
-    if(!fr) return null;
-    const m = fr.src.match(/ugcPost:(\d+)/);
-    return m ? m[1] : null;
-  }
-
-  function getPulseSlugFrom(card){
-    const a = card.querySelector('a[href*="linkedin.com/pulse/"]');
-    if(!a) return null;
-    const m = a.href.match(/linkedin\.com\/pulse\/([^/?#]+)/);
-    return m ? m[1].replace(/\/$/, '') : null;
-  }
-
-  document.querySelectorAll('article.card').forEach(card => {
-    const explicit = card.getAttribute('data-pub');
-    const byId     = card.id && idMap[card.id];
-    const ugcId    = getUgcIdFrom(card);
-    const byUgc    = ugcId && ugcMap[ugcId];
-    const slug     = getPulseSlugFrom(card);
-    const bySlug   = slug && slugMap[slug];
-
-    const pub = explicit || byId || byUgc || bySlug || today;
-
-    let meta = card.querySelector('.meta');
-    if (!meta) {
-      meta = document.createElement('p');
-      meta.className = 'meta';
-      card.appendChild(meta);
-    }
-    meta.textContent = `Published: ${pub}.`;
-    meta.style.marginTop = '8px';
-    meta.style.color = '#bfc7d5';
-    meta.style.fontSize = '.95rem';
+  // LinkedIn embed toggles for all cards
+  document.addEventListener('click', function(e){
+    const btn = e.target.closest('.li-view'); 
+    if(!btn) return;
+    const panel = btn.closest('.li-embed');
+    const mode = btn.getAttribute('data-mode');
+    panel.querySelectorAll('.li-view').forEach(b=>b.classList.toggle('active', b===btn));
+    panel.querySelectorAll('iframe[data-mode]').forEach(fr=>{
+      fr.style.display = (fr.getAttribute('data-mode') === mode) ? '' : 'none';
+    });
   });
-})();
-</script>
 
-<script>
-// Ensure every article shows a consistent Published date if data-pub is present
-document.querySelectorAll('article.card').forEach(card => {
-  const pub = card.getAttribute('data-pub'); // e.g., "Nov 1, 2025"
-  if (!pub) return;
+  // Auto "Published:" dates for ALL cards.
+  // Priority: data-pub on <article> → known ID map → LinkedIn ugcPost map → Pulse slug map → today.
+  (function(){
+    const fmt   = { year:'numeric', month:'short', day:'numeric' };
+    const today = new Date().toLocaleDateString('en-US', fmt);
 
-  let meta = card.querySelector('.meta');
-  if (!meta) {
-    meta = document.createElement('p');
-    meta.className = 'meta';
-    meta.style.marginTop = '8px';
-    meta.style.color = '#bfc7d5';
-    card.appendChild(meta);
-  }
-  meta.textContent = `Published: ${pub}.`;
-});
-</script>
-<script>
-// Auto-publish line for every article card.
-// Uses data-pub if present; otherwise inserts today's date.
-(function(){
-  const fmt = {year:'numeric', month:'short', day:'numeric'};
-  const today = new Date().toLocaleDateString('en-US', fmt);
+    const idMap = {
+      'af-part1':'Oct 28, 2025',
+      'af-part2':'Oct 30, 2025',
+      'af-part3':'Nov 1, 2025',
+      'post-aws-outage':'Oct 24, 2025',
+      'post-amzn-q3':'Oct 31, 2025'
+    };
 
-  document.querySelectorAll('article.card').forEach(card => {
-    const pub = card.getAttribute('data-pub') || today;
+    const ugcMap = {
+      '7390411903644221440':'Nov 1, 2025',  // Part 3
+      '7387332455696973824':'Oct 30, 2025', // Part 2
+      '7387337149869686784':'Oct 28, 2025', // Part 1
+      '7390051055952240641':'Oct 31, 2025', // Amazon Q3
+      '7386400673040379904':'Oct 24, 2025'  // AWS outage
+    };
 
-    // find or create a consistent meta line
-    let meta = card.querySelector('.meta');
-    if (!meta) {
-      meta = document.createElement('p');
-      meta.className = 'meta';
-      card.appendChild(meta);
+    const slugMap = {
+      'ai-foundations-part-3-security-backup-louis-tortora-bdxee':'Nov 1, 2025',
+      'when-one-cloud-fails-designing-multi-cloud-continuity-louis-tortora-zaxte':'Oct 30, 2025',
+      'resilience-design-how-network-as-a-service-powers-ai-louis-tortora-pm59e':'Oct 28, 2025',
+      'amazons-blockbuster-q3-earnings-signal-ai-fueled-cloud-louis-tortora-cbpme':'Oct 31, 2025',
+      'cloud-chaos-real-roi-what-aws-outage-taught-us-louis-tortora-lbome':'Oct 24, 2025'
+    };
+
+    function getUgcIdFrom(card){
+      const fr = card.querySelector('iframe[src*="linkedin.com/embed/feed/update/urn:li:ugcPost:"]');
+      if(!fr) return null;
+      const m = fr.src.match(/ugcPost:(\d+)/);
+      return m ? m[1] : null;
     }
-    meta.textContent = `Published: ${pub}.`;
-  });
-})();
-</script>
-<script>
-// Auto "Published:" line for every article.
-// Priority: data-pub on the <article>  → pubMap by id → today's date.
-(function(){
-  const fmt   = { year:'numeric', month:'short', day:'numeric' };
-  const today = new Date().toLocaleDateString('en-US', fmt);
-
-  // 1) Put real publish dates here once. Update as you add posts.
-  const pubMap = {
-    // AI Foundations series
-    'af-part1': 'Oct 28, 2025', // Resilience by Design (NaaS)
-    'af-part2': 'Oct 30, 2025', // When One Cloud Fails (Multi-Cloud)
-    'af-part3': 'Nov 1, 2025',  // Security & Backup (Policy First)
-
-    // Standalone articles (adjust if your ids differ)
-    'post-aws-outage': 'Oct 24, 2025', // Cloud Chaos → AWS outage analysis
-    'post-amzn-q3':    'Oct 31, 2025', // Amazon Q3 earnings breakdown
-  };
-
-  document.querySelectorAll('article.card').forEach(card => {
-    const id  = card.id || '';
-    const explicit = card.getAttribute('data-pub');          // optional per-article
-    const mapped   = id && pubMap[id] ? pubMap[id] : null;   // from the map above
-    const pub      = explicit || mapped || today;
-
-    let meta = card.querySelector('.meta');
-    if (!meta) {
-      meta = document.createElement('p');
-      meta.className = 'meta';
-      card.appendChild(meta);
+    function getPulseSlugFrom(card){
+      const a = card.querySelector('a[href*="linkedin.com/pulse/"]');
+      if(!a) return null;
+      const m = a.href.match(/linkedin\.com\/pulse\/([^/?#]+)/);
+      return m ? m[1].replace(/\/$/, '') : null;
     }
-    meta.textContent = `Published: ${pub}.`;
-    meta.style.marginTop = '8px';
-    meta.style.color = '#bfc7d5';
-    meta.style.fontSize = '.95rem';
-  });
-})();
-</script>
 
+    document.querySelectorAll('article.card').forEach(card=>{
+      const fromAttr = card.getAttribute('data-pub');
+      const fromId   = card.id && idMap[card.id];
+      const ugcId    = getUgcIdFrom(card);
+      const fromUgc  = ugcId && ugcMap[ugcId];
+      const slug     = getPulseSlugFrom(card);
+      const fromSlug = slug && slugMap[slug];
+      const pub = fromAttr || fromId || fromUgc || fromSlug || today;
+
+      let meta = card.querySelector('.meta');
+      if(!meta){
+        meta = document.createElement('p');
+        meta.className = 'meta';
+        card.appendChild(meta);
+      }
+      meta.textContent = `Published: ${pub}.`;
+    });
+  })();
+</script>
 </body>
 </html>
