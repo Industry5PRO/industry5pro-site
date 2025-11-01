@@ -262,6 +262,31 @@ footer .socials a:focus-visible{
   box-shadow: 0 2px 8px rgba(255,215,0,.25);
   outline:0;
 }
+/* Descript title: line glows green; the word "Gold" glows gold */
+#descript:hover h3{
+  color: var(--accent, #85BB65);
+  text-shadow: 0 0 6px rgba(133,187,101,.8), 0 0 14px rgba(133,187,101,.45);
+}
+#descript:hover h3 .gold-word{
+  color: #FFD700 !important;
+  text-shadow: 0 0 6px rgba(255,215,0,.8), 0 0 14px rgba(255,215,0,.45) !important;
+}
+
+/* Affiliate link: gold on hover */
+#descript a[href*="get.descript.com"]{
+  font-weight:700;
+  text-decoration:none;
+  border-bottom:1px dashed transparent;
+  transition: color .15s ease, text-shadow .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+#descript a[href*="get.descript.com"]:hover,
+#descript a[href*="get.descript.com"]:focus-visible{
+  color:#FFD700 !important;
+  text-shadow:0 0 6px rgba(255,215,0,.8), 0 0 14px rgba(255,215,0,.45);
+  border-color:#FFD700;
+  box-shadow:0 2px 8px rgba(255,215,0,.25);
+  outline:0;
+}
 
 </style>
 </head>
@@ -421,7 +446,7 @@ footer .socials a:focus-visible{
         </article>
 
        <!-- Descript story (affiliate) -->
-<article class="card clickable" data-tags="Analytics,AI,Descript"
+<article id="descript" class="card clickable" data-tags="Analytics,AI,Descript"
          onclick="window.open('https://get.descript.com/Industry5PRO','_blank','noopener,noreferrer')">
   <h3>How Descript Turns AI Content into <span class="gold-word">Gold</span></h3>
   <p>We built the stack. Now share it like a pro. Text-based editing, voice work, and fast story cuts.</p>
