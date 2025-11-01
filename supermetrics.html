@@ -81,14 +81,12 @@
       </section>
       <section id="best-fit" class="card">
   <h2>Best fit first: <a rel="sponsored noopener noreferrer" href="https://partners.supermetrics.com/Industry5PRO-Agencies">Agencies</a></h2>
-  <p class="note">
-    Weekly client reporting becomes scheduled refreshes.
-    Also strong:
-    <a rel="sponsored noopener noreferrer" href="https://partners.supermetrics.com/Industry5PRO-eCommerce">eCommerce</a>,
-    <a rel="sponsored noopener noreferrer" href="https://partners.supermetrics.com/Industry5-SaaS">SaaS GTM</a>,
-    and
-    <a rel="sponsored noopener noreferrer" href="https://partners.supermetrics.com/Industry5PRO-Products">multi-location brands & publishers</a>.
-  </p>
+  <p class="note">Best fit first:
+  <span class="fit-pill">Agencies</span> /
+  <span class="fit-pill">eCommerce</span> /
+  <span class="fit-pill">SaaS GTM</span> /
+  <span class="fit-pill">Multi-location brands & publishers</span>
+</p>
         <!-- Centered "Resources > Customer Success Stories" button in the Best fit first section -->
 <div style="text-align: center; margin-top: 1em;">
   <a href="https://supermetrics.com/?partner_key=2ea89c87eb31"
@@ -228,6 +226,19 @@ header .btn.ghost:focus-visible,
   border-color:#FFD700;
   box-shadow:0 0 14px rgba(255,215,0,.35), 0 0 28px rgba(255,215,0,.2);
   transform:translateY(-2px);
+}
+/* Gold glow for the “fit” pills */
+#best-fit .fit-pill{
+  display:inline-block;padding:.25rem .6rem;margin:0 .15rem;
+  border:1px solid rgba(255,255,255,.18);border-radius:999px;
+  background:var(--panel);color:#e6eef5;text-decoration:none;
+  transition:color .15s ease,border-color .15s ease,box-shadow .15s ease,transform .15s ease,text-shadow .15s ease;
+}
+#best-fit .fit-pill:hover{
+  color:#FFD700;border-color:#FFD700;
+  box-shadow:0 0 10px rgba(255,215,0,.6),0 0 18px rgba(255,215,0,.3);
+  text-shadow:0 0 6px rgba(255,215,0,.8),0 0 14px rgba(255,215,0,.45);
+  transform:translateY(-1px);
 }
 
 </style>
