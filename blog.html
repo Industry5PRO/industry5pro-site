@@ -307,6 +307,49 @@ footer .socials a:focus-visible{
 #ai-foundations .card:hover{
   box-shadow:0 0 10px rgba(255,215,0,.18);
 }
+/* === 1) Filters ("All Articles" + tag chips) — gold hover === */
+#filters .filter-btn{
+  transition: color .15s ease, border-color .15s ease, box-shadow .15s ease, transform .15s ease, text-shadow .15s ease;
+}
+#filters .filter-btn:hover,
+#filters .filter-btn:focus-visible{
+  color:#FFD700 !important;                 /* gold text */
+  border-color:#FFD700 !important;          /* gold ring for outlined pills */
+  text-shadow:0 0 6px rgba(255,215,0,.8), 0 0 14px rgba(255,215,0,.45);
+  box-shadow:0 0 10px rgba(255,215,0,.60), 0 0 18px rgba(255,215,0,.30);
+  transform:translateY(-1px);
+  outline:0;
+}
+
+/* === 2) Top-right nav links — gold hover + gold underline, revert to green on exit === */
+/* Base underline stays green so when hover ends it "closes" green */
+header nav a{
+  position:relative;
+  transition: color .15s ease, text-shadow .15s ease;
+}
+header nav a::after{
+  content:"";
+  position:absolute; left:0; right:0; bottom:-4px;
+  height:2px;
+  background: var(--accent, #85BB65);        /* GREEN at rest */
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .22s ease, background .18s ease, box-shadow .18s ease;
+}
+
+/* Hover: turn link + underline GOLD (animation you liked) */
+header nav a:hover,
+header nav a:focus-visible{
+  color:#FFD700 !important;
+  text-shadow:0 0 6px rgba(255,215,0,.85), 0 0 14px rgba(255,215,0,.45);
+  outline:0;
+}
+header nav a:hover::after,
+header nav a:focus-visible::after{
+  background:#FFD700;                        /* GOLD while open */
+  box-shadow:0 0 8px rgba(255,215,0,.60), 0 0 16px rgba(255,215,0,.35);
+  transform: scaleX(1);
+}
 
 </style>
 </head>
