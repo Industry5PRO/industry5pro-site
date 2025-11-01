@@ -241,6 +241,28 @@ header nav a:hover::after{ width:100%; }
   transform: translateY(-1px);
   outline: 0;
 }
+/* Supplier-Agnostic & Industries: keep TITLE white, glow the SUBTITLE */
+#products .tile:hover h3,
+#products .tile:hover h3 a,
+#verticals .tile:hover h3,
+#verticals .tile:hover h3 a{
+  color:#fff !important;            /* keep title white */
+  text-shadow:none !important;      /* no title glow */
+}
+
+/* Prefer a .tile-sub class if present */
+#products .tile:hover .tile-sub,
+#verticals .tile:hover .tile-sub{
+  color:var(--accent,#85BB65) !important;
+  text-shadow:0 0 6px rgba(133,187,101,.8), 0 0 14px rgba(133,187,101,.45);
+}
+
+/* Fallback: if no .tile-sub, glow the first paragraph after the title */
+#products .tile:hover h3 + p,
+#verticals .tile:hover h3 + p{
+  color:var(--accent,#85BB65) !important;
+  text-shadow:0 0 6px rgba(133,187,101,.8), 0 0 14px rgba(133,187,101,.45);
+}
 
   </style>
 </head>
