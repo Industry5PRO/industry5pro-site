@@ -302,6 +302,29 @@ header nav a:hover::after{ width:100%; }
   box-shadow:0 0 14px rgba(133,187,101,.35), 0 0 28px rgba(133,187,101,.2);
   transform:translateY(-2px);
 }
+/* Blog teaser buttons/chips — gold hover glow */
+#blog-teaser a.btn{
+  transition: color .15s ease, border-color .15s ease, box-shadow .15s ease, transform .15s ease, text-shadow .15s ease;
+}
+
+/* Outline chips + "All Articles" */
+#blog-teaser a.btn:not(.primary):hover{
+  color:#FFD700 !important;
+  border-color:#FFD700 !important;
+  text-shadow:0 0 6px rgba(255,215,0,.8), 0 0 14px rgba(255,215,0,.45);
+  box-shadow:0 0 10px rgba(255,215,0,.6), 0 0 18px rgba(255,215,0,.3);
+  transform:translateY(-1px);
+}
+
+/* Solid green primary ("AI Foundations") — keep dark text, just add gold glow */
+#blog-teaser a.btn.primary:hover{
+  color:#0b1220 !important; /* maintain readable dark text */
+  box-shadow:0 0 10px rgba(255,215,0,.6), 0 0 18px rgba(255,215,0,.3);
+  transform:translateY(-1px);
+  /* optional faint gold ring: */
+  outline:2px solid rgba(255,215,0,.5);
+  outline-offset:2px;
+}
 
   </style>
 </head>
