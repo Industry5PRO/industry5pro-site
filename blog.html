@@ -287,6 +287,26 @@ footer .socials a:focus-visible{
   box-shadow:0 2px 8px rgba(255,215,0,.25);
   outline:0;
 }
+/* AI Foundations (in order) — gold hover, green at rest */
+#ai-foundations a{
+  display:inline-block; /* lets the glow show cleanly */
+  transition: color .15s ease, text-shadow .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+
+/* Turn each Part link gold only on hover */
+#ai-foundations a:hover,
+#ai-foundations a:focus-visible{
+  color:#FFD700 !important; /* yellow gold */
+  text-shadow:0 0 6px rgba(255,215,0,.8), 0 0 14px rgba(255,215,0,.45);
+  box-shadow:0 2px 8px rgba(255,215,0,.25);
+  transform:translateY(-1px);
+  outline:0;
+}
+
+/* (Optional) make the whole card halo very slightly when any link hovers */
+#ai-foundations .card:hover{
+  box-shadow:0 0 10px rgba(255,215,0,.18);
+}
 
 </style>
 </head>
