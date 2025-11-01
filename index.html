@@ -200,6 +200,33 @@ header nav a:hover::after{ width:100%; }
   color: var(--accent, #85BB65);
   text-shadow: 0 0 6px rgba(133,187,101,.8), 0 0 14px rgba(133,187,101,.45);
 }
+/* ===== Outcome-Obsessed: TOP BUBBLES (gold glow to match tiles) ===== */
+#outcome-obsessed .filters a,
+#outcome-obsessed .filters button,
+#outcome-obsessed .filters .chip,
+#outcome-obsessed .chip,
+#outcome-obsessed .tag,
+#outcome-obsessed .kpi-tag,
+#outcome-obsessed .kpi-btn,
+#outcome-obsessed [data-tag]{
+  cursor:pointer;
+  transition: color .15s ease, border-color .15s ease, box-shadow .15s ease, transform .15s ease, text-shadow .15s ease;
+}
+
+#outcome-obsessed .filters a:hover,
+#outcome-obsessed .filters button:hover,
+#outcome-obsessed .filters .chip:hover,
+#outcome-obsessed .chip:hover,
+#outcome-obsessed .tag:hover,
+#outcome-obsessed .kpi-tag:hover,
+#outcome-obsessed .kpi-btn:hover,
+#outcome-obsessed [data-tag]:hover{
+  color:#FFD700 !important;               /* Yellow gold */
+  border-color:#FFD700 !important;        /* If the bubble has a border */
+  text-shadow:0 0 6px rgba(255,215,0,.8), 0 0 14px rgba(255,215,0,.45);
+  box-shadow:0 0 14px rgba(255,215,0,.35), 0 0 28px rgba(255,215,0,.2);
+  transform:translateY(-1px);
+}
 
   </style>
 </head>
