@@ -139,6 +139,35 @@
   }
 
   .sm-card:hover{transform:translateY(-1px);transition:transform .12s ease}
+  /* === Gold glow for top buttons (incl. Back to site) === */
+.btn{
+  transition: color .15s ease, border-color .15s ease, box-shadow .15s ease,
+              transform .15s ease, text-shadow .15s ease; /* upgrade transitions */
+}
+
+/* All CTAs + Back to site on hover */
+header .btn.ghost:hover,
+header .btn.ghost:focus-visible,
+.cta .btn:hover,
+.cta .btn:focus-visible{
+  color:#FFD700 !important;                     /* text goes gold */
+  border-color:#FFD700 !important;              /* gold ring */
+  box-shadow:0 0 10px rgba(255,215,0,.65),
+             0 0 18px rgba(255,215,0,.35);     /* gold glow */
+  text-shadow:0 0 6px rgba(255,215,0,.8),
+              0 0 14px rgba(255,215,0,.45);
+  transform:translateY(-1px);
+  outline:0;
+}
+
+/* Keep primary button’s green fill; add the gold ring/glow + gold text */
+.cta .btn.primary:hover,
+.cta .btn.primary:focus-visible{
+  background:var(--green);                      /* keep solid green */
+  color:#FFD700 !important;                     /* gold lettering */
+  border-color:#FFD700 !important;              /* gold ring */
+}
+
 </style>
 
 
