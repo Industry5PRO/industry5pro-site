@@ -680,6 +680,44 @@ document.querySelectorAll('article.card').forEach(card => {
   });
 })();
 </script>
+<script>
+// Auto "Published:" line for every article.
+// Priority: data-pub on the <article>  → pubMap by id → today's date.
+(function(){
+  const fmt   = { year:'numeric', month:'short', day:'numeric' };
+  const today = new Date().toLocaleDateString('en-US', fmt);
+
+  // 1) Put real publish dates here once. Update as you add posts.
+  const pubMap = {
+    // AI Foundations series
+    'af-part1': 'Oct 28, 2025', // Resilience by Design (NaaS)
+    'af-part2': 'Oct 30, 2025', // When One Cloud Fails (Multi-Cloud)
+    'af-part3': 'Nov 1, 2025',  // Security & Backup (Policy First)
+
+    // Standalone articles (adjust if your ids differ)
+    'post-aws-outage': 'Oct 24, 2025', // Cloud Chaos → AWS outage analysis
+    'post-amzn-q3':    'Oct 31, 2025', // Amazon Q3 earnings breakdown
+  };
+
+  document.querySelectorAll('article.card').forEach(card => {
+    const id  = card.id || '';
+    const explicit = card.getAttribute('data-pub');          // optional per-article
+    const mapped   = id && pubMap[id] ? pubMap[id] : null;   // from the map above
+    const pub      = explicit || mapped || today;
+
+    let meta = card.querySelector('.meta');
+    if (!meta) {
+      meta = document.createElement('p');
+      meta.className = 'meta';
+      card.appendChild(meta);
+    }
+    meta.textContent = `Published: ${pub}.`;
+    meta.style.marginTop = '8px';
+    meta.style.color = '#bfc7d5';
+    meta.style.fontSize = '.95rem';
+  });
+})();
+</script>
 
 </body>
 </html>
