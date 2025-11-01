@@ -169,6 +169,37 @@ header nav a:hover::after{ width:100%; }
   color: #FFD700;
   text-shadow: 0 0 6px rgba(255,215,0,.8), 0 0 14px rgba(255,215,0,.45);
 }
+/* ===== Supplier-Agnostic Products & Platforms (green glow) ===== */
+#products .tile{
+  transition: box-shadow .18s ease, border-color .18s ease, transform .18s ease, color .15s ease;
+}
+#products .tile:hover{
+  border-color: var(--accent, #85BB65);
+  box-shadow: 0 0 14px rgba(133,187,101,.35), 0 0 28px rgba(133,187,101,.2);
+  transform: translateY(-2px);
+}
+#products .tile:hover .tile-title,
+#products .tile:hover .tile-title a{
+  color: var(--accent, #85BB65);
+  text-shadow: 0 0 6px rgba(133,187,101,.8), 0 0 14px rgba(133,187,101,.45);
+}
+
+/* ===== Industries We Serve (green glow) ===== */
+/* Your industry tiles are <a class="tile">…</a>, make them behave like cards */
+#verticals .tile{
+  display:block;
+  transition: box-shadow .18s ease, border-color .18s ease, transform .18s ease, color .15s ease;
+}
+#verticals .tile:hover{
+  border-color: var(--accent, #85BB65);
+  box-shadow: 0 0 14px rgba(133,187,101,.35), 0 0 28px rgba(133,187,101,.2);
+  transform: translateY(-2px);
+}
+#verticals .tile:hover .tile-title,
+#verticals .tile:hover .tile-title a{
+  color: var(--accent, #85BB65);
+  text-shadow: 0 0 6px rgba(133,187,101,.8), 0 0 14px rgba(133,187,101,.45);
+}
 
   </style>
 </head>
