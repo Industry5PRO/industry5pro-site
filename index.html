@@ -402,6 +402,32 @@ header nav a:hover::after,
   transform: translateY(-1px);
   outline: 0;
 }
+/* Bloomberg CTAs — gold glow (matches AI Readiness) */
+#erdoes-fii a{
+  transition: color .15s ease, border-color .15s ease, box-shadow .15s ease,
+              transform .15s ease, text-shadow .15s ease;
+}
+
+/* Primary: keep green fill, add gold halo */
+#erdoes-fii .btn-primary:hover,
+#erdoes-fii .btn-primary:focus-visible{
+  box-shadow: 0 0 10px rgba(255,215,0,.65), 0 0 18px rgba(255,215,0,.35);
+  outline: 2px solid rgba(255,215,0,.55);
+  outline-offset: 2px;
+  transform: translateY(-1px);
+  color: inherit; /* keep white text */
+}
+
+/* Secondary: turn text & border gold + glow */
+#erdoes-fii .btn-secondary:hover,
+#erdoes-fii .btn-secondary:focus-visible{
+  color: #FFD700 !important;
+  border-color: #FFD700 !important;
+  text-shadow: 0 0 6px rgba(255,215,0,.8), 0 0 14px rgba(255,215,0,.45);
+  box-shadow: 0 0 10px rgba(255,215,0,.65), 0 0 18px rgba(255,215,0,.35);
+  transform: translateY(-1px);
+  outline: 0;
+}
 
   </style>
 </head>
