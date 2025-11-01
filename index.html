@@ -364,6 +364,18 @@ footer .socials a:focus-visible{
   transform:translateY(-2px);
   outline:0;
 }
+/* === Top nav: gold hover glow override (keeps underline animation) === */
+header nav a:hover,
+.main-nav a:hover{
+  color:#FFD700 !important; /* yellow gold */
+  text-shadow:0 0 6px rgba(255,215,0,.85), 0 0 14px rgba(255,215,0,.45);
+}
+
+header nav a:hover::after,
+.main-nav a:hover::after{
+  background:#FFD700 !important;
+  box-shadow:0 0 8px rgba(255,215,0,.60), 0 0 16px rgba(255,215,0,.35);
+}
 
   </style>
 </head>
