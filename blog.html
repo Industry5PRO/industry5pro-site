@@ -350,6 +350,11 @@ header nav a:focus-visible::after{
   box-shadow:0 0 8px rgba(255,215,0,.60), 0 0 16px rgba(255,215,0,.35);
   transform: scaleX(1);
 }
+.card .meta{
+  margin-top:8px;
+  color:#bfc7d5;
+  font-size:.95rem;
+}
 
 </style>
 </head>
@@ -653,6 +658,27 @@ document.querySelectorAll('article.card').forEach(card => {
   }
   meta.textContent = `Published: ${pub}.`;
 });
+</script>
+<script>
+// Auto-publish line for every article card.
+// Uses data-pub if present; otherwise inserts today's date.
+(function(){
+  const fmt = {year:'numeric', month:'short', day:'numeric'};
+  const today = new Date().toLocaleDateString('en-US', fmt);
+
+  document.querySelectorAll('article.card').forEach(card => {
+    const pub = card.getAttribute('data-pub') || today;
+
+    // find or create a consistent meta line
+    let meta = card.querySelector('.meta');
+    if (!meta) {
+      meta = document.createElement('p');
+      meta.className = 'meta';
+      card.appendChild(meta);
+    }
+    meta.textContent = `Published: ${pub}.`;
+  });
+})();
 </script>
 
 </body>
