@@ -79,26 +79,43 @@
           <li>Template dashboards with your KPIs</li>
         </ul>
       </section>
+      
       <section id="best-fit" class="card">
-  <h2>Best fit first: <a rel="sponsored noopener noreferrer" href="https://partners.supermetrics.com/Industry5PRO-Agencies">Agencies</a></h2>
-  <p class="note">Best fit first:
-  <span class="fit-pill">Agencies</span> /
-  <span class="fit-pill">eCommerce</span> /
-  <span class="fit-pill">SaaS GTM</span> /
-  <span class="fit-pill">Multi-location brands & publishers</span>
-</p>
-        <!-- Centered "Resources > Customer Success Stories" button in the Best fit first section -->
-<div style="text-align: center; margin-top: 1em;">
-  <a href="https://supermetrics.com/?partner_key=2ea89c87eb31"
-   target="_blank" rel="noopener"
-   class="res-btn"
-   style="display:inline-block;background-color:#28a745;color:#fff;text-decoration:none;padding:8px 16px;border-radius:4px;">
-  Resources &gt; Customer Success Stories
-</a>
+  <h2>Best fit first:
+    <a rel="sponsored noopener noreferrer" href="https://partners.supermetrics.com/Industry5PRO-Agencies">Agencies</a>
+  </h2>
 
-</div>
+  <p class="note" style="margin-bottom:.6rem;">
+    Weekly client reporting becomes scheduled refreshes.
+  </p>
 
+  <div class="fit-pills" style="display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;">
+    <span class="note" style="margin-right:.25rem;">Also good for:</span>
+
+    <a class="fit-pill" rel="sponsored noopener noreferrer"
+       href="https://partners.supermetrics.com/Industry5PRO-Agencies">Agencies</a>
+
+    <a class="fit-pill" rel="sponsored noopener noreferrer"
+       href="https://partners.supermetrics.com/Industry5PRO-eCommerce">eCommerce</a>
+
+    <a class="fit-pill" rel="sponsored noopener noreferrer"
+       href="https://partners.supermetrics.com/Industry5-SaaS">SaaS GTM</a>
+
+    <a class="fit-pill" rel="sponsored noopener noreferrer"
+       href="https://partners.supermetrics.com/Industry5PRO-Products">Multi-location brands &amp; publishers</a>
+  </div>
+
+  <!-- Centered "Resources > Customer Success Stories" button -->
+  <div style="text-align:center; margin-top: 1em;">
+    <a href="https://supermetrics.com/?partner_key=2ea89c87eb31"
+       target="_blank" rel="noopener"
+       class="res-btn"
+       style="display:inline-block;background-color:#28a745;color:#fff;text-decoration:none;padding:8px 16px;border-radius:999px;">
+      Resources &gt; Customer Success Stories
+    </a>
+  </div>
 </section>
+
     </div>
 <style>
   .sm-grid{display:grid;gap:16px}
@@ -238,6 +255,34 @@ header .btn.ghost:focus-visible,
   color:#FFD700;border-color:#FFD700;
   box-shadow:0 0 10px rgba(255,215,0,.6),0 0 18px rgba(255,215,0,.3);
   text-shadow:0 0 6px rgba(255,215,0,.8),0 0 14px rgba(255,215,0,.45);
+  transform:translateY(-1px);
+}
+/* Gold glow for “Best fit first” pills + resources pill */
+#best-fit .fit-pill{
+  display:inline-block; padding:.28rem .62rem;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:999px; background:var(--panel);
+  color:#e6eef5; text-decoration:none;
+  font-weight:700; font-size:.85rem;
+  transition: color .15s ease, border-color .15s ease, box-shadow .15s ease,
+             transform .15s ease, text-shadow .15s ease;
+}
+#best-fit .fit-pill:hover{
+  color:#FFD700; border-color:#FFD700;
+  box-shadow:0 0 10px rgba(255,215,0,.6), 0 0 18px rgba(255,215,0,.3);
+  text-shadow:0 0 6px rgba(255,215,0,.8), 0 0 14px rgba(255,215,0,.45);
+  transform:translateY(-1px);
+}
+
+/* Resources pill glow (matches gold) */
+#best-fit .res-btn{
+  border:1px solid rgba(255,255,255,.18);
+  transition: color .15s ease, border-color .15s ease, box-shadow .15s ease, transform .15s ease, text-shadow .15s ease;
+}
+#best-fit .res-btn:hover{
+  color:#FFD700 !important; border-color:#FFD700 !important;
+  box-shadow:0 0 10px rgba(255,215,0,.6), 0 0 18px rgba(255,215,0,.3);
+  text-shadow:0 0 6px rgba(255,215,0,.8), 0 0 14px rgba(255,215,0,.45);
   transform:translateY(-1px);
 }
 
