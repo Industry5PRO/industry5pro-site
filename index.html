@@ -376,6 +376,32 @@ header nav a:hover::after,
   background:#FFD700 !important;
   box-shadow:0 0 8px rgba(255,215,0,.60), 0 0 16px rgba(255,215,0,.35);
 }
+/* AI Readiness CTAs — gold glow */
+#ai-readiness-hero a{
+  transition: color .15s ease, border-color .15s ease, box-shadow .15s ease,
+              transform .15s ease, text-shadow .15s ease;
+}
+
+/* Primary: Start the Assessment (Google Form) — keep green fill, add gold halo */
+#ai-readiness-hero a[href*="docs.google.com/forms"]:hover,
+#ai-readiness-hero a[href*="docs.google.com/forms"]:focus-visible{
+  box-shadow: 0 0 10px rgba(255,215,0,.65), 0 0 18px rgba(255,215,0,.35);
+  outline: 2px solid rgba(255,215,0,.55);
+  outline-offset: 2px;
+  transform: translateY(-1px);
+  color: inherit; /* keep your current text color */
+}
+
+/* Secondary: Book a Discovery Session (Calendly) — turn text & border gold + glow */
+#ai-readiness-hero a[href*="calendly.com"]:hover,
+#ai-readiness-hero a[href*="calendly.com"]:focus-visible{
+  color: #FFD700 !important;
+  border-color: #FFD700 !important;
+  text-shadow: 0 0 6px rgba(255,215,0,.8), 0 0 14px rgba(255,215,0,.45);
+  box-shadow: 0 0 10px rgba(255,215,0,.65), 0 0 18px rgba(255,215,0,.35);
+  transform: translateY(-1px);
+  outline: 0;
+}
 
   </style>
 </head>
