@@ -112,7 +112,64 @@ header nav a:hover::after{ width:100%; }
     .footer{margin:32px 0;color:var(--muted);font-size:14px}
     .social{display:flex;gap:10px;flex-wrap:wrap}
     .social a{padding:8px 12px;border:1px solid rgba(255,255,255,.14);border-radius:999px;color:#e8eef9;background:rgba(255,255,255,.04)}
-    
+    /* ===== Supplier-Agnostic Products & Platforms (green glow) ===== */
+#products .card,
+#products article{
+  transition: box-shadow .18s ease, border-color .18s ease, transform .18s ease, color .15s ease;
+}
+#products .card:hover,
+#products article:hover{
+  border-color: var(--accent, #85BB65);
+  box-shadow: 0 0 14px rgba(133,187,101,.35), 0 0 28px rgba(133,187,101,.2);
+  transform: translateY(-2px);
+}
+#products .card:hover h3,
+#products .card:hover h3 a,
+#products article:hover h3,
+#products article:hover h3 a{
+  color: var(--accent, #85BB65);
+  text-shadow: 0 0 6px rgba(133,187,101,.8), 0 0 14px rgba(133,187,101,.45);
+}
+
+/* ===== Industries We Serve (green glow) ===== */
+#verticals .card,
+#verticals article{
+  transition: box-shadow .18s ease, border-color .18s ease, transform .18s ease, color .15s ease;
+}
+#verticals .card:hover,
+#verticals article:hover{
+  border-color: var(--accent, #85BB65);
+  box-shadow: 0 0 14px rgba(133,187,101,.35), 0 0 28px rgba(133,187,101,.2);
+  transform: translateY(-2px);
+}
+#verticals .card:hover h3,
+#verticals .card:hover h3 a,
+#verticals article:hover h3,
+#verticals article:hover h3 a{
+  color: var(--accent, #85BB65);
+  text-shadow: 0 0 6px rgba(133,187,101,.8), 0 0 14px rgba(133,187,101,.45);
+}
+
+/* ===== Outcome-Obsessed KPI cards (gold glow) ===== */
+#outcome-obsessed .card,
+#outcome-obsessed article{
+  transition: box-shadow .18s ease, border-color .18s ease, transform .18s ease, color .15s ease;
+}
+#outcome-obsessed .card:hover,
+#outcome-obsessed article:hover{
+  /* Yellow gold */
+  border-color: #FFD700;
+  box-shadow: 0 0 14px rgba(255,215,0,.35), 0 0 28px rgba(255,215,0,.2);
+  transform: translateY(-2px);
+}
+#outcome-obsessed .card:hover h3,
+#outcome-obsessed .card:hover h3 a,
+#outcome-obsessed article:hover h3,
+#outcome-obsessed article:hover h3 a{
+  color: #FFD700;
+  text-shadow: 0 0 6px rgba(255,215,0,.8), 0 0 14px rgba(255,215,0,.45);
+}
+
   </style>
 </head>
 <body>
