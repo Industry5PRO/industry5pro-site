@@ -149,7 +149,23 @@ header{
 .card.clickable a:hover{
   text-decoration:underline;
 }
-  
+  /* Footer socials: gold ring + green icon on hover */
+footer .socials a{
+  transition: color .15s ease, border-color .15s ease, box-shadow .15s ease, transform .15s ease, text-shadow .15s ease;
+}
+
+footer .socials a:hover,
+footer .socials a:focus-visible{
+  /* gold ring/glow */
+  border-color:#FFD700 !important;
+  box-shadow:0 0 10px rgba(255,215,0,.65), 0 0 18px rgba(255,215,0,.35);
+  /* green icon (the letter) */
+  color:var(--accent,#85BB65) !important;
+  text-shadow:0 0 6px rgba(133,187,101,.85), 0 0 14px rgba(133,187,101,.45);
+  transform:translateY(-2px);
+  outline:0;
+}
+
 </style>
 </head>
 <body>
