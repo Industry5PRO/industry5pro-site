@@ -165,6 +165,15 @@ footer .socials a:focus-visible{
   transform:translateY(-2px);
   outline:0;
 }
+/* Descript card: make only the word "Gold" glow gold on hover */
+.card.clickable:hover h3 {
+  color: var(--accent, #85BB65); /* keep the title glow green */
+  text-shadow: 0 0 6px rgba(133,187,101,.8), 0 0 14px rgba(133,187,101,.45);
+}
+.card.clickable:hover h3 .gold-word {
+  color: #FFD700 !important; /* gold */
+  text-shadow: 0 0 6px rgba(255,215,0,.8), 0 0 14px rgba(255,215,0,.45) !important;
+}
 
 </style>
 </head>
@@ -326,7 +335,7 @@ footer .socials a:focus-visible{
        <!-- Descript story (affiliate) -->
 <article class="card clickable" data-tags="Analytics,AI,Descript"
          onclick="window.open('https://get.descript.com/Industry5PRO','_blank','noopener,noreferrer')">
-  <h3>How Descript Turns AI Content into Gold</h3>
+  <h3>How Descript Turns AI Content into <span class="gold-word">Gold</span></h3>
   <p>We built the stack. Now share it like a pro. Text-based editing, voice work, and fast story cuts.</p>
   <div class="tags"><span class="tag">Analytics</span><span class="tag">AI</span><span class="tag">Descript</span></div>
   <p style="margin:0">
