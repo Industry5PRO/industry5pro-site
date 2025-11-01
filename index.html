@@ -263,6 +263,45 @@ header nav a:hover::after{ width:100%; }
   color:var(--accent,#85BB65) !important;
   text-shadow:0 0 6px rgba(133,187,101,.8), 0 0 14px rgba(133,187,101,.45);
 }
+/* ===== Supplier-Agnostic & Industries ===== */
+/* Keep TITLE white with a white glow (even when links hover) */
+#products .tile:hover h3,
+#products .tile:hover h3 a,
+#products .tile:hover .tile-title,
+#products .tile:hover .tile-title a,
+#verticals .tile:hover h3,
+#verticals .tile:hover h3 a,
+#verticals .tile:hover .tile-title,
+#verticals .tile:hover .tile-title a{
+  color:#fff !important;
+  text-shadow:0 0 6px rgba(255,255,255,.85), 0 0 14px rgba(255,255,255,.45) !important;
+}
+
+/* Also catch direct link hover to prevent it flipping to green */
+#products .tile h3 a:hover,
+#products .tile .tile-title a:hover,
+#verticals .tile h3 a:hover,
+#verticals .tile .tile-title a:hover{
+  color:#fff !important;
+  text-shadow:0 0 6px rgba(255,255,255,.85), 0 0 14px rgba(255,255,255,.45) !important;
+}
+
+/* Subtitle gets the green glow (prefer .tile-sub; fallback to first <p> after <h3>) */
+#products .tile:hover .tile-sub,
+#verticals .tile:hover .tile-sub,
+#products .tile:hover h3 + p,
+#verticals .tile:hover h3 + p{
+  color:var(--accent,#85BB65) !important;
+  text-shadow:0 0 6px rgba(133,187,101,.8), 0 0 14px rgba(133,187,101,.45) !important;
+}
+
+/* Keep the outer tile green glow you already have */
+#products .tile:hover,
+#verticals .tile:hover{
+  border-color:var(--accent,#85BB65) !important;
+  box-shadow:0 0 14px rgba(133,187,101,.35), 0 0 28px rgba(133,187,101,.2);
+  transform:translateY(-2px);
+}
 
   </style>
 </head>
