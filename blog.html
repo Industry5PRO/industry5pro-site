@@ -637,6 +637,23 @@ document.querySelectorAll('article.card').forEach(card => {
   meta.textContent = `Published: ${pub}.`;
 });
 </script>
+<script>
+// Ensure every article shows a consistent Published date if data-pub is present
+document.querySelectorAll('article.card').forEach(card => {
+  const pub = card.getAttribute('data-pub'); // e.g., "Nov 1, 2025"
+  if (!pub) return;
+
+  let meta = card.querySelector('.meta');
+  if (!meta) {
+    meta = document.createElement('p');
+    meta.className = 'meta';
+    meta.style.marginTop = '8px';
+    meta.style.color = '#bfc7d5';
+    card.appendChild(meta);
+  }
+  meta.textContent = `Published: ${pub}.`;
+});
+</script>
 
 </body>
 </html>
