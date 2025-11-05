@@ -428,6 +428,15 @@ header nav a:hover::after,
   transform: translateY(-1px);
   outline: 0;
 }
+<style>
+  /* Keep CTA/pill text centered and on one line */
+  .btn, .cta, .tag, .pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+  }
+</style>
 
   </style>
 </head>
@@ -1256,6 +1265,74 @@ const FEATURED = {
   // 3) fallback: text match
   if(!el) el = Array.from(document.querySelectorAll('a.btn.cta')).find(a => /see my roi plan/i.test(a.textContent));
   if(el) el.id = 'featured-cloud2-cta';
+})();
+</script>
+<script>
+(function(){
+  // Your new Cloud 2.0 form (single source of truth)
+  var CLOUD2_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform";
+
+  // Signals that should route to Cloud 2.0
+  var cloudSignals = ["cloud2","cloud-2","cloud2.0","cloud","network","naas","wavelength","edge","mec","lumen"];
+
+  // If you use a helper, redefine its label behavior to the shorter text
+  window.ctaLabel = function(tags){
+    if (typeof tags === "string") tags = tags.split(",").map(function(s){ return s.trim().toLowerCase(); });
+    var t = (tags || []).map(function(x){ return x.toLowerCase(); });
+
+    if (t.indexOf("ai") > -1) return "Run AI Readiness";
+    if (t.some(function(x){ return cloudSignals.indexOf(x) > -1; })) return "Run Cloud 2.0 Readiness";
+    if (t.indexOf("security") > -1 || t.indexOf("cyber") > -1) return "Start Security Pre-Intake";
+    return "Get My ROI Plan";
+  };
+
+  // 1) Featured Supplier CTA — update even if ID is missing
+  var featured = document.getElementById("featured-cloud2-cta");
+  if (!featured) {
+    // fallback selectors: featured card with lumen/cloud/network tags
+    featured = document.querySelector('.featured-supplier a.btn, .featured-supplier .cta-row a, [data-tags*="lumen" i] a.btn, [data-tags*="lumen" i] .btn');
+  }
+  if (featured){
+    featured.textContent = "Run Cloud 2.0 Readiness";
+    featured.href = CLOUD2_FORM;
+    featured.target = "_blank";
+    featured.rel = "noopener noreferrer";
+    featured.setAttribute("data-cta-tags","lumen,cloud,network,cloud2");
+  }
+
+  // 2) Update KPI CTAs inside Outcome-Obsessed for cloud/network/edge/etc.
+  document.querySelectorAll('#outcome-obsessed [data-tags]').forEach(function(card){
+    var tags = (card.getAttribute('data-tags') || '').toLowerCase();
+    if (cloudSignals.some(function(sig){ return tags.indexOf(sig) > -1; })) {
+      var btn = card.querySelector('a[data-cta-tags], a.btn, button');
+      if (btn){
+        btn.textContent = "Run Cloud 2.0 Readiness";
+        if (btn.tagName.toLowerCase() === 'a') {
+          btn.href = CLOUD2_FORM;
+          btn.target = "_blank";
+          btn.rel = "noopener noreferrer";
+        } else {
+          btn.onclick = function(){ window.open(CLOUD2_FORM,'_blank','noopener,noreferrer'); };
+        }
+        btn.setAttribute("data-cta-tags","cloud,network,cloud2");
+      }
+    }
+  });
+
+  // 3) Catch any other cloud/network CTAs site-wide marked with data-cta-tags
+  document.querySelectorAll('[data-cta-tags]').forEach(function(el){
+    var t = (el.getAttribute('data-cta-tags') || '').toLowerCase();
+    if (cloudSignals.some(function(sig){ return t.indexOf(sig) > -1; })) {
+      el.textContent = "Run Cloud 2.0 Readiness";
+      if (el.tagName.toLowerCase() === 'a') {
+        el.href = CLOUD2_FORM;
+        el.target = '_blank';
+        el.rel = 'noopener noreferrer';
+      } else {
+        el.onclick = function(){ window.open(CLOUD2_FORM,'_blank','noopener,noreferrer'); };
+      }
+    }
+  });
 })();
 </script>
 
