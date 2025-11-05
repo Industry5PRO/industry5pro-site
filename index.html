@@ -658,14 +658,46 @@ header nav a:hover::after,
     color:#0a0f14; background:var(--green); border:1px solid rgba(133,187,101,.6);
   }
   .oo-cta:hover{ box-shadow:0 10px 22px rgba(133,187,101,.28); transform:translateY(-1px) }
-  .oo-featured{
-    grid-column: span 2;
-    background:linear-gradient(180deg, rgba(133,187,101,.10), rgba(20,24,33,1));
-    border:1px solid rgba(133,187,101,.35);
-  }
-  @media (max-width:700px){ .oo-featured{ grid-column: auto } }
-  .oo-tag{ display:inline-block; font-size:.72rem; color:#cfe9c7; background:rgba(133,187,101,.15);
-           border:1px solid rgba(133,187,101,.35); border-radius:999px; padding:2px 8px }
+  /* Outcome-Obsessed featured card: full width, centered video */
+.oo-featured{
+  grid-column: 1 / -1;           /* span entire grid width so it sits at the top */
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  background:linear-gradient(180deg, rgba(133,187,101,.08), rgba(20,24,33,1));
+  border:1px solid rgba(133,187,101,.35);
+  padding:16px;
+  align-items:stretch;
+}
+
+/* video container to ensure centered alignment */
+.oo-featured .featured-media {
+  width:100%;
+  border-radius:12px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#000; /* fallback while loading */
+  aspect-ratio:16/9; /* keep 16:9 box always */
+}
+
+/* iframe styling to properly fill the container and remain vertically centered */
+.oo-featured iframe,
+.oo-featured video {
+  width:100%;
+  height:100%;
+  border:0;
+  display:block;
+}
+
+/* shrink the overlay text on small screens so video stays visible */
+@media (max-width:720px){
+  .oo-featured { padding:10px; }
+  .oo-featured .oo-metric { font-size:1rem; }
+  .oo-featured .oo-blurb { font-size:.92rem; }
+}
+
 </style>
 
 <script>
@@ -675,23 +707,23 @@ header nav a:hover::after,
   const ROI_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform?usp=header";
   const CYBER_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSdOMTJRwYEtNkXtb2Zt89wK7dJs6v1oK4VkX3reSo7HRR_QjQ/viewform?usp=header";
 
-    // Featured supplier toggle/content (image OR video). Keep enabled, swap content later.
-  const FEATURED = {
-    enabled: true,
-    type: "video", // "image" | "video"
-    title: "Lumen — Cloud 2.0: Wavelength, NaaS, Multi-Cloud",
-    metric: "Wavelength leader • Carrier-neutral on-ramps • Rapid turn-up",
-    blurb: "Why this matters: dedicated wavelength for long hops, NaaS for programmable onramps, and multi-cloud paths for latency and CX. Watch the interview to see the quadrant and why Lumen leads.",
-    // fallback image for devices where embeds are blocked; replace with your asset if needed
-    imageUrl: "/assets/featured-supplier.jpg",
-    imageAlt: "Lumen Cloud 2.0 — Wavelength and NaaS illustration",
-    // YouTube embed you supplied — this will render inline when type === 'video'
-    videoUrl: "https://www.youtube.com/embed/6C2s41rvt20?rel=0",
-    ctaLabel: "See my ROI plan",
-    // uses the existing AI_FORM constant you already declared earlier in the page
-    ctaUrl: AI_FORM,
-    tags: ["cloud","wavelength","naas"]
-  };
+  // Featured supplier toggle/content (image OR video)
+const FEATURED = {
+  enabled: true,
+  type: "video", // "image" | "video"
+  title: "Lumen — Cloud 2.0: Wavelength, NaaS, Multi-Cloud",
+  metric: "Wavelength leader • Carrier-neutral on-ramps • Rapid turn-up",
+  blurb: "Dedicated wavelength for long hops, programmable NaaS on-ramps, and multi-cloud paths to protect latency and CX. Watch Kate Johnson at the Lumen AR Forum.",
+  // fallback image if needed (keep path or change to your uploaded thumbnail)
+  imageUrl: "/assets/AI_Fastnet_FoxBiz_Thumbnail.jpg",
+  imageAlt: "Lumen Cloud 2.0 — Wavelength and NaaS illustration",
+  // New YouTube embed (Kate Johnson / Lumen AR Forum)
+  videoUrl: "https://www.youtube.com/embed/ZPJWtw-DsUE?rel=0",
+  ctaLabel: "See my ROI plan",
+  ctaUrl: AI_FORM,
+  tags: ["cloud","wavelength","naas"]
+};
+
 
 
   // KPI cards: tag-driven routing (ai -> AI_FORM; everything else -> ROI_FORM)
