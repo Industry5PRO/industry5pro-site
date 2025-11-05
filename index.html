@@ -1165,6 +1165,100 @@ const FEATURED = {
     });
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
+  <script>
+(function(){
+  // 1) Set your new Cloud 2.0 form URL (single source of truth)
+  window.CLOUD2_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform";
+
+  // Keep existing form URLs if you already have them
+  window.AI_FORM    = window.AI_FORM    || "https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform?usp=sharing";
+  window.ROI_FORM   = window.ROI_FORM   || "https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform?usp=header";
+  window.CYBER_FORM = window.CYBER_FORM || "https://docs.google.com/forms/d/e/1FAIpQLSdOMTJRwYEtNkXtb2Zt89wK7dJs6v1oK4VkX3reSo7HRR_QjQ/viewform?usp=header";
+
+  // 2) Unified routing by tags (override/define your helpers)
+  window.ctaUrl = function(tags){
+    if (typeof tags === "string") tags = tags.split(",").map(s=>s.trim().toLowerCase());
+    tags = (tags || []).map(x => x.toLowerCase());
+
+    // AI always goes to AI Readiness
+    if (tags.includes("ai")) return window.AI_FORM;
+
+    // Cloud2.0 routes: cloud / network / naas / wavelength / edge / mec / lumen
+    const cloudSignals = ["cloud2","cloud-2","cloud2.0","cloud","network","naas","wavelength","edge","mec","lumen"];
+    if (tags.some(t => cloudSignals.includes(t))) return window.CLOUD2_FORM;
+
+    // Security goes to cyber pre-intake
+    if (tags.includes("security") || tags.includes("cyber") || tags.includes("mttd") || tags.includes("phish") || tags.includes("patch")) {
+      return window.CYBER_FORM;
+    }
+
+    // Fallback: general ROI form
+    return window.ROI_FORM;
+  };
+
+  window.ctaLabel = function(tags){
+    if (typeof tags === "string") tags = tags.split(",").map(s=>s.trim().toLowerCase());
+    tags = (tags || []).map(x => x.toLowerCase());
+
+    if (tags.includes("ai")) return "Run AI Readiness & Get My ROI Plan";
+
+    const cloudSignals = ["cloud2","cloud-2","cloud2.0","cloud","network","naas","wavelength","edge","mec","lumen"];
+    if (tags.some(t => cloudSignals.includes(t))) return "Run Cloud 2.0 Readiness Assessment";
+
+    if (tags.includes("security") || tags.includes("cyber")) return "Start Security Pre-Intake";
+    return "Get My ROI Plan";
+  };
+
+  // 3) Update the Featured Supplier CTA (give the button this id in your HTML if not already)
+  // Example HTML: <a id="featured-cloud2-cta" class="btn cta" data-cta-tags="lumen">See my ROI plan</a>
+  var fs = document.getElementById("featured-cloud2-cta");
+  if (fs){
+    fs.dataset.ctaTags = "lumen,cloud,network,cloud2";
+    fs.textContent = "Run Cloud 2.0 Readiness Assessment";
+    fs.href = window.CLOUD2_FORM;
+    fs.target = "_blank";
+    fs.rel = "noopener noreferrer";
+  }
+
+  // 4) Retarget KPI CTAs for cloud/network inside Outcome-Obsessed
+  // We look for cards under #outcome-obsessed that have data-tags matching cloud/network/naas/wavelength
+  document.querySelectorAll('#outcome-obsessed [data-tags]').forEach(function(card){
+    var tags = (card.getAttribute('data-tags') || '').toLowerCase();
+    if (/cloud|network|naas|wavelength|edge|mec/.test(tags)){
+      // Find a CTA inside this card (customize selector if yours differs)
+      var btn = card.querySelector('[data-cta-tags], .btn, button, a');
+      if (btn){
+        btn.dataset.ctaTags = "cloud,network";                 // ensures routing to CLOUD2_FORM
+        btn.textContent = "Run Cloud 2.0 Readiness Assessment";
+        // If it's an anchor, wire directly; else rely on your wireCtas()
+        if (btn.tagName.toLowerCase() === 'a'){
+          btn.href = window.CLOUD2_FORM;
+          btn.target = "_blank";
+          btn.rel = "noopener noreferrer";
+        }
+      }
+    }
+  });
+
+  // 5) Re-wire anything else marked with data-cta-tags (uses your existing helper if present)
+  if (typeof window.wireCtas === "function") {
+    window.wireCtas();
+  }
+})();
+</script>
+<script>
+// attach ID to the Featured Supplier CTA if missing
+(function(){
+  // 1) try by lumen tag
+  var el = document.querySelector('a.btn.cta[data-cta-tags*="lumen"]');
+  // 2) fallback: button inside any card tagged with lumen/cloud/network
+  if(!el) el = document.querySelector('#outcome-obsessed [data-tags*="lumen"] a.btn.cta, #outcome-obsessed [data-tags*="cloud"] a.btn.cta, #outcome-obsessed [data-tags*="network"] a.btn.cta');
+  // 3) fallback: text match
+  if(!el) el = Array.from(document.querySelectorAll('a.btn.cta')).find(a => /see my roi plan/i.test(a.textContent));
+  if(el) el.id = 'featured-cloud2-cta';
+})();
+</script>
+
 </body>
 </html>
 <style>
