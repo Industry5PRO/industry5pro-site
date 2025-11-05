@@ -707,9 +707,6 @@ header nav a:hover::after,
   .oo-featured .oo-metric { font-size:1rem; }
   .oo-featured .oo-blurb { font-size:.92rem; }
 }
-/* Play overlay (centered big round button) */
-.oo-featured .play-overlay { transition: transform .12s ease; }
-.oo-featured .play-overlay:active { transform: scale(.98); }
 
 
 </style>
@@ -727,9 +724,7 @@ const FEATURED = {
   type: "video", // "image" | "video"
   title: "Lumen — Cloud 2.0: Wavelength, NaaS, Multi-Cloud",
   metric: "Lumen Cloud 2.0: Wavelength, NaaS, Multi-Cloud",
-  blurb: "Lumen: The Trusted Network for AI℠. Built on Trust. Paid by Results. Full disclosure: I hold Lumen shares.
-Lumen’s transformation is real and sustained. Watch CEO Kate Johnson at the Lumen AR Forum explain how leadership in wavelength, programmable NaaS on‑ramps, and multi‑cloud paths are restoring revenue growth driven by AI. These capabilities deliver measurable customer outcomes and provide the technology leaders will use to serve tomorrow’s customers.
-This aligns with Industry5.pro’s mission to be outcome‑focused and human‑centered. My conviction is data‑driven, not emotional, and I share this because leadership that produces results matters.",
+  blurb: "Lumen’s transformation is real and sustained. Watch CEO Kate Johnson at the Lumen AR Forum describing how leadership in wavelength, programmable NaaS on‑ramps, and multi‑cloud paths are restoring revenue growth driven by AI. Remarkable operational and financial progress; customer obsession is central, aligned with Industry5.pro’s mission to deliver outcome‑focused, human‑centered advisory.",
   // fallback image if needed (keep path or change to your uploaded thumbnail)
   imageUrl: "/assets/AI_Fastnet_FoxBiz_Thumbnail.jpg",
   imageAlt: "Lumen Cloud 2.0 — Wavelength and NaaS illustration",
@@ -825,7 +820,7 @@ This aligns with Industry5.pro’s mission to be outcome‑focused and human‑c
   const $filters = document.getElementById("oo-filters");
   const $grid = document.getElementById("oo-grid");
 
-   // Render filter chips
+  // Render filter chips
   let active = "all";
   FILTERS.forEach(f=>{
     const b=document.createElement("button");
@@ -835,147 +830,43 @@ This aligns with Industry5.pro’s mission to be outcome‑focused and human‑c
     b.textContent=f.label;
     $filters.appendChild(b);
   });
+   // Robust filter handler: apply filter then nudge viewport under the featured card
+  (function(){
+    const $featured = document.querySelector(".oo-featured");
+    const $gridWrap = document.getElementById("oo-grid");
+    let scrollTimeout = null;
 
-  // small helper: compute and scroll so featured stays visible and filtered cards appear just below it
-  function scrollUnderFeatured(){
-    const featured = document.querySelector(".oo-featured");
-    if (!featured) return;
-    const rect = featured.getBoundingClientRect();
-    const pageY = window.scrollY || window.pageYOffset;
-    const gap = 20; // px breathing room
-    const targetY = pageY + rect.top + rect.height - gap;
-    if (targetY > pageY) {
-      window.scrollTo({ top: targetY, behavior: 'smooth' });
-    }
-  }
+    $filters.addEventListener("click", e => {
+      const b = e.target.closest("button.oo-chip");
+      if (!b) return;
 
-  // Click handler for filter chips (update state, apply filter, then scroll)
-  $filters.addEventListener("click", e=>{
-    const b = e.target.closest("button.oo-chip");
-    if (!b) return;
-    active = b.dataset.filter;
-    [...$filters.children].forEach(x=>x.classList.toggle("active", x===b));
-    applyFilter();
-    // Wait a tick for DOM changes (cards hidden/shown), then scroll
-    setTimeout(scrollUnderFeatured, 120);
-  });
+      // update active visual state as before
+      active = b.dataset.filter;
+      [...$filters.children].forEach(x => x.classList.toggle("active", x === b));
+      applyFilter();
 
-  // After we render the grid we'll attach play-overlay handler (below) so mobile play works.
+      // small debounce to avoid rapid repeated scrolls on quick clicks
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        if (!$featured || !$gridWrap) return;
 
-    // Featured card (includes a play-overlay to ensure mobile video plays)
-  function featuredHTML(){
-    if(!FEATURED.enabled) return "";
+        // compute the target Y position so the featured card remains visible
+        // and the filtered cards are nudged into view just below it.
+        const featuredRect = $featured.getBoundingClientRect();
+        const pageY = window.scrollY || window.pageYOffset;
+        const gap = 20; // breathing room in px
+        const targetY = pageY + featuredRect.top + featuredRect.height - gap;
 
-    if (FEATURED.type === "video") {
-      // ensure the embed URL contains needed params
-      const separator = FEATURED.videoUrl.includes("?") ? "&" : "?";
-      const safeSrcBase = FEATURED.videoUrl + separator + "rel=0&playsinline=1&enablejsapi=1";
-      // Do not include autoplay here. We will append autoplay only after a user taps the overlay.
-      return `
-        <article class="oo-card oo-featured">
-          <div class="featured-media" style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:16/9;background:#000">
-            <iframe
-              id="featured-iframe"
-              src="${safeSrcBase}"
-              title="${FEATURED.title || 'Featured video'}"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-              referrerpolicy="strict-origin-when-cross-origin"
-              style="width:100%;height:100%;border:0;display:block;position:relative;z-index:2;pointer-events:auto"
-              allowfullscreen
-            ></iframe>
+        // Only scroll downward to avoid surprising the user
+        window.scrollTo({
+          top: Math.max(targetY, pageY),
+          behavior: "smooth"
+        });
 
-            <!-- clickable overlay button to trigger a user-gesture autoplay (mobile friendly) -->
-            <button class="play-overlay" aria-label="Play video" style="
-               position:absolute;inset:0;display:grid;place-items:center;z-index:3;
-               background:transparent;border:0;padding:0;cursor:pointer;">
-              <div style="
-                width:88px;height:88px;border-radius:999px;background:rgba(11,18,32,0.72);
-                display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.45);">
-                <svg width='40' height='40' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
-                  <path d='M8 5v14l11-7L8 5z' fill='#fff'/>
-                </svg>
-              </div>
-            </button>
-          </div>
-
-          <div><span class="oo-tag">Featured</span></div>
-          <div class="oo-metric">${FEATURED.metric}</div>
-          <div class="oo-blurb">${FEATURED.blurb}</div>
-          <a class="oo-cta" href="${FEATURED.ctaUrl}" target="_blank" rel="noopener">${FEATURED.ctaLabel}</a>
-        </article>
-      `;
-    } else {
-      return `
-        <article class="oo-card oo-featured">
-          <div style="position:relative;border-radius:12px;overflow:hidden">
-            <img src="${FEATURED.imageUrl}" alt="${FEATURED.imageAlt}" style="width:100%;height:auto;display:block">
-          </div>
-          <div><span class="oo-tag">Featured</span></div>
-          <div class="oo-metric">${FEATURED.metric}</div>
-          <div class="oo-blurb">${FEATURED.blurb}</div>
-          <a class="oo-cta" href="${FEATURED.ctaUrl}" target="_blank" rel="noopener">${FEATURED.ctaLabel}</a>
-        </article>
-      `;
-    }
-  }
-  // Featured card (includes a play-overlay to ensure mobile video plays)
-  function featuredHTML(){
-    if(!FEATURED.enabled) return "";
-
-    if (FEATURED.type === "video") {
-      // ensure the embed URL contains needed params
-      const separator = FEATURED.videoUrl.includes("?") ? "&" : "?";
-      const safeSrcBase = FEATURED.videoUrl + separator + "rel=0&playsinline=1&enablejsapi=1";
-      // Do not include autoplay here. We will append autoplay only after a user taps the overlay.
-      return `
-        <article class="oo-card oo-featured">
-          <div class="featured-media" style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:16/9;background:#000">
-            <iframe
-              id="featured-iframe"
-              src="${safeSrcBase}"
-              title="${FEATURED.title || 'Featured video'}"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-              referrerpolicy="strict-origin-when-cross-origin"
-              style="width:100%;height:100%;border:0;display:block;position:relative;z-index:2;pointer-events:auto"
-              allowfullscreen
-            ></iframe>
-
-            <!-- clickable overlay button to trigger a user-gesture autoplay (mobile friendly) -->
-            <button class="play-overlay" aria-label="Play video" style="
-               position:absolute;inset:0;display:grid;place-items:center;z-index:3;
-               background:transparent;border:0;padding:0;cursor:pointer;">
-              <div style="
-                width:88px;height:88px;border-radius:999px;background:rgba(11,18,32,0.72);
-                display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.45);">
-                <svg width='40' height='40' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
-                  <path d='M8 5v14l11-7L8 5z' fill='#fff'/>
-                </svg>
-              </div>
-            </button>
-          </div>
-
-          <div><span class="oo-tag">Featured</span></div>
-          <div class="oo-metric">${FEATURED.metric}</div>
-          <div class="oo-blurb">${FEATURED.blurb}</div>
-          <a class="oo-cta" href="${FEATURED.ctaUrl}" target="_blank" rel="noopener">${FEATURED.ctaLabel}</a>
-        </article>
-      `;
-    } else {
-      return `
-        <article class="oo-card oo-featured">
-          <div style="position:relative;border-radius:12px;overflow:hidden">
-            <img src="${FEATURED.imageUrl}" alt="${FEATURED.imageAlt}" style="width:100%;height:auto;display:block">
-          </div>
-          <div><span class="oo-tag">Featured</span></div>
-          <div class="oo-metric">${FEATURED.metric}</div>
-          <div class="oo-blurb">${FEATURED.blurb}</div>
-          <a class="oo-cta" href="${FEATURED.ctaUrl}" target="_blank" rel="noopener">${FEATURED.ctaLabel}</a>
-        </article>
-      `;
-    }
-  }
+        scrollTimeout = null;
+      }, 120); // debounce in ms
+    });
+  })();
 
 
   // CTA routing based on tags
@@ -1055,29 +946,6 @@ This aligns with Industry5.pro’s mission to be outcome‑focused and human‑c
 
   render();
   applyFilter();
-    // render and initial filter
-  render();
-  applyFilter();
-
-  // Attach play-overlay behavior (user gesture => autoplay)
-  (function attachPlayOverlay(){
-    const grid = document.getElementById("oo-grid");
-    // delegate because element gets injected by render()
-    grid.addEventListener("click", function(e){
-      const btn = e.target.closest(".play-overlay");
-      if (!btn) return;
-      const iframe = document.getElementById("featured-iframe");
-      if (!iframe) return;
-      // Append autoplay=1 to the iframe src (user gesture) and remove overlay so playback is visible
-      const sep = iframe.src.includes("?") ? "&" : "?";
-      if (!/autoplay=1/.test(iframe.src)) {
-        iframe.src = iframe.src + sep + "autoplay=1";
-      }
-      // hide the overlay (closest .play-overlay parent)
-      btn.style.display = "none";
-    }, {passive:false});
-  })();
-
 })();
 </script>
 
