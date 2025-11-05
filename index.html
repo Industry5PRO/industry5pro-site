@@ -675,21 +675,24 @@ header nav a:hover::after,
   const ROI_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform?usp=header";
   const CYBER_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSdOMTJRwYEtNkXtb2Zt89wK7dJs6v1oK4VkX3reSo7HRR_QjQ/viewform?usp=header";
 
-  // Featured supplier toggle/content (image OR video). Keep enabled, swap content later.
+    // Featured supplier toggle/content (image OR video). Keep enabled, swap content later.
   const FEATURED = {
-  enabled: true,
-  type: "image", // "image" | "video"
-  title: "Featured Supplier of the Quarter",
-  metric: "Voice AI: Deflect 30–60% of routine calls",
-  blurb: "Real conversations; agents focus on edge cases. See if your flows are AI-ready.",
-  imageUrl: "/assets/featured-supplier.jpg",
-  imageAlt: "Featured supplier",
-  // If using video later: embed URL (e.g., YouTube/Vimeo embed)
-  videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0",
-  ctaLabel: "Run AI Readiness & Get My ROI Plan",
-  ctaUrl: AI_FORM,
-  tags: ["ai","cx","speed"]
-};
+    enabled: true,
+    type: "video", // "image" | "video"
+    title: "Lumen — Cloud 2.0: Wavelength, NaaS, Multi-Cloud",
+    metric: "Wavelength leader • Carrier-neutral on-ramps • Rapid turn-up",
+    blurb: "Why this matters: dedicated wavelength for long hops, NaaS for programmable onramps, and multi-cloud paths for latency and CX. Watch the interview to see the quadrant and why Lumen leads.",
+    // fallback image for devices where embeds are blocked; replace with your asset if needed
+    imageUrl: "/assets/featured-supplier.jpg",
+    imageAlt: "Lumen Cloud 2.0 — Wavelength and NaaS illustration",
+    // YouTube embed you supplied — this will render inline when type === 'video'
+    videoUrl: "https://www.youtube.com/embed/6C2s41rvt20?rel=0",
+    ctaLabel: "See my ROI plan",
+    // uses the existing AI_FORM constant you already declared earlier in the page
+    ctaUrl: AI_FORM,
+    tags: ["cloud","wavelength","naas"]
+  };
+
 
   // KPI cards: tag-driven routing (ai -> AI_FORM; everything else -> ROI_FORM)
   const CARDS = [
