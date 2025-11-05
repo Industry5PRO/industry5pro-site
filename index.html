@@ -739,8 +739,9 @@ const FEATURED = {
   imageAlt: "Lumen Cloud 2.0 — Wavelength and NaaS illustration",
   // New YouTube embed (Kate Johnson / Lumen AR Forum)
   videoUrl: "https://www.youtube.com/embed/ZPJWtw-DsUE?rel=0",
-  ctaLabel: "See my ROI plan",
-  ctaUrl: AI_FORM,
+  // new
+ctaLabel: "Run Cloud 2.0 Readiness",
+ctaUrl: "https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform",
   tags: ["cloud","wavelength","naas"]
 };
 
@@ -925,7 +926,15 @@ const FEATURED = {
         <div><span class="oo-tag">Featured</span></div>
         <div class="oo-metric">${FEATURED.metric}</div>
         <div class="oo-blurb">${FEATURED.blurb}</div>
-        <a class="oo-cta" href="${FEATURED.ctaUrl}" target="_blank" rel="noopener">${FEATURED.ctaLabel}</a>
+        <a id="featured-cloud2-cta"
+   class="oo-cta"
+   href="${FEATURED.ctaUrl}"
+   target="_blank"
+   rel="noopener"
+   data-cta-tags="lumen,cloud,network,cloud2">
+  ${FEATURED.ctaLabel}
+</a>
+
       </article>
     `;
   }
