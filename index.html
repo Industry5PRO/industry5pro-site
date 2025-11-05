@@ -658,7 +658,8 @@ header nav a:hover::after,
     color:#0a0f14; background:var(--green); border:1px solid rgba(133,187,101,.6);
   }
   .oo-cta:hover{ box-shadow:0 10px 22px rgba(133,187,101,.28); transform:translateY(-1px) }
-  /* Outcome-Obsessed featured card: full width, centered video */
+
+/* Outcome-Obsessed featured card: full width, centered video */
 .oo-featured{
   grid-column: 1 / -1;           /* span entire grid width so it sits at the top */
   display:flex;
@@ -670,26 +671,35 @@ header nav a:hover::after,
   align-items:stretch;
 }
 
-/* video container to ensure centered alignment */
-.oo-featured .featured-media {
+/* featured media: ensure iframe fills, is on top, and is not blocked by overlays */
+.oo-featured .featured-media,
+.featured-media {
   width:100%;
   border-radius:12px;
   overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#000; /* fallback while loading */
-  aspect-ratio:16/9; /* keep 16:9 box always */
+  display:block;
+  background:#000;
+  aspect-ratio:16/9;
+  position:relative;
+  z-index:1;
 }
 
-/* iframe styling to properly fill the container and remain vertically centered */
-.oo-featured iframe,
-.oo-featured video {
-  width:100%;
-  height:100%;
-  border:0;
-  display:block;
+/* explicitly target the iframe so it can't be covered */
+.oo-featured .featured-media iframe,
+.featured-media iframe {
+  width:100% !important;
+  height:100% !important;
+  border:0 !important;
+  display:block !important;
+  position:relative !important;
+  z-index:2 !important;
+  pointer-events:auto !important;
 }
+
+/* make sure no absolute overlays from other code sit above the iframe */
+.oo-featured .fs-overlay,
+.oo-featured .overlay,
+.featured-overlay { display:none !important; pointer-events:none !important; }
 
 /* shrink the overlay text on small screens so video stays visible */
 @media (max-width:720px){
@@ -697,6 +707,7 @@ header nav a:hover::after,
   .oo-featured .oo-metric { font-size:1rem; }
   .oo-featured .oo-blurb { font-size:.92rem; }
 }
+
 
 </style>
 
@@ -873,14 +884,31 @@ const FEATURED = {
   // Featured card
   function featuredHTML(){
     if(!FEATURED.enabled) return "";
-    const media = FEATURED.type==="video"
-      ? `<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px">
-           <iframe src="${FEATURED.videoUrl}" title="Featured" allowfullscreen
-                   style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
-         </div>`
-      : `<div style="position:relative;border-radius:12px;overflow:hidden">
-           <img src="${FEATURED.imageUrl}" alt="${FEATURED.imageAlt}" style="width:100%;height:auto;display:block">
-         </div>`;
+    const media = FEATURED.type === "video"
+  ? (function(){
+      // ensure the embed URL contains params needed for mobile play and JS control
+      const separator = FEATURED.videoUrl.includes("?") ? "&" : "?";
+      const safeSrc = FEATURED.videoUrl + separator + "rel=0&playsinline=1&enablejsapi=1";
+      return `
+        <div class="featured-media" style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:16/9;background:#000">
+          <iframe
+            id="featured-iframe"
+            src="${safeSrc}"
+            title="${FEATURED.title || 'Featured video'}"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+            referrerpolicy="strict-origin-when-cross-origin"
+            loading="lazy"
+            style="width:100%;height:100%;border:0;display:block;position:relative;z-index:2;pointer-events:auto"
+            allowfullscreen
+          ></iframe>
+        </div>
+      `;
+    })()
+  : `<div style="position:relative;border-radius:12px;overflow:hidden">
+       <img src="${FEATURED.imageUrl}" alt="${FEATURED.imageAlt}" style="width:100%;height:auto;display:block">
+     </div>`;
+
     return `
       <article class="oo-card oo-featured">
         ${media}
