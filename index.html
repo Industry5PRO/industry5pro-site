@@ -713,7 +713,7 @@ const FEATURED = {
   type: "video", // "image" | "video"
   title: "Lumen — Cloud 2.0: Wavelength, NaaS, Multi-Cloud",
   metric: "Wavelength leader • Carrier-neutral on-ramps • Rapid turn-up",
-  blurb: "Dedicated wavelength for long hops, programmable NaaS on-ramps, and multi-cloud paths to protect latency and CX. Watch Kate Johnson at the Lumen AR Forum.",
+  blurb: "Lumen’s transformation is real and sustained. Watch CEO Kate Johnson at the Lumen AR Forum describing how leadership in wavelength, programmable NaaS on‑ramps, and multi‑cloud paths are restoring revenue growth driven by AI. Remarkable operational and financial progress; customer obsession is central, aligned with Industry5.pro’s mission to deliver outcome‑focused, human‑centered advisory.",
   // fallback image if needed (keep path or change to your uploaded thumbnail)
   imageUrl: "/assets/AI_Fastnet_FoxBiz_Thumbnail.jpg",
   imageAlt: "Lumen Cloud 2.0 — Wavelength and NaaS illustration",
@@ -819,12 +819,44 @@ const FEATURED = {
     b.textContent=f.label;
     $filters.appendChild(b);
   });
-  $filters.addEventListener("click",e=>{
-    const b=e.target.closest("button.oo-chip"); if(!b) return;
-    active=b.dataset.filter;
-    [...$filters.children].forEach(x=>x.classList.toggle("active",x===b));
-    applyFilter();
-  });
+   // Robust filter handler: apply filter then nudge viewport under the featured card
+  (function(){
+    const $featured = document.querySelector(".oo-featured");
+    const $gridWrap = document.getElementById("oo-grid");
+    let scrollTimeout = null;
+
+    $filters.addEventListener("click", e => {
+      const b = e.target.closest("button.oo-chip");
+      if (!b) return;
+
+      // update active visual state as before
+      active = b.dataset.filter;
+      [...$filters.children].forEach(x => x.classList.toggle("active", x === b));
+      applyFilter();
+
+      // small debounce to avoid rapid repeated scrolls on quick clicks
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        if (!$featured || !$gridWrap) return;
+
+        // compute the target Y position so the featured card remains visible
+        // and the filtered cards are nudged into view just below it.
+        const featuredRect = $featured.getBoundingClientRect();
+        const pageY = window.scrollY || window.pageYOffset;
+        const gap = 20; // breathing room in px
+        const targetY = pageY + featuredRect.top + featuredRect.height - gap;
+
+        // Only scroll downward to avoid surprising the user
+        window.scrollTo({
+          top: Math.max(targetY, pageY),
+          behavior: "smooth"
+        });
+
+        scrollTimeout = null;
+      }, 120); // debounce in ms
+    });
+  })();
+
 
   // CTA routing based on tags
   function ctaUrl(tags){
