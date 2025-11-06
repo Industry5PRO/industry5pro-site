@@ -428,6 +428,35 @@ header nav a:hover::after,
   transform: translateY(-1px);
   outline: 0;
 }
+    /* ===== Mobile nav stacking for top-right menu ===== */
+@media (max-width: 900px) {
+  .home-nav .nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;              /* row gap / column gap */
+    justify-content: flex-end;  /* keep right-aligned feel */
+    padding: 8px 12px;
+  }
+  .home-nav .nav-item {
+    flex: 1 1 calc(50% - 12px); /* two per row on small screens */
+    text-align: right;          /* matches your current alignment */
+  }
+  .home-nav .nav-item a {
+    display: block;
+    padding: 10px 8px;
+    white-space: nowrap;        /* prevents ugly wraps inside each pill */
+  }
+}
+
+@media (max-width: 520px) {
+  .home-nav .nav-item {
+    flex-basis: 100%;           /* one per row on very small screens */
+  }
+  .home-nav .nav-item a {
+    padding: 12px 10px;
+  }
+}
+
 <style>
   /* Keep CTA/pill text centered and on one line */
   .btn, .cta, .tag, .pill {
@@ -492,6 +521,7 @@ header nav a:hover::after,
   <div id="oo-filters" class="oo-chips" style="display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 16px"></div>
 
   <!-- Featured + KPI grid -->
+  <div id="kpi-results-anchor" aria-hidden="true"></div>
   <div id="oo-grid" class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px"></div>
 
   <p style="margin:12px 0 0;color:var(--muted);font-size:.92rem">
@@ -1289,6 +1319,50 @@ ctaUrl: "https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZ
   } catch (e) { console.warn("Industries link update skipped:", e); }
 })();
 </script>
+<script>
+(function () {
+  function placeAnchorBelowFeatured() {
+    const grid = document.getElementById('oo-grid');
+    const anchor = document.getElementById('kpi-results-anchor');
+    if (!grid || !anchor) return;
+    const firstCard = grid.firstElementChild;
+    if (firstCard && anchor.previousElementSibling !== firstCard) {
+      firstCard.insertAdjacentElement('afterend', anchor);
+    }
+  }
+
+  // Run soon after DOM paints; repeat once in case your render is async
+  requestAnimationFrame(placeAnchorBelowFeatured);
+  setTimeout(placeAnchorBelowFeatured, 150);
+})();
+</script>
+  <!-- ...your other scripts... -->
+  <script src="/assets/main.js"></script>
+  <!-- (any analytics scripts, etc) -->
+
+  <!-- Smooth-scroll to KPI results after a pill click -->
+  <script>
+  (function () {
+    const SCROLL_TARGET = '#kpi-results-anchor';
+    const CHIP_SELECTOR = '.oo-chips button, .oo-chips .chip, .oo-filters .chip, .oo-filters button';
+
+    function scrollToResults() {
+      const el = document.querySelector(SCROLL_TARGET);
+      if (!el) return;
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    document.addEventListener('click', function (e) {
+      const chip = e.target.closest(CHIP_SELECTOR);
+      if (!chip) return;
+
+      // Let your filter code run, then scroll to the results
+      requestAnimationFrame(() => setTimeout(scrollToResults, 100));
+    }, { passive: true });
+  })();
+  </script>
+</body>
+</html>
 
 </body>
 </html>
