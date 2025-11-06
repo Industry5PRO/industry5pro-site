@@ -69,6 +69,69 @@
     /* Page width constraints */
     main > .container {max-width:1100px;margin:0 auto;padding:0 16px}
     #foundations .inner {max-width:900px;margin:0 auto;padding:0 16px}
+    /* --- Button Glow (Gold) --- */
+:root {
+  /* set this to your sitewide gold */
+  --gold: #E3B341;
+}
+
+.btn,
+a.btn,
+.cta-row a,
+button {
+  position: relative;
+  transition:
+    color .18s ease,
+    background-color .18s ease,
+    border-color .18s ease,
+    box-shadow .22s ease,
+    transform .18s ease;
+  will-change: transform, box-shadow;
+}
+
+/* Hover / focus glow */
+.btn:hover,
+a.btn:hover,
+.cta-row a:hover,
+button:hover,
+.btn:focus-visible,
+a.btn:focus-visible,
+.cta-row a:focus-visible,
+button:focus-visible {
+  box-shadow:
+    0 0 10px color-mix(in srgb, var(--gold) 70%, transparent),
+    0 0 22px color-mix(in srgb, var(--gold) 40%, transparent),
+    inset 0 0 0 1px color-mix(in srgb, var(--gold) 55%, transparent);
+  border-color: var(--gold) !important;
+  text-shadow: 0 0 6px color-mix(in srgb, var(--gold) 60%, transparent);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+/* Optional: make primary/secondary pick up the gold on hover */
+.btn.primary:hover,
+a.btn.primary:hover {
+  background: var(--gold) !important;
+  color: #0b1220 !important;
+}
+
+.btn.secondary:hover,
+a.btn.secondary:hover,
+.cta-row a:hover {
+  background: color-mix(in srgb, var(--gold) 16%, transparent) !important;
+  color: #ffffff !important;
+}
+
+/* Keyboard accessibility */
+.btn:focus-visible,
+a.btn:focus-visible,
+.cta-row a:focus-visible,
+button:focus-visible {
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--gold) 45%, transparent),
+    0 0 18px color-mix(in srgb, var(--gold) 35%, transparent);
+}
+
   </style>
 </head>
 <body>
