@@ -131,6 +131,38 @@ button:focus-visible {
     0 0 0 3px color-mix(in srgb, var(--gold) 45%, transparent),
     0 0 18px color-mix(in srgb, var(--gold) 35%, transparent);
 }
+/* --- AI Readiness hero: pill/button glow --- */
+#ai-readiness-hero a[target="_blank"][rel~="noopener"] {
+  position: relative;
+  transition:
+    color .18s ease,
+    background-color .18s ease,
+    border-color .18s ease,
+    box-shadow .22s ease,
+    transform .18s ease;
+  will-change: transform, box-shadow;
+}
+
+/* Hover/focus glow (same gold as sitewide) */
+#ai-readiness-hero a[target="_blank"][rel~="noopener"]:hover,
+#ai-readiness-hero a[target="_blank"][rel~="noopener"]:focus-visible {
+  box-shadow:
+    0 0 10px color-mix(in srgb, var(--gold) 70%, transparent),
+    0 0 22px color-mix(in srgb, var(--gold) 40%, transparent),
+    inset 0 0 0 1px color-mix(in srgb, var(--gold) 55%, transparent);
+  border-color: var(--gold) !important;
+  text-shadow: 0 0 6px color-mix(in srgb, var(--gold) 60%, transparent);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+/* Optional: subtle pressed state */
+#ai-readiness-hero a[target="_blank"][rel~="noopener"]:active {
+  transform: translateY(0);
+  box-shadow:
+    0 0 6px color-mix(in srgb, var(--gold) 55%, transparent),
+    inset 0 0 0 1px color-mix(in srgb, var(--gold) 55%, transparent);
+}
 
   </style>
 </head>
