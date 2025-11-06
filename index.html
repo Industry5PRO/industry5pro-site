@@ -1344,6 +1344,94 @@ ctaUrl: "https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZ
   });
 })();
 </script>
+<script>
+/**
+ * Industry4.pro — Link updates for AIoT intake form
+ * Targets:
+ *  - All KPI tiles that are AIoT-tagged (class/data-tag containing "aiot")
+ *  - Supplier-Agnostic Products & Platforms: "IoT & Edge Connectivity", "Aerial & Computer Vision"
+ *  - Industries: "Maritime", "Public Safety & Smart City" (typo-safe), "Agriculture & Drones"
+ *
+ * Keeps visible titles exactly as-is (e.g., "Get my ROI Plan"). Only changes href.
+ */
+(function () {
+  var FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform?usp=sharing";
+
+  // Utilities
+  function norm(s){
+    return (s || "")
+      .toLowerCase()
+      .replace(/&/g, "and")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function setLink(a) {
+    if (!a) return;
+    a.setAttribute("href", FORM_URL);
+    a.setAttribute("target", "_blank");
+    a.setAttribute("rel", "noopener");
+  }
+
+  // 1) KPI tiles tagged AIoT
+  // Looks for KPI containers, then anchors within elements marked with aiot via class or data-*.
+  try {
+    var kpiScope = document.querySelector("#kpi, .kpi, .kpi-tiles, [data-kpi]");
+    var aiotTiles = (kpiScope ? kpiScope : document).querySelectorAll(
+      [
+        '[data-tag*="aiot" i] a',
+        '[data-category*="aiot" i] a',
+        '[data-kpi-tag*="aiot" i] a',
+        '[class*="aiot" i] a'
+      ].join(",")
+    );
+    aiotTiles.forEach(setLink);
+
+    // Fallback: if KPI tiles don’t have AIoT tags, but the KPI card itself mentions AIoT,
+    // update its internal anchor (if any).
+    var kpiCards = (kpiScope ? kpiScope : document).querySelectorAll(".kpi-tile, .tile, [data-kpi]");
+    kpiCards.forEach(function(card){
+      var text = norm(card.textContent);
+      if (text.includes("aiot")) {
+        var a = card.querySelector("a");
+        if (a) setLink(a);
+      }
+    });
+  } catch (e) { console.warn("KPI AIoT link update skipped:", e); }
+
+  // 2) Supplier-Agnostic Products & Platforms — two specific tiles
+  var productTargets = [
+    "iot and edge connectivity",
+    "aerial and computer vision"
+  ];
+
+  try {
+    var productScope = document.querySelector("#products, [id*='product'], [data-section='products']") || document;
+    var productAnchors = productScope.querySelectorAll(".tile a, .tile-title, a");
+    productAnchors.forEach(function(a){
+      var t = norm(a.textContent);
+      if (productTargets.includes(t)) setLink(a);
+    });
+  } catch (e) { console.warn("Products link update skipped:", e); }
+
+  // 3) Industries — three specific tiles (typo-safe for Safety/Saftey)
+  var industryTargets = [
+    "maritime",
+    "public safety and smart city",
+    "public saftey and smart city", // common typo
+    "agriculture and drones"
+  ];
+
+  try {
+    var industriesScope = document.querySelector("#industries, [data-section='industries']") || document;
+    var industryAnchors = industriesScope.querySelectorAll(".tile a, .tile .tile-title, a");
+    industryAnchors.forEach(function(a){
+      var t = norm(a.textContent);
+      if (industryTargets.includes(t)) setLink(a);
+    });
+  } catch (e) { console.warn("Industries link update skipped:", e); }
+})();
+</script>
 
 </body>
 </html>
