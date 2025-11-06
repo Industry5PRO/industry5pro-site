@@ -1,0 +1,22 @@
+@media (max-width: 900px) {
+  .home-nav .nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    justify-content: flex-end;
+    padding: 8px 12px;
+  }
+  .home-nav .nav-item {
+    flex: 1 1 calc(50% - 12px); /* two per row */
+    text-align: right;
+  }
+  .home-nav .nav-item a {
+    display: block;
+    padding: 10px 8px;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 520px) {
+  .home-nav .nav-item { flex-basis: 100%; } /* one per row */
+  .home-nav .nav-item a { padding: 12px 10px; }
+}
