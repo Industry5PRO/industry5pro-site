@@ -1319,23 +1319,7 @@ ctaUrl: "https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZ
   } catch (e) { console.warn("Industries link update skipped:", e); }
 })();
 </script>
-<script>
-(function () {
-  function placeAnchorBelowFeatured() {
-    const grid = document.getElementById('oo-grid');
-    const anchor = document.getElementById('kpi-results-anchor');
-    if (!grid || !anchor) return;
-    const firstCard = grid.firstElementChild;
-    if (firstCard && anchor.previousElementSibling !== firstCard) {
-      firstCard.insertAdjacentElement('afterend', anchor);
-    }
-  }
 
-  // Run soon after DOM paints; repeat once in case your render is async
-  requestAnimationFrame(placeAnchorBelowFeatured);
-  setTimeout(placeAnchorBelowFeatured, 150);
-})();
-</script>
   <!-- ...your other scripts... -->
   <script src="/assets/main.js"></script>
   <!-- (any analytics scripts, etc) -->
