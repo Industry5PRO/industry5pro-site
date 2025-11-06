@@ -20,3 +20,15 @@
   .home-nav .nav-item { flex-basis: 100%; } /* one per row */
   .home-nav .nav-item a { padding: 12px 10px; }
 }
+/* Make the anchor not create a grid cell */
+#kpi-results-anchor { display: contents; }
+
+/* Fallback if a browser doesn't support display: contents */
+@supports not (display: contents) {
+  #kpi-results-anchor {
+    grid-column: 1 / -1;
+    height: 0;
+    margin: 0;
+    padding: 0;
+  }
+}
