@@ -1345,6 +1345,44 @@ ctaUrl: "https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZ
     }, { passive: true });
   })();
   </script>
+  <script>
+(function () {
+  // Scroll target right above your grid; fallback to the grid itself
+  const SCROLL_TARGET_SEL = '#kpi-results-anchor, #oo-grid';
+  const CHIP_SELECTOR = '.oo-chips button, .oo-chips .chip, .oo-filters .chip, .oo-filters button';
+
+  // Tune this to taste: increase to land further down the page
+  const EXTRA_PUSH_PX = 220;
+
+  function scrollToWithOffset(el, offsetPx) {
+    var rect = el.getBoundingClientRect();
+    var y = rect.top + window.pageYOffset + offsetPx;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+
+  function scrollToResults() {
+    var el = document.querySelector(SCROLL_TARGET_SEL);
+    if (!el) return;
+
+    // If you ever make the header sticky, subtract its height here:
+    var header = document.querySelector('header');
+    var stickyOffset = header ? 0 /* -header.offsetHeight */ : 0;
+
+    scrollToWithOffset(el, stickyOffset + EXTRA_PUSH_PX);
+  }
+
+  document.addEventListener('click', function (e) {
+    var chip = e.target.closest(CHIP_SELECTOR);
+    if (!chip) return;
+
+    // Let your filter logic update the grid, then scroll
+    requestAnimationFrame(function () {
+      setTimeout(scrollToResults, 180); // bump to 250ms if your render is slower
+    });
+  }, { passive: true });
+})();
+</script>
+
 </body>
 </html>
 
