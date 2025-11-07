@@ -71,7 +71,6 @@
 <!-- Supermetrics AI video block -->
 <div class="sm-video-wrap">
   <div class="sm-video-embed">
-    <!-- The actual YouTube iframe (still loads/plays if someone keyboard-focuses it) -->
     <iframe 
       src="https://www.youtube.com/embed/bznoiJEW4ek?si=SKhU9-t_a-HhroIU"
       title="Supermetrics AI Overview"
@@ -80,18 +79,11 @@
       referrerpolicy="strict-origin-when-cross-origin"
       allowfullscreen>
     </iframe>
-
-    <!-- Click overlay: any click opens your affiliate home page in a new tab -->
-    <a class="sm-video-overlay"
-       href="https://partners.supermetrics.com/Industry5PRO"
-       target="_blank"
-       rel="noopener nofollow sponsored"
-       aria-label="Open Supermetrics via Industry5.pro">
-    </a>
   </div>
 
-  <p class="sm-video-caption note">Introducing Supermetrics AI — click the video to learn more and get started via Industry5.pro.</p>
+  <p class="sm-video-caption note">Introducing Supermetrics AI. Watch the quick overview.</p>
 </div>
+
 
     <div class="grid cols-2">
       
@@ -338,14 +330,7 @@ header .btn.ghost:focus-visible,
   pointer-events:auto; /* keep keyboard access for a11y */
 }
 
-/* Invisible overlay anchor: makes any click go to your affiliate homepage */
-.sm-video-overlay{
-  position:absolute; inset:0;
-  display:block;
-  z-index:2;
-  /* subtle visual feedback on hover/focus to match your gold glow language */
-  outline:0;
-}
+
 .sm-video-embed:hover,
 .sm-video-embed:focus-within{
   border-color:#FFD700;
