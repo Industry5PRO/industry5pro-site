@@ -366,12 +366,42 @@ footer > .container{ max-width:1100px; margin:0 auto; padding:0 16px; text-align
   </article>
 
   <!-- Placeholders: AF Part 4–6 (ready for embeds later) -->
-  <article id="af-part4" class="card" data-tags="AI Foundations,AIoT,Edge,Security">
-    <h3>AI Foundations — Part 4: From M2M to AIoT (Edge)</h3>
-    <p>From alarms to autonomy: edge AI, vision, and actions that execute when it matters.</p>
-    <div class="tags"><span class="tag">AI Foundations</span><span class="tag">AIoT</span><span class="tag">Edge</span></div>
-    <p class="meta">Published: (coming soon).</p>
-  </article>
+ <!-- AF Part 4 (live) -->
+<article id="af-part4" class="card" data-tags="AI Foundations,Cloud,Network,AI">
+  <h3>AI Foundations — Part 4: Connectivity &amp; Orchestration</h3>
+  <p>Passing the baton between edge, 5G overlays, and GPU clouds. Lumen + T-Mobile as the connective AI fabric.</p>
+  <div class="tags">
+    <span class="tag">AI Foundations</span><span class="tag">Cloud</span><span class="tag">Network</span>
+  </div>
+
+  <div class="li-embed" data-type="linkedin">
+    <div class="toolbar">
+      <button class="li-view active" data-mode="teaser" type="button">Less text</button>
+      <button class="li-view" data-mode="full" type="button">Full post</button>
+      <a class="li-open" href="https://www.linkedin.com/pulse/ai-foundations-part-4-connectivity-orchestration-louis-tortora-gyowe" target="_blank" rel="noopener">Read the article</a>
+    </div>
+
+    <!-- Short post -->
+    <iframe
+      data-mode="teaser"
+      src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7392569793050169345?collapsed=1"
+      height="604"
+      allowfullscreen
+      title="LinkedIn teaser — Part 4">
+    </iframe>
+
+    <!-- Full post -->
+    <iframe
+      data-mode="full"
+      src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7392569793050169345"
+      height="1045"
+      allowfullscreen
+      title="LinkedIn full — Part 4"
+      style="display:none">
+    </iframe>
+  </div>
+</article>
+
 
   <article id="af-part5" class="card" data-tags="AI Foundations,Analytics,AI">
     <h3>AI Foundations — Part 5: Analytics &amp; Human Time</h3>
@@ -402,7 +432,7 @@ footer > .container{ max-width:1100px; margin:0 auto; padding:0 16px; text-align
         <li><a href="#af-part1">Part 1 — Resilience by Design (NaaS)</a></li>
         <li><a href="#af-part2">Part 2 — When One Cloud Fails (Multi-Cloud)</a></li>
         <li><a href="#af-part3">Part 3 — Security &amp; Backup (Policy First)</a></li>
-        <li><a href="#af-part4">Part 4 — From M2M to AIoT (Edge)</a></li>
+        <li><a href="#af-part4">Part 4 — Connectivity &amp; Orchestration</a></li>
         <li><a href="#af-part5">Part 5 — Analytics &amp; Human Time</a></li>
         <li><a href="#af-part6">Part 6 — Drones, Farms &amp; Final Mile</a></li>
       </ol>
@@ -479,6 +509,7 @@ footer > .container{ max-width:1100px; margin:0 auto; padding:0 16px; text-align
       'af-part3':'Nov 1, 2025',
       'post-aws-outage':'Oct 24, 2025',
       'post-amzn-q3':'Oct 31, 2025'
+      'af-part4':'Nov 7, 2025'
     };
 
     const ugcMap = {
@@ -487,6 +518,7 @@ footer > .container{ max-width:1100px; margin:0 auto; padding:0 16px; text-align
       '7387337149869686784':'Oct 28, 2025', // Part 1
       '7390051055952240641':'Oct 31, 2025', // Amazon Q3
       '7386400673040379904':'Oct 24, 2025'  // AWS outage
+      '7392569793050169345':'Nov 7, 2025' // NEW: Part 4 ugcPost
     };
 
     const slugMap = {
@@ -495,6 +527,7 @@ footer > .container{ max-width:1100px; margin:0 auto; padding:0 16px; text-align
       'resilience-design-how-network-as-a-service-powers-ai-louis-tortora-pm59e':'Oct 28, 2025',
       'amazons-blockbuster-q3-earnings-signal-ai-fueled-cloud-louis-tortora-cbpme':'Oct 31, 2025',
       'cloud-chaos-real-roi-what-aws-outage-taught-us-louis-tortora-lbome':'Oct 24, 2025'
+      'ai-foundations-part-4-connectivity-orchestration-louis-tortora-gyowe':'Nov 7, 2025' // NEW: Part 4 Pulse
     };
 
     function getUgcIdFrom(card){
