@@ -90,6 +90,17 @@
     .pill{display:inline-block; border:1px solid rgba(255,215,0,.35); border-radius:999px; padding:4px 10px; margin:2px 6px 2px 0; color:var(--silver); font-size:.88rem}
     .kpis{color:var(--silver); font-size:.96rem}
     .ex{color:var(--white)}
+    /* Nudge the hero copy toward center without center-aligning text */
+.hero-nudge{
+  max-width: 900px;      /* control line length */
+  margin: 0 auto;        /* center the block within the page */
+  padding-left: 36px;    /* slight “tab” so it doesn’t feel perfectly centered */
+}
+
+@media (max-width: 900px){
+  .hero-nudge{ padding-left: 16px; } /* lighter nudge on mobile */
+}
+
 
     /* Footer */
     footer{margin:30px 0 20px; padding:16px 0; border-top:1px solid rgba(255,215,0,.22); color:var(--silver); font-size:.95rem}
@@ -109,13 +120,15 @@
   </header>
 
   <main class="wrap">
-    <section class="hero">
-      <div class="kicker">Carrier Agnostic AIoT</div>
-      <h1>Data Driven Quadrant and Industry Applications</h1>
-      <p class="sub">
+   <section class="hero">
+  <div class="hero-nudge">
+    <div class="kicker">Carrier Agnostic AIoT</div>
+    <h1>Data Driven Quadrant and Industry Applications</h1>
+    <p class="sub">
         We lead with Aeris because the facts support it: platform scale from Ericsson’s IoT stack, multi MNO eSIM, deep security, and a carrier agnostic approach tailored to each use case and geography. For industrial operations, Siemens is our leader: Industrial Edge for on line inference, Insights Hub for data and twins, native PLC and SCADA integration, and IEC 62443 level security. Everyone has a niche. I can help clear the air. Scan below and send me an advisory request.
-      </p>
-    </section>
+     </p>
+  </div>
+</section>
 
     <!-- Quadrant -->
   <section class="quad">
