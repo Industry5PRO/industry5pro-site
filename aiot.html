@@ -126,6 +126,36 @@
   transform:translateY(-2px);
   outline:0;
 }
+/* Glowing gold pill CTAs with money-green text */
+.btns{ display:flex; gap:12px; flex-wrap:wrap }
+.pill-cta{
+  display:inline-block;
+  padding:12px 22px;
+  border-radius:9999px;
+  font-weight:800;
+  letter-spacing:.2px;
+  text-decoration:none;
+  color:#85BB65;                 /* money green letters */
+  background:rgba(255,215,0,.08);/* faint gold tint */
+  border:1px solid rgba(255,215,0,.65);
+  box-shadow:0 0 10px rgba(255,215,0,.25);
+  transition:transform .15s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+}
+.pill-cta:hover,
+.pill-cta:focus-visible{
+  transform:translateY(-1px);
+  background:rgba(255,215,0,.14);
+  border-color:#FFD700;
+  box-shadow:0 0 12px rgba(255,215,0,.45), 0 0 26px rgba(255,215,0,.25);
+  outline:0;
+}
+/* Featured pill */
+.pill-cta.accent{
+  background:linear-gradient(180deg,#FFD700,#f0c000);
+  color:#101010;                 /* readable on gold fill */
+  border:1px solid #FFD700;
+  box-shadow:0 6px 28px rgba(255,215,0,.35);
+}
 
 
     /* Footer */
@@ -286,6 +316,16 @@
       <h3>Ready to turn signals into outcomes?</h3>
       <p>Two fast paths: scope your use case now or talk it through live. We’ll align connectivity, edge, and data for measurable wins.</p>
     </div>
+    <div class="btns">
+  <a class="pill-cta accent"
+     href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform"
+     target="_blank" rel="noopener">
+    Start AIoT Discovery
+  </a>
+  <a class="pill-cta" href="tel:14076945495">Talk to Lou</a>
+  <a class="pill-cta" href="mailto:ltortora7@gmail.com">Email Lou</a>
+</div>
+
     <div class="btns">
       <a class="btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform" target="_blank" rel="noopener">
         Start AIoT Discovery
