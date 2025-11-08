@@ -920,7 +920,7 @@ ctaUrl: "https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZ
     </div>
 
     <div class="tile">
-      <a class="tile-title" data-appointment href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform?usp=sharing" target="_blank" rel="noopener">IoT & Edge Connectivity</a>
+      <a class="tile-title" href="/aiot.html">IoT & Edge Connectivity</a>
       <span class="tile-sub">Sensors, SD-WAN, 5G/LTE, telemetry</span>
     </div>
 
@@ -955,7 +955,7 @@ ctaUrl: "https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZ
     </div>
 
     <div class="tile">
-      <a class="tile-title" data-appointment href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform?usp=sharing" target="_blank" rel="noopener">Aerial & Computer Vision</a>
+      <a class="tile-title" href="/aiot.html">Aerial and Computer Vision</a>
       <span class="tile-sub">Drones, PPE/zone safety, inspections</span>
     </div>
 
@@ -1301,19 +1301,42 @@ ctaUrl: "https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZ
   } catch (e) { console.warn("KPI AIoT link update skipped:", e); }
 
   // 2) Supplier-Agnostic Products & Platforms — two specific tiles
-  var productTargets = [
+ <script>
+/* === AIoT tile routing (replace your entire original block with this) === */
+(function () {
+  // Titles we consider equivalent (case-insensitive)
+  var aiotTargets = [
+    "iot & edge connectivity",
     "iot and edge connectivity",
-    "aerial and computer vision"
+    "aerial and computer vision",
+    "aerial & computer vision",
+    "drones",
+    "drone / aerial"
   ];
+  var aiotUrl = "/aiot.html";
+
+  // Safe local normalizer (doesn't depend on other scripts)
+  function norm(s){ return (s || "").trim().toLowerCase(); }
 
   try {
-    var productScope = document.querySelector("#products, [id*='product'], [data-section='products']") || document;
-    var productAnchors = productScope.querySelectorAll(".tile a, .tile-title, a");
-    productAnchors.forEach(function(a){
+    var scope = document.querySelector("#products, [id*='product'], [data-section='products']") || document;
+
+    // Update title links (and any tile anchors) for the two target cards only
+    scope.querySelectorAll(".tile a, .tile-title").forEach(function(a){
       var t = norm(a.textContent);
-      if (productTargets.includes(t)) setLink(a);
+      if (aiotTargets.includes(t)) {
+        a.removeAttribute("data-appointment"); // stop any form hijack
+        a.removeAttribute("target");
+        a.removeAttribute("rel");
+        a.setAttribute("href", aiotUrl);
+      }
     });
-  } catch (e) { console.warn("Products link update skipped:", e); }
+  } catch (e) {
+    console.warn("Products link update skipped:", e);
+  }
+})();
+</script>
+
 
   // 3) Industries — three specific tiles (typo-safe for Safety/Saftey)
   var industryTargets = [
