@@ -156,6 +156,45 @@
   border:1px solid #FFD700;
   box-shadow:0 6px 28px rgba(255,215,0,.35);
 }
+/* Hero grid with right-side profile */
+.hero { padding: 40px 24px 10px; }
+.hero-grid{
+  max-width: 1080px;            /* centers the whole hero */
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;  /* more space for copy */
+  gap: 28px;
+  align-items: center;
+  padding-left: 36px;            /* subtle left nudge to align with quadrant */
+}
+.hero-copy .kicker{ color:#FFD700; font-weight:700; font-size:.95rem; letter-spacing:.08em; text-transform:uppercase }
+.hero-copy h1{ font-size:2.1rem; line-height:1.2; margin:.4rem 0 0 }
+.hero-copy .sub{ color:#C0C0C0; max-width: 760px; font-size:1.05rem }
+
+/* Profile card */
+.hero-pic{
+  justify-self: end;
+  width: 320px; max-width: 36vw;
+  border-radius: 18px;
+  border: 1px solid rgba(255,215,0,.35);
+  box-shadow: 0 10px 40px rgba(255,215,0,.12), 0 0 18px rgba(133,187,101,.25);
+  overflow: hidden;
+  background: #0b0b0b;
+}
+.hero-pic img{
+  display:block; width:100%; height:auto; object-fit:cover;
+  filter: saturate(1.03) contrast(1.02);
+}
+
+/* Mobile stack */
+@media (max-width: 900px){
+  .hero-grid{
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding-left: 16px;           /* lighter nudge on mobile */
+  }
+  .hero-pic{ justify-self: start; width: 56vw; }
+}
 
 
     /* Footer */
@@ -179,14 +218,22 @@
 
   <main class="wrap">
    <section class="hero">
-  <div class="hero-nudge">
-    <div class="kicker">Carrier Agnostic AIoT</div>
-    <h1>Data Driven Quadrant and Industry Applications</h1>
-    <p class="sub">
-        We lead with Aeris because the facts support it: platform scale from Ericsson’s IoT stack, multi MNO eSIM, deep security, and a carrier agnostic approach tailored to each use case and geography. For industrial operations, Siemens is our leader: Industrial Edge for on line inference, Insights Hub for data and twins, native PLC and SCADA integration, and IEC 62443 level security. Everyone has a niche. I can help clear the air. Scan below and send me an advisory request.
-     </p>
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div class="kicker">Carrier Agnostic AIoT</div>
+      <h1>Data Driven Quadrant and Industry Applications</h1>
+      <p class="sub">
+        We lead with Aeris because the facts support it: platform scale from Ericsson’s IoT stack, multi MNO eSIM, deep security, and a carrier agnostic approach tailored to each use case and geography. For industrial operations, Siemens is our leader: Industrial Edge for on line inference, Insights Hub for data and twins, native PLC and SCADA integration, and IEC 62443 level security. Everyone has a niche. I can help clear the air. Scan below and send me a consulting request.
+      </p>
+    </div>
+
+    <!-- Right-side profile: use the SAME src you use on index -->
+    <div class="hero-pic">
+      <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora — Industry5.pro" />
+    </div>
   </div>
 </section>
+
 
     <!-- Quadrant -->
   <section class="quad">
