@@ -228,6 +228,24 @@ footer > .container{ max-width: 1100px; margin: 0 auto; padding: 0 16px; text-al
 /* Ensure page containers stay centered */
 main > .container{ max-width:1100px; margin:0 auto; padding:0 16px; }
 footer > .container{ max-width:1100px; margin:0 auto; padding:0 16px; text-align:center; }
+  /* --- Fix blog logo size to match AIoT header --- */
+header .brand .logo{
+  width:44px !important;
+  height:44px !important;
+  border-radius:12px;
+  display:block;
+  object-fit:contain;
+  filter: drop-shadow(0 0 10px rgba(133,187,101,.40));
+  background: transparent;
+}
+/* Optional: tighten brand title spacing */
+header .brand .title{
+  font-weight:800;
+  font-size:20px;
+  line-height:1;
+  letter-spacing:.2px;
+}
+
 </style>
 
 </head>
