@@ -489,6 +489,7 @@ header nav a:hover::after,
   display:block; width:100%; height:100%;
 }
 
+  
 </style>
 
   </style>
@@ -664,6 +665,50 @@ header nav a:hover::after,
   .oo-featured { padding:10px; }
   .oo-featured .oo-metric { font-size:1rem; }
   .oo-featured .oo-blurb { font-size:.92rem; }
+}
+  :root{
+  --lumen:#FF6A13;
+  --lumen-blue-light:#2BEDE7;
+}
+
+/* Hover: ice-blue glow on words + pill trim, keep orange fill */
+.oo-cta.cloud-accent:hover,
+.oo-cta.cloud-accent:focus-visible,
+.pill-cta.cloud-accent:hover,
+.pill-cta.cloud-accent:focus-visible{
+  border-color: var(--lumen-blue-light) !important;                 /* trim turns ice-blue */
+  box-shadow:
+    0 0 14px rgba(43,237,231,.70), 0 0 32px rgba(43,237,231,.45);   /* stronger blue aura */
+  transform: translateY(-1px);
+  outline: 0;
+  /* text glow: ice-blue halo on the words */
+  text-shadow:
+    0 0 6px rgba(43,237,231,.60),
+    0 0 16px rgba(43,237,231,.35) !important;
+}
+
+/* Subtle orange rim/glow by default */
+#featured,
+.featured,
+.featured-card,
+.oo-featured,
+#featured-cloud2,
+.section.featured {
+  border: 1px solid var(--lumen) !important;
+  box-shadow: 0 0 10px rgba(255,106,19,.25);
+  transition: box-shadow .2s ease, border-color .2s ease;
+}
+
+/* Brighter orange when hovering the featured block */
+#featured:hover,
+.featured:hover,
+.featured-card:hover,
+.oo-featured:hover,
+#featured-cloud2:hover,
+.section.featured:hover {
+  box-shadow:
+    0 0 16px rgba(255,106,19,.50),
+    0 0 28px rgba(255,106,19,.35);
 }
 
 
