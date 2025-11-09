@@ -1403,6 +1403,41 @@ ctaUrl: "https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZ
   }, { passive: true });
 })();
 </script>
+<script>
+(function(){
+  // Which product tiles should point to Cloud 2.0
+  var cloud20Targets = [
+    "cloud & data",
+    "connectivity & naas"
+  ];
+  var cloud20Href = "/cloud20.html";
+
+  // Safe text normalizer
+  function norm(s){ return (s||"").toLowerCase().replace(/\s+/g," ").trim(); }
+
+  // Point the element (or its nearest anchor) to Cloud 2.0
+  function setLink(el){
+    var a = el.tagName === "A" ? el : el.closest && el.closest("a");
+    if(!a) return;
+    a.setAttribute("href", cloud20Href);
+    a.removeAttribute("target"); // open in same tab
+    a.removeAttribute("rel");
+  }
+
+  try {
+    // Scope to your product grid/section; falls back to document just in case
+    var scope = document.querySelector("#products, [id*='product'], [data-section='products']") || document;
+    // Grab likely anchor/title nodes inside product tiles
+    var nodes = scope.querySelectorAll(".tile a, .tile-title, a");
+    nodes.forEach(function(node){
+      var text = norm(node.textContent);
+      if (cloud20Targets.includes(text)) setLink(node);
+    });
+  } catch (e) {
+    console.warn("Cloud 2.0 link update skipped:", e);
+  }
+})();
+</script>
 
 </body>
 </html>
