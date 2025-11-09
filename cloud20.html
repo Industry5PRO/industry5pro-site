@@ -124,6 +124,31 @@
 .footer{ padding:24px 20px !important; }
 .footer > *{ max-width:none; margin:0 auto; text-align:center; padding:0; }
 .footer .social-icons{ justify-content:center; padding-left:0; }
+<style>
+  /* White paper card at top */
+  .whitepaper {
+    max-width: 1100px; margin: 18px auto 26px; padding: 18px;
+    background: #0a0f1a; border: 1px solid rgba(227,179,65,.35);
+    border-radius: 14px; box-shadow: 0 10px 40px rgba(227,179,65,.08);
+  }
+  .whitepaper h1 { margin: 0 0 6px; color: #FFD700; font-size: clamp(22px, 3.4vw, 28px); line-height: 1.2; }
+  .whitepaper p { margin: 6px 0 12px; color: #C0C0C0; font-size: 1rem; }
+  .whitepaper .meta { color: #9fb2c7; font-size: .92rem; margin-top: 6px; }
+  .whitepaper .cta-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0; }
+  .whitepaper .btn {
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);
+    font-weight:800;text-decoration:none
+  }
+  .whitepaper .btn.primary { background:#85BB65; color:#0b1220; border-color: rgba(133,187,101,.6); }
+  .whitepaper .btn.secondary { background:#0f131b; color:#e8eef9; }
+  .whitepaper .viewer {
+    margin-top: 12px; border-radius: 12px; overflow: hidden;
+    border: 1px solid rgba(133,187,101,.35); background: #0f131b;
+  }
+  .whitepaper .viewer iframe { width: 100%; height: 720px; border: 0; display:block; }
+  @media (max-width: 900px) { .whitepaper .viewer iframe { height: 520px; } }
+</style>
 
 
     /* Footer + socials */
@@ -152,6 +177,35 @@
   </header>
 
   <main class="wrap">
+    <section class="whitepaper" id="cloud20-whitepaper">
+  <h1>Cloud 2.0: Because AI will not run on yesterday’s internet</h1>
+  <p>
+    Uncover what is driving this shift and why enterprises and tech providers must adapt now to stay ahead.
+    This research driven view maps how AI reshapes data centers, networks, and commercial motions through 2030.
+  </p>
+
+  <div class="cta-row">
+    <a class="btn primary" href="/assets/preparing-cloud-two-enterprise-networks.pdf" download>
+      Download the white paper (PDF)
+    </a>
+    <a class="btn secondary" href="#cloud20-whitepaper-viewer">Jump to inline viewer</a>
+  </div>
+
+  <p class="meta">
+    <strong>Author:</strong> Dave Ward, Chief Technology Officer and Product Officer, Lumen. <br>
+    <strong>Acknowledgment:</strong> Ken Gray, Technical Project Manager III, Lumen. <br>
+    <span style="opacity:.9">© 2024 Lumen Technologies. All rights reserved.</span>
+  </p>
+
+  <div class="viewer" id="cloud20-whitepaper-viewer" aria-label="Cloud 2.0 white paper inline viewer">
+    <iframe
+      src="/assets/preparing-cloud-two-enterprise-networks.pdf#view=FitH"
+      title="Cloud 2.0 white paper"
+      loading="lazy">
+    </iframe>
+  </div>
+</section>
+
     <!-- Hero -->
     <section class="hero">
       <div class="hero-grid">
