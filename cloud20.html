@@ -399,6 +399,44 @@
   color: var(--lumen-blue-light) !important;
   text-shadow: 0 0 8px rgba(43,237,231,.15);
 }
+/* Light Lumen blue */
+:root{ --lumen-blue-light:#2BEDE7; }
+
+/* Brand title → light blue + soft aura */
+.brand .title{
+  color: var(--lumen-blue-light) !important;
+  text-shadow: 0 0 10px rgba(43,237,231,.25);
+}
+
+/* Header pills (Home, Blog) → light blue border/text + bright blue glow */
+.home{
+  border-color: var(--lumen-blue-light) !important;
+  color: var(--lumen-blue-light) !important;
+}
+.home:hover,
+.home:focus-visible{
+  box-shadow: 0 0 12px rgba(43,237,231,.65), 0 0 28px rgba(43,237,231,.40) !important;
+  border-color: var(--lumen-blue-light) !important;
+  transform: translateY(-1px);
+  outline: 0;
+}
+
+/* Book Lou (non-accent pill) → light blue border/text + bright blue glow */
+/* Keeps orange for .pill-cta.accent (Start Discovery) */
+.pill-cta:not(.accent){
+  color: var(--lumen-blue-light) !important;
+  border-color: var(--lumen-blue-light) !important;
+  background: rgba(43,237,231,.08) !important;
+  box-shadow: 0 0 10px rgba(43,237,231,.25) !important;
+}
+.pill-cta:not(.accent):hover,
+.pill-cta:not(.accent):focus-visible{
+  background: rgba(43,237,231,.14) !important;
+  border-color: var(--lumen-blue-light) !important;
+  box-shadow: 0 0 14px rgba(43,237,231,.70), 0 0 30px rgba(43,237,231,.45) !important;
+  transform: translateY(-1px);
+  outline: 0;
+}
 
     /* CTA rail */
     .cta-rail{max-width:1100px;margin:28px auto 10px; padding:18px; border:1px solid rgba(255,215,0,.35); border-radius:14px; background:#0a0a0a; box-shadow:0 10px 40px rgba(255,215,0,.08)}
