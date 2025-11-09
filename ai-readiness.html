@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Industry5.pro • 🎯 Outcome-Obsessed. 🧭 Supplier-Agnostic. 💼 Paid by results. </title>
+  <title>Industry5.pro • Outcome Obsessed. Supplier Agnostic. Paid by results.</title>
 
-  <meta name="description" content="Industry5.pro is an advisory-first, supplier-agnostic consultancy. We turn AI, IoT, cloud, and CX into measurable ROI—human-centered, built on trust, paid by results." />
-  <meta property="og:title" content="Industry5.pro • 🎯 Outcome-Obsessed. 🧭 Supplier-Agnostic. 💼 Paid by results." />
+  <meta name="description" content="Industry5.pro is an advisory first, supplier agnostic consultancy. We turn AI, IoT, cloud, and CX into measurable ROI, human centered, built on trust, paid by results." />
+  <meta property="og:title" content="Industry5.pro • Outcome Obsessed. Supplier Agnostic. Paid by results." />
   <meta property="og:description" content="Capture a consult in minutes. We design practical AI, IoT, cloud, and CX that deliver measurable outcomes." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://industry5.pro" />
@@ -15,14 +15,14 @@
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
 
   <style>
-    :root { --green:#85BB65; --ink:#0b1220; --muted:#a9b3c4; --bg:#0e1117; --card:#141821; }
+    :root { --green:#85BB65; --ink:#0b1220; --muted:#a9b3c4; --bg:#0e1117; --card:#141821; --gold:#E3B341; }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{margin:0;background:var(--bg);color:#e8eef9;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial}
     a{color:#b0ff95;text-decoration:none}
     .wrap{max-width:1080px;margin:0 auto;padding:28px}
 
-    /* Sticky header (logo + Home/Blog) */
+    /* Sticky header */
     header{
       position:sticky; top:0; z-index:60;
       backdrop-filter:saturate(140%) blur(6px);
@@ -34,17 +34,13 @@
     .title{font-weight:800;font-size:20px}
     nav a{margin-left:10px;color:#d5dcef;font-weight:700;padding:10px 14px;border:1px solid rgba(255,255,255,.12);border-radius:10px}
     header nav a{position:relative;color:#ddd;transition:color .15s ease,text-shadow .15s ease}
-    header nav a:hover{color:var(--accent,#85BB65);text-shadow:0 0 6px rgba(133,187,101,.8),0 0 14px rgba(133,187,101,.45)}
-    header nav a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;width:0;margin:auto;background:var(--accent,#85BB65);box-shadow:0 0 8px rgba(133,187,101,.6);transition:width .18s ease}
+    header nav a:hover{color:var(--green);text-shadow:0 0 6px rgba(133,187,101,.8),0 0 14px rgba(133,187,101,.45)}
+    header nav a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;width:0;margin:auto;background:var(--green);box-shadow:0 0 8px rgba(133,187,101,.6);transition:width .18s ease}
     header nav a:hover::after{width:100%}
-
-    .card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px}
-    .section{margin:28px 0}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
 
     /* Hero */
     .hero{margin:36px 0}
-    .hero .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:18px;align-items:center}
+    .hero .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:18px;align-items:center;max-width:1080px;margin:0 auto;padding:0 16px}
     .hero h1{font-size:clamp(28px,5vw,44px);line-height:1.1;margin:0 0 8px}
     .lead{font-size:clamp(16px,1.8vw,20px);color:#d5dcef;margin:0}
     .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
@@ -53,51 +49,10 @@
     .btn.secondary{background:#0f131b;color:#e8eef9}
     .hero-photo{display:flex;justify-content:flex-end}
     .hero-photo img{width:100%;max-width:320px;height:auto;object-fit:contain;filter:drop-shadow(0 10px 20px rgba(0,0,0,.35))}
+    @media (min-width:901px){ .hero-pic{ transform: translateX(-14px); } }
     @media (max-width:900px){ .hero .hero-grid{grid-template-columns:1fr} .hero-photo{display:none} }
 
-    /* Blog teaser hover */
-    #blog-teaser a{transition:color .15s ease,border-color .15s ease,box-shadow .15s ease,transform .15s ease}
-    #blog-teaser a:hover{color:var(--accent,#85BB65)!important;border-color:var(--accent,#85BB65)!important;box-shadow:0 0 10px rgba(133,187,101,.6),0 0 18px rgba(133,187,101,.3);transform:translateY(-1px)}
-
-    /* Book */
-    .book-grid{display:grid;gap:16px}
-    @media(min-width:1000px){ .book-grid{grid-template-columns:1fr minmax(360px,480px)} }
-    iframe{width:100%;border:0;border-radius:12px;min-height:720px;background:#0f131b}
-
-    /* Footer */
-    .footer{margin:32px 0;color:var(--muted);font-size:14px}
-    .footer .social-icons{display:flex;justify-content:center;gap:12px;margin-top:12px}
-    .footer .social-icons a{width:42px;height:42px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:#e8eef9}
-    .footer .social-icons svg{width:20px;height:20px;display:block}
-
-    /* Page width constraints */
-    main > .container {max-width:1100px;margin:0 auto;padding:0 16px}
-    #foundations .inner {max-width:900px;margin:0 auto;padding:0 16px}
-
-    /* --- Button Glow (Gold) --- */
-    :root { --gold: #E3B341; }
-    .btn, a.btn, .cta-row a, button { position: relative; transition: color .18s ease, background-color .18s ease, border-color .18s ease, box-shadow .22s ease, transform .18s ease; will-change: transform, box-shadow; }
-    .btn:hover, a.btn:hover, .cta-row a:hover, button:hover,
-    .btn:focus-visible, a.btn:focus-visible, .cta-row a:focus-visible, button:focus-visible {
-      box-shadow: 0 0 10px color-mix(in srgb, var(--gold) 70%, transparent), 0 0 22px color-mix(in srgb, var(--gold) 40%, transparent), inset 0 0 0 1px color-mix(in srgb, var(--gold) 55%, transparent);
-      border-color: var(--gold) !important; text-shadow: 0 0 6px color-mix(in srgb, var(--gold) 60%, transparent); transform: translateY(-1px); outline: none;
-    }
-    .btn.primary:hover, a.btn.primary:hover { background: var(--gold) !important; color: #0b1220 !important; }
-    .btn.secondary:hover, a.btn.secondary:hover, .cta-row a:hover { background: color-mix(in srgb, var(--gold) 16%, transparent) !important; color: #ffffff !important; }
-    .btn:focus-visible, a.btn:focus-visible, .cta-row a:focus-visible, button:focus-visible {
-      box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 45%, transparent), 0 0 18px color-mix(in srgb, var(--gold) 35%, transparent);
-    }
-
-    /* --- AI Readiness hero: pill/button glow --- */
-    #ai-readiness-hero a[target="_blank"][rel~="noopener"] { position: relative; transition: color .18s ease, background-color .18s ease, border-color .18s ease, box-shadow .22s ease, transform .18s ease; will-change: transform, box-shadow; }
-    #ai-readiness-hero a[target="_blank"][rel~="noopener"]:hover,
-    #ai-readiness-hero a[target="_blank"][rel~="noopener"]:focus-visible {
-      box-shadow: 0 0 10px color-mix(in srgb, var(--gold) 70%, transparent), 0 0 22px color-mix(in srgb, var(--gold) 40%, transparent), inset 0 0 0 1px color-mix(in srgb, var(--gold) 55%, transparent);
-      border-color: var(--gold) !important; text-shadow: 0 0 6px color-mix(in srgb, var(--gold) 60%, transparent); transform: translateY(-1px); outline: none;
-    }
-    #ai-readiness-hero a[target="_blank"][rel~="noopener"]:active { transform: translateY(0); box-shadow: 0 0 6px color-mix(in srgb, var(--gold) 55%, transparent), inset 0 0 0 1px color-mix(in srgb, var(--gold) 55%, transparent); }
-
-    /* Quadrant cards (match your Cloud/AIoT look) */
+    /* Quadrant cards */
     .quad{max-width:980px;margin:24px auto;background:#0a0f1a;border:1px solid color-mix(in srgb, var(--gold) 35%, transparent);border-radius:14px;padding:18px;box-shadow:0 10px 40px rgba(227,179,65,.08)}
     .quad a img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid rgba(133,187,101,.35)}
     .quad-head{max-width:980px;margin:0 auto 8px;padding:4px 6px 0}
@@ -107,6 +62,26 @@
     .cta{background:linear-gradient(180deg,var(--gold),#f0c000);color:#1a1a1a;font-weight:800;padding:12px 18px;border-radius:12px;border:0;cursor:pointer;transition:transform .15s ease}
     .cta:hover{transform:translateY(-1px)}
     .note{color:#C0C0C0;font-size:.92rem}
+
+    /* Content containers */
+    main > .container {max-width:1100px;margin:0 auto;padding:0 16px}
+
+    /* Footer */
+    .footer{margin:32px 0;color:var(--muted);font-size:14px}
+    .footer .social-icons{display:flex;justify-content:center;gap:12px;margin-top:12px}
+    .footer .social-icons a{width:42px;height:42px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:#e8eef9}
+    .footer .social-icons svg{width:20px;height:20px;display:block}
+
+    /* Glow for buttons and pills */
+    .btn, a.btn, .cta-row a, button { position: relative; transition: color .18s ease, background-color .18s ease, border-color .18s ease, box-shadow .22s ease, transform .18s ease; will-change: transform, box-shadow; }
+    .btn:hover, a.btn:hover, .cta-row a:hover, button:hover,
+    .btn:focus-visible, a.btn:focus-visible, .cta-row a:focus-visible, button:focus-visible {
+      box-shadow: 0 0 10px color-mix(in srgb, var(--gold) 70%, transparent), 0 0 22px color-mix(in srgb, var(--gold) 40%, transparent), inset 0 0 0 1px color-mix(in srgb, var(--gold) 55%, transparent);
+      border-color: var(--gold) !important; text-shadow: 0 0 6px color-mix(in srgb, var(--gold) 60%, transparent); transform: translateY(-1px); outline: none;
+    }
+    .btn.primary:hover, a.btn.primary:hover { background: var(--gold) !important; color: #0b1220 !important; }
+    .btn.secondary:hover, a.btn.secondary:hover, .cta-row a:hover { background: color-mix(in srgb, var(--gold) 16%, transparent) !important; color: #ffffff !important; }
+    .btn:focus-visible, a.btn:focus-visible, .cta-row a:focus-visible, button:focus-visible { box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 45%, transparent), 0 0 18px color-mix(in srgb, var(--gold) 35%, transparent); }
   </style>
 </head>
 <body>
@@ -127,62 +102,83 @@
 <main class="main" id="content">
   <div class="container">
 
-    <!-- NEW: Injectable AI Voice Quadrant -->
-    <section class="quad">
+    <!-- HERO: unified intro for AI Voice and Contact Center -->
+    <section class="hero" id="ai-voice-cc-hero">
+      <div class="hero-grid">
+        <div>
+          <div style="color:#FFD700;font-weight:800;margin-bottom:6px;">AI Voice and Contact Center</div>
+          <h1 style="margin:0 0 8px;">Injectable AI or full UCaaS and CCaaS, one playbook</h1>
+          <p class="lead">
+            Add AI to what you already run with assistant, quality, analytics, and voice bots, or evaluate platforms with native AI across routing, workforce, and analytics. 
+            We remain supplier agnostic, focus on uptime and compliance, and design for multi cloud and edge so experiences stay fast and reliable.
+          </p>
+          <div class="cta-row">
+            <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform?usp=header" target="_blank" rel="noopener">
+              Start AI Readiness Assessment
+            </a>
+            <a class="btn secondary" href="#injectable-quadrant">See Injectable AI Quadrant</a>
+            <a class="btn secondary" href="#platform-quadrant">See UCaaS and CCaaS Quadrant</a>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <img class="hero-pic" src="/assets/lou-portrait@2x.png" alt="Louis Tortora, Industry5.pro" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Injectable AI Voice Quadrant -->
+    <section id="injectable-quadrant" class="quad">
       <div class="quad-head">
-        <h2>Injectable AI Voice (Bring AI to Your Current Stack)</h2>
-        <p><b>Why this view.</b> Many teams want AI outcomes without a platform swap. Injectable AI lets you add real time assist, QA, analytics, and voice bots to what you already run—faster value, lower risk.
-        <br><b>Not exhaustive.</b> We partner widely beyond what fits here; this snapshot shows battle tested options. If your stack points to others, we’ll evaluate those too.</p>
+        <h2>Injectable AI Voice</h2>
+        <p><b>Why this view.</b> Many teams want AI outcomes without a platform swap. Injectable AI lets you add real time assist, quality, analytics, and voice bots to what you already run, faster value, lower risk.
+          <br><b>Not exhaustive.</b> We partner widely beyond what fits here, this snapshot shows battle tested options. If your stack points to others, we will evaluate those too.</p>
       </div>
       <a href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform" target="_blank" rel="noopener">
-        <img src="/assets/ai_voice_injectable_quadrant_clean12.png?v=1" alt="Injectable AI Voice — Enterprise Readiness vs AI/Integration Breadth" />
+        <img src="/assets/ai_voice_injectable_quadrant_clean12.png?v=1" alt="Injectable AI Voice quadrant" />
       </a>
       <div class="cta-bar">
-        <div class="note">Click to scope assistant, QA, analytics, and automation layers that plug into your UC/CC—no rip and replace.</div>
+        <div class="note">Click to scope assistant, quality, analytics, and automation layers that plug into your current UC and CC. No rip and replace.</div>
         <a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform" target="_blank" rel="noopener">Start AI Voice Discovery</a>
       </div>
     </section>
 
-    <!-- NEW: UCaaS/CCaaS with Built-in AI Quadrant -->
-    <section class="quad">
+    <!-- UCaaS and CCaaS with Built in AI Quadrant -->
+    <section id="platform-quadrant" class="quad">
       <div class="quad-head">
-        <h2>UCaaS/CCaaS with Built in AI</h2>
-        <p><b>How we pick platforms.</b> Cloud 2.0 changed the contact center game: voice, messaging, routing, WEM, bots, and analytics now live across cloud + edge with AI in the loop. We shortlist vendors that prove it at scale—global coverage, strong SLAs, real security posture, and measurable outcomes.
-        <br><b>Not a final verdict.</b> This is a living, data driven view—there are more great providers than fit on one chart, and we partner broadly. If your stack or compliance needs point elsewhere, we’ll map the field and put the right options on the table.</p>
+        <h2>UCaaS and CCaaS with built in AI</h2>
+        <p><b>How we pick platforms.</b> Voice, messaging, routing, workforce, bots, and analytics now live across cloud and edge with AI in the loop. We shortlist vendors that prove it at scale, global coverage, strong service levels, real security posture, and measurable outcomes.
+          <br><b>Not a final verdict.</b> This is a living, data driven view, there are more strong providers than fit on one chart, and we partner broadly. If your compliance or stack needs point elsewhere, we will map the field and bring the right options.</p>
       </div>
       <a href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform" target="_blank" rel="noopener">
-        <img src="/assets/ucaas_ccaas_ai_quadrant_clean12_aligned.png?v=1" alt="UCaaS/CCaaS with Built-in AI — Enterprise Readiness vs AI Breadth" />
+        <img src="/assets/ucaas_ccaas_ai_quadrant_clean12_aligned.png?v=1" alt="UCaaS and CCaaS with built in AI quadrant" />
       </a>
       <div class="cta-bar">
-        <div class="note">Click to run a platform evaluation: discovery, fit analysis, migration path, and pricing—no rip and replace unless it saves money and pain.</div>
-        <a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform" target="_blank" rel="noopener">Compare UCaaS/CCaaS Platforms</a>
+        <div class="note">Click to run a platform evaluation, discovery, fit analysis, migration path, and pricing. No rip and replace unless it saves money and pain.</div>
+        <a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform" target="_blank" rel="noopener">Compare UCaaS and CCaaS Platforms</a>
       </div>
     </section>
 
-    <!-- Existing AI Readiness hero (left in place) -->
+    <!-- Existing AI Readiness hero and content -->
     <section id="ai-readiness-hero" style="background:#0f172a;color:#ffffff;padding:80px 20px;text-align:center;font:16px/1.7 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;">
       <div style="max-width:900px;margin:0 auto;">
         <h1 style="font-size:42px;font-weight:800;margin-bottom:12px;text-shadow:0 2px 4px rgba(0,0,0,0.5);">AI Readiness Assessment</h1>
-
         <p style="font-size:20px;color:#e2e8f0;margin-bottom:28px;">
           <span style="display:block;">Define your outcomes before deploying solutions.</span>
-          <span style="display:block;">Skip the pilot phase that fails 95% of the time <span style="opacity:.9;">(MIT, 2025)</span>.</span>
+          <span style="display:block;">Skip the pilot phase that fails ninety five percent of the time <span style="opacity:.9;">(MIT, 2025)</span>.</span>
         </p>
-
         <p style="max-width:720px;margin:0 auto 36px;color:#f1f5f9;">
-          This 5 minute assessment maps goals, constraints, and readiness so your AI strategy starts with clarity.
-          Your inputs fuel a live <strong>30 minute Advisory Discovery Session</strong> to outline your 30 day roadmap.
+          This five minute assessment maps goals, constraints, and readiness so your AI strategy starts with clarity.
+          Your inputs fuel a live thirty minute advisory discovery session to outline your thirty day roadmap.
         </p>
-
         <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:14px;">
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform?usp=sharing&ouid=117207166524371682703"
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform?usp=header"
              target="_blank" rel="noopener noreferrer"
-             style="background:#85BB65;color:#ffffff;padding:14px 26px;border-radius:10px;font-weight:700;text-decoration:none;box-shadow:0 6px 16px rgba(133,187,101,0.25);transition:all .2s ease;">
+             class="btn primary">
             Start the Assessment
           </a>
           <a href="https://calendly.com/industry5pro/30min"
              target="_blank" rel="noopener"
-             style="border:2px solid #85BB65;color:#ffffff;padding:12px 24px;border-radius:10px;font-weight:700;text-decoration:none;transition:background-color .2s ease,color .2s ease;">
+             class="btn secondary">
              Book a Discovery Session
           </a>
         </div>
@@ -190,7 +186,7 @@
         <div style="margin:26px auto 0;max-width:900px;">
           <iframe
             src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7389911901385904129?compact=1"
-            title="AI Readiness Assessment — announcement"
+            title="AI Readiness Assessment announcement"
             loading="lazy" allowfullscreen
             style="width:100%;max-width:900px;aspect-ratio:16/9;height:auto;border:0;box-shadow:0 10px 24px rgba(0,0,0,.25);border-radius:12px;">
           </iframe>
@@ -200,69 +196,30 @@
       </div>
     </section>
 
-    <!-- (Everything below stays unchanged) -->
-    <section id="erdoes-fii" style="max-width:960px;margin:40px auto;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;">
-      <h3 style="font-size:22px;margin:12px 0 6px;color:#ffffff;text-shadow:0 1px 2px rgba(0,0,0,0.45);">
-        Bloomberg interviews JPMorgan’s Mary Callahan Erdoes at FII Riyadh
-      </h3>
-      <p style="margin:0 0 12px;color:#e2e8f0;"><em>AI discussion starts at <span id="ai-start">[05:00]</span></em></p>
-
-      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:16px;">
-        <iframe
-          src="https://www.bloomberg.com/media-manifest/embed/iframe?id=6c8c8431-5ab8-4e9f-bb4a-5ff51c1cf991"
-          title="Mary Callahan Erdoes interview at FII Riyadh — Bloomberg Television"
-          loading="lazy" allowfullscreen
-          style="position:absolute;inset:0;width:100%;height:100%;border:0;">
-        </iframe>
-      </div>
-
-      <p style="margin-top:16px;color:#f8fafc;text-shadow:0 1px 2px rgba(0,0,0,0.4);">
-        “AI is a new way of working.” Only about 10% of S&amp;P 500 firms have AI operating inside their organizations, while ~70% mention it on earnings calls.
-        Move from experimentation to execution with an outcome first approach.
-      </p>
-
-      <div class="cta-row" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform?usp=sharing&ouid=117207166524371682703"
-           target="_blank" rel="noopener noreferrer"
-           class="btn primary"
-           style="background:#85BB65;color:#ffffff;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:800;box-shadow:0 6px 16px rgba(133,187,101,0.28);">
-          Start the Assessment
-        </a>
-        <a href="https://calendly.com/industry5pro/30min"
-           target="_blank" rel="noopener"
-           class="btn secondary"
-           style="border:2px solid #85BB65;color:#ffffff;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:800;">
-          Book a Discovery Session
-        </a>
-      </div>
-
-      <p class="meta" style="margin-top:6px;color:var(--muted);font-size:.92rem;">Interview date: October 28, 2025</p>
-      <small style="display:block;margin-top:10px;color:#cbd5e1;">Video courtesy of Bloomberg Television. Embedding permitted via official player.</small>
-    </section>
-
-    <section id="foundations" class="section card" style="margin-top:22px">
-      <div class="inner">
-        <h2 style="margin:0 0 8px">AI Foundations &amp; Blog</h2>
-        <p style="color:var(--muted,#bfc7d5);margin:0 0 12px">Scan the Foundations series and browse one-off articles by tag.</p>
+    <!-- Foundations teaser unchanged -->
+    <section id="foundations" class="section card" style="margin-top:22px;max-width:1100px;margin-left:auto;margin-right:auto;">
+      <div class="inner" style="max-width:900px;margin:0 auto">
+        <h2 style="margin:0 0 8px">AI Foundations and Blog</h2>
+        <p style="color:var(--muted,#bfc7d5);margin:0 0 12px">Scan the Foundations series and browse one off articles by tag.</p>
 
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 14px">
-          <a class="btn primary" href="/blog.html?tag=AI%20Foundations" style="background:#85BB65;color:#0b1220;font-weight:800;padding:10px 14px;border-radius:10px;text-decoration:none">AI Foundations</a>
-          <a class="btn" href="/blog.html?tag=All" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#e6eef5;font-weight:700;padding:10px 14px;border-radius:10px;text-decoration:none">All Articles</a>
+          <a class="btn primary" href="/blog.html?tag=AI%20Foundations">AI Foundations</a>
+          <a class="btn" href="/blog.html?tag=All" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#e6eef5">All Articles</a>
         </div>
 
         <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <a href="/blog.html?tag=Network"   class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd;padding:6px 10px;border-radius:10px;text-decoration:none">Network</a>
-          <a href="/blog.html?tag=Security"   class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd;padding:6px 10px;border-radius:10px;text-decoration:none">Security</a>
-          <a href="/blog.html?tag=Backup"     class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd;padding:6px 10px;border-radius:10px;text-decoration:none">Backup</a>
-          <a href="/blog.html?tag=AIoT"       class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd;padding:6px 10px;border-radius:10px;text-decoration:none">AIoT</a>
-          <a href="/blog.html?tag=AI"         class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd;padding:6px 10px;border-radius:10px;text-decoration:none">AI</a>
-          <a href="/blog.html?tag=Analytics"  class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd;padding:6px 10px;border-radius:10px;text-decoration:none">Analytics</a>
-          <a href="/blog.html?tag=Drone"      class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd;padding:6px 10px;border-radius:10px;text-decoration:none">Drone</a>
-          <a href="/blog.html?tag=FWA"        class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd;padding:6px 10px;border-radius:10px;text-decoration:none">FWA</a>
-          <a href="/blog.html?tag=Satellite"  class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd;padding:6px 10px;border-radius:10px;text-decoration:none">Satellite</a>
-          <a href="/blog.html?tag=Cloud"      class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd;padding:6px 10px;border-radius:10px;text-decoration:none">Cloud</a>
-          <a href="/blog.html?tag=Edge%2FMEC" class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd;padding:6px 10px;border-radius:10px;text-decoration:none">Edge/MEC</a>
-          <a href="/blog.html?tag=NaaS"       class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd;padding:6px 10px;border-radius:10px;text-decoration:none">NaaS</a>
+          <a href="/blog.html?tag=Network"   class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd">Network</a>
+          <a href="/blog.html?tag=Security"   class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd">Security</a>
+          <a href="/blog.html?tag=Backup"     class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd">Backup</a>
+          <a href="/blog.html?tag=AIoT"       class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd">AIoT</a>
+          <a href="/blog.html?tag=AI"         class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd">AI</a>
+          <a href="/blog.html?tag=Analytics"  class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd">Analytics</a>
+          <a href="/blog.html?tag=Drone"      class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd">Drone</a>
+          <a href="/blog.html?tag=FWA"        class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd">FWA</a>
+          <a href="/blog.html?tag=Satellite"  class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd">Satellite</a>
+          <a href="/blog.html?tag=Cloud"      class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd">Cloud</a>
+          <a href="/blog.html?tag=Edge%2FMEC" class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd">Edge and MEC</a>
+          <a href="/blog.html?tag=NaaS"       class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd">NaaS</a>
         </div>
       </div>
     </section>
@@ -272,7 +229,7 @@
 
 <footer class="footer">
   <div class="container" style="max-width:1100px;margin:0 auto;padding:0 16px;text-align:center">
-    <div>© <span id="y"></span> Industry5.pro — Built on trust. Paid by results.</div>
+    <div>© <span id="y"></span> Industry5.pro, built on trust, paid by results.</div>
     <div class="social-icons">
       <a href="https://www.linkedin.com/in/louis-tortora5/" target="_blank" rel="noopener" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.8 2.67 4.8 6.14V23h-4v-6.5c0-1.55-.03-3.55-2.17-3.55-2.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg>
@@ -294,7 +251,7 @@
 </footer>
 
 <script>
-// Year stamp only
+// Year stamp
 const y = document.getElementById("y"); if (y) y.textContent = new Date().getFullYear();
 </script>
 
