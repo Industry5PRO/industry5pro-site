@@ -616,6 +616,31 @@ html, body { overflow-x: hidden; }
 
 /* 11) Anchors scroll nicely below the sticky header */
 section[id]{ scroll-margin-top: 84px; }
+/* Black text with white → light-blue halo inside the Cloud 2.0 ICP cards */
+:root{ --lumen-blue-light:#2BEDE7; }
+
+.icp-card .tag,
+.icp-card a.tag,
+.icp-card a.tag-link{
+  color:#0b0b0b; /* keep text black */
+  text-shadow:
+    0 0 2px rgba(255,255,255,.95),   /* tight white edge for legibility */
+    0 0 8px rgba(255,255,255,.45),   /* soft white bloom */
+    0 0 14px rgba(43,237,231,.35);   /* light-blue outer halo */
+}
+
+.icp-card .tag:hover,
+.icp-card .tag:focus-visible,
+.icp-card a.tag:hover,
+.icp-card a.tag:focus-visible,
+.icp-card a.tag-link:hover,
+.icp-card a.tag-link:focus-visible{
+  text-shadow:
+    0 0 2px rgba(255,255,255,1),
+    0 0 10px rgba(255,255,255,.55),
+    0 0 18px rgba(43,237,231,.55),
+    0 0 30px rgba(43,237,231,.35);
+}
   </style>
 </head>
 <body>
