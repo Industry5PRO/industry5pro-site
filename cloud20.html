@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Industry5.pro — Cloud 2.0</title>
+  <meta name="description" content="Cloud 2.0: network + edge + multi-cloud with AI in the loop. Lumen featured. Supplier-agnostic design for measurable outcomes." />
+  <style>
+    :root{
+      --black:#000000;
+      --money:#85BB65;  /* money green */
+      --gold:#FFD700;   /* real gold */
+      --white:#FFFFFF;
+      --silver:#C0C0C0;
+    }
+    *{box-sizing:border-box}
+    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:var(--black); color:var(--white)}
+    a{color:var(--money); text-decoration:none}
+    a:hover{opacity:.9}
+    .wrap{max-width:1180px; margin:0 auto; padding:24px}
+
+    /* Header */
+    .hdr{position:sticky; top:0; z-index:40; backdrop-filter:saturate(140%) blur(6px); background:rgba(0,0,0,.7); border-bottom:1px solid rgba(255,215,0,.25)}
+    .hdr-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 24px}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.2px}
+    .logo{width:44px; height:44px; border-radius:12px; display:block; object-fit:contain; filter:drop-shadow(0 0 10px rgba(133,187,101,.40)); background:transparent}
+    .title{font-size:20px; line-height:1}
+    .home{
+      padding:10px 16px; border:1px solid var(--gold);
+      color:var(--gold); border-radius:10px; font-weight:700; background:transparent;
+      transition:transform .15s ease, box-shadow .15s ease;
+    }
+    .home:hover{transform:translateY(-1px); box-shadow:0 6px 22px rgba(255,215,0,.25)}
+    .nav-actions{display:flex; gap:10px; align-items:center}
+
+    /* Hero grid (copy left, profile right) */
+    .hero{padding:40px 24px 10px}
+    .hero-grid{
+      max-width:1080px; margin:0 auto; display:grid; grid-template-columns:1.2fr .8fr;
+      gap:28px; align-items:center; padding-left:36px;   /* left nudge to align with quadrant */
+    }
+    .kicker{color:var(--gold); font-weight:700; font-size:.95rem; letter-spacing:.08em; text-transform:uppercase}
+    h1{font-size:2.1rem; line-height:1.2; margin:.4rem 0 0}
+    .sub{color:var(--silver); max-width:760px; font-size:1.05rem}
+    .hero-pic{justify-self:end; width:320px; max-width:36vw; border:0; box-shadow:0 10px 28px rgba(0,0,0,.45), 0 0 14px rgba(133,187,101,.18); background:#0b0b0b; border-radius:18px; overflow:hidden}
+    .hero-pic img{display:block; width:100%; height:auto; object-fit:cover; filter:saturate(1.03) contrast(1.02)}
+
+    @media (max-width:900px){
+      .hero-grid{grid-template-columns:1fr; gap:18px; padding-left:16px}
+      .hero-pic{justify-self:start; width:56vw}
+    }
+
+    /* Quadrant */
+    .quad{max-width:980px; margin:24px auto; background:#0a0a0a; border:1px solid rgba(255,215,0,.35); border-radius:14px; padding:18px; box-shadow:0 10px 40px rgba(255,215,0,.08)}
+    .quad a img{width:100%; height:auto; display:block; border-radius:10px; border:1px solid rgba(133,187,101,.35)}
+
+    .cta-bar{display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; margin-top:14px; padding:12px; border-top:1px dashed rgba(255,215,0,.35)}
+    .note{color:var(--silver); font-size:.92rem}
+
+    /* CTA strip above footer */
+    .cta-rail{margin:28px 0 10px; padding:18px; border:1px solid rgba(255,215,0,.35); border-radius:14px; background:#0a0a0a; box-shadow:0 10px 40px rgba(255,215,0,.08)}
+    .cta-rail-inner{display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between}
+    .cta-rail h3{margin:0; color:#FFD700; font-size:1.2rem}
+    .cta-rail p{margin:4px 0 0; color:#C0C0C0; max-width:720px; font-size:.98rem}
+
+    /* Glowing gold pill CTAs with money-green text */
+    .btns{display:flex; gap:12px; flex-wrap:wrap}
+    .pill-cta{
+      display:inline-block; padding:12px 22px; border-radius:9999px; font-weight:800; letter-spacing:.2px;
+      color:#85BB65; background:rgba(255,215,0,.08); border:1px solid rgba(255,215,0,.65);
+      box-shadow:0 0 10px rgba(255,215,0,.25);
+      transition:transform .15s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .pill-cta:hover,.pill-cta:focus-visible{
+      transform:translateY(-1px); background:rgba(255,215,0,.14); border-color:#FFD700;
+      box-shadow:0 0 12px rgba(255,215,0,.45), 0 0 26px rgba(255,215,0,.25); outline:0;
+    }
+    .pill-cta.accent{
+      background:linear-gradient(180deg,#FFD700,#f0c000); color:#101010; border:1px solid #FFD700;
+      box-shadow:0 6px 28px rgba(255,215,0,.35);
+    }
+
+    /* Footer + socials */
+    .footer{margin:32px 0; color:#cfd6e3; font-size:14px; border-top:1px solid rgba(255,255,255,.08); padding:24px 20px}
+    .social-icons{display:flex; gap:10px; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:10px}
+    .social-icons a{width:38px; height:38px; display:grid; place-items:center; border:1px solid rgba(255,255,255,.18); border-radius:999px; color:#e6eef5; transition:color .15s, border-color .15s, box-shadow .15s, transform .15s, text-shadow .15s}
+    .social-icons a svg{width:18px; height:18px}
+    .social-icons a:hover,.social-icons a:focus-visible{border-color:#FFD700 !important; box-shadow:0 0 10px rgba(255,215,0,.65), 0 0 18px rgba(255,215,0,.35); color:#85BB65 !important; text-shadow:0 0 6px rgba(133,187,101,.85), 0 0 14px rgba(133,187,101,.45); transform:translateY(-2px); outline:0}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="hdr">
+    <div class="hdr-inner wrap">
+      <a class="brand" href="/">
+        <img src="/assets/industry5-logo.png?v=2025-11-08"
+             srcset="/assets/industry5-logo.png?v=2025-11-08 1x, /assets/industry5-logo@2x.png?v=2025-11-08 2x"
+             alt="Industry5.pro logo" class="logo" width="44" height="44" loading="eager" decoding="async" />
+        <span class="title">Industry5.pro — Cloud 2.0</span>
+      </a>
+      <div class="nav-actions">
+        <a class="home" href="/">Home</a>
+        <a class="home" href="/blog.html">Blog</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="kicker">Cloud 2.0</div>
+          <h1>Network + Edge + Multi-Cloud with AI in the Loop</h1>
+          <p class="sub">
+            Cloud 2.0 places workloads where they perform best across core cloud, regional edge, and on-prem sites, with a programmable network and security that travel with the app. We feature Lumen for enterprise-grade foundations—adaptive network, edge locations, managed security, and private wireless—while staying supplier-agnostic to match use case and geography.
+          </p>
+        </div>
+        <!-- Right-side profile -->
+        <div class="hero-pic">
+          <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora — Industry5.pro" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Quadrant -->
+    <section class="quad">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">
+        <img src="/assets/cloud20_quadrant_lumen.png?v=1" alt="Cloud 2.0 Quadrant — Lumen in Context" />
+      </a>
+      <div class="cta-bar">
+        <div class="note">Click the quadrant to open Cloud 2.0 discovery. We’ll align NaaS, edge, multi-cloud, and security around your outcomes.</div>
+        <a class="pill-cta accent" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Start Cloud 2.0 Discovery</a>
+      </div>
+    </section>
+
+    <!-- CTA strip -->
+    <section class="cta-rail wrap">
+      <div class="cta-rail-inner">
+        <div>
+          <h3>Ready to place compute and data where they win?</h3>
+          <p>Two fast paths: scope your use case now or book time to map Cloud 2.0, NaaS, and edge around your KPIs.</p>
+        </div>
+        <div class="btns">
+          <a class="pill-cta accent" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Start Discovery</a>
+          <a class="pill-cta" href="tel:14076945495">Talk to Lou</a>
+          <a class="pill-cta" href="https://calendly.com/industry5pro/intro" target="_blank" rel="noopener">Book Lou</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div>© <span id="cloud20-year"></span> Industry5.pro — Built on trust. Paid by results.</div>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/louis-tortora7/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.8 2.67 4.8 6.14V23h-4v-6.5c0-1.55-.03-3.55-2.17-3.55-2.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.51 5.51 0 0 0 12 7.5zm0 2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5zM18 6.2a1 1 0 1 0 1 1 1 1 0 0 0-1-1z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61582481880019" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.07C22 6.49 17.52 2 11.93 2 6.35 2 1.86 6.49 1.86 12.07c0 5.02 3.66 9.18 8.44 9.95v-7.03H7.9V12.1h2.4V9.86c0-2.37 1.4-3.68 3.55-3.68 1.03 0 2.11.18 2.11.18v2.32h-1.19c-1.17 0-1.53.73-1.53 1.47v1.95h2.61l-.42 2.89h-2.19v7.03c4.78-.77 8.44-4.93 8.44-9.95z"/></svg>
+      </a>
+      <a href="https://wa.me/14076945495" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 3.9A10 10 0 0 0 2.7 17.7L2 22l4.4-1.2A10 10 0 1 0 20 3.9zm-8 16.2c-1.7 0-3.3-.5-4.7-1.6l-.3-.2-2.8.8.8-2.7-.2-.3A7.87 7.87 0 0 1 12 4.1a8 8 0 0 1 0 16zm4.5-5.3c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.6.1c-.2.2-.6.8-.7 1-.1.2-.3.2-.5.1-1-.4-2-.9-2.8-1.8-.2-.2-.4-.5-.3-.7.1-.2.3-.4.4-.6l.2-.3c.1-.2 0-.4 0-.5 0-.1-.6-1.5-.8-2.1-.2-.6-.4-.5-.6-.5h-.5c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.1 3 .9 1.6 2.1 2.2 1.9.7 2.2.8c.3.1 1.4.1 1.9-.1.6-.2 1.4-.7 1.6-1.3.2-.6.2-1.1.1-1.2z"/></svg>
+      </a>
+      <a href="mailto:ltortora7@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      </a>
+    </div>
+  </footer>
+  <script>document.getElementById('cloud20-year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
