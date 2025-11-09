@@ -249,6 +249,71 @@
   border-bottom-color: rgba(255,106,19,.45);
   outline: 0;
 }
+/* === ICP CARDS — FINAL LOOK === */
+
+/* 1) Card chrome: ORANGE outline (Lumen), orange glow on hover/click. No yellow. */
+.icp-card{
+  background:#0a0f1a;
+  border:1px solid var(--lumen);               /* Lumen orange outline */
+  border-radius:16px;
+  padding:16px 16px 14px;
+  box-shadow:0 0 10px rgba(255,106,19,.14);    /* subtle orange base glow */
+  transition:box-shadow .2s ease, transform .15s ease;
+}
+.icp-card:hover,
+.icp-card:focus-within{
+  box-shadow:0 0 22px rgba(255,106,19,.32);    /* stronger orange glow on hover/focus */
+  transform:translateY(-1px);
+}
+
+/* 2) Category pills inside each card:
+      - PERFECTLY CENTERED text
+      - Lumen BLUE background
+      - BLACK text
+      - BLUE glow (same vibe as the whitepaper download)
+      - NO orange outline/glow on the pills
+*/
+.icp-card .tag,
+.icp-card a.tag,
+.icp-card a.tag-link{
+  display:flex; align-items:center; justify-content:center; text-align:center;
+  min-height:38px; padding:8px 16px;
+  font-weight:800; letter-spacing:.2px;
+  color:#0b0b0b;                                     /* black text */
+  background:linear-gradient(180deg, var(--lumen-blue), #27b8ea);
+  border:1px solid var(--lumen-blue);                /* blue rim (not orange) */
+  border-radius:9999px;
+  margin:0 0 10px;
+  box-shadow:0 6px 24px rgba(0,163,224,.28);         /* BLUE glow (matches whitepaper button) */
+  text-decoration:none; cursor:pointer;
+  transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.icp-card .tag:hover,
+.icp-card .tag:focus-visible,
+.icp-card a.tag:hover,
+.icp-card a.tag:focus-visible,
+.icp-card a.tag-link:hover,
+.icp-card a.tag-link:focus-visible{
+  transform:translateY(-1px);
+  border-color:var(--lumen-blue);
+  box-shadow:0 0 12px rgba(0,163,224,.65), 0 0 26px rgba(0,163,224,.40); /* BLUE glow on hover/focus */
+  outline:0;
+}
+
+/* 3) Card subtitles (h3 links) = lighter Lumen blue with orange glow on press/focus */
+.icp-card h3{ color:#ffffff; margin-top:6px; }
+.icp-card h3 a.icp-link{
+  color:#2BEDE7;                                      /* lighter Lumen blue */
+  text-decoration:none; border-bottom:1px dashed transparent;
+  transition:all .15s ease;
+}
+.icp-card h3 a.icp-link:hover{ border-bottom-color:rgba(43,237,231,.45); }
+.icp-card h3 a.icp-link:active,
+.icp-card h3 a.icp-link:focus-visible{
+  text-shadow:0 0 10px rgba(255,106,19,.45), 0 0 20px rgba(255,106,19,.30); /* orange flash when interacted */
+  border-bottom-color:rgba(255,106,19,.45);
+  outline:0;
+}
 
     /* CTA rail */
     .cta-rail{max-width:1100px;margin:28px auto 10px; padding:18px; border:1px solid rgba(255,215,0,.35); border-radius:14px; background:#0a0a0a; box-shadow:0 10px 40px rgba(255,215,0,.08)}
