@@ -12,6 +12,7 @@
       --gold:#FFD700;   /* real gold */
       --white:#FFFFFF;
       --silver:#C0C0C0;
+      --lumen:#FF6A13; /* Lumen orange */
     }
     *{box-sizing:border-box}
     body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:var(--black); color:var(--white)}
@@ -38,6 +39,40 @@
       color:#101010; border-color:var(--gold); box-shadow:0 6px 24px rgba(255,215,0,.28);
     }
     .home.accent:hover{box-shadow:0 8px 28px rgba(255,215,0,.4)}
+/* Base header pills */
+.home{
+  padding:10px 16px;
+  border:1px solid var(--money);     /* green default */
+  color:var(--money);
+  border-radius:10px;
+  font-weight:700;
+  background:transparent;
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease, border-color .15s ease, text-shadow .15s ease;
+}
+
+/* Green → Gold glow on hover/focus (Home, Blog) */
+.home:hover,
+.home:focus-visible{
+  border-color:var(--gold);
+  box-shadow:0 0 10px rgba(255,215,0,.35), 0 0 22px rgba(255,215,0,.25);
+  text-shadow:0 0 6px rgba(255,215,0,.55);
+  transform:translateY(-1px);
+  outline:0;
+}
+
+/* Lumen orange filled CTA */
+.home.accent{
+  background:linear-gradient(180deg, var(--lumen), #ff8c3a);
+  color:#101010;
+  border:1px solid var(--lumen);
+  box-shadow:0 6px 24px rgba(255,106,19,.35);
+}
+.home.accent:hover,
+.home.accent:focus-visible{
+  box-shadow:0 0 12px rgba(255,106,19,.70), 0 0 26px rgba(255,106,19,.40);
+  transform:translateY(-1px);
+  outline:0;
+}
 
     /* Hero grid (copy left, profile right) */
     .hero{padding:40px 24px 10px}
