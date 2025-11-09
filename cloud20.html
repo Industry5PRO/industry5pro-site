@@ -79,6 +79,18 @@
       background:linear-gradient(180deg,#FFD700,#f0c000); color:#101010; border:1px solid #FFD700;
       box-shadow:0 6px 28px rgba(255,215,0,.35);
     }
+/* Nudge profile pic a bit left on desktop */
+@media (min-width: 901px){
+  .hero-pic{
+    transform: translateX(-18px);
+  }
+}
+/* Keep mobile untouched */
+@media (max-width: 900px){
+  .hero-pic{
+    transform: none;
+  }
+}
 
     /* Footer + socials */
     .footer{margin:32px 0; color:#cfd6e3; font-size:14px; border-top:1px solid rgba(255,255,255,.08); padding:24px 20px}
