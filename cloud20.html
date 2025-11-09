@@ -647,6 +647,20 @@ section[id]{ scroll-margin-top: 84px; }
     0 0 1px rgba(255,255,255,.8),
     0 0 8px rgba(43,237,231,.25);
 }
+/* Clean, high-contrast paragraphs inside ICP cards (no blur) */
+.icp-card p{
+  color:#E8EEF9 !important;          /* near-white for pop on dark */
+  text-shadow:none !important;       /* remove white/blue halo */
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  line-height:1.55;
+  font-weight:500;
+}
+/* Make KPI label pop without glowing the whole line */
+.icp-card p b{
+  color:#2BEDE7 !important;          /* light Lumen blue */
+  font-weight:800;
+}
   </style>
 </head>
 <body>
