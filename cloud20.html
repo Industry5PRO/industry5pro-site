@@ -677,6 +677,31 @@ section[id]{ scroll-margin-top: 84px; }
     0 0 6px rgba(43,237,231,.45),
     0 0 16px rgba(43,237,231,.25);
 }
+/* Ice-blue 2.0 with permanent bright glow */
+:root{ --lumen-blue-light:#2BEDE7; }
+
+.blue-20{
+  color: var(--lumen-blue-light) !important;
+  text-shadow:
+    0 0 10px rgba(43,237,231,.75),
+    0 0 22px rgba(43,237,231,.50);
+}
+
+/* Make all “Start Cloud 2.0 Discovery” pills match the orange tag style */
+.home.accent,
+.pill-cta.accent{
+  background: linear-gradient(180deg, var(--lumen), #ff8c3a) !important;
+  color:#0b0b0b !important;                 /* black text */
+  border:1px solid var(--lumen) !important; /* orange rim */
+  box-shadow:0 6px 24px rgba(255,106,19,.28) !important; /* orange glow */
+  text-decoration:none;
+}
+.home.accent:hover, .home.accent:focus-visible,
+.pill-cta.accent:hover, .pill-cta.accent:focus-visible{
+  box-shadow:0 0 12px rgba(255,106,19,.70), 0 0 26px rgba(255,106,19,.40) !important;
+  transform:translateY(-1px);
+  outline:0;
+}
   </style>
 </head>
 <body>
@@ -703,8 +728,7 @@ section[id]{ scroll-margin-top: 84px; }
     <section class="whitepaper" id="cloud20-whitepaper">
       <div class="wp-heading">
         <span class="wp-eyebrow">
-  <span class="glow-ice">Cloud</span> <span class="two-white">2.0</span>
-</span>
+  <span class="wp-eyebrow">Cloud <span class="blue-20">2.0</span></span>
         <h1 class="wp-title">Because AI will not run on yesterday’s internet</h1>
       </div>
       <p>
@@ -737,9 +761,7 @@ section[id]{ scroll-margin-top: 84px; }
     <section class="hero">
       <div class="hero-grid">
         <div class="hero-copy">
-         <div class="kicker">
-  <span class="glow-ice">Cloud</span> <span class="two-white">2.0</span>
-</div>
+         <div class="kicker">Cloud <span class="blue-20">2.0</span></div>
 h1>Network + Edge + Multi-Cloud with AI in the Loop</h1>
           <p class="sub">
             Cloud 2.0 places workloads where they perform best across core cloud, regional edge, and on prem sites, with a programmable network and security that travel with the app. We feature Lumen for enterprise grade foundations: adaptive network, edge locations, managed security, and private wireless, while staying supplier agnostic to match use case and geography.
