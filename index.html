@@ -689,9 +689,10 @@ const FEATURED = {
   // New YouTube embed (Kate Johnson / Lumen AR Forum)
   videoUrl: "https://www.youtube.com/embed/ZPJWtw-DsUE?rel=0",
   // new
-ctaLabel: "Run Cloud 2.0 Readiness",
-ctaUrl: "https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform",
-  tags: ["cloud","wavelength","naas"]
+ctaLabel: "Cloud 2.0: See the quadrant and start discovery →",
+ctaUrl: "/cloud20.html",
+tags: ["cloud","wavelength","naas"]
+
 };
 
 
@@ -882,13 +883,13 @@ ctaUrl: "https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZ
         <div class="oo-metric">${FEATURED.metric}</div>
         <div class="oo-blurb">${FEATURED.blurb}</div>
         <a id="featured-cloud2-cta"
-   class="oo-cta"
+   class="oo-cta cloud-accent"
    href="${FEATURED.ctaUrl}"
-   target="_blank"
-   rel="noopener"
-   data-cta-tags="lumen,cloud,network,cloud2">
+   ...
+>
   ${FEATURED.ctaLabel}
 </a>
+
 
       </article>
     `;
@@ -1111,7 +1112,7 @@ ctaUrl: "https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZ
   <script>
 (function(){
   // 1) Set your new Cloud 2.0 form URL (single source of truth)
-  window.CLOUD2_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform";
+  window.CLOUD2_FORM = "/cloud20.html";
 
   // Keep existing form URLs if you already have them
   window.AI_FORM    = window.AI_FORM    || "https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform?usp=sharing";
@@ -1503,6 +1504,24 @@ ctaUrl: "https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZ
   }
 })();
 </script>
+<script>
+// 1) Single source of truth for destination
+window.CLOUD2_FORM = "/cloud20.html";
+
+// 2) Rewrite the Featured CTA after the DOM is ready
+(function(){
+  var fs = document.getElementById('featured-cloud2-cta');
+  if (!fs) return; // nothing to do if the button isn't on this page
+
+  fs.dataset.ctaTags = "lumen,cloud,network,cloud2";
+  fs.textContent = "Cloud 2.0: See the quadrant and start discovery →";
+  fs.href = window.CLOUD2_FORM;
+
+  // leave these commented so it opens in the same tab:
+  // fs.target = "_blank";
+  // fs.rel = "noopener noreferrer";
+})();
+</script>
 
 </body>
 </html>
@@ -1518,24 +1537,26 @@ ctaUrl: "https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZ
     background: rgba(133,187,101,0.16);
   }
   /* Cloud 2.0 CTA pill: Lumen orange fill + ice-blue glow + black text */
-.pill-cta.cloud-accent{
+.pill-cta.cloud-accent,
+.oo-cta.cloud-accent{
   display:inline-flex; align-items:center; justify-content:center; text-align:center;
   min-height:40px; padding:12px 22px; border-radius:9999px;
   font-weight:800; letter-spacing:.2px;
-  color:#0b0b0b;                                      /* black text */
+  color:#0b0b0b;
   background:linear-gradient(180deg, var(--lumen), #ff8c3a);
   border:1px solid var(--lumen);
-  /* ice-blue outer glow (permanent), subtle white edge for readability */
   box-shadow:0 0 12px rgba(43,237,231,.55), 0 0 26px rgba(43,237,231,.35);
   text-shadow:0 0 2px rgba(255,255,255,.95), 0 0 8px rgba(255,255,255,.45);
   transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
 }
 .pill-cta.cloud-accent:hover,
-.pill-cta.cloud-accent:focus-visible{
+.pill-cta.cloud-accent:focus-visible,
+.oo-cta.cloud-accent:hover,
+.oo-cta.cloud-accent:focus-visible{
   transform:translateY(-1px);
-  /* brighten the ice-blue aura a bit on hover/focus */
   box-shadow:0 0 14px rgba(43,237,231,.70), 0 0 32px rgba(43,237,231,.45);
   outline:0;
 }
+
 
 </style>
