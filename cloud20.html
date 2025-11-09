@@ -4,743 +4,243 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Industry5.pro — Cloud 2.0</title>
-  <meta name="description" content="Cloud 2.0: network, edge, and multi-cloud with AI in the loop. Lumen featured. Supplier-agnostic design for measurable outcomes." />
+  <meta name="description" content="Cloud 2.0: network, edge, and multi cloud with AI in the loop. Lumen featured. Supplier-agnostic design for measurable outcomes." />
   <style>
     :root{
       --black:#000000;
-      --money:#85BB65;   /* money green */
-      --gold:#FFD700;    /* real gold */
       --white:#FFFFFF;
+      --money:#85BB65;          /* money green */
+      --gold:#FFD700;           /* real gold (kept for legacy areas if needed) */
       --silver:#C0C0C0;
-      --lumen:#FF6A13;      /* Lumen orange */
-      --lumen-blue:#00A3E0; /* Lumen blue  */
+      --lumen:#FF6A13;          /* Lumen orange */
+      --lumen-blue:#00A3E0;     /* Lumen blue */
+      --lumen-blue-light:#2BEDE7; /* lighter ice-blue */
+      --lumen-blue-dark:#006B8F;  /* dark blue for inner glows */
     }
     *{box-sizing:border-box}
-    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:var(--black); color:var(--white)}
-    a{color:var(--money); text-decoration:none}
+    html,body{margin:0;background:var(--black);color:var(--white);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;overflow-x:hidden}
+    a{color:var(--money);text-decoration:none}
     a:hover{opacity:.95}
-    .wrap{max-width:1180px; margin:0 auto; padding:24px}
+    .wrap{max-width:1180px;margin:0 auto;padding:24px}
 
-    /* Header (sticky) */
-    .hdr{position:sticky; top:0; z-index:40; backdrop-filter:saturate(140%) blur(6px); background:rgba(0,0,0,.7); border-bottom:1px solid rgba(255,215,0,.25)}
-    .hdr-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 24px}
-    .brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.2px}
-    .logo{width:44px; height:44px; border-radius:12px; display:block; object-fit:contain; filter:drop-shadow(0 0 10px rgba(133,187,101,.40)); background:transparent}
-    .title{font-size:20px; line-height:1}
-    .nav-actions{display:flex; gap:10px; align-items:center}
-
-    /* Base header pills (Home, Blog) = money-green default */
+    /* ===== Sticky Header (hardened) ===== */
+    .hdr{
+      position:sticky; position:-webkit-sticky; top:0; z-index:9999; margin:0;
+      backdrop-filter:saturate(140%) blur(6px); -webkit-backdrop-filter:saturate(140%) blur(6px);
+      background:rgba(0,0,0,.85); border-bottom:1px solid rgba(255,106,19,.25);
+      transform:none !important;
+    }
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+      .hdr{ background:rgba(0,0,0,.92); }
+    }
+    .hdr-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px}
+    .logo{width:44px;height:44px;border-radius:12px;display:block;object-fit:contain;filter:drop-shadow(0 0 10px rgba(133,187,101,.40));background:transparent}
+    .brand .title{font-size:20px;line-height:1;color:var(--lumen-blue-light);text-shadow:0 0 10px rgba(43,237,231,.25)}
+    .nav-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
     .home{
-      padding:10px 16px;
-      border:1px solid var(--money);
-      color:var(--money);
-      border-radius:10px;
-      font-weight:700;
-      background:transparent;
-      transition:
-        transform .15s ease,
-        box-shadow .15s ease,
-        background .15s ease,
-        color .15s ease,
-        border-color .15s ease,
-        text-shadow .15s ease;
+      padding:10px 16px; min-height:44px;
+      border:1px solid var(--lumen-blue-light); color:var(--lumen-blue-light);
+      border-radius:10px; font-weight:700; background:transparent;
+      transition:transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease, border-color .15s ease, text-shadow .15s ease;
     }
-    /* Green → Gold glow on hover/focus (Home/Blog) */
-    .home:hover,
-    .home:focus-visible{
-      border-color:var(--gold);
-      box-shadow:0 0 10px rgba(255,215,0,.35), 0 0 22px rgba(255,215,0,.25);
-      text-shadow:0 0 6px rgba(255,215,0,.55);
-      transform:translateY(-1px);
-      outline:0;
+    .home:hover,.home:focus-visible{
+      box-shadow:0 0 12px rgba(43,237,231,.65),0 0 28px rgba(43,237,231,.40);
+      border-color:var(--lumen-blue-light); transform:translateY(-1px); outline:0;
     }
-    /* Lumen Orange filled CTA for the middle header button */
+    /* Start Cloud 2.0 Discovery pill (orange, matches category tags) */
     .home.accent{
-      background:linear-gradient(180deg, var(--lumen), #ff8c3a);
-      color:#101010;
-      border:1px solid var(--lumen);
-      box-shadow:0 6px 24px rgba(255,106,19,.35);
+      display:inline-flex;align-items:center;justify-content:center;text-align:center;
+      min-height:38px;padding:10px 20px;border-radius:9999px;font-weight:800;letter-spacing:.2px;
+      color:#0b0b0b !important;
+      background:linear-gradient(180deg, var(--lumen), #ff8c3a) !important;
+      border:1px solid var(--lumen) !important;
+      box-shadow:0 6px 24px rgba(255,106,19,.28) !important;
+      text-shadow:
+        0 0 2px rgba(255,255,255,.95),
+        0 0 8px rgba(255,255,255,.45),
+        0 0 14px rgba(43,237,231,.35) !important;
     }
-    .home.accent:hover,
-    .home.accent:focus-visible{
-      box-shadow:0 0 12px rgba(255,106,19,.70), 0 0 26px rgba(255,106,19,.40);
-      transform:translateY(-1px);
-      outline:0;
+    .home.accent:hover,.home.accent:focus-visible{
+      box-shadow:0 0 12px rgba(255,106,19,.70),0 0 26px rgba(255,106,19,.40) !important;
+      transform:translateY(-1px); outline:0;
     }
 
-    /* White paper card ABOVE hero */
+    /* ===== White paper card ABOVE hero ===== */
     .whitepaper{
-      max-width:1100px; margin:18px auto 8px; padding:18px;
-      background:#0a0f1a; border:1px solid rgba(227,179,65,.35);
-      border-radius:14px; box-shadow:0 10px 40px rgba(227,179,65,.08);
+      max-width:1100px;margin:18px auto 8px;padding:18px;
+      background:#0a0f1a;border:1px solid var(--lumen);border-radius:14px;box-shadow:0 10px 40px rgba(227,179,65,.08);
     }
-    /* Eyebrow + title system to match hero */
-    .wp-heading{ margin: 0 0 6px; }
+    .wp-heading{margin:0 0 6px}
+    /* Glow styling for eyebrow: Cloud glows, 2.0 is ice-blue with steady glow */
+    .glow-ice{ text-shadow:0 0 8px rgba(43,237,231,.70), 0 0 20px rgba(43,237,231,.40); }
+    .blue-20{
+      color:var(--lumen-blue-light) !important;
+      text-shadow:0 0 10px rgba(43,237,231,.80), 0 0 22px rgba(43,237,231,.55);
+    }
     .wp-eyebrow{
-      display:inline-block; color: var(--lumen); font-weight:700;
-      font-size: .95rem; letter-spacing:.08em; text-transform: uppercase;
-      margin-bottom: 4px;
+      display:inline-block;color:var(--lumen);font-weight:700;
+      font-size:.95rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px;
     }
-    .wp-title{
-      margin: 0;
-      font-size: 2.1rem;   /* match hero h1 */
-      line-height: 1.2;
-      color: #ffffff;
-    }
-    .whitepaper p{ margin:6px 0 12px; color:#C0C0C0; font-size:1rem; }
-    .whitepaper .meta { color:#9fb2c7; font-size:.92rem; margin-top:6px; }
-    .whitepaper .cta-row { display:flex; gap:10px; flex-wrap:wrap; margin:12px 0; }
-    .whitepaper .btn {
+    .wp-title{margin:0;font-size:2.1rem;line-height:1.2;color:#ffffff;text-transform:none !important}
+    .whitepaper p{margin:6px 0 12px;color:#C0C0C0;font-size:1rem}
+    .whitepaper .meta{color:#9fb2c7;font-size:.92rem;margin-top:6px}
+    .whitepaper .cta-row{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+    .whitepaper .btn{
       display:inline-flex;align-items:center;justify-content:center;gap:8px;
       padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);
       font-weight:800;text-decoration:none
     }
-    /* Lumen Blue pill for the white paper download */
     .btn.blue{
       background:linear-gradient(180deg, var(--lumen-blue), #27b8ea);
-      color:#0b1220;
-      border:1px solid var(--lumen-blue);
+      color:#0b1220;border:1px solid var(--lumen-blue);
       box-shadow:0 6px 24px rgba(0,163,224,.28);
     }
-    .btn.blue:hover,
-    .btn.blue:focus-visible{
-      box-shadow:0 0 12px rgba(0,163,224,.65), 0 0 26px rgba(0,163,224,.40);
-      transform:translateY(-1px);
-      outline:0;
+    .btn.blue:hover,.btn.blue:focus-visible{
+      box-shadow:0 0 12px rgba(0,163,224,.65),0 0 26px rgba(0,163,224,.40);
+      transform:translateY(-1px); outline:0;
     }
-    .whitepaper .viewer { margin-top:12px; border-radius:12px; overflow:hidden; border:1px solid rgba(133,187,101,.35); background:#0f131b; }
-    .whitepaper .viewer iframe { width:100%; height:720px; border:0; display:block; }
-    @media (max-width:900px){ .whitepaper .viewer iframe { height:520px; } }
+    .whitepaper .viewer{margin-top:12px;border-radius:12px;overflow:hidden;border:1px solid rgba(133,187,101,.35);background:#0f131b}
+    .whitepaper .viewer iframe{width:100%;height:720px;border:0;display:block}
+    @media (max-width:900px){ .whitepaper .viewer iframe{height:520px} }
 
-    /* Hero */
+    /* ===== Hero ===== */
     .hero{padding:40px 24px 10px}
-    .hero-grid{
-      max-width:1080px; margin:0 auto; display:grid; grid-template-columns:1.2fr .8fr;
-      gap:28px; align-items:center; padding-left:36px;
-    }
-    .kicker{color:var(--lumen); font-weight:700; font-size:.95rem; letter-spacing:.08em; text-transform:uppercase}
-    h1{font-size:2.1rem; line-height:1.2; margin:.4rem 0 0}
-    .sub{color:var(--silver); max-width:760px; font-size:1.05rem}
-    .hero-pic{justify-self:end; width:320px; max-width:36vw; border:0; box-shadow:0 10px 28px rgba(0,0,0,.45), 0 0 14px rgba(133,187,101,.18); background:#0b0b0b; border-radius:18px; overflow:hidden}
-    .hero-pic img{display:block; width:100%; height:auto; object-fit:cover; filter:saturate(1.03) contrast(1.02)}
-    @media (min-width: 901px){ .hero-pic{ transform: translateX(-25px); } }
+    .hero-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding-left:36px}
+    .kicker{color:var(--lumen);font-weight:700;font-size:.95rem;letter-spacing:.08em;text-transform:uppercase}
+    .hero h1{font-size:2.4rem;line-height:1.2;margin:.4rem 0 0;text-transform:none !important}
+    .sub{color:var(--silver);max-width:760px;font-size:1.05rem}
+    .hero-pic{justify-self:end;width:320px;max-width:36vw;border:0;box-shadow:0 10px 28px rgba(0,0,0,.45),0 0 14px rgba(133,187,101,.18);background:#0b0b0b;border-radius:18px;overflow:hidden}
+    .hero-pic img{display:block;width:100%;height:auto;object-fit:cover;filter:saturate(1.03) contrast(1.02)}
+    @media (min-width:901px){ .hero-pic{transform:translateX(-25px)} }
     @media (max-width:900px){
-      .hero-grid{grid-template-columns:1fr; gap:18px; padding-left:16px}
-      .hero-pic{justify-self:start; width:56vw; transform:none}
+      .hero{padding:28px 16px 10px}
+      .hero-grid{grid-template-columns:1fr;gap:18px;padding-left:0}
+      .hero-pic{justify-self:center;width:min(72vw,340px);transform:none}
+      .hero .sub{font-size:1rem}
+      .hero h1{font-size:clamp(1.8rem,6vw,2.2rem)}
     }
 
-    /* Quadrant */
-    .quad{max-width:980px; margin:24px auto; background:#0a0a0a; border:1px solid rgba(255,215,0,.35); border-radius:14px; padding:18px; box-shadow:0 10px 40px rgba(255,215,0,.08)}
-    .quad a img{width:100%; height:auto; display:block; border-radius:10px; border:1px solid rgba(133,187,101,.35)}
-    .cta-bar{display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; margin-top:14px; padding:12px; border-top:1px dashed rgba(255,215,0,.35)}
-    .note{color:var(--silver); font-size:.92rem}
-
-    /* CTA pills (shared) */
+    /* ===== Quadrant ===== */
+    .quad{max-width:980px;margin:24px auto;background:#0a0a0a;border:1px solid var(--lumen) !important;border-radius:14px;padding:18px;box-shadow:0 10px 40px rgba(255,215,0,.08);overflow:hidden}
+    .quad a img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--lumen-blue-light) !important;box-shadow:0 0 14px rgba(43,237,231,.25)}
+    .cta-bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:14px;padding:12px;border-top:1px dashed rgba(255,106,19,.35)}
+    .note{color:var(--silver);font-size:.92rem}
     .pill-cta{
-      display:inline-block; padding:12px 22px; border-radius:9999px; font-weight:800; letter-spacing:.2px;
-      color:#85BB65; background:rgba(255,215,0,.08); border:1px solid rgba(255,215,0,.65);
-      box-shadow:0 0 10px rgba(255,215,0,.25);
+      display:inline-block;padding:12px 22px;border-radius:9999px;font-weight:800;letter-spacing:.2px;
+      color:var(--lumen-blue-light);background:rgba(43,237,231,.08);border:1px solid var(--lumen-blue-light);
+      box-shadow:0 0 10px rgba(43,237,231,.25);
       transition:transform .15s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
     }
-    .pill-cta:hover,
-    .pill-cta:focus-visible{
-      transform:translateY(-1px);
-      background:rgba(255,215,0,.14);
-      border-color:#FFD700;
-      box-shadow:0 0 12px rgba(255,215,0,.45), 0 0 26px rgba(255,215,0,.25);
-      outline:0;
+    .pill-cta:hover,.pill-cta:focus-visible{
+      transform:translateY(-1px);background:rgba(43,237,231,.14);border-color:var(--lumen-blue-light);
+      box-shadow:0 0 12px rgba(43,237,231,.45),0 0 26px rgba(43,237,231,.25); outline:0;
     }
-    /* ORANGE accent variant (quadrant + bottom) */
+    /* Orange accent variant used for Start Cloud 2.0 Discovery */
     .pill-cta.accent{
-      background:linear-gradient(180deg, var(--lumen), #ff8c3a);
-      color:#101010;
-      border:1px solid var(--lumen);
-      box-shadow:0 6px 28px rgba(255,106,19,.35);
+      background:linear-gradient(180deg, var(--lumen), #ff8c3a) !important;color:#0b0b0b !important;
+      border:1px solid var(--lumen) !important; box-shadow:0 6px 28px rgba(255,106,19,.35);
+      text-shadow:0 0 2px rgba(255,255,255,.95),0 0 8px rgba(255,255,255,.45),0 0 14px rgba(43,237,231,.35);
     }
-    .pill-cta.accent:hover,
-    .pill-cta.accent:focus-visible{
-      box-shadow:0 0 12px rgba(255,106,19,.70), 0 0 26px rgba(255,106,19,.40);
-      transform:translateY(-1px);
-      outline:0;
+    .pill-cta.accent:hover,.pill-cta.accent:focus-visible{
+      box-shadow:0 0 12px rgba(255,106,19,.70),0 0 26px rgba(255,106,19,.40); transform:translateY(-1px); outline:0;
     }
 
-    /* ICP section wrapper */
+    /* ===== ICP section ===== */
     .icp-wrap{max-width:1100px;margin:28px auto 10px;padding:0 4px}
     .icp-header{margin:8px 0 14px}
     .icp-header h2{margin:0;color:#ffffff !important;font-size:1.35rem}
     .icp-header p{margin:6px 0 0;color:#C0C0C0}
+    .icp-header h2 .blue-20{color:var(--lumen-blue-light) !important;text-shadow:0 0 10px rgba(43,237,231,.80),0 0 22px rgba(43,237,231,.55)}
 
-    /* Remove any old chip rows above cards */
-    .icp-chips{display:none !important;}
+    .icp-chips{display:none !important} /* removed row of chips */
+    .icp-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:18px}
+    @media (max-width:1100px){ .icp-grid{grid-template-columns:repeat(2,minmax(0,1fr))} }
+    @media (max-width:900px){ .icp-grid{grid-template-columns:1fr} }
 
-    /* Card grid: 4 / 2 / 1 */
-    .icp-grid{
-      display:grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap:16px;
-      margin-top:18px;
-    }
-    @media (max-width: 1100px){
-      .icp-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-    @media (max-width: 640px){
-      .icp-grid{ grid-template-columns: 1fr; }
-    }
-
-    /* Card look */
     .icp-card{
-      background:#0a0f1a;
-      border:1px solid rgba(255,215,0,.28);
-      border-radius:16px;
-      padding:16px 16px 14px;
-      box-shadow:0 10px 34px rgba(227,179,65,.08);
+      background:#0a0f1a;border:1px solid var(--lumen);border-radius:16px;padding:16px 16px 14px;
+      box-shadow:0 0 10px rgba(255,106,19,.14);transition:box-shadow .2s ease, transform .15s ease;
     }
-    .icp-card:hover{box-shadow:0 14px 42px rgba(227,179,65,.14)}
-    /* Category pill in each card: Lumen blue bg, black text, orange glow */
-    .icp-card .tag{
-      display:inline-block;
-      font-weight:800;
-      color:#0b0b0b; /* black text */
-      background: linear-gradient(180deg, var(--lumen-blue), #27b8ea);
-      border:1px solid var(--lumen);     /* orange rim */
-      border-radius:9999px;
-      padding:8px 12px;
-      margin:0 0 10px;
-      box-shadow:0 0 8px rgba(255,106,19,.25);
+    .icp-card:hover,.icp-card:focus-within{box-shadow:0 0 22px rgba(255,106,19,.32);transform:translateY(-1px)}
+    /* Category pill: orange background, black text, orange glow; centered text; clickable via JS */
+    .icp-card .tag,
+    .icp-card a.tag,
+    .icp-card a.tag-link{
+      display:flex;align-items:center;justify-content:center;text-align:center;
+      min-height:38px;padding:8px 16px;font-weight:800;letter-spacing:.2px;
+      color:#0b0b0b;background:linear-gradient(180deg, var(--lumen), #ff8c3a);
+      border:1px solid var(--lumen);border-radius:9999px;margin:0 0 10px;
+      box-shadow:0 6px 24px rgba(255,106,19,.28);text-decoration:none;cursor:pointer;
       transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
     }
-    .icp-card .tag:hover,
-    .icp-card .tag:focus-visible{
-      transform: translateY(-1px);
-      border-color: var(--lumen);
-      box-shadow: 0 0 14px rgba(255,106,19,.55), 0 0 26px rgba(255,106,19,.35);
-      outline: 0;
+    .icp-card .tag:hover,.icp-card .tag:focus-visible,
+    .icp-card a.tag:hover,.icp-card a.tag:focus-visible,
+    .icp-card a.tag-link:hover,.icp-card a.tag-link:focus-visible{
+      transform:translateY(-1px); border-color:var(--lumen);
+      box-shadow:0 0 12px rgba(255,106,19,.70),0 0 26px rgba(255,106,19,.40); outline:0;
     }
-    /* Card titles: white, clickable, subtle glow on hover */
-    .icp-card h3{ color:#ffffff; }
+    /* Subtitles in light blue */
+    .icp-card h3{color:#ffffff;margin-top:6px}
     .icp-card h3 a.icp-link{
-      color:#ffffff; text-decoration:none;
-      border-bottom:1px dashed transparent; transition:all .15s ease;
+      color:var(--lumen-blue-light); text-decoration:none; border-bottom:1px dashed transparent; transition:all .15s ease;
     }
-    .icp-card h3 a.icp-link:hover,
-    .icp-card h3 a.icp-link:focus-visible{
-      color:#ffffff;
-      border-bottom-color: rgba(255,255,255,.35);
-      text-shadow: 0 0 10px rgba(255,215,0,.25), 0 0 18px rgba(255,215,0,.15);
-      outline:0;
+    .icp-card h3 a.icp-link:hover{ border-bottom-color:rgba(43,237,231,.45) }
+    .icp-card h3 a.icp-link:active,.icp-card h3 a.icp-link:focus-visible{
+      text-shadow:0 0 10px rgba(255,106,19,.45),0 0 20px rgba(255,106,19,.30); border-bottom-color:rgba(255,106,19,.45); outline:0;
     }
-:root{
-  --lumen-blue-light:#2BEDE7; /* lighter Lumen blue */
-}
+    /* Paragraphs: crisp near-white, no blur */
+    .icp-card p{color:#E8EEF9 !important;text-shadow:none !important;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;line-height:1.55;font-weight:500}
+    .icp-card p b{color:var(--lumen-blue-light) !important;font-weight:800}
 
-/* Card subtitles (the h3 links) → lighter Lumen blue */
-.icp-card h3 a.icp-link{
-  color: var(--lumen-blue-light);
-  text-decoration: none;
-  border-bottom: 1px dashed transparent;
-  transition: all .15s ease;
-}
-.icp-card h3 a.icp-link:hover{
-  border-bottom-color: rgba(43, 237, 231, .45); /* hover underline in the same blue */
-}
-.icp-card h3 a.icp-link:active,
-.icp-card h3 a.icp-link:focus-visible{
-  text-shadow: 0 0 10px rgba(255,106,19,.45), 0 0 20px rgba(255,106,19,.30); /* orange glow on press/focus */
-  border-bottom-color: rgba(255,106,19,.45);
-  outline: 0;
-}
-/* === ICP CARDS — FINAL LOOK === */
+    /* ===== CTA strip ===== */
+    .cta-rail{max-width:1100px;margin:28px auto 10px;padding:18px;border:1px solid var(--lumen) !important;border-radius:14px;background:#0a0a0a;box-shadow:0 10px 40px rgba(255,215,0,.08)}
+    .cta-rail-inner{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+    .cta-rail h3{margin:0;color:var(--lumen-blue-light) !important;font-size:1.2rem;text-shadow:0 0 8px rgba(43,237,231,.15)}
+    .cta-rail p{margin:4px 0 0;color:#C0C0C0;max-width:720px;font-size:.98rem}
 
-/* 1) Card chrome: ORANGE outline (Lumen), orange glow on hover/click. No yellow. */
-.icp-card{
-  background:#0a0f1a;
-  border:1px solid var(--lumen);               /* Lumen orange outline */
-  border-radius:16px;
-  padding:16px 16px 14px;
-  box-shadow:0 0 10px rgba(255,106,19,.14);    /* subtle orange base glow */
-  transition:box-shadow .2s ease, transform .15s ease;
-}
-.icp-card:hover,
-.icp-card:focus-within{
-  box-shadow:0 0 22px rgba(255,106,19,.32);    /* stronger orange glow on hover/focus */
-  transform:translateY(-1px);
-}
+    /* ===== Footer (centered) + Socials blue glow & dark-blue inner on hover ===== */
+    .footer{margin:32px 0;color:#cfd6e3;font-size:14px;border-top:1px solid rgba(255,255,255,.08);padding:24px 20px;text-align:center;overflow-x:clip}
+    .social-icons{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:10px}
+    .social-icons a{
+      width:38px;height:38px;display:grid;place-items:center;border-radius:999px;color:#0b0b0b;
+      background:linear-gradient(180deg, var(--lumen), #ff8c3a); border:1px solid var(--lumen);
+      position:relative; isolation:isolate; box-shadow:none; transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease, color .15s ease, background .2s ease;
+      overflow:visible;
+    }
+    .social-icons a::after{
+      content:""; position:absolute; inset:-4px; border-radius:999px; background:transparent; box-shadow:none; z-index:-1; pointer-events:none;
+    }
+    .social-icons a:hover,.social-icons a:focus-visible{
+      border-color:var(--lumen-blue-light); transform:translateY(-2px); outline:0;
+      box-shadow: inset 0 0 14px rgba(0,107,143,.90);
+    }
+    .social-icons a:hover::after,.social-icons a:focus-visible::after{
+      box-shadow:0 0 16px rgba(43,237,231,.65), 0 0 34px rgba(43,237,231,.45);
+    }
 
-/* 2) Category pills inside each card:
-      - PERFECTLY CENTERED text
-      - Lumen BLUE background
-      - BLACK text
-      - BLUE glow (same vibe as the whitepaper download)
-      - NO orange outline/glow on the pills
-*/
-.icp-card .tag,
-.icp-card a.tag,
-.icp-card a.tag-link{
-  display:flex; align-items:center; justify-content:center; text-align:center;
-  min-height:38px; padding:8px 16px;
-  font-weight:800; letter-spacing:.2px;
-  color:#0b0b0b;                                     /* black text */
-  background:linear-gradient(180deg, var(--lumen-blue), #27b8ea);
-  border:1px solid var(--lumen-blue);                /* blue rim (not orange) */
-  border-radius:9999px;
-  margin:0 0 10px;
-  box-shadow:0 6px 24px rgba(0,163,224,.28);         /* BLUE glow (matches whitepaper button) */
-  text-decoration:none; cursor:pointer;
-  transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
-}
-.icp-card .tag:hover,
-.icp-card .tag:focus-visible,
-.icp-card a.tag:hover,
-.icp-card a.tag:focus-visible,
-.icp-card a.tag-link:hover,
-.icp-card a.tag-link:focus-visible{
-  transform:translateY(-1px);
-  border-color:var(--lumen-blue);
-  box-shadow:0 0 12px rgba(0,163,224,.65), 0 0 26px rgba(0,163,224,.40); /* BLUE glow on hover/focus */
-  outline:0;
-}
-
-/* 3) Card subtitles (h3 links) = lighter Lumen blue with orange glow on press/focus */
-.icp-card h3{ color:#ffffff; margin-top:6px; }
-.icp-card h3 a.icp-link{
-  color:#2BEDE7;                                      /* lighter Lumen blue */
-  text-decoration:none; border-bottom:1px dashed transparent;
-  transition:all .15s ease;
-}
-.icp-card h3 a.icp-link:hover{ border-bottom-color:rgba(43,237,231,.45); }
-.icp-card h3 a.icp-link:active,
-.icp-card h3 a.icp-link:focus-visible{
-  text-shadow:0 0 10px rgba(255,106,19,.45), 0 0 20px rgba(255,106,19,.30); /* orange flash when interacted */
-  border-bottom-color:rgba(255,106,19,.45);
-  outline:0;
-}
-/* Pills: change label color to Lumen orange */
-.icp-card .tag,
-.icp-card a.tag,
-.icp-card a.tag-link{
-  color: var(--lumen);                 /* #FF6A13 */
-  text-shadow: 0 0 6px rgba(255,106,19,.25); /* subtle readability pop */
-}
-
-/* Optional: slightly stronger on hover/focus */
-.icp-card .tag:hover,
-.icp-card .tag:focus-visible,
-.icp-card a.tag:hover,
-.icp-card a.tag:focus-visible,
-.icp-card a.tag-link:hover,
-.icp-card a.tag-link:focus-visible{
-  text-shadow: 0 0 8px rgba(255,106,19,.45);
-}
-/* Category pills inside ICP cards — Lumen ORANGE backdrop, black text, orange glow */
-.icp-card .tag,
-.icp-card a.tag,
-.icp-card a.tag-link{
-  display:flex; align-items:center; justify-content:center; text-align:center;
-  min-height:38px; padding:8px 16px;
-  font-weight:800; letter-spacing:.2px;
-  color:#0b0b0b;                                 /* black text */
-  background:linear-gradient(180deg, var(--lumen), #ff8c3a);  /* orange fill */
-  border:1px solid var(--lumen);                 /* orange rim */
-  border-radius:9999px;
-  margin:0 0 10px;
-  box-shadow:0 6px 24px rgba(255,106,19,.28);    /* orange glow */
-  text-decoration:none; cursor:pointer;
-  transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
-}
-.icp-card .tag:hover,
-.icp-card .tag:focus-visible,
-.icp-card a.tag:hover,
-.icp-card a.tag:focus-visible,
-.icp-card a.tag-link:hover,
-.icp-card a.tag-link:focus-visible{
-  transform:translateY(-1px);
-  border-color:var(--lumen);
-  box-shadow:0 0 12px rgba(255,106,19,.70), 0 0 26px rgba(255,106,19,.40);
-  outline:0;
-}
-/* --- Make outlines Lumen orange (not yellow) --- */
-
-/* Header nav pills (Home, Blog): orange rim + orange hover glow */
-.home{
-  border-color: var(--lumen) !important;           /* outline = orange */
-}
-.home:hover,
-.home:focus-visible{
-  border-color: var(--lumen) !important;
-  box-shadow: 0 0 10px rgba(255,106,19,.35), 0 0 22px rgba(255,106,19,.25) !important;
-}
-
-/* Top white paper card outline */
-.whitepaper{
-  border: 1px solid var(--lumen) !important;
-}
-
-/* Quadrant card + image outlines */
-.quad{
-  border: 1px solid var(--lumen) !important;
-}
-.quad a img{
-  border: 1px solid var(--lumen) !important;
-}
-
-/* “Ready to place compute and data where they win?” section outline */
-.cta-rail{
-  border: 1px solid var(--lumen) !important;
-}
-
-/* Optional: keep dashed line in quadrant CTA bar but swap to orange */
-.cta-bar{
-  border-top: 1px dashed rgba(255,106,19,.35) !important;
-}
-/* CTA rail headline → lighter Lumen blue */
-:root{ --lumen-blue-light:#2BEDE7; }
-
-.cta-rail h3{
-  color: var(--lumen-blue-light) !important;
-  text-shadow: 0 0 8px rgba(43,237,231,.15);
-}
-/* Light Lumen blue */
-:root{ --lumen-blue-light:#2BEDE7; }
-
-/* Brand title → light blue + soft aura */
-.brand .title{
-  color: var(--lumen-blue-light) !important;
-  text-shadow: 0 0 10px rgba(43,237,231,.25);
-}
-
-/* Header pills (Home, Blog) → light blue border/text + bright blue glow */
-.home{
-  border-color: var(--lumen-blue-light) !important;
-  color: var(--lumen-blue-light) !important;
-}
-.home:hover,
-.home:focus-visible{
-  box-shadow: 0 0 12px rgba(43,237,231,.65), 0 0 28px rgba(43,237,231,.40) !important;
-  border-color: var(--lumen-blue-light) !important;
-  transform: translateY(-1px);
-  outline: 0;
-}
-
-/* Book Lou (non-accent pill) → light blue border/text + bright blue glow */
-/* Keeps orange for .pill-cta.accent (Start Discovery) */
-.pill-cta:not(.accent){
-  color: var(--lumen-blue-light) !important;
-  border-color: var(--lumen-blue-light) !important;
-  background: rgba(43,237,231,.08) !important;
-  box-shadow: 0 0 10px rgba(43,237,231,.25) !important;
-}
-.pill-cta:not(.accent):hover,
-.pill-cta:not(.accent):focus-visible{
-  background: rgba(43,237,231,.14) !important;
-  border-color: var(--lumen-blue-light) !important;
-  box-shadow: 0 0 14px rgba(43,237,231,.70), 0 0 30px rgba(43,237,231,.45) !important;
-  transform: translateY(-1px);
-  outline: 0;
-}
-/* Social icons: orange middle + light Lumen blue glow */
-:root{ --lumen-blue-light:#2BEDE7; }
-
-.social-icons a{
-  background: linear-gradient(180deg, var(--lumen), #ff8c3a); /* orange fill */
-  border: 1px solid var(--lumen);                              /* orange rim */
-  color:#0b0b0b;                                               /* icon = near-black for contrast */
-  box-shadow: 0 0 8px rgba(43,237,231,.20);                    /* subtle blue base aura */
-  transition:
-    transform .15s ease,
-    box-shadow .2s ease,
-    border-color .2s ease,
-    color .15s ease,
-    background .2s ease;
-}
-
-
-
-
-    /* CTA rail */
-    .cta-rail{max-width:1100px;margin:28px auto 10px; padding:18px; border:1px solid rgba(255,215,0,.35); border-radius:14px; background:#0a0a0a; box-shadow:0 10px 40px rgba(255,215,0,.08)}
-    .cta-rail-inner{display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between}
-    .cta-rail h3{margin:0; color:#FFD700; font-size:1.2rem}
-    .cta-rail p{margin:4px 0 0; color:#C0C0C0; max-width:720px; font-size:.98rem}
-/* --- Social icons: orange center, blue glows --- */
-:root{
-  --lumen-blue-light:#2BEDE7;   /* outer glow */
-  --lumen-blue-dark:#006B8F;    /* inner glow */
-}
-
-/* Base (keep orange fill) */
-.social-icons a{
-  background: linear-gradient(180deg, var(--lumen), #ff8c3a); /* solid orange */
-  border: 1px solid var(--lumen);
-  color:#0b0b0b;
-  box-shadow: none; /* kill old glows */
-  transition:
-    transform .15s ease,
-    box-shadow .2s ease,
-    border-color .2s ease,
-    color .15s ease,
-    background .2s ease;
-}
-
-
-    /* Footer (centered) */
-    .footer{margin:32px 0; color:#cfd6e3; font-size:14px; border-top:1px solid rgba(255,255,255,.08); padding:24px 20px; text-align:center}
-    .social-icons{display:flex; gap:10px; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:10px}
-    .social-icons a{width:38px; height:38px; display:grid; place-items:center; border:1px solid rgba(255,255,255,.18); border-radius:999px; color:#e6eef5; transition:color .15s, border-color .15s, box-shadow .15s, transform .15s, text-shadow .15s}
-    .social-icons a svg{width:18px; height:18px}
-/* Force the social buttons to render blue glows on hover */
-:root{
-  --lumen-blue-light:#2BEDE7;  /* outer glow */
-  --lumen-blue-dark:#006B8F;   /* inner glow */
-}
-
-/* Ensure anchors can host a glow halo */
-.footer .social-icons a{
-  position: relative !important;
-  isolation: isolate;                 /* keeps the halo behind the icon */
-  background: linear-gradient(180deg, var(--lumen), #ff8c3a) !important; /* orange center */
-  border: 1px solid var(--lumen) !important;
-  color: #0b0b0b !important;
-  box-shadow: none !important;        /* reset any old shadows */
-  overflow: visible;                   /* allow outer glow to show */
-  transition:
-    transform .15s ease,
-    box-shadow .2s ease,
-    border-color .2s ease,
-    color .15s ease,
-    background .2s ease !important;
-}
-
-/* Create a dedicated outer glow layer */
-.footer .social-icons a::after{
-  content: "";
-  position: absolute;
-  inset: -4px;                         /* slightly larger than the button */
-  border-radius: 999px;
-  background: transparent;
-  box-shadow: none;                    /* off by default */
-  z-index: -1;                         /* behind the button */
-  pointer-events: none;
-}
-
-/* Hover/focus: dark-blue INNER glow + light-blue OUTER halo */
-.footer .social-icons a:hover,
-.footer .social-icons a:focus-visible{
-  transform: translateY(-2px);
-  outline: 0;
-  border-color: var(--lumen-blue-light) !important;
-  /* inner glow */
-  box-shadow:
-    inset 0 0 14px rgba(0,107,143,.90) !important;   /* dark blue inner */
-}
-
-/* turn on and brighten the outer halo */
-.footer .social-icons a:hover::after,
-.footer .social-icons a:focus-visible::after{
-  box-shadow:
-    0 0 16px rgba(43,237,231,.65),
-    0 0 34px rgba(43,237,231,.45);
-}
-/* ===== MOBILE FIX PACK (Android-friendly) ===== */
-
-/* 0) Kill any sneaky horizontal scroll from shadows/halos */
-html, body { overflow-x: hidden; }
-
-/* 1) Sticky header: stronger fallback bg on devices without backdrop-filter */
-.hdr{
-  background: rgba(0,0,0,.85);
-  -webkit-backdrop-filter: saturate(140%) blur(6px);
-  backdrop-filter: saturate(140%) blur(6px);
-}
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .hdr{ background: rgba(0,0,0,.92); }
-}
-
-/* 2) Container padding that scales down on phones */
-.wrap{ padding: clamp(14px, 3.2vw, 24px); }
-
-/* 3) Hero: stack cleanly on phones, pull pic to center, shrink copy slightly */
-@media (max-width: 900px){
-  .hero{ padding: 28px 16px 10px; }
-  .hero-grid{ grid-template-columns: 1fr; gap: 18px; padding-left: 0; }
-  .hero-pic{ justify-self: center; width: min(72vw, 340px); transform: none; }
-  .hero .sub{ font-size: 1rem; }
-  .hero h1{ font-size: clamp(1.6rem, 5.5vw, 2.1rem); }
-}
-
-/* 4) Quadrant: clip inner glow so it never causes sideways scroll */
-.quad{ overflow: hidden; }
-
-/* 5) PDF viewer: shorter on narrow screens to avoid huge scroll-jumps */
-@media (max-width: 600px){
-  .whitepaper .viewer iframe{ height: 440px; }
-}
-
-/* 6) Header actions: allow wrap + larger tap targets */
-.nav-actions{ flex-wrap: wrap; gap: 8px; }
-.home{ min-height: 44px; line-height: 1.2; white-space: normal; }
-
-/* 7) CTA rail: stack content + buttons gracefully on phones */
-.cta-rail-inner{ gap: 14px; }
-@media (max-width: 900px){
-  .cta-rail-inner{ flex-direction: column; align-items: flex-start; }
-  .cta-rail .btns{ display: flex; gap: 10px; flex-wrap: wrap; }
-}
-
-/* 8) ICP grid: go single-column sooner to prevent cramped cards */
-@media (max-width: 900px){
-  .icp-grid{ grid-template-columns: 1fr; }
-}
-
-/* 9) Card pills & titles: allow wrapping instead of forcing overflow */
-.icp-card .tag,
-.icp-card h3 a.icp-link{
-  white-space: normal;
-}
-
-/* 10) Social halos: keep the fancy glow but never push layout sideways */
-.footer{ overflow-x: clip; }
-.footer .social-icons{ justify-content: center; }
-.footer .social-icons a{ overflow: visible; }
-@media (max-width: 480px){
-  /* tone down super-bright glows on tiny screens for smoother scrolling */
-  .pill-cta:not(.accent),
-  .home:hover,
-  .home:focus-visible{
-    box-shadow: 0 0 10px rgba(43,237,231,.55), 0 0 22px rgba(43,237,231,.35);
-  }
-  .footer .social-icons a:hover::after,
-  .footer .social-icons a:focus-visible::after{
-    box-shadow: 0 0 14px rgba(43,237,231,.55), 0 0 24px rgba(43,237,231,.35);
-  }
-}
-
-/* 11) Anchors scroll nicely below the sticky header */
-section[id]{ scroll-margin-top: 84px; }
-/* Black text with white → light-blue halo inside the Cloud 2.0 ICP cards */
-:root{ --lumen-blue-light:#2BEDE7; }
-
-.icp-card .tag,
-.icp-card a.tag,
-.icp-card a.tag-link{
-  color:#0b0b0b; /* keep text black */
-  text-shadow:
-    0 0 2px rgba(255,255,255,.95),   /* tight white edge for legibility */
-    0 0 8px rgba(255,255,255,.45),   /* soft white bloom */
-    0 0 14px rgba(43,237,231,.35);   /* light-blue outer halo */
-}
-
-.icp-card .tag:hover,
-.icp-card .tag:focus-visible,
-.icp-card a.tag:hover,
-.icp-card a.tag:focus-visible,
-.icp-card a.tag-link:hover,
-.icp-card a.tag-link:focus-visible{
-  text-shadow:
-    0 0 2px rgba(255,255,255,1),
-    0 0 10px rgba(255,255,255,.55),
-    0 0 18px rgba(43,237,231,.55),
-    0 0 30px rgba(43,237,231,.35);
-}
-.icp-card p{
-  color:#0b0b0b;
-  text-shadow:
-    0 0 1px rgba(255,255,255,.8),
-    0 0 8px rgba(43,237,231,.25);
-}
-/* Clean, high-contrast paragraphs inside ICP cards (no blur) */
-.icp-card p{
-  color:#E8EEF9 !important;          /* near-white for pop on dark */
-  text-shadow:none !important;       /* remove white/blue halo */
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
-  line-height:1.55;
-  font-weight:500;
-}
-/* Make KPI label pop without glowing the whole line */
-.icp-card p b{
-  color:#2BEDE7 !important;          /* light Lumen blue */
-  font-weight:800;
-}
-:root{ --lumen-blue-light:#2BEDE7; }
-
-/* Ice-blue halo */
-.glow-ice{
-  text-shadow:
-    0 0 6px rgba(43,237,231,.60),
-    0 0 18px rgba(43,237,231,.35);
-}
-
-/* “2.0” = white text + subtle ice-blue halo */
-.two-white{
-  color:#FFFFFF !important;
-  text-shadow:
-    0 0 6px rgba(43,237,231,.45),
-    0 0 16px rgba(43,237,231,.25);
-}
-/* Ice-blue 2.0 with permanent bright glow */
-:root{ --lumen-blue-light:#2BEDE7; }
-
-.blue-20{
-  color: var(--lumen-blue-light) !important;
-  text-shadow:
-    0 0 10px rgba(43,237,231,.75),
-    0 0 22px rgba(43,237,231,.50);
-}
-
-/* Make all “Start Cloud 2.0 Discovery” pills match the orange tag style */
-.home.accent,
-.pill-cta.accent{
-  background: linear-gradient(180deg, var(--lumen), #ff8c3a) !important;
-  color:#0b0b0b !important;                 /* black text */
-  border:1px solid var(--lumen) !important; /* orange rim */
-  box-shadow:0 6px 24px rgba(255,106,19,.28) !important; /* orange glow */
-  text-decoration:none;
-}
-.home.accent:hover, .home.accent:focus-visible,
-.pill-cta.accent:hover, .pill-cta.accent:focus-visible{
-  box-shadow:0 0 12px rgba(255,106,19,.70), 0 0 26px rgba(255,106,19,.40) !important;
-  transform:translateY(-1px);
-  outline:0;
-}
-/* Make all "Start Cloud 2.0 Discovery" pills match the orange category tags */
-.home.accent,
-.pill-cta.accent{
-  display:inline-flex; align-items:center; justify-content:center; text-align:center;
-  min-height:38px; padding:10px 20px; border-radius:9999px; font-weight:800; letter-spacing:.2px;
-  color:#0b0b0b !important;                                   /* black text */
-  background:linear-gradient(180deg, var(--lumen), #ff8c3a) !important; /* orange fill */
-  border:1px solid var(--lumen) !important;                   /* orange rim */
-  box-shadow:0 6px 24px rgba(255,106,19,.28) !important;      /* orange glow */
-  text-decoration:none;
-  /* match the pill-title glow: white edge + soft white + ice-blue halo */
-  text-shadow:
-    0 0 2px rgba(255,255,255,.95),
-    0 0 8px rgba(255,255,255,.45),
-    0 0 14px rgba(43,237,231,.35) !important;
-  transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
-}
-
-.home.accent:hover,
-.home.accent:focus-visible,
-.pill-cta.accent:hover,
-.pill-cta.accent:focus-visible{
-  box-shadow:
-    0 0 12px rgba(255,106,19,.70),
-    0 0 26px rgba(255,106,19,.40) !important;
-  transform: translateY(-1px);
-  outline: 0;
-}
+    /* ===== Mobile polish ===== */
+    .quad{overflow:hidden}
+    @media (max-width:600px){ .whitepaper .viewer iframe{height:440px} }
+    .home{white-space:normal}
+    .cta-rail-inner{gap:14px}
+    @media (max-width:900px){
+      .cta-rail-inner{flex-direction:column;align-items:flex-start}
+      .cta-rail .btns{display:flex;gap:10px;flex-wrap:wrap}
+    }
+    .icp-card .tag, .icp-card h3 a.icp-link{white-space:normal}
+    section[id]{scroll-margin-top:84px}
   </style>
 </head>
 <body>
-  <!-- Header -->
+  <!-- ===== Header ===== -->
   <header class="hdr">
     <div class="hdr-inner wrap">
       <a class="brand" href="/">
         <img src="/assets/industry5-logo.png?v=2025-11-08"
              srcset="/assets/industry5-logo.png?v=2025-11-08 1x, /assets/industry5-logo@2x.png?v=2025-11-08 2x"
              alt="Industry5.pro logo" class="logo" width="44" height="44" loading="eager" decoding="async" />
-        <span class="title">Industry5.pro — Cloud 2.0</span>
+        <span class="title">Industry5.pro — Cloud <span class="blue-20">2.0</span></span>
       </a>
       <div class="nav-actions">
         <a class="home" href="/">Home</a>
@@ -752,21 +252,18 @@ section[id]{ scroll-margin-top: 84px; }
 
   <main class="wrap">
 
-    <!-- White paper card ABOVE the hero -->
+    <!-- ===== White paper card ABOVE the hero ===== -->
     <section class="whitepaper" id="cloud20-whitepaper">
       <div class="wp-heading">
         <span class="wp-eyebrow">
-  <span class="wp-eyebrow">Cloud <span class="blue-20">2.0</span></span>
+          <span class="glow-ice">Cloud</span> <span class="blue-20">2.0</span>
+        </span>
         <h1 class="wp-title">Because AI will not run on yesterday’s internet</h1>
       </div>
-      <p>
-        What is driving the shift and why it matters now. This research driven view maps how AI reshapes data centers, networks, and commercial motions through 2030.
-      </p>
+      <p>What is driving the shift and why it matters now. This research driven view maps how AI reshapes data centers, networks, and commercial motions through 2030.</p>
 
       <div class="cta-row">
-        <a class="btn blue" href="/assets/preparing-cloud-two-enterprise-networks.pdf" download>
-          Download the white paper (PDF)
-        </a>
+        <a class="btn blue" href="/assets/preparing-cloud-two-enterprise-networks.pdf" download>Download the white paper (PDF)</a>
         <a class="whitepaper-jump btn" href="#cloud20-whitepaper-viewer" style="background:#0f131b;color:#e8eef9;border:1px solid rgba(255,255,255,.18);">View inline</a>
       </div>
 
@@ -777,50 +274,45 @@ section[id]{ scroll-margin-top: 84px; }
       </p>
 
       <div class="viewer" id="cloud20-whitepaper-viewer" aria-label="Cloud 2.0 white paper inline viewer">
-        <iframe
-          src="/assets/preparing-cloud-two-enterprise-networks.pdf#view=FitH"
-          title="Cloud 2.0 white paper"
-          loading="lazy">
-        </iframe>
+        <iframe src="/assets/preparing-cloud-two-enterprise-networks.pdf#view=FitH" title="Cloud 2.0 white paper" loading="lazy"></iframe>
       </div>
     </section>
 
-    <!-- Hero -->
+    <!-- ===== Hero ===== -->
     <section class="hero">
       <div class="hero-grid">
         <div class="hero-copy">
-         <div class="kicker">Cloud <span class="blue-20">2.0</span></div>
-h1>Network + Edge + Multi-Cloud with AI in the Loop</h1>
+          <div class="kicker">
+            <span class="glow-ice">Cloud</span> <span class="blue-20">2.0</span>
+          </div>
+          <h1>Network + Edge + Multi Cloud with AI in the Loop</h1>
           <p class="sub">
             Cloud 2.0 places workloads where they perform best across core cloud, regional edge, and on prem sites, with a programmable network and security that travel with the app. We feature Lumen for enterprise grade foundations: adaptive network, edge locations, managed security, and private wireless, while staying supplier agnostic to match use case and geography.
           </p>
         </div>
-        <!-- Right-side profile -->
         <div class="hero-pic">
           <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora — Industry5.pro" />
         </div>
       </div>
     </section>
 
-    <!-- Quadrant -->
+    <!-- ===== Quadrant ===== -->
     <section class="quad">
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">
         <img src="/assets/cloud20_quadrant_lumen.png?v=1" alt="Cloud 2.0 Quadrant — Lumen in Context" />
       </a>
       <div class="cta-bar">
-        <div class="note">Click the quadrant to open Cloud 2.0 discovery. We will align NaaS, edge, multi-cloud, and security around your outcomes.</div>
+        <div class="note">Click the quadrant to open Cloud 2.0 discovery. We will align NaaS, edge, multi cloud, and security around your outcomes.</div>
         <a class="pill-cta accent" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Start Cloud 2.0 Discovery</a>
       </div>
     </section>
 
-    <!-- Micro White Papers: Cloud 2.0 by Vertical -->
+    <!-- ===== Micro White Papers: Cloud 2.0 by Vertical ===== -->
     <section class="mwps icp-wrap" aria-label="Cloud 2.0 use cases by industry">
       <div class="icp-header">
-        <h2>Where Cloud 2.0 Delivers Measurable Resilience</h2>
+        <h2>Where Cloud <span class="blue-20">2.0</span> Delivers Measurable Resilience</h2>
         <p>Use these as starting points. We shape the plan to your uptime targets, compliance, and unit economics.</p>
       </div>
-
-      <!-- No .icp-chips row by request -->
 
       <div class="icp-grid">
         <article class="icp-card">
@@ -881,7 +373,7 @@ h1>Network + Edge + Multi-Cloud with AI in the Loop</h1>
       </div>
     </section>
 
-    <!-- CTA strip -->
+    <!-- ===== CTA strip ===== -->
     <section class="cta-rail">
       <div class="cta-rail-inner">
         <div>
@@ -889,18 +381,18 @@ h1>Network + Edge + Multi-Cloud with AI in the Loop</h1>
           <p>Two fast paths: scope your use case now or book time to map Cloud 2.0, NaaS, and edge around your KPIs.</p>
         </div>
         <div class="btns">
-          <a class="pill-cta accent" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Start Discovery</a>
+          <a class="pill-cta accent" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Start Cloud 2.0 Discovery</a>
           <a class="pill-cta" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer (centered) -->
+  <!-- ===== Footer ===== -->
   <footer class="footer">
     <div>© <span id="cloud20-year"></span> Industry5.pro — Built on trust. Paid by results.</div>
     <div class="social-icons">
-      <a href="https://www.linkedin.com/in/louis-tortora5/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <a href="https://www.linkedin.com/in/louis-tortora7/" target="_blank" rel="noopener" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.8 2.67 4.8 6.14V23h-4v-6.5c0-1.55-.03-3.55-2.17-3.55-2.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg>
       </a>
       <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener" aria-label="Instagram">
@@ -918,9 +410,42 @@ h1>Network + Edge + Multi-Cloud with AI in the Loop</h1>
     </div>
   </footer>
 
-  <script>document.getElementById('cloud20-year').textContent = new Date().getFullYear();</script>
+  <!-- Make category pills clickable to the readiness form -->
+  <script>
+  (function(){
+    var DEST="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header";
+    document.querySelectorAll('.icp-card .tag').forEach(function(tag){
+      if(tag.tagName.toLowerCase()==='a'||tag.querySelector('a')) return;
+      var a=document.createElement('a'); a.className=tag.className+' tag-link';
+      a.href=DEST; a.target='_blank'; a.rel='noopener'; a.innerHTML=tag.innerHTML; tag.replaceWith(a);
+    });
+  })();
+  </script>
 
-  
-
+  <!-- Sticky fallback for older/quirky browsers -->
+  <script>
+  (function(){
+    var hdr=document.querySelector('.hdr'); if(!hdr) return;
+    var supportsSticky = CSS.supports('position','sticky') || CSS.supports('position','-webkit-sticky');
+    if(!supportsSticky){
+      var h = hdr.offsetHeight; document.body.style.paddingTop=h+'px';
+      hdr.style.position='fixed'; hdr.style.top='0'; hdr.style.left='0'; hdr.style.right='0'; hdr.style.zIndex='9999';
+    }else{
+      var fixed=false, baseline=hdr.getBoundingClientRect().top;
+      window.addEventListener('scroll', function(){
+        var topNow=hdr.getBoundingClientRect().top;
+        if(!fixed && window.scrollY>2 && topNow>baseline+2){
+          var h=hdr.offsetHeight; document.body.style.paddingTop=h+'px';
+          hdr.style.position='fixed'; hdr.style.top='0'; hdr.style.left='0'; hdr.style.right='0'; fixed=true;
+        }
+        if(fixed && window.scrollY<=2){
+          document.body.style.paddingTop=''; hdr.style.position='sticky'; hdr.style.top='0';
+          hdr.style.left=''; hdr.style.right=''; fixed=false;
+        }
+      }, {passive:true});
+    }
+    document.getElementById('cloud20-year').textContent = new Date().getFullYear();
+  })();
+  </script>
 </body>
 </html>
