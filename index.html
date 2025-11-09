@@ -474,6 +474,21 @@ header nav a:hover::after,
     justify-content: center;
     white-space: nowrap;
   }
+    /* YouTube embed trim → Lumen orange */
+:root{ --lumen:#FF6A13; --lumen-blue-light:#2BEDE7; }
+
+.yt-wrap{
+  border:1px solid var(--lumen);
+  border-radius:12px;
+  overflow:hidden;                 /* tidy rounded corners */
+  box-shadow:0 0 12px rgba(255,106,19,.35);
+}
+
+/* keep the iframe full-bleed inside the trim */
+.yt-wrap iframe{
+  display:block; width:100%; height:100%;
+}
+
 </style>
 
   </style>
@@ -1040,14 +1055,15 @@ ctaUrl: "https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZ
                style="min-width:320px;height:780px;border-radius:12px;overflow:hidden;background:#0a0f19"></div>
         </div>
         <aside>
-          <div class="card" style="border-radius:12px;overflow:hidden">
-            <div style="padding:14px 14px 0;font-weight:700">Quick form</div>
-            <iframe
-              src="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform?embedded=true"
-              title="Industry5.pro quick form" loading="lazy"></iframe>
-            <div style="padding:0 14px 14px;color:#b9c2cf;font-size:.95rem">
-              Submitting the form won’t auto-redirect. After sending, you can return to our site any time.
-            </div>
+         <div class="yt-wrap">
+  <iframe
+    src="https://www.youtube.com/embed/VIDEO_ID"
+    title="…"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+  ></iframe>
+</div>
           </div>
         </aside>
       </div>
@@ -1501,4 +1517,25 @@ ctaUrl: "https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZ
   .btn-secondary:hover {
     background: rgba(133,187,101,0.16);
   }
+  /* Cloud 2.0 CTA pill: Lumen orange fill + ice-blue glow + black text */
+.pill-cta.cloud-accent{
+  display:inline-flex; align-items:center; justify-content:center; text-align:center;
+  min-height:40px; padding:12px 22px; border-radius:9999px;
+  font-weight:800; letter-spacing:.2px;
+  color:#0b0b0b;                                      /* black text */
+  background:linear-gradient(180deg, var(--lumen), #ff8c3a);
+  border:1px solid var(--lumen);
+  /* ice-blue outer glow (permanent), subtle white edge for readability */
+  box-shadow:0 0 12px rgba(43,237,231,.55), 0 0 26px rgba(43,237,231,.35);
+  text-shadow:0 0 2px rgba(255,255,255,.95), 0 0 8px rgba(255,255,255,.45);
+  transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.pill-cta.cloud-accent:hover,
+.pill-cta.cloud-accent:focus-visible{
+  transform:translateY(-1px);
+  /* brighten the ice-blue aura a bit on hover/focus */
+  box-shadow:0 0 14px rgba(43,237,231,.70), 0 0 32px rgba(43,237,231,.45);
+  outline:0;
+}
+
 </style>
