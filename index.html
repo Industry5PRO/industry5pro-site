@@ -1438,6 +1438,46 @@ ctaUrl: "https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZ
   }
 })();
 </script>
+<script>
+(function(){
+  // Tile labels to retarget (normalized)
+  var targets = [
+    "ai agents & automation",
+    "contact center & cx",
+    "ucaas / voip",
+    "ucaas & voip"
+  ];
+
+  // New destination (same tab)
+  var DEST = "https://industry5.pro/ai-readiness.html";
+
+  function norm(s){ return (s||"").toLowerCase().replace(/\s+/g," ").trim(); }
+  function clean(s){ return norm(s).replace(/[|\/\\\-–—:,.;!]/g,"").replace(/\s+/g," "); }
+  function setLink(a){
+    a.setAttribute("href", DEST);
+    a.removeAttribute("target");
+    a.removeAttribute("rel");
+  }
+
+  try {
+    var scope = document.querySelector("#products, [id*='product'], [data-section='products']") || document;
+    var nodes = scope.querySelectorAll("a, .tile a, .tile-title a, .tile-title, .card a, .card h3, .card h4");
+
+    nodes.forEach(function(el){
+      var text = clean(el.textContent);
+      for (var i=0;i<targets.length;i++){
+        if (text === clean(targets[i])) {
+          var a = el.tagName.toLowerCase() === "a" ? el : el.closest("a");
+          if (a) setLink(a);
+          break;
+        }
+      }
+    });
+  } catch(e){
+    console.warn("AI Readiness link update skipped:", e);
+  }
+})();
+</script>
 
 </body>
 </html>
