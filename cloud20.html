@@ -540,6 +540,82 @@
     0 0 16px rgba(43,237,231,.65),
     0 0 34px rgba(43,237,231,.45);
 }
+/* ===== MOBILE FIX PACK (Android-friendly) ===== */
+
+/* 0) Kill any sneaky horizontal scroll from shadows/halos */
+html, body { overflow-x: hidden; }
+
+/* 1) Sticky header: stronger fallback bg on devices without backdrop-filter */
+.hdr{
+  background: rgba(0,0,0,.85);
+  -webkit-backdrop-filter: saturate(140%) blur(6px);
+  backdrop-filter: saturate(140%) blur(6px);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .hdr{ background: rgba(0,0,0,.92); }
+}
+
+/* 2) Container padding that scales down on phones */
+.wrap{ padding: clamp(14px, 3.2vw, 24px); }
+
+/* 3) Hero: stack cleanly on phones, pull pic to center, shrink copy slightly */
+@media (max-width: 900px){
+  .hero{ padding: 28px 16px 10px; }
+  .hero-grid{ grid-template-columns: 1fr; gap: 18px; padding-left: 0; }
+  .hero-pic{ justify-self: center; width: min(72vw, 340px); transform: none; }
+  .hero .sub{ font-size: 1rem; }
+  .hero h1{ font-size: clamp(1.6rem, 5.5vw, 2.1rem); }
+}
+
+/* 4) Quadrant: clip inner glow so it never causes sideways scroll */
+.quad{ overflow: hidden; }
+
+/* 5) PDF viewer: shorter on narrow screens to avoid huge scroll-jumps */
+@media (max-width: 600px){
+  .whitepaper .viewer iframe{ height: 440px; }
+}
+
+/* 6) Header actions: allow wrap + larger tap targets */
+.nav-actions{ flex-wrap: wrap; gap: 8px; }
+.home{ min-height: 44px; line-height: 1.2; white-space: normal; }
+
+/* 7) CTA rail: stack content + buttons gracefully on phones */
+.cta-rail-inner{ gap: 14px; }
+@media (max-width: 900px){
+  .cta-rail-inner{ flex-direction: column; align-items: flex-start; }
+  .cta-rail .btns{ display: flex; gap: 10px; flex-wrap: wrap; }
+}
+
+/* 8) ICP grid: go single-column sooner to prevent cramped cards */
+@media (max-width: 900px){
+  .icp-grid{ grid-template-columns: 1fr; }
+}
+
+/* 9) Card pills & titles: allow wrapping instead of forcing overflow */
+.icp-card .tag,
+.icp-card h3 a.icp-link{
+  white-space: normal;
+}
+
+/* 10) Social halos: keep the fancy glow but never push layout sideways */
+.footer{ overflow-x: clip; }
+.footer .social-icons{ justify-content: center; }
+.footer .social-icons a{ overflow: visible; }
+@media (max-width: 480px){
+  /* tone down super-bright glows on tiny screens for smoother scrolling */
+  .pill-cta:not(.accent),
+  .home:hover,
+  .home:focus-visible{
+    box-shadow: 0 0 10px rgba(43,237,231,.55), 0 0 22px rgba(43,237,231,.35);
+  }
+  .footer .social-icons a:hover::after,
+  .footer .social-icons a:focus-visible::after{
+    box-shadow: 0 0 14px rgba(43,237,231,.55), 0 0 24px rgba(43,237,231,.35);
+  }
+}
+
+/* 11) Anchors scroll nicely below the sticky header */
+section[id]{ scroll-margin-top: 84px; }
   </style>
 </head>
 <body>
