@@ -702,6 +702,34 @@ section[id]{ scroll-margin-top: 84px; }
   transform:translateY(-1px);
   outline:0;
 }
+/* Make all "Start Cloud 2.0 Discovery" pills match the orange category tags */
+.home.accent,
+.pill-cta.accent{
+  display:inline-flex; align-items:center; justify-content:center; text-align:center;
+  min-height:38px; padding:10px 20px; border-radius:9999px; font-weight:800; letter-spacing:.2px;
+  color:#0b0b0b !important;                                   /* black text */
+  background:linear-gradient(180deg, var(--lumen), #ff8c3a) !important; /* orange fill */
+  border:1px solid var(--lumen) !important;                   /* orange rim */
+  box-shadow:0 6px 24px rgba(255,106,19,.28) !important;      /* orange glow */
+  text-decoration:none;
+  /* match the pill-title glow: white edge + soft white + ice-blue halo */
+  text-shadow:
+    0 0 2px rgba(255,255,255,.95),
+    0 0 8px rgba(255,255,255,.45),
+    0 0 14px rgba(43,237,231,.35) !important;
+  transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.home.accent:hover,
+.home.accent:focus-visible,
+.pill-cta.accent:hover,
+.pill-cta.accent:focus-visible{
+  box-shadow:
+    0 0 12px rgba(255,106,19,.70),
+    0 0 26px rgba(255,106,19,.40) !important;
+  transform: translateY(-1px);
+  outline: 0;
+}
   </style>
 </head>
 <body>
