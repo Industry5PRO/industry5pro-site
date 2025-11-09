@@ -314,6 +314,23 @@
   border-bottom-color:rgba(255,106,19,.45);
   outline:0;
 }
+/* Pills: change label color to Lumen orange */
+.icp-card .tag,
+.icp-card a.tag,
+.icp-card a.tag-link{
+  color: var(--lumen);                 /* #FF6A13 */
+  text-shadow: 0 0 6px rgba(255,106,19,.25); /* subtle readability pop */
+}
+
+/* Optional: slightly stronger on hover/focus */
+.icp-card .tag:hover,
+.icp-card .tag:focus-visible,
+.icp-card a.tag:hover,
+.icp-card a.tag:focus-visible,
+.icp-card a.tag-link:hover,
+.icp-card a.tag-link:focus-visible{
+  text-shadow: 0 0 8px rgba(255,106,19,.45);
+}
 
     /* CTA rail */
     .cta-rail{max-width:1100px;margin:28px auto 10px; padding:18px; border:1px solid rgba(255,215,0,.35); border-radius:14px; background:#0a0a0a; box-shadow:0 10px 40px rgba(255,215,0,.08)}
