@@ -91,6 +91,22 @@
     transform: none;
   }
 }
+/* Micro white paper section */
+.mwps{max-width:1080px; margin:28px auto}
+.mwps h2{color:#FFD700; margin:6px 0 14px; font-size:1.4rem}
+.mwp-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
+.mwp-card{
+  background:#0a0a0a; border:1px solid rgba(255,215,0,.28); border-radius:12px;
+  padding:14px; box-shadow:0 10px 30px rgba(255,215,0,.06)
+}
+.mwp-card h3{margin:0 0 6px 0; font-size:1.05rem; color:#FFFFFF}
+.mwp-card .tag{display:inline-block; margin-bottom:8px; font-size:.86rem; color:#85BB65}
+.mwp-card p{margin:6px 0; color:#C0C0C0; font-size:.98rem}
+
+/* Optional chip row linking to blog tags */
+.mwp-chips{display:flex; flex-wrap:wrap; gap:10px; margin:10px 0 4px}
+.mwp-chips .pill-cta{padding:8px 14px; font-weight:700}
+@media (max-width:900px){ .mwp-grid{grid-template-columns:1fr} }
 
     /* Footer + socials */
     .footer{margin:32px 0; color:#cfd6e3; font-size:14px; border-top:1px solid rgba(255,255,255,.08); padding:24px 20px}
@@ -145,6 +161,80 @@
         <a class="pill-cta accent" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Start Cloud 2.0 Discovery</a>
       </div>
     </section>
+<!-- Micro White Papers: Cloud 2.0 by Vertical -->
+<section class="mwps">
+  <h2>Where Cloud 2.0 Delivers Measurable Resilience</h2>
+
+  <!-- Optional blog chips (keep or remove) -->
+  <div class="mwp-chips">
+    <a class="pill-cta" href="/blog.html?tag=saas-startups">Digital Native SaaS and Startups</a>
+    <a class="pill-cta" href="/blog.html?tag=financial-insurance">Financial Services and Insurance</a>
+    <a class="pill-cta" href="/blog.html?tag=healthcare-lifesciences">Healthcare and Life Sciences</a>
+    <a class="pill-cta" href="/blog.html?tag=manufacturing">Manufacturing and Industry</a>
+    <a class="pill-cta" href="/blog.html?tag=retail-cpg">Retail and CPG</a>
+    <a class="pill-cta" href="/blog.html?tag=logistics-warehousing">Logistics and Warehousing</a>
+    <a class="pill-cta" href="/blog.html?tag=utilities-grid">Utilities and Critical Infrastructure</a>
+    <a class="pill-cta" href="/blog.html?tag=public-sector-education">Public Sector and Education</a>
+  </div>
+
+  <div class="mwp-grid">
+    <article class="mwp-card">
+      <div class="tag">Digital Native SaaS and Startups</div>
+      <h3>Cloud 2.0 for SaaS Resilience</h3>
+      <p>Spread services across regions and clouds so deploys stay fast and outages are boring. NaaS simplifies multi-cloud routing and security follows identity, not IP.</p>
+      <p><b>KPIs:</b> error rate, release velocity, RPO/RTO, unit economics.</p>
+    </article>
+
+    <article class="mwp-card">
+      <div class="tag">Financial Services and Insurance</div>
+      <h3>Trading Performance and Compliance</h3>
+      <p>Deterministic paths to venues, data residency by design, and policy-as-code with audit evidence built in. Failover is rehearsed, not hoped for.</p>
+      <p><b>KPIs:</b> p95 latency, failover time, compliance evidence, fraud signal lag.</p>
+    </article>
+
+    <article class="mwp-card">
+      <div class="tag">Healthcare and Life Sciences</div>
+      <h3>Clinical Uptime and AI at the Edge</h3>
+      <p>Imaging and device inference runs close to care while PHI stays segmented and recoverable. Integrations are predictable and tested.</p>
+      <p><b>KPIs:</b> uptime, time-to-diagnosis, PHI access controls, DR test pass rate.</p>
+    </article>
+
+    <article class="mwp-card">
+      <div class="tag">Manufacturing and Industry</div>
+      <h3>Plant-to-Cloud Reliability</h3>
+      <p>Edge compute at the line, private wireless on the floor, and deterministic backhaul to MES and historians. Analytics sync without drift.</p>
+      <p><b>KPIs:</b> OEE, cycle time, MTTR, data freshness.</p>
+    </article>
+
+    <article class="mwp-card">
+      <div class="tag">Retail and CPG</div>
+      <h3>Store Resilience with Real-Time Data</h3>
+      <p>Active-active stores with graceful degradation, SD-WAN + LTE failover, and vision at the edge for loss prevention and queue busting.</p>
+      <p><b>KPIs:</b> store uptime, queue time, shrink, promo lift.</p>
+    </article>
+
+    <article class="mwp-card">
+      <div class="tag">Logistics, Fleet, and Warehousing</div>
+      <h3>Network as a Reliability Layer</h3>
+      <p>Low-latency networks for robots and scanners, clean failover, and telemetry landing in the right cloud for planning while local actions stay on site.</p>
+      <p><b>KPIs:</b> dock dwell, pick rate, order accuracy, ETA accuracy.</p>
+    </article>
+
+    <article class="mwp-card">
+      <div class="tag">Utilities and Critical Infrastructure</div>
+      <h3>Grid Telemetry and Event Response</h3>
+      <p>Private transport for controls, streaming telemetry pipelines, and segmented recovery playbooks. Built to handle storms and audits alike.</p>
+      <p><b>KPIs:</b> SAIDI/SAIFI, event detection time, recovery time, change success rate.</p>
+    </article>
+
+    <article class="mwp-card">
+      <div class="tag">Public Sector and Education</div>
+      <h3>Mission Resilience with Budget Discipline</h3>
+      <p>Identity-centric access, campus edge where it matters, and clear data residency. Designed for accountability without sacrificing uptime.</p>
+      <p><b>KPIs:</b> service uptime, incident closure time, cost per user, compliance findings.</p>
+    </article>
+  </div>
+</section>
 
     <!-- CTA strip -->
     <section class="cta-rail wrap">
