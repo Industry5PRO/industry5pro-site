@@ -664,6 +664,26 @@
   </footer>
 
   <script>document.getElementById('cloud20-year').textContent = new Date().getFullYear();</script>
+<script>
+(function(){
+  var sel = [
+    '.brand .title',   // header title "Industry5.pro — Cloud 2.0"
+    '.kicker',         // hero kicker
+    '.wp-eyebrow',     // whitepaper eyebrow "Cloud 2.0"
+    '.icp-header h2'   // "Where Cloud 2.0 Delivers..."
+  ];
+  var re = /Cloud\s*(2\.0)/i;
+
+  document.querySelectorAll(sel.join(',')).forEach(function(el){
+    if (!el) return;
+    var html = el.innerHTML;
+    if (html.includes('blue-20')) return; // already wrapped
+    el.innerHTML = html.replace(re, function(_, v){
+      return 'Cloud <span class="blue-20">'+v+'</span>';
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
