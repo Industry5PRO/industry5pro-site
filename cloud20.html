@@ -105,6 +105,56 @@
     .whitepaper .viewer { margin-top:12px; border-radius:12px; overflow:hidden; border:1px solid rgba(133,187,101,.35); background:#0f131b; }
     .whitepaper .viewer iframe { width:100%; height:720px; border:0; display:block; }
     @media (max-width:900px){ .whitepaper .viewer iframe { height:520px; } }
+    /* --- Cloud 2.0 ICP cards --- */
+.icp-wrap{max-width:1100px;margin:28px auto 10px;padding:0 4px}
+.icp-header{margin:8px 0 14px}
+.icp-header h2{margin:0;color:var(--gold);font-size:1.35rem}
+.icp-header p{margin:6px 0 0;color:#C0C0C0}
+
+/* chip row above cards */
+.icp-chips{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 18px}
+.icp-chips .pill-cta{margin-bottom:2px}
+
+/* card grid */
+.icp-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(280px,1fr));
+  gap:16px;
+  margin-top:18px;
+}
+@media (max-width:900px){ .icp-grid{grid-template-columns:1fr} }
+
+/* card look */
+.icp-card{
+  background:#0a0f1a;
+  border:1px solid rgba(255,215,0,.28);
+  border-radius:16px;
+  padding:16px 16px 14px;
+  box-shadow:0 10px 34px rgba(227,179,65,.08);
+}
+.icp-card:hover{box-shadow:0 14px 42px rgba(227,179,65,.14)}
+.icp-card .tag{
+  display:inline-block;
+  font-weight:800;
+  color:#85BB65;
+  background:rgba(255,215,0,.08);
+  border:1px solid rgba(255,215,0,.5);
+  border-radius:999px;
+  padding:6px 10px;
+  margin:0 0 10px;
+}
+.icp-card h3{
+  margin:0 0 6px;
+  color:#FFD700;
+  font-size:1.08rem;
+}
+.icp-card p{margin:6px 0 0;color:#C0C0C0}
+.icp-card p b{color:#eaeaea}
+
+/* give space between the pill row and the grid */
+.mwps { margin-top:32px; }  /* your existing micro white paper section wrapper */
+.mwps .mwp-chips{ margin-bottom:8px; } /* keep pills, but reduce crowding */
+
 
     /* Footer */
     .footer{margin:32px 0; color:#cfd6e3; font-size:14px; border-top:1px solid rgba(255,255,255,.08); padding:24px 20px}
@@ -191,80 +241,85 @@
       </div>
     </section>
 
-    <!-- Micro White Papers: Cloud 2.0 by Vertical -->
-    <section class="mwps">
-      <h2>Where Cloud 2.0 Delivers Measurable Resilience</h2>
+    
+  <!-- Micro White Papers: Cloud 2.0 by Vertical -->
+<section class="mwps icp-wrap" aria-label="Cloud 2.0 use cases by industry">
+  <div class="icp-header">
+    <h2>Where Cloud 2.0 Delivers Measurable Resilience</h2>
+    <p>Use these as starting points. We shape the plan to your uptime targets, compliance, and unit economics.</p>
+  </div>
 
-      <!-- Optional blog chips -->
-      <div class="mwp-chips">
-        <a class="pill-cta" href="/blog.html?tag=saas-startups">Digital Native SaaS and Startups</a>
-        <a class="pill-cta" href="/blog.html?tag=financial-insurance">Financial Services and Insurance</a>
-        <a class="pill-cta" href="/blog.html?tag=healthcare-lifesciences">Healthcare and Life Sciences</a>
-        <a class="pill-cta" href="/blog.html?tag=manufacturing">Manufacturing and Industry</a>
-        <a class="pill-cta" href="/blog.html?tag=retail-cpg">Retail and CPG</a>
-        <a class="pill-cta" href="/blog.html?tag=logistics-warehousing">Logistics and Warehousing</a>
-        <a class="pill-cta" href="/blog.html?tag=utilities-grid">Utilities and Critical Infrastructure</a>
-        <a class="pill-cta" href="/blog.html?tag=public-sector-education">Public Sector and Education</a>
-      </div>
+  <!-- Optional blog chips (kept, with extra spacing above grid) -->
+  <div class="icp-chips mwp-chips">
+    <a class="pill-cta" href="/blog.html?tag=saas-startups">Digital Native SaaS and Startups</a>
+    <a class="pill-cta" href="/blog.html?tag=financial-insurance">Financial Services and Insurance</a>
+    <a class="pill-cta" href="/blog.html?tag=healthcare-lifesciences">Healthcare and Life Sciences</a>
+    <a class="pill-cta" href="/blog.html?tag=manufacturing">Manufacturing and Industry</a>
+    <a class="pill-cta" href="/blog.html?tag=retail-cpg">Retail and CPG</a>
+    <a class="pill-cta" href="/blog.html?tag=logistics-warehousing">Logistics and Warehousing</a>
+    <a class="pill-cta" href="/blog.html?tag=utilities-grid">Utilities and Critical Infrastructure</a>
+    <a class="pill-cta" href="/blog.html?tag=public-sector-education">Public Sector and Education</a>
+  </div>
 
-      <div class="mwp-grid">
-        <article class="mwp-card">
-          <div class="tag">Digital Native SaaS and Startups</div>
-          <h3>Cloud 2.0 for SaaS Resilience</h3>
-          <p>Spread services across regions and clouds so deploys stay fast and outages are boring. NaaS simplifies multi-cloud routing and security follows identity, not IP.</p>
-          <p><b>KPIs:</b> error rate, release velocity, RPO/RTO, unit economics.</p>
-        </article>
+  <div class="icp-grid">
+    <article class="icp-card">
+      <div class="tag">Digital Native SaaS and Startups</div>
+      <h3>Cloud 2.0 for SaaS Resilience</h3>
+      <p>Spread services across regions and clouds so deploys stay fast and outages are boring. NaaS simplifies multi cloud routing and security follows identity, not IP.</p>
+      <p><b>KPIs:</b> error rate, release velocity, RPO and RTO, unit economics.</p>
+    </article>
 
-        <article class="mwp-card">
-          <div class="tag">Financial Services and Insurance</div>
-          <h3>Trading Performance and Compliance</h3>
-          <p>Deterministic paths to venues, data residency by design, and policy as code with audit evidence built in. Failover is rehearsed, not hoped for.</p>
-          <p><b>KPIs:</b> p95 latency, failover time, compliance evidence, fraud signal lag.</p>
-        </article>
+    <article class="icp-card">
+      <div class="tag">Financial Services and Insurance</div>
+      <h3>Trading Performance and Compliance</h3>
+      <p>Deterministic paths to venues, data residency by design, and policy as code with audit evidence built in. Failover is rehearsed, not hoped for.</p>
+      <p><b>KPIs:</b> p95 latency, failover time, compliance evidence, fraud signal lag.</p>
+    </article>
 
-        <article class="mwp-card">
-          <div class="tag">Healthcare and Life Sciences</div>
-          <h3>Clinical Uptime and AI at the Edge</h3>
-          <p>Imaging and device inference runs close to care while PHI stays segmented and recoverable. Integrations are predictable and tested.</p>
-          <p><b>KPIs:</b> uptime, time to diagnosis, PHI access controls, DR test pass rate.</p>
-        </article>
+    <article class="icp-card">
+      <div class="tag">Healthcare and Life Sciences</div>
+      <h3>Clinical Uptime and AI at the Edge</h3>
+      <p>Imaging and device inference runs close to care while PHI stays segmented and recoverable. Integrations are predictable and tested.</p>
+      <p><b>KPIs:</b> uptime, time to diagnosis, PHI access controls, DR test pass rate.</p>
+    </article>
 
-        <article class="mwp-card">
-          <div class="tag">Manufacturing and Industry</div>
-          <h3>Plant to Cloud Reliability</h3>
-          <p>Edge compute at the line, private wireless on the floor, and deterministic backhaul to MES and historians. Analytics sync without drift.</p>
-          <p><b>KPIs:</b> OEE, cycle time, MTTR, data freshness.</p>
-        </article>
+    <article class="icp-card">
+      <div class="tag">Manufacturing and Industry</div>
+      <h3>Plant to Cloud Reliability</h3>
+      <p>Edge compute at the line, private wireless on the floor, and deterministic backhaul to MES and historians. Analytics sync without drift.</p>
+      <p><b>KPIs:</b> OEE, cycle time, MTTR, data freshness.</p>
+    </article>
 
-        <article class="mwp-card">
-          <div class="tag">Retail and CPG</div>
-          <h3>Store Resilience with Real Time Data</h3>
-          <p>Active active stores with graceful degradation, SD-WAN + LTE failover, and vision at the edge for loss prevention and queue busting.</p>
-          <p><b>KPIs:</b> store uptime, queue time, shrink, promo lift.</p>
-        </article>
+    <article class="icp-card">
+      <div class="tag">Retail and CPG</div>
+      <h3>Store Resilience with Real Time Data</h3>
+      <p>Active active stores with graceful degradation, SD WAN with LTE failover, and vision at the edge for loss prevention and queue busting.</p>
+      <p><b>KPIs:</b> store uptime, queue time, shrink, promo lift.</p>
+    </article>
 
-        <article class="mwp-card">
-          <div class="tag">Logistics, Fleet, and Warehousing</div>
-          <h3>Network as a Reliability Layer</h3>
-          <p>Low latency networks for robots and scanners, clean failover, and telemetry landing in the right cloud for planning while local actions stay on site.</p>
-          <p><b>KPIs:</b> dock dwell, pick rate, order accuracy, ETA accuracy.</p>
-        </article>
+    <article class="icp-card">
+      <div class="tag">Logistics, Fleet, and Warehousing</div>
+      <h3>Network as a Reliability Layer</h3>
+      <p>Low latency networks for robots and scanners, clean failover, and telemetry landing in the right cloud for planning while local actions stay on site.</p>
+      <p><b>KPIs:</b> dock dwell, pick rate, order accuracy, ETA accuracy.</p>
+    </article>
 
-        <article class="mwp-card">
-          <div class="tag">Utilities and Critical Infrastructure</div>
-          <h3>Grid Telemetry and Event Response</h3>
-          <p>Private transport for controls, streaming telemetry pipelines, and segmented recovery playbooks. Built to handle storms and audits alike.</p>
-          <p><b>KPIs:</b> SAIDI/SAIFI, event detection time, recovery time, change success rate.</p>
-        </article>
+    <article class="icp-card">
+      <div class="tag">Utilities and Critical Infrastructure</div>
+      <h3>Grid Telemetry and Event Response</h3>
+      <p>Private transport for controls, streaming telemetry pipelines, and segmented recovery playbooks. Built to handle storms and audits alike.</p>
+      <p><b>KPIs:</b> SAIDI and SAIFI, event detection time, recovery time, change success rate.</p>
+    </article>
 
-        <article class="mwp-card">
-          <div class="tag">Public Sector and Education</div>
-          <h3>Mission Resilience with Budget Discipline</h3>
-          <p>Identity centric access, campus edge where it matters, and clear data residency. Designed for accountability without sacrificing uptime.</p>
-          <p><b>KPIs:</b> service uptime, incident closure time, cost per user, compliance findings.</p>
-        </article>
-      </div>
-    </section>
+    <article class="icp-card">
+      <div class="tag">Public Sector and Education</div>
+      <h3>Mission Resilience with Budget Discipline</h3>
+      <p>Identity centric access, campus edge where it matters, and clear data residency. Designed for accountability without sacrificing uptime.</p>
+      <p><b>KPIs:</b> service uptime, incident closure time, cost per user, compliance findings.</p>
+    </article>
+  </div>
+</section>
+
 
     <!-- CTA strip -->
     <section class="cta-rail wrap">
