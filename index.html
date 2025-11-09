@@ -828,9 +828,126 @@ input[type="switch"]{
     transform:translateY(-2px);
     outline:0;
   }
-</style>
-</style>
+<style id="ice-blue-only-glow">
+  :root{
+    --lumen-blue-light:#2BEDE7; /* ice blue */
+    --lumen-blue-dark:#006B8F;  /* inner glow */
+  }
 
+  /* --- NAV buttons (Home, Blog, etc.) --- */
+  .hdr .home:hover,
+  .hdr .home:focus-visible{
+    border-color:var(--lumen-blue-light) !important;
+    box-shadow:
+      0 0 14px rgba(43,237,231,.70),
+      0 0 32px rgba(43,237,231,.45) !important;
+    text-shadow:
+      0 0 6px rgba(43,237,231,.60),
+      0 0 16px rgba(43,237,231,.35) !important;
+    transform:translateY(-1px);
+    outline:0;
+  }
+
+  /* --- Primary CTAs (Cloud 2.0 pills, featured CTA) --- */
+  .pill-cta:hover, .pill-cta:focus-visible,
+  .oo-cta:hover,  .oo-cta:focus-visible{
+    border-color:var(--lumen-blue-light) !important;
+    box-shadow:
+      0 0 14px rgba(43,237,231,.70),
+      0 0 32px rgba(43,237,231,.45) !important;
+    text-shadow:
+      0 0 6px rgba(43,237,231,.60),
+      0 0 16px rgba(43,237,231,.35) !important;
+    transform:translateY(-1px);
+    outline:0;
+  }
+
+  /* Keep your orange fill on accent CTAs; force blue glow on hover */
+  .pill-cta.cloud-accent:hover,
+  .pill-cta.cloud-accent:focus-visible,
+  .oo-cta.cloud-accent:hover,
+  .oo-cta.cloud-accent:focus-visible{
+    border-color:var(--lumen-blue-light) !important;
+    box-shadow:
+      0 0 14px rgba(43,237,231,.70),
+      0 0 32px rgba(43,237,231,.45) !important;
+    text-shadow:
+      0 0 6px rgba(43,237,231,.60),
+      0 0 16px rgba(43,237,231,.35) !important;
+  }
+
+  /* --- Product/Vertical tiles (hover borders/glow) --- */
+  #products .tile:hover, #products .card:hover,
+  #verticals .tile:hover, #verticals .card:hover{
+    border-color:var(--lumen-blue-light) !important;
+    box-shadow:
+      0 0 14px rgba(43,237,231,.35),
+      0 0 28px rgba(43,237,231,.20) !important;
+    transform:translateY(-2px);
+  }
+  /* Tile subtitles on hover → ice blue, never yellow */
+  #products .tile:hover .tile-sub,
+  #verticals .tile:hover .tile-sub{
+    color:var(--lumen-blue-light) !important;
+    text-shadow:
+      0 0 6px rgba(43,237,231,.80),
+      0 0 14px rgba(43,237,231,.45) !important;
+  }
+
+  /* --- Outcome-Obsessed chips / filters (hover, active, selected) --- */
+  .oo-chip:hover, .oo-chip:focus-visible,
+  .oo-chip.active, .oo-chip.selected, .oo-chip[aria-selected="true"],
+  .tags .tag:hover, .tags .tag:focus-visible,
+  .tags .tag.active, .tags .tag.selected, .tags .tag[aria-selected="true"],
+  .filters .pill:hover, .filters .pill:focus-visible,
+  .filters .pill.active, .filters .pill.selected, .filters .pill[aria-selected="true"]{
+    border-color:var(--lumen-blue-light) !important;
+    box-shadow:
+      inset 0 0 10px rgba(0,107,143,.45),
+      0 0 14px rgba(43,237,231,.60),
+      0 0 26px rgba(43,237,231,.35) !important;
+    color:#e6ffff !important;
+    background:rgba(43,237,231,.10) !important;
+    text-shadow:0 0 4px rgba(43,237,231,.35) !important;
+  }
+
+  /* --- Featured section/card (trim glow) → subtle blue only --- */
+  #featured, .featured, .featured-card, .oo-featured, #featured-cloud2, .section.featured{
+    border-color:inherit; /* keep whatever border you set elsewhere */
+    box-shadow:
+      0 0 10px rgba(43,237,231,.25) !important; /* subtle blue */
+    transition:box-shadow .2s ease, border-color .2s ease;
+  }
+  #featured:hover, .featured:hover, .featured-card:hover,
+  .oo-featured:hover, #featured-cloud2:hover, .section.featured:hover{
+    box-shadow:
+      0 0 16px rgba(43,237,231,.50),
+      0 0 28px rgba(43,237,231,.35) !important;
+  }
+
+  /* --- Quadrant/CTA bars and CTA rail edges (no yellow aura) --- */
+  .quad a img{ box-shadow:0 0 14px rgba(43,237,231,.25) !important; }
+  .cta-bar{ border-top:1px dashed rgba(43,237,231,.35) !important; }
+  .cta-rail{
+    border-color:var(--lumen-blue-light) !important;
+    box-shadow:
+      0 0 16px rgba(43,237,231,.30),
+      0 0 34px rgba(43,237,231,.20) !important;
+  }
+
+  /* --- Footer socials (hover) → ice blue only --- */
+  .footer .social-icons a:hover,
+  .footer .social-icons a:focus-visible{
+    border-color:var(--lumen-blue-light) !important;
+    box-shadow:
+      inset 0 0 14px rgba(0,107,143,.90),
+      0 0 16px rgba(43,237,231,.65),
+      0 0 34px rgba(43,237,231,.45) !important;
+    color:var(--lumen-blue-light) !important;
+    transform:translateY(-2px);
+    outline:0;
+  }
+</style>
   </style>
 </head>
 <body>
