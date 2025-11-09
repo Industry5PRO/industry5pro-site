@@ -358,6 +358,40 @@
   box-shadow:0 0 12px rgba(255,106,19,.70), 0 0 26px rgba(255,106,19,.40);
   outline:0;
 }
+/* --- Make outlines Lumen orange (not yellow) --- */
+
+/* Header nav pills (Home, Blog): orange rim + orange hover glow */
+.home{
+  border-color: var(--lumen) !important;           /* outline = orange */
+}
+.home:hover,
+.home:focus-visible{
+  border-color: var(--lumen) !important;
+  box-shadow: 0 0 10px rgba(255,106,19,.35), 0 0 22px rgba(255,106,19,.25) !important;
+}
+
+/* Top white paper card outline */
+.whitepaper{
+  border: 1px solid var(--lumen) !important;
+}
+
+/* Quadrant card + image outlines */
+.quad{
+  border: 1px solid var(--lumen) !important;
+}
+.quad a img{
+  border: 1px solid var(--lumen) !important;
+}
+
+/* “Ready to place compute and data where they win?” section outline */
+.cta-rail{
+  border: 1px solid var(--lumen) !important;
+}
+
+/* Optional: keep dashed line in quadrant CTA bar but swap to orange */
+.cta-bar{
+  border-top: 1px dashed rgba(255,106,19,.35) !important;
+}
 
     /* CTA rail */
     .cta-rail{max-width:1100px;margin:28px auto 10px; padding:18px; border:1px solid rgba(255,215,0,.35); border-radius:14px; background:#0a0a0a; box-shadow:0 10px 40px rgba(255,215,0,.08)}
