@@ -257,6 +257,21 @@
   text-transform:uppercase;
   margin-bottom:4px;
 }
+/* ICP chip pills — Lumen blue fill, black text, orange glow */
+.icp-chips .pill-cta{
+  background: linear-gradient(180deg, var(--lumen-blue), #27b8ea);
+  color: #0b0b0b;                 /* black text */
+  border: 1px solid var(--lumen); /* orange rim */
+  box-shadow: 0 0 8px rgba(255,106,19,.25);
+}
+
+.icp-chips .pill-cta:hover,
+.icp-chips .pill-cta:focus-visible{
+  transform: translateY(-1px);
+  border-color: var(--lumen);
+  box-shadow: 0 0 14px rgba(255,106,19,.55), 0 0 26px rgba(255,106,19,.35); /* orange glow */
+  outline: 0;
+}
 
 
     /* Footer */
