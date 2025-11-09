@@ -4,92 +4,121 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Industry5.pro — Cloud 2.0</title>
-  <meta name="description" content="Cloud 2.0: network + edge + multi-cloud with AI in the loop. Lumen featured. Supplier-agnostic design for measurable outcomes." />
+  <meta name="description" content="Cloud 2.0: network, edge, and multi-cloud with AI in the loop. Lumen featured. Supplier-agnostic design for measurable outcomes." />
   <style>
     :root{
       --black:#000000;
-      --money:#85BB65;  /* money green */
-      --gold:#FFD700;   /* real gold */
+      --money:#85BB65;   /* money green */
+      --gold:#FFD700;    /* real gold */
       --white:#FFFFFF;
       --silver:#C0C0C0;
-      --lumen:#FF6A13; /* Lumen orange */
-      --lumen-blue:#00A3E0; /* Lumen Blue  */
+      --lumen:#FF6A13;      /* Lumen orange */
+      --lumen-blue:#00A3E0; /* Lumen blue  */
     }
     *{box-sizing:border-box}
     body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:var(--black); color:var(--white)}
     a{color:var(--money); text-decoration:none}
-    a:hover{opacity:.9}
+    a:hover{opacity:.95}
     .wrap{max-width:1180px; margin:0 auto; padding:24px}
 
-    /* Header */
+    /* Header (sticky) */
     .hdr{position:sticky; top:0; z-index:40; backdrop-filter:saturate(140%) blur(6px); background:rgba(0,0,0,.7); border-bottom:1px solid rgba(255,215,0,.25)}
     .hdr-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 24px}
     .brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.2px}
     .logo{width:44px; height:44px; border-radius:12px; display:block; object-fit:contain; filter:drop-shadow(0 0 10px rgba(133,187,101,.40)); background:transparent}
     .title{font-size:20px; line-height:1}
     .nav-actions{display:flex; gap:10px; align-items:center}
+
+    /* Base header pills (Home, Blog) = money-green default */
     .home{
-      padding:10px 16px; border:1px solid var(--gold);
-      color:var(--gold); border-radius:10px; font-weight:700; background:transparent;
-      transition:transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease;
+      padding:10px 16px;
+      border:1px solid var(--money);
+      color:var(--money);
+      border-radius:10px;
+      font-weight:700;
+      background:transparent;
+      transition:
+        transform .15s ease,
+        box-shadow .15s ease,
+        background .15s ease,
+        color .15s ease,
+        border-color .15s ease,
+        text-shadow .15s ease;
     }
-    .home:hover{transform:translateY(-1px); box-shadow:0 6px 22px rgba(255,215,0,.25)}
-    /* Filled gold pill variant for header CTA */
+    /* Green → Gold glow on hover/focus (Home/Blog) */
+    .home:hover,
+    .home:focus-visible{
+      border-color:var(--gold);
+      box-shadow:0 0 10px rgba(255,215,0,.35), 0 0 22px rgba(255,215,0,.25);
+      text-shadow:0 0 6px rgba(255,215,0,.55);
+      transform:translateY(-1px);
+      outline:0;
+    }
+    /* Lumen Orange filled CTA for the middle header button */
     .home.accent{
-      background:linear-gradient(180deg,var(--gold),#f0c000);
-      color:#101010; border-color:var(--gold); box-shadow:0 6px 24px rgba(255,215,0,.28);
+      background:linear-gradient(180deg, var(--lumen), #ff8c3a);
+      color:#101010;
+      border:1px solid var(--lumen);
+      box-shadow:0 6px 24px rgba(255,106,19,.35);
     }
-    .home.accent:hover{box-shadow:0 8px 28px rgba(255,215,0,.4)}
-/* Base header pills */
-/* Base header pills (Home, Blog) = money-green default */
-.home{
-  padding:10px 16px;
-  border:1px solid var(--money);
-  color:var(--money);
-  border-radius:10px;
-  font-weight:700;
-  background:transparent;
-  transition:
-    transform .15s ease,
-    box-shadow .15s ease,
-    background .15s ease,
-    color .15s ease,
-    border-color .15s ease,
-    text-shadow .15s ease;
-}
+    .home.accent:hover,
+    .home.accent:focus-visible{
+      box-shadow:0 0 12px rgba(255,106,19,.70), 0 0 26px rgba(255,106,19,.40);
+      transform:translateY(-1px);
+      outline:0;
+    }
 
-/* Green → Gold glow on hover/focus for Home/Blog */
-.home:hover,
-.home:focus-visible{
-  border-color:var(--gold);
-  box-shadow:0 0 10px rgba(255,215,0,.35), 0 0 22px rgba(255,215,0,.25);
-  text-shadow:0 0 6px rgba(255,215,0,.55);
-  transform:translateY(-1px);
-  outline:0;
-}
+    /* White paper card ABOVE hero */
+    .whitepaper{
+      max-width:1100px; margin:18px auto 8px; padding:18px;
+      background:#0a0f1a; border:1px solid rgba(227,179,65,.35);
+      border-radius:14px; box-shadow:0 10px 40px rgba(227,179,65,.08);
+    }
+    /* Eyebrow + title system to match hero */
+    .wp-heading{ margin: 0 0 6px; }
+    .wp-eyebrow{
+      display:inline-block; color: var(--lumen); font-weight:700;
+      font-size: .95rem; letter-spacing:.08em; text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .wp-title{
+      margin: 0;
+      font-size: 2.1rem;   /* match hero h1 */
+      line-height: 1.2;
+      color: #ffffff;
+    }
+    .whitepaper p{ margin:6px 0 12px; color:#C0C0C0; font-size:1rem; }
+    .whitepaper .meta { color:#9fb2c7; font-size:.92rem; margin-top:6px; }
+    .whitepaper .cta-row { display:flex; gap:10px; flex-wrap:wrap; margin:12px 0; }
+    .whitepaper .btn {
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);
+      font-weight:800;text-decoration:none
+    }
+    /* Lumen Blue pill for the white paper download */
+    .btn.blue{
+      background:linear-gradient(180deg, var(--lumen-blue), #27b8ea);
+      color:#0b1220;
+      border:1px solid var(--lumen-blue);
+      box-shadow:0 6px 24px rgba(0,163,224,.28);
+    }
+    .btn.blue:hover,
+    .btn.blue:focus-visible{
+      box-shadow:0 0 12px rgba(0,163,224,.65), 0 0 26px rgba(0,163,224,.40);
+      transform:translateY(-1px);
+      outline:0;
+    }
+    .whitepaper .viewer { margin-top:12px; border-radius:12px; overflow:hidden; border:1px solid rgba(133,187,101,.35); background:#0f131b; }
+    .whitepaper .viewer iframe { width:100%; height:720px; border:0; display:block; }
+    @media (max-width:900px){ .whitepaper .viewer iframe { height:520px; } }
 
-/* Lumen Orange filled CTA for the middle header button */
-.home.accent{
-  background:linear-gradient(180deg, var(--lumen), #ff8c3a);
-  color:#101010;
-  border:1px solid var(--lumen);
-  box-shadow:0 6px 24px rgba(255,106,19,.35);
-}
-.home.accent:hover,
-.home.accent:focus-visible{
-  box-shadow:0 0 12px rgba(255,106,19,.70), 0 0 26px rgba(255,106,19,.40);
-  transform:translateY(-1px);
-  outline:0;
-}
-
-
-    /* Hero grid (copy left, profile right) */
+    /* Hero */
     .hero{padding:40px 24px 10px}
     .hero-grid{
       max-width:1080px; margin:0 auto; display:grid; grid-template-columns:1.2fr .8fr;
-      gap:28px; align-items:center; padding-left:36px;   /* left nudge to align with quadrant */
+      gap:28px; align-items:center; padding-left:36px;
     }
-    .kicker{ color: var(--lumen); font-weight:700; font-size:.95rem; letter-spacing:.08em; text-transform:uppercase}
+    .kicker{color:var(--lumen); font-weight:700; font-size:.95rem; letter-spacing:.08em; text-transform:uppercase}
     h1{font-size:2.1rem; line-height:1.2; margin:.4rem 0 0}
     .sub{color:var(--silver); max-width:760px; font-size:1.05rem}
     .hero-pic{justify-self:end; width:320px; max-width:36vw; border:0; box-shadow:0 10px 28px rgba(0,0,0,.45), 0 0 14px rgba(133,187,101,.18); background:#0b0b0b; border-radius:18px; overflow:hidden}
@@ -106,189 +135,109 @@
     .cta-bar{display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; margin-top:14px; padding:12px; border-top:1px dashed rgba(255,215,0,.35)}
     .note{color:var(--silver); font-size:.92rem}
 
-    /* CTA strip above footer */
-    .cta-rail{margin:28px 0 10px; padding:18px; border:1px solid rgba(255,215,0,.35); border-radius:14px; background:#0a0a0a; box-shadow:0 10px 40px rgba(255,215,0,.08)}
+    /* CTA pills (shared) */
+    .pill-cta{
+      display:inline-block; padding:12px 22px; border-radius:9999px; font-weight:800; letter-spacing:.2px;
+      color:#85BB65; background:rgba(255,215,0,.08); border:1px solid rgba(255,215,0,.65);
+      box-shadow:0 0 10px rgba(255,215,0,.25);
+      transition:transform .15s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
+    }
+    .pill-cta:hover,
+    .pill-cta:focus-visible{
+      transform:translateY(-1px);
+      background:rgba(255,215,0,.14);
+      border-color:#FFD700;
+      box-shadow:0 0 12px rgba(255,215,0,.45), 0 0 26px rgba(255,215,0,.25);
+      outline:0;
+    }
+    /* ORANGE accent variant (quadrant + bottom) */
+    .pill-cta.accent{
+      background:linear-gradient(180deg, var(--lumen), #ff8c3a);
+      color:#101010;
+      border:1px solid var(--lumen);
+      box-shadow:0 6px 28px rgba(255,106,19,.35);
+    }
+    .pill-cta.accent:hover,
+    .pill-cta.accent:focus-visible{
+      box-shadow:0 0 12px rgba(255,106,19,.70), 0 0 26px rgba(255,106,19,.40);
+      transform:translateY(-1px);
+      outline:0;
+    }
+
+    /* ICP section wrapper */
+    .icp-wrap{max-width:1100px;margin:28px auto 10px;padding:0 4px}
+    .icp-header{margin:8px 0 14px}
+    .icp-header h2{margin:0;color:#ffffff !important;font-size:1.35rem}
+    .icp-header p{margin:6px 0 0;color:#C0C0C0}
+
+    /* Remove any old chip rows above cards */
+    .icp-chips{display:none !important;}
+
+    /* Card grid: 4 / 2 / 1 */
+    .icp-grid{
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap:16px;
+      margin-top:18px;
+    }
+    @media (max-width: 1100px){
+      .icp-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 640px){
+      .icp-grid{ grid-template-columns: 1fr; }
+    }
+
+    /* Card look */
+    .icp-card{
+      background:#0a0f1a;
+      border:1px solid rgba(255,215,0,.28);
+      border-radius:16px;
+      padding:16px 16px 14px;
+      box-shadow:0 10px 34px rgba(227,179,65,.08);
+    }
+    .icp-card:hover{box-shadow:0 14px 42px rgba(227,179,65,.14)}
+    /* Category pill in each card: Lumen blue bg, black text, orange glow */
+    .icp-card .tag{
+      display:inline-block;
+      font-weight:800;
+      color:#0b0b0b; /* black text */
+      background: linear-gradient(180deg, var(--lumen-blue), #27b8ea);
+      border:1px solid var(--lumen);     /* orange rim */
+      border-radius:9999px;
+      padding:8px 12px;
+      margin:0 0 10px;
+      box-shadow:0 0 8px rgba(255,106,19,.25);
+      transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .icp-card .tag:hover,
+    .icp-card .tag:focus-visible{
+      transform: translateY(-1px);
+      border-color: var(--lumen);
+      box-shadow: 0 0 14px rgba(255,106,19,.55), 0 0 26px rgba(255,106,19,.35);
+      outline: 0;
+    }
+    /* Card titles: white, clickable, subtle glow on hover */
+    .icp-card h3{ color:#ffffff; }
+    .icp-card h3 a.icp-link{
+      color:#ffffff; text-decoration:none;
+      border-bottom:1px dashed transparent; transition:all .15s ease;
+    }
+    .icp-card h3 a.icp-link:hover,
+    .icp-card h3 a.icp-link:focus-visible{
+      color:#ffffff;
+      border-bottom-color: rgba(255,255,255,.35);
+      text-shadow: 0 0 10px rgba(255,215,0,.25), 0 0 18px rgba(255,215,0,.15);
+      outline:0;
+    }
+
+    /* CTA rail */
+    .cta-rail{max-width:1100px;margin:28px auto 10px; padding:18px; border:1px solid rgba(255,215,0,.35); border-radius:14px; background:#0a0a0a; box-shadow:0 10px 40px rgba(255,215,0,.08)}
     .cta-rail-inner{display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between}
     .cta-rail h3{margin:0; color:#FFD700; font-size:1.2rem}
     .cta-rail p{margin:4px 0 0; color:#C0C0C0; max-width:720px; font-size:.98rem}
 
-    /* Glowing gold pill CTAs with money-green text */
-    .btns{display:flex; gap:12px; flex-wrap:wrap}
-   /* Base pill (keeps your green text and gold-hover for non-accent) */
-.pill-cta{
-  display:inline-block; padding:12px 22px; border-radius:9999px; font-weight:800; letter-spacing:.2px;
-  color:#85BB65; background:rgba(255,215,0,.08); border:1px solid rgba(255,215,0,.65);
-  box-shadow:0 0 10px rgba(255,215,0,.25);
-  transition:transform .15s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
-}
-.pill-cta:hover,
-.pill-cta:focus-visible{
-  transform:translateY(-1px);
-  background:rgba(255,215,0,.14);
-  border-color:#FFD700;
-  box-shadow:0 0 12px rgba(255,215,0,.45), 0 0 26px rgba(255,215,0,.25);
-  outline:0;
-}
-
-/* ORANGE accent variant used on the quadrant CTA and bottom "Start Discovery" */
-.pill-cta.accent{
-  background:linear-gradient(180deg, var(--lumen), #ff8c3a);
-  color:#101010;
-  border:1px solid var(--lumen);
-  box-shadow:0 6px 28px rgba(255,106,19,.35);
-}
-.pill-cta.accent:hover,
-.pill-cta.accent:focus-visible{
-  box-shadow:0 0 12px rgba(255,106,19,.70), 0 0 26px rgba(255,106,19,.40);
-  transform:translateY(-1px);
-  outline:0;
-}
-
-
-    /* Micro white paper section */
-    .whitepaper{
-      max-width:1100px; margin:18px auto 8px; padding:18px;
-      background:#0a0f1a; border:1px solid rgba(227,179,65,.35);
-      border-radius:14px; box-shadow:0 10px 40px rgba(227,179,65,.08);
-    }
-    .whitepaper h1{ margin:0 0 6px; color:#FFD700; font-size:clamp(22px,3.4vw,28px); line-height:1.2; }
-    .whitepaper p{ margin:6px 0 12px; color:#C0C0C0; font-size:1rem; }
-    .whitepaper .meta { color:#9fb2c7; font-size:.92rem; margin-top:6px; }
-    .whitepaper .cta-row { display:flex; gap:10px; flex-wrap:wrap; margin:12px 0; }
-    .whitepaper .btn {
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);
-      font-weight:800;text-decoration:none
-    }
-    .whitepaper .btn.primary { background:#85BB65; color:#0b1220; border-color: rgba(133,187,101,.6); }
-    .whitepaper .btn.secondary { background:#0f131b; color:#e8eef9; }
-    .whitepaper .viewer { margin-top:12px; border-radius:12px; overflow:hidden; border:1px solid rgba(133,187,101,.35); background:#0f131b; }
-    .whitepaper .viewer iframe { width:100%; height:720px; border:0; display:block; }
-    @media (max-width:900px){ .whitepaper .viewer iframe { height:520px; } }
-    /* --- Cloud 2.0 ICP cards --- */
-.icp-wrap{max-width:1100px;margin:28px auto 10px;padding:0 4px}
-.icp-header{margin:8px 0 14px}
-.icp-header h2{margin:0;color:#ffffff(--gold);font-size:1.35rem}
-.icp-header p{margin:6px 0 0;color:#C0C0C0}
-
-/* chip row above cards */
-.icp-chips{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 18px}
-.icp-chips .pill-cta{margin-bottom:2px}
-
-/* card grid */
-.icp-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(280px,1fr));
-  gap:16px;
-  margin-top:18px;
-}
-@media (max-width:900px){ .icp-grid{grid-template-columns:1fr} }
-
-/* card look */
-.icp-card{
-  background:#0a0f1a;
-  border:1px solid rgba(255,215,0,.28);
-  border-radius:16px;
-  padding:16px 16px 14px;
-  box-shadow:0 10px 34px rgba(227,179,65,.08);
-}
-.icp-card:hover{box-shadow:0 14px 42px rgba(227,179,65,.14)}
-.icp-card .tag{
-  display:inline-block;
-  font-weight:800;
-  color:#85BB65;
-  background:rgba(255,215,0,.08);
-  border:1px solid rgba(255,215,0,.5);
-  border-radius:999px;
-  padding:6px 10px;
-  margin:0 0 10px;
-}
-.icp-card h3{
-  margin:0 0 6px;
-  color:#FFD700;
-  font-size:1.08rem;
-}
-.icp-card p{margin:6px 0 0;color:#C0C0C0}
-.icp-card p b{color:#eaeaea}
-
-/* give space between the pill row and the grid */
-.mwps { margin-top:32px; }  /* your existing micro white paper section wrapper */
-.mwps .mwp-chips{ margin-bottom:8px; } /* keep pills, but reduce crowding */
-/* Lumen Blue pill for the white paper download */
-.btn.blue{
-  background:linear-gradient(180deg, var(--lumen-blue), #27b8ea);
-  color:#0b1220;
-  border:1px solid var(--lumen-blue);
-  box-shadow:0 6px 24px rgba(0,163,224,.28);
-}
-.btn.blue:hover,
-.btn.blue:focus-visible{
-  box-shadow:0 0 12px rgba(0,163,224,.65), 0 0 26px rgba(0,163,224,.40);
-  transform:translateY(-1px);
-  outline:0;
-}
-/* White paper heading styles */
-.wp-heading{ margin: 0 0 6px; }
-.wp-eyebrow{
-  display:inline-block; color: var(--lumen); font-weight:700;
-  font-size: .95rem; letter-spacing:.08em; text-transform: uppercase;
-  margin-bottom: 4px;
-}
-.wp-title{
-  margin: 0;
-  font-size: 2.1rem;         /* matches your hero h1 size */
-  line-height: 1.2;
-  color: #fff;
-}
-/* Force white title + match hero h1 size */
-.wp-title{
-  color:#ffffff !important;
-  font-size:2.1rem;   /* same as your hero h1 */
-  line-height:1.2;
-}
-
-/* Orange eyebrow above the title */
-.wp-eyebrow{
-  display:inline-block;
-  color:var(--lumen); /* Lumen orange */
-  font-weight:700;
-  font-size:.95rem;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  margin-bottom:4px;
-}
-/* ICP chip pills — Lumen blue fill, black text, orange glow */
-.icp-chips .pill-cta{
-  background: linear-gradient(180deg, var(--lumen-blue), #27b8ea);
-  color: #0b0b0b;                 /* black text */
-  border: 1px solid var(--lumen); /* orange rim */
-  box-shadow: 0 0 8px rgba(255,106,19,.25);
-}
-
-.icp-chips .pill-cta:hover,
-.icp-chips .pill-cta:focus-visible{
-  transform: translateY(-1px);
-  border-color: var(--lumen);
-  box-shadow: 0 0 14px rgba(255,106,19,.55), 0 0 26px rgba(255,106,19,.35); /* orange glow */
-  outline: 0;
-}
-/* Card titles: white, clickable, subtle glow on hover */
-.icp-card h3{ color:#ffffff; }
-.icp-card h3 a.icp-link{
-  color:#ffffff; text-decoration:none;
-  border-bottom:1px dashed transparent; transition:all .15s ease;
-}
-.icp-card h3 a.icp-link:hover,
-.icp-card h3 a.icp-link:focus-visible{
-  color:#ffffff;
-  border-bottom-color: rgba(255,255,255,.35);
-  text-shadow: 0 0 10px rgba(255,215,0,.25), 0 0 18px rgba(255,215,0,.15);
-  outline:0;
-}
-
-
-    /* Footer */
-    .footer{margin:32px 0; color:#cfd6e3; font-size:14px; border-top:1px solid rgba(255,255,255,.08); padding:24px 20px}
+    /* Footer (centered) */
+    .footer{margin:32px 0; color:#cfd6e3; font-size:14px; border-top:1px solid rgba(255,255,255,.08); padding:24px 20px; text-align:center}
     .social-icons{display:flex; gap:10px; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:10px}
     .social-icons a{width:38px; height:38px; display:grid; place-items:center; border:1px solid rgba(255,255,255,.18); border-radius:999px; color:#e6eef5; transition:color .15s, border-color .15s, box-shadow .15s, transform .15s, text-shadow .15s}
     .social-icons a svg{width:18px; height:18px}
@@ -305,14 +254,11 @@
              alt="Industry5.pro logo" class="logo" width="44" height="44" loading="eager" decoding="async" />
         <span class="title">Industry5.pro — Cloud 2.0</span>
       </a>
-     <div class="nav-actions">
-  <a class="home" href="/">Home</a>
-  <a class="home accent" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">
-    Start Cloud 2.0 Discovery
-  </a>
-  <a class="home" href="/blog.html">Blog</a>
-</div>
-
+      <div class="nav-actions">
+        <a class="home" href="/">Home</a>
+        <a class="home accent" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Start Cloud 2.0 Discovery</a>
+        <a class="home" href="/blog.html">Blog</a>
+      </div>
     </div>
   </header>
 
@@ -321,19 +267,18 @@
     <!-- White paper card ABOVE the hero -->
     <section class="whitepaper" id="cloud20-whitepaper">
       <div class="wp-heading">
-  <span class="wp-eyebrow">Cloud 2.0</span>
-  <h1 class="wp-title">Because AI will not run on yesterday’s internet</h1>
-</div>
-
+        <span class="wp-eyebrow">Cloud 2.0</span>
+        <h1 class="wp-title">Because AI will not run on yesterday’s internet</h1>
+      </div>
       <p>
         What is driving the shift and why it matters now. This research driven view maps how AI reshapes data centers, networks, and commercial motions through 2030.
       </p>
 
       <div class="cta-row">
         <a class="btn blue" href="/assets/preparing-cloud-two-enterprise-networks.pdf" download>
-  Download the white paper (PDF)
-</a>
-        <a class="btn secondary" href="#cloud20-whitepaper-viewer">View inline</a>
+          Download the white paper (PDF)
+        </a>
+        <a class="whitepaper-jump btn" href="#cloud20-whitepaper-viewer" style="background:#0f131b;color:#e8eef9;border:1px solid rgba(255,255,255,.18);">View inline</a>
       </div>
 
       <p class="meta">
@@ -375,110 +320,94 @@
       </a>
       <div class="cta-bar">
         <div class="note">Click the quadrant to open Cloud 2.0 discovery. We will align NaaS, edge, multi-cloud, and security around your outcomes.</div>
-        <a class="pill-cta accent" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">
-  Start Cloud 2.0 Discovery
-</a>
+        <a class="pill-cta accent" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Start Cloud 2.0 Discovery</a>
       </div>
     </section>
 
-    
-  <!-- Micro White Papers: Cloud 2.0 by Vertical -->
-<section class="mwps icp-wrap" aria-label="Cloud 2.0 use cases by industry">
-  <div class="icp-header">
-    <h2>Where Cloud 2.0 Delivers Measurable Resilience</h2>
-    <p>Use these as starting points. We shape the plan to your uptime targets, compliance, and unit economics.</p>
-  </div>
+    <!-- Micro White Papers: Cloud 2.0 by Vertical -->
+    <section class="mwps icp-wrap" aria-label="Cloud 2.0 use cases by industry">
+      <div class="icp-header">
+        <h2>Where Cloud 2.0 Delivers Measurable Resilience</h2>
+        <p>Use these as starting points. We shape the plan to your uptime targets, compliance, and unit economics.</p>
+      </div>
 
-  <!-- Optional blog chips (kept, with extra spacing above grid) -->
-  <div class="icp-chips mwp-chips">
-    <a class="pill-cta" href="/blog.html?tag=saas-startups">Digital Native SaaS and Startups</a>
-    <a class="pill-cta" href="/blog.html?tag=financial-insurance">Financial Services and Insurance</a>
-    <a class="pill-cta" href="/blog.html?tag=healthcare-lifesciences">Healthcare and Life Sciences</a>
-    <a class="pill-cta" href="/blog.html?tag=manufacturing">Manufacturing and Industry</a>
-    <a class="pill-cta" href="/blog.html?tag=retail-cpg">Retail and CPG</a>
-    <a class="pill-cta" href="/blog.html?tag=logistics-warehousing">Logistics and Warehousing</a>
-    <a class="pill-cta" href="/blog.html?tag=utilities-grid">Utilities and Critical Infrastructure</a>
-    <a class="pill-cta" href="/blog.html?tag=public-sector-education">Public Sector and Education</a>
-  </div>
+      <!-- No .icp-chips row by request -->
 
-  <div class="icp-grid">
-    <article class="icp-card">
-      <div class="tag">Digital Native SaaS and Startups</div>
-      <h3><a class="icp-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Cloud 2.0 for SaaS Resilience</a></h3>
-      <p>Spread services across regions and clouds so deploys stay fast and outages are boring. NaaS simplifies multi cloud routing and security follows identity, not IP.</p>
-      <p><b>KPIs:</b> error rate, release velocity, RPO and RTO, unit economics.</p>
-    </article>
+      <div class="icp-grid">
+        <article class="icp-card">
+          <div class="tag">Digital Native SaaS and Startups</div>
+          <h3><a class="icp-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Cloud 2.0 for SaaS Resilience</a></h3>
+          <p>Spread services across regions and clouds so deploys stay fast and outages are boring. NaaS simplifies multi cloud routing and security follows identity, not IP.</p>
+          <p><b>KPIs:</b> error rate, release velocity, RPO and RTO, unit economics.</p>
+        </article>
 
-    <article class="icp-card">
-      <div class="tag">Financial Services and Insurance</div>
-      <h3><a class="icp-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Trading Performance and Compliance</a></h3>
-      <p>Deterministic paths to venues, data residency by design, and policy as code with audit evidence built in. Failover is rehearsed, not hoped for.</p>
-      <p><b>KPIs:</b> p95 latency, failover time, compliance evidence, fraud signal lag.</p>
-    </article>
+        <article class="icp-card">
+          <div class="tag">Financial Services and Insurance</div>
+          <h3><a class="icp-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Trading Performance and Compliance</a></h3>
+          <p>Deterministic paths to venues, data residency by design, and policy as code with audit evidence built in. Failover is rehearsed, not hoped for.</p>
+          <p><b>KPIs:</b> p95 latency, failover time, compliance evidence, fraud signal lag.</p>
+        </article>
 
-    <article class="icp-card">
-      <div class="tag">Healthcare and Life Sciences</div>
-      <h3><a class="icp-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Clinical Uptime and AI at the Edge</h3>
-      <p>Imaging and device inference runs close to care while PHI stays segmented and recoverable. Integrations are predictable and tested.</p>
-      <p><b>KPIs:</b> uptime, time to diagnosis, PHI access controls, DR test pass rate.</p>
-    </article>
+        <article class="icp-card">
+          <div class="tag">Healthcare and Life Sciences</div>
+          <h3><a class="icp-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Clinical Uptime and AI at the Edge</a></h3>
+          <p>Imaging and device inference runs close to care while PHI stays segmented and recoverable. Integrations are predictable and tested.</p>
+          <p><b>KPIs:</b> uptime, time to diagnosis, PHI access controls, DR test pass rate.</p>
+        </article>
 
-    <article class="icp-card">
-      <div class="tag">Manufacturing and Industry</div>
-      <h3><a class="icp-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Plant to Cloud Reliability</h3>
-      <p>Edge compute at the line, private wireless on the floor, and deterministic backhaul to MES and historians. Analytics sync without drift.</p>
-      <p><b>KPIs:</b> OEE, cycle time, MTTR, data freshness.</p>
-    </article>
+        <article class="icp-card">
+          <div class="tag">Manufacturing and Industry</div>
+          <h3><a class="icp-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Plant to Cloud Reliability</a></h3>
+          <p>Edge compute at the line, private wireless on the floor, and deterministic backhaul to MES and historians. Analytics sync without drift.</p>
+          <p><b>KPIs:</b> OEE, cycle time, MTTR, data freshness.</p>
+        </article>
 
-    <article class="icp-card">
-      <div class="tag">Retail and CPG</div>
-      <h3><a class="icp-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Store Resilience with Real Time Data</h3>
-      <p>Active active stores with graceful degradation, SD WAN with LTE failover, and vision at the edge for loss prevention and queue busting.</p>
-      <p><b>KPIs:</b> store uptime, queue time, shrink, promo lift.</p>
-    </article>
+        <article class="icp-card">
+          <div class="tag">Retail and CPG</div>
+          <h3><a class="icp-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Store Resilience with Real Time Data</a></h3>
+          <p>Active active stores with graceful degradation, SD WAN with LTE failover, and vision at the edge for loss prevention and queue busting.</p>
+          <p><b>KPIs:</b> store uptime, queue time, shrink, promo lift.</p>
+        </article>
 
-    <article class="icp-card">
-      <div class="tag">Logistics, Fleet, and Warehousing</div>
-      <h3><a class="icp-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Network as a Reliability Layer</h3>
-      <p>Low latency networks for robots and scanners, clean failover, and telemetry landing in the right cloud for planning while local actions stay on site.</p>
-      <p><b>KPIs:</b> dock dwell, pick rate, order accuracy, ETA accuracy.</p>
-    </article>
+        <article class="icp-card">
+          <div class="tag">Logistics, Fleet, and Warehousing</div>
+          <h3><a class="icp-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Network as a Reliability Layer</a></h3>
+          <p>Low latency networks for robots and scanners, clean failover, and telemetry landing in the right cloud for planning while local actions stay on site.</p>
+          <p><b>KPIs:</b> dock dwell, pick rate, order accuracy, ETA accuracy.</p>
+        </article>
 
-    <article class="icp-card">
-      <div class="tag">Utilities and Critical Infrastructure</div>
-      <h3><a class="icp-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Grid Telemetry and Event Response</h3>
-      <p>Private transport for controls, streaming telemetry pipelines, and segmented recovery playbooks. Built to handle storms and audits alike.</p>
-      <p><b>KPIs:</b> SAIDI and SAIFI, event detection time, recovery time, change success rate.</p>
-    </article>
+        <article class="icp-card">
+          <div class="tag">Utilities and Critical Infrastructure</div>
+          <h3><a class="icp-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Grid Telemetry and Event Response</a></h3>
+          <p>Private transport for controls, streaming telemetry pipelines, and segmented recovery playbooks. Built to handle storms and audits alike.</p>
+          <p><b>KPIs:</b> SAIDI and SAIFI, event detection time, recovery time, change success rate.</p>
+        </article>
 
-    <article class="icp-card">
-      <div class="tag">Public Sector and Education</div>
-      <h3><a class="icp-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Mission Resilience with Budget Discipline</h3>
-      <p>Identity centric access, campus edge where it matters, and clear data residency. Designed for accountability without sacrificing uptime.</p>
-      <p><b>KPIs:</b> service uptime, incident closure time, cost per user, compliance findings.</p>
-    </article>
-  </div>
-</section>
-
+        <article class="icp-card">
+          <div class="tag">Public Sector and Education</div>
+          <h3><a class="icp-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Mission Resilience with Budget Discipline</a></h3>
+          <p>Identity centric access, campus edge where it matters, and clear data residency. Designed for accountability without sacrificing uptime.</p>
+          <p><b>KPIs:</b> service uptime, incident closure time, cost per user, compliance findings.</p>
+        </article>
+      </div>
+    </section>
 
     <!-- CTA strip -->
-    <section class="cta-rail wrap">
+    <section class="cta-rail">
       <div class="cta-rail-inner">
         <div>
           <h3>Ready to place compute and data where they win?</h3>
           <p>Two fast paths: scope your use case now or book time to map Cloud 2.0, NaaS, and edge around your KPIs.</p>
         </div>
         <div class="btns">
-          <a class="pill-cta accent" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">
-  Start Discovery
-</a>
+          <a class="pill-cta accent" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Start Discovery</a>
           <a class="pill-cta" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
+  <!-- Footer (centered) -->
   <footer class="footer">
     <div>© <span id="cloud20-year"></span> Industry5.pro — Built on trust. Paid by results.</div>
     <div class="social-icons">
