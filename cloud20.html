@@ -229,6 +229,26 @@
       text-shadow: 0 0 10px rgba(255,215,0,.25), 0 0 18px rgba(255,215,0,.15);
       outline:0;
     }
+:root{
+  --lumen-blue-light:#2BEDE7; /* lighter Lumen blue */
+}
+
+/* Card subtitles (the h3 links) → lighter Lumen blue */
+.icp-card h3 a.icp-link{
+  color: var(--lumen-blue-light);
+  text-decoration: none;
+  border-bottom: 1px dashed transparent;
+  transition: all .15s ease;
+}
+.icp-card h3 a.icp-link:hover{
+  border-bottom-color: rgba(43, 237, 231, .45); /* hover underline in the same blue */
+}
+.icp-card h3 a.icp-link:active,
+.icp-card h3 a.icp-link:focus-visible{
+  text-shadow: 0 0 10px rgba(255,106,19,.45), 0 0 20px rgba(255,106,19,.30); /* orange glow on press/focus */
+  border-bottom-color: rgba(255,106,19,.45);
+  outline: 0;
+}
 
     /* CTA rail */
     .cta-rail{max-width:1100px;margin:28px auto 10px; padding:18px; border:1px solid rgba(255,215,0,.35); border-radius:14px; background:#0a0a0a; box-shadow:0 10px 40px rgba(255,215,0,.08)}
@@ -430,5 +450,6 @@
   </footer>
 
   <script>document.getElementById('cloud20-year').textContent = new Date().getFullYear();</script>
+
 </body>
 </html>
