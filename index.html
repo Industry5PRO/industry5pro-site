@@ -1338,23 +1338,7 @@ ctaUrl: "https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZ
 </script>
 
 
-  // 3) Industries — three specific tiles (typo-safe for Safety/Saftey)
-  var industryTargets = [
-    "maritime",
-    "public safety and smart city",
-    "public saftey and smart city", // common typo
-    "agriculture and drones"
-  ];
-
-  try {
-    var industriesScope = document.querySelector("#industries, [data-section='industries']") || document;
-    var industryAnchors = industriesScope.querySelectorAll(".tile a, .tile .tile-title, a");
-    industryAnchors.forEach(function(a){
-      var t = norm(a.textContent);
-      if (industryTargets.includes(t)) setLink(a);
-    });
-  } catch (e) { console.warn("Industries link update skipped:", e); }
-})();
+ 
 </script>
 
   <!-- ...your other scripts... -->
