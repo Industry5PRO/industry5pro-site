@@ -629,6 +629,87 @@ input[type="switch"]{
 .tags .tag, .oo-tags .tag, .filters .pill, .filter .pill, .tag-pill, .chip{
   box-shadow: none;
 }
+<style id="brand-blue-overrides">
+  :root{
+    --lumen:#FF6A13;               /* Lumen orange */
+    --lumen-blue-light:#2BEDE7;    /* ice blue */
+    --accent: var(--lumen-blue-light); /* kill green fallbacks that use var(--accent, #85BB65) */
+  }
+
+  /* ===== Tiles: Products & Industries — replace green glow with ice blue ===== */
+  #products .card:hover,
+  #products .tile:hover,
+  #verticals .card:hover,
+  #verticals .tile:hover{
+    border-color: var(--lumen-blue-light) !important;
+    box-shadow: 0 0 14px rgba(43,237,231,.35), 0 0 28px rgba(43,237,231,.20) !important;
+    transform: translateY(-2px);
+  }
+  /* subtitle glow (was green) -> ice blue */
+  #products .tile:hover .tile-sub,
+  #verticals .tile:hover .tile-sub,
+  #products .tile:hover h3 + p,
+  #verticals .tile:hover h3 + p{
+    color: var(--lumen-blue-light) !important;
+    text-shadow: 0 0 6px rgba(43,237,231,.80), 0 0 14px rgba(43,237,231,.45) !important;
+  }
+  /* keep TITLES white (no green flip) */
+  #products .tile:hover .tile-title,
+  #products .tile:hover h3,
+  #products .tile:hover h3 a,
+  #verticals .tile:hover .tile-title,
+  #verticals .tile:hover h3,
+  #verticals .tile:hover h3 a{
+    color:#fff !important;
+    text-shadow:0 0 6px rgba(255,255,255,.85), 0 0 14px rgba(255,255,255,.45) !important;
+  }
+
+  /* ===== Featured CTA pill — hover text + trim glow ice blue (keep orange fill) ===== */
+  .oo-cta.cloud-accent:hover,
+  .oo-cta.cloud-accent:focus-visible,
+  .pill-cta.cloud-accent:hover,
+  .pill-cta.cloud-accent:focus-visible{
+    border-color: var(--lumen-blue-light) !important;
+    box-shadow: 0 0 14px rgba(43,237,231,.70), 0 0 32px rgba(43,237,231,.45) !important;
+    text-shadow: 0 0 6px rgba(43,237,231,.60), 0 0 16px rgba(43,237,231,.35) !important;
+    transform: translateY(-1px);
+    outline: 0;
+  }
+
+  /* ===== Outcome-Obsessed chips: active + hover -> ice blue (no green) ===== */
+  .oo-chip.active{
+    border-color: var(--lumen-blue-light) !important;
+    background: rgba(43,237,231,.12) !important;
+    color: #e6ffff !important;
+    box-shadow:
+      inset 0 0 10px rgba(0,107,143,.45),
+      0 0 14px rgba(43,237,231,.60),
+      0 0 26px rgba(43,237,231,.35) !important;
+  }
+  .oo-chip:hover,
+  .oo-chip:focus-visible{
+    border-color: var(--lumen-blue-light) !important;
+    box-shadow: 0 0 12px rgba(43,237,231,.60), 0 0 26px rgba(43,237,231,.40) !important;
+    color: var(--lumen-blue-light) !important;
+  }
+
+  /* ===== Generic selected/pressed helpers (safety net) ===== */
+  .is-active, .is-selected, [aria-selected="true"], [aria-pressed="true"]{
+    border-color: var(--lumen-blue-light) !important;
+    box-shadow: 0 0 12px rgba(43,237,231,.60), 0 0 26px rgba(43,237,231,.40) !important;
+  }
+
+  /* ===== Footer social icons — replace green with ice blue ===== */
+  .footer .social-icons a:hover,
+  .footer .social-icons a:focus-visible{
+    border-color: var(--lumen-blue-light) !important;
+    box-shadow: 0 0 10px rgba(43,237,231,.65), 0 0 18px rgba(43,237,231,.35) !important;
+    color: var(--lumen-blue-light) !important; /* SVG uses currentColor */
+    text-shadow: 0 0 6px rgba(43,237,231,.85), 0 0 14px rgba(43,237,231,.45) !important;
+    transform: translateY(-2px);
+    outline: 0;
+  }
+</style>
 
   
 </style>
