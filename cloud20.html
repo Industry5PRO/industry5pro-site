@@ -272,30 +272,6 @@
   box-shadow: 0 0 14px rgba(255,106,19,.55), 0 0 26px rgba(255,106,19,.35); /* orange glow */
   outline: 0;
 }
-/* Remove the old chip row spacing entirely */
-.icp-chips { display:none !important; }
-
-/* New per-card CTA pill: Lumen blue fill, black text, orange glow */
-.chip-row { margin-top:12px; }
-.chip-cta{
-  display:inline-block;
-  padding:10px 18px;
-  border-radius:9999px;
-  font-weight:800;
-  letter-spacing:.2px;
-  background: linear-gradient(180deg, var(--lumen-blue), #27b8ea);
-  color:#0b0b0b;                 /* black text */
-  border:1px solid var(--lumen); /* orange rim */
-  box-shadow:0 0 10px rgba(255,106,19,.28), 0 0 2px rgba(255,255,255,.08) inset;
-  transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease, filter .2s ease;
-}
-.chip-cta:hover,
-.chip-cta:focus-visible{
-  transform: translateY(-1px);
-  border-color: var(--lumen);
-  box-shadow: 0 0 14px rgba(255,106,19,.65), 0 0 28px rgba(255,106,19,.40);
-  outline: 0;
-}
 
 
     /* Footer */
@@ -393,14 +369,24 @@
     </section>
 
     
-<!-- Micro White Papers: Cloud 2.0 by Vertical -->
+  <!-- Micro White Papers: Cloud 2.0 by Vertical -->
 <section class="mwps icp-wrap" aria-label="Cloud 2.0 use cases by industry">
   <div class="icp-header">
     <h2>Where Cloud 2.0 Delivers Measurable Resilience</h2>
     <p>Use these as starting points. We shape the plan to your uptime targets, compliance, and unit economics.</p>
   </div>
 
-  <!-- removed the icp-chips block on purpose -->
+  <!-- Optional blog chips (kept, with extra spacing above grid) -->
+  <div class="icp-chips mwp-chips">
+    <a class="pill-cta" href="/blog.html?tag=saas-startups">Digital Native SaaS and Startups</a>
+    <a class="pill-cta" href="/blog.html?tag=financial-insurance">Financial Services and Insurance</a>
+    <a class="pill-cta" href="/blog.html?tag=healthcare-lifesciences">Healthcare and Life Sciences</a>
+    <a class="pill-cta" href="/blog.html?tag=manufacturing">Manufacturing and Industry</a>
+    <a class="pill-cta" href="/blog.html?tag=retail-cpg">Retail and CPG</a>
+    <a class="pill-cta" href="/blog.html?tag=logistics-warehousing">Logistics and Warehousing</a>
+    <a class="pill-cta" href="/blog.html?tag=utilities-grid">Utilities and Critical Infrastructure</a>
+    <a class="pill-cta" href="/blog.html?tag=public-sector-education">Public Sector and Education</a>
+  </div>
 
   <div class="icp-grid">
     <article class="icp-card">
@@ -408,9 +394,6 @@
       <h3>Cloud 2.0 for SaaS Resilience</h3>
       <p>Spread services across regions and clouds so deploys stay fast and outages are boring. NaaS simplifies multi cloud routing and security follows identity, not IP.</p>
       <p><b>KPIs:</b> error rate, release velocity, RPO and RTO, unit economics.</p>
-      <div class="chip-row">
-        <a class="chip-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Cloud 2.0 Readiness</a>
-      </div>
     </article>
 
     <article class="icp-card">
@@ -418,9 +401,6 @@
       <h3>Trading Performance and Compliance</h3>
       <p>Deterministic paths to venues, data residency by design, and policy as code with audit evidence built in. Failover is rehearsed, not hoped for.</p>
       <p><b>KPIs:</b> p95 latency, failover time, compliance evidence, fraud signal lag.</p>
-      <div class="chip-row">
-        <a class="chip-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Cloud 2.0 Readiness</a>
-      </div>
     </article>
 
     <article class="icp-card">
@@ -428,9 +408,6 @@
       <h3>Clinical Uptime and AI at the Edge</h3>
       <p>Imaging and device inference runs close to care while PHI stays segmented and recoverable. Integrations are predictable and tested.</p>
       <p><b>KPIs:</b> uptime, time to diagnosis, PHI access controls, DR test pass rate.</p>
-      <div class="chip-row">
-        <a class="chip-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Cloud 2.0 Readiness</a>
-      </div>
     </article>
 
     <article class="icp-card">
@@ -438,9 +415,6 @@
       <h3>Plant to Cloud Reliability</h3>
       <p>Edge compute at the line, private wireless on the floor, and deterministic backhaul to MES and historians. Analytics sync without drift.</p>
       <p><b>KPIs:</b> OEE, cycle time, MTTR, data freshness.</p>
-      <div class="chip-row">
-        <a class="chip-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Cloud 2.0 Readiness</a>
-      </div>
     </article>
 
     <article class="icp-card">
@@ -448,9 +422,6 @@
       <h3>Store Resilience with Real Time Data</h3>
       <p>Active active stores with graceful degradation, SD WAN with LTE failover, and vision at the edge for loss prevention and queue busting.</p>
       <p><b>KPIs:</b> store uptime, queue time, shrink, promo lift.</p>
-      <div class="chip-row">
-        <a class="chip-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Cloud 2.0 Readiness</a>
-      </div>
     </article>
 
     <article class="icp-card">
@@ -458,9 +429,6 @@
       <h3>Network as a Reliability Layer</h3>
       <p>Low latency networks for robots and scanners, clean failover, and telemetry landing in the right cloud for planning while local actions stay on site.</p>
       <p><b>KPIs:</b> dock dwell, pick rate, order accuracy, ETA accuracy.</p>
-      <div class="chip-row">
-        <a class="chip-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Cloud 2.0 Readiness</a>
-      </div>
     </article>
 
     <article class="icp-card">
@@ -468,9 +436,6 @@
       <h3>Grid Telemetry and Event Response</h3>
       <p>Private transport for controls, streaming telemetry pipelines, and segmented recovery playbooks. Built to handle storms and audits alike.</p>
       <p><b>KPIs:</b> SAIDI and SAIFI, event detection time, recovery time, change success rate.</p>
-      <div class="chip-row">
-        <a class="chip-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Cloud 2.0 Readiness</a>
-      </div>
     </article>
 
     <article class="icp-card">
@@ -478,13 +443,9 @@
       <h3>Mission Resilience with Budget Discipline</h3>
       <p>Identity centric access, campus edge where it matters, and clear data residency. Designed for accountability without sacrificing uptime.</p>
       <p><b>KPIs:</b> service uptime, incident closure time, cost per user, compliance findings.</p>
-      <div class="chip-row">
-        <a class="chip-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Cloud 2.0 Readiness</a>
-      </div>
     </article>
   </div>
 </section>
-
 
 
     <!-- CTA strip -->
