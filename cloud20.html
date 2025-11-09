@@ -661,6 +661,22 @@ section[id]{ scroll-margin-top: 84px; }
   color:#2BEDE7 !important;          /* light Lumen blue */
   font-weight:800;
 }
+:root{ --lumen-blue-light:#2BEDE7; }
+
+/* Ice-blue halo */
+.glow-ice{
+  text-shadow:
+    0 0 6px rgba(43,237,231,.60),
+    0 0 18px rgba(43,237,231,.35);
+}
+
+/* “2.0” = white text + subtle ice-blue halo */
+.two-white{
+  color:#FFFFFF !important;
+  text-shadow:
+    0 0 6px rgba(43,237,231,.45),
+    0 0 16px rgba(43,237,231,.25);
+}
   </style>
 </head>
 <body>
@@ -686,7 +702,9 @@ section[id]{ scroll-margin-top: 84px; }
     <!-- White paper card ABOVE the hero -->
     <section class="whitepaper" id="cloud20-whitepaper">
       <div class="wp-heading">
-        <span class="wp-eyebrow">Cloud 2.0</span>
+        <span class="wp-eyebrow">
+  <span class="glow-ice">Cloud</span> <span class="two-white">2.0</span>
+</span>
         <h1 class="wp-title">Because AI will not run on yesterday’s internet</h1>
       </div>
       <p>
@@ -719,8 +737,10 @@ section[id]{ scroll-margin-top: 84px; }
     <section class="hero">
       <div class="hero-grid">
         <div class="hero-copy">
-          <div class="kicker">Cloud 2.0</div>
-          <h1>Network + Edge + Multi-Cloud with AI in the Loop</h1>
+         <div class="kicker">
+  <span class="glow-ice">Cloud</span> <span class="two-white">2.0</span>
+</div>
+h1>Network + Edge + Multi-Cloud with AI in the Loop</h1>
           <p class="sub">
             Cloud 2.0 places workloads where they perform best across core cloud, regional edge, and on prem sites, with a programmable network and security that travel with the app. We feature Lumen for enterprise grade foundations: adaptive network, edge locations, managed security, and private wireless, while staying supplier agnostic to match use case and geography.
           </p>
