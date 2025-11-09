@@ -13,6 +13,7 @@
       --white:#FFFFFF;
       --silver:#C0C0C0;
       --lumen:#FF6A13; /* Lumen orange */
+      --lumen-blue:#00A3E0; /* Lumen Blue  */
     }
     *{box-sizing:border-box}
     body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:var(--black); color:var(--white)}
@@ -40,17 +41,24 @@
     }
     .home.accent:hover{box-shadow:0 8px 28px rgba(255,215,0,.4)}
 /* Base header pills */
+/* Base header pills (Home, Blog) = money-green default */
 .home{
   padding:10px 16px;
-  border:1px solid var(--money);     /* green default */
+  border:1px solid var(--money);
   color:var(--money);
   border-radius:10px;
   font-weight:700;
   background:transparent;
-  transition:transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease, border-color .15s ease, text-shadow .15s ease;
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease,
+    background .15s ease,
+    color .15s ease,
+    border-color .15s ease,
+    text-shadow .15s ease;
 }
 
-/* Green → Gold glow on hover/focus (Home, Blog) */
+/* Green → Gold glow on hover/focus for Home/Blog */
 .home:hover,
 .home:focus-visible{
   border-color:var(--gold);
@@ -60,7 +68,7 @@
   outline:0;
 }
 
-/* Lumen orange filled CTA */
+/* Lumen Orange filled CTA for the middle header button */
 .home.accent{
   background:linear-gradient(180deg, var(--lumen), #ff8c3a);
   color:#101010;
@@ -73,6 +81,7 @@
   transform:translateY(-1px);
   outline:0;
 }
+
 
     /* Hero grid (copy left, profile right) */
     .hero{padding:40px 24px 10px}
@@ -105,20 +114,36 @@
 
     /* Glowing gold pill CTAs with money-green text */
     .btns{display:flex; gap:12px; flex-wrap:wrap}
-    .pill-cta{
-      display:inline-block; padding:12px 22px; border-radius:9999px; font-weight:800; letter-spacing:.2px;
-      color:#85BB65; background:rgba(255,215,0,.08); border:1px solid rgba(255,215,0,.65);
-      box-shadow:0 0 10px rgba(255,215,0,.25);
-      transition:transform .15s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
-    }
-    .pill-cta:hover,.pill-cta:focus-visible{
-      transform:translateY(-1px); background:rgba(255,215,0,.14); border-color:#FFD700;
-      box-shadow:0 0 12px rgba(255,215,0,.45), 0 0 26px rgba(255,215,0,.25); outline:0;
-    }
-    .pill-cta.accent{
-      background:linear-gradient(180deg,#FFD700,#f0c000); color:#101010; border:1px solid #FFD700;
-      box-shadow:0 6px 28px rgba(255,215,0,.35);
-    }
+   /* Base pill (keeps your green text and gold-hover for non-accent) */
+.pill-cta{
+  display:inline-block; padding:12px 22px; border-radius:9999px; font-weight:800; letter-spacing:.2px;
+  color:#85BB65; background:rgba(255,215,0,.08); border:1px solid rgba(255,215,0,.65);
+  box-shadow:0 0 10px rgba(255,215,0,.25);
+  transition:transform .15s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
+}
+.pill-cta:hover,
+.pill-cta:focus-visible{
+  transform:translateY(-1px);
+  background:rgba(255,215,0,.14);
+  border-color:#FFD700;
+  box-shadow:0 0 12px rgba(255,215,0,.45), 0 0 26px rgba(255,215,0,.25);
+  outline:0;
+}
+
+/* ORANGE accent variant used on the quadrant CTA and bottom "Start Discovery" */
+.pill-cta.accent{
+  background:linear-gradient(180deg, var(--lumen), #ff8c3a);
+  color:#101010;
+  border:1px solid var(--lumen);
+  box-shadow:0 6px 28px rgba(255,106,19,.35);
+}
+.pill-cta.accent:hover,
+.pill-cta.accent:focus-visible{
+  box-shadow:0 0 12px rgba(255,106,19,.70), 0 0 26px rgba(255,106,19,.40);
+  transform:translateY(-1px);
+  outline:0;
+}
+
 
     /* Micro white paper section */
     .whitepaper{
@@ -189,6 +214,19 @@
 /* give space between the pill row and the grid */
 .mwps { margin-top:32px; }  /* your existing micro white paper section wrapper */
 .mwps .mwp-chips{ margin-bottom:8px; } /* keep pills, but reduce crowding */
+/* Lumen Blue pill for the white paper download */
+.btn.blue{
+  background:linear-gradient(180deg, var(--lumen-blue), #27b8ea);
+  color:#0b1220;
+  border:1px solid var(--lumen-blue);
+  box-shadow:0 6px 24px rgba(0,163,224,.28);
+}
+.btn.blue:hover,
+.btn.blue:focus-visible{
+  box-shadow:0 0 12px rgba(0,163,224,.65), 0 0 26px rgba(0,163,224,.40);
+  transform:translateY(-1px);
+  outline:0;
+}
 
 
     /* Footer */
@@ -209,11 +247,14 @@
              alt="Industry5.pro logo" class="logo" width="44" height="44" loading="eager" decoding="async" />
         <span class="title">Industry5.pro — Cloud 2.0</span>
       </a>
-      <div class="nav-actions">
-        <a class="home" href="/">Home</a>
-        <a class="home accent" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Start Cloud 2.0 Discovery</a>
-        <a class="home" href="/blog.html">Blog</a>
-      </div>
+     <div class="nav-actions">
+  <a class="home" href="/">Home</a>
+  <a class="home accent" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">
+    Start Cloud 2.0 Discovery
+  </a>
+  <a class="home" href="/blog.html">Blog</a>
+</div>
+
     </div>
   </header>
 
@@ -227,9 +268,9 @@
       </p>
 
       <div class="cta-row">
-        <a class="btn primary" href="/assets/preparing-cloud-two-enterprise-networks.pdf" download>
-          Download the white paper (PDF)
-        </a>
+        <a class="btn blue" href="/assets/preparing-cloud-two-enterprise-networks.pdf" download>
+  Download the white paper (PDF)
+</a>
         <a class="btn secondary" href="#cloud20-whitepaper-viewer">View inline</a>
       </div>
 
@@ -272,7 +313,9 @@
       </a>
       <div class="cta-bar">
         <div class="note">Click the quadrant to open Cloud 2.0 discovery. We will align NaaS, edge, multi-cloud, and security around your outcomes.</div>
-        <a class="pill-cta accent" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Start Cloud 2.0 Discovery</a>
+        <a class="pill-cta accent" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">
+  Start Cloud 2.0 Discovery
+</a>
       </div>
     </section>
 
@@ -364,7 +407,9 @@
           <p>Two fast paths: scope your use case now or book time to map Cloud 2.0, NaaS, and edge around your KPIs.</p>
         </div>
         <div class="btns">
-          <a class="pill-cta accent" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">Start Discovery</a>
+          <a class="pill-cta accent" href="https://docs.google.com/forms/d/e/1FAIpQLSd_UA4IjP-3vDhnia6LpRs0O3RIgIZvitM-6JVTVQO3TfXvyA/viewform?usp=header" target="_blank" rel="noopener">
+  Start Discovery
+</a>
           <a class="pill-cta" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
         </div>
       </div>
