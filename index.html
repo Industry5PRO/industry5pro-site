@@ -488,6 +488,147 @@ header nav a:hover::after,
 .yt-wrap iframe{
   display:block; width:100%; height:100%;
 }
+:root{
+  --lumen:#FF6A13;
+  --lumen-blue-light:#2BEDE7; /* ice-blue */
+}
+
+/* 1) Cloud 2.0 CTA pill — hover = ICE-BLUE glow on text + trim (keep orange fill) */
+.oo-cta.cloud-accent:hover,
+.oo-cta.cloud-accent:focus-visible,
+.pill-cta.cloud-accent:hover,
+.pill-cta.cloud-accent:focus-visible{
+  border-color: var(--lumen-blue-light) !important;     /* trim turns ice-blue */
+  box-shadow:
+    0 0 14px rgba(43,237,231,.70),
+    0 0 32px rgba(43,237,231,.45) !important;           /* blue aura, no yellow */
+  text-shadow:
+    0 0 6px rgba(43,237,231,.60),
+    0 0 16px rgba(43,237,231,.35) !important;           /* blue glow on words */
+  transform: translateY(-1px);
+  outline: 0;
+}
+
+/* 2) Filter/tag pills — replace yellow hover glow with ICE-BLUE */
+.tags .tag:hover,
+.tags .tag:focus-visible,
+.oo-tags .tag:hover,
+.oo-tags .tag:focus-visible,
+.filters .pill:hover,
+.filters .pill:focus-visible,
+.filter .pill:hover,
+.filter .pill:focus-visible,
+.tag-pill:hover,
+.tag-pill:focus-visible,
+.chip:hover,
+.chip:focus-visible{
+  border-color: var(--lumen-blue-light) !important;
+  box-shadow:
+    0 0 12px rgba(43,237,231,.60),
+    0 0 26px rgba(43,237,231,.40) !important;           /* ice-blue only */
+  text-shadow:
+    0 0 4px rgba(43,237,231,.45) !important;
+  outline: 0;
+}
+
+/* (Optional) kill any legacy yellow/green glow that might still be attached */
+.tags .tag,
+.oo-tags .tag,
+.filters .pill,
+.filter .pill,
+.tag-pill,
+.chip{
+  box-shadow: none !important; /* base: no yellow glow */
+}
+/* ===== Kill green in ALL selected/active states; replace with ice-blue ===== */
+:root{
+  --lumen-blue-light:#2BEDE7;   /* ice-blue */
+  --lumen-blue-dark:#006B8F;    /* darker blue for inner glow (optional) */
+}
+
+/* 1) Tag/filter pills — active/selected states (all common class patterns) */
+.tags .tag.is-active,
+.tags .tag.active,
+.tags .tag.selected,
+.tags .tag[aria-selected="true"],
+.oo-tags .tag.is-active,
+.oo-tags .tag.active,
+.oo-tags .tag.selected,
+.oo-tags .tag[aria-selected="true"],
+.filters .pill.is-active,
+.filters .pill.active,
+.filters .pill.selected,
+.filters .pill[aria-selected="true"],
+.filter .pill.is-active,
+.filter .pill.active,
+.filter .pill.selected,
+.filter .pill[aria-selected="true"],
+.tag-pill.is-active,
+.tag-pill.active,
+.tag-pill.selected,
+.tag-pill[aria-selected="true"],
+.chip.is-active,
+.chip.active,
+.chip.selected,
+.chip[aria-selected="true"]{
+  background: rgba(43,237,231,.10) !important;      /* subtle blue fill */
+  border-color: var(--lumen-blue-light) !important; /* ice-blue rim */
+  color: #e8eef9 !important;                        /* readable text */
+  box-shadow:
+    inset 0 0 10px rgba(0,107,143,.45),             /* dark-blue inner */
+    0 0 14px rgba(43,237,231,.60),                  /* outer ice-blue */
+    0 0 26px rgba(43,237,231,.35) !important;
+  text-shadow:
+    0 0 4px rgba(43,237,231,.35) !important;
+}
+
+/* 2) Hover/focus on those same pills (ensure NO yellow/green shows up) */
+.tags .tag.is-active:hover, .tags .tag.is-active:focus-visible,
+.oo-tags .tag.is-active:hover, .oo-tags .tag.is-active:focus-visible,
+.filters .pill.is-active:hover, .filters .pill.is-active:focus-visible,
+.filter .pill.is-active:hover, .filter .pill.is-active:focus-visible,
+.tag-pill.is-active:hover, .tag-pill.is-active:focus-visible,
+.chip.is-active:hover, .chip.is-active:focus-visible{
+  border-color: var(--lumen-blue-light) !important;
+  box-shadow:
+    inset 0 0 12px rgba(0,107,143,.60),
+    0 0 16px rgba(43,237,231,.70),
+    0 0 34px rgba(43,237,231,.45) !important;
+  outline: 0;
+}
+
+/* 3) Generic “selected/active” helpers for anything else using utility classes */
+.is-active, .is-selected, .selected, [aria-selected="true"], [aria-pressed="true"]{
+  --ring: var(--lumen-blue-light);
+  outline: 0 !important;
+  box-shadow:
+    0 0 12px rgba(43,237,231,.60),
+    0 0 26px rgba(43,237,231,.40) !important;
+  border-color: var(--lumen-blue-light) !important;
+}
+
+/* 4) Form controls: checkboxes/radios/toggles pick up blue accent, not green */
+input[type="checkbox"],
+input[type="radio"],
+input[type="range"],
+input[type="switch"]{
+  accent-color: var(--lumen-blue-light);
+}
+
+/* 5) Text selection highlight (no green tint) */
+::selection{
+  background: rgba(43,237,231,.35);
+  color: #0b0b0b;
+}
+::-moz-selection{
+  background: rgba(43,237,231,.35);
+  color: #0b0b0b;
+}
+
+/* 6) Safety net: if any base pill had a default green/glow, null it */
+.tags .tag, .oo-tags .tag, .filters .pill, .filter .pill, .tag-pill, .chip{
+  box-shadow: none;
+}
 
   
 </style>
