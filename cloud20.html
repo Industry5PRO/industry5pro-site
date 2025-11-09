@@ -331,6 +331,33 @@
 .icp-card a.tag-link:focus-visible{
   text-shadow: 0 0 8px rgba(255,106,19,.45);
 }
+/* Category pills inside ICP cards — Lumen ORANGE backdrop, black text, orange glow */
+.icp-card .tag,
+.icp-card a.tag,
+.icp-card a.tag-link{
+  display:flex; align-items:center; justify-content:center; text-align:center;
+  min-height:38px; padding:8px 16px;
+  font-weight:800; letter-spacing:.2px;
+  color:#0b0b0b;                                 /* black text */
+  background:linear-gradient(180deg, var(--lumen), #ff8c3a);  /* orange fill */
+  border:1px solid var(--lumen);                 /* orange rim */
+  border-radius:9999px;
+  margin:0 0 10px;
+  box-shadow:0 6px 24px rgba(255,106,19,.28);    /* orange glow */
+  text-decoration:none; cursor:pointer;
+  transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.icp-card .tag:hover,
+.icp-card .tag:focus-visible,
+.icp-card a.tag:hover,
+.icp-card a.tag:focus-visible,
+.icp-card a.tag-link:hover,
+.icp-card a.tag-link:focus-visible{
+  transform:translateY(-1px);
+  border-color:var(--lumen);
+  box-shadow:0 0 12px rgba(255,106,19,.70), 0 0 26px rgba(255,106,19,.40);
+  outline:0;
+}
 
     /* CTA rail */
     .cta-rail{max-width:1100px;margin:28px auto 10px; padding:18px; border:1px solid rgba(255,215,0,.35); border-radius:14px; background:#0a0a0a; box-shadow:0 10px 40px rgba(255,215,0,.08)}
