@@ -107,6 +107,20 @@
 .mwp-chips{display:flex; flex-wrap:wrap; gap:10px; margin:10px 0 4px}
 .mwp-chips .pill-cta{padding:8px 14px; font-weight:700}
 @media (max-width:900px){ .mwp-grid{grid-template-columns:1fr} }
+    /* Footer alignment: match mwp-grid (1080px), left-aligned inside */
+.footer{ padding:24px 0 !important; }
+.footer > *{
+  max-width:1080px;      /* same width as the grid above */
+  margin:0 auto;         /* centers the block on the page */
+  padding:0 20px;        /* same side padding as content */
+  text-align:left;       /* keep text left-aligned */
+}
+/* Make socials line up under the text instead of full-page center */
+.footer .social-icons{
+  justify-content:flex-start; 
+  padding-left:20px;     /* aligns with the text above */
+}
+
 
     /* Footer + socials */
     .footer{margin:32px 0; color:#cfd6e3; font-size:14px; border-top:1px solid rgba(255,255,255,.08); padding:24px 20px}
