@@ -350,6 +350,36 @@ main, .wrap, .container, .page {
   box-shadow:0 0 8px rgba(252,183,27,.60), 0 0 16px rgba(252,183,27,.35) !important;
 }
 
+:root{
+  --peplink-yellow:#FCB71B;
+  --peplink-yellow-darker:#F3A400; /* subtle bottom tint for the gradient */
+  --ice-blue:#2BEDE7;              /* your existing glow */
+}
+
+/* Make Industry5.pro white in the sticky header */
+.hdr .brand .title{
+  color:#ffffff !important;
+  text-shadow:none;
+}
+
+/* Only the FWA pills: fill → Peplink yellow (keep black text) */
+.pill-cta.fwa-accent,
+.oo-cta.fwa-accent{
+  background:linear-gradient(180deg, var(--peplink-yellow), var(--peplink-yellow-darker));
+  border:1px solid var(--peplink-yellow);
+  color:#0b0b0b; /* readable on yellow */
+}
+
+/* Keep the old ice-blue glow on hover — DO NOT change the color of the glow */
+.pill-cta.fwa-accent:hover,
+.oo-cta.fwa-accent:hover,
+.pill-cta.fwa-accent:focus-visible,
+.oo-cta.fwa-accent:focus-visible{
+  border-color:var(--ice-blue) !important;
+  box-shadow:0 0 14px rgba(43,237,231,.70), 0 0 32px rgba(43,237,231,.45) !important;
+  transform:translateY(-1px);
+  outline:0;
+}
 
 </style>
 
@@ -560,6 +590,24 @@ main, .wrap, .container, .page {
   if(!/peplink/i.test(t.innerHTML)) return;            // title must contain "Peplink"
   if(/peplink-accent/.test(t.innerHTML)) return;        // already wrapped
   t.innerHTML = t.innerHTML.replace(/Peplink/i,'<span class="peplink-accent">$&</span>');
+})();
+</script>
+<script>
+(function(){
+  function tagFWA(btn){
+    if(!btn) return;
+    if(!btn.classList.contains('fwa-accent')) btn.classList.add('fwa-accent');
+  }
+
+  // 1) Sticky header CTA (right side)
+  var hdrBtn = Array.from(document.querySelectorAll('.hdr a, .hdr button'))
+    .find(el => /start\s*fwa\s*discovery/i.test(el.textContent || ''));
+  tagFWA(hdrBtn);
+
+  // 2) Hero CTA
+  var heroBtn = Array.from(document.querySelectorAll('main a, main button, .hero a, .hero button'))
+    .find(el => /start\s*fwa\s*discovery/i.test(el.textContent || ''));
+  tagFWA(heroBtn);
 })();
 </script>
 
