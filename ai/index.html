@@ -1,199 +1,195 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>AI Voice and Omnichannel • Featured: DRUID AI</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Injectable AI • Omnichannel • Featured: DRUID AI</title>
 
-<!-- === THEME COLORS === -->
 <style>
 :root{
-  --bg:#0e1117;           /* site dark */
-  --card:#141821;         /* card base */
-  --ink:#0b1220;          /* dark ink */
-  --text:#e8eef9;         /* main text */
-  --muted:#a9b3c4;        /* subtext */
-
-  /* DRUID palette */
-  --druid:#1DDF5A;        /* DRUID green (glow + borders) */
-  --druid-ink:#074650;    /* DRUID deep teal */
-  --druid-pastel:#D2FDB1; /* KPI pill fill */
-
-  /* Your accents for harmony */
-  --ice:#2BEDE7;          /* ice blue you use elsewhere */
+  --bg:#0e1117; --card:#141821; --ink:#0b1220; --text:#e8eef9; --muted:#a9b3c4;
+  /* Industry5 green for nav hover */
+  --i5-green:#85BB65;
+  /* DRUID */
+  --druid:#1DDF5A;        /* glow + borders */
+  --druid-ink:#074650;    /* deep teal */
+  --druid-pastel:#D2FDB1; /* KPI pills */
+  --ice:#2BEDE7;          /* your ice-blue (kept for harmony) */
 }
 
+/* Global */
 *{box-sizing:border-box}
 html,body{height:100%}
-body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial}
-a{text-decoration:none;color:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
 
-/* ===== Sticky header ===== */
+/* Sticky header (truly sticky) */
 header{
-  position:sticky; top:0; z-index:1000;
-  background:rgba(14,17,23,.8);
+  position:sticky; top:0; z-index:9999;
+  background:rgba(14,17,23,.9);
+  -webkit-backdrop-filter:saturate(140%) blur(6px);
   backdrop-filter:saturate(140%) blur(6px);
   border-bottom:1px solid rgba(255,255,255,.08);
 }
 .header-bar{
-  max-width:1120px; margin:0 auto; padding:12px 16px;
-  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  max-width:1120px;margin:0 auto;padding:12px 16px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
 }
-.brand{display:flex; align-items:center; gap:12px; color:var(--text)}
+.brand{display:flex;align-items:center;gap:12px}
 .brand .logo{width:44px;height:44px;border-radius:12px;object-fit:contain;display:block;background:transparent}
 .brand .title{font-weight:800;font-size:20px}
 
-/* top-right nav pills */
-.nav{display:flex; gap:10px; flex-wrap:wrap}
+.nav{display:flex;gap:10px;flex-wrap:wrap}
 .nav a{
-  display:inline-flex; align-items:center; justify-content:center;
-  padding:10px 14px; border-radius:12px; font-weight:800; white-space:nowrap;
-  border:1px solid rgba(255,255,255,.14); color:#d5dcef; background:rgba(255,255,255,.06);
-  transition:box-shadow .2s ease, border-color .2s ease, transform .15s ease;
+  display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;
+  padding:10px 14px;border-radius:12px;font-weight:800;
+  border:1px solid rgba(255,255,255,.14);color:#d5dcef;background:rgba(255,255,255,.06);
+  transition:color .15s, box-shadow .2s, border-color .2s, transform .15s;
 }
-.nav a:hover{ transform:translateY(-1px) }
+.nav a:hover{
+  color:var(--i5-green);
+  border-color:rgba(133,187,101,.6);
+  box-shadow:0 0 12px rgba(133,187,101,.45), 0 0 24px rgba(133,187,101,.25);
+  transform:translateY(-1px);
+}
 .nav a.start-ai{
   background:var(--druid-ink); color:var(--druid);
   border-color:rgba(29,223,90,.45);
-  /* perma glow */
   box-shadow:0 0 10px rgba(29,223,90,.28), 0 0 24px rgba(29,223,90,.18);
 }
 .nav a.start-ai:hover{
   box-shadow:0 0 14px rgba(29,223,90,.45), 0 0 32px rgba(29,223,90,.28);
 }
 
-/* ===== Hero ===== */
-.wrap{max-width:1120px; margin:0 auto; padding:0 16px}
+/* Hero */
 .hero{margin:28px 0 18px}
-.hero-grid{
-  display:grid; grid-template-columns:minmax(0,1fr) 340px; gap:18px; align-items:center;
-}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:center}
 @media (max-width:980px){ .hero-grid{grid-template-columns:1fr} .hero-portrait{display:none} }
-
-.kicker{color:var(--druid); font-weight:800; margin-bottom:6px}
-.hero h1{font-size:clamp(28px,5.2vw,46px); line-height:1.1; margin:0 0 8px}
-.lead{font-size:clamp(16px,1.8vw,19px); color:#d5dcef; margin:0 0 14px}
-.hero .cta-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:8px}
+.kicker{color:var(--druid);font-weight:800;margin-bottom:6px}
+.hero h1{font-size:clamp(28px,5.2vw,46px);line-height:1.1;margin:0 0 8px}
+.lead{font-size:clamp(16px,1.8vw,19px);color:#d5dcef;margin:0 0 14px}
+.cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
 .btn{
-  display:inline-flex; align-items:center; justify-content:center;
-  padding:12px 16px; border-radius:12px; font-weight:800; border:1px solid rgba(255,255,255,.14);
-  background:rgba(255,255,255,.05); color:#fff; transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+  display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:12px;font-weight:800;
+  border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);color:#fff;
+  transition:transform .15s, box-shadow .2s, border-color .2s;
 }
-.btn:hover{ transform:translateY(-1px) }
-.btn.primary{
-  background:var(--druid-ink); color:var(--druid);
-  border-color:rgba(29,223,90,.45);
-  box-shadow:0 0 10px rgba(29,223,90,.28), 0 0 24px rgba(29,223,90,.18);
-}
-.btn.primary:hover{ box-shadow:0 0 14px rgba(29,223,90,.45), 0 0 32px rgba(29,223,90,.28) }
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:var(--druid-ink);color:var(--druid);border-color:rgba(29,223,90,.45);
+  box-shadow:0 0 10px rgba(29,223,90,.28), 0 0 24px rgba(29,223,90,.18)}
+.btn.primary:hover{box-shadow:0 0 14px rgba(29,223,90,.45), 0 0 32px rgba(29,223,90,.28)}
+.hero-portrait{display:flex;justify-content:flex-end}
+.hero-portrait img{width:100%;max-width:340px;height:auto;object-fit:contain;filter:drop-shadow(0 10px 22px rgba(0,0,0,.35))}
 
-.hero-portrait{display:flex; justify-content:flex-end}
-.hero-portrait img{width:100%; max-width:340px; height:auto; object-fit:contain; filter:drop-shadow(0 10px 22px rgba(0,0,0,.35))}
-
-/* ===== Featured Partner frame ===== */
+/* Featured partner frame */
 .feature{
-  margin:22px 0; background:#0b111a; border-radius:16px; padding:18px;
+  margin:22px 0;background:#0b111a;border-radius:16px;padding:18px;
   border:1px solid rgba(29,223,90,.55);
-  /* perma glow */
-  box-shadow:0 8px 30px rgba(29,223,90,.10), 0 0 20px rgba(29,223,90,.18);
+  box-shadow:0 8px 30px rgba(29,223,90,.10),0 0 20px rgba(29,223,90,.18);
 }
-.feature-head{display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between}
-.feature h2{margin:0; font-size:1.6rem}
-.badges{display:flex; flex-wrap:wrap; gap:8px}
-
-/* capability pills */
+.feature-head{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.feature h2{margin:0;font-size:1.6rem}
+.badges{display:flex;flex-wrap:wrap;gap:8px}
 .cap{
-  display:inline-flex; align-items:center; justify-content:center; padding:8px 12px; border-radius:999px; font-weight:800;
-  border:1px solid transparent; transition:transform .15s ease, box-shadow .2s ease;
+  display:inline-flex;align-items:center;justify-content:center;padding:8px 12px;border-radius:999px;font-weight:800;border:1px solid transparent;
+  transition:transform .15s, box-shadow .2s;
 }
-.cap.perma{
-  background:var(--druid-ink); color:var(--druid);
-  box-shadow:0 0 10px rgba(29,223,90,.28), 0 0 24px rgba(29,223,90,.18);
-}
-.cap.inverse{
-  background:var(--druid); color:var(--druid-ink);
-  box-shadow:0 0 10px rgba(29,223,90,.28), 0 0 24px rgba(29,223,90,.18);
-}
-.feature p{color:#c9d6e6; margin:10px 0 14px}
+.cap.perma{background:var(--druid-ink);color:var(--druid);
+  box-shadow:0 0 10px rgba(29,223,90,.28),0 0 24px rgba(29,223,90,.18)}
+.cap.inverse{background:var(--druid);color:var(--druid-ink);
+  box-shadow:0 0 10px rgba(29,223,90,.28),0 0 24px rgba(29,223,90,.18)}
+.feature p{color:#c9d6e6;margin:10px 0 14px}
+.feature-cta{display:flex;flex-wrap:wrap;gap:10px}
+.feature-cta a{padding:10px 14px;border-radius:12px;font-weight:800;border:1px solid rgba(255,255,255,.14)}
+.feature-cta .primary{background:var(--druid);color:var(--druid-ink);border-color:rgba(29,223,90,.55);
+  box-shadow:0 0 10px rgba(29,223,90,.28),0 0 24px rgba(29,223,90,.18)}
+.feature-cta .ghost{background:transparent;color:#e8eef9}
+.feature-cta .ghost:hover{border-color:rgba(29,223,90,.45);box-shadow:0 0 14px rgba(29,223,90,.35)}
 
-.feature-cta{display:flex; flex-wrap:wrap; gap:10px}
-.feature-cta a{
-  padding:10px 14px; border-radius:12px; font-weight:800; border:1px solid rgba(255,255,255,.14)
-}
-.feature-cta .primary{
-  background:var(--druid); color:var(--druid-ink); border-color:rgba(29,223,90,.55);
-  box-shadow:0 0 10px rgba(29,223,90,.28), 0 0 24px rgba(29,223,90,.18);
-}
-.feature-cta .ghost{
-  background:transparent; color:#e8eef9;
-}
-.feature-cta .ghost:hover{ border-color:rgba(29,223,90,.45); box-shadow:0 0 14px rgba(29,223,90,.35) }
-
-/* ===== Grid of 6 cards: 3 rows x 2 ===== */
-.grid-two{display:grid; grid-template-columns:repeat(2,1fr); gap:16px}
+/* Grid: 3 rows x 2 */
+.grid-two{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 @media (max-width:880px){ .grid-two{grid-template-columns:1fr} }
 
 .card{
-  background:#0f1726; border:1px solid rgba(255,255,255,.10); border-radius:14px; padding:14px;
-  transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+  background:#0f1726;border:1px solid rgba(255,255,255,.10);border-radius:14px;padding:14px;
+  transition:transform .15s, box-shadow .2s, border-color .2s;
 }
-.card:hover{ transform:translateY(-2px); border-color:rgba(29,223,90,.45); box-shadow:0 0 14px rgba(29,223,90,.35) }
-.card h3{margin:0 0 10px; font-size:1.12rem}
+.card:hover{transform:translateY(-2px);border-color:rgba(29,223,90,.45);box-shadow:0 0 14px rgba(29,223,90,.35)}
+.card h3{margin:0 0 10px;font-size:1.12rem}
 
-/* yt-lite thumbnails */
+/* yt-lite: stays sized, iframe injected INSIDE (no replacement) */
 .yt-lite{
-  position:relative; width:100%; padding-bottom:56.25%;
+  position:relative;width:100%;padding-bottom:56.25%;
   background:#000 center/cover no-repeat;
-  border:1px solid rgba(255,255,255,.10); border-radius:10px; overflow:hidden; cursor:pointer;
+  border:1px solid rgba(255,255,255,.10);border-radius:10px;overflow:hidden;cursor:pointer;
 }
-.yt-lite::after{ /* play circle */
-  content:""; position:absolute; right:12px; bottom:12px; width:56px; height:56px; border-radius:50%;
-  background:rgba(0,0,0,.55); box-shadow:0 0 14px rgba(0,0,0,.5);
+.yt-lite::after{
+  content:"";position:absolute;right:12px;bottom:12px;width:56px;height:56px;border-radius:50%;
+  background:rgba(0,0,0,.55);box-shadow:0 0 14px rgba(0,0,0,.5);
 }
-.yt-lite::before{ /* play triangle */
-  content:""; position:absolute; right:34px; bottom:30px;
-  border-left:16px solid #fff; border-top:10px solid transparent; border-bottom:10px solid transparent;
+.yt-lite::before{
+  content:"";position:absolute;right:34px;bottom:30px;border-left:16px solid #fff;border-top:10px solid transparent;border-bottom:10px solid transparent;
 }
+.yt-lite.playing{cursor:auto}
+.yt-lite.playing::before,.yt-lite.playing::after{display:none} /* hide play badge when playing */
 
-/* brief blurb */
-.blurb{color:#cfd8e6; margin:10px 0 10px}
+.blurb{color:#cfd8e6;margin:10px 0 10px}
 
-/* KPI pills */
-.kpis{display:flex; flex-wrap:wrap; gap:8px}
+/* KPI pill links */
+.kpis{display:flex;flex-wrap:wrap;gap:8px}
 .kpi{
-  display:inline-flex; align-items:center; justify-content:center; padding:8px 12px; border-radius:999px; font-weight:800;
-  background:var(--druid-pastel); color:#000; border:0;
-  transition:transform .15s ease, box-shadow .2s ease;
+  display:inline-flex;align-items:center;justify-content:center;padding:8px 12px;border-radius:999px;font-weight:800;
+  background:var(--druid-pastel);color:#000;border:0;
+  transition:transform .15s, box-shadow .2s;
 }
-.kpi:hover{
+.kpi:hover{transform:translateY(-1px);box-shadow:0 0 10px rgba(29,223,90,.28),0 0 20px rgba(29,223,90,.20)}
+
+/* Quadrant */
+.quad{
+  margin:24px 0;background:#0b111a;border:1px solid rgba(29,223,90,.45);border-radius:14px;padding:18px;
+  box-shadow:0 10px 34px rgba(29,223,90,.12)
+}
+.quad a img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid rgba(29,223,90,.35)}
+
+/* AI Readiness teaser */
+.section{margin:28px 0}
+.card-soft{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px}
+.card-soft h3{margin:0 0 8px}
+.card-soft p{margin:0 0 12px;color:#cfd6e3}
+
+/* Blog / Bloomberg small CTAs match site style */
+.btn-ghost{
+  display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:12px;font-weight:800;
+  border:1px solid rgba(255,255,255,.16);color:#d5dcef;background:transparent;
+  transition:color .15s, box-shadow .2s, border-color .2s, transform .15s;
+}
+.btn-ghost:hover{
+  color:var(--i5-green); border-color:rgba(133,187,101,.6);
+  box-shadow:0 0 12px rgba(133,187,101,.45), 0 0 24px rgba(133,187,101,.25);
   transform:translateY(-1px);
-  box-shadow:0 0 10px rgba(29,223,90,.28), 0 0 20px rgba(29,223,90,.20);
 }
 
 /* Footer */
 footer{margin:32px 0 24px}
-.footer-inner{max-width:1120px; margin:0 auto; padding:0 16px; text-align:center; color:var(--muted)}
-.socials{display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin:10px 0}
+.footer-inner{max-width:1120px;margin:0 auto;padding:0 16px;text-align:center;color:var(--muted)}
+.socials{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:10px 0}
 .socials a{
-  width:40px; height:40px; display:grid; place-items:center; border-radius:999px;
-  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); color:#e6eef5;
-  transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+  width:40px;height:40px;display:grid;place-items:center;border-radius:999px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:#e6eef5;
+  transition:transform .15s, box-shadow .2s, border-color .2s;
 }
-.socials a:hover{ transform:translateY(-2px); border-color:rgba(29,223,90,.45); box-shadow:0 0 10px rgba(29,223,90,.35) }
+.socials a:hover{transform:translateY(-2px);border-color:rgba(29,223,90,.45);box-shadow:0 0 10px rgba(29,223,90,.35)}
 </style>
 </head>
 <body>
 
-<!-- ===== Header ===== -->
+<!-- Header -->
 <header>
   <div class="header-bar">
-    <a class="brand" href="/">
-      <img class="logo" src="/assets/industry5-logo.png" alt="Industry5.pro" width="44" height="44" />
-      <span class="title">Industry5.pro</span>
-    </a>
+    <a class="brand" href="/"><img class="logo" src="/assets/industry5-logo.png" alt="Industry5.pro" width="44" height="44"/><span class="title">Industry5.pro</span></a>
     <nav class="nav">
       <a href="/">Home</a>
-      <!-- New sticky pill required -->
       <a class="start-ai" href="https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform" target="_blank" rel="noopener">Start AI Readiness</a>
       <a href="/blog.html">Blog</a>
     </nav>
@@ -202,33 +198,30 @@ footer{margin:32px 0 24px}
 
 <main class="wrap">
 
-  <!-- ===== Hero ===== -->
+  <!-- Hero -->
   <section class="hero">
     <div class="hero-grid">
       <div>
-        <div class="kicker">Injectable AI Agents for Voice and Omnichannel</div>
-        <h1>Bring assistants, quality, analytics, and automation to the stack you already run</h1>
+        <div class="kicker">Injectable AI Agents for Omnichannel</div>
+        <h1>Add assistants, quality, analytics, and automation to the stack you already run</h1>
         <p class="lead">
-          Use AI where it pays first. Add real time help for agents, automate Tier-0 and Tier-1, and route with context across chat, voice, email, and apps. 
-          When a platform change makes sense, evaluate options with uptime, identity, and compliance in mind. The goal is measurable outcomes, not shiny tools.
+          Use AI where it pays first. Automate Tier 0 and Tier 1, give live agents real time help, and route with context across chat, voice, email, and apps.
+          When a platform change is smart, evaluate options with uptime, identity, and compliance in mind. Outcomes first, tools second.
         </p>
         <div class="cta-row">
           <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform" target="_blank" rel="noopener">Start AI Readiness</a>
           <a class="btn" href="https://www.druidai.com/case-studies" target="_blank" rel="noopener">See DRUID case studies</a>
         </div>
       </div>
-      <div class="hero-portrait">
-        <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora" loading="eager" decoding="async" />
-      </div>
+      <div class="hero-portrait"><img src="/assets/lou-portrait@2x.png" alt="Louis Tortora" loading="eager" decoding="async"/></div>
     </div>
   </section>
 
-  <!-- ===== Featured Partner: DRUID AI ===== -->
-  <section class="feature">
+  <!-- Featured Partner: DRUID AI -->
+  <section class="feature" id="druid-feature">
     <div class="feature-head">
       <h2>Featured Partner: DRUID AI</h2>
       <div class="badges">
-        <!-- permanent glow sets -->
         <span class="cap inverse">Agentic AI</span>
         <span class="cap perma">Omnichannel</span>
         <span class="cap perma">Low code</span>
@@ -237,15 +230,8 @@ footer{margin:32px 0 24px}
       </div>
     </div>
     <p>
-      DRUID gives you process agents, knowledge agents, and orchestration across the business. 
-      Customer Support, HR, Sales and Marketing, and IT Helpdesk move faster without breaking trust. 
-      Banking, Healthcare, and Retail get real results with controls that pass audits.
+      DRUID brings process agents, knowledge agents, and orchestration across Customer Support, HR, Sales and Marketing, IT Helpdesk, Banking, Healthcare, and Retail with controls that pass audits.
     </p>
-    <div class="feature-cta" style="margin:10px 0 14px">
-      <a class="primary" href="https://www.druidai.com/case-studies" target="_blank" rel="noopener">Explore DRUID case studies</a>
-      <a class="ghost" href="https://www.druidai.com/platform" target="_blank" rel="noopener">Platform overview</a>
-      <a class="ghost" href="https://www.druidai.com/security" target="_blank" rel="noopener">Security and compliance</a>
-    </div>
 
     <!-- 3 rows x 2 cards -->
     <div class="grid-two">
@@ -266,7 +252,7 @@ footer{margin:32px 0 24px}
       <article class="card">
         <h3>Customer Support</h3>
         <div class="yt-lite" data-id="eaQvLKagfTM"></div>
-        <p class="blurb">Deflect Tier-0 and Tier-1, give agents real time assist, and resolve faster across voice and chat.</p>
+        <p class="blurb">Deflect Tier 0 and Tier 1, give agents real time assist, and resolve faster across voice and chat.</p>
         <div class="kpis">
           <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-customer-support" target="_blank" rel="noopener"><strong>20%</strong> fewer calls</a>
           <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-customer-support" target="_blank" rel="noopener"><strong>10%</strong> shorter calls</a>
@@ -302,11 +288,11 @@ footer{margin:32px 0 24px}
       <article class="card">
         <h3>Healthcare</h3>
         <div class="yt-lite" data-id="fKAJ6gAmQsU"></div>
-        <p class="blurb">Book more visits, pre-qualify cases, and respect privacy rules without slowing care.</p>
+        <p class="blurb">Book more visits, pre qualify cases, and respect privacy rules without slowing care.</p>
         <div class="kpis">
           <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-healthcare" target="_blank" rel="noopener"><strong>25%</strong> more appointments</a>
-          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-healthcare" target="_blank" rel="noopener"><strong>15%</strong> more booking revenue</a>
-          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-healthcare" target="_blank" rel="noopener"><strong>70%</strong> pre-qualified cases</a>
+          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-healthcare" target="_blank" rel="noopener"><strong>15%</strong> booking revenue</a>
+          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-healthcare" target="_blank" rel="noopener"><strong>70%</strong> pre qualified cases</a>
         </div>
       </article>
 
@@ -317,7 +303,7 @@ footer{margin:32px 0 24px}
         <p class="blurb">Lift conversion, automate order ops, and cut queues with smart guidance.</p>
         <div class="kpis">
           <a class="kpi" href="https://www.druidai.com/solutions/retail-ai-agents" target="_blank" rel="noopener"><strong>30%</strong> conversion lift</a>
-          <a class="kpi" href="https://www.druidai.com/solutions/retail-ai-agents" target="_blank" rel="noopener"><strong>60%</strong> queries auto resolved</a>
+          <a class="kpi" href="https://www.druidai.com/solutions/retail-ai-agents" target="_blank" rel="noopener"><strong>60%</strong> auto resolved</a>
           <a class="kpi" href="https://www.druidai.com/solutions/retail-ai-agents" target="_blank" rel="noopener"><strong>40%</strong> ops efficiency</a>
         </div>
       </article>
@@ -325,9 +311,51 @@ footer{margin:32px 0 24px}
     </div>
   </section>
 
+  <!-- Injectable AI Omnichannel Quadrant -->
+  <section class="quad" id="injectable-quadrant">
+    <h3 style="margin:0 0 8px">Injectable AI for Omnichannel: Market view</h3>
+    <a href="/ai" aria-label="Open AI Readiness">
+      <img src="/assets/ai_voice_injectable_quadrant_clean12.png" alt="Injectable AI Omnichannel Quadrant"/>
+    </a>
+  </section>
+
+  <!-- AI Readiness — restored teaser -->
+  <section class="section">
+    <div class="card-soft">
+      <h3>AI Readiness: The Edge and Beyond</h3>
+      <p>Scope outcomes, map KPIs, and stage quick wins. One short intake and we bring back a plan that respects your constraints and timeline.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform" target="_blank" rel="noopener">Start AI Readiness</a>
+        <a class="btn-ghost" href="/ai">See the AI page</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bloomberg — restored mini block -->
+  <section class="section">
+    <div class="card-soft">
+      <h3>“AI is a new way of working” — Mary Callahan Erdoes</h3>
+      <p>Start by eliminating the no joy work, then rethink the process end to end. Move from experimentation to execution with an outcome first approach.</p>
+      <div class="cta-row">
+        <a class="btn-ghost" href="https://www.bloomberg.com/" target="_blank" rel="noopener">Watch the interview</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog / Newsletter — restored teaser -->
+  <section class="section">
+    <div class="card-soft">
+      <h3>AI, IoT, Cloud, and CX — weekly ROI notes</h3>
+      <p>Short posts on practical wins, supplier fit, and metrics that matter. No fluff.</p>
+      <div class="cta-row">
+        <a class="btn-ghost" href="/blog.html">Open the blog</a>
+      </div>
+    </div>
+  </section>
+
 </main>
 
-<!-- ===== Footer (simple) ===== -->
+<!-- Footer -->
 <footer>
   <div class="footer-inner">
     <div>© <span id="y"></span> Industry5.pro — built on trust, paid by results</div>
@@ -345,30 +373,31 @@ footer{margin:32px 0 24px}
   </div>
 </footer>
 
-<!-- Year stamp -->
-<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 
-<!-- ===== yt-lite loader: place just before </body> ===== -->
+<!-- yt-lite loader: append iframe INSIDE the box (no layout jump, no black-screen weirdness) -->
 <script>
 document.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll(".yt-lite").forEach(function(el){
+  document.querySelectorAll('.yt-lite').forEach(function(el){
     var id = el.dataset.id; if(!id) return;
+    // High-res poster with fallback
     var hi = new Image();
     hi.onload = function(){ el.style.backgroundImage = "url('"+hi.src+"')"; };
     hi.onerror = function(){ el.style.backgroundImage = "url('https://img.youtube.com/vi/"+id+"/sddefault.jpg')"; };
     hi.src = "https://img.youtube.com/vi/"+id+"/maxresdefault.jpg";
-    el.addEventListener("click", function(){
-      if (el.dataset.loaded) return;
-      el.dataset.loaded = "1";
-      var iframe = document.createElement("iframe");
+
+    // Click to play: append iframe, keep wrapper (prevents fullscreen jump)
+    el.addEventListener('click', function(){
+      if(el.classList.contains('playing')) return;
+      el.classList.add('playing');
+      var iframe = document.createElement('iframe');
       iframe.src = "https://www.youtube.com/embed/"+id+"?autoplay=1&rel=0";
-      iframe.loading = "eager";
-      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.setAttribute('allow',"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
       iframe.allowFullscreen = true;
       iframe.referrerPolicy = "strict-origin-when-cross-origin";
-      Object.assign(iframe.style,{position:"absolute",inset:"0",width:"100%",height:"100%",border:"0"});
-      el.replaceWith(iframe);
-    });
+      Object.assign(iframe.style,{position:'absolute',inset:'0',width:'100%',height:'100%',border:'0'});
+      el.appendChild(iframe); // append (do not replace)
+    }, {passive:true});
   });
 });
 </script>
