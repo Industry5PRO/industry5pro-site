@@ -82,7 +82,47 @@
     .btn.primary:hover, a.btn.primary:hover { background: var(--gold) !important; color: #0b1220 !important; }
     .btn.secondary:hover, a.btn.secondary:hover, .cta-row a:hover { background: color-mix(in srgb, var(--gold) 16%, transparent) !important; color: #ffffff !important; }
     .btn:focus-visible, a.btn:focus-visible, .cta-row a:focus-visible, button:focus-visible { box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 45%, transparent), 0 0 18px color-mix(in srgb, var(--gold) 35%, transparent); }
+    /* === Featured Partner: DRUID AI === */
+:root { --lumen:#FF6A13; --ice:#2BEDE7; }
+
+.supplier-feature{max-width:1100px;margin:28px auto;background:#0b111a;border:1px solid rgba(255,106,19,.35);
+  border-radius:16px; padding:18px; box-shadow:0 8px 30px rgba(255,106,19,.10)}
+.supplier-head{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin-bottom:10px}
+.supplier-head h2{margin:0;font-size:1.6rem}
+.supplier-badges{display:flex;flex-wrap:wrap;gap:8px}
+.pill{display:inline-flex;align-items:center;justify-content:center;padding:8px 12px;border-radius:999px;
+  font-weight:800;border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.06); color:#0b1220}
+.pill.orange{background:var(--lumen); color:#0b1220; border-color:rgba(255,106,19,.65);
+  box-shadow:0 0 10px rgba(255,106,19,.30)}
+.pill.orange:hover{box-shadow:0 0 14px rgba(255,106,19,.55)}
+.pill.blue{background:rgba(43,237,231,.18); color:#e6f9f8; border-color:rgba(43,237,231,.45)}
+.pill.blue:hover{box-shadow:0 0 16px rgba(43,237,231,.55)}
+
+.supplier-copy{color:#c9d6e6; margin:8px 0 14px}
+.supplier-cta{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 16px}
+.supplier-cta a{padding:10px 14px;border-radius:12px;font-weight:800;border:1px solid rgba(255,255,255,.14)}
+.supplier-cta .primary{background:var(--lumen); color:#0b1220; border-color:rgba(255,106,19,.65)}
+.supplier-cta .primary:hover{box-shadow:0 0 16px rgba(255,106,19,.55)}
+.supplier-cta .ghost{background:transparent;color:#e8eef9}
+.supplier-cta .ghost:hover{border-color:var(--ice); box-shadow:0 0 16px rgba(43,237,231,.45)}
+
+.grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:1000px){ .grid6{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:640px){ .grid6{grid-template-columns:1fr} }
+
+.cardx{background:#0f1726;border:1px solid rgba(255,255,255,.10); border-radius:14px; padding:14px;
+  transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease}
+.cardx:hover{transform:translateY(-2px); border-color:var(--ice);
+  box-shadow:0 0 14px rgba(43,237,231,.35), 0 0 28px rgba(43,237,231,.18)}
+.cardx h3{margin:0 0 8px; font-size:1.05rem}
+.cardx .kpis{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+.cardx .kpis .pill{background:rgba(255,255,255,.06); color:#e8eef9; border-color:rgba(255,255,255,.16)}
+.cardx .kpis .pill strong{color:var(--ice)}
+.vid{position:relative; padding-bottom:56.25%; height:0; border-radius:10px; overflow:hidden; border:1px solid rgba(255,255,255,.10)}
+.vid iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+
   </style>
+  
 </head>
 <body>
 
@@ -185,6 +225,128 @@
         <a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform" target="_blank" rel="noopener">Start AI Voice Discovery</a>
       </div>
     </section>
+<section id="feature-druid" class="supplier-feature">
+  <div class="supplier-head">
+    <h2>Featured Partner: DRUID AI</h2>
+    <div class="supplier-badges">
+      <span class="pill orange">Agentic AI</span>
+      <span class="pill blue">Omnichannel</span>
+      <span class="pill blue">Low-code</span>
+      <span class="pill blue">On-prem or Private Cloud</span>
+      <span class="pill blue">Regulated Industries</span>
+    </div>
+  </div>
+
+  <p class="supplier-copy">
+    Pound for pound, DRUID is one of the strongest choices when you need agentic AI that reaches beyond a voice agent.
+    It brings process agents, knowledge agents, and orchestration that touch Customer Support, HR, IT helpdesk, and Sales and Marketing.
+    For enterprises it covers Banking, Insurance, Leasing, Healthcare, Higher Education, and Retail with real outcomes and strong controls.
+    As Mary Callahan Erdoes says, AI is a new way of working. Start by eliminating the no-joy work, then rethink the process end to end.
+  </p>
+
+  <div class="supplier-cta">
+    <a class="primary" href="https://www.druidai.com/case-studies" target="_blank" rel="noopener">Explore DRUID case studies</a>
+    <a class="ghost" href="/ai">Start AI Readiness</a>
+  </div>
+
+  <div class="grid6">
+    <!-- Banking -->
+    <article class="cardx">
+      <h3>Banking</h3>
+      <div class="vid">
+        <iframe loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
+          src="https://www.youtube.com/embed/4zWW_I80wrg?si=WcA5vcbWJTWinEzi"
+          title="DRUID AI for Banking"></iframe>
+      </div>
+      <div class="kpis">
+        <span class="pill"><strong>Onboarding faster</strong>, KYC automation</span>
+        <span class="pill"><strong>Containment up</strong>, agent load down</span>
+        <span class="pill"><strong>Cost per contact</strong> down</span>
+      </div>
+    </article>
+
+    <!-- Insurance -->
+    <article class="cardx">
+      <h3>Insurance</h3>
+      <div class="vid">
+        <iframe loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
+          src="https://www.youtube.com/embed/4zWW_I80wrg?si=Mgh6rzkFT6LQ2xFk"
+          title="DRUID AI for Insurance"></iframe>
+      </div>
+      <div class="kpis">
+        <span class="pill"><strong>50%</strong> faster minor-claim resolution</span>
+        <span class="pill"><strong>60%</strong> shorter claim lifecycle</span>
+        <span class="pill"><strong>30%</strong> CSAT lift</span>
+      </div>
+    </article>
+
+    <!-- Leasing -->
+    <article class="cardx">
+      <h3>Leasing</h3>
+      <div class="vid">
+        <iframe loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
+          src="https://www.youtube.com/embed/cwalb8qZPIA?si=Xtq13O-9q_uOXLCh"
+          title="DRUID AI for Leasing"></iframe>
+      </div>
+      <div class="kpis">
+        <span class="pill"><strong>Lead-to-lease</strong> acceleration</span>
+        <span class="pill"><strong>Collections</strong> automation</span>
+        <span class="pill"><strong>NPS</strong> improvement</span>
+      </div>
+    </article>
+
+    <!-- Healthcare -->
+    <article class="cardx">
+      <h3>Healthcare</h3>
+      <div class="vid">
+        <iframe loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
+          src="https://www.youtube.com/embed/fKAJ6gAmQsU?si=f95UEgSElWXac1c9"
+          title="DRUID AI for Healthcare"></iframe>
+      </div>
+      <div class="kpis">
+        <span class="pill"><strong>25%</strong> more appointments</span>
+        <span class="pill"><strong>15%</strong> revenue from bookings</span>
+        <span class="pill"><strong>70%</strong> pre-qualification before staff</span>
+      </div>
+    </article>
+
+    <!-- Higher Education -->
+    <article class="cardx">
+      <h3>Higher Education</h3>
+      <div class="vid">
+        <iframe loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
+          src="https://www.youtube.com/embed/BIohxZOz9uw?si=fFaix3jKI-C_6PQP"
+          title="DRUID AI for Higher Education"></iframe>
+      </div>
+      <div class="kpis">
+        <span class="pill"><strong>40%</strong> reduction in repetitive workload</span>
+        <span class="pill"><strong>85%</strong> first-contact resolution</span>
+        <span class="pill"><strong>60%</strong> backlog reduction</span>
+      </div>
+    </article>
+
+    <!-- Retail and CPG -->
+    <article class="cardx">
+      <h3>Retail and CPG</h3>
+      <div class="vid">
+        <iframe loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
+          src="https://www.youtube.com/embed/UJWccsf8ejA?si=NmXpb1dGQ7rT7NnQ"
+          title="DRUID AI for Retail"></iframe>
+      </div>
+      <div class="kpis">
+        <span class="pill"><strong>30%</strong> conversion lift</span>
+        <span class="pill"><strong>60%</strong> queries auto-resolved</span>
+        <span class="pill"><strong>40%</strong> ops efficiency</span>
+      </div>
+    </article>
+  </div>
+
+  <div class="supplier-cta" style="margin-top:14px">
+    <a class="ghost" href="https://www.druidai.com/platform" target="_blank" rel="noopener">Platform overview</a>
+    <a class="ghost" href="https://www.druidai.com/security" target="_blank" rel="noopener">Security and compliance</a>
+    <a class="primary" href="/ai">Book a DRUID discovery</a>
+  </div>
+</section>
 
     <!-- UCaaS and CCaaS with Built in AI Quadrant -->
     <section id="platform-quadrant" class="quad">
