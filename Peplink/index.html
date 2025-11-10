@@ -325,6 +325,31 @@ main, .wrap, .container, .page {
     
     /* Force Peplink label to black even if globals set SVG text to white */
 #quadrant svg text.peplink-label{ fill:#0b0b0b !important; }
+    /* Peplink brand yellow for "Start FWA Discovery" pills (header + hero only) */
+.hdr .pill-cta.cloud-accent,
+.hdr .oo-cta.cloud-accent,
+.hero .pill-cta.cloud-accent,
+.hero .oo-cta.cloud-accent{
+  background: linear-gradient(180deg, #FCB71B, #F6A800) !important; /* Peplink yellow */
+  border-color: #FCB71B !important;
+  color: #0b0b0b !important; /* readable black text */
+}
+/* Peplink brand yellow in sticky header */
+.hdr .brand .title .peplink-accent{
+  color:#FCB71B !important;           /* Peplink yellow */
+  text-shadow:0 0 6px rgba(252,183,27,.55), 0 0 14px rgba(252,183,27,.35);
+}
+
+/* Header nav hover → Peplink yellow (not ice blue) */
+.hdr nav a:hover{
+  color:#FCB71B !important;
+  text-shadow:0 0 6px rgba(252,183,27,.55), 0 0 14px rgba(252,183,27,.35);
+}
+.hdr nav a:hover::after{
+  background:#FCB71B !important;
+  box-shadow:0 0 8px rgba(252,183,27,.60), 0 0 16px rgba(252,183,27,.35) !important;
+}
+
 
 </style>
 
@@ -528,6 +553,16 @@ main, .wrap, .container, .page {
     new ResizeObserver(setH).observe(hdr);
   })();
   </script>
+  <script>
+(function(){
+  var t = document.querySelector('.hdr .brand .title');
+  if(!t) return;
+  if(!/peplink/i.test(t.innerHTML)) return;            // title must contain "Peplink"
+  if(/peplink-accent/.test(t.innerHTML)) return;        // already wrapped
+  t.innerHTML = t.innerHTML.replace(/Peplink/i,'<span class="peplink-accent">$&</span>');
+})();
+</script>
+
 </body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
