@@ -421,23 +421,29 @@
   </footer>
 
   <!-- Make category pills clickable to the readiness form -->
-  <script>
-  (function(){
-    var DEST="https://near.tl/sm/7_71IlONk";
-    document.querySelectorAll('.icp-card .tag').forEach(function(tag){
-      if(tag.tagName.toLowerCase()==='a'||tag.querySelector('a')) return;
-      var a=document.createElement('a'); a.className=tag.className+' tag-link';
-      a.href=DEST; a.target='_blank'; a.rel='noopener'; a.innerHTML=tag.innerHTML; tag.replaceWith(a);
-    });
-  })();
-  </script>
+ <script>
+(function(){
+  const hdr = document.querySelector('.hdr');
+  const supportsSticky = CSS.supports('position', 'sticky') || CSS.supports('position', '-webkit-sticky');
 
-  <!-- Sticky fallback for older/quirky browsers -->
-  <script>
+  if (!supportsSticky) {
+    // Fallback for older browsers
+    const headerHeight = hdr.offsetHeight;
+    document.body.style.paddingTop = headerHeight + 'px';
+    hdr.style.position = 'fixed';
+    hdr.style.top = '0';
+    hdr.style.left = '0';
+    hdr.style.right = '0';
+    hdr.style.zIndex = '9999';
+  }
 
-    }
-    document.getElementById('cloud20-year').textContent = new Date().getFullYear();
-  })();
-  </script>
+  // Always update copyright year
+  const yearEl = document.getElementById('cloud20-year');
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
+})();
+</script>
+
 </body>
 </html>
