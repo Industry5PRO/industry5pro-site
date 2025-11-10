@@ -23,13 +23,25 @@
     a:hover{opacity:.95}
     .wrap{max-width:1180px;margin:0 auto;padding:24px}
 
-    /* ===== Sticky Header (hardened) ===== */
-    .hdr{
-      position:sticky; position:-webkit-sticky; top:0; z-index:9999; margin:0;
-      backdrop-filter:saturate(140%) blur(6px); -webkit-backdrop-filter:saturate(140%) blur(6px);
-      background:rgba(0,0,0,.85); border-bottom:1px solid rgba(255,106,19,.25);
-      transform:none !important;
-    }
+ /* Sticky header base (with blur) */
+.hdr{
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 9999;
+  width: 100%;
+  backdrop-filter: saturate(140%) blur(6px);
+  -webkit-backdrop-filter: saturate(140%) blur(6px);
+  background: rgba(0,0,0,.85);
+  border-bottom: 1px solid rgba(255,106,19,.25);
+  transform: none !important;
+}
+
+/* Fallback when backdrop-filter isn’t supported */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .hdr { background: rgba(0,0,0,.92); }
+}
+
     @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
       .hdr{ background:rgba(0,0,0,.92); }
     }
@@ -423,6 +435,42 @@
   <!-- Make category pills clickable to the readiness form -->
 <script>
   document.getElementById('cloud20-year').textContent = new Date().getFullYear();
+</script>
+<script>
+(function(){
+  var hdr = document.querySelector('.hdr');
+  if (!hdr) return;
+
+  // If sticky isn’t supported or gets neutered, flip to fixed + spacer
+  var supportsSticky =
+    (CSS && (CSS.supports('position','sticky') || CSS.supports('position','-webkit-sticky')));
+
+  function forceFixed(){
+    var h = hdr.offsetHeight;
+    document.documentElement.style.scrollPaddingTop = h + 'px'; // for anchor links
+    document.body.style.paddingTop = h + 'px';
+    Object.assign(hdr.style, {
+      position: 'fixed',
+      top: '0', left: '0', right: '0',
+      zIndex: '9999'
+    });
+  }
+
+  if (!supportsSticky) { forceFixed(); return; }
+
+  // Runtime guard: if the browser says "sticky" but it still scrolls away, fix it.
+  var lastY = window.scrollY;
+  var watchdog = 0;
+  window.addEventListener('scroll', function(){
+    var now = window.scrollY;
+    // Heuristic: if the header ever disappears above viewport when scrolled, enable fix
+    if (now > 10 && hdr.getBoundingClientRect().top < -2 && !watchdog){
+      watchdog = 1;
+      forceFixed();
+    }
+    lastY = now;
+  }, { passive: true });
+})();
 </script>
 
 
