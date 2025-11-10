@@ -2198,6 +2198,66 @@ window.CLOUD2_FORM = "/cloud20.html";
     });
   })();
 </script>
+<script>
+/* Outcome-Obsessed → force all Cloud 2.0 CTAs to /cloud20.html */
+(function () {
+  var DEST = "/cloud20.html";
+  var SIGNALS = ["cloud2","cloud-2","cloud2.0","cloud","network","naas","wavelength","edge","mec","lumen"];
+
+  // normalize helper
+  function hasSignal(tagString){
+    var t = (tagString || "").toLowerCase();
+    return SIGNALS.some(s => t.includes(s));
+  }
+
+  function retargetOne(card){
+    // find a clickable thing inside the card
+    var btn = card.querySelector('a.oo-cta, a.btn, a, button');
+    if (!btn) return;
+
+    // anchors: rewrite href; buttons: click => navigate
+    if (btn.tagName.toLowerCase() === 'a') {
+      btn.href = DEST;
+      btn.removeAttribute('target');
+      btn.removeAttribute('rel');
+    } else {
+      btn.onclick = function(){ window.location.href = DEST; };
+    }
+
+    // optional: unify label
+    var label = "Start Cloud 2.0 Discovery";
+    if (btn.textContent.trim().length < 6 || /roi plan|readiness|book/i.test(btn.textContent)) {
+      btn.textContent = label;
+    }
+  }
+
+  function retargetAll(){
+    var scope = document.querySelector('#outcome-obsessed');
+    if (!scope) return;
+
+    // 1) Any KPI card that’s about cloud/network/naas/…
+    scope.querySelectorAll('[data-tags]').forEach(function(card){
+      if (hasSignal(card.getAttribute('data-tags'))) retargetOne(card);
+    });
+
+    // 2) Safety: any CTA whose text already says “Start Cloud 2.0…”
+    scope.querySelectorAll('a, button').forEach(function(el){
+      if (/start cloud 2\.0/i.test(el.textContent)) retargetOne(el.closest('[data-tags]') || el);
+    });
+  }
+
+  // Run now, and also after dynamic renders
+  document.readyState === "loading" ? document.addEventListener('DOMContentLoaded', retargetAll) : retargetAll();
+
+  // If something re-renders the grid later, catch it
+  var oo = document.querySelector('#outcome-obsessed');
+  if (oo && 'MutationObserver' in window) {
+    new MutationObserver(function(muts){
+      if (muts.some(m => m.addedNodes && m.addedNodes.length)) retargetAll();
+    }).observe(oo, { childList:true, subtree:true });
+  }
+})();
+</script>
 
 
   
