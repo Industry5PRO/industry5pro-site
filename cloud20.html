@@ -82,7 +82,7 @@
       display:inline-block;color:var(--lumen);font-weight:700;
       font-size:.95rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px;
     }
-    .wp-title{margin:0;font-size:2.1rem;line-height:1.2;color:#ffffff;text-transform:none !important}
+    .wp-title{margin:0;font-size:2.1rem;line-height:1.2;color:#ffffff;text-}
     .whitepaper p{margin:6px 0 12px;color:#C0C0C0;font-size:1rem}
     .whitepaper .meta{color:#9fb2c7;font-size:.92rem;margin-top:6px}
     .whitepaper .cta-row{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
@@ -230,6 +230,16 @@
     }
     .icp-card .tag, .icp-card h3 a.icp-link{white-space:normal}
     section[id]{scroll-margin-top:84px}
+    .hdr {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  backdrop-filter: saturate(140%) blur(6px);
+  -webkit-backdrop-filter: saturate(140%) blur(6px);
+  background: rgba(0, 0, 0, 0.85);
+  border-bottom: 1px solid rgba(255,106,19,0.25);
+}
+
   </style>
 </head>
 <body>
@@ -424,25 +434,7 @@
 
   <!-- Sticky fallback for older/quirky browsers -->
   <script>
-  (function(){
-    var hdr=document.querySelector('.hdr'); if(!hdr) return;
-    var supportsSticky = CSS.supports('position','sticky') || CSS.supports('position','-webkit-sticky');
-    if(!supportsSticky){
-      var h = hdr.offsetHeight; document.body.style.paddingTop=h+'px';
-      hdr.style.position='fixed'; hdr.style.top='0'; hdr.style.left='0'; hdr.style.right='0'; hdr.style.zIndex='9999';
-    }else{
-      var fixed=false, baseline=hdr.getBoundingClientRect().top;
-      window.addEventListener('scroll', function(){
-        var topNow=hdr.getBoundingClientRect().top;
-        if(!fixed && window.scrollY>2 && topNow>baseline+2){
-          var h=hdr.offsetHeight; document.body.style.paddingTop=h+'px';
-          hdr.style.position='fixed'; hdr.style.top='0'; hdr.style.left='0'; hdr.style.right='0'; fixed=true;
-        }
-        if(fixed && window.scrollY<=2){
-          document.body.style.paddingTop=''; hdr.style.position='sticky'; hdr.style.top='0';
-          hdr.style.left=''; hdr.style.right=''; fixed=false;
-        }
-      }, {passive:true});
+
     }
     document.getElementById('cloud20-year').textContent = new Date().getFullYear();
   })();
