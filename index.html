@@ -2177,6 +2177,27 @@ window.CLOUD2_FORM = "/cloud20.html";
 
 </style>
 
+<script>
+  (function () {
+    var scope = document.querySelector('#outcome-obsessed') || document;
+    // 1) Update anchors that *are* links
+    scope.querySelectorAll('a').forEach(function(a){
+      var t = a.textContent.trim().toLowerCase();
+      if (t === 'run ai readiness') {
+        a.href = '/ai-readiness.html';
+        a.removeAttribute('target'); // same tab
+        a.removeAttribute('rel');
+      }
+    });
+    // 2) If any pills are <button>, make them navigate too
+    scope.querySelectorAll('button').forEach(function(btn){
+      var t = btn.textContent.trim().toLowerCase();
+      if (t === 'run ai readiness') {
+        btn.addEventListener('click', function(){ window.location.href = '/ai-readiness.html'; });
+      }
+    });
+  })();
+</script>
 
 
   
