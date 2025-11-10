@@ -272,6 +272,7 @@ main, .wrap, .container, .page {
 
     /* apply the spacer to your main content wrapper */
     main, .wrap, .page-content { margin-top: var(--hdr-h); }
+  
   </style>
 </head>
 
@@ -321,6 +322,10 @@ main, .wrap, .container, .page {
   .quadrant .bubble.peplink circle { fill:#FFD700; stroke:#e6c200; }
   .quad .bubble.peplink text,
   .quadrant .bubble.peplink text { fill:#0b0b0b; font-weight:800; }
+    
+    /* Force Peplink label to black even if globals set SVG text to white */
+#quadrant svg text.peplink-label{ fill:#0b0b0b !important; }
+
 </style>
 
 </style>
@@ -421,11 +426,9 @@ main, .wrap, .container, .page {
      <!-- Peplink -->
 <!-- Peplink (brand yellow + black label) -->
 <g aria-label="Peplink">
-  <circle cx="520" cy="200" r="26"
-          fill="#FCB71B" stroke="#d89a13" stroke-opacity=".9" />
-  <text x="520" y="200" dy="5"
-        text-anchor="middle" font-size="12" font-weight="700"
-        fill="#0b0b0b">Peplink</text>
+  <circle cx="520" cy="200" r="26" fill="#FCB71B" stroke="#d89a13" stroke-opacity=".9"/>
+  <text class="peplink-label" x="520" y="200" dy="5"
+        text-anchor="middle" font-size="12" font-weight="700">Peplink</text>
 </g>
 
 <!-- Cradlepoint -->
