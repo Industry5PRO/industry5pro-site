@@ -2258,6 +2258,42 @@ window.CLOUD2_FORM = "/cloud20.html";
   }
 })();
 </script>
+<script>
+(function(){
+  // Exact case to match your GitHub Pages folder name
+  var DEST = "/Peplink/"; 
+
+  // Titles we consider equivalent (case-insensitive, typo-safe)
+  var targets = [
+    "maritime",
+    "public safety & smart city",
+    "public safety and smart city",
+    "public safety / smart city",
+    "public safety",
+    "smart city"
+  ];
+
+  function norm(s){
+    return (s||"")
+      .toLowerCase()
+      .replace(/&/g, "and")
+      .replace(/\s+\/\s+/g, " / ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  document.querySelectorAll('#verticals .tile').forEach(function(tile){
+    var titleEl = tile.querySelector('.tile-title');
+    var text = norm(titleEl ? titleEl.textContent : tile.textContent);
+    if (targets.includes(text)) {
+      tile.setAttribute('href', DEST);
+      tile.removeAttribute('data-appointment');
+      tile.removeAttribute('target');
+      tile.removeAttribute('rel');
+    }
+  });
+})();
+</script>
 
 
   
