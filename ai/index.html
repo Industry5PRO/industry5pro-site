@@ -120,6 +120,26 @@
 .cardx .kpis .pill strong{color:var(--ice)}
 .vid{position:relative; padding-bottom:56.25%; height:0; border-radius:10px; overflow:hidden; border:1px solid rgba(255,255,255,.10)}
 .vid iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+<style>
+/* High-res YouTube “lite” embed */
+.yt-lite{
+  position:relative; width:100%; padding-bottom:56.25%; /* 16:9 */
+  background:#000 center/cover no-repeat;
+  border:1px solid rgba(255,255,255,.10); border-radius:10px; overflow:hidden;
+  cursor:pointer;
+}
+.yt-lite::after{ /* play button */
+  content:""; position:absolute; inset:auto auto 12px 12px; width:56px; height:56px;
+  border-radius:50%;
+  background:rgba(0,0,0,.55);
+  box-shadow:0 0 14px rgba(0,0,0,.5);
+}
+.yt-lite::before{ /* triangle */
+  content:""; position:absolute; left:33px; bottom:30px;
+  border-left:16px solid white; border-top:10px solid transparent; border-bottom:10px solid transparent;
+}
+.yt-lite.loading{filter:blur(2px)}
+</style>
 
   </style>
   
@@ -265,35 +285,30 @@
       </div>
     </article>
 
-    <!-- Insurance -->
-    <article class="cardx">
-      <h3>Insurance</h3>
-      <div class="vid">
-        <iframe loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
-          src="https://www.youtube.com/embed/4zWW_I80wrg?si=Mgh6rzkFT6LQ2xFk"
-          title="DRUID AI for Insurance"></iframe>
-      </div>
-      <div class="kpis">
-        <span class="pill"><strong>50%</strong> faster minor-claim resolution</span>
-        <span class="pill"><strong>60%</strong> shorter claim lifecycle</span>
-        <span class="pill"><strong>30%</strong> CSAT lift</span>
-      </div>
-    </article>
+  <!-- Sales & Marketing -->
+<article class="cardx">
+  <h3>Sales &amp; Marketing</h3>
+  <div class="yt-lite" data-id="VIDEO_ID_HERE"></div>
+  <div class="kpis">
+    <span class="pill"><strong>35%</strong> average time saved by reps</span>
+    <span class="pill"><strong>30%</strong> decrease in time-to-serve</span>
+    <span class="pill"><strong>25%</strong> CSAT lift via faster responses</span>
+  </div>
+</article>
 
-    <!-- Leasing -->
-    <article class="cardx">
-      <h3>Leasing</h3>
-      <div class="vid">
-        <iframe loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
-          src="https://www.youtube.com/embed/cwalb8qZPIA?si=Xtq13O-9q_uOXLCh"
-          title="DRUID AI for Leasing"></iframe>
-      </div>
-      <div class="kpis">
-        <span class="pill"><strong>Lead-to-lease</strong> acceleration</span>
-        <span class="pill"><strong>Collections</strong> automation</span>
-        <span class="pill"><strong>NPS</strong> improvement</span>
-      </div>
-    </article>
+
+<!-- Sales & Marketing -->
+<article class="cardx">
+  <h3>Sales &amp; Marketing</h3>
+  <div class="yt-lite" data-id="Qfa6Ly9LobI"></div>
+  <div class="kpis">
+    <span class="pill"><strong>35%</strong> average time saved by reps</span>
+    <span class="pill"><strong>30%</strong> decrease in time to serve</span>
+    <span class="pill"><strong>25%</strong> CSAT lift via faster responses</span>
+  </div>
+</article>
+
+
 
     <!-- Healthcare -->
     <article class="cardx">
@@ -459,6 +474,36 @@
 <script>
 // Year stamp
 const y = document.getElementById("y"); if (y) y.textContent = new Date().getFullYear();
+</script>
+<script>
+(function(){
+  var ICE = "#2BEDE7";
+  document.querySelectorAll(".yt-lite").forEach(function(el){
+    var id = el.dataset.id;
+    // Try max-res thumbnail, fall back to sddefault
+    var hi = new Image();
+    hi.onload = function(){ el.style.backgroundImage = "url('"+hi.src+"')"; };
+    hi.onerror = function(){ el.style.backgroundImage = "url('https://img.youtube.com/vi/"+id+"/sddefault.jpg')"; };
+    hi.src = "https://img.youtube.com/vi/"+id+"/maxresdefault.jpg";
+
+    el.addEventListener("click", function(){
+      if (el.dataset.loaded) return;
+      el.dataset.loaded = "1";
+      var src = "https://www.youtube.com/embed/"+id+"?autoplay=1&rel=0";
+      var iframe = document.createElement("iframe");
+      iframe.loading = "eager";
+      iframe.setAttribute("allow","accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+      iframe.setAttribute("allowfullscreen","");
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
+      iframe.src = src;
+      iframe.style.position = "absolute";
+      iframe.style.inset = "0";
+      iframe.style.width = "100%";
+      iframe.style.height = "100%";
+      el.replaceWith(iframe);
+    });
+  });
+})();
 </script>
 
 </body>
