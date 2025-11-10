@@ -75,6 +75,8 @@
   .muted{color:var(--muted)}
   <style>
   /* ===== Sticky Header (hardened) ===== */
+  <style>
+  /* ===== Sticky Header (Cloud 2.0 mirror) ===== */
   .hdr{
     position:sticky; position:-webkit-sticky; top:0; z-index:9999; margin:0;
     backdrop-filter:saturate(140%) blur(6px); -webkit-backdrop-filter:saturate(140%) blur(6px);
@@ -84,25 +86,55 @@
   @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
     .hdr{ background:rgba(0,0,0,.92); }
   }
-  .hdr-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px}
-  .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px;text-decoration:none;color:#e8eef9}
-  .logo{width:44px;height:44px;border-radius:12px;display:block;object-fit:contain;filter:drop-shadow(0 0 10px rgba(133,187,101,.40));background:transparent}
-  .brand .title{font-size:20px;line-height:1;color:var(--lumen-blue-light,#2BEDE7);text-shadow:0 0 10px rgba(43,237,231,.25)}
-  .nav-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 
-  /* Nav links + CTA pill */
-  .nav-actions a{color:#d5dcef;text-decoration:none;font-weight:700}
-  .nav-actions a:hover{color:var(--lumen-blue-light,#2BEDE7);text-shadow:0 0 6px rgba(43,237,231,.6),0 0 16px rgba(43,237,231,.35)}
+  /* Center the whole header and the brand */
+  .hdr-inner{
+    max-width:1080px; margin:0 auto;
+    display:grid; grid-template-columns:1fr auto 1fr; /* left nav | brand | right nav */
+    align-items:center; gap:16px; padding:14px 24px;
+  }
+
+  /* Brand (center column) */
+  .brand{
+    display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.2px;
+    text-decoration:none; color:#e8eef9; justify-self:center;
+  }
+  .logo{width:44px;height:44px;border-radius:12px;display:block;object-fit:contain;
+        filter:drop-shadow(0 0 10px rgba(133,187,101,.40)); background:transparent}
+  .brand .title{font-size:20px;line-height:1;color:#2BEDE7; text-shadow:0 0 10px rgba(43,237,231,.25)}
+
+  /* Left and right nav groups */
+  .nav-left,.nav-right{display:flex; align-items:center; gap:12px;}
+  .nav-left{justify-self:start;}
+  .nav-right{justify-self:end;}
+  .nav-left a,.nav-right a{color:#d5dcef; text-decoration:none; font-weight:700}
+  .nav-left a:hover,.nav-right a:hover{
+    color:#2BEDE7; text-shadow:0 0 6px rgba(43,237,231,.6), 0 0 16px rgba(43,237,231,.35);
+  }
+
+  /* Cloud 2.0 pill CTA (orange fill, ice-blue glow) */
   .pill-cta{
-    display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;
-    padding:10px 16px;border-radius:9999px;font-weight:800;letter-spacing:.2px;
-    color:#0b0b0b;background:linear-gradient(180deg,#FF6A13,#ff8c3a);
-    border:1px solid #FF6A13; box-shadow:0 0 12px rgba(43,237,231,.55),0 0 26px rgba(43,237,231,.35);
-    text-shadow:0 0 2px rgba(255,255,255,.95),0 0 8px rgba(255,255,255,.45);
+    display:inline-flex; align-items:center; justify-content:center; white-space:nowrap;
+    padding:10px 16px; border-radius:9999px; font-weight:800; letter-spacing:.2px;
+    color:#0b0b0b; background:linear-gradient(180deg,#FF6A13,#ff8c3a);
+    border:1px solid #FF6A13;
+    box-shadow:0 0 12px rgba(43,237,231,.55), 0 0 26px rgba(43,237,231,.35);
+    text-shadow:0 0 2px rgba(255,255,255,.95), 0 0 8px rgba(255,255,255,.45);
     transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
   }
-  .pill-cta:hover{transform:translateY(-1px);box-shadow:0 0 14px rgba(43,237,231,.70),0 0 32px rgba(43,237,231,.45)}
+  .pill-cta:hover{
+    transform:translateY(-1px);
+    box-shadow:0 0 14px rgba(43,237,231,.70), 0 0 32px rgba(43,237,231,.45);
+  }
+
+  /* Mobile: stack brand on top, center nav below */
+  @media (max-width:640px){
+    .hdr-inner{grid-template-columns:1fr; row-gap:10px; text-align:center;}
+    .brand{justify-self:center;}
+    .nav-left,.nav-right{justify-content:center;}
+  }
 </style>
+
 
 </style>
 </head>
@@ -110,20 +142,23 @@
 
 <header class="hdr">
   <div class="hdr-inner">
-    <a class="brand" href="/">
+    <!-- Left nav: Home | Start FWA Discovery | Blog -->
+    <nav class="nav-left">
+      <a href="/">Home</a>
+      <a class="pill-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform?usp=header">
+        Start FWA Discovery
+      </a>
+      <a href="/blog.html">Blog</a>
+    </nav>
+
+    <!-- Center brand (logo closer to center by design) -->
+    <a class="brand" href="/Peplink/">
       <img src="/assets/industry5-logo.png" alt="Industry5.pro" class="logo" width="44" height="44" loading="eager" decoding="async" />
       <span class="title">Industry5.pro</span>
     </a>
 
-    <nav class="nav-actions">
-      <a href="/">Home</a>
-
-      <!-- Start FWA Discovery (general form for now) -->
-      <a class="pill-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform?usp=header">
-        Start FWA Discovery
-      </a>
-
-      <a href="/blog.html">Blog</a>
+    <!-- Right nav (optional links; can be empty or add Contact, Cloud 2.0, etc.) -->
+    <nav class="nav-right">
       <a href="/Peplink/">Peplink FWA</a>
     </nav>
   </div>
