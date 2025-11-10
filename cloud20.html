@@ -421,13 +421,12 @@
   </footer>
 
   <!-- Make category pills clickable to the readiness form -->
- <script>
+<script>
 (function(){
   const hdr = document.querySelector('.hdr');
   const supportsSticky = CSS.supports('position', 'sticky') || CSS.supports('position', '-webkit-sticky');
 
-  if (!supportsSticky) {
-    // Fallback for older browsers
+  if (!supportsSticky && hdr) {
     const headerHeight = hdr.offsetHeight;
     document.body.style.paddingTop = headerHeight + 'px';
     hdr.style.position = 'fixed';
@@ -437,13 +436,14 @@
     hdr.style.zIndex = '9999';
   }
 
-  // Always update copyright year
+  // Update year
   const yearEl = document.getElementById('cloud20-year');
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
 })();
 </script>
+
 
 </body>
 </html>
