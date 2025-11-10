@@ -108,10 +108,27 @@ header nav a:hover::after{ width:100%; }
     @media(min-width:1000px){ .book-grid{grid-template-columns: 1fr minmax(360px,480px)} }
     iframe{width:100%;border:0;border-radius:12px;min-height:720px;background:#0f131b}
 
-    /* Footer social */
-    .footer{margin:32px 0;color:var(--muted);font-size:14px}
-    .social{display:flex;gap:10px;flex-wrap:wrap}
-    .social a{padding:8px 12px;border:1px solid rgba(255,255,255,.14);border-radius:999px;color:#e8eef9;background:rgba(255,255,255,.04)}
+   /* Footer (centered) */
+.footer{
+  margin:32px 0;
+  color:var(--muted);
+  font-size:14px;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;     /* center children horizontally */
+  justify-content:center; /* vertical breathing if needed */
+  gap:12px;
+  text-align:center;      /* center the © line */
+}
+.footer .social-icons{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
     /* ===== Supplier-Agnostic Products & Platforms (green glow) ===== */
 #products .card,
 #products article{
@@ -2136,18 +2153,41 @@ window.CLOUD2_FORM = "/cloud20.html";
   *:hover{
     text-shadow: none;
   }
+  <head>
+  <style>
+    /* ...your existing CSS... */
+
+    /* Footer (centered) */
+    .footer{
+      margin:32px 0;
+      color:var(--muted);
+      font-size:14px;
+      width:100%;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      text-align:center;
+    }
+
+    /* ⬇️ Add these two blocks here, BEFORE </style> */
+    .footer > *{
+      margin-left:auto;
+      margin-right:auto; /* safety: center any direct child */
+    }
+    .footer .social-icons{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+  </style>
+</head>
+
 </style>
-/* Footer: center everything without changing spacing */
-.footer{
-  width:100%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;        /* centers children horizontally */
-  justify-content:center;
-  gap:12px;
-  text-align:center;         /* centers the text line */
-  margin:32px 0;
-}
+
 
 .footer > *{
   margin-left:auto;
@@ -2162,6 +2202,7 @@ window.CLOUD2_FORM = "/cloud20.html";
   gap:12px;
   flex-wrap:wrap;
 }
+  
 
 </body>
 </html>
