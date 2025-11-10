@@ -131,8 +131,110 @@
   color:#FCB71B; /* Peplink yellow */
   text-shadow:0 0 10px rgba(252,183,27,.55), 0 0 22px rgba(252,183,27,.35);
 }
+/* Header Start FWA Discovery — black text by default and on hover */
+.hdr .pill-cta.fwa-cta{
+  color:#0b0b0b !important;        /* default black */
+}
+
+.hdr .pill-cta.fwa-cta:hover,
+.hdr .pill-cta.fwa-cta:focus-visible{
+  color:#0b0b0b !important;        /* keep black on hover */
+  /* keep your existing yellow fill + ice-blue glow here (you already have it) */
+}
+/* === Peplink pill — identical look for header + hero === */
+:root{
+  --peplink-yellow:#FCB71B;         /* brand yellow */
+  --ice-blue:#2BEDE7;               /* your glow color */
+}
+
+/* Base pill */
+.pill-cta.peplink {
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:12px 22px;
+  border-radius:9999px;              /* same curve everywhere */
+  font-weight:800; letter-spacing:.2px;
+  background:linear-gradient(180deg, var(--peplink-yellow), #ffd168);
+  border:1px solid #e6c200;          /* subtle rim */
+  color:#0b0b0b;                     /* black text */
+  text-decoration:none;
+  /* subtle permanent glow */
+  box-shadow:
+    0 0 10px rgba(43,237,231,.28),
+    0 0 20px rgba(43,237,231,.18);
+  transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease, filter .2s ease;
+}
+
+/* Hover/focus: brighter ice-blue glow, keep text black */
+.pill-cta.peplink:hover,
+.pill-cta.peplink:focus-visible{
+  color:#0b0b0b;
+  transform:translateY(-1px);
+  box-shadow:
+    0 0 14px rgba(43,237,231,.70),
+    0 0 32px rgba(43,237,231,.45);
+  outline:0;
+}
+
+/* Make sure header version doesn’t get overridden by other header rules */
+.hdr .pill-cta.peplink{
+  border-radius:9999px;  /* enforce identical curve in header too */
+  color:#0b0b0b;         /* black letters by default */
+}
+.hdr .pill-cta.peplink:hover,
+.hdr .pill-cta.peplink:focus-visible{
+  color:#0b0b0b;         /* stay black on hover */
+}
 
 </style>
+  <style id="peplink-fwa-pills">
+  :root{
+    --peplink-yellow:#fcb71b;
+    --ice-blue:#2BEDE7;
+  }
+
+  /* Reset any old pill styles that might fight us */
+  .pill-cta.cloud-accent { background:none; }
+
+  /* Base pill style (shared by header + hero) */
+  .pill-cta{
+    display:inline-flex; align-items:center; justify-content:center;
+    padding:12px 22px; min-height:44px;
+    border-radius:9999px;                      /* identical curve */
+    font-weight:800; letter-spacing:.2px;
+    border:1px solid var(--peplink-yellow);
+    background:var(--peplink-yellow);         /* Peplink yellow fill */
+    color:#0b0b0b;                             /* black letters */
+    text-decoration:none; white-space:nowrap;
+    /* subtle “perma glow” */
+    box-shadow:0 0 10px rgba(43,237,231,.35), 0 0 20px rgba(43,237,231,.20);
+    transition:transform .15s ease, box-shadow .18s ease, color .15s ease, border-color .18s ease;
+  }
+
+  /* Specific hook for FWA pills (header + hero use the same class) */
+  .pill-cta.fwa-cta{
+    background:var(--peplink-yellow);
+    border-color:var(--peplink-yellow);
+    color:#0b0b0b;
+  }
+
+  /* Hover = brighter ice-blue glow, keep Peplink fill & black text */
+  .pill-cta.fwa-cta:hover,
+  .pill-cta.fwa-cta:focus-visible{
+    transform:translateY(-1px);
+    box-shadow:
+      0 0 14px rgba(43,237,231,.70),
+      0 0 32px rgba(43,237,231,.45);
+    outline:0;
+    color:#0b0b0b;
+    border-color:var(--peplink-yellow);
+  }
+
+  /* Make sure header link color defaults don’t override pill text */
+  .hdr .nav-actions a.pill-cta{ color:#0b0b0b !important; }
+
+  /* If your hero pill uses the same classes, it will match automatically */
+</style>
+
 </head>
 
 <body>
@@ -144,11 +246,17 @@
       <span class="title">Industry5.pro — <span class="peplink">Peplink</span></span>
 
     </a>
-    <nav class="nav-actions">
-      <a href="/">Home</a>
-      <a class="pill" href="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform?usp=header">Start FWA Discovery</a>
-      <a href="/blog.html">Blog</a>
-    </nav>
+<nav class="nav-actions">
+  <a href="/">Home</a>
+
+  <a class="pill-cta fwa-cta"
+     href="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform?usp=header">
+    Start FWA Discovery
+  </a>
+
+  <a href="/blog.html">Blog</a>
+</nav>
+
   </div>
 </header>
 
