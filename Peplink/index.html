@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Peplink FWA • Outcome-Obsessed | Industry5.pro</title>
+<meta name="description" content="Fast, resilient Fixed Wireless Access with Peplink. Built for branch, fleet, construction, retail pop-ups, and maritime—designed to scale with enterprise controls." />
+<link rel="icon" href="/assets/favicon.ico" />
+<style>
+  :root{
+    --green:#85BB65;                 /* money green */
+    --ink:#0b1220;
+    --bg:#0e1117;
+    --card:#141821;
+    --muted:#a9b3c4;
+    --ice:#2BEDE7;                   /* ice blue */
+    --lumen:#FF6A13;                 /* Lumen orange */
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:#e8eef9;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial}
+  a{color:var(--ice);text-decoration:none}
+
+  /* ===== Sticky Header (hardened) ===== */
+  .hdr{
+    position:sticky; position:-webkit-sticky; top:0; z-index:9999; margin:0;
+    backdrop-filter:saturate(140%) blur(6px); -webkit-backdrop-filter:saturate(140%) blur(6px);
+    background:rgba(0,0,0,.85); border-bottom:1px solid rgba(255,106,19,.25);
+  }
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .hdr{ background:rgba(0,0,0,.92); }
+  }
+  .hdr-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 20px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px;color:#e8eef9}
+  .brand img{width:38px;height:38px;border-radius:10px;display:block;object-fit:contain;filter:drop-shadow(0 0 8px rgba(133,187,101,.40))}
+  .brand .title{font-size:18px;color:var(--ice);text-shadow:0 0 10px rgba(43,237,231,.25)}
+  .nav{display:flex;gap:12px;flex-wrap:wrap}
+  .nav a{padding:8px 10px;border:1px solid rgba(255,255,255,.12);border-radius:999px;color:#e8eef9}
+  .nav a:hover{color:var(--ice);border-color:var(--ice);box-shadow:0 0 10px rgba(43,237,231,.35)}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:20px}
+  .card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px}
+
+  /* Hero */
+  .hero{display:grid;grid-template-columns:1.2fr 1fr;gap:18px;align-items:center}
+  .hero h1{font-size:clamp(26px,4.6vw,42px);line-height:1.1;margin:0 0 8px}
+  .lead{color:#d5dcef;margin:0 0 10px}
+  .cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+  .pill{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:12px 18px;font-weight:800;border:1px solid rgba(255,255,255,.12)}
+  .pill.primary{background:linear-gradient(180deg,var(--lumen),#ff8c3a);color:#0b0b0b;border-color:var(--lumen);text-shadow:0 0 2px rgba(255,255,255,.95),0 0 8px rgba(255,255,255,.45)}
+  .pill.secondary{background:#0f131b;color:#e8eef9}
+  .pill:hover{box-shadow:0 0 14px rgba(43,237,231,.70),0 0 32px rgba(43,237,231,.45);transform:translateY(-1px)}
+
+  .yt-wrap{border:1px solid var(--lumen);border-radius:12px;overflow:hidden;box-shadow:0 0 12px rgba(255,106,19,.35)}
+  .yt-wrap iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
+
+  @media (max-width:900px){ .hero{grid-template-columns:1fr} }
+
+  /* ICP grid */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .tile{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:14px}
+  .tile h3{margin:0 0 6px;font-size:1rem}
+  .tile p{margin:0;color:var(--muted)}
+  .tile:hover{border-color:var(--ice);box-shadow:0 0 14px rgba(43,237,231,.35),0 0 28px rgba(43,237,231,.2);transform:translateY(-2px)}
+
+  /* Quadrant */
+  .quad{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:16px}
+  .quad h3{margin:0 0 10px}
+  .quad svg{width:100%;height:auto;display:block}
+
+  /* Intake */
+  .form-embed iframe{width:100%;min-height:760px;border:0;border-radius:12px;background:#0f131b}
+
+  /* Small credential */
+  .cred{display:flex;align-items:center;gap:10px;margin-top:8px;color:#cfe7ff}
+  .cred img{width:24px;height:24px;display:block}
+  .muted{color:var(--muted)}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-inner">
+    <a class="brand" href="/">
+      <img src="/assets/industry5-logo.png" alt="Industry5.pro logo" />
+      <span class="title">Industry5.pro</span>
+    </a>
+    <nav class="nav">
+      <a href="#why">Why FWA</a>
+      <a href="#icp">ICP</a>
+      <a href="#quadrant">Quadrant</a>
+      <a href="#intake">Get Plan</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="card">
+    <div class="hero">
+      <div>
+        <h1>Fixed Wireless Access that’s fast, resilient, and enterprise-ready</h1>
+        <p class="lead">Peplink brings multi-WAN bonding, seamless failover, and centralized control to branches, fleets, construction, retail pop-ups, and maritime.</p>
+        <div class="cta-row">
+          <a class="pill primary" href="#intake">Start Cloud 2.0 Discovery</a>
+          <a class="pill secondary" href="https://www.peplink.com/" target="_blank" rel="noopener">Learn more at Peplink</a>
+        </div>
+        <div class="cred">
+          <img src="/assets/badge-peplink.svg" alt="">
+          <span>Peplink Certified Engineer 4.0</span>
+        </div>
+      </div>
+      <div class="yt-wrap">
+        <!-- Featured 1-min video -->
+        <iframe
+          src="https://www.youtube.com/embed/p8cz0f8GYdA?rel=0&modestbranding=1&playsinline=1"
+          title="Peplink FWA overview"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY / Lumen note -->
+  <section id="why" class="card" style="margin-top:14px">
+    <h2 style="margin:0 0 8px">Why FWA, why now</h2>
+    <p class="muted" style="margin:0">
+      FWA shines where fiber is slow to deploy, sites are mobile, or you need day-one connectivity with enterprise controls. Peplink’s multi-carrier bonding and orchestration add the reliability layer that CX and operations demand. Lumen complements this with backbone, wavelength, and NaaS options for hybrid underlay—so you’re not choosing either/or, you’re composing the right mix for uptime and scale.
+    </p>
+  </section>
+
+  <!-- ICP -->
+  <section id="icp" class="card" style="margin-top:14px">
+    <h2 style="margin:0 0 10px">Ideal Customer Profiles</h2>
+    <div class="grid">
+      <div class="tile">
+        <h3>Branch & Retail</h3>
+        <p>Primary or backup WAN for POS, VoIP, kiosks. Zero-touch rollout, day-one revenue.</p>
+      </div>
+      <div class="tile">
+        <h3>Construction & Field</h3>
+        <p>Portable sites with shifting carriers. Bonded links for uploads, drones, and safety cams.</p>
+      </div>
+      <div class="tile">
+        <h3>Fleet & Transit</h3>
+        <p>SD-WAN on wheels: telemetry, dispatch, passenger Wi-Fi, video offload, AVL.</p>
+      </div>
+      <div class="tile">
+        <h3>Maritime</h3>
+        <p>Ship-to-shore SD-WAN blending LTE/5G and marina Wi-Fi for resilient comms.</p>
+      </div>
+      <div class="tile">
+        <h3>Pop-ups & Events</h3>
+        <p>Temporary venues with enterprise policies. Roll in, power up, transact.</p>
+      </div>
+      <div class="tile">
+        <h3>Failover for Fiber</h3>
+        <p>Keep CX online. Session-persistent failover that users don’t notice.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quadrant -->
+  <section id="quadrant" class="quad" style="margin-top:14px">
+    <h3 style="margin:0 0 8px">FWA Landscape — Affordability vs Enterprise Readiness (marker size ≈ scalability)</h3>
+    <!-- Inline SVG (brand colors) -->
+    <svg viewBox="0 0 800 520" aria-labelledby="quadTitle" role="img">
+      <title id="quadTitle">Affordability vs Enterprise Readiness</title>
+      <!-- background -->
+      <rect x="0" y="0" width="800" height="520" fill="#141821" rx="12" />
+      <!-- grid -->
+      <g stroke="rgba(255,255,255,0.15)" stroke-width="1">
+        <line x1="100" y1="60" x2="100" y2="460" />
+        <line x1="250" y1="60" x2="250" y2="460" />
+        <line x1="400" y1="60" x2="400" y2="460" />
+        <line x1="550" y1="60" x2="550" y2="460" />
+        <line x1="700" y1="60" x2="700" y2="460" />
+        <line x1="80" y1="420" x2="740" y2="420" />
+        <line x1="80" y1="340" x2="740" y2="340" />
+        <line x1="80" y1="260" x2="740" y2="260" />
+        <line x1="80" y1="180" x2="740" y2="180" />
+      </g>
+      <!-- axes -->
+      <g stroke="#2BEDE7" stroke-width="2">
+        <line x1="80" y1="460" x2="740" y2="460" />
+        <line x1="80" y1="460" x2="80" y2="60" />
+      </g>
+      <!-- labels -->
+      <g fill="#cfe7ff" font-family="system-ui,Segoe UI,Arial" font-size="14">
+        <text x="410" y="496" text-anchor="middle">Affordability →</text>
+        <text x="20" y="260" transform="rotate(-90,20,260)" text-anchor="middle">Enterprise Readiness ↑</text>
+      </g>
+      <!-- markers (sizes ~ scalability). Edit cx, cy, r to reposition. -->
+      <!-- Peplink -->
+      <g>
+        <circle cx="520" cy="200" r="26" fill="#85BB65" stroke="#ffffff" stroke-opacity=".35"/>
+        <text x="520" y="200" dy="5" text-anchor="middle" font-size="12" fill="#0b1220" font-weight="700">Peplink</text>
+      </g>
+      <!-- Cradlepoint -->
+      <g>
+        <circle cx="430" cy="230" r="22" fill="#2BEDE7" stroke="#ffffff" stroke-opacity=".35"/>
+        <text x="430" y="230" dy="5" text-anchor="middle" font-size="12" fill="#0b1220" font-weight="700">Cradlepoint</text>
+      </g>
+      <!-- Cisco (Meraki + Cellular gateways) -->
+      <g>
+        <circle cx="330" cy="270" r="20" fill="#FF6A13" stroke="#ffffff" stroke-opacity=".35"/>
+        <text x="330" y="270" dy="5" text-anchor="middle" font-size="12" fill="#0b1220" font-weight="700">Cisco / Meraki</text>
+      </g>
+      <!-- Note -->
+      <g>
+        <text x="400" y="80" text-anchor="middle" fill="#a9b3c4" font-size="12">
+          Illustrative placement. We tune this live for your use case and carriers.
+        </text>
+      </g>
+    </svg>
+    <p class="muted" style="margin:8px 0 0">
+      Not a gotcha chart. We’ll validate placement based on your carriers, coverage, SLAs, and scale needs.
+    </p>
+  </section>
+
+  <!-- Intake -->
+  <section id="intake" class="card" style="margin:14px 0">
+    <h2 style="margin:0 0 8px">Get my plan</h2>
+    <p class="muted" style="margin:0 0 12px">Outline your sites, carriers, and uptime targets. We’ll review your 30-day rollout and ROI math on a quick call.</p>
+    <div class="form-embed">
+      <!-- Replace with your preferred form if you like; this uses your AIoT/field intake for now -->
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform?usp=sharing"
+        title="Peplink FWA Intake">
+      </iframe>
+    </div>
+  </section>
+
+  <footer class="muted" style="text-align:center;margin:12px 0 20px">
+    © <span id="y"></span> Industry5.pro — Built on trust. Paid by results.
+  </footer>
+</main>
+
+<script>
+  // Year stamp
+  document.getElementById('y').textContent = new Date().getFullYear();
+  // Make sure any “Start Cloud 2.0 Discovery” pills on this page go to your Cloud20 page
+  // If you mounted Cloud 2.0 at /cloud20/ (folder), link to /cloud20
+  const cloudLink = '/cloud20';
+  document.querySelectorAll('a,button').forEach(el=>{
+    if(/start cloud 2\.0 discovery/i.test(el.textContent||'')){
+      if(el.tagName==='A'){ el.href = cloudLink; el.removeAttribute('target'); el.removeAttribute('rel'); }
+      else{ el.addEventListener('click', ()=> location.href = cloudLink); }
+    }
+  });
+</script>
+
+</body>
+</html>
