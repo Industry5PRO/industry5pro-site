@@ -133,6 +133,120 @@
     .brand{justify-self:center;}
     .nav-left,.nav-right{justify-content:center;}
   }
+  /* ===== Sticky Header (Cloud 2.0 mirror) ===== */
+.hdr{
+  position:sticky; position:-webkit-sticky; top:0; z-index:9999; margin:0;
+  backdrop-filter:saturate(140%) blur(6px); -webkit-backdrop-filter:saturate(140%) blur(6px);
+  background:rgba(0,0,0,.85); border-bottom:1px solid rgba(255,106,19,.25);
+  transform:none !important; /* prevents broken sticky on Safari */
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .hdr{ background:rgba(0,0,0,.92); }
+}
+.hdr-inner{
+  max-width:1080px; margin:0 auto;
+  display:flex; align-items:center; gap:16px;
+  padding:12px 18px;
+}
+.brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.2px}
+.logo{width:44px; height:44px; border-radius:12px; display:block; object-fit:contain;
+      filter:drop-shadow(0 0 10px rgba(133,187,101,.40))}
+.brand .title{font-size:20px; line-height:1; color:#2BEDE7; text-shadow:0 0 10px rgba(43,237,231,.25)}
+
+/* Right-align the nav */
+.nav-actions{margin-left:auto; display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+.nav-actions a{
+  position:relative; color:#d5dcef; font-weight:700; padding:8px 10px; border-radius:8px; text-decoration:none;
+  transition:color .15s ease, text-shadow .15s ease;
+}
+.nav-actions a:hover{
+  color:#2BEDE7;
+  text-shadow:0 0 6px rgba(43,237,231,.8), 0 0 14px rgba(43,237,231,.45);
+}
+
+/* CTA pill */
+.nav-actions .pill{
+  display:inline-flex; align-items:center; justify-content:center; white-space:nowrap;
+  padding:10px 16px; border-radius:9999px; font-weight:800;
+  color:#0b0b0b; background:linear-gradient(180deg,#FF6A13,#ff8c3a);
+  border:1px solid #FF6A13;
+  box-shadow:0 0 12px rgba(43,237,231,.55), 0 0 26px rgba(43,237,231,.35);
+  text-shadow:0 0 2px rgba(255,255,255,.95), 0 0 8px rgba(255,255,255,.45);
+  transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.nav-actions .pill:hover{transform:translateY(-1px); box-shadow:0 0 14px rgba(43,237,231,.70), 0 0 32px rgba(43,237,231,.45)}
+
+/* Common pitfalls that break sticky: kill overflow/transform on ancestors */
+body, html { overflow-x: clip; }
+main, .wrap, .container, .page {
+  transform: none !important;
+  will-change: auto !important;
+  overflow: visible !important; /* sticky fails inside overflow:auto/hidden */
+}
+/* ===== Sticky Header (Cloud 2.0 mirror) ===== */
+.hdr{
+  position:sticky; position:-webkit-sticky; top:0; z-index:9999; margin:0;
+  backdrop-filter:saturate(140%) blur(6px); -webkit-backdrop-filter:saturate(140%) blur(6px);
+  background:rgba(0,0,0,.85); border-bottom:1px solid rgba(255,106,19,.25);
+  transform:none !important; /* prevents broken sticky on Safari */
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .hdr{ background:rgba(0,0,0,.92); }
+}
+.hdr-inner{
+  max-width:1080px; margin:0 auto;
+  display:flex; align-items:center; gap:16px;
+  padding:12px 18px;
+}
+.brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.2px}
+.logo{width:44px; height:44px; border-radius:12px; display:block; object-fit:contain;
+      filter:drop-shadow(0 0 10px rgba(133,187,101,.40))}
+.brand .title{font-size:20px; line-height:1; color:#2BEDE7; text-shadow:0 0 10px rgba(43,237,231,.25)}
+
+/* Right-align the nav */
+.nav-actions{margin-left:auto; display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+.nav-actions a{
+  position:relative; color:#d5dcef; font-weight:700; padding:8px 10px; border-radius:8px; text-decoration:none;
+  transition:color .15s ease, text-shadow .15s ease;
+}
+.nav-actions a:hover{
+  color:#2BEDE7;
+  text-shadow:0 0 6px rgba(43,237,231,.8), 0 0 14px rgba(43,237,231,.45);
+}
+
+/* CTA pill */
+.nav-actions .pill{
+  display:inline-flex; align-items:center; justify-content:center; white-space:nowrap;
+  padding:10px 16px; border-radius:9999px; font-weight:800;
+  color:#0b0b0b; background:linear-gradient(180deg,#FF6A13,#ff8c3a);
+  border:1px solid #FF6A13;
+  box-shadow:0 0 12px rgba(43,237,231,.55), 0 0 26px rgba(43,237,231,.35);
+  text-shadow:0 0 2px rgba(255,255,255,.95), 0 0 8px rgba(255,255,255,.45);
+  transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.nav-actions .pill:hover{transform:translateY(-1px); box-shadow:0 0 14px rgba(43,237,231,.70), 0 0 32px rgba(43,237,231,.45)}
+
+/* Common pitfalls that break sticky: kill overflow/transform on ancestors */
+body, html { overflow-x: clip; }
+main, .wrap, .container, .page {
+  transform: none !important;
+  will-change: auto !important;
+  overflow: visible !important; /* sticky fails inside overflow:auto/hidden */
+}
+<head>
+  <!-- ... your other <meta> + styles ... -->
+
+  <style>
+    /* existing variables … */
+
+    /* spacer for fixed-fallback so content doesn’t jump */
+    :root { --hdr-h: 64px; }
+
+    /* apply the spacer to your main content wrapper */
+    main, .wrap, .page-content { margin-top: var(--hdr-h); }
+  </style>
+</head>
+
 </style>
 
 
@@ -301,6 +415,36 @@
   </div>
 </footer>
 <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <!-- …your page content… -->
+
+  <!-- Sticky safety net: switch to fixed if sticky gets clipped -->
+  <script>
+  (function(){
+    const hdr = document.querySelector('.hdr');
+    if(!hdr) return;
+
+    // If sticky is clipped by a parent, flip to fixed
+    const io = new IntersectionObserver(entries => {
+      const e = entries[0];
+      if (!e || (!e.isIntersecting && window.scrollY > 20)) {
+        hdr.style.position = 'fixed';
+        hdr.style.top = '0';
+        hdr.style.left = '0';
+        hdr.style.right = '0';
+        hdr.style.width = '100%';
+      }
+    }, { root: null, threshold: [1] });
+
+    // Observe the header itself
+    io.observe(hdr);
+
+    // Keep content offset equal to header height (prevents layout jump)
+    const setH = () => document.documentElement.style.setProperty('--hdr-h', hdr.offsetHeight + 'px');
+    window.addEventListener('load', setH);
+    new ResizeObserver(setH).observe(hdr);
+  })();
+  </script>
+</body>
 
 </body>
 </html>
