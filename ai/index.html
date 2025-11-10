@@ -1,496 +1,376 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Industry5.pro • Outcome Obsessed. Supplier Agnostic. Paid by results.</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Voice and Omnichannel • Featured: DRUID AI</title>
 
-  <meta name="description" content="Industry5.pro is an advisory first, supplier agnostic consultancy. We turn AI, IoT, cloud, and CX into measurable ROI, human centered, built on trust, paid by results." />
-  <meta property="og:title" content="Industry5.pro • Outcome Obsessed. Supplier Agnostic. Paid by results." />
-  <meta property="og:description" content="Capture a consult in minutes. We design practical AI, IoT, cloud, and CX that deliver measurable outcomes." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://industry5.pro" />
-  <meta property="og:image" content="/assets/featured-newsletter-1200x630.png" />
-  <link rel="icon" href="/assets/favicon.ico" />
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+<!-- === THEME COLORS === -->
+<style>
+:root{
+  --bg:#0e1117;           /* site dark */
+  --card:#141821;         /* card base */
+  --ink:#0b1220;          /* dark ink */
+  --text:#e8eef9;         /* main text */
+  --muted:#a9b3c4;        /* subtext */
 
-  <style>
-    :root { --green:#85BB65; --ink:#0b1220; --muted:#a9b3c4; --bg:#0e1117; --card:#141821; --gold:#E3B341; }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;background:var(--bg);color:#e8eef9;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial}
-    a{color:#b0ff95;text-decoration:none}
-    .wrap{max-width:1080px;margin:0 auto;padding:28px}
+  /* DRUID palette */
+  --druid:#1DDF5A;        /* DRUID green (glow + borders) */
+  --druid-ink:#074650;    /* DRUID deep teal */
+  --druid-pastel:#D2FDB1; /* KPI pill fill */
 
-    /* Sticky header */
-    header{
-      position:sticky; top:0; z-index:60;
-      backdrop-filter:saturate(140%) blur(6px);
-      background:rgba(14,17,23,.72);
-      border-bottom:1px solid rgba(255,255,255,.08);
-    }
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#e8eef9}
-    .logo{width:44px;height:44px;border-radius:12px;display:block;object-fit:contain;filter:drop-shadow(0 0 10px rgba(133,187,101,.40));background:transparent}
-    .title{font-weight:800;font-size:20px}
-    nav a{margin-left:10px;color:#d5dcef;font-weight:700;padding:10px 14px;border:1px solid rgba(255,255,255,.12);border-radius:10px}
-    header nav a{position:relative;color:#ddd;transition:color .15s ease,text-shadow .15s ease}
-    header nav a:hover{color:var(--green);text-shadow:0 0 6px rgba(133,187,101,.8),0 0 14px rgba(133,187,101,.45)}
-    header nav a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;width:0;margin:auto;background:var(--green);box-shadow:0 0 8px rgba(133,187,101,.6);transition:width .18s ease}
-    header nav a:hover::after{width:100%}
+  /* Your accents for harmony */
+  --ice:#2BEDE7;          /* ice blue you use elsewhere */
+}
 
-    /* Hero */
-    .hero{margin:36px 0}
-    .hero .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:18px;align-items:center;max-width:1080px;margin:0 auto;padding:0 16px}
-    .hero h1{font-size:clamp(28px,5vw,44px);line-height:1.1;margin:0 0 8px}
-    .lead{font-size:clamp(16px,1.8vw,20px);color:#d5dcef;margin:0}
-    .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.12);font-weight:800;white-space:nowrap}
-    .btn.primary{background:var(--green);color:#0a0f14;border-color:rgba(133,187,101,.6)}
-    .btn.secondary{background:#0f131b;color:#e8eef9}
-    .hero-photo{display:flex;justify-content:flex-end}
-    .hero-photo img{width:100%;max-width:320px;height:auto;object-fit:contain;filter:drop-shadow(0 10px 20px rgba(0,0,0,.35))}
-    @media (min-width:901px){ .hero-pic{ transform: translateX(-14px); } }
-    @media (max-width:900px){ .hero .hero-grid{grid-template-columns:1fr} .hero-photo{display:none} }
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial}
+a{text-decoration:none;color:inherit}
 
-    /* Quadrant cards */
-    .quad{max-width:980px;margin:24px auto;background:#0a0f1a;border:1px solid color-mix(in srgb, var(--gold) 35%, transparent);border-radius:14px;padding:18px;box-shadow:0 10px 40px rgba(227,179,65,.08)}
-    .quad a img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid rgba(133,187,101,.35)}
-    .quad-head{max-width:980px;margin:0 auto 8px;padding:4px 6px 0}
-    .quad-head h2{color:var(--gold);margin:0;font-size:1.3rem;line-height:1.25}
-    .quad-head p{margin:6px 0 10px;color:#C0C0C0;font-size:.98rem}
-    .cta-bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:14px;padding:12px;border-top:1px dashed color-mix(in srgb, var(--gold) 35%, transparent)}
-    .cta{background:linear-gradient(180deg,var(--gold),#f0c000);color:#1a1a1a;font-weight:800;padding:12px 18px;border-radius:12px;border:0;cursor:pointer;transition:transform .15s ease}
-    .cta:hover{transform:translateY(-1px)}
-    .note{color:#C0C0C0;font-size:.92rem}
+/* ===== Sticky header ===== */
+header{
+  position:sticky; top:0; z-index:1000;
+  background:rgba(14,17,23,.8);
+  backdrop-filter:saturate(140%) blur(6px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.header-bar{
+  max-width:1120px; margin:0 auto; padding:12px 16px;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+}
+.brand{display:flex; align-items:center; gap:12px; color:var(--text)}
+.brand .logo{width:44px;height:44px;border-radius:12px;object-fit:contain;display:block;background:transparent}
+.brand .title{font-weight:800;font-size:20px}
 
-    /* Content containers */
-    main > .container {max-width:1100px;margin:0 auto;padding:0 16px}
+/* top-right nav pills */
+.nav{display:flex; gap:10px; flex-wrap:wrap}
+.nav a{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:10px 14px; border-radius:12px; font-weight:800; white-space:nowrap;
+  border:1px solid rgba(255,255,255,.14); color:#d5dcef; background:rgba(255,255,255,.06);
+  transition:box-shadow .2s ease, border-color .2s ease, transform .15s ease;
+}
+.nav a:hover{ transform:translateY(-1px) }
+.nav a.start-ai{
+  background:var(--druid-ink); color:var(--druid);
+  border-color:rgba(29,223,90,.45);
+  /* perma glow */
+  box-shadow:0 0 10px rgba(29,223,90,.28), 0 0 24px rgba(29,223,90,.18);
+}
+.nav a.start-ai:hover{
+  box-shadow:0 0 14px rgba(29,223,90,.45), 0 0 32px rgba(29,223,90,.28);
+}
 
-    /* Footer */
-    .footer{margin:32px 0;color:var(--muted);font-size:14px}
-    .footer .social-icons{display:flex;justify-content:center;gap:12px;margin-top:12px}
-    .footer .social-icons a{width:42px;height:42px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:#e8eef9}
-    .footer .social-icons svg{width:20px;height:20px;display:block}
+/* ===== Hero ===== */
+.wrap{max-width:1120px; margin:0 auto; padding:0 16px}
+.hero{margin:28px 0 18px}
+.hero-grid{
+  display:grid; grid-template-columns:minmax(0,1fr) 340px; gap:18px; align-items:center;
+}
+@media (max-width:980px){ .hero-grid{grid-template-columns:1fr} .hero-portrait{display:none} }
 
-    /* Glow for buttons and pills */
-    .btn, a.btn, .cta-row a, button { position: relative; transition: color .18s ease, background-color .18s ease, border-color .18s ease, box-shadow .22s ease, transform .18s ease; will-change: transform, box-shadow; }
-    .btn:hover, a.btn:hover, .cta-row a:hover, button:hover,
-    .btn:focus-visible, a.btn:focus-visible, .cta-row a:focus-visible, button:focus-visible {
-      box-shadow: 0 0 10px color-mix(in srgb, var(--gold) 70%, transparent), 0 0 22px color-mix(in srgb, var(--gold) 40%, transparent), inset 0 0 0 1px color-mix(in srgb, var(--gold) 55%, transparent);
-      border-color: var(--gold) !important; text-shadow: 0 0 6px color-mix(in srgb, var(--gold) 60%, transparent); transform: translateY(-1px); outline: none;
-    }
-    .btn.primary:hover, a.btn.primary:hover { background: var(--gold) !important; color: #0b1220 !important; }
-    .btn.secondary:hover, a.btn.secondary:hover, .cta-row a:hover { background: color-mix(in srgb, var(--gold) 16%, transparent) !important; color: #ffffff !important; }
-    .btn:focus-visible, a.btn:focus-visible, .cta-row a:focus-visible, button:focus-visible { box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 45%, transparent), 0 0 18px color-mix(in srgb, var(--gold) 35%, transparent); }
-    /* === Featured Partner: DRUID AI === */
-:root { --lumen:#FF6A13; --ice:#2BEDE7; }
+.kicker{color:var(--druid); font-weight:800; margin-bottom:6px}
+.hero h1{font-size:clamp(28px,5.2vw,46px); line-height:1.1; margin:0 0 8px}
+.lead{font-size:clamp(16px,1.8vw,19px); color:#d5dcef; margin:0 0 14px}
+.hero .cta-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:8px}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:12px 16px; border-radius:12px; font-weight:800; border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.05); color:#fff; transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.btn:hover{ transform:translateY(-1px) }
+.btn.primary{
+  background:var(--druid-ink); color:var(--druid);
+  border-color:rgba(29,223,90,.45);
+  box-shadow:0 0 10px rgba(29,223,90,.28), 0 0 24px rgba(29,223,90,.18);
+}
+.btn.primary:hover{ box-shadow:0 0 14px rgba(29,223,90,.45), 0 0 32px rgba(29,223,90,.28) }
 
-.supplier-feature{max-width:1100px;margin:28px auto;background:#0b111a;border:1px solid rgba(255,106,19,.35);
-  border-radius:16px; padding:18px; box-shadow:0 8px 30px rgba(255,106,19,.10)}
-.supplier-head{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin-bottom:10px}
-.supplier-head h2{margin:0;font-size:1.6rem}
-.supplier-badges{display:flex;flex-wrap:wrap;gap:8px}
-.pill{display:inline-flex;align-items:center;justify-content:center;padding:8px 12px;border-radius:999px;
-  font-weight:800;border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.06); color:#0b1220}
-.pill.orange{background:var(--lumen); color:#0b1220; border-color:rgba(255,106,19,.65);
-  box-shadow:0 0 10px rgba(255,106,19,.30)}
-.pill.orange:hover{box-shadow:0 0 14px rgba(255,106,19,.55)}
-.pill.blue{background:rgba(43,237,231,.18); color:#e6f9f8; border-color:rgba(43,237,231,.45)}
-.pill.blue:hover{box-shadow:0 0 16px rgba(43,237,231,.55)}
+.hero-portrait{display:flex; justify-content:flex-end}
+.hero-portrait img{width:100%; max-width:340px; height:auto; object-fit:contain; filter:drop-shadow(0 10px 22px rgba(0,0,0,.35))}
 
-.supplier-copy{color:#c9d6e6; margin:8px 0 14px}
-.supplier-cta{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 16px}
-.supplier-cta a{padding:10px 14px;border-radius:12px;font-weight:800;border:1px solid rgba(255,255,255,.14)}
-.supplier-cta .primary{background:var(--lumen); color:#0b1220; border-color:rgba(255,106,19,.65)}
-.supplier-cta .primary:hover{box-shadow:0 0 16px rgba(255,106,19,.55)}
-.supplier-cta .ghost{background:transparent;color:#e8eef9}
-.supplier-cta .ghost:hover{border-color:var(--ice); box-shadow:0 0 16px rgba(43,237,231,.45)}
+/* ===== Featured Partner frame ===== */
+.feature{
+  margin:22px 0; background:#0b111a; border-radius:16px; padding:18px;
+  border:1px solid rgba(29,223,90,.55);
+  /* perma glow */
+  box-shadow:0 8px 30px rgba(29,223,90,.10), 0 0 20px rgba(29,223,90,.18);
+}
+.feature-head{display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between}
+.feature h2{margin:0; font-size:1.6rem}
+.badges{display:flex; flex-wrap:wrap; gap:8px}
 
-.grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-@media (max-width:1000px){ .grid6{grid-template-columns:repeat(2,1fr)} }
-@media (max-width:640px){ .grid6{grid-template-columns:1fr} }
+/* capability pills */
+.cap{
+  display:inline-flex; align-items:center; justify-content:center; padding:8px 12px; border-radius:999px; font-weight:800;
+  border:1px solid transparent; transition:transform .15s ease, box-shadow .2s ease;
+}
+.cap.perma{
+  background:var(--druid-ink); color:var(--druid);
+  box-shadow:0 0 10px rgba(29,223,90,.28), 0 0 24px rgba(29,223,90,.18);
+}
+.cap.inverse{
+  background:var(--druid); color:var(--druid-ink);
+  box-shadow:0 0 10px rgba(29,223,90,.28), 0 0 24px rgba(29,223,90,.18);
+}
+.feature p{color:#c9d6e6; margin:10px 0 14px}
 
-.cardx{background:#0f1726;border:1px solid rgba(255,255,255,.10); border-radius:14px; padding:14px;
-  transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease}
-.cardx:hover{transform:translateY(-2px); border-color:var(--ice);
-  box-shadow:0 0 14px rgba(43,237,231,.35), 0 0 28px rgba(43,237,231,.18)}
-.cardx h3{margin:0 0 8px; font-size:1.05rem}
-.cardx .kpis{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
-.cardx .kpis .pill{background:rgba(255,255,255,.06); color:#e8eef9; border-color:rgba(255,255,255,.16)}
-.cardx .kpis .pill strong{color:var(--ice)}
-.vid{position:relative; padding-bottom:56.25%; height:0; border-radius:10px; overflow:hidden; border:1px solid rgba(255,255,255,.10)}
-.vid iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
-    
-  </style>
-  
-  <style>
-/* High-res YouTube “lite” embed */
+.feature-cta{display:flex; flex-wrap:wrap; gap:10px}
+.feature-cta a{
+  padding:10px 14px; border-radius:12px; font-weight:800; border:1px solid rgba(255,255,255,.14)
+}
+.feature-cta .primary{
+  background:var(--druid); color:var(--druid-ink); border-color:rgba(29,223,90,.55);
+  box-shadow:0 0 10px rgba(29,223,90,.28), 0 0 24px rgba(29,223,90,.18);
+}
+.feature-cta .ghost{
+  background:transparent; color:#e8eef9;
+}
+.feature-cta .ghost:hover{ border-color:rgba(29,223,90,.45); box-shadow:0 0 14px rgba(29,223,90,.35) }
+
+/* ===== Grid of 6 cards: 3 rows x 2 ===== */
+.grid-two{display:grid; grid-template-columns:repeat(2,1fr); gap:16px}
+@media (max-width:880px){ .grid-two{grid-template-columns:1fr} }
+
+.card{
+  background:#0f1726; border:1px solid rgba(255,255,255,.10); border-radius:14px; padding:14px;
+  transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.card:hover{ transform:translateY(-2px); border-color:rgba(29,223,90,.45); box-shadow:0 0 14px rgba(29,223,90,.35) }
+.card h3{margin:0 0 10px; font-size:1.12rem}
+
+/* yt-lite thumbnails */
 .yt-lite{
-  position:relative; width:100%; padding-bottom:56.25%; /* 16:9 */
+  position:relative; width:100%; padding-bottom:56.25%;
   background:#000 center/cover no-repeat;
-  border:1px solid rgba(255,255,255,.10); border-radius:10px; overflow:hidden;
-  cursor:pointer;
+  border:1px solid rgba(255,255,255,.10); border-radius:10px; overflow:hidden; cursor:pointer;
 }
-.yt-lite::after{ /* play button */
-  content:""; position:absolute; inset:auto auto 12px 12px; width:56px; height:56px;
-  border-radius:50%;
-  background:rgba(0,0,0,.55);
-  box-shadow:0 0 14px rgba(0,0,0,.5);
+.yt-lite::after{ /* play circle */
+  content:""; position:absolute; right:12px; bottom:12px; width:56px; height:56px; border-radius:50%;
+  background:rgba(0,0,0,.55); box-shadow:0 0 14px rgba(0,0,0,.5);
 }
-.yt-lite::before{ /* triangle */
-  content:""; position:absolute; left:33px; bottom:30px;
-  border-left:16px solid white; border-top:10px solid transparent; border-bottom:10px solid transparent;
+.yt-lite::before{ /* play triangle */
+  content:""; position:absolute; right:34px; bottom:30px;
+  border-left:16px solid #fff; border-top:10px solid transparent; border-bottom:10px solid transparent;
 }
-.yt-lite.loading{filter:blur(2px)}
+
+/* brief blurb */
+.blurb{color:#cfd8e6; margin:10px 0 10px}
+
+/* KPI pills */
+.kpis{display:flex; flex-wrap:wrap; gap:8px}
+.kpi{
+  display:inline-flex; align-items:center; justify-content:center; padding:8px 12px; border-radius:999px; font-weight:800;
+  background:var(--druid-pastel); color:#000; border:0;
+  transition:transform .15s ease, box-shadow .2s ease;
+}
+.kpi:hover{
+  transform:translateY(-1px);
+  box-shadow:0 0 10px rgba(29,223,90,.28), 0 0 20px rgba(29,223,90,.20);
+}
+
+/* Footer */
+footer{margin:32px 0 24px}
+.footer-inner{max-width:1120px; margin:0 auto; padding:0 16px; text-align:center; color:var(--muted)}
+.socials{display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin:10px 0}
+.socials a{
+  width:40px; height:40px; display:grid; place-items:center; border-radius:999px;
+  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); color:#e6eef5;
+  transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.socials a:hover{ transform:translateY(-2px); border-color:rgba(29,223,90,.45); box-shadow:0 0 10px rgba(29,223,90,.35) }
 </style>
 </head>
 <body>
 
+<!-- ===== Header ===== -->
 <header>
-  <div class="header-center" style="max-width:1080px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+  <div class="header-bar">
     <a class="brand" href="/">
-      <img src="/assets/industry5-logo.png" alt="Industry5.pro logo" class="logo" width="44" height="44" loading="eager" decoding="async" />
+      <img class="logo" src="/assets/industry5-logo.png" alt="Industry5.pro" width="44" height="44" />
       <span class="title">Industry5.pro</span>
     </a>
-    <nav class="main-nav">
+    <nav class="nav">
       <a href="/">Home</a>
+      <!-- New sticky pill required -->
+      <a class="start-ai" href="https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform" target="_blank" rel="noopener">Start AI Readiness</a>
       <a href="/blog.html">Blog</a>
     </nav>
   </div>
 </header>
 
-<main class="main" id="content">
-  <div class="container">
+<main class="wrap">
 
-    <!-- HERO: unified intro for AI Voice and Contact Center -->
-    <section class="hero" id="ai-voice-cc-hero">
-      <div class="hero-grid">
-        <div>
-          <div style="color:#FFD700;font-weight:800;margin-bottom:6px;">AI Voice and Contact Center</div>
-          <h1 style="margin:0 0 8px;">Injectable AI or full UCaaS and CCaaS, one playbook</h1>
-          <p class="lead">
-            Add AI to what you already run with assistant, quality, analytics, and voice bots, or evaluate platforms with native AI across routing, workforce, and analytics. 
-            We remain supplier agnostic, focus on uptime and compliance, and design for multi cloud and edge so experiences stay fast and reliable.
-          </p>
-          <div class="cta-row">
-            <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform?usp=header" target="_blank" rel="noopener">
-              Start AI Readiness Assessment
-            </a>
-            <a class="btn secondary" href="#injectable-quadrant">See Injectable AI Quadrant</a>
-            <a class="btn secondary" href="#platform-quadrant">See UCaaS and CCaaS Quadrant</a>
-          </div>
-        </div>
-        <div class="hero-photo">
-          <img class="hero-pic" src="/assets/lou-portrait@2x.png" alt="Louis Tortora, Industry5.pro" />
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="kicker">Injectable AI Agents for Voice and Omnichannel</div>
+        <h1>Bring assistants, quality, analytics, and automation to the stack you already run</h1>
+        <p class="lead">
+          Use AI where it pays first. Add real time help for agents, automate Tier-0 and Tier-1, and route with context across chat, voice, email, and apps. 
+          When a platform change makes sense, evaluate options with uptime, identity, and compliance in mind. The goal is measurable outcomes, not shiny tools.
+        </p>
+        <div class="cta-row">
+          <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform" target="_blank" rel="noopener">Start AI Readiness</a>
+          <a class="btn" href="https://www.druidai.com/case-studies" target="_blank" rel="noopener">See DRUID case studies</a>
         </div>
       </div>
-    </section>
-<!-- Bloomberg Interview: place ABOVE the Injectable AI Voice quadrant -->
-<section id="erdoes-fii" style="max-width:960px;margin:40px auto 24px;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;">
-  <h3 style="font-size:22px;margin:12px 0 6px;color:#ffffff;text-shadow:0 1px 2px rgba(0,0,0,0.45);">
-    Bloomberg interviews JPMorgan’s Mary Callahan Erdoes at FII Riyadh
-  </h3>
-  <p style="margin:0 0 12px;color:#e2e8f0;">
-    <em>AI discussion starts at <span id="ai-start">[05:00]</span></em>
-  </p>
-
-  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:16px;">
-    <iframe
-      src="https://www.bloomberg.com/media-manifest/embed/iframe?id=6c8c8431-5ab8-4e9f-bb4a-5ff51c1cf991"
-      title="Mary Callahan Erdoes interview at FII Riyadh — Bloomberg Television"
-      loading="lazy" allowfullscreen
-      style="position:absolute;inset:0;width:100%;height:100%;border:0;">
-    </iframe>
-  </div>
-
-  <p style="margin-top:16px;color:#f8fafc;text-shadow:0 1px 2px rgba(0,0,0,0.4);">
-    AI is a new way of working. As she put it, it takes a little curiosity and a little AI to prepare for tomorrow’s customer. Find ways to do everything better, faster, and cheaper. Learn exactly what your customers want, when they want it, and how they want it delivered. Only about ten percent of S&P 500 firms have AI operating inside their organizations, while about seventy percent mention it on earnings calls. Move from experimentation to execution with an outcome first approach.
-  </p>
-
-  <div class="cta-row" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform?usp=header"
-       target="_blank" rel="noopener noreferrer"
-       class="btn primary"
-       style="background:#85BB65;color:#ffffff;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:800;box-shadow:0 6px 16px rgba(133,187,101,0.28);">
-      Start the Assessment
-    </a>
-    <a href="https://calendly.com/industry5pro/30min"
-       target="_blank" rel="noopener"
-       class="btn secondary"
-       style="border:2px solid #85BB65;color:#ffffff;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:800;">
-      Book a Discovery Session
-    </a>
-  </div>
-
-  <p class="meta" style="margin-top:6px;color:#a9b3c4;font-size:.92rem;">
-    Interview date: October 28, 2025
-  </p>
-  <small style="display:block;margin-top:10px;color:#cbd5e1;">
-    Video courtesy of Bloomberg Television. Embedding permitted via the official player.
-  </small>
-</section>
-
-    <!-- Injectable AI Voice Quadrant -->
-    <section id="injectable-quadrant" class="quad">
-      <div class="quad-head">
-        <h2>Injectable AI Voice</h2>
-        <p><b>Why this view.</b> Many teams want AI outcomes without a platform swap. Injectable AI lets you add real time assist, quality, analytics, and voice bots to what you already run, faster value, lower risk.
-          <br><b>Not exhaustive.</b> We partner widely beyond what fits here, this snapshot shows battle tested options. If your stack points to others, we will evaluate those too.</p>
+      <div class="hero-portrait">
+        <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora" loading="eager" decoding="async" />
       </div>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform" target="_blank" rel="noopener">
-        <img src="/assets/ai_voice_injectable_quadrant_clean12.png?v=1" alt="Injectable AI Voice quadrant" />
-      </a>
-      <div class="cta-bar">
-        <div class="note">Click to scope assistant, quality, analytics, and automation layers that plug into your current UC and CC. No rip and replace.</div>
-        <a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform" target="_blank" rel="noopener">Start AI Voice Discovery</a>
-      </div>
-    </section>
-<section id="feature-druid" class="supplier-feature">
-  <div class="supplier-head">
-    <h2>Featured Partner: DRUID AI</h2>
-    <div class="supplier-badges">
-      <span class="pill orange">Agentic AI</span>
-      <span class="pill blue">Omnichannel</span>
-      <span class="pill blue">Low-code</span>
-      <span class="pill blue">On-prem or Private Cloud</span>
-      <span class="pill blue">Regulated Industries</span>
     </div>
-  </div>
+  </section>
 
-  <p class="supplier-copy">
-    Pound for pound, DRUID is one of the strongest choices when you need agentic AI that reaches beyond a voice agent.
-    It brings process agents, knowledge agents, and orchestration that touch Customer Support, HR, IT helpdesk, and Sales and Marketing.
-    For enterprises it covers Banking, Insurance, Leasing, Healthcare, Higher Education, and Retail with real outcomes and strong controls.
-    As Mary Callahan Erdoes says, AI is a new way of working. Start by eliminating the no-joy work, then rethink the process end to end.
-  </p>
-
-  <div class="supplier-cta">
-    <a class="primary" href="https://www.druidai.com/case-studies" target="_blank" rel="noopener">Explore DRUID case studies</a>
-    <a class="ghost" href="/ai">Start AI Readiness</a>
-  </div>
-
-  <div class="grid6">
-    <!-- Banking -->
-    <article class="cardx">
-      <h3>Banking</h3>
-      <div class="yt-lite" data-id="4zWW_I80wrg"></div>
+  <!-- ===== Featured Partner: DRUID AI ===== -->
+  <section class="feature">
+    <div class="feature-head">
+      <h2>Featured Partner: DRUID AI</h2>
+      <div class="badges">
+        <!-- permanent glow sets -->
+        <span class="cap inverse">Agentic AI</span>
+        <span class="cap perma">Omnichannel</span>
+        <span class="cap perma">Low code</span>
+        <span class="cap perma">On prem or private cloud</span>
+        <span class="cap perma">Regulated industries</span>
       </div>
-      <div class="kpis">
-        <span class="pill"><strong>Onboarding faster</strong>, KYC automation</span>
-        <span class="pill"><strong>Containment up</strong>, agent load down</span>
-        <span class="pill"><strong>Cost per contact</strong> down</span>
-      </div>
-    </article>
+    </div>
+    <p>
+      DRUID gives you process agents, knowledge agents, and orchestration across the business. 
+      Customer Support, HR, Sales and Marketing, and IT Helpdesk move faster without breaking trust. 
+      Banking, Healthcare, and Retail get real results with controls that pass audits.
+    </p>
+    <div class="feature-cta" style="margin:10px 0 14px">
+      <a class="primary" href="https://www.druidai.com/case-studies" target="_blank" rel="noopener">Explore DRUID case studies</a>
+      <a class="ghost" href="https://www.druidai.com/platform" target="_blank" rel="noopener">Platform overview</a>
+      <a class="ghost" href="https://www.druidai.com/security" target="_blank" rel="noopener">Security and compliance</a>
+    </div>
 
-<!-- HR -->
-<article class="cardx">
-  <h3>HR</h3>
-  <div class="yt-lite" data-id="uKuTEIRbdCw"></div>
-  <div class="kpis">
-    <span class="pill"><strong>80%</strong> repetitive HR tasks automated</span>
-    <span class="pill"><strong>75%</strong> faster onboarding time</span>
-    <span class="pill"><strong>30%</strong> time saved in sourcing</span>
-  </div>
-</article>
+    <!-- 3 rows x 2 cards -->
+    <div class="grid-two">
 
-
-<!-- Sales & Marketing -->
-<article class="cardx">
-  <h3>Sales &amp; Marketing</h3>
-  <div class="yt-lite" data-id="Qfa6Ly9LobI"></div>
-  <div class="kpis">
-    <span class="pill"><strong>35%</strong> average time saved by reps</span>
-    <span class="pill"><strong>30%</strong> decrease in time to serve</span>
-    <span class="pill"><strong>25%</strong> CSAT lift via faster responses</span>
-  </div>
-</article>
-
-
-    <!-- Healthcare -->
-    <article class="cardx">
-      <h3>Healthcare</h3>
-      <div class="yt-lite" data-id="fKAJ6gAmQsU"></div>
-      </div>
-      <div class="kpis">
-        <span class="pill"><strong>25%</strong> more appointments</span>
-        <span class="pill"><strong>15%</strong> revenue from bookings</span>
-        <span class="pill"><strong>70%</strong> pre-qualification before staff</span>
-      </div>
-    </article>
-
-    <!-- Customer Support -->
-<article class="cardx">
-  <h3>Customer Support</h3>
-  <div class="yt-lite" data-id="eaQvLKagfTM"></div>
-  <div class="kpis">
-    <span class="pill"><strong>20%</strong> fewer inbound calls (Tier-0/1 deflected)</span>
-    <span class="pill"><strong>10%</strong> shorter average call duration</span>
-    <span class="pill"><strong>30%</strong> agent time savings</span>
-  </div>
-</article>
-
-
-    <!-- Retail and CPG -->
-    <article class="cardx">
-      <h3>Retail and CPG</h3>
-      <div class="yt-lite" data-id="UJWccsf8ejA"></div>
-      </div>
-      <div class="kpis">
-        <span class="pill"><strong>30%</strong> conversion lift</span>
-        <span class="pill"><strong>60%</strong> queries auto-resolved</span>
-        <span class="pill"><strong>40%</strong> ops efficiency</span>
-      </div>
-    </article>
-  </div>
-
-  <div class="supplier-cta" style="margin-top:14px">
-    <a class="ghost" href="https://www.druidai.com/platform" target="_blank" rel="noopener">Platform overview</a>
-    <a class="ghost" href="https://www.druidai.com/security" target="_blank" rel="noopener">Security and compliance</a>
-    <a class="primary" href="/ai">Book a DRUID discovery</a>
-  </div>
-</section>
-
-    <!-- UCaaS and CCaaS with Built in AI Quadrant -->
-    <section id="platform-quadrant" class="quad">
-      <div class="quad-head">
-        <h2>UCaaS and CCaaS with built in AI</h2>
-        <p><b>How we pick platforms.</b> Voice, messaging, routing, workforce, bots, and analytics now live across cloud and edge with AI in the loop. We shortlist vendors that prove it at scale, global coverage, strong service levels, real security posture, and measurable outcomes.
-          <br><b>Not a final verdict.</b> This is a living, data driven view, there are more strong providers than fit on one chart, and we partner broadly. If your compliance or stack needs point elsewhere, we will map the field and bring the right options.</p>
-      </div>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform" target="_blank" rel="noopener">
-        <img src="/assets/ucaas_ccaas_ai_quadrant_clean12_aligned.png?v=1" alt="UCaaS and CCaaS with built in AI quadrant" />
-      </a>
-      <div class="cta-bar">
-        <div class="note">Click to run a platform evaluation, discovery, fit analysis, migration path, and pricing. No rip and replace unless it saves money and pain.</div>
-        <a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform" target="_blank" rel="noopener">Compare UCaaS and CCaaS Platforms</a>
-      </div>
-    </section>
-
-    <!-- Existing AI Readiness hero and content -->
-    <section id="ai-readiness-hero" style="background:#0f172a;color:#ffffff;padding:80px 20px;text-align:center;font:16px/1.7 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;">
-      <div style="max-width:900px;margin:0 auto;">
-        <h1 style="font-size:42px;font-weight:800;margin-bottom:12px;text-shadow:0 2px 4px rgba(0,0,0,0.5);">AI Readiness Assessment</h1>
-        <p style="font-size:20px;color:#e2e8f0;margin-bottom:28px;">
-          <span style="display:block;">Define your outcomes before deploying solutions.</span>
-          <span style="display:block;">Skip the pilot phase that fails ninety five percent of the time <span style="opacity:.9;">(MIT, 2025)</span>.</span>
-        </p>
-        <p style="max-width:720px;margin:0 auto 36px;color:#f1f5f9;">
-          This five minute assessment maps goals, constraints, and readiness so your AI strategy starts with clarity.
-          Your inputs fuel a live thirty minute advisory discovery session to outline your thirty day roadmap.
-        </p>
-        <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:14px;">
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform?usp=header"
-             target="_blank" rel="noopener noreferrer"
-             class="btn primary">
-            Start the Assessment
-          </a>
-          <a href="https://calendly.com/industry5pro/30min"
-             target="_blank" rel="noopener"
-             class="btn secondary">
-             Book a Discovery Session
-          </a>
+      <!-- Banking -->
+      <article class="card">
+        <h3>Banking</h3>
+        <div class="yt-lite" data-id="4zWW_I80wrg"></div>
+        <p class="blurb">Speed onboarding, automate KYC flows, and guide customers with context while keeping data under control.</p>
+        <div class="kpis">
+          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-banking" target="_blank" rel="noopener"><strong>Faster</strong> onboarding</a>
+          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-banking" target="_blank" rel="noopener"><strong>Higher</strong> containment</a>
+          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-banking" target="_blank" rel="noopener"><strong>Lower</strong> cost per contact</a>
         </div>
+      </article>
 
-        <div style="margin:26px auto 0;max-width:900px;">
-          <iframe
-            src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7389911901385904129?compact=1"
-            title="AI Readiness Assessment announcement"
-            loading="lazy" allowfullscreen
-            style="width:100%;max-width:900px;aspect-ratio:16/9;height:auto;border:0;box-shadow:0 10px 24px rgba(0,0,0,.25);border-radius:12px;">
-          </iframe>
+      <!-- Customer Support -->
+      <article class="card">
+        <h3>Customer Support</h3>
+        <div class="yt-lite" data-id="eaQvLKagfTM"></div>
+        <p class="blurb">Deflect Tier-0 and Tier-1, give agents real time assist, and resolve faster across voice and chat.</p>
+        <div class="kpis">
+          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-customer-support" target="_blank" rel="noopener"><strong>20%</strong> fewer calls</a>
+          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-customer-support" target="_blank" rel="noopener"><strong>10%</strong> shorter calls</a>
+          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-customer-support" target="_blank" rel="noopener"><strong>30%</strong> agent time saved</a>
         </div>
+      </article>
 
-        <p style="margin-top:40px;font-size:15px;color:#94a3b8;">Advisory first. Human centered. Outcome obsessed.</p>
-      </div>
-    </section>
-
-    <!-- Foundations teaser unchanged -->
-    <section id="foundations" class="section card" style="margin-top:22px;max-width:1100px;margin-left:auto;margin-right:auto;">
-      <div class="inner" style="max-width:900px;margin:0 auto">
-        <h2 style="margin:0 0 8px">AI Foundations and Blog</h2>
-        <p style="color:var(--muted,#bfc7d5);margin:0 0 12px">Scan the Foundations series and browse one off articles by tag.</p>
-
-        <div style="display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 14px">
-          <a class="btn primary" href="/blog.html?tag=AI%20Foundations">AI Foundations</a>
-          <a class="btn" href="/blog.html?tag=All" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#e6eef5">All Articles</a>
+      <!-- HR -->
+      <article class="card">
+        <h3>HR</h3>
+        <div class="yt-lite" data-id="uKuTEIRbdCw"></div>
+        <p class="blurb">Automate routine questions, speed onboarding, and keep people work focused on people.</p>
+        <div class="kpis">
+          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-hr" target="_blank" rel="noopener"><strong>80%</strong> tasks automated</a>
+          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-hr" target="_blank" rel="noopener"><strong>75%</strong> faster onboarding</a>
+          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-hr" target="_blank" rel="noopener"><strong>30%</strong> sourcing time saved</a>
         </div>
+      </article>
 
-        <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <a href="/blog.html?tag=Network"   class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd">Network</a>
-          <a href="/blog.html?tag=Security"   class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd">Security</a>
-          <a href="/blog.html?tag=Backup"     class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd">Backup</a>
-          <a href="/blog.html?tag=AIoT"       class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd">AIoT</a>
-          <a href="/blog.html?tag=AI"         class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd">AI</a>
-          <a href="/blog.html?tag=Analytics"  class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd">Analytics</a>
-          <a href="/blog.html?tag=Drone"      class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd">Drone</a>
-          <a href="/blog.html?tag=FWA"        class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd">FWA</a>
-          <a href="/blog.html?tag=Satellite"  class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd">Satellite</a>
-          <a href="/blog.html?tag=Cloud"      class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd">Cloud</a>
-          <a href="/blog.html?tag=Edge%2FMEC" class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd">Edge and MEC</a>
-          <a href="/blog.html?tag=NaaS"       class="btn" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:#ddd">NaaS</a>
+      <!-- Sales & Marketing -->
+      <article class="card">
+        <h3>Sales and Marketing</h3>
+        <div class="yt-lite" data-id="Qfa6Ly9LobI"></div>
+        <p class="blurb">Guide buyers, qualify faster, and keep follow ups tight across every channel.</p>
+        <div class="kpis">
+          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-sales-and-marketing" target="_blank" rel="noopener"><strong>35%</strong> rep time saved</a>
+          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-sales-and-marketing" target="_blank" rel="noopener"><strong>30%</strong> faster service</a>
+          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-sales-and-marketing" target="_blank" rel="noopener"><strong>25%</strong> CSAT lift</a>
         </div>
-      </div>
-    </section>
+      </article>
 
-  </div>
+      <!-- Healthcare -->
+      <article class="card">
+        <h3>Healthcare</h3>
+        <div class="yt-lite" data-id="fKAJ6gAmQsU"></div>
+        <p class="blurb">Book more visits, pre-qualify cases, and respect privacy rules without slowing care.</p>
+        <div class="kpis">
+          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-healthcare" target="_blank" rel="noopener"><strong>25%</strong> more appointments</a>
+          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-healthcare" target="_blank" rel="noopener"><strong>15%</strong> more booking revenue</a>
+          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-healthcare" target="_blank" rel="noopener"><strong>70%</strong> pre-qualified cases</a>
+        </div>
+      </article>
+
+      <!-- Retail and CPG -->
+      <article class="card">
+        <h3>Retail and CPG</h3>
+        <div class="yt-lite" data-id="UJWccsf8ejA"></div>
+        <p class="blurb">Lift conversion, automate order ops, and cut queues with smart guidance.</p>
+        <div class="kpis">
+          <a class="kpi" href="https://www.druidai.com/solutions/retail-ai-agents" target="_blank" rel="noopener"><strong>30%</strong> conversion lift</a>
+          <a class="kpi" href="https://www.druidai.com/solutions/retail-ai-agents" target="_blank" rel="noopener"><strong>60%</strong> queries auto resolved</a>
+          <a class="kpi" href="https://www.druidai.com/solutions/retail-ai-agents" target="_blank" rel="noopener"><strong>40%</strong> ops efficiency</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
 </main>
 
-<footer class="footer">
-  <div class="container" style="max-width:1100px;margin:0 auto;padding:0 16px;text-align:center">
-    <div>© <span id="y"></span> Industry5.pro, built on trust, paid by results.</div>
-    <div class="social-icons">
-      <a href="https://www.linkedin.com/in/louis-tortora5/" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.8 2.67 4.8 6.14V23h-4v-6.5c0-1.55-.03-3.55-2.17-3.55-2.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg>
+<!-- ===== Footer (simple) ===== -->
+<footer>
+  <div class="footer-inner">
+    <div>© <span id="y"></span> Industry5.pro — built on trust, paid by results</div>
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/louis-tortora7/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.8 2.67 4.8 6.14V23h-4v-6.5c0-1.55-.03-3.55-2.17-3.55-2.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg>
       </a>
       <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.51 5.51 0 0 0 12 7.5zm0 2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5zM18 6.2a1 1 0 1 0 1 1 1 1 0 0 0-1-1z"/></svg>
-      </a>
-      <a href="https://www.facebook.com/profile.php?id=61582481880019" target="_blank" rel="noopener" aria-label="Facebook">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.07C22 6.49 17.52 2 11.93 2 6.35 2 1.86 6.49 1.86 12.07c0 5.02 3.66 9.18 8.44 9.95v-7.03H7.9V12.1h2.4V9.86c0-2.37 1.4-3.68 3.55-3.68 1.03 0 2.11.18 2.11.18v2.32h-1.19c-1.17 0-1.53.73-1.53 1.47v1.95h2.61l-.42 2.89h-2.19v7.03c4.78-.77 8.44-4.93 8.44-9.95z"/></svg>
-      </a>
-      <a href="https://wa.me/14076945495" target="_blank" rel="noopener" aria-label="WhatsApp">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 3.9A10 10 0 0 0 2.7 17.7L2 22l4.4-1.2A10 10 0 1 0 20 3.9zm-8 16.2c-1.7 0-3.3-.5-4.7-1.6l-.3-.2-2.8.8.8-2.7-.2-.3A7.87 7.87 0 0 1 12 4.1a8 8 0 0 1 0 16zm4.5-5.3c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.6.1c-.2.2-.6.8-.7 1-.1.2-.3.2-.5.1-1-.4-2-.9-2.8-1.8-.2-.2-.4-.5-.3-.7.1-.2.3-.4.4-.6l.2-.3c.1-.2 0-.4 0-.5 0-.1-.6-1.5-.8-2.1-.2-.6-.4-.5-.6-.5h-.5c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.1 3 .9 1.6 2.1 2.2 1.9.7 2.2.8c.3.1 1.4.1 1.9-.1.6-.2 1.4-.7 1.6-1.3.2-.6.2-1.1.1-1.2z"/></svg>
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.51 5.51 0 0 0 12 7.5zm0 2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5zM18 6.2a1 1 0 1 0 1 1 1 1 0 0 0-1-1z"/></svg>
       </a>
       <a href="mailto:lou@industry5.pro" aria-label="Email">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
       </a>
     </div>
   </div>
 </footer>
 
+<!-- Year stamp -->
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+
+<!-- ===== yt-lite loader: place just before </body> ===== -->
 <script>
-// Year stamp
-const y = document.getElementById("y"); if (y) y.textContent = new Date().getFullYear();
-</script>
-<script>
-(function(){
-  var ICE = "#2BEDE7";
+document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll(".yt-lite").forEach(function(el){
-    var id = el.dataset.id;
-    // Try max-res thumbnail, fall back to sddefault
+    var id = el.dataset.id; if(!id) return;
     var hi = new Image();
     hi.onload = function(){ el.style.backgroundImage = "url('"+hi.src+"')"; };
     hi.onerror = function(){ el.style.backgroundImage = "url('https://img.youtube.com/vi/"+id+"/sddefault.jpg')"; };
     hi.src = "https://img.youtube.com/vi/"+id+"/maxresdefault.jpg";
-
     el.addEventListener("click", function(){
       if (el.dataset.loaded) return;
       el.dataset.loaded = "1";
-      var src = "https://www.youtube.com/embed/"+id+"?autoplay=1&rel=0";
       var iframe = document.createElement("iframe");
+      iframe.src = "https://www.youtube.com/embed/"+id+"?autoplay=1&rel=0";
       iframe.loading = "eager";
-      iframe.setAttribute("allow","accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
-      iframe.setAttribute("allowfullscreen","");
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.allowFullscreen = true;
       iframe.referrerPolicy = "strict-origin-when-cross-origin";
-      iframe.src = src;
-      iframe.style.position = "absolute";
-      iframe.style.inset = "0";
-      iframe.style.width = "100%";
-      iframe.style.height = "100%";
+      Object.assign(iframe.style,{position:"absolute",inset:"0",width:"100%",height:"100%",border:"0"});
       el.replaceWith(iframe);
     });
   });
-})();
+});
 </script>
 
 </body>
