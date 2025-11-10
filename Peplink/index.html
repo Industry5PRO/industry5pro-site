@@ -25,21 +25,48 @@
   .card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px}
 
   /* Sticky Header (hardened) */
-  .hdr{
-    position:sticky; position:-webkit-sticky; top:0; z-index:9999; margin:0;
-    backdrop-filter:saturate(140%) blur(6px); -webkit-backdrop-filter:saturate(140%) blur(6px);
-    background:rgba(0,0,0,.85); border-bottom:1px solid rgba(255,255,255,.12);
-  }
-  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-    .hdr{ background:rgba(0,0,0,.92); }
-  }
-  .hdr-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 20px}
-  .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px;color:#e8eef9}
-  .brand img{width:38px;height:38px;border-radius:10px;display:block;object-fit:contain;filter:drop-shadow(0 0 8px rgba(133,187,101,.40))}
-  .brand .title{font-size:18px;color:var(--ice);text-shadow:0 0 10px rgba(43,237,231,.25)}
-  .nav{display:flex;gap:12px;flex-wrap:wrap}
-  .nav a{padding:8px 10px;border:1px solid rgba(255,255,255,.12);border-radius:999px;color:#e8eef9}
-  .nav a:hover{color:var(--ice);border-color:var(--ice);box-shadow:0 0 10px rgba(43,237,231,.35)}
+ /* Sticky header (Cloud 2.0 mirror) */
+.hdr{
+  position:sticky; position:-webkit-sticky; top:0; z-index:9999; margin:0;
+  backdrop-filter:saturate(140%) blur(6px); -webkit-backdrop-filter:saturate(140%) blur(6px);
+  background:rgba(0,0,0,.85); border-bottom:1px solid rgba(255,106,19,.25);
+  transform:none !important;
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .hdr{ background:rgba(0,0,0,.92); }
+}
+.hdr-inner{
+  max-width:1080px; margin:0 auto;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding:14px 24px;
+}
+.brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.2px; color:#e8eef9}
+.logo{width:44px; height:44px; border-radius:12px; display:block; object-fit:contain;
+      filter:drop-shadow(0 0 10px rgba(133,187,101,.40))}
+.brand .title{font-size:20px; line-height:1; color:#2BEDE7; text-shadow:0 0 10px rgba(43,237,231,.25)}
+.nav-actions{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+.nav-actions a{
+  color:#d5dcef; font-weight:700; padding:8px 10px; border-radius:8px; text-decoration:none;
+  transition:color .15s ease, text-shadow .15s ease;
+}
+.nav-actions a:hover{ color:#2BEDE7; text-shadow:0 0 6px rgba(43,237,231,.8), 0 0 14px rgba(43,237,231,.45) }
+.nav-actions .pill{
+  display:inline-flex; align-items:center; justify-content:center; white-space:nowrap;
+  padding:10px 16px; border-radius:9999px; font-weight:800;
+  color:#0b0b0b; background:linear-gradient(180deg,#FF6A13,#ff8c3a);
+  border:1px solid #FF6A13;
+  box-shadow:0 0 12px rgba(43,237,231,.55), 0 0 26px rgba(43,237,231,.35);
+  text-shadow:0 0 2px rgba(255,255,255,.95), 0 0 8px rgba(255,255,255,.45);
+  transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.nav-actions .pill:hover{ transform:translateY(-1px); box-shadow:0 0 14px rgba(43,237,231,.70), 0 0 32px rgba(43,237,231,.45) }
+
+/* Sticky safety: avoid clipping */
+body, html { overflow-x: clip; }
+main, .wrap, .container, .page { transform:none !important; overflow:visible !important; }
+:root { --hdr-h: 64px; }
+main, .wrap, .page-content { margin-top: var(--hdr-h); }
+
 
   /* Hero */
   .hero{display:grid;grid-template-columns:1.2fr 1fr;gap:18px;align-items:center}
@@ -233,6 +260,7 @@ main, .wrap, .container, .page {
   will-change: auto !important;
   overflow: visible !important; /* sticky fails inside overflow:auto/hidden */
 }
+  
 <head>
   <!-- ... your other <meta> + styles ... -->
 
@@ -250,33 +278,47 @@ main, .wrap, .container, .page {
 </style>
 
 
+
 </style>
+  <style id="footer-social-glow">
+  /* base badge look (in case it’s missing) */
+  .footer .social-icons a{
+    display:inline-grid; place-items:center;
+    width:38px; height:38px; border-radius:999px;
+    border:1px solid rgba(255,255,255,.18);
+    color:#e6eef5;
+    box-shadow:0 0 0 rgba(43,237,231,0);
+    transition:box-shadow .2s ease, border-color .2s ease, color .2s ease;
+  }
+
+  /* ice-blue glow on hover */
+  .footer .social-icons a:hover{
+    border-color:#2BEDE7;
+    color:#2BEDE7;
+    box-shadow:0 0 12px rgba(43,237,231,.6), 0 0 24px rgba(43,237,231,.3);
+  }
+</style>
+
 </head>
 <body>
 
 <header class="hdr">
   <div class="hdr-inner">
-    <!-- Left nav: Home | Start FWA Discovery | Blog -->
-    <nav class="nav-left">
-      <a href="/">Home</a>
-      <a class="pill-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform?usp=header">
-        Start FWA Discovery
-      </a>
-      <a href="/blog.html">Blog</a>
-    </nav>
-
-    <!-- Center brand (logo closer to center by design) -->
+    <!-- Brand on the left -->
     <a class="brand" href="/Peplink/">
-      <img src="/assets/industry5-logo.png" alt="Industry5.pro" class="logo" width="44" height="44" loading="eager" decoding="async" />
-      <span class="title">Industry5.pro</span>
+      <img src="/assets/industry5-logo.png" alt="Industry5.pro" class="logo" width="44" height="44" />
+      <span class="title">Industry5.pro — Peplink</span>
     </a>
 
-    <!-- Right nav (optional links; can be empty or add Contact, Cloud 2.0, etc.) -->
-    <nav class="nav-right">
-      <a href="/Peplink/">Peplink FWA</a>
+    <!-- Nav on the right -->
+    <nav class="nav-actions">
+      <a href="/">Home</a>
+      <a class="pill" href="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform?usp=header">Start FWA Discovery</a>
+      <a href="/blog.html">Blog</a>
     </nav>
   </div>
 </header>
+
 
 <main class="wrap">
 
@@ -350,21 +392,38 @@ main, .wrap, .container, .page {
         <text x="410" y="496" text-anchor="middle">Affordability →</text>
         <text x="20" y="260" transform="rotate(-90,20,260)" text-anchor="middle">Enterprise Readiness ↑</text>
       </g>
-      <!-- Peplink -->
-      <g>
-        <circle cx="520" cy="200" r="26" fill="#85BB65" stroke="#ffffff" stroke-opacity=".35"/>
-        <text x="520" y="200" dy="5" text-anchor="middle" font-size="12" fill="#0b1220" font-weight="700">Peplink</text>
-      </g>
-      <!-- Cradlepoint -->
-      <g>
-        <circle cx="430" cy="230" r="22" fill="#2BEDE7" stroke="#ffffff" stroke-opacity=".35"/>
-        <text x="430" y="230" dy="5" text-anchor="middle" font-size="12" fill="#0b1220" font-weight="700">Cradlepoint</text>
-      </g>
-      <!-- Cisco / Meraki -->
-      <g>
-        <circle cx="330" cy="270" r="20" fill="#FF6A13" stroke="#ffffff" stroke-opacity=".35"/>
-        <text x="330" y="270" dy="5" text-anchor="middle" font-size="12" fill="#0b1220" font-weight="700">Cisco / Meraki</text>
-      </g>
+     <!-- Peplink -->
+<g>
+  <circle cx="520" cy="200" r="26" fill="#85BB65" stroke="#ffffff" stroke-opacity=".35"/>
+  <!-- white label -->
+  <text x="520" y="200" dy="5" text-anchor="middle" font-size="12" fill="#ffffff" font-weight="700">Peplink</text>
+  <!-- green X marker -->
+  <g stroke="#85BB65" stroke-width="3" stroke-linecap="round">
+    <line x1="510" y1="190" x2="530" y2="210"/>
+    <line x1="530" y1="190" x2="510" y2="210"/>
+  </g>
+</g>
+
+<!-- Cradlepoint -->
+<g>
+  <circle cx="430" cy="230" r="22" fill="#2BEDE7" stroke="#ffffff" stroke-opacity=".35"/>
+  <text x="430" y="230" dy="5" text-anchor="middle" font-size="12" fill="#ffffff" font-weight="700">Cradlepoint</text>
+  <g stroke="#85BB65" stroke-width="3" stroke-linecap="round">
+    <line x1="420" y1="220" x2="440" y2="240"/>
+    <line x1="440" y1="220" x2="420" y2="240"/>
+  </g>
+</g>
+
+<!-- Cisco / Meraki -->
+<g>
+  <circle cx="330" cy="270" r="20" fill="#FF6A13" stroke="#ffffff" stroke-opacity=".35"/>
+  <text x="330" y="270" dy="5" text-anchor="middle" font-size="12" fill="#ffffff" font-weight="700">Cisco / Meraki</text>
+  <g stroke="#85BB65" stroke-width="3" stroke-linecap="round">
+    <line x1="320" y1="260" x2="340" y2="280"/>
+    <line x1="340" y1="260" x2="320" y2="280"/>
+  </g>
+</g>
+
       <g>
         <text x="400" y="80" text-anchor="middle" fill="#a9b3c4" font-size="12">
           Illustrative placement. We tune this live for your use case and carriers.
