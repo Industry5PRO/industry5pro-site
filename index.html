@@ -2294,6 +2294,39 @@ window.CLOUD2_FORM = "/cloud20.html";
   });
 })();
 </script>
+<script>
+(function(){
+  var CYBER_URL = "/cyber.html";
+
+  // 1️⃣ Products Section → "Security & Compliance"
+  try {
+    document.querySelectorAll("#products .tile").forEach(tile => {
+      var titleEl = tile.querySelector(".tile-title");
+      if (titleEl && /security\s*&\s*compliance/i.test(titleEl.textContent)) {
+        titleEl.setAttribute("href", CYBER_URL);
+        titleEl.removeAttribute("data-appointment");
+        titleEl.removeAttribute("target");
+        titleEl.removeAttribute("rel");
+      }
+    });
+  } catch(e){ console.warn("Security tile update skipped", e); }
+
+  // 2️⃣ Outcome-Obsessed → All "Open Cyber Pre-Intake" pills
+  try {
+    document.querySelectorAll("#outcome-obsessed a, #outcome-obsessed button").forEach(el=>{
+      if (/open\s+cyber\s+pre[-\s]*intake/i.test(el.textContent)) {
+        if (el.tagName.toLowerCase() === "a") {
+          el.setAttribute("href", CYBER_URL);
+          el.removeAttribute("target");
+          el.removeAttribute("rel");
+        } else {
+          el.addEventListener("click", ()=>window.location.href = CYBER_URL);
+        }
+      }
+    });
+  } catch(e){ console.warn("Cyber CTA retarget skipped", e); }
+})();
+</script>
 
 
   
