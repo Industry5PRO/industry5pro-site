@@ -155,6 +155,37 @@
     grid-template-columns: repeat(2, minmax(220px, 1fr)); /* 2x2 on mobile */
   }
 }
+    /* Two-column hero layout for text + avatar */
+.hero-content{padding:34px 0 28px;}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:22px;
+  align-items:center;
+}
+@media (max-width:940px){ .hero-grid{ grid-template-columns:1fr } }
+
+/* Avatar sizing (matches index) */
+.avatar-card{
+  justify-self:end;background:var(--card);border:1px solid var(--outline);
+  border-radius:16px;padding:12px;box-shadow:0 0 24px rgba(0,179,54,.15);
+  max-width:260px;
+}
+.avatar-img{ width:100%;height:auto;border-radius:12px;box-shadow:0 0 22px rgba(0,179,54,.25) }
+@media (max-width:940px){ .avatar-card{ max-width:200px } }
+.avatar-caption{font-size:12px;color:var(--muted);margin-top:8px;text-align:center}
+
+/* KPIs: full-width row under the grid */
+.hero-kpis{ margin-top:22px; }
+.kpis{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(220px, 1fr));
+  gap:14px;
+}
+@media (max-width: 860px){
+  .kpis{ grid-template-columns: repeat(2, minmax(220px, 1fr)); }
+}
+
 
   </style>
 </head>
@@ -179,11 +210,13 @@
     </div>
   </div>
 
-   <header class="hero">
+ <header class="hero">
   <div class="wrap">
     <div class="hero-content">
+
+      <!-- 2-column block: text (left) + portrait (right) -->
       <div class="hero-grid">
-        <!-- Left column: headline + text -->
+        <!-- LEFT column -->
         <div>
           <h1>Protect Data. Predict Threats. Prevent Downtime.</h1>
           <p class="sub">
@@ -195,41 +228,44 @@
             <a class="pill" href="#checklist">Run the Resilience Checklist</a>
           </div>
           <div class="meta">No fear tactics. Only outcomes, SLAs, and time to recover that finance teams appreciate.</div>
+        </div>
 
+        <!-- RIGHT column (portrait sits beside the meta, above KPIs) -->
+        <aside class="avatar-card">
+          <img class="avatar-img" src="/assets/lou-portrait@2x.png" alt="Louis Tortora profile" />
+          <div class="avatar-caption">Louis Tortora — Industry5.pro</div>
+        </aside>
+      </div>
 
-<!-- KPIs -->
-<div class="kpis" role="list">
-  <div class="kpi" role="listitem" aria-label="SMB/Mid-Market share of breach victims">
-    <div class="knum" data-target="43" data-suffix="%">0%</div>
-    <div class="kdesc">SMB/Mid-Market share of breach victims</div>
-  </div>
-
-  <div class="kpi" role="listitem" aria-label="Average US breach cost">
-    <div class="knum" data-target="9.48" data-suffix="M">$0M</div>
-    <div class="kdesc">Average US breach cost</div>
-  </div>
-
-  <div class="kpi" role="listitem" aria-label="Firms that test backups annually">
-    <div class="knum" data-target="38" data-suffix="%">0%</div>
-    <div class="kdesc">Firms that test backups annually</div>
-  </div>
-
-  <!-- NEW: Enterprise share (with footnote marker) -->
-  <div class="kpi" role="listitem" aria-label="Enterprise share of breach victims">
-    <div class="knum" data-target="22" data-suffix="%">0%</div>
-    <div class="kdesc">Enterprise share of breach victims<span aria-hidden="true">*</span></div>
-  </div>
-</div>
-
-<!-- Tiny footnote under the cards -->
-<div class="meta" style="margin-top:4px">
-  <small>* Enterprise = ≥ 1,000 employees. Buckets follow DBIR large-org definition; shares may not sum to 100% across all categories.</small>
-</div>
-
+      <!-- KPIs BELOW the two-column grid, full-width -->
+      <div class="hero-kpis">
+        <div class="kpis" role="list">
+          <div class="kpi" role="listitem" aria-label="SMB/Mid-Market share of breach victims">
+            <div class="knum" data-target="43" data-suffix="%">0%</div>
+            <div class="kdesc">SMB/Mid-Market share of breach victims</div>
+          </div>
+          <div class="kpi" role="listitem" aria-label="Average US breach cost">
+            <div class="knum" data-target="9.48" data-suffix="M">$0M</div>
+            <div class="kdesc">Average US breach cost</div>
+          </div>
+          <div class="kpi" role="listitem" aria-label="Firms that test backups annually">
+            <div class="knum" data-target="38" data-suffix="%">0%</div>
+            <div class="kdesc">Firms that test backups annually</div>
+          </div>
+          <div class="kpi" role="listitem" aria-label="Enterprise share of breach victims">
+            <div class="knum" data-target="22" data-suffix="%">0%</div>
+            <div class="kdesc">Enterprise share of breach victims<span aria-hidden="true">*</span></div>
+          </div>
+        </div>
+        <div class="meta" style="margin-top:4px">
+          <small>* Enterprise = ≥ 1,000 employees. Buckets follow DBIR large-org definition; shares may not sum to 100% across all categories.</small>
+        </div>
+      </div>
 
     </div>
   </div>
 </header>
+
 
 <section id="stack" class="anchor">
   <div class="wrap">
