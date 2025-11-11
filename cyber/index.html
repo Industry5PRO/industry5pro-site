@@ -51,7 +51,12 @@
 
     .hero-content{padding:48px 0 28px}
     h1{font-size:clamp(32px,4vw,56px);line-height:1.05;margin:10px 0 12px}
-    .sub{max-width:780px;color:#DADAE0;font-size:clamp(16px,2vw,20px)}
+    .sub{
+  max-width: 980px;        /* wider so it wraps to ~3 lines */
+  color:#DADAE0;
+  font-size:clamp(16px,2vw,20px);
+}
+
     .cta-row{display:flex;gap:12px;margin:22px 0 6px;flex-wrap:wrap}
     .meta{font-size:14px;color:var(--muted)}
 
@@ -185,6 +190,18 @@
 @media (max-width: 860px){
   .kpis{ grid-template-columns: repeat(2, minmax(220px, 1fr)); }
 }
+/* Overrides: avatar floats, no border/shadow */
+.avatar-card{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  max-width: 260px;        /* keep index-like size */
+}
+.avatar-img{
+  border-radius: 12px;     /* keep your shape */
+  box-shadow: none !important;
+}
 
 
   </style>
@@ -196,10 +213,16 @@
     <div class="wrap">
       <nav class="nav" aria-label="Primary">
         <div class="brand">
-          <img class="logo" src="/assets/industry5pro-logo.png" alt="Industry5.pro logo" />
-          <div class="dot" aria-hidden="true"></div>
-          <strong>Industry5.pro</strong>
-        </div>
+  <img class="logo" src="/assets/industry5pro-logo.png"
+       alt="Industry5.pro logo"
+       onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
+  <!-- Fallback badge (only shows if the image 404s) -->
+  <span class="logo-fallback" style="display:none;align-items:center;justify-content:center;
+    width:28px;height:28px;border-radius:6px;background:#00B336;color:#1B1B1D;font-weight:800;">I5</span>
+  <div class="dot" aria-hidden="true"></div>
+  <strong>Industry5.pro</strong>
+</div>
+
         <div class="nav-actions">
           <a class="pill outline" href="/">Home</a>
           <a class="pill outline" href="#stack">The Stack</a>
@@ -218,7 +241,7 @@
       <div class="hero-grid">
         <!-- LEFT column -->
         <div>
-          <h1>Protect Data. Predict Threats. Prevent Downtime.</h1>
+          <h1>Protect Data. Predict Threats.<br>Prevent Downtime.</h1>
           <p class="sub">
             Unify network security, data protection, and rapid recovery into one measurable cyber resilience motion.
             We align Lumen capabilities with Veeam powered recoverability and a supplier agnostic ecosystem through Telarus.
