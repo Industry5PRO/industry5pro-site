@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cyber Security and Data Resilience | Industry5.pro</title>
+  <meta name="description" content="Unify network security, data protection, and rapid recovery into one measurable cyber resilience motion with Industry5.pro." />
+  <style>
+    :root{
+      --lumen-charcoal:#1B1B1D;
+      --lumen-gray:#F2F2F2;
+      --lumen-orange:#FF6A13;
+      --veeam-green:#00B336;
+      --text:#EAEAEA;
+      --muted:#A9A9AD;
+      --card:#232326;
+      --outline:#2C2C30;
+    }
+    html,body{margin:0;background:var(--lumen-charcoal);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;height:auto}
+
+    .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+    header.hero{position:relative;overflow:hidden;isolation:isolate}
+    .hero::before{
+      content:"";position:absolute;inset:-40% -20% auto -20%;
+      height:140%;
+      background:
+        radial-gradient(60rem 60rem at 10% -10%, rgba(0,179,54,.20), transparent 60%),
+        radial-gradient(50rem 50rem at 90% 0%, rgba(255,106,19,.18), transparent 55%),
+        radial-gradient(30rem 30rem at 50% 100%, rgba(0,179,54,.12), transparent 60%);
+      filter:blur(40px);z-index:-1;opacity:.8
+    }
+
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--veeam-green);box-shadow:0 0 16px rgba(0,179,54,.8)}
+    .nav-actions{display:flex;gap:10px;flex-wrap:wrap}
+
+    .pill{
+      display:inline-block;padding:12px 18px;border-radius:999px;
+      border:1px solid var(--outline);background:#202023;color:var(--text);
+      font-weight:600;box-shadow:0 0 0 0 rgba(0,179,54,0);
+      transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease
+    }
+    .pill.primary{background:var(--lumen-orange);color:#1b1b1d;border-color:#cc5007}
+    .pill:hover{transform:translateY(-1px);box-shadow:0 0 18px 2px rgba(0,179,54,.35);border-color:rgba(0,179,54,.55)}
+    .pill.primary:hover{box-shadow:0 0 22px 4px rgba(255,106,19,.35)}
+    .outline{background:transparent;border:1px solid var(--outline)}
+    .outline:hover{border-color:rgba(0,179,54,.6);box-shadow:0 0 18px 2px rgba(0,179,54,.35)}
+
+    .hero-content{padding:48px 0 28px}
+    h1{font-size:clamp(32px,4vw,56px);line-height:1.05;margin:10px 0 12px}
+    .sub{max-width:780px;color:#DADAE0;font-size:clamp(16px,2vw,20px)}
+    .cta-row{display:flex;gap:12px;margin:22px 0 6px;flex-wrap:wrap}
+    .meta{font-size:14px;color:var(--muted)}
+
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:26px 0 8px}
+    .kpi{background:var(--card);border:1px solid var(--outline);border-radius:16px;padding:16px}
+    .knum{font-weight:800;font-size:28px}
+    .kdesc{color:var(--muted);font-size:14px;margin-top:6px}
+
+    section{padding:42px 0;border-top:1px solid var(--outline)}
+    h2{font-size:clamp(22px,2.6vw,32px);margin:0 0 14px}
+    p.lead{color:#D6D6DB;max-width:860px}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+    .card{background:var(--card);border:1px solid var(--outline);border-radius:16px;padding:18px}
+    .tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid var(--outline);color:#D7D7DC}
+    .tag .bullet{width:8px;height:8px;border-radius:999px;background:var(--veeam-green);box-shadow:0 0 12px rgba(0,179,54,.7)}
+
+    .pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .pillar h3{margin:6px 0 6px;font-size:18px}
+    .pillar ul{margin:0;padding-left:18px;color:#D3D3D9}
+    .pillar li{margin:6px 0}
+
+    .checklist{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-top:14px}
+    .check{display:flex;gap:10px;align-items:flex-start;background:#202023;border:1px solid var(--outline);border-radius:14px;padding:12px}
+    .check input{margin-top:2px;accent-color:var(--veeam-green)}
+    .check label{line-height:1.35}
+    .check small{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+
+    .form-wrap{background:#111114;border:1px solid var(--outline);border-radius:16px;padding:10px}
+    .form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .iframe-shell{position:relative;padding-top: min(70vh,740px);background:#0f0f12;border-radius:12px;border:1px dashed #303036}
+    .iframe-shell iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px}
+
+    .band{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
+    @media (max-width:900px){.band{grid-template-columns:1fr}}
+    .note{font-size:14px;color:var(--muted);margin-top:6px}
+
+    .cta-footer{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:34px 0}
+    .cta-buttons{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+
+    .anchor{scroll-margin-top:90px}
+  </style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <nav class="nav" aria-label="Primary">
+      <div class="brand">
+        <div class="dot" aria-hidden="true"></div>
+        <strong>Industry5.pro</strong>
+      </div>
+      <div class="nav-actions">
+        <a class="pill outline" href="#stack">The Stack</a>
+        <a class="pill outline" href="#checklist">Resilience Checklist</a>
+        <a class="pill primary" href="#form">Start Cyber Discovery</a>
+      </div>
+    </nav>
+
+    <div class="hero-content">
+      <h1>Protect Data. Predict Threats. Prevent Downtime.</h1>
+      <p class="sub">Unify network security, data protection, and rapid recovery into one measurable cyber resilience motion. We align Lumen capabilities with Veeam powered recoverability and a supplier agnostic ecosystem through Telarus.</p>
+      <div class="cta-row">
+        <a class="pill primary" href="#form">Start Cyber Discovery</a>
+        <a class="pill" href="#checklist">Run the Resilience Checklist</a>
+      </div>
+      <div class="meta">No fear tactics. Only outcomes, SLAs, and time to recover that finance teams appreciate.</div>
+
+      <div class="kpis" role="list">
+        <div class="kpi" role="listitem" aria-label="SMB share of breach victims">
+          <div class="knum" data-target="43" data-suffix="%">0%</div>
+          <div class="kdesc">SMB share of breach victims</div>
+        </div>
+        <div class="kpi" role="listitem" aria-label="Average US breach cost">
+          <div class="knum" data-target="9.48" data-suffix="M">$0M</div>
+          <div class="kdesc">Average US breach cost</div>
+        </div>
+        <div class="kpi" role="listitem" aria-label="Firms that test backups annually">
+          <div class="knum" data-target="38" data-suffix="%">0%</div>
+          <div class="kdesc">Firms that test backups annually</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="stack" class="anchor">
+  <div class="wrap">
+    <h2>Unified Defense through Strategic Partners</h2>
+    <p class="lead">Build on Lumen network security and DDoS defense, add Veeam immutability and instant recovery, and source the right complement through Telarus. We orchestrate the pieces and own the outcome with you.</p>
+    <div class="grid" style="margin-top:14px">
+      <div class="card">
+        <span class="tag"><span class="bullet"></span> Lumen</span>
+        <p style="margin:10px 0 0">Adaptive network security, edge to core visibility, scrubbing for volumetric attacks, and performance built for real workloads.</p>
+      </div>
+      <div class="card">
+        <span class="tag"><span class="bullet"></span> Veeam</span>
+        <p style="margin:10px 0 0">Immutable backups and instant recovery across hybrid estates. Your last line of defense when everything else is on fire.</p>
+      </div>
+      <div class="card">
+        <span class="tag"><span class="bullet"></span> Telarus</span>
+        <p style="margin:10px 0 0">Access to hundreds of vetted cyber suppliers. Competitive options without vendor lock in.</p>
+      </div>
+      <div class="card">
+        <span class="tag"><span class="bullet"></span> Industry5.pro</span>
+        <p style="margin:10px 0 0">Outcome obsessed architecture, ROI mapping, and a clean path from discovery to deployment to validation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pillars" class="anchor">
+  <div class="wrap">
+    <h2>Start with an Outcome</h2>
+    <div class="pillars">
+      <div class="card pillar">
+        <h3>Protect</h3>
+        <ul>
+          <li>Zero trust access and MFA adoption</li>
+          <li>Email and endpoint threat prevention</li>
+          <li>Vulnerability and patch cadence</li>
+        </ul>
+        <a class="pill" href="#form" style="margin-top:10px">Assess Protect</a>
+      </div>
+      <div class="card pillar">
+        <h3>Detect</h3>
+        <ul>
+          <li>Managed detection and response coverage</li>
+          <li>DDoS monitoring with runbooks</li>
+          <li>Log retention and SIEM visibility</li>
+        </ul>
+        <a class="pill" href="#form" style="margin-top:10px">Assess Detect</a>
+      </div>
+      <div class="card pillar">
+        <h3>Respond</h3>
+        <ul>
+          <li>Incident response playbooks and RTO targets</li>
+          <li>Tabletop frequency and ownership</li>
+          <li>Escalation paths with SLAs</li>
+        </ul>
+        <a class="pill" href="#form" style="margin-top:10px">Assess Respond</a>
+      </div>
+      <div class="card pillar">
+        <h3>Recover</h3>
+        <ul>
+          <li>Immutable backups and air gapped copies</li>
+          <li>Veeam instant recovery tested</li>
+          <li>RPO alignment with business impact</li>
+        </ul>
+        <a class="pill" href="#form" style="margin-top:10px">Assess Recover</a>
+      </div>
+      <div class="card pillar">
+        <h3>Govern and Comply</h3>
+        <ul>
+          <li>HIPAA, PCI, ISO 27001 mapping</li>
+          <li>Data retention and eDiscovery</li>
+          <li>Vendor risk and third party review</li>
+        </ul>
+        <a class="pill" href="#form" style="margin-top:10px">Assess Governance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="checklist" class="anchor">
+  <div class="wrap">
+    <h2>Cyber Resilience Checklist</h2>
+    <p class="lead">Check the boxes you already meet. Anything unchecked becomes a target for discovery and a short path to value.</p>
+
+    <div class="checklist" role="group" aria-label="Resilience checklist">
+      <div class="check"><input type="checkbox" id="c1"><label for="c1"><strong>MFA on everything</strong><small>Privileged accounts, VPN, SaaS, critical systems</small></label></div>
+      <div class="check"><input type="checkbox" id="c2"><label for="c2"><strong>Endpoint prevention with EDR</strong><small>Coverage rate and response workflow defined</small></label></div>
+      <div class="check"><input type="checkbox" id="c3"><label for="c3"><strong>Email security with active DMARC</strong><small>Impersonation and link detonation protection</small></label></div>
+
+      <div class="check"><input type="checkbox" id="c4"><label for="c4"><strong>Twenty four seven monitoring or MDR</strong><small>Alarms reach humans who act in minutes</small></label></div>
+      <div class="check"><input type="checkbox" id="c5"><label for="c5"><strong>DDoS detection and runbook</strong><small>Lumen scrubbing and contacts verified</small></label></div>
+      <div class="check"><input type="checkbox" id="c6"><label for="c6"><strong>Centralized logs with retention</strong><small>Searchable SIEM and saved investigations</small></label></div>
+
+      <div class="check"><input type="checkbox" id="c7"><label for="c7"><strong>Incident response plan</strong><small>Named owners, time targets, decision trees</small></label></div>
+      <div class="check"><input type="checkbox" id="c8"><label for="c8"><strong>Tabletop exercises quarterly</strong><small>Scope includes execs, legal, and PR</small></label></div>
+      <div class="check"><input type="checkbox" id="c9"><label for="c9"><strong>Third party breach comms draft</strong><small>Customer notices and regulator language ready</small></label></div>
+
+      <div class="check"><input type="checkbox" id="c10"><label for="c10"><strong>Immutable backups</strong><small>Object lock or hardened repo not joined to AD</small></label></div>
+      <div class="check"><input type="checkbox" id="c11"><label for="c11"><strong>Restore tests monthly</strong><small>Veeam instant recovery validated to targets</small></label></div>
+      <div class="check"><input type="checkbox" id="c12"><label for="c12"><strong>RPO and RTO documented</strong><small>Aligned to critical app tiers and revenue impact</small></label></div>
+
+      <div class="check"><input type="checkbox" id="c13"><label for="c13"><strong>Security policy set</strong><small>Versioned, acknowledged, enforced</small></label></div>
+      <div class="check"><input type="checkbox" id="c14"><label for="c14"><strong>Compliance mapping</strong><small>HIPAA or PCI or ISO controls and evidence</small></label></div>
+      <div class="check"><input type="checkbox" id="c15"><label for="c15"><strong>Vendor risk review</strong><small>Critical suppliers scored with remediation paths</small></label></div>
+    </div>
+
+    <div class="form-actions">
+      <a class="pill primary" href="#form">Turn Gaps Into a Plan</a>
+      <a class="pill outline" href="#roi">See the ROI Angle</a>
+    </div>
+  </div>
+</section>
+
+<section id="form" class="anchor">
+  <div class="wrap">
+    <h2>Cyber Pre Intake Form</h2>
+    <p class="lead">Three minutes to surface your top risks and recovery blind spots. You receive a prioritized action plan that maps posture to business impact.</p>
+
+    <div class="form-wrap">
+      <div class="iframe-shell">
+        <iframe
+          src="https://near.tl/sm/PKoP8D7PR"
+          title="Cyber Pre Intake Form"
+          loading="lazy"
+          allow="fullscreen; clipboard-read; clipboard-write"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+      <div class="form-actions">
+        <a class="pill primary" target="_blank" rel="noopener" href="https://near.tl/sm/PKoP8D7PR">Open Form in New Tab</a>
+        <a class="pill outline" href="#pillars">Not sure where to start</a>
+      </div>
+    </div>
+
+    <div class="note">If the embed is blocked by a corporate filter use the open in new tab button.</div>
+  </div>
+</section>
+
+<section id="roi" class="anchor">
+  <div class="wrap band">
+    <div>
+      <h2>Why Cyber ROI Matters</h2>
+      <p class="lead">Security tools remain cost centers until they are tied to recoverability, uptime, and customer trust. We translate controls into finance metrics you can defend. Faster response, smaller blast radius, and verified time to recover beat fear every time.</p>
+      <div class="note">We align RPO and RTO to revenue at risk then prove it with restore tests and network performance you can feel.</div>
+    </div>
+    <div class="card">
+      <strong style="display:block;margin-bottom:8px">What You Receive</strong>
+      <ul style="margin:0;padding-left:18px;color:#D3D3DA">
+        <li>Scorecard across Protect, Detect, Respond, Recover, Govern</li>
+        <li>Two quick wins that cut risk now</li>
+        <li>Recovery test plan with clear owners</li>
+        <li>Stack options through Telarus with pros and cons</li>
+      </ul>
+      <a class="pill" href="#form" style="margin-top:12px;display:inline-block">Get My Scorecard</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap cta-footer">
+    <h2>No fear. Only facts, SLAs, and results.</h2>
+    <div class="cta-buttons">
+      <a class="pill primary" href="https://calendly.com/" target="_blank" rel="noopener">Schedule Cyber Review</a>
+      <a class="pill outline" href="#" target="_blank" rel="noopener">Download Checklist</a>
+    </div>
+    <div class="meta">Industry5.pro | Outcome obsessed and supplier agnostic</div>
+  </div>
+</footer>
+
+<script>
+  // Smooth scroll for anchors
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const id=a.getAttribute('href').slice(1);
+      const el=document.getElementById(id);
+      if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth',block:'start'}) }
+    })
+  });
+
+  // Count up animation for KPI numbers
+  function animateCount(el){
+    const target=parseFloat(el.dataset.target||"0");
+    const suffix=el.dataset.suffix||"";
+    const isMoney=el.textContent.trim().startsWith("$");
+    const dur=1200; const start=performance.now();
+    function step(t){
+      const p=Math.min(1,(t-start)/dur);
+      const val=target*p;
+      const out=(isMoney?"$":"") + (target%1!==0 ? val.toFixed(2) : Math.round(val)) + suffix;
+      el.textContent=out;
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  document.querySelectorAll('.knum').forEach(animateCount);
+</script>
+
+</body>
+</html>
