@@ -333,6 +333,12 @@ body.with-fixed-header { padding-top: var(--hdr-h, 72px); }
   display: inline-block !important;
   margin-right: 6px !important;
 }
+/* Nicer numerals + spacing for the animated number */
+#druid-feature .knum{
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .3px;
+  min-width: 2ch; /* avoids layout jump at 0→10→100 */
+}
 
 </style>
 </head>
@@ -626,6 +632,44 @@ document.addEventListener('DOMContentLoaded', function(){
     }, {passive:true});
   });
 });
+</script>
+<script>
+(function(){
+  // Respect users who prefer reduced motion
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
+
+  function animateNumber(el, target, duration, suffix){
+    if (reduce){ el.textContent = target + (suffix||""); return; }
+    var start = 0, t0 = performance.now();
+    function frame(t){
+      var p = Math.min(1, (t - t0)/duration);
+      var v = Math.round(start + (target - start) * easeOutCubic(p));
+      el.textContent = v + (suffix||"");
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // Observe KPI numbers only in the DRUID feature section
+  var seen = new WeakSet();
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (!entry.isIntersecting) return;
+      var el = entry.target;
+      if (seen.has(el)) return;
+      seen.add(el);
+      var target = parseInt(el.getAttribute('data-target'), 10) || 0;
+      var suffix = el.getAttribute('data-suffix') || '';
+      animateNumber(el, target, 900, suffix);  // ~0.9s per number
+    });
+  }, { root: null, rootMargin: '0px 0px -20% 0px', threshold: 0.4 });
+
+  document.querySelectorAll('#druid-feature .knum').forEach(function(el){
+    io.observe(el);
+  });
+})();
 </script>
 
 </body>
