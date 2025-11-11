@@ -290,6 +290,49 @@ body.with-fixed-header{ padding-top: var(--hdr-h, 72px); }
 
 /* When fixed, we add body padding equal to header height to prevent jump */
 body.with-fixed-header { padding-top: var(--hdr-h, 72px); }
+/* --- Make DRUID section and its videos top of their local stack --- */
+#druid-feature{ position: relative; z-index: 1; }
+#druid-feature .card{ position: relative; z-index: 1; }
+
+/* The lightweight YouTube wrapper must accept clicks and sit above badges, etc. */
+#druid-feature .yt-lite{
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+}
+
+/* Play badge pseudo-elements must NOT steal clicks */
+#druid-feature .yt-lite::before,
+#druid-feature .yt-lite::after{
+  pointer-events: none;
+}
+
+/* Safety: nothing in DRUID section disables clicks */
+#druid-feature, #druid-feature *{
+  pointer-events: auto;
+}
+
+/* If any global overlay is leaking down (e.g., sticky header shadows), ignore it */
+.site-header::before,
+.site-header::after{
+  pointer-events: none !important;
+}
+
+/* Ensure no accidental full-width overlay from previous/next sections */
+.quad, .bbg-embed, .section, .feature{
+  position: relative;
+  z-index: 0;
+}
+#druid-feature .kpi{
+  display: inline-block !important;
+  width: 100% !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+#druid-feature .kpi strong{
+  display: inline-block !important;
+  margin-right: 6px !important;
+}
 
 </style>
 </head>
@@ -517,6 +560,7 @@ body.with-fixed-header { padding-top: var(--hdr-h, 72px); }
   H.prepend(s);
   io.observe(s);
 })();
+  
 </script>
 <script>
 (function(){
@@ -555,6 +599,32 @@ body.with-fixed-header { padding-top: var(--hdr-h, 72px); }
 
   io.observe(sentinel);
 })();
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('#druid-feature .yt-lite').forEach(function(el){
+    var id = el.dataset.id; if(!id) return;
+
+    // crisp poster
+    var hi = new Image();
+    hi.onload = function(){ el.style.backgroundImage = "url('"+hi.src+"')"; };
+    hi.onerror = function(){ el.style.backgroundImage = "url('https://img.youtube.com/vi/"+id+"/sddefault.jpg')"; };
+    hi.src = "https://img.youtube.com/vi/"+id+"/maxresdefault.jpg";
+
+    // click to play INSIDE wrapper
+    el.addEventListener('click', function(){
+      if (el.classList.contains('playing')) return;
+      el.classList.add('playing');
+      var iframe = document.createElement('iframe');
+      iframe.src = "https://www.youtube.com/embed/"+id+"?autoplay=1&rel=0";
+      iframe.setAttribute('allow',"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
+      Object.assign(iframe.style,{position:'absolute',inset:'0',width:'100%',height:'100%',border:'0'});
+      el.appendChild(iframe);
+    }, {passive:true});
+  });
+});
 </script>
 
 </body>
