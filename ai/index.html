@@ -48,9 +48,9 @@ header{
   transition:color .15s, box-shadow .2s, border-color .2s, transform .15s;
 }
 .nav a:hover{
-  color:var(--i5-green);
-  border-color:rgba(133,187,101,.6);
-  box-shadow:0 0 12px rgba(133,187,101,.45), 0 0 24px rgba(133,187,101,.25);
+  color:#1DDF5A; /* DRUID green */
+  border-color:rgba(29,223,90,.55);
+  box-shadow:0 0 12px rgba(29,223,90,.45), 0 0 24px rgba(29,223,90,.25);
   transform:translateY(-1px);
 }
 .nav a.start-ai{
@@ -180,6 +180,44 @@ footer{margin:32px 0 24px}
   transition:transform .15s, box-shadow .2s, border-color .2s;
 }
 .socials a:hover{transform:translateY(-2px);border-color:rgba(29,223,90,.45);box-shadow:0 0 10px rgba(29,223,90,.35)}
+
+  /* Bloomberg embed keeps aspect ratio */
+.bbg-embed{
+  position:relative; width:100%; padding-bottom:56.25%;
+  border:1px solid rgba(255,255,255,.14); border-radius:12px; overflow:hidden;
+}
+.bbg-embed iframe{
+  position:absolute; inset:0; width:100%; height:100%; border:0; display:block;
+}
+
+/* DRUID-green outline pill on hover + text glow */
+.btn.btn-outline-green{
+  background:transparent; color:#d5dcef; border:1px solid rgba(255,255,255,.16);
+  transition: color .15s ease, border-color .2s ease, box-shadow .2s ease, text-shadow .15s ease, transform .15s ease;
+}
+.btn.btn-outline-green:hover,
+.btn.btn-outline-green:focus-visible{
+  color:#1DDF5A; /* DRUID green text */
+  border-color:#1DDF5A;
+  text-shadow:0 0 6px rgba(29,223,90,.85), 0 0 14px rgba(29,223,90,.45);
+  box-shadow:0 0 12px rgba(29,223,90,.45), 0 0 24px rgba(29,223,90,.25);
+  transform:translateY(-1px);
+  outline:0;
+}
+.socials a:hover,
+.socials a:focus-visible{
+  transform:translateY(-2px);
+  border-color:#1DDF5A;
+  /* outer + inner glows */
+  box-shadow:
+    0 0 12px rgba(29,223,90,.45),
+    0 0 24px rgba(29,223,90,.25),
+    inset 0 0 10px rgba(29,223,90,.35),
+    inset 0 0 18px rgba(29,223,90,.20);
+  color:#1DDF5A;
+  outline:0;
+}
+
 </style>
 </head>
 <body>
@@ -210,7 +248,7 @@ footer{margin:32px 0 24px}
         </p>
         <div class="cta-row">
           <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform" target="_blank" rel="noopener">Start AI Readiness</a>
-          <a class="btn" href="https://www.druidai.com/case-studies" target="_blank" rel="noopener">See DRUID case studies</a>
+          <a class="btn btn-outline-green" href="https://www.druidai.com/case-studies" target="_blank" rel="noopener">See DRUID case studies</a>
         </div>
       </div>
       <div class="hero-portrait"><img src="/assets/lou-portrait@2x.png" alt="Louis Tortora" loading="eager" decoding="async"/></div>
@@ -326,21 +364,40 @@ footer{margin:32px 0 24px}
       <p>Scope outcomes, map KPIs, and stage quick wins. One short intake and we bring back a plan that respects your constraints and timeline.</p>
       <div class="cta-row">
         <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform" target="_blank" rel="noopener">Start AI Readiness</a>
-        <a class="btn-ghost" href="/ai">See the AI page</a>
       </div>
     </div>
   </section>
 
-  <!-- Bloomberg — restored mini block -->
-  <section class="section">
-    <div class="card-soft">
-      <h3>“AI is a new way of working” — Mary Callahan Erdoes</h3>
-      <p>Start by eliminating the no joy work, then rethink the process end to end. Move from experimentation to execution with an outcome first approach.</p>
-      <div class="cta-row">
-        <a class="btn-ghost" href="https://www.bloomberg.com/" target="_blank" rel="noopener">Watch the interview</a>
-      </div>
+<!-- Bloomberg — featured insight -->
+<section class="section" id="erdoes-fii">
+  <div class="card-soft">
+    <h3>“AI is a new way of working” — Mary Callahan Erdoes</h3>
+
+    <!-- Responsive Bloomberg embed -->
+    <div class="bbg-embed">
+      <iframe
+        src="https://www.bloomberg.com/media-manifest/embed/iframe?id=6c8c8431-5ab8-4e9f-bb4a-5ff51c1cf991"
+        allowscriptaccess="always"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+      ></iframe>
     </div>
-  </section>
+
+    <p class="blurb">
+      Start by eliminating the no joy work. That is the spark. Then leap from step one to step ten by rethinking the whole process. 
+      AI is not replacing people, it multiplies potential. Curiosity becomes advantage, and execution gets faster, cheaper, and better.
+    </p>
+
+    <div class="cta-row">
+      <a class="btn btn-outline-green" href="https://www.bloomberg.com/" target="_blank" rel="noopener">Watch the interview</a>
+      <!-- removed “See the AI page” per your request -->
+      <a class="btn btn-outline-green" href="/blog.html">Open the blog</a>
+    </div>
+  </div>
+</section>
+
 
   <!-- Blog / Newsletter — restored teaser -->
   <section class="section">
