@@ -217,6 +217,40 @@ footer{margin:32px 0 24px}
   color:#1DDF5A;
   outline:0;
 }
+/* DRUID KPI pills: 1 per row, centered text, uniform width/height */
+#druid-feature .kpis{
+  display:grid !important;
+  grid-template-columns: 1fr !important;  /* stack vertically */
+  gap:10px !important;
+}
+#druid-feature .kpi{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  width:100% !important;
+  min-height:44px !important;
+
+  background:#D2FDB1 !important; /* DRUID pastel */
+  color:#000 !important;
+  border:0 !important;
+  border-radius:999px !important;
+  font-weight:800 !important;
+  font-size:0.95rem !important;
+  line-height:1.2 !important;
+  padding:10px 12px !important;
+
+  white-space:normal !important;
+  word-break:keep-all !important;
+  transition:transform .15s ease, box-shadow .2s ease !important;
+}
+#druid-feature .kpi strong{margin-right:6px !important}
+#druid-feature .kpi:hover,
+#druid-feature .kpi:focus-visible{
+  transform:translateY(-1px) !important;
+  box-shadow:0 0 10px rgba(29,223,90,.28), 0 0 22px rgba(29,223,90,.2) !important;
+  outline:0 !important;
+}
 
 </style>
 </head>
@@ -256,105 +290,110 @@ footer{margin:32px 0 24px}
   </section>
 
   <!-- Featured Partner: DRUID AI -->
-  <section class="feature" id="druid-feature">
-    <div class="feature-head">
-      <h2>Featured Partner: DRUID AI</h2>
-      <div class="badges">
-        <span class="cap inverse">Agentic AI</span>
-        <span class="cap perma">Omnichannel</span>
-        <span class="cap perma">Low code</span>
-        <span class="cap perma">On prem or private cloud</span>
-        <span class="cap perma">Regulated industries</span>
+<section class="feature" id="druid-feature">
+  <div class="feature-head">
+    <h2>Featured Partner: DRUID AI</h2>
+    <div class="badges">
+      <span class="cap inverse">Agentic AI</span>
+      <span class="cap perma">Omnichannel</span>
+      <span class="cap perma">Low code</span>
+      <span class="cap perma">On prem or private cloud</span>
+      <span class="cap perma">Regulated industries</span>
+    </div>
+  </div>
+
+  <p>
+    DRUID brings process agents, knowledge agents, and orchestration across Customer Support, HR, Sales and Marketing, IT Helpdesk, Banking, Healthcare, and Retail with controls that pass audits.
+  </p>
+
+  <!-- 3 rows × 2 columns -->
+  <div class="grid-two">
+
+    <!-- Banking -->
+    <article class="card">
+      <h3>Banking</h3>
+      <div class="yt-lite" data-id="4zWW_I80wrg"></div>
+      <p class="blurb">Speed onboarding, automate KYC flows, and guide customers with context while keeping data under control.</p>
+      <div class="kpis">
+        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-banking" target="_blank" rel="noopener">
+          <strong>60%</strong> reduction in onboarding time and costs
+        </a>
+        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-banking" target="_blank" rel="noopener">
+          <strong>40%</strong> reduction in average handling time and operational overhead
+        </a>
+        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-banking" target="_blank" rel="noopener">
+          <strong>25%</strong> increase in first-contact resolution
+        </a>
       </div>
-    </div>
-    <p>
-      DRUID brings process agents, knowledge agents, and orchestration across Customer Support, HR, Sales and Marketing, IT Helpdesk, Banking, Healthcare, and Retail with controls that pass audits.
-    </p>
+    </article>
 
-    <!-- 3 rows x 2 cards -->
-    <div class="grid-two">
+    <!-- Customer Support -->
+    <article class="card">
+      <h3>Customer Support</h3>
+      <div class="yt-lite" data-id="eaQvLKagfTM"></div>
+      <p class="blurb">Deflect Tier 0 and Tier 1, give agents real time assist, and resolve faster across voice and chat.</p>
+      <div class="kpis">
+        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-customer-support" target="_blank" rel="noopener"><strong>20%</strong> fewer calls</a>
+        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-customer-support" target="_blank" rel="noopener"><strong>10%</strong> shorter calls</a>
+        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-customer-support" target="_blank" rel="noopener"><strong>30%</strong> agent time saved</a>
+      </div>
+    </article>
 
-     <!-- Banking -->
-<article class="card">
-  <h3>Banking</h3>
-  <div class="yt-lite" data-id="4zWW_I80wrg"></div>
-  <p class="blurb">Speed onboarding, automate KYC flows, and guide customers with context while keeping data under control.</p>
-  <div class="kpis">
-    <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-banking" target="_blank" rel="noopener">
-      <strong>60%</strong> reduction in onboarding time and costs
-    </a>
-    <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-banking" target="_blank" rel="noopener">
-      <strong>40%</strong> reduction in average handling time and overhead
-    </a>
-    <a class="kpi" href="https://www.druidai.com/solutions/
+    <!-- HR -->
+    <article class="card">
+      <h3>HR</h3>
+      <div class="yt-lite" data-id="uKuTEIRbdCw"></div>
+      <p class="blurb">Automate routine questions, speed onboarding, and keep people work focused on people.</p>
+      <div class="kpis">
+        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-hr" target="_blank" rel="noopener"><strong>80%</strong> tasks automated</a>
+        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-hr" target="_blank" rel="noopener"><strong>75%</strong> faster onboarding</a>
+        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-hr" target="_blank" rel="noopener"><strong>30%</strong> sourcing time saved</a>
+      </div>
+    </article>
 
+    <!-- Sales & Marketing -->
+    <article class="card">
+      <h3>Sales and Marketing</h3>
+      <div class="yt-lite" data-id="Qfa6Ly9LobI"></div>
+      <p class="blurb">Guide buyers, qualify faster, and keep follow ups tight across every channel.</p>
+      <div class="kpis">
+        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-sales-and-marketing" target="_blank" rel="noopener"><strong>35%</strong> rep time saved</a>
+        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-sales-and-marketing" target="_blank" rel="noopener"><strong>30%</strong> faster service</a>
+        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-sales-and-marketing" target="_blank" rel="noopener"><strong>25%</strong> CSAT lift</a>
+      </div>
+    </article>
 
-      <!-- Customer Support -->
-      <article class="card">
-        <h3>Customer Support</h3>
-        <div class="yt-lite" data-id="eaQvLKagfTM"></div>
-        <p class="blurb">Deflect Tier 0 and Tier 1, give agents real time assist, and resolve faster across voice and chat.</p>
-        <div class="kpis">
-          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-customer-support" target="_blank" rel="noopener"><strong>20%</strong> fewer calls</a>
-          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-customer-support" target="_blank" rel="noopener"><strong>10%</strong> shorter calls</a>
-          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-customer-support" target="_blank" rel="noopener"><strong>30%</strong> agent time saved</a>
-        </div>
-      </article>
+    <!-- Healthcare -->
+    <article class="card">
+      <h3>Healthcare</h3>
+      <div class="yt-lite" data-id="fKAJ6gAmQsU"></div>
+      <p class="blurb">Book more visits, pre qualify cases, and respect privacy rules without slowing care.</p>
+      <div class="kpis">
+        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-healthcare" target="_blank" rel="noopener"><strong>25%</strong> more appointments</a>
+        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-healthcare" target="_blank" rel="noopener"><strong>15%</strong> booking revenue</a>
+        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-healthcare" target="_blank" rel="noopener"><strong>70%</strong> pre qualified cases</a>
+      </div>
+    </article>
 
-      <!-- HR -->
-      <article class="card">
-        <h3>HR</h3>
-        <div class="yt-lite" data-id="uKuTEIRbdCw"></div>
-        <p class="blurb">Automate routine questions, speed onboarding, and keep people work focused on people.</p>
-        <div class="kpis">
-          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-hr" target="_blank" rel="noopener"><strong>80%</strong> tasks automated</a>
-          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-hr" target="_blank" rel="noopener"><strong>75%</strong> faster onboarding</a>
-          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-hr" target="_blank" rel="noopener"><strong>30%</strong> sourcing time saved</a>
-        </div>
-      </article>
+    <!-- Retail & CPG -->
+    <article class="card">
+      <h3>Retail and CPG</h3>
+      <div class="yt-lite" data-id="UJWccsf8ejA"></div>
+      <p class="blurb">Lift conversion, automate order ops, and cut queues with smart guidance.</p>
+      <div class="kpis">
+        <a class="kpi" href="https://www.druidai.com/solutions/retail-ai-agents" target="_blank" rel="noopener"><strong>30%</strong> conversion lift</a>
+        <a class="kpi" href="https://www.druidai.com/solutions/retail-ai-agents" target="_blank" rel="noopener"><strong>60%</strong> auto resolved</a>
+        <a class="kpi" href="https://www.druidai.com/solutions/retail-ai-agents" target="_blank" rel="noopener"><strong>40%</strong> ops efficiency</a>
+      </div>
+    </article>
 
-      <!-- Sales & Marketing -->
-      <article class="card">
-        <h3>Sales and Marketing</h3>
-        <div class="yt-lite" data-id="Qfa6Ly9LobI"></div>
-        <p class="blurb">Guide buyers, qualify faster, and keep follow ups tight across every channel.</p>
-        <div class="kpis">
-          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-sales-and-marketing" target="_blank" rel="noopener"><strong>35%</strong> rep time saved</a>
-          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-sales-and-marketing" target="_blank" rel="noopener"><strong>30%</strong> faster service</a>
-          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-sales-and-marketing" target="_blank" rel="noopener"><strong>25%</strong> CSAT lift</a>
-        </div>
-      </article>
-
-      <!-- Healthcare -->
-      <article class="card">
-        <h3>Healthcare</h3>
-        <div class="yt-lite" data-id="fKAJ6gAmQsU"></div>
-        <p class="blurb">Book more visits, pre qualify cases, and respect privacy rules without slowing care.</p>
-        <div class="kpis">
-          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-healthcare" target="_blank" rel="noopener"><strong>25%</strong> more appointments</a>
-          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-healthcare" target="_blank" rel="noopener"><strong>15%</strong> booking revenue</a>
-          <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-healthcare" target="_blank" rel="noopener"><strong>70%</strong> pre qualified cases</a>
-        </div>
-      </article>
-
-      <!-- Retail and CPG -->
-      <article class="card">
-        <h3>Retail and CPG</h3>
-        <div class="yt-lite" data-id="UJWccsf8ejA"></div>
-        <p class="blurb">Lift conversion, automate order ops, and cut queues with smart guidance.</p>
-        <div class="kpis">
-          <a class="kpi" href="https://www.druidai.com/solutions/retail-ai-agents" target="_blank" rel="noopener"><strong>30%</strong> conversion lift</a>
-          <a class="kpi" href="https://www.druidai.com/solutions/retail-ai-agents" target="_blank" rel="noopener"><strong>60%</strong> auto resolved</a>
-          <a class="kpi" href="https://www.druidai.com/solutions/retail-ai-agents" target="_blank" rel="noopener"><strong>40%</strong> ops efficiency</a>
-        </div>
-      </article>
-
-    </div>
-  </section>
+  </div>
+</section>
 
   <!-- Injectable AI Omnichannel Quadrant -->
   <section class="quad" id="injectable-quadrant">
     <h3 style="margin:0 0 8px">Injectable AI for Omnichannel: Market view</h3>
+    <p class="quad-note">Many teams want AI outcomes without a platform swap. Injectable AI lets you add real time assist, quality, analytics, and voice bots to what you already run, faster value, lower risk. Not exhaustive. We partner widely beyond what fits here; this snapshot shows battle tested options. If your stack points to others, we will evaluate those too.</p>
     <a href="/ai" aria-label="Open AI Readiness">
       <img src="/assets/ai_voice_injectable_quadrant_clean12.png" alt="Injectable AI Omnichannel Quadrant"/>
     </a>
