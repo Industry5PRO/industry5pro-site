@@ -202,6 +202,17 @@
   border-radius: 12px;     /* keep your shape */
   box-shadow: none !important;
 }
+/* Force first line to stay together and honor the <br> */
+h1 .keep{ white-space: nowrap !important; }
+
+/* Let the headline breathe so it can fit that first line */
+h1{ letter-spacing: 0 !important; }
+
+/* Make the intro paragraph ~3 lines instead of squeezed */
+.sub{
+  max-width: 1000px !important;   /* bump up/down: 940–1040 until it’s 3 lines on your screen */
+  text-wrap: pretty;
+}
 
 
   </style>
@@ -241,7 +252,11 @@
       <div class="hero-grid">
         <!-- LEFT column -->
         <div>
-          <h1>Protect Data. Predict Threats.<br>Prevent Downtime.</h1>
+          <h1>
+  <span class="keep">Protect Data. Predict Threats.</span><br>
+  <span>Prevent Downtime.</span>
+</h1>
+
           <p class="sub">
             Unify network security, data protection, and rapid recovery into one measurable cyber resilience motion.
             We align Lumen capabilities with Veeam powered recoverability and a supplier agnostic ecosystem through Telarus.
