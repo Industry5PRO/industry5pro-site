@@ -117,6 +117,33 @@
   font-size: clamp(20px, 2.6vw, 24px); /* larger than before */
   letter-spacing:.2px
 }
+/* Hero grid + avatar sizing */
+.hero-content{padding:34px 0 28px;}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:22px;
+  align-items:center;
+}
+@media (max-width:940px){ .hero-grid{ grid-template-columns:1fr } }
+
+.avatar-card{
+  justify-self:end;
+  background:var(--card);
+  border:1px solid var(--outline);
+  border-radius:16px;
+  padding:12px;
+  box-shadow:0 0 24px rgba(0,179,54,.15);
+  max-width:260px;            /* “just right” on desktop */
+}
+.avatar-img{
+  width:100%;
+  height:auto;
+  border-radius:12px;
+  box-shadow:0 0 22px rgba(0,179,54,.25);
+}
+@media (max-width:940px){ .avatar-card{ max-width:200px } }
+.avatar-caption{font-size:12px;color:var(--muted);margin-top:8px;text-align:center}
 
   </style>
 </head>
@@ -141,14 +168,23 @@
     </div>
   </div>
 
+   <header class="hero">
+  <div class="wrap">
     <div class="hero-content">
-      <h1>Protect Data. Predict Threats. Prevent Downtime.</h1>
-      <p class="sub">Unify network security, data protection, and rapid recovery into one measurable cyber resilience motion. We align Lumen capabilities with Veeam powered recoverability and a supplier agnostic ecosystem through Telarus.</p>
-      <div class="cta-row">
-        <a class="pill primary" href="#form">Start Cyber Discovery</a>
-        <a class="pill" href="#checklist">Run the Resilience Checklist</a>
-      </div>
-      <div class="meta">No fear tactics. Only outcomes, SLAs, and time to recover that finance teams appreciate.</div>
+      <div class="hero-grid">
+        <!-- Left column: headline + text -->
+        <div>
+          <h1>Protect Data. Predict Threats. Prevent Downtime.</h1>
+          <p class="sub">
+            Unify network security, data protection, and rapid recovery into one measurable cyber resilience motion.
+            We align Lumen capabilities with Veeam powered recoverability and a supplier agnostic ecosystem through Telarus.
+          </p>
+          <div class="cta-row">
+            <a class="pill primary" href="#form">Start Cyber Discovery</a>
+            <a class="pill" href="#checklist">Run the Resilience Checklist</a>
+          </div>
+          <div class="meta">No fear tactics. Only outcomes, SLAs, and time to recover that finance teams appreciate.</div>
+
 
 <!-- KPIs -->
 <div class="kpis" role="list">
