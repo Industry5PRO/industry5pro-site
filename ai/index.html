@@ -280,6 +280,16 @@ body.with-fixed-header{ padding-top: var(--hdr-h, 72px); }
 
 /* Optional: subtle drop shadow while pinned */
 .site-header.is-fixed{ box-shadow: 0 6px 22px rgba(0,0,0,.25); }
+/* Make the fixed header occupy the full width and never transform */
+.site-header.is-fixed { 
+  position: fixed; 
+  top: 0; left: 0; right: 0; width: 100%;
+  transform: none; 
+  z-index: 9999;
+}
+
+/* When fixed, we add body padding equal to header height to prevent jump */
+body.with-fixed-header { padding-top: var(--hdr-h, 72px); }
 
 </style>
 </head>
@@ -475,32 +485,7 @@ body.with-fixed-header{ padding-top: var(--hdr-h, 72px); }
 
 <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 
-<!-- yt-lite loader: append iframe INSIDE the box (no layout jump, no black-screen weirdness) -->
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll('.yt-lite').forEach(function(el){
-    var id = el.dataset.id; if(!id) return;
-    // High-res poster with fallback
-    var hi = new Image();
-    hi.onload = function(){ el.style.backgroundImage = "url('"+hi.src+"')"; };
-    hi.onerror = function(){ el.style.backgroundImage = "url('https://img.youtube.com/vi/"+id+"/sddefault.jpg')"; };
-    hi.src = "https://img.youtube.com/vi/"+id+"/maxresdefault.jpg";
 
-    // Click to play: append iframe, keep wrapper (prevents fullscreen jump)
-    el.addEventListener('click', function(){
-      if(el.classList.contains('playing')) return;
-      el.classList.add('playing');
-      var iframe = document.createElement('iframe');
-      iframe.src = "https://www.youtube.com/embed/"+id+"?autoplay=1&rel=0";
-      iframe.setAttribute('allow',"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
-      iframe.allowFullscreen = true;
-      iframe.referrerPolicy = "strict-origin-when-cross-origin";
-      Object.assign(iframe.style,{position:'absolute',inset:'0',width:'100%',height:'100%',border:'0'});
-      el.appendChild(iframe); // append (do not replace)
-    }, {passive:true});
-  });
-});
-</script>
 <script>
 (function(){
   var H = document.querySelector('.site-header') || document.querySelector('header');
@@ -531,6 +516,44 @@ document.addEventListener('DOMContentLoaded', function(){
   s.style.position = 'absolute'; s.style.top = '0'; s.style.left = '0'; s.style.width = '1px'; s.style.height = '1px';
   H.prepend(s);
   io.observe(s);
+})();
+</script>
+<script>
+(function(){
+  const H = document.querySelector('.site-header');
+  if (!H) return;
+
+  // Measure header and store for jump-free fixed mode
+  function setPad(){
+    const h = H.getBoundingClientRect().height;
+    document.documentElement.style.setProperty('--hdr-h', h + 'px');
+  }
+  setPad();
+  addEventListener('resize', setPad);
+
+  // Insert a sentinel BEFORE the header (not inside it)
+  const sentinel = document.createElement('div');
+  sentinel.setAttribute('aria-hidden','true');
+  sentinel.style.position = 'absolute';
+  sentinel.style.top = '0';
+  sentinel.style.left = '0';
+  sentinel.style.width = '1px';
+  sentinel.style.height = '1px';
+  H.parentNode.insertBefore(sentinel, H);
+
+  // If the sentinel scrolls out of view (past top), fix the header
+  const io = new IntersectionObserver((entries) => {
+    const e = entries[0];
+    if (!e.isIntersecting && e.boundingClientRect.top <= 0) {
+      document.body.classList.add('with-fixed-header');
+      H.classList.add('is-fixed');
+    } else {
+      H.classList.remove('is-fixed');
+      document.body.classList.remove('with-fixed-header');
+    }
+  }, { root: null, threshold: 0, rootMargin: "0px 0px 0px 0px" });
+
+  io.observe(sentinel);
 })();
 </script>
 
