@@ -213,6 +213,30 @@ h1{ letter-spacing: 0 !important; }
   max-width: 1000px !important;   /* bump up/down: 940–1040 until it’s 3 lines on your screen */
   text-wrap: pretty;
 }
+/* Larger hero portrait (match AI page vibe) */
+.avatar-card{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  max-width: 360px;                /* ⬅️ increase from 260px */
+  justify-self: end;
+}
+
+.avatar-img{
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: none !important;     /* keep it “floating” */
+}
+
+/* Slightly smaller on narrower screens */
+@media (max-width: 1100px){
+  .avatar-card{ max-width: 320px; }
+}
+@media (max-width: 940px){
+  .avatar-card{ max-width: 240px; }
+}
 
 
   </style>
@@ -270,9 +294,8 @@ h1{ letter-spacing: 0 !important; }
 
         <!-- RIGHT column (portrait sits beside the meta, above KPIs) -->
         <aside class="avatar-card">
-          <img class="avatar-img" src="/assets/lou-portrait@2x.png" alt="Louis Tortora profile" />
-          <div class="avatar-caption">Louis Tortora — Industry5.pro</div>
-        </aside>
+  <img class="avatar-img" src="/assets/lou-portrait@2x.png" alt="Louis Tortora profile" />
+</aside>
       </div>
 
       <!-- KPIs BELOW the two-column grid, full-width -->
