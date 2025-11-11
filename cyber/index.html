@@ -93,23 +93,53 @@
     .cta-buttons{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
 
     .anchor{scroll-margin-top:90px}
+    /* === Sticky Topbar + Brand tweaks === */
+.topbar{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(27,27,29,.75);
+  backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid var(--outline);
+}
+
+/* Nav container stays the same layout */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:12px 0}
+
+/* Brand row: add logo + bigger wordmark */
+.brand{display:flex;gap:10px;align-items:center}
+.brand .logo{
+  width:28px;height:28px;border-radius:6px;
+  box-shadow:0 0 12px rgba(0,179,54,.5)
+}
+.brand strong{
+  font-weight:800;
+  font-size: clamp(20px, 2.6vw, 24px); /* larger than before */
+  letter-spacing:.2px
+}
+
   </style>
 </head>
 <body>
 
-<header class="hero">
-  <div class="wrap">
-    <nav class="nav" aria-label="Primary">
-      <div class="brand">
-        <div class="dot" aria-hidden="true"></div>
-        <strong>Industry5.pro</strong>
-      </div>
-      <div class="nav-actions">
-        <a class="pill outline" href="#stack">The Stack</a>
-        <a class="pill outline" href="#checklist">Resilience Checklist</a>
-        <a class="pill primary" href="#form">Start Cyber Discovery</a>
-      </div>
-    </nav>
+ <!-- ===== Sticky Topbar ===== -->
+  <div class="topbar">
+    <div class="wrap">
+      <nav class="nav" aria-label="Primary">
+        <div class="brand">
+          <img class="logo" src="/assets/industry5pro-logo.png" alt="Industry5.pro logo" />
+          <div class="dot" aria-hidden="true"></div>
+          <strong>Industry5.pro</strong>
+        </div>
+        <div class="nav-actions">
+          <a class="pill outline" href="/">Home</a>
+          <a class="pill outline" href="#stack">The Stack</a>
+          <a class="pill outline" href="#checklist">Resilience Checklist</a>
+          <a class="pill primary" href="#form">Start Cyber Discovery</a>
+        </div>
+      </nav>
+    </div>
+  </div>
 
     <div class="hero-content">
       <h1>Protect Data. Predict Threats. Prevent Downtime.</h1>
