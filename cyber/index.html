@@ -405,6 +405,64 @@ h1{ letter-spacing: 0 !important; }
     </div>
   </div>
 </section>
+<section id="cyber-quadrant" class="anchor" style="padding:32px 0">
+  <div class="wrap">
+    <h2>Cyber Resilience Overlay – Top Global Players (Non-Conflicting with Lumen)</h2>
+    <p class="lead">Positioned by simplicity/holism (X) vs enterprise/compliance maturity (Y). Use with Lumen network security & Veeam recoverability.</p>
+
+    <style>
+      .quad{
+        position:relative;background:#111114;border:1px solid #2C2C30;border-radius:16px;
+        height:520px;margin-top:14px;overflow:hidden
+      }
+      .quad .axes{position:absolute;inset:40px; border-left:1px solid #2C2C30; border-bottom:1px solid #2C2C30}
+      .quad .label-x, .quad .label-y{
+        position:absolute;font-size:12px;color:#A9A9AD
+      }
+      .quad .label-x{right:40px;bottom:14px}
+      .quad .label-y{left:8px;top:40px;writing-mode:vertical-rl;transform:rotate(180deg)}
+      .pin{
+        position:absolute;transform:translate(-50%,-50%);
+        background:#202023;border:1px solid #2C2C30;border-radius:12px;padding:6px 10px;
+        font-size:13px;color:#EAEAEA;white-space:nowrap
+      }
+      .pin .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#00B336;margin-right:6px}
+      /* Helper: quick position via CSS vars (0..100) */
+      .pin{ left: calc(var(--x,50) * 1%); top: calc(var(--y,50) * 1%); }
+    </style>
+
+    <div class="quad">
+      <div class="axes"></div>
+      <div class="label-x">Holistic &amp; Simplicity →</div>
+      <div class="label-y">Enterprise &amp; Compliance Ready ↑</div>
+
+      <!-- Top-right (best blend of simple + enterprise) -->
+      <div class="pin" style="--x:78; --y:82"><span class="dot"></span>11:11 Systems (DRaaS for Veeam)</div>
+      <div class="pin" style="--x:72; --y:78"><span class="dot"></span>Akamai (Zero Trust/WAAP)</div>
+      <div class="pin" style="--x:70; --y:74"><span class="dot"></span>eSentire (MDR)</div>
+      <div class="pin" style="--x:66; --y:72"><span class="dot"></span>Open Systems (MDR+SASE)</div>
+
+      <!-- Upper-mid (strong enterprise, a bit more integration effort) -->
+      <div class="pin" style="--x:58; --y:76"><span class="dot"></span>Ontinue (Microsoft MDR)</div>
+      <div class="pin" style="--x:54; --y:74"><span class="dot"></span>Trustwave (MDR)</div>
+      <div class="pin" style="--x:60; --y:70"><span class="dot"></span>LevelBlue (MSSP, managed WAAP)</div>
+
+      <!-- Mid-right (simpler packages, solid—but aim mid-market) -->
+      <div class="pin" style="--x:75; --y:58"><span class="dot"></span>Dataprise (Veeam VCSP)</div>
+      <div class="pin" style="--x:74; --y:52"><span class="dot"></span>Coro (All-in-one SMB/MM)</div>
+
+      <!-- Reserve slots if you want to rotate alternates in -->
+      <div class="pin" style="--x:64; --y:60"><span class="dot"></span>SilverSky (MDR)</div>
+      <div class="pin" style="--x:62; --y:58"><span class="dot"></span>Field Effect (MDR)</div>
+      <div class="pin" style="--x:55; --y:56"><span class="dot"></span>eSure.AI (MDR)</div>
+    </div>
+
+    <div class="note" style="color:#A9A9AD;margin-top:10px;font-size:12px">
+      Notes: Placement is directional, based on public capabilities (MDR/WAAP/DRaaS), enterprise references, testing/runbook maturity, and packaging simplicity.
+      Best fit depends on your stack (Microsoft, app footprint, RTO/RPO targets) and whether you want fully managed vs. co-managed.
+    </div>
+  </div>
+</section>
 
 <section id="checklist" class="anchor">
   <div class="wrap">
