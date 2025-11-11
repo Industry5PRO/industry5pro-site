@@ -2327,6 +2327,57 @@ window.CLOUD2_FORM = "/cloud20.html";
   } catch(e){ console.warn("Cyber CTA retarget skipped", e); }
 })();
 </script>
+<script>
+(function () {
+  // 🔗 Canonical cyber URL
+  const CYBER_URL = "https://industry5.pro/cyber";
+
+  // Helper: swap an element to point at CYBER_URL (works for <a> and buttons)
+  function retargetToCyber(el) {
+    if (!el) return;
+    if (el.tagName.toLowerCase() === "a") {
+      el.href = CYBER_URL;
+      el.target = "";
+      el.rel = "";
+    } else {
+      el.onclick = () => (window.location.href = CYBER_URL);
+    }
+    el.setAttribute("data-linked-cyber", "1");
+  }
+
+  // 1) Supplier-Agnostic → “Security & Compliance” tile
+  try {
+    // Look for a tile/card with a title that reads "Security & Compliance"
+    const productSection = document.querySelector("#products, [data-section='products'], .products");
+    if (productSection) {
+      const candidates = productSection.querySelectorAll("a, .tile a, .card a, .tile-title, .card-title");
+      candidates.forEach(a => {
+        const t = (a.textContent || "").trim().toLowerCase();
+        if (t && /security\s*&?\s*compliance/.test(t)) {
+          retargetToCyber(a.tagName.toLowerCase() === "a" ? a : a.closest("a"));
+        }
+      });
+    }
+  } catch (e) { console.warn("Security & Compliance link update skipped:", e); }
+
+  // 2) Outcome-Obsessed → the four “Open Cyber Pre-Intake Form” pills
+  try {
+    const ooSection = document.querySelector("#outcome-obsessed, [data-section='outcome'], .outcome-obsessed");
+    const isCyberPill = (el) => /open\s+cyber\s+pre[\s-]*intake\s*form/i.test((el.textContent || "").trim());
+    if (ooSection) {
+      ooSection.querySelectorAll("a, button").forEach(el => {
+        if (isCyberPill(el)) retargetToCyber(el);
+      });
+    }
+  } catch (e) { console.warn("Pre-Intake CTA retarget skipped:", e); }
+
+  // 3) Safety net: convert any lingering “/cyber.html” links to “/cyber”
+  try {
+    document.querySelectorAll('a[href*="cyber.html"]').forEach(a => { a.href = CYBER_URL; });
+    document.querySelectorAll('a[href$="/cyber/"]').forEach(a => { a.href = CYBER_URL; }); // normalize trailing slash
+  } catch (e) { console.warn("Normalization pass skipped:", e); }
+})();
+</script>
 
 
   
