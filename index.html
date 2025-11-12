@@ -2606,6 +2606,89 @@ window.CLOUD2_FORM = "/cloud20.html";
       gap:12px;
       text-align:center;
     }
+  :root{
+  --orange:#FF6A13;  /* Lumen orange */
+  --ice:#2BEDE7;     /* Lumen ice blue */
+  --header-h:64px;
+}
+
+/* FIX: keep nav glued to top, above all */
+.topbar{
+  position:fixed !important;
+  top:0; left:0; right:0;
+  z-index:99999;
+  background:rgba(15,17,24,.82);
+  backdrop-filter:saturate(140%) blur(10px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  isolation:isolate;
+}
+
+/* push page content below the fixed bar (no gap above header) */
+main, header.hero, .page-start {  /* use whichever is your first main section */
+  margin-top: calc(var(--header-h) + 8px);
+}
+
+/* spacing + brand/menu separator */
+.topbar .brand{ gap:18px; }
+.topbar .brand strong{ margin-right:14px; }
+.topbar .nav-actions{
+  gap:34px;
+  border-left:1px solid rgba(255,255,255,.18);
+  padding-left:18px;
+}
+
+/* kill any logo halo */
+.topbar .brand .logo{
+  filter:none !important;
+  box-shadow:none !important;
+  background:transparent !important;
+  mix-blend-mode:normal !important;
+}
+  /* text-only links, centered when they wrap */
+.topbar .navlink{
+  position:relative;
+  display:inline-block;
+  color:#fff;
+  font-weight:800;
+  line-height:1.15;
+  text-align:center;      /* centers 2-line labels */
+  white-space:normal;
+  padding:10px 6px;
+  text-decoration:none;
+  transition:color .12s, transform .12s, text-shadow .12s;
+}
+
+/* BRIGHT pop: orange text + strong blue glow */
+.topbar .navlink:hover,
+.topbar .navlink:focus-visible{
+  color:var(--orange);
+  transform:translateY(-1px);
+  text-shadow:
+    0 0 12px rgba(43,237,231,1),
+    0 0 28px rgba(43,237,231,.85),
+    0 0 48px rgba(43,237,231,.65);
+  outline:0;
+}
+
+/* big soft aura behind word (no underline, no pill) */
+.topbar .navlink::before{
+  content:"";
+  position:absolute;
+  inset:-14px -22px;                 /* larger than text */
+  border-radius:16px;
+  background:radial-gradient(60% 70% at 50% 50%, rgba(43,237,231,.38), transparent 72%);
+  filter:blur(18px);
+  opacity:0; pointer-events:none;
+  z-index:-1;
+  transition:opacity .12s, filter .12s;
+}
+.topbar .navlink:hover::before,
+.topbar .navlink:focus-visible::before{
+  opacity:1;
+  filter:blur(22px);
+}
+
+
 
  
   </style>
