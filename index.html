@@ -1007,6 +1007,34 @@ input[type="switch"]{
   box-shadow:0 0 14px rgba(43,237,231,.70), 0 0 32px rgba(43,237,231,.45);
   outline:0;
 }
+/* Sticky header (always visible while scrolling) */
+.topbar{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(27,27,29,.75);
+  backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid var(--outline);
+}
+
+/* Keep the nav tight + scrollable on small screens (no wrap-jank) */
+.nav{ display:flex; justify-content:space-between; align-items:center; padding:12px 0 }
+.nav-actions{
+  display:flex; gap:10px; align-items:center;
+  overflow:auto hidden;  /* horizontal scroll if needed */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.nav-actions::-webkit-scrollbar{ display:none }
+
+/* Pills already styled in your sheet; ensure centered labels */
+.nav-actions .pill{
+  display:inline-flex; align-items:center; justify-content:center; text-align:center;
+  white-space:nowrap;
+}
+
+/* Optional: add top scroll offset for in-page anchors */
+.anchor{ scroll-margin-top: 90px; }
 
 
 </style>
@@ -1015,7 +1043,31 @@ input[type="switch"]{
   </style>
 </head>
 <body>
+  <!-- ===== Sticky Topbar ===== -->
+<div class="topbar">
   <div class="wrap">
+    <nav class="nav" aria-label="Primary">
+      <div class="brand">
+        <img class="logo" src="/assets/industry5-logo.png" alt="Industry5.pro logo" />
+        <div class="dot" aria-hidden="true"></div>
+        <strong>Industry5.pro</strong>
+      </div>
+
+      <div class="nav-actions">
+        <a class="pill outline" href="https://industry5.pro/ai">AI</a>
+        <a class="pill outline" href="https://industry5.pro/cyber">Security</a>
+        <a class="pill outline" href="https://industry5.pro/cloud20">Cloud 2.0</a>
+        <a class="pill outline" href="https://industry5.pro/uc">UC &amp; Contact Center</a>
+        <a class="pill outline" href="https://industry5.pro/aiot">AIoT</a>
+        <a class="pill outline" href="https://industry5.pro/peplink">5G &amp; Satellite</a>
+        <a class="pill outline" href="https://industry5.pro/blog">Blog</a>
+      </div>
+    </nav>
+  </div>
+</div>
+
+  <div class="wrap">
+    
     <!-- Header -->
     <header>
       <a class="brand" href="/">
