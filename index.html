@@ -1241,6 +1241,93 @@ input[type="switch"]{
   text-align:center;
   white-space:normal;
 }
+:root{
+  --ice:#2BEDE7;     /* Lumen ice blue */
+  --orange:#FF6A13;  /* Lumen orange */
+  --header-h: 64px;  /* tweak if your bar is taller */
+}
+
+/* Make header permanent (no more mid-page vanish) */
+.topbar{
+  position: fixed;           /* was sticky */
+  top: 0; left: 0; right: 0;
+  z-index: 99999;
+  width: 100%;
+  background: rgba(15,17,24,.82);
+  backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  isolation: isolate;        /* own stacking context */
+}
+
+/* Push page content down so it’s not hidden behind fixed header */
+body{ padding-top: var(--header-h); }
+
+/* Spacing + centering */
+.topbar .nav-actions{ gap: 34px; }
+.topbar .navlink{
+  display:inline-block;
+  text-align:center;
+  white-space:normal;
+  line-height:1.15;
+  font-weight: 800;
+  color:#fff;
+  text-decoration:none;
+  padding:10px 6px;
+  transition: color .12s ease, transform .12s ease, text-shadow .12s ease;
+}
+
+/* BIGGER/BRIGHTER glow on hover (no underline) */
+.topbar .navlink:hover,
+.topbar .navlink:focus-visible{
+  color: var(--orange);
+  transform: translateY(-1px);
+  text-shadow:
+    0 0 10px rgba(43,237,231,.95),
+    0 0 22px rgba(43,237,231,.70),
+    0 0 36px rgba(43,237,231,.45);
+  outline: 0;
+}
+
+/* Ice-blue aura behind the word (amplified) */
+.topbar .navlink::before{
+  content:"";
+  position:absolute;
+  inset:-12px -18px;                 /* larger field */
+  border-radius:14px;
+  background:
+    radial-gradient(60% 70% at 50% 50%, rgba(43,237,231,.35), transparent 72%);
+  filter: blur(14px);
+  opacity:0;
+  transition: opacity .12s ease, filter .12s ease;
+  z-index:-1;                        /* sits behind text */
+}
+.topbar .navlink:hover::before,
+.topbar .navlink:focus-visible::before{
+  opacity:1;
+  filter: blur(18px);
+}
+
+/* Brand spacing + separator */
+.topbar .brand{ gap:18px; }
+.topbar .brand strong{ margin-right:14px; }
+.topbar .nav-actions{
+  border-left:1px solid rgba(255,255,255,.18);
+  padding-left:18px;
+}
+
+/* Kill any logo ghosting */
+.topbar .brand .logo{
+  filter:none !important;
+  box-shadow:none !important;
+  background:transparent !important;
+  mix-blend-mode:normal !important;
+}
+
+/* Mobile tune */
+@media (max-width:760px){
+  :root{ --header-h: 68px; } /* header a hair taller on mobile */
+  .topbar .nav-actions{ gap:18px; overflow:auto hidden; -webkit-overflow-scrolling:touch; }
+}
 
     
 </style>
@@ -2763,6 +2850,16 @@ document.querySelectorAll('.chip, .kpi, .metric, .tag, .pill, .card').forEach(el
   const txt = el.textContent.trim().toLowerCase();
   if (labels.some(l => txt.includes(l.toLowerCase()))) makeClickable(el);
 });
+</script>
+<script>
+(function(){
+  function pad(){
+    var h = document.querySelector('.topbar')?.offsetHeight || 64;
+    document.body.style.paddingTop = h + 'px';
+  }
+  window.addEventListener('load', pad);
+  window.addEventListener('resize', pad);
+})();
 </script>
 
 
