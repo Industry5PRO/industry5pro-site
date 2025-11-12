@@ -2426,6 +2426,43 @@ window.CLOUD2_FORM = "/cloud20.html";
   } catch (e) { console.warn("Normalization pass skipped:", e); }
 })();
 </script>
+<script>
+// Send these items to /aiot
+const AIOT_URL = "/aiot";
+const labels = [
+  "Unplanned downtime", "Inspection time", "OEE", "Inventory shrink",
+  "fleet and telematics", "agriculture & drones", "logistics & fleet"
+];
+
+// 1) If it's already an <a>, just retarget it
+document.querySelectorAll('a').forEach(a => {
+  const txt = a.textContent.trim().toLowerCase();
+  if (labels.some(l => txt.includes(l.toLowerCase()))) {
+    a.setAttribute('href', AIOT_URL);
+    a.removeAttribute('target'); // keep same-tab behavior
+    a.setAttribute('rel', 'noopener');
+  }
+});
+
+// 2) If it's NOT an <a> (e.g., a chip/span/div), make it act like a link
+function makeClickable(el){
+  el.style.cursor = 'pointer';
+  el.setAttribute('role','link');
+  el.setAttribute('tabindex','0');
+  el.addEventListener('click', () => location.href = AIOT_URL);
+  el.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); location.href = AIOT_URL; }
+  });
+}
+
+// Look for common non-anchor containers
+document.querySelectorAll('.chip, .kpi, .metric, .tag, .pill, .card').forEach(el => {
+  // Skip if it already is/contains a link
+  if (el.closest('a') || el.tagName.toLowerCase() === 'a') return;
+  const txt = el.textContent.trim().toLowerCase();
+  if (labels.some(l => txt.includes(l.toLowerCase()))) makeClickable(el);
+});
+</script>
 
 
   
