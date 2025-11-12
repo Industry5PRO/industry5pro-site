@@ -2906,7 +2906,10 @@ const labels = [
 ];
 
 // 1) If it's already an <a>, just retarget it
-document.querySelectorAll('a').forEach(a => {
+document.querySelectorAll('#products a, #verticals a, .kpi-card a, .tile a')
+  .forEach(a => {
+    if (a.closest('#oo-filters')) return; // never touch sort chips
+
   const txt = a.textContent.trim().toLowerCase();
   if (labels.some(l => txt.includes(l.toLowerCase()))) {
     a.setAttribute('href', AIOT_URL);
@@ -2927,7 +2930,10 @@ function makeClickable(el){
 }
 
 // Look for common non-anchor containers
-document.querySelectorAll('.chip, .kpi, .metric, .tag, .pill, .card').forEach(el => {
+document.querySelectorAll('#products .card, #products .tile, #verticals .card, #verticals .tile, .kpi-card')
+  .forEach(el => {
+    if (el.closest('#oo-filters')) return; // never touch sort chips
+
   // Skip if it already is/contains a link
   if (el.closest('a') || el.tagName.toLowerCase() === 'a') return;
   const txt = el.textContent.trim().toLowerCase();
@@ -2942,6 +2948,34 @@ document.querySelectorAll('.chip, .kpi, .metric, .tag, .pill, .card').forEach(el
   }
   window.addEventListener('load', pad);
   window.addEventListener('resize', pad);
+})();
+</script>
+<script>
+/* Outcome-Obsessed: make the top chips FILTER ONLY (no navigation) */
+(function () {
+  var filters = document.getElementById('oo-filters');
+  if (!filters) return;
+
+  // 1) If any chip somehow rendered as an <a>, convert it to a <button>
+  filters.querySelectorAll('a').forEach(function (a) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = (a.className || '').replace(/\b(link|nav|pill)\b/g,'').trim() + ' oo-chip';
+    b.dataset.filter = (a.dataset.filter || '').toLowerCase();
+    b.textContent = a.textContent;
+    a.replaceWith(b);
+  });
+
+  // 2) Guardrail: block any default navigation bubbling from these chips
+  filters.addEventListener('click', function (e) {
+    var chipLink = e.target.closest('a');
+    if (chipLink) {
+      e.preventDefault();
+      e.stopPropagation();
+      chipLink.blur();
+    }
+    // Let your existing filter listener handle the state & scroll
+  }, true);
 })();
 </script>
 
