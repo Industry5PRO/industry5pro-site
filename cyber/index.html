@@ -609,9 +609,13 @@ h1{ letter-spacing: 0 !important; }
       <div class="check"><input type="checkbox" id="c15"><label for="c15"><strong>Vendor risk review</strong><small>Critical suppliers scored with remediation paths</small></label></div>
     </div>
 
-    <div class="form-actions">
-      <a class="pill primary" id="cta-plan" href="#form">Turn Gaps Into a Plan</a>
-      <a class="pill outline" href="#roi">See the ROI Angle</a>
+      <div class="form-actions">
+  <a class="pill primary" href="#form">Turn Gaps Into a Plan</a>
+  <a class="pill outline" href="#roi">See the ROI Angle</a>
+  <!-- NEW: user export -->
+  <button class="pill outline" id="download-checklist">Download My Checklist</button>
+</div>
+
     </div>
   </div>
 </section>
@@ -794,6 +798,65 @@ h1{ letter-spacing: 0 !important; }
       window.open(link.href, '_blank', 'noopener');
     }
   }, { passive:false });
+})();
+</script>
+<script>
+(function(){
+  const btn = document.getElementById('download-checklist');
+  if(!btn) return;
+
+  function getText(node){
+    // Grab strong + small text cleanly (e.g., "MFA on everything — Privileged accounts…")
+    const strong = node.querySelector('strong')?.textContent?.trim() || '';
+    const small  = node.querySelector('small')?.textContent?.trim()  || '';
+    return small ? `${strong} — ${small}` : strong;
+  }
+
+  btn.addEventListener('click', function(){
+    const checks = Array.from(document.querySelectorAll('#checklist .check'));
+    if (!checks.length){
+      alert('No checklist items found.');
+      return;
+    }
+
+    const met  = [];
+    const gaps = [];
+
+    checks.forEach(box => {
+      const input = box.querySelector('input[type="checkbox"]');
+      const label = box.querySelector('label');
+      if (!input || !label) return;
+      const line = getText(label);
+      (input.checked ? met : gaps).push(line);
+    });
+
+    const now = new Date();
+    const dt  = now.toLocaleString([], {year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit'});
+    const title = 'Cyber Resilience Checklist — Personal Summary';
+    const hdr   = `Generated: ${dt}\n`;
+
+    const metBlock = met.length
+      ? `\nMET ✅ (${met.length})\n${met.map(x => `  • ${x}`).join('\n')}\n`
+      : `\nMET ✅ (0)\n  • (none)\n`;
+
+    const gapBlock = gaps.length
+      ? `\nGAPS ❌ (${gaps.length})\n${gaps.map(x => `  • ${x}`).join('\n')}\n`
+      : `\nGAPS ❌ (0)\n  • (none)\n`;
+
+    const footer = `\nTip: Turn Gaps Into a Plan → industry5.pro/cyber\n`;
+
+    const content = `${title}\n${hdr}${metBlock}${gapBlock}${footer}`;
+
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const a = document.createElement('a');
+    const stamp = now.toISOString().slice(0,10);
+    a.href = URL.createObjectURL(blob);
+    a.download = `My_Cyber_Resilience_Checklist_${stamp}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(()=>URL.revokeObjectURL(a.href), 1200);
+  });
 })();
 </script>
 
