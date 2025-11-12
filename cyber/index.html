@@ -291,6 +291,22 @@ h1{ letter-spacing: 0 !important; }
 /* Pillar cards: equal visual baseline for CTA */
 .pillars .pillar{ display:flex; flex-direction:column; }
 .pillars .pillar .pill{ margin-top:auto; align-self:flex-start; }
+/* Make each pillar card a 3-row grid: title, flexible list, CTA at bottom */
+.pillars > .card.pillar{
+  display:grid;
+  grid-template-rows: auto 1fr auto; /* header | fills | CTA */
+  min-height: 280px;                  /* adjust if you want them taller/shorter */
+}
+
+/* Tidy spacing so the list doesn't push CTAs unevenly */
+.pillars > .card.pillar h3{ margin:6px 0 6px; }
+.pillars > .card.pillar ul{ margin:0 0 12px 18px; }
+
+/* Anchor the "Assess ..." pill to the bottom and keep it left-aligned */
+.pillars > .card.pillar .pill{
+  align-self:start;    /* left */
+  margin-top:0;        /* grid places it; no auto margin needed */
+}
 
 
   </style>
