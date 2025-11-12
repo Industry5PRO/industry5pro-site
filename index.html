@@ -1189,6 +1189,24 @@ input[type="switch"]{
   @media (max-width: 760px){
     .topbar .nav-actions{ gap: 18px; }
   }
+/* Center each nav item’s label (handles 2-line wraps cleanly) */
+.topbar .navlink{
+  display:inline-block;       /* not flex/pill */
+  text-align:center;          /* center lines */
+  line-height:1.15;
+  white-space:normal;         /* allow wrap */
+}
+
+/* Add a little more breathing room between logo • and “Industry5.pro” */
+.topbar .brand{ gap:16px; }           /* was tighter */
+.topbar .brand .dot{ margin-left:2px; }
+.topbar .brand strong{ margin-left:4px; }  /* nudges text a touch away from the dot */
+
+/* Optional: a bit more space between brand and the first link */
+.topbar .nav{ column-gap: 10px; }
+.topbar .nav-actions{ gap:32px; }     /* keep links nicely spaced */
+
+    
 </style>
 
 </style>
