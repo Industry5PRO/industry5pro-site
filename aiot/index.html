@@ -100,13 +100,7 @@
 @media (max-width: 900px){
   .hero-nudge{ padding-left: 16px; } /* lighter nudge on mobile */
 }
-/* Logo matches index */
-.logo{
-  width:44px;height:44px;border-radius:12px;display:block;
-  object-fit:contain;
-  filter: drop-shadow(0 0 10px rgba(133,187,101,.40));
-  background: transparent;
-}
+
 
 /* Footer + socials — match index */
 .footer{margin:32px 0;color:#cfd6e3;font-size:14px;border-top:1px solid rgba(255,255,255,.08);padding:24px 20px}
@@ -214,16 +208,6 @@
 .hdr-inner { min-height: 72px; }           /* give the taller logo room */
 .brand { gap: 18px; }                      /* breathe between logo and title */
 
-.logo{
-  height: 56px;                            /* same visual size as index */
-  width: auto;                             /* keep SVG aspect ratio */
-  display: block;
-  object-fit: contain;
-  border-radius: 0 !important;             /* no rounded crop */
-  background: transparent !important;
-  filter: none !important;                 /* remove the green glow from this page */
-  box-shadow: none !important;
-}
 /* Match index: brand title styling */
 :root { --brand-title-size: 20px; }   /* set to whatever your index uses */
 
@@ -237,6 +221,141 @@
   letter-spacing: 0.2px;
   text-wrap: balance;
 }
+/* Siemens Green theme vars */
+:root{
+  --siemens-green:#29EAD7;
+  --siemens-glow:rgba(41,234,215,.75);
+  --header-h:72px;
+}
+
+/* Top bar and logo sizing */
+.topbar{ min-height: var(--header-h); }
+.topbar .brand{ display:flex; align-items:center; gap:18px; }
+.topbar .brand .logo{
+  height:56px;          /* keep the size */
+  width:auto;
+  display:block;
+  object-fit:contain;
+  border-radius:0;
+  background:transparent;
+  /* no filter, no box-shadow here */
+}
+
+/* Keep content from sliding under the fixed header */
+body{ padding-top: var(--header-h); }
+
+/* Logo glow (subtle, always on, brighter on hover) */
+.brand .logo{
+  filter:
+    drop-shadow(0 0 6px var(--siemens-glow))
+    drop-shadow(0 0 18px var(--siemens-glow));
+  transition: filter .2s ease, transform .15s ease;
+}
+.brand .logo:hover,
+.brand .logo:focus-visible{
+  filter:
+    drop-shadow(0 0 8px var(--siemens-glow))
+    drop-shadow(0 0 26px var(--siemens-glow));
+  transform: translateY(-1px);
+}
+
+/* Optional larger aura behind logo using a wrapper
+   Wrap your <img class="logo"> in <span class="logo-wrap"> if you want this. */
+.brand .logo-wrap{ position:relative; display:inline-flex; align-items:center; justify-content:center; }
+.brand .logo-wrap::before{
+  content:"";
+  position:absolute; inset:-10px;
+  border-radius:18px;
+  background: radial-gradient(45% 45% at 50% 50%, rgba(41,234,215,.28), transparent 70%);
+  box-shadow:
+    0 0 20px 6px rgba(41,234,215,.32),
+    0 0 48px 16px rgba(41,234,215,.18);
+  pointer-events:none; z-index:0; filter:saturate(110%);
+}
+.brand .logo{ position:relative; z-index:1; }
+
+/* Brand title matches index look, white text */
+:root { --brand-title-size:20px; } /* adjust if your index uses a different size */
+.brand .title,
+.brand strong.site-title,
+.hdr-inner .brand strong{
+  font-size: var(--brand-title-size);
+  line-height:1.2;
+  font-weight:600;
+  color:#fff;
+  letter-spacing:.2px;
+  text-wrap: balance;
+}
+
+/* Nav pills with permanent Siemens green border and glow on hover */
+.nav-actions a.nav-pill,
+.menu a.nav-pill,
+.header a.nav-pill{
+  color:#fff;                 /* default text white */
+  border:2px solid var(--siemens-green);
+  border-radius:9999px;
+  padding:8px 14px;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  transition: box-shadow .2s, text-shadow .2s, transform .15s;
+}
+.nav-actions a.nav-pill:hover,
+.nav-actions a.nav-pill:focus-visible,
+.menu a.nav-pill:hover,
+.menu a.nav-pill:focus-visible,
+.header a.nav-pill:hover,
+.header a.nav-pill:focus-visible{
+  box-shadow: 0 0 0 2px transparent, 0 0 14px 3px var(--siemens-glow);
+  text-shadow: 0 0 8px var(--siemens-glow);
+  transform: translateY(-1px);
+  outline:none;
+}
+.nav-actions{ gap:.6rem; }
+
+/* Footer CTA: Book Lou — white text, green border, green glow on hover */
+.footer .book-lou,
+#footer .book-lou,
+.footer-cta .book-lou{
+  color:#fff;
+  border:2px solid var(--siemens-green);
+  border-radius:9999px;
+  padding:10px 18px;
+  display:inline-flex;
+  align-items:center;
+  text-decoration:none;
+  transition: box-shadow .2s, text-shadow .2s, transform .15s;
+}
+.footer .book-lou:hover,
+.footer .book-lou:focus-visible,
+#footer .book-lou:hover,
+#footer .book-lou:focus-visible,
+.footer-cta .book-lou:hover,
+.footer-cta .book-lou:focus-visible{
+  box-shadow: 0 0 14px 3px var(--siemens-glow);
+  text-shadow: 0 0 8px var(--siemens-glow);
+  transform: translateY(-1px);
+}
+    /* Logo glow using existing Siemens vars */
+.brand .logo{
+  filter:
+    drop-shadow(0 0 6px var(--siemens-glow))
+    drop-shadow(0 0 18px var(--siemens-glow));
+  transition: filter .2s ease, transform .15s ease;
+}
+
+.brand .logo:hover,
+.brand .logo:focus-visible{
+  filter:
+    drop-shadow(0 0 8px var(--siemens-glow))
+    drop-shadow(0 0 26px var(--siemens-glow));
+  transform: translateY(-1px);
+}
+
+
+/* AIoT header container parity, in case that page uses .hdr-inner */
+.hdr-inner{ min-height: var(--header-h); }
 
 
     /* Footer */
@@ -256,10 +375,11 @@
   <strong class="title">Industry5.pro | AIoT</strong>
 
 </a>
-<div class="nav-actions">
-  <a class="home" href="/">Home</a>
-  <a class="home" href="/blog.html">Blog</a>
-</div>
+<nav class="nav-actions">
+  <a href="/" class="nav-pill">Home</a>
+  <a href="/blog.html" class="nav-pill">Blog</a>
+  <!-- your application and client links -->
+</nav>
 
 
 </div>
@@ -418,9 +538,8 @@
      target="_blank" rel="noopener">
     Start AIoT Discovery
   </a>
-  <a class="pill-cta" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">
-    Book Lou
-  </a>
+ <a href="https://calendly.com/industry5/30min" class="book-lou">Book Lou</a>
+
 </div>
   </div>
 </section>
@@ -451,5 +570,29 @@
 </script>
 
   </main>
+  <script>
+/* Outcome Obs chips: filter only */
+(function () {
+  var filters = document.getElementById('oo-filters');
+  if (!filters) return;
+
+  // Convert any accidental <a> chips into <button>
+  filters.querySelectorAll('a').forEach(function (a) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = (a.className || '').replace(/\b(link|nav|pill)\b/g,'').trim() + ' oo-chip';
+    b.dataset.filter = (a.dataset.filter || '').toLowerCase();
+    b.textContent = a.textContent;
+    a.replaceWith(b);
+  });
+
+  // Block default nav in the chip row, just in case
+  filters.addEventListener('click', function (e) {
+    var chipLink = e.target.closest('a');
+    if (chipLink) { e.preventDefault(); e.stopPropagation(); chipLink.blur(); }
+  }, true);
+})();
+</script>
+
 </body>
 </html>
