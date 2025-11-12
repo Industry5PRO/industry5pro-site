@@ -237,24 +237,45 @@
   --header-h:72px;
 }
 
-/* Top bar and logo sizing */
-.topbar{ min-height: var(--header-h); }
-.topbar .brand{ display:flex; align-items:center; gap:18px; }
+/* Top bar and logo sizing — match main index */
+:root{
+  --header-h: 64px; /* same header height as index */
+}
+
+.topbar{
+  min-height: var(--header-h);
+}
+
+.topbar .brand{
+  display: flex;
+  align-items: center;
+  gap: 12px;            /* match index spacing */
+}
+
+/* Logo: same size as index logo */
 .topbar .brand .logo{
-  height:56px;          /* keep the size */
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: block;
+  object-fit: contain;
+  background: transparent;
+  filter: none;
+  box-shadow: none;
+}
+
+
+/* Keep content from sliding under the fixed header */
+body{ padding-top: var(--header-h); }
+
+/* Logo size + glow (subtle, always on, brighter on hover) */
+.brand .logo{
+  height:44px;               /* match primary index header */
   width:auto;
   display:block;
   object-fit:contain;
   border-radius:0;
   background:transparent;
-  /* no filter, no box-shadow here */
-}
-
-/* Keep content from sliding under the fixed header */
-body{ padding-top: var(--header-h); }
-
-/* Logo glow (subtle, always on, brighter on hover) */
-.brand .logo{
   filter:
     drop-shadow(0 0 6px var(--siemens-glow))
     drop-shadow(0 0 18px var(--siemens-glow));
@@ -287,14 +308,16 @@ body{ padding-top: var(--header-h); }
 :root { --brand-title-size:20px; } /* adjust if your index uses a different size */
 .brand .title,
 .brand strong.site-title,
-.hdr-inner .brand strong{
+.hdr-inner .brand strong,
+.topbar .brand strong{
   font-size: var(--brand-title-size);
   line-height:1.2;
-  font-weight:600;
+  font-weight:800;      /* was 600 */
   color:#fff;
   letter-spacing:.2px;
   text-wrap: balance;
 }
+
 
 /* Nav pills with permanent Siemens green border and glow on hover */
 .nav-actions a.nav-pill,
@@ -347,21 +370,6 @@ body{ padding-top: var(--header-h); }
   transform: translateY(-1px);
 }
 
-    /* Logo glow using existing Siemens vars */
-.brand .logo{
-  filter:
-    drop-shadow(0 0 6px var(--siemens-glow))
-    drop-shadow(0 0 18px var(--siemens-glow));
-  transition: filter .2s ease, transform .15s ease;
-}
-
-.brand .logo:hover,
-.brand .logo:focus-visible{
-  filter:
-    drop-shadow(0 0 8px var(--siemens-glow))
-    drop-shadow(0 0 26px var(--siemens-glow));
-  transform: translateY(-1px);
-}
 
 
 /* AIoT header container parity, in case that page uses .hdr-inner */
