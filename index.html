@@ -1114,6 +1114,82 @@ input[type="switch"]{
   .nav{padding:10px 0}
   .nav-actions{gap:12px}
 }
+<style id="nav-overrides">
+  :root{
+    --ice:#2BEDE7;     /* Lumen ice blue */
+    --orange:#FF6A13;  /* Lumen orange */
+  }
+
+  /* keep the header visible and above everything */
+  .topbar{
+    position: sticky;
+    top: 0;
+    z-index: 9999;              /* higher than any cards/embeds */
+    background: rgba(15,17,24,.82); /* translucent charcoal */
+    backdrop-filter: saturate(140%) blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    isolation: isolate;         /* its own stacking context */
+  }
+
+  /* more breathing room between items */
+  .topbar .nav-actions{
+    gap: 32px;                  /* was tight; spread them out */
+  }
+
+  /* remove any inherited underline animations */
+  .topbar .navlink::after,
+  header nav a::after,
+  .main-nav a::after{
+    content: none !important;
+  }
+
+  /* base text-only links */
+  .topbar .navlink{
+    position: relative;
+    display: inline-block;
+    padding: 8px 4px;
+    color: #ffffff;
+    font-weight: 800;
+    letter-spacing: .2px;
+    text-decoration: none;
+    transition: color .12s ease, transform .12s ease, text-shadow .12s ease;
+  }
+
+  /* heavy POP: orange text + big ice-blue glow */
+  .topbar .navlink:hover,
+  .topbar .navlink:focus-visible{
+    color: var(--orange);
+    transform: translateY(-1px);
+    text-shadow:
+      0 0 8px  rgba(43,237,231,.85),
+      0 0 18px rgba(43,237,231,.55),
+      0 0 28px rgba(43,237,231,.35);
+    outline: 0;
+  }
+
+  /* soft aura behind the word on hover (no pills, just glow) */
+  .topbar .navlink::before{
+    content: "";
+    position: absolute;
+    inset: -6px -10px;                /* wider than the letters */
+    border-radius: 10px;
+    background: radial-gradient(40% 60% at 50% 50%, rgba(43,237,231,.28), transparent 70%);
+    filter: blur(10px);
+    opacity: 0;
+    transition: opacity .12s ease, filter .12s ease;
+    z-index: -1;                      /* glow sits behind the text */
+  }
+  .topbar .navlink:hover::before,
+  .topbar .navlink:focus-visible::before{
+    opacity: 1;
+    filter: blur(12px);
+  }
+
+  /* keep spacing sensible on phones */
+  @media (max-width: 760px){
+    .topbar .nav-actions{ gap: 18px; }
+  }
+</style>
 
 </style>
 
