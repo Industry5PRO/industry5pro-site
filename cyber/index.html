@@ -307,6 +307,11 @@ h1{ letter-spacing: 0 !important; }
   align-self:start;    /* left */
   margin-top:0;        /* grid places it; no auto margin needed */
 }
+.brand .logo{
+  width:28px; height:28px; display:block;
+  border-radius:6px;
+  box-shadow:0 0 12px rgba(0,179,54,.5);
+}
 
 
   </style>
@@ -317,17 +322,10 @@ h1{ letter-spacing: 0 !important; }
   <div class="topbar">
     <div class="wrap">
       <nav class="nav" aria-label="Primary">
-        <div class="brand">
-  <!-- Try your expected path; auto-fall back to a badge if it 404s -->
+      <div class="brand">
   <img class="logo"
-       src="/assets/industry5pro-logo.png"
-       alt="Industry5.pro logo"
-       onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
-
-  <!-- Fallback badge shown only if the image fails -->
-  <span class="logo-fallback" style="display:none;align-items:center;justify-content:center;
-    width:28px;height:28px;border-radius:6px;background:#00B336;color:#1B1B1D;font-weight:800;">I5</span>
-
+       src="/assets/industry5-logo.png"
+       alt="Industry5.pro logo" />
   <div class="dot" aria-hidden="true"></div>
   <strong>Industry5.pro</strong>
 </div>
