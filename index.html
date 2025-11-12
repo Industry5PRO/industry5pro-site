@@ -1061,35 +1061,13 @@ input[type="switch"]{
         <a class="pill outline" href="https://industry5.pro/aiot">AIoT</a>
         <a class="pill outline" href="https://industry5.pro/peplink">5G &amp; Satellite</a>
         <a class="pill outline" href="https://industry5.pro/blog">Blog</a>
+        <a class="pill outline book-lou" href="https://calendly.com/industry5pro/30min">Book Lou</a>
       </div>
     </nav>
   </div>
 </div>
 
   <div class="wrap">
-    
-    <!-- Header -->
-    <header>
-      <a class="brand" href="/">
-       <img src="/assets/industry5-logo.png"
-     alt="Industry5.pro logo"
-     class="logo"
-     width="44" height="44"
-     loading="eager" decoding="async" />
-        <span class="title">Industry5.pro</span>
-      </a>
-    <nav class="main-nav">
-  <a href="#outcome-obsessed">Outcome Obsessed</a>
-  <a href="/ai-readiness.html">AI Readiness Assessment</a>
-  <a href="#products">Products</a>
-  <a href="#verticals">Industries</a>
-  <a href="/blog.html">AI Foundations & Blog</a>
-  <a href="#book">Book</a>
-</nav>
-
-
-
-    </header>
 
 
     <!-- HERO -->
@@ -1282,6 +1260,69 @@ input[type="switch"]{
     0 0 16px rgba(255,106,19,.50),
     0 0 28px rgba(255,106,19,.35);
 }
+<style>
+  :root{
+    --lumen-orange:#FF6A13;
+    --ice-blue:#2BEDE7;
+  }
+
+  /* ensure sticky header sits on top and spans full width */
+  .topbar{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(15,17,24,.82);
+    backdrop-filter: saturate(140%) blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+
+  /* pill baseline */
+  .topbar .nav-actions .pill{
+    position: relative;
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-weight: 800;
+    color: #dfe7f3;
+    transition: color .15s ease, text-shadow .15s ease, box-shadow .2s ease, border-color .2s ease, transform .15s ease;
+  }
+
+  /* orange text glow + ice blue aura on hover/focus */
+  .topbar .nav-actions .pill:hover,
+  .topbar .nav-actions .pill:focus-visible{
+    color: var(--lumen-orange);
+    text-shadow:
+      0 0 6px rgba(255,106,19,.85),
+      0 0 14px rgba(255,106,19,.45);
+    border-color: var(--ice-blue);
+    box-shadow:
+      0 0 12px rgba(43,237,231,.60),
+      0 0 26px rgba(43,237,231,.35);
+    transform: translateY(-1px);
+    outline: 0;
+  }
+
+  /* subtle underline bar that picks up the ice blue glow */
+  .topbar .nav-actions .pill::after{
+    content:"";
+    position:absolute;
+    left:10%;
+    right:10%;
+    bottom:-6px;
+    height:2px;
+    opacity:.0;
+    background: var(--ice-blue);
+    box-shadow: 0 0 8px rgba(43,237,231,.60);
+    transition: opacity .15s ease;
+  }
+  .topbar .nav-actions .pill:hover::after,
+  .topbar .nav-actions .pill:focus-visible::after{ opacity:1; }
+
+  /* make the Book Lou pill feel a touch more clickable */
+  .topbar .nav-actions .book-lou{
+    border-color: rgba(255,255,255,.28);
+  }
+</style>
 
 
 </style>
