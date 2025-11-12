@@ -14,13 +14,16 @@
 <meta property="og:url" content="https://industry5.pro/">
 <meta property="og:title" content="Industry5.pro — Outcome-Obsessed. Supplier-Agnostic. Paid by results.">
 <meta property="og:description" content="Capture a consult in minutes. We design practical AI, IoT, cloud, and CX that deliver measurable outcomes.">
-<meta property="og:image" content="https://industry5.pro/assets/lou-portrait@2x.png">
+<meta property="og:image" content="https://industry5.pro/assets/og-index-1200x630.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Louis Tortora — Industry5.pro">
+
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Industry5.pro — Outcome-Obsessed. Supplier-Agnostic. Paid by results.">
 <meta name="twitter:description" content="Capture a consult in minutes. Practical AI, IoT, cloud, and CX with measurable outcomes.">
-<meta name="twitter:image" content="https://industry5.pro/assets/lou-portrait@2x.png">
+<meta name="twitter:image" content="https://industry5.pro/assets/og-index-1200x630.png">
 
   <link rel="icon" href="/assets/favicon.ico" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
@@ -975,6 +978,39 @@ input[type="switch"]{
     transform:translateY(-2px);
     outline:0;
   }
+    <style>
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(133,187,101,0.38);
+  }
+  .btn-secondary:hover {
+    background: rgba(133,187,101,0.16);
+  }
+  /* Cloud 2.0 CTA pill: Lumen orange fill + ice-blue glow + black text */
+.pill-cta.cloud-accent,
+.oo-cta.cloud-accent{
+  display:inline-flex; align-items:center; justify-content:center; text-align:center;
+  min-height:40px; padding:12px 22px; border-radius:9999px;
+  font-weight:800; letter-spacing:.2px;
+  color:#0b0b0b;
+  background:linear-gradient(180deg, var(--lumen), #ff8c3a);
+  border:1px solid var(--lumen);
+  box-shadow:0 0 12px rgba(43,237,231,.55), 0 0 26px rgba(43,237,231,.35);
+  text-shadow:0 0 2px rgba(255,255,255,.95), 0 0 8px rgba(255,255,255,.45);
+  transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.pill-cta.cloud-accent:hover,
+.pill-cta.cloud-accent:focus-visible,
+.oo-cta.cloud-accent:hover,
+.oo-cta.cloud-accent:focus-visible{
+  transform:translateY(-1px);
+  box-shadow:0 0 14px rgba(43,237,231,.70), 0 0 32px rgba(43,237,231,.45);
+  outline:0;
+}
+
+
+</style>
+
 </style>
   </style>
 </head>
@@ -1575,29 +1611,30 @@ tags: ["cloud","wavelength","naas"]
 
 
     <!-- Book a conversation (Calendly + Form) -->
-    <section class="section card" id="book" style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);border-radius:14px;padding:22px 20px;margin:18px 0">
-      <h2 style="margin:0 0 10px">Book a conversation</h2>
-      <p class="prod-sub" style="margin:0 0 14px;color:#b9c2cf">Prefer a quick slot? Use Calendly. Want to outline needs first? Use the form.</p>
-      <div class="book-grid">
-        <div>
-          <div class="calendly-inline-widget"
-               data-url="https://calendly.com/industry5pro/30min"
-               style="min-width:320px;height:780px;border-radius:12px;overflow:hidden;background:#0a0f19"></div>
-        </div>
-        <aside>
-         <div class="yt-wrap">
-  <iframe
-    src="https://www.youtube.com/embed/VIDEO_ID"
-    title="…"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen
-  ></iframe>
-</div>
-          </div>
-        </aside>
+   <section class="section card" id="book" ...>
+  <h2>Book a conversation</h2>
+  <p class="prod-sub">Prefer a quick slot? Use Calendly. Want to outline needs first? Use the form.</p>
+
+  <div class="book-grid">
+    <div>
+      <div class="calendly-inline-widget"
+           data-url="https://calendly.com/industry5pro/30min"
+           style="min-width:320px;height:780px;border-radius:12px;overflow:hidden;background:#0a0f19"></div>
+    </div>
+
+    <aside>
+      <div class="yt-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/VIDEO_ID"
+          title="…"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
       </div>
-    </section>
+    </aside>
+  </div>
+</section>
+
 
     <!-- Footer -->
 <footer class="footer">
@@ -2164,7 +2201,7 @@ window.CLOUD2_FORM = "/cloud20.html";
   *:hover{
     text-shadow: none;
   }
-  <head>
+
   <style>
     /* ...your existing CSS... */
 
@@ -2395,35 +2432,3 @@ window.CLOUD2_FORM = "/cloud20.html";
 
 </body>
 </html>
-<style>
-  .btn-primary:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 10px 24px rgba(133,187,101,0.38);
-  }
-  .btn-secondary:hover {
-    background: rgba(133,187,101,0.16);
-  }
-  /* Cloud 2.0 CTA pill: Lumen orange fill + ice-blue glow + black text */
-.pill-cta.cloud-accent,
-.oo-cta.cloud-accent{
-  display:inline-flex; align-items:center; justify-content:center; text-align:center;
-  min-height:40px; padding:12px 22px; border-radius:9999px;
-  font-weight:800; letter-spacing:.2px;
-  color:#0b0b0b;
-  background:linear-gradient(180deg, var(--lumen), #ff8c3a);
-  border:1px solid var(--lumen);
-  box-shadow:0 0 12px rgba(43,237,231,.55), 0 0 26px rgba(43,237,231,.35);
-  text-shadow:0 0 2px rgba(255,255,255,.95), 0 0 8px rgba(255,255,255,.45);
-  transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
-}
-.pill-cta.cloud-accent:hover,
-.pill-cta.cloud-accent:focus-visible,
-.oo-cta.cloud-accent:hover,
-.oo-cta.cloud-accent:focus-visible{
-  transform:translateY(-1px);
-  box-shadow:0 0 14px rgba(43,237,231,.70), 0 0 32px rgba(43,237,231,.45);
-  outline:0;
-}
-
-
-</style>
