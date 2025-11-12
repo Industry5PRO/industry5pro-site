@@ -282,6 +282,15 @@ h1{ letter-spacing: 0 !important; }
     0 0 18px 2px rgba(0,179,54,.35),  /* green edge */
     0 0 26px 8px rgba(255,106,19,.20);/* orange center glow */
 }
+.icon-btn svg { width:18px; height:18px; display:block; }
+.icon-btn svg rect, .icon-btn svg circle, .icon-btn svg path { 
+  fill: none; stroke: currentColor; stroke-width: 1.6;
+}
+/* Keep FB/WhatsApp filled look by overriding their paths */
+.icon-btn[data-fill] svg path { fill: currentColor; stroke: none; }
+/* Pillar cards: equal visual baseline for CTA */
+.pillars .pillar{ display:flex; flex-direction:column; }
+.pillars .pillar .pill{ margin-top:auto; align-self:flex-start; }
 
 
   </style>
@@ -592,7 +601,7 @@ h1{ letter-spacing: 0 !important; }
   <!-- Socials: icons only -->
 <div class="socials" aria-label="Industry5.pro social links">
   <!-- Facebook -->
-  <a class="icon-btn" aria-label="Facebook"
+  <a class="icon-btn" data-fill aria-label="Facebook"
      href="https://www.facebook.com/profile.php?id=61582481880019"
      target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -602,12 +611,15 @@ h1{ letter-spacing: 0 !important; }
 
   <!-- Instagram -->
   <a class="icon-btn" aria-label="Instagram"
-     href="https://www.instagram.com/industry5pro/"
-     target="_blank" rel="noopener noreferrer">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm5.75-2.75a1.25 1.25 0 1 1-1.25 1.25 1.25 1.25 0 0 1 1.25-1.25z"/>
-    </svg>
-  </a>
+   href="https://www.instagram.com/industry5pro/"
+   target="_blank" rel="noopener noreferrer">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+    <circle cx="12" cy="12" r="4"></circle>
+    <circle cx="17.5" cy="6.5" r="1.25"></circle>
+  </svg>
+</a>
+
 
   <!-- Email -->
   <a class="icon-btn" aria-label="Email"
@@ -618,7 +630,7 @@ h1{ letter-spacing: 0 !important; }
   </a>
 
   <!-- WhatsApp -->
-  <a class="icon-btn" aria-label="WhatsApp"
+  <a class="icon-btn" data-fill aria-label="WhatsApp"
      href="https://wa.me/14076945495" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.966-.273-.099-.472-.148-.671.15-.198.297-.769.966-.942 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.173.198-.297.298-.495.099-.198.05-.372-.025-.521-.074-.149-.671-1.611-.92-2.206-.242-.582-.487-.503-.671-.512l-.572-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.48 0 1.463 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.08 4.487.71.306 1.263.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.718 2.006-1.41.248-.69.248-1.282.173-1.41-.074-.124-.272-.198-.57-.347zM12.004 2C6.478 2 2 6.477 2 12.003c0 2.105.555 4.074 1.523 5.784L2 22l4.33-1.133a9.953 9.953 0 0 0 5.674 1.74h.001c5.526 0 10.004-4.477 10.004-10.003C22.01 6.477 17.53 2 12.004 2z"/>
