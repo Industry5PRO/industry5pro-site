@@ -224,6 +224,19 @@
   filter: none !important;                 /* remove the green glow from this page */
   box-shadow: none !important;
 }
+/* Match index: brand title styling */
+:root { --brand-title-size: 20px; }   /* set to whatever your index uses */
+
+.brand .title,
+.brand strong.site-title,
+.hdr-inner .brand strong {
+  font-size: var(--brand-title-size);
+  line-height: 1.2;
+  font-weight: 600;
+  color: #fff;                        /* white like the main index */
+  letter-spacing: 0.2px;
+  text-wrap: balance;
+}
 
 
     /* Footer */
@@ -240,7 +253,8 @@
      class="logo"
      loading="eager" decoding="async" />
 
-  <span class="title">Industry5.pro — AIoT</span>
+  <strong class="title">Industry5.pro | AIoT</strong>
+
 </a>
 <div class="nav-actions">
   <a class="home" href="/">Home</a>
