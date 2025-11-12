@@ -337,6 +337,30 @@ h1{ letter-spacing: 0 !important; }
 @media (max-width: 860px){
   .pillars > .card.pillar{ min-height: 0; }  /* let them shrink naturally */
 }
+/* Base: keep normal text color */
+#cta-start, #cta-plan{
+  color: #1b1b1d;                 /* black/dark text, matches your pill primary style */
+  text-shadow: none;
+  transition: color .15s ease, text-shadow .2s ease;
+}
+
+/* Hover/focus/active: veeam green text + soft glow; bg unchanged */
+#cta-start:hover, #cta-start:focus, #cta-start:active,
+#cta-plan:hover,  #cta-plan:focus,  #cta-plan:active{
+  color: var(--veeam-green);
+  text-shadow:
+    0 0 6px rgba(0,179,54,.6),
+    0 0 12px rgba(0,179,54,.35);
+  outline: none;
+}
+
+/* Optional: improve tap feedback on touch devices */
+@media (hover:none){
+  #cta-start:active, #cta-plan:active{
+    color: var(--veeam-green);
+    text-shadow: 0 0 10px rgba(0,179,54,.6);
+  }
+}
 
 
   </style>
