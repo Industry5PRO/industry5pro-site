@@ -361,6 +361,28 @@ h1{ letter-spacing: 0 !important; }
     text-shadow: 0 0 10px rgba(0,179,54,.6);
   }
 }
+/* Text-only neon pop on hover/press (background unchanged) */
+#cta-open, #cta-schedule{
+  color:#1b1b1d;            /* keep normal dark text */
+  text-shadow:none;
+  transition: color .15s ease, text-shadow .2s ease;
+}
+#cta-open:hover, #cta-open:focus, #cta-open:active,
+#cta-schedule:hover, #cta-schedule:focus, #cta-schedule:active{
+  color: var(--veeam-green);
+  text-shadow:
+    0 0 6px rgba(0,179,54,.6),
+    0 0 12px rgba(0,179,54,.35);
+  outline:none;
+}
+
+/* Better tap feedback on touch devices */
+@media (hover:none){
+  #cta-open:active, #cta-schedule:active{
+    color: var(--veeam-green);
+    text-shadow: 0 0 10px rgba(0,179,54,.6);
+  }
+}
 
 
   </style>
@@ -611,8 +633,13 @@ h1{ letter-spacing: 0 !important; }
       </div>
 
       <div class="form-actions">
-        <a class="pill primary" target="_blank" rel="noopener" href="https://near.tl/sm/PKoP8D7PR">Open Form in New Tab</a>
-        <a class="pill outline" href="#pillars">Not sure where to start</a>
+        <a class="pill primary"
+   id="cta-open"
+   target="_blank" rel="noopener"
+   href="https://near.tl/sm/PKoP8D7PR">
+  Open Form in New Tab
+</a>
+
       </div>
     </div>
 
@@ -646,11 +673,13 @@ h1{ letter-spacing: 0 !important; }
 
     <div class="cta-buttons">
       <!-- Correct Calendly link -->
-      <a class="pill primary"
-         href="https://calendly.com/industry5pro/30min"
-         target="_blank" rel="noopener">
-        Schedule Cyber Review
-      </a>
+   <a class="pill primary"
+   id="cta-schedule"
+   href="https://calendly.com/industry5pro/30min"
+   target="_blank" rel="noopener">
+  Schedule Cyber Review
+</a>
+
 
       <!-- Force a download of your checklist (swap .pdf if needed) -->
      <a class="pill outline"
