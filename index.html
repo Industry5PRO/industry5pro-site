@@ -1036,6 +1036,84 @@ input[type="switch"]{
 /* Optional: add top scroll offset for in-page anchors */
 .anchor{ scroll-margin-top: 90px; }
 
+:root{
+  --lumen-charcoal:#1B1B1D;
+  --lumen-orange:#FF6A13; /* Lumen orange */
+  --ice-blue:#2BEDE7;     /* Lumen ice blue */
+}
+
+/* Sticky translucent header that floats as you scroll */
+.topbar{
+  position:sticky; top:0; z-index:1000;
+  background:rgba(27,27,29,.72);            /* translucent charcoal */
+  backdrop-filter:saturate(140%) blur(10px); /* glassy feel */
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+/* Basic layout */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:12px 0}
+.brand{display:flex;gap:10px;align-items:center}
+.brand .logo{width:28px;height:28px;border-radius:6px;display:block}
+.brand .dot{width:10px;height:10px;border-radius:50%;background:var(--ice-blue);box-shadow:0 0 10px rgba(43,237,231,.7)}
+.brand strong{font-weight:800;font-size:clamp(20px,2.6vw,24px);letter-spacing:.2px}
+
+/* Link row (text only, scrollable on small screens) */
+.nav-actions{
+  display:flex;gap:16px;align-items:center;
+  overflow:auto hidden; -webkit-overflow-scrolling:touch; scrollbar-width:none;
+}
+.nav-actions::-webkit-scrollbar{display:none}
+
+/* Text-only links: white by default */
+.navlink{
+  position:relative;
+  display:inline-block;
+  color:#EAEAEA;                      /* white/near-white */
+  font-weight:800;
+  text-decoration:none;
+  padding:6px 2px;                    /* tiny hit area without pill look */
+  transition:color .15s ease, transform .15s ease;
+}
+
+/* Ice-blue glow layer behind text (hidden until hover) */
+.navlink::before{
+  content:"";
+  position:absolute; left:-8px; right:-8px; top:50%; height:10px;
+  transform:translateY(-50%);
+  border-radius:10px;
+  background:radial-gradient(24px 10px at 50% 50%, rgba(43,237,231,.45), transparent 70%);
+  filter:blur(6px);
+  opacity:0; pointer-events:none;
+  transition:opacity .18s ease, filter .18s ease;
+}
+
+/* Hover: orange text + subtle lift + ice-blue aura */
+.navlink:hover,
+.navlink:focus-visible{
+  color:var(--lumen-orange);
+  transform:translateY(-1px);
+  outline:0;
+}
+.navlink:hover::before,
+.navlink:focus-visible::before{
+  opacity:1;
+  filter:blur(7px);
+}
+
+/* Optional: active page indicator (tiny ice-blue underline) */
+.navlink[aria-current="page"]::after{
+  content:"";
+  position:absolute; left:0; right:0; bottom:-6px; height:2px;
+  background:var(--ice-blue);
+  box-shadow:0 0 8px rgba(43,237,231,.6);
+  opacity:.9;
+}
+
+/* Mobile spacing */
+@media (max-width:640px){
+  .nav{padding:10px 0}
+  .nav-actions{gap:12px}
+}
 
 </style>
 
@@ -1043,7 +1121,7 @@ input[type="switch"]{
   </style>
 </head>
 <body>
-  <!-- ===== Sticky Topbar ===== -->
+<!-- ===== Sticky Topbar (text-only nav) ===== -->
 <div class="topbar">
   <div class="wrap">
     <nav class="nav" aria-label="Primary">
@@ -1054,14 +1132,14 @@ input[type="switch"]{
       </div>
 
       <div class="nav-actions">
-        <a class="pill outline" href="https://industry5.pro/ai">AI</a>
-        <a class="pill outline" href="https://industry5.pro/cyber">Security</a>
-        <a class="pill outline" href="https://industry5.pro/cloud20">Cloud 2.0</a>
-        <a class="pill outline" href="https://industry5.pro/uc">UC &amp; Contact Center</a>
-        <a class="pill outline" href="https://industry5.pro/aiot">AIoT</a>
-        <a class="pill outline" href="https://industry5.pro/peplink">5G &amp; Satellite</a>
-        <a class="pill outline" href="https://industry5.pro/blog">Blog</a>
-        <a class="pill outline book-lou" href="https://calendly.com/industry5pro/30min">Book Lou</a>
+        <a class="navlink" href="https://industry5.pro/ai">AI</a>
+        <a class="navlink" href="https://industry5.pro/cyber">Security</a>
+        <a class="navlink" href="https://industry5.pro/cloud20">Cloud 2.0</a>
+        <a class="navlink" href="https://industry5.pro/uc">UC &amp; Contact Center</a>
+        <a class="navlink" href="https://industry5.pro/aiot">AIoT</a>
+        <a class="navlink" href="https://industry5.pro/peplink">5G &amp; Satellite</a>
+        <a class="navlink" href="https://industry5.pro/blog">Blog</a>
+        <a class="navlink" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
       </div>
     </nav>
   </div>
