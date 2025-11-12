@@ -383,6 +383,29 @@ h1{ letter-spacing: 0 !important; }
     text-shadow: 0 0 10px rgba(0,179,54,.6);
   }
 }
+/* Veeam-green text glow on hover/click (background unchanged) */
+#cta-plan{
+  color:#1b1b1d;              /* normal state */
+  text-shadow:none;
+  transition: color .15s ease, text-shadow .2s ease;
+}
+#cta-plan:hover,
+#cta-plan:focus,
+#cta-plan:active{
+  color: var(--veeam-green);
+  text-shadow:
+    0 0 6px rgba(0,179,54,.6),
+    0 0 12px rgba(0,179,54,.35);
+  outline:none;
+}
+
+/* Touch pop */
+@media (hover:none){
+  #cta-plan:active{
+    color: var(--veeam-green);
+    text-shadow: 0 0 10px rgba(0,179,54,.6);
+  }
+}
 
 
   </style>
