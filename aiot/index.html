@@ -210,6 +210,20 @@
   background: #0b0b0b; /* keep the dark base */
 }
 .nav-actions{ display:flex; gap:10px; align-items:center }
+/* Match index header logo sizing/clean style */
+.hdr-inner { min-height: 72px; }           /* give the taller logo room */
+.brand { gap: 18px; }                      /* breathe between logo and title */
+
+.logo{
+  height: 56px;                            /* same visual size as index */
+  width: auto;                             /* keep SVG aspect ratio */
+  display: block;
+  object-fit: contain;
+  border-radius: 0 !important;             /* no rounded crop */
+  background: transparent !important;
+  filter: none !important;                 /* remove the green glow from this page */
+  box-shadow: none !important;
+}
 
 
     /* Footer */
@@ -221,10 +235,11 @@
   <header class="hdr">
     <div class="hdr-inner wrap">
       <a class="brand" href="/">
-  <img src="/assets/industry5-logo.png"
-       alt="Industry5.pro logo"
-       class="logo" width="44" height="44"
-       loading="eager" decoding="async" />
+  <img src="/assets/industry5logo.svg"
+     alt="Industry5.pro logo"
+     class="logo"
+     loading="eager" decoding="async" />
+
   <span class="title">Industry5.pro — AIoT</span>
 </a>
 <div class="nav-actions">
