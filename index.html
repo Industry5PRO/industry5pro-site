@@ -1328,6 +1328,24 @@ body{ padding-top: var(--header-h); }
   :root{ --header-h: 68px; } /* header a hair taller on mobile */
   .topbar .nav-actions{ gap:18px; overflow:auto hidden; -webkit-overflow-scrolling:touch; }
 }
+/* Bigger SVG logo in the top bar */
+.topbar{ --header-h: 72px; }  /* lifts the bar a bit to match the taller logo */
+
+.topbar .brand .logo{
+  height: 56px;               /* fills ~3 text lines worth of space */
+  width: auto;                /* keep SVG aspect ratio */
+  display: block;
+  object-fit: contain;
+  border-radius: 0;           /* no rounded crop for SVG */
+  background: transparent !important;
+  filter: none !important;
+  box-shadow: none !important;
+  mix-blend-mode: normal !important;
+}
+
+/* Nudge spacing so the larger mark breathes */
+.topbar .brand{ gap: 18px; }
+.topbar .brand strong{ margin-right: 14px; }
 
     
 </style>
@@ -1343,7 +1361,7 @@ body{ padding-top: var(--header-h); }
   <div class="wrap">
     <nav class="nav" aria-label="Primary">
       <div class="brand">
-        <img class="logo" src="/assets/industry5-logo.png" alt="Industry5.pro logo" />
+       <img class="logo" src="/assets/industry5logo.svg" alt="Industry5.pro logo" />
         <div class="dot" aria-hidden="true"></div>
         <strong>Industry5.pro</strong>
       </div>
