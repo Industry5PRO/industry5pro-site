@@ -103,7 +103,15 @@
 
 
 /* Footer + socials — match index */
-.footer{margin:32px 0;color:#cfd6e3;font-size:14px;border-top:1px solid rgba(255,255,255,.08);padding:24px 20px}
+.footer{
+  margin:32px 0;
+  padding:24px 20px;
+  border-top:1px solid rgba(255,255,255,.08);
+  color:#cfd6e3;
+  font-size:14px;
+  text-align:center;        /* center the copyright line */
+}
+
 .footer .social-icons{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:10px}
 .footer .social-icons a{
   width:38px;height:38px;display:grid;place-items:center;
@@ -113,13 +121,14 @@
 .footer .social-icons a svg{width:18px;height:18px}
 .footer .social-icons a:hover,
 .footer .social-icons a:focus-visible{
-  border-color:#FFD700 !important;
-  box-shadow:0 0 10px rgba(255,215,0,.65), 0 0 18px rgba(255,215,0,.35);
-  color:#85BB65 !important;
-  text-shadow:0 0 6px rgba(133,187,101,.85), 0 0 14px rgba(133,187,101,.45);
+  border-color: var(--siemens-green) !important;
+  box-shadow: 0 0 10px var(--siemens-glow), 0 0 18px rgba(41,234,215,.35);
+  color:#fff !important;
+  text-shadow: 0 0 6px var(--siemens-glow), 0 0 14px rgba(41,234,215,.45);
   transform:translateY(-2px);
   outline:0;
 }
+
 /* Glowing gold pill CTAs with money-green text */
 .btns{ display:flex; gap:12px; flex-wrap:wrap }
 .pill-cta{
@@ -337,6 +346,7 @@ body{ padding-top: var(--header-h); }
   text-shadow: 0 0 8px var(--siemens-glow);
   transform: translateY(-1px);
 }
+
     /* Logo glow using existing Siemens vars */
 .brand .logo{
   filter:
@@ -357,9 +367,6 @@ body{ padding-top: var(--header-h); }
 /* AIoT header container parity, in case that page uses .hdr-inner */
 .hdr-inner{ min-height: var(--header-h); }
 
-
-    /* Footer */
-    footer{margin:30px 0 20px; padding:16px 0; border-top:1px solid rgba(255,215,0,.22); color:var(--silver); font-size:.95rem}
   </style>
 </head>
 <body>
@@ -571,20 +578,6 @@ body{ padding-top: var(--header-h); }
 
   </main>
   <script>
-/* Outcome Obs chips: filter only */
-(function () {
-  var filters = document.getElementById('oo-filters');
-  if (!filters) return;
-
-  // Convert any accidental <a> chips into <button>
-  filters.querySelectorAll('a').forEach(function (a) {
-    var b = document.createElement('button');
-    b.type = 'button';
-    b.className = (a.className || '').replace(/\b(link|nav|pill)\b/g,'').trim() + ' oo-chip';
-    b.dataset.filter = (a.dataset.filter || '').toLowerCase();
-    b.textContent = a.textContent;
-    a.replaceWith(b);
-  });
 
   // Block default nav in the chip row, just in case
   filters.addEventListener('click', function (e) {
