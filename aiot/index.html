@@ -2,37 +2,425 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Redirecting…</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- Canonical for SEO/previews -->
-  <link rel="canonical" href="https://industry5.pro/aiot/">
-
-  <!-- 0-delay HTML redirect -->
-  <meta http-equiv="refresh" content="0; url=/aiot/">
-
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Industry5.pro</title>
+  <meta name="description" content="Carrier-agnostic AIoT solutions: connectivity, eSIM, security, edge/AI, and data pipelines—built for measurable outcomes." />
   <style>
-    html,body{height:100%;margin:0;font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#000;color:#fff}
-    .wrap{height:100%;display:grid;place-items:center;text-align:center;padding:24px}
-    a{color:#85BB65}
-  </style>
+    :root{
+      --black:#000000;
+      --money:#85BB65;      /* money green */
+      --gold:#FFD700;       /* real gold */
+      --white:#FFFFFF;
+      --silver:#C0C0C0;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:var(--black); color:var(--white);
+    }
+    a{color:var(--money); text-decoration:none}
+    a:hover{opacity:.9}
+    .wrap{max-width:1180px; margin:0 auto; padding:24px}
 
-  <script>
-    // JS redirect (keeps this page out of history)
-    location.replace('/aiot/');
-  </script>
+    /* Header */
+    .hdr{
+      position:sticky; top:0; z-index:40;
+      backdrop-filter:saturate(140%) blur(6px);
+      background:rgba(0,0,0,.7); border-bottom:1px solid rgba(255,215,0,.25);
+    }
+    .hdr-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 24px}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.3px}
+    .brand svg{height:28px; width:28px; fill:var(--money)}
+    .home{
+      padding:10px 16px; border:1px solid var(--gold);
+      color:var(--gold); border-radius:10px; font-weight:600; background:transparent;
+      transition:transform .15s ease, box-shadow .15s ease;
+    }
+    .home:hover{transform:translateY(-1px); box-shadow:0 6px 22px rgba(255,215,0,.25)}
+
+    /* Hero */
+    .hero{padding:40px 24px 10px}
+    .kicker{color:var(--gold); font-weight:700; font-size:.95rem; letter-spacing:.08em; text-transform:uppercase}
+    h1{font-size:2.1rem; line-height:1.2; margin:.4rem 0 0}
+    .sub{color:var(--silver); max-width:900px; font-size:1.05rem}
+
+    /* Quadrant */
+    .quad{
+      margin:24px auto; background:#0a0a0a; border:1px solid rgba(255,215,0,.35);
+      border-radius:14px; padding:18px; box-shadow:0 10px 40px rgba(255,215,0,.08);
+    }
+    .quad a img{
+      width:100%; height:auto; display:block; border-radius:10px; border:1px solid rgba(133,187,101,.35)
+    }
+    .cta-bar{
+      display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between;
+      margin-top:14px; padding:12px; border-top:1px dashed rgba(255,215,0,.35)
+    }
+    .cta{
+      background:linear-gradient(180deg, var(--gold), #f0c000);
+      color:#1a1a1a; font-weight:800; padding:12px 18px; border-radius:12px; border:0; cursor:pointer;
+      transition:transform .15s ease;
+    }
+    .cta:hover{transform:translateY(-1px)}
+    .note{color:var(--silver); font-size:.92rem}
+
+    /* Menu grid */
+    .menu{margin:28px 0 6px}
+    .menu h2{font-size:1.4rem; color:var(--gold); margin:0 0 10px}
+    .grid{
+      display:grid; gap:12px;
+      grid-template-columns:repeat(auto-fill, minmax(220px,1fr));
+    }
+    .chip{
+      display:flex; align-items:center; justify-content:center; text-align:center;
+      padding:14px 12px; border:1px solid rgba(133,187,101,.45); border-radius:12px;
+      background:rgba(133,187,101,.08); color:var(--white); font-weight:600;
+      transition:transform .12s ease, border-color .12s ease, background .12s ease;
+    }
+    .chip:hover{transform:translateY(-1px); border-color:var(--gold); background:rgba(255,215,0,.08)}
+
+    /* Micro white paper */
+    .paper{margin:26px 0 8px}
+    .paper h2{font-size:1.4rem; color:var(--gold); margin:0 0 8px}
+    details{
+      border:1px solid rgba(255,215,0,.25); border-radius:12px; padding:12px 14px; background:#0b0b0b; margin:10px 0;
+    }
+    summary{font-weight:800; color:var(--money); cursor:pointer}
+    .sec{display:grid; gap:8px; margin-top:10px}
+    .pill{display:inline-block; border:1px solid rgba(255,215,0,.35); border-radius:999px; padding:4px 10px; margin:2px 6px 2px 0; color:var(--silver); font-size:.88rem}
+    .kpis{color:var(--silver); font-size:.96rem}
+    .ex{color:var(--white)}
+    /* Nudge the hero copy toward center without center-aligning text */
+.hero-nudge{
+  max-width: 900px;      /* control line length */
+  margin: 0 auto;        /* center the block within the page */
+  padding-left: 36px;    /* slight “tab” so it doesn’t feel perfectly centered */
+}
+
+@media (max-width: 900px){
+  .hero-nudge{ padding-left: 16px; } /* lighter nudge on mobile */
+}
+/* Logo matches index */
+.logo{
+  width:44px;height:44px;border-radius:12px;display:block;
+  object-fit:contain;
+  filter: drop-shadow(0 0 10px rgba(133,187,101,.40));
+  background: transparent;
+}
+
+/* Footer + socials — match index */
+.footer{margin:32px 0;color:#cfd6e3;font-size:14px;border-top:1px solid rgba(255,255,255,.08);padding:24px 20px}
+.footer .social-icons{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:10px}
+.footer .social-icons a{
+  width:38px;height:38px;display:grid;place-items:center;
+  border:1px solid rgba(255,255,255,.18);border-radius:999px;color:#e6eef5;
+  transition: color .15s ease, border-color .15s ease, box-shadow .15s ease, transform .15s ease, text-shadow .15s ease;
+}
+.footer .social-icons a svg{width:18px;height:18px}
+.footer .social-icons a:hover,
+.footer .social-icons a:focus-visible{
+  border-color:#FFD700 !important;
+  box-shadow:0 0 10px rgba(255,215,0,.65), 0 0 18px rgba(255,215,0,.35);
+  color:#85BB65 !important;
+  text-shadow:0 0 6px rgba(133,187,101,.85), 0 0 14px rgba(133,187,101,.45);
+  transform:translateY(-2px);
+  outline:0;
+}
+/* Glowing gold pill CTAs with money-green text */
+.btns{ display:flex; gap:12px; flex-wrap:wrap }
+.pill-cta{
+  display:inline-block;
+  padding:12px 22px;
+  border-radius:9999px;
+  font-weight:800;
+  letter-spacing:.2px;
+  text-decoration:none;
+  color:#85BB65;                 /* money green letters */
+  background:rgba(255,215,0,.08);/* faint gold tint */
+  border:1px solid rgba(255,215,0,.65);
+  box-shadow:0 0 10px rgba(255,215,0,.25);
+  transition:transform .15s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+}
+.pill-cta:hover,
+.pill-cta:focus-visible{
+  transform:translateY(-1px);
+  background:rgba(255,215,0,.14);
+  border-color:#FFD700;
+  box-shadow:0 0 12px rgba(255,215,0,.45), 0 0 26px rgba(255,215,0,.25);
+  outline:0;
+}
+/* Featured pill */
+.pill-cta.accent{
+  background:linear-gradient(180deg,#FFD700,#f0c000);
+  color:#101010;                 /* readable on gold fill */
+  border:1px solid #FFD700;
+  box-shadow:0 6px 28px rgba(255,215,0,.35);
+}
+/* Hero grid with right-side profile */
+.hero { padding: 40px 24px 10px; }
+.hero-grid{
+  max-width: 1080px;            /* centers the whole hero */
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;  /* more space for copy */
+  gap: 28px;
+  align-items: center;
+  padding-left: 36px;            /* subtle left nudge to align with quadrant */
+}
+.hero-copy .kicker{ color:#FFD700; font-weight:700; font-size:.95rem; letter-spacing:.08em; text-transform:uppercase }
+.hero-copy h1{ font-size:2.1rem; line-height:1.2; margin:.4rem 0 0 }
+.hero-copy .sub{ color:#C0C0C0; max-width: 760px; font-size:1.05rem }
+
+/* Profile card */
+.hero-pic{
+  justify-self: end;
+  width: 320px; max-width: 36vw;
+  border-radius: 18px;
+  border: 1px solid rgba(255,215,0,.35);
+  box-shadow: 0 10px 40px rgba(255,215,0,.12), 0 0 18px rgba(133,187,101,.25);
+  overflow: hidden;
+  background: #0b0b0b;
+}
+.hero-pic img{
+  display:block; width:100%; height:auto; object-fit:cover;
+  filter: saturate(1.03) contrast(1.02);
+}
+
+/* Mobile stack */
+@media (max-width: 900px){
+  .hero-grid{
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding-left: 16px;           /* lighter nudge on mobile */
+  }
+  .hero-pic{ justify-self: start; width: 56vw; }
+}
+/* Remove gold border around hero image card */
+.hero-pic{
+  border: 0 !important;
+}
+
+/* Make sure the image itself never shows a border/outline */
+.hero-pic img{
+  border: 0 !important;
+  outline: none !important;
+}
+.hero-pic{
+  box-shadow: 0 10px 28px rgba(0,0,0,.45), 0 0 14px rgba(133,187,101,.18);
+  background: #0b0b0b; /* keep the dark base */
+}
+.nav-actions{ display:flex; gap:10px; align-items:center }
+
+
+    /* Footer */
+    footer{margin:30px 0 20px; padding:16px 0; border-top:1px solid rgba(255,215,0,.22); color:var(--silver); font-size:.95rem}
+  </style>
 </head>
 <body>
-  <div class="wrap">
-    <div>
-      <h1>Taking you to AIoT…</h1>
-      <p>If you aren’t redirected, <a href="/aiot/">click here</a>.</p>
+  <!-- Header — keep this in sync with your Supermetrics page header -->
+  <header class="hdr">
+    <div class="hdr-inner wrap">
+      <a class="brand" href="/">
+  <img src="/assets/industry5-logo.png"
+       alt="Industry5.pro logo"
+       class="logo" width="44" height="44"
+       loading="eager" decoding="async" />
+  <span class="title">Industry5.pro — AIoT</span>
+</a>
+<div class="nav-actions">
+  <a class="home" href="/">Home</a>
+  <a class="home" href="/blog.html">Blog</a>
+</div>
+
+
+</div>
+  </header>
+
+  <main class="wrap">
+   <section class="hero">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div class="kicker">Carrier Agnostic AIoT</div>
+      <h1>Data Driven Quadrant and Industry Applications</h1>
+      <p class="sub">
+        We lead with Aeris because the facts support it: platform scale from Ericsson’s IoT stack, multi MNO eSIM, deep security, and a carrier agnostic approach tailored to each use case and geography. For industrial operations, Siemens is our leader: Industrial Edge for on line inference, Insights Hub for data and twins, native PLC and SCADA integration, and IEC 62443 level security. Everyone has a niche. I can help clear the air. Scan below and send me a consulting request.
+      </p>
+    </div>
+
+    <!-- Right-side profile: use the SAME src you use on index -->
+    <div class="hero-pic">
+      <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora — Industry5.pro" />
     </div>
   </div>
+</section>
 
-  <noscript>
-    <meta http-equiv="refresh" content="0; url=/aiot/">
-  </noscript>
+
+    <!-- Quadrant -->
+  <section class="quad">
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform" target="_blank" rel="noopener">
+    <img
+      src="/assets/aiot_quadrant_i5_colors.png?v=5"
+      alt="AIoT Landscape Quadrant — Carrier Agnostic View"
+      onerror="this.onerror=null;this.style.border='2px solid red';this.alt='Quadrant image not found at /assets/aiot_quadrant_i5_colors.png';"
+    />
+  </a>
+  <div class="cta-bar">
+    <div class="note">Click the quadrant to open the AIoT intake form. We’ll scope connectivity, security, edge, and data pipelines around your outcomes.</div>
+    <a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform" target="_blank" rel="noopener">Request Scope and Pricing</a>
+  </div>
+</section>
+
+
+    <!-- Application menu (routes to blog; case studies live under tags, not a separate page) -->
+    <section class="menu">
+      <h2>Application Specific and Client Specific Menu</h2>
+      <div class="grid">
+        <a class="chip" href="/blog?tag=manufacturing-aiot#case-studies">Manufacturing</a>
+        <a class="chip" href="/blog?tag=smart-city#case-studies">Smart City</a>
+        <a class="chip" href="/blog?tag=utilities-grid#case-studies">Utilities and Grid</a>
+        <a class="chip" href="/blog?tag=transport-fleet#case-studies">Fleet and Mobility</a>
+        <a class="chip" href="/blog?tag=healthcare-med-device#case-studies">Healthcare and Med Device</a>
+        <a class="chip" href="/blog?tag=retail-cpg#case-studies">Retail and CPG</a>
+        <a class="chip" href="/blog?tag=logistics-warehousing#case-studies">Logistics and Warehousing</a>
+        <a class="chip" href="/blog?tag=agri-drones#case-studies">Agriculture and Drones</a>
+        <a class="chip" href="/blog?tag=oil-gas-mining#case-studies">Oil Gas and Mining</a>
+        <a class="chip" href="/blog?tag=buildings-campus#case-studies">Smart Buildings and Campuses</a>
+        <a class="chip" href="/blog?tag=public-safety#case-studies">Public Safety</a>
+        <a class="chip" href="/blog?tag=energy-ev#case-studies">Energy Storage and EV</a>
+        <a class="chip" href="/blog?tag=maritime#case-studies">Maritime</a>
+        <a class="chip" href="/blog?tag=environmental#case-studies">Environmental and Water</a>
+        <a class="chip" href="/blog?tag=insurance-telematics#case-studies">Insurance Telematics</a>
+      </div>
+    </section>
+
+    <!-- Micro white paper (short, expandable) -->
+    <section class="paper">
+      <h2>Micro White Paper — Industry Applications</h2>
+
+      <details open>
+        <summary>Manufacturing</summary>
+        <div class="sec">
+          <div class="kpis"><span class="pill">OEE</span><span class="pill">MTBF</span><span class="pill">Scrap Rate</span><span class="pill">Throughput</span><span class="pill">Energy per Unit</span></div>
+          <div>ICP: multi-site plants, PLC heavy, downtime sensitivity, readiness for Private 5G or robust Wi-Fi plus cellular backup.</div>
+          <div>Plays: machine telemetry → lakehouse, predictive maintenance, vision QA at edge, worker safety wearables, AMR/AGV control.</div>
+          <div class="ex">Pattern: eSIM modules → secure APN → CMP → cloud feature store → model serving at line-side gateway.</div>
+        </div>
+      </details>
+
+      <details><summary>Smart City</summary><div class="sec">
+        <div class="kpis"><span class="pill">Response Time</span><span class="pill">Energy Savings</span><span class="pill">Traffic Flow</span></div>
+        <div>Plays: smart lighting, ALPR at edge, flood sensing, air quality networks, AI incident detection for cameras.</div>
+      </div></details>
+
+      <details><summary>Utilities and Grid</summary><div class="sec">
+        <div class="kpis"><span class="pill">SAIDI</span><span class="pill">SAIFI</span><span class="pill">Truck Rolls</span></div>
+        <div>Plays: pole-top sensors, FLISR analytics at the edge, AMI backhaul, vegetation CV.</div>
+      </div></details>
+
+      <details><summary>Fleet and Mobility</summary><div class="sec">
+        <div class="kpis"><span class="pill">Fuel Burn</span><span class="pill">Idle Time</span><span class="pill">CSA Score</span></div>
+        <div>Plays: multi-IMSI eSIM, ADAS/vision, driver coaching, cold chain, SDV OEM integrations.</div>
+      </div></details>
+
+      <details><summary>Healthcare and Med Device</summary><div class="sec">
+        <div class="kpis"><span class="pill">Readmission</span><span class="pill">Time to Alarm</span><span class="pill">Uptime</span></div>
+        <div>Plays: zero-touch onboarding, SIM-anchored identity, PHI segmentation, anomaly detection on device streams.</div>
+      </div></details>
+
+      <details><summary>Retail and CPG</summary><div class="sec">
+        <div class="kpis"><span class="pill">Shrink</span><span class="pill">Conversion</span><span class="pill">Dwell</span></div>
+        <div>Plays: CV loss prevention, smart shelves, cooler telemetry, pop-up connectivity, payment failover.</div>
+      </div></details>
+
+      <details><summary>Logistics and Warehousing</summary><div class="sec">
+        <div class="kpis"><span class="pill">Dock to Stock</span><span class="pill">Pick Accuracy</span></div>
+        <div>Plays: RTLS, condition monitoring, digital twins, AMR fleets over private wireless.</div>
+      </div></details>
+
+      <details><summary>Agriculture and Drones</summary><div class="sec">
+        <div class="kpis"><span class="pill">Yield</span><span class="pill">Water per Acre</span></div>
+        <div>Plays: soil moisture, NDVI drone flights with prescriptions, autonomous spraying, livestock tags.</div>
+      </div></details>
+
+      <details><summary>Oil Gas and Mining</summary><div class="sec">
+        <div class="kpis"><span class="pill">Unplanned Downtime</span><span class="pill">Safety Incidents</span></div>
+        <div>Plays: edge safety analytics, vibration/corrosion monitoring, sat+cell hybrid backhaul.</div>
+      </div></details>
+
+      <details><summary>Smart Buildings and Campuses</summary><div class="sec">
+        <div class="kpis"><span class="pill">Energy Cost</span><span class="pill">Comfort Index</span></div>
+        <div>Plays: BMS telemetry unification, access control analytics, occupancy HVAC optimization, CBRS/Private 5G.</div>
+      </div></details>
+
+      <details><summary>Public Safety</summary><div class="sec">
+        <div class="kpis"><span class="pill">Response Time</span><span class="pill">Coverage</span></div>
+        <div>Plays: video on wheels, incident command kits, drone first responder, multi-carrier redundancy.</div>
+      </div></details>
+
+      <details><summary>Energy Storage and EV</summary><div class="sec">
+        <div class="kpis"><span class="pill">Uptime</span><span class="pill">Charge Throughput</span></div>
+        <div>Plays: charger telemetry, fault prediction, dynamic pricing, grid orchestration.</div>
+      </div></details>
+
+      <details><summary>Maritime</summary><div class="sec">
+        <div class="kpis"><span class="pill">Fuel per NM</span><span class="pill">Temp Excursions</span></div>
+        <div>Plays: satellite + 5G hybrid, reefer monitoring, vessel telemetry, CV for port ops.</div>
+      </div></details>
+
+      <details><summary>Environmental and Water</summary><div class="sec">
+        <div class="kpis"><span class="pill">Water Loss</span><span class="pill">Alert Latency</span></div>
+        <div>Plays: flood/stormwater sensing, leak detection, air quality networks with anomaly models.</div>
+      </div></details>
+
+      <details><summary>Insurance Telematics</summary><div class="sec">
+        <div class="kpis"><span class="pill">Loss Ratio</span><span class="pill">FNOL Time</span></div>
+        <div>Plays: UBI scoring, crash detection, claims automation using edge AI and sensor fusion.</div>
+      </div></details>
+    </section>
+<section class="cta-rail wrap">
+  <div class="cta-rail-inner">
+    <div>
+      <h3>Ready to turn signals into outcomes?</h3>
+      <p>Two fast paths: scope your use case now or talk it through live. We’ll align connectivity, edge, and data for measurable wins.</p>
+    </div>
+    <div class="btns">
+  <a class="pill-cta accent"
+     href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform"
+     target="_blank" rel="noopener">
+    Start AIoT Discovery
+  </a>
+  <a class="pill-cta" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">
+    Book Lou
+  </a>
+</div>
+  </div>
+</section>
+
+   <footer class="footer">
+  <div>© <span id="aiot-year"></span> Industry5.pro — Built on trust. Paid by results.</div>
+  <div class="social-icons">
+    <a href="https://www.linkedin.com/in/louis-tortora5/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.8 2.67 4.8 6.14V23h-4v-6.5c0-1.55-.03-3.55-2.17-3.55-2.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.51 5.51 0 0 0 12 7.5zm0 2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5zM18 6.2a1 1 0 1 0 1 1 1 1 0 0 0-1-1z"/></svg>
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61582481880019" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.07C22 6.49 17.52 2 11.93 2 6.35 2 1.86 6.49 1.86 12.07c0 5.02 3.66 9.18 8.44 9.95v-7.03H7.9V12.1h2.4V9.86c0-2.37 1.4-3.68 3.55-3.68 1.03 0 2.11.18 2.11.18v2.32h-1.19c-1.17 0-1.53.73-1.53 1.47v1.95h2.61l-.42 2.89h-2.19v7.03c4.78-.77 8.44-4.93 8.44-9.95z"/></svg>
+    </a>
+    <a href="https://wa.me/14076945495" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 3.9A10 10 0 0 0 2.7 17.7L2 22l4.4-1.2A10 10 0 1 0 20 3.9zm-8 16.2c-1.7 0-3.3-.5-4.7-1.6l-.3-.2-2.8.8.8-2.7-.2-.3A7.87 7.87 0 0 1 12 4.1a8 8 0 0 1 0 16zm4.5-5.3c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.6.1c-.2.2-.6.8-.7 1-.1.2-.3.2-.5.1-1-.4-2-.9-2.8-1.8-.2-.2-.4-.5-.3-.7.1-.2.3-.4.4-.6l.2-.3c.1-.2 0-.4 0-.5 0-.1-.6-1.5-.8-2.1-.2-.6-.4-.5-.6-.5h-.5c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.1 3 .9 1.6 2.1 2.2 1.9.7 2.2.8c.3.1 1.4.1 1.9-.1.6-.2 1.4-.7 1.6-1.3.2-.6.2-1.1.1-1.2z"/></svg>
+    </a>
+    <a href="mailto:lou@industry5.pro" aria-label="Email">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    </a>
+  </div>
+</footer>
+<script>
+  // year in footer
+  document.getElementById('aiot-year').textContent = new Date().getFullYear();
+</script>
+
+  </main>
 </body>
 </html>
-
