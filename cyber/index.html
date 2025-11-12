@@ -312,6 +312,31 @@ h1{ letter-spacing: 0 !important; }
   border-radius:6px;
   box-shadow:0 0 12px rgba(0,179,54,.5);
 }
+/* General mobile spacing + full-width CTAs when needed */
+@media (max-width: 640px){
+  .wrap{ padding: 0 14px; }
+  .cta-row .pill{ width:100%; text-align:center; }
+  .cta-buttons .pill{ width:100%; text-align:center; }
+  .avatar-card{ margin: 10px auto 0; justify-self:center; }
+}
+
+/* Hero grid stacks cleanly on tablets/phones */
+@media (max-width: 940px){
+  .hero-grid{ grid-template-columns: 1fr; }
+}
+
+/* KPI grid: 2x2 on phones, single column on very small screens */
+@media (max-width: 860px){
+  .kpis{ grid-template-columns: repeat(2, minmax(140px,1fr)); }
+}
+@media (max-width: 420px){
+  .kpis{ grid-template-columns: 1fr; }
+}
+
+/* Pillar cards: keep CTAs aligned at bottom even when text wraps more on mobile */
+@media (max-width: 860px){
+  .pillars > .card.pillar{ min-height: 0; }  /* let them shrink naturally */
+}
 
 
   </style>
@@ -334,7 +359,8 @@ h1{ letter-spacing: 0 !important; }
           <a class="pill outline" href="/">Home</a>
           <a class="pill outline" href="#stack">The Stack</a>
           <a class="pill outline" href="#checklist">Resilience Checklist</a>
-          <a class="pill primary" href="#form">Start Cyber Discovery</a>
+          <a class="pill primary" id="cta-start" href="#form">Start Cyber Discovery</a>
+
         </div>
       </nav>
     </div>
@@ -358,7 +384,7 @@ h1{ letter-spacing: 0 !important; }
             We align Lumen capabilities with Veeam powered recoverability and a supplier agnostic ecosystem through Telarus.
           </p>
           <div class="cta-row">
-            <a class="pill primary" href="#form">Start Cyber Discovery</a>
+            <a class="pill primary" id="cta-start" href="#form">Start Cyber Discovery</a>
             <a class="pill" href="#checklist">Run the Resilience Checklist</a>
           </div>
           <div class="meta">No fear tactics. Only outcomes, SLAs, and time to recover that finance teams appreciate.</div>
@@ -538,7 +564,7 @@ h1{ letter-spacing: 0 !important; }
     </div>
 
     <div class="form-actions">
-      <a class="pill primary" href="#form">Turn Gaps Into a Plan</a>
+      <a class="pill primary" id="cta-plan" href="#form">Turn Gaps Into a Plan</a>
       <a class="pill outline" href="#roi">See the ROI Angle</a>
     </div>
   </div>
