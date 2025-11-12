@@ -406,6 +406,45 @@ h1{ letter-spacing: 0 !important; }
     text-shadow: 0 0 10px rgba(0,179,54,.6);
   }
 }
+/* 1) Center text inside top nav pills */
+.nav-actions .pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  line-height:1.1;
+}
+
+/* 2) Hero mobile polish: better stacking + readable sizes */
+@media (max-width: 640px){
+  .hero-content{ padding:24px 0 20px; }
+  h1{ font-size: clamp(26px, 7.5vw, 34px); line-height:1.12; }
+  .sub{ max-width:100%; font-size:15.5px; }
+  .avatar-card{ justify-self:center; margin:10px auto 0; max-width:220px; }
+  .wrap{ padding: 0 14px; }
+}
+
+/* 3) Center KPI number + label inside each stat pill */
+.kpis .kpi{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.kpis .knum{ text-align:center; }
+.kpis .kdesc{ text-align:center; }
+
+/* 4) Center text inside the five "Assess ..." pills (keep buttons left in cards) */
+.pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.pillars > .card.pillar .pill{
+  align-self:flex-start; /* stays left within the card grid */
+}
 
 
   </style>
