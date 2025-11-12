@@ -589,12 +589,14 @@ h1{ letter-spacing: 0 !important; }
       </a>
 
       <!-- Force a download of your checklist (swap .pdf if needed) -->
-      <a class="pill outline"
-         href="/assets/Industry5pro_Cyber_Resilience_Checklist.docx"
-         download="Industry5pro_Cyber_Resilience_Checklist.docx"
-         type="application/vnd.openxmlformats-officedocument.wordprocessingml.document">
-        Download Checklist
-      </a>
+     <a class="pill outline"
+   id="dl-checklist"
+   href="/assets/Industry5pro_Cyber_Resilience_Checklist.pdf"
+   download="Industry5pro_Cyber_Resilience_Checklist.pdf"
+   type="application/pdf">
+  Download Checklist
+</a>
+
     </div>
 
     <!-- Socials -->
@@ -671,6 +673,35 @@ h1{ letter-spacing: 0 !important; }
     requestAnimationFrame(step);
   }
   document.querySelectorAll('.knum').forEach(animateCount);
+</script>
+<script>
+(function(){
+  const link = document.getElementById('dl-checklist');
+  if(!link) return;
+
+  link.addEventListener('click', async function(e){
+    try{
+      // If the browser honors the download attr, this won't run.
+      // We only run if navigation was prevented or the server blocks it.
+      e.preventDefault();
+      const url = link.getAttribute('href');
+      const res = await fetch(url, { mode: 'same-origin' });
+      if(!res.ok) throw new Error('Fetch failed: ' + res.status);
+
+      const blob = await res.blob();
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = link.getAttribute('download') || 'Industry5pro_Cyber_Resilience_Checklist.pdf';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(()=>URL.revokeObjectURL(a.href), 1500);
+    }catch(err){
+      // As a last resort, open in a new tab so users can save manually
+      window.open(link.href, '_blank', 'noopener');
+    }
+  }, { passive:false });
+})();
 </script>
 
 </body>
