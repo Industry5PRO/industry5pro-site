@@ -353,6 +353,24 @@ header .brand .title{
   cursor: not-allowed;
   pointer-events: none;
 }
+  /* Mobile Swipe for Filters */
+@media (max-width: 768px) {
+  .filter-row {
+    display: flex;
+    flex-wrap: nowrap;      /* Don't stack them */
+    overflow-x: auto;       /* Enable side-scrolling */
+    padding-bottom: 12px;   /* Space for scrollbar */
+    gap: 8px;
+    -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
+    scrollbar-width: none;  /* Hide scrollbar Firefox */
+  }
+  /* Hide scrollbar Chrome/Safari */
+  .filter-row::-webkit-scrollbar { display: none; }
+  
+  .filter-btn {
+    flex: 0 0 auto; /* Stop buttons from squishing */
+  }
+}
 </style>
 
 </head>
