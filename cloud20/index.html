@@ -235,7 +235,13 @@ html,body{
     /* ===== CTA strip ===== */
     .cta-rail{max-width:1100px;margin:28px auto 10px;padding:18px;border:1px solid var(--lumen) !important;border-radius:14px;background:#0a0a0a;box-shadow:0 10px 40px rgba(255,215,0,.08)}
     .cta-rail-inner{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
-    .cta-rail h3{margin:0;color:var(--lumen-blue-light) !important;font-size:1.2rem;text-shadow:0 0 8px rgba(43,237,231,.15)}
+    .cta-rail h3{
+  margin:0;
+  color:#ffffff !important;
+  font-size:1.2rem;
+  text-shadow:0 0 8px rgba(43,237,231,.15);
+}
+
     .cta-rail p{margin:4px 0 0;color:#C0C0C0;max-width:720px;font-size:.98rem}
 
     /* ===== Footer (centered) + Socials blue glow & dark-blue inner on hover ===== */
@@ -540,6 +546,14 @@ a.whitepaper-jump.btn{
   border:none !important;
   box-shadow:none !important;
 }
+/* Make all ICP pills same height and center text */
+.icp-card .tag{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  min-height: 46px;  /* tweak 44–50 if you want a tiny adjustment */
+}
 
   </style>
 </head>
@@ -655,12 +669,13 @@ a.whitepaper-jump.btn{
           <p><b>KPIs:</b> OEE, cycle time, MTTR, data freshness.</p>
         </article>
 
-        <article class="icp-card">
-          <div class="tag">Retail and CPG</div>
-          <h3><a class="icp-link" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Store Resilience with Real Time Data</a></h3>
-          <p>Active active stores with graceful degradation, SD WAN with LTE failover, and vision at the edge for loss prevention and queue busting.</p>
-          <p><b>KPIs:</b> store uptime, queue time, shrink, promo lift.</p>
-        </article>
+       <article class="icp-card">
+  <div class="tag">Retail and CPG</div>
+  <h3><a class="icp-link" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Plant to Cloud Reliability</a></h3>
+  <p>Edge compute at the line, private wireless on the floor, and deterministic backhaul to MES and historians. Analytics sync without drift.</p>
+  <p><b>KPIs:</b> OEE, cycle time, MTTR, data freshness.</p>
+</article>
+
 
         <article class="icp-card">
           <div class="tag">Logistics, Fleet, and Warehousing</div>
