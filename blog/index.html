@@ -245,6 +245,16 @@ header .brand .title{
   line-height:1;
   letter-spacing:.2px;
 }
+@media (min-width: 900px){
+  .blog-grid article:first-child,
+  .blog-grid article:nth-child(2),
+  .post-grid article:first-child,
+  .post-grid article:nth-child(2),
+  .articles-grid > article:first-child,
+  .articles-grid > article:nth-child(2){
+    grid-column: auto !important;
+  }
+}
 
 </style>
 
