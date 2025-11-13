@@ -322,6 +322,37 @@ header .brand .title{
 .hero-series-list a:hover span.part-num {
   color: var(--gold);
 }
+  /* Pagination Styles */
+.page-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--muted);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.page-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.page-btn.active {
+  background: var(--accent);
+  color: #0b1220; /* Dark text on green background */
+  border-color: var(--accent);
+  box-shadow: 0 0 15px rgba(133,187,101,0.4);
+}
+
+.page-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
 </style>
 
 </head>
@@ -810,111 +841,114 @@ header .brand .title{
   </article>
 
 </section>
-
+<div id="pagination-controls" style="display:flex; justify-content:center; gap:8px; margin: 24px 0 40px;">
+  </div>
 
 <script>
-  // Year in footer
-  document.getElementById('y').textContent = new Date().getFullYear();
+document.addEventListener('DOMContentLoaded', function () {
+  // CONFIGURATION
+  const ITEMS_PER_PAGE = 6; 
+  let currentPage = 1;
+  let currentFilter = 'all';
 
-  // Tag filter logic
-  (function(){
-    const chips = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('article.card');
-    chips.forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        chips.forEach(c=>c.classList.remove('active'));
-        btn.classList.add('active');
-        const tag = btn.dataset.filter;
-        cards.forEach(card=>{
-          if(tag==='all'){ card.style.display=''; return; }
-          const tags = (card.getAttribute('data-tags')||'').split(',').map(s=>s.trim());
-          card.style.display = tags.includes(tag) ? '' : 'none';
-        });
-        // scroll back to top of grid for UX
-        document.getElementById('all').scrollIntoView({behavior:'smooth',block:'start'});
-      });
+  // SELECTORS
+  const allCards = Array.from(document.querySelectorAll('article.card'));
+  const filterButtons = Array.from(document.querySelectorAll('.filter-btn'));
+  const paginationContainer = document.getElementById('pagination-controls');
+
+  // 1. CORE FILTER FUNCTION
+  function getMatchingCards() {
+    const normalizedFilter = currentFilter.toLowerCase();
+    if (normalizedFilter === 'all' || normalizedFilter === 'all articles') {
+      return allCards;
+    }
+    return allCards.filter(card => {
+      const tags = (card.getAttribute('data-tags') || '').toLowerCase();
+      return tags.includes(normalizedFilter);
     });
-  })();
+  }
 
-  // LinkedIn embed toggles for all cards
-  document.addEventListener('click', function(e){
-    const btn = e.target.closest('.li-view'); 
-    if(!btn) return;
-    const panel = btn.closest('.li-embed');
-    const mode = btn.getAttribute('data-mode');
-    panel.querySelectorAll('.li-view').forEach(b=>b.classList.toggle('active', b===btn));
-    panel.querySelectorAll('iframe[data-mode]').forEach(fr=>{
-      fr.style.display = (fr.getAttribute('data-mode') === mode) ? '' : 'none';
+  // 2. RENDER FUNCTION (Shows/Hides cards based on Page + Filter)
+  function render() {
+    const matches = getMatchingCards();
+    const totalPages = Math.ceil(matches.length / ITEMS_PER_PAGE);
+
+    // Ensure current page is valid (e.g., if we filtered down to 1 page, don't stay on page 5)
+    if (currentPage > totalPages) currentPage = 1;
+    if (currentPage < 1) currentPage = 1;
+
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const endIndex = startIndex + ITEMS_PER_PAGE;
+    
+    // First, hide ALL cards
+    allCards.forEach(card => card.style.display = 'none');
+
+    // Then, show only the slice for this page
+    const pageSlice = matches.slice(startIndex, endIndex);
+    pageSlice.forEach(card => {
+      card.style.display = ''; 
+      // Optional: Add a fade-in animation here if you want
+    });
+
+    // Finally, draw the page buttons
+    renderPagination(totalPages);
+  }
+
+  // 3. PAGINATION BUTTONS
+  function renderPagination(totalPages) {
+    paginationContainer.innerHTML = ''; // Clear old buttons
+
+    if (totalPages <= 1) return; // Don't show buttons if there's only 1 page
+
+    // Create generic button maker
+    const createBtn = (text, pageNum, isActive = false) => {
+      const btn = document.createElement('button');
+      btn.className = `page-btn ${isActive ? 'active' : ''}`;
+      btn.textContent = text;
+      btn.type = 'button';
+      btn.addEventListener('click', () => {
+        currentPage = pageNum;
+        render();
+        // Smooth scroll to top of grid so user sees new items
+        document.getElementById('all').scrollIntoView({behavior: 'smooth', block: 'start'});
+      });
+      return btn;
+    };
+
+    // Prev Button
+    if (currentPage > 1) {
+      paginationContainer.appendChild(createBtn('← Prev', currentPage - 1));
+    }
+
+    // Numbered Buttons
+    for (let i = 1; i <= totalPages; i++) {
+      paginationContainer.appendChild(createBtn(i, i, i === currentPage));
+    }
+
+    // Next Button
+    if (currentPage < totalPages) {
+      paginationContainer.appendChild(createBtn('Next →', currentPage + 1));
+    }
+  }
+
+  // 4. EVENT LISTENERS FOR FILTERS
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      // Visual active state for pills
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Set state and re-render
+      currentFilter = btn.getAttribute('data-filter') || btn.innerText;
+      currentPage = 1; // Always reset to page 1 when filtering
+      render();
     });
   });
 
-  // Auto "Published:" dates for ALL cards.
-  // Priority: data-pub on <article> → known ID map → LinkedIn ugcPost map → Pulse slug map → today.
-  (function(){
-    const fmt   = { year:'numeric', month:'short', day:'numeric' };
-    const today = new Date().toLocaleDateString('en-US', fmt);
-
-    const idMap = {
-      'af-part1':'Oct 28, 2025',
-      'af-part2':'Oct 30, 2025',
-      'af-part3':'Nov 1, 2025',
-      'post-aws-outage':'Oct 24, 2025',
-      'post-amzn-q3':'Oct 31, 2025',
-      'af-part4':'Nov 7, 2025',
-      'af-part6':'Nov 7, 2025'
-    };
-
-    const ugcMap = {
-      '7390411903644221440':'Nov 1, 2025',  // Part 3
-      '7387332455696973824':'Oct 30, 2025', // Part 2
-      '7387337149869686784':'Oct 28, 2025', // Part 1
-      '7390051055952240641':'Oct 31, 2025', // Amazon Q3
-      '7386400673040379904':'Oct 24, 2025'  // AWS outage
-      '7392569793050169345':'Nov 7, 2025' // NEW: Part 4 ugcPost,
-      '7392675380630806529':'Nov 7, 2025'
-    };
-
-    const slugMap = {
-      'ai-foundations-part-3-security-backup-louis-tortora-bdxee':'Nov 1, 2025',
-      'when-one-cloud-fails-designing-multi-cloud-continuity-louis-tortora-zaxte':'Oct 30, 2025',
-      'resilience-design-how-network-as-a-service-powers-ai-louis-tortora-pm59e':'Oct 28, 2025',
-      'amazons-blockbuster-q3-earnings-signal-ai-fueled-cloud-louis-tortora-cbpme':'Oct 31, 2025',
-      'cloud-chaos-real-roi-what-aws-outage-taught-us-louis-tortora-lbome':'Oct 24, 2025',
-      'ai-foundations-part-4-connectivity-orchestration-louis-tortora-gyowe':'Nov 7, 2025' // NEW: Part 4 Pulse,
-      'ai-foundations-part-6-application-intelligence-where-louis-tortora-ocrhe':'Nov 7, 2025'
-    };
-
-    function getUgcIdFrom(card){
-      const fr = card.querySelector('iframe[src*="linkedin.com/embed/feed/update/urn:li:ugcPost:"]');
-      if(!fr) return null;
-      const m = fr.src.match(/ugcPost:(\d+)/);
-      return m ? m[1] : null;
-    }
-    function getPulseSlugFrom(card){
-      const a = card.querySelector('a[href*="linkedin.com/pulse/"]');
-      if(!a) return null;
-      const m = a.href.match(/linkedin\.com\/pulse\/([^/?#]+)/);
-      return m ? m[1].replace(/\/$/, '') : null;
-    }
-
-    document.querySelectorAll('article.card').forEach(card=>{
-      const fromAttr = card.getAttribute('data-pub');
-      const fromId   = card.id && idMap[card.id];
-      const ugcId    = getUgcIdFrom(card);
-      const fromUgc  = ugcId && ugcMap[ugcId];
-      const slug     = getPulseSlugFrom(card);
-      const fromSlug = slug && slugMap[slug];
-      const pub = fromAttr || fromId || fromUgc || fromSlug || today;
-
-      let meta = card.querySelector('.meta');
-      if(!meta){
-        meta = document.createElement('p');
-        meta.className = 'meta';
-        card.appendChild(meta);
-      }
-      meta.textContent = `Published: ${pub}.`;
-    });
-  })();
+  // Initialize
+  render();
+});
 </script>
 
 <script>
