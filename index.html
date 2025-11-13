@@ -1352,29 +1352,10 @@ body{ padding-top: var(--header-h); }
 
 </style>
 
-</style>
-  </style>
-  <style id="lumen-charcoal-skin">
-  :root {
-    --lumen-charcoal: #1B1B1D;
-  }
-
-  /* 1. Set global body background */
-  body {
-    background-color: var(--lumen-charcoal) !important;
-  }
-
-  /* 2. Force Hero Card to match body (seamless look) */
-  .hero.card {
-    background-color: var(--lumen-charcoal) !important;
-    /* Optional: make border more subtle since bg is same as body */
-    border-color: rgba(255,255,255,0.08) !important; 
-  }
-</style>
-  <style id="master-header-v3">
+<style id="master-header-v4">
   :root{
-    --header-h: 72px;           /* Taller to fit 55px logo */
-    --ice-blue: #2BEDE7;        /* Lumen Ice Blue */
+    --header-h: 76px;           /* Taller to fit 55px logo + 2 lines of text */
+    --ice-blue: #2BEDE7;        /* The Lumen Ice Blue */
     --lumen-charcoal: #1B1B1D;  /* Background match */
   }
 
@@ -1384,16 +1365,15 @@ body{ padding-top: var(--header-h); }
     top: 0; left: 0; right: 0;
     z-index: 99999;
     height: var(--header-h);
-    background: rgba(27,27,29,.90); /* Higher opacity for contrast */
+    background: rgba(27,27,29,.95); /* High opacity for professional contrast */
     backdrop-filter: saturate(140%) blur(12px);
     border-bottom: 1px solid rgba(255,255,255,.08);
     display: flex;
     align-items: center;
     isolation: isolate;
-    overflow: hidden; /* Stops the whole bar from scrolling */
   }
 
-  /* Adjust body padding so content doesn't hide behind the taller bar */
+  /* Body Padding so content doesn't hide */
   body { padding-top: var(--header-h); }
   main, .hero, .page-start { margin-top: 0 !important; }
 
@@ -1406,7 +1386,7 @@ body{ padding-top: var(--header-h); }
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Pushes Brand left, Nav right */
+    justify-content: space-between;
   }
 
   .nav {
@@ -1421,23 +1401,23 @@ body{ padding-top: var(--header-h); }
     display: flex;
     align-items: center;
     gap: 16px;
-    margin-right: 24px; 
+    margin-right: 20px; 
     text-decoration: none;
     color: #fff;
-    flex-shrink: 0; /* Prevents logo from getting squished */
+    flex-shrink: 0; 
   }
 
   .topbar .brand .logo {
-    height: 55px; /* The requested size */
+    height: 55px; 
     width: 55px;
     display: block;
     object-fit: contain;
-    filter: drop-shadow(0 0 8px rgba(43,237,231,0.5)); /* THE GLOW */
+    filter: drop-shadow(0 0 8px rgba(43,237,231,0.4)); /* Subtle Ice Blue Base */
     transition: filter 0.3s ease;
   }
   
   .topbar .brand .logo:hover {
-    filter: drop-shadow(0 0 14px rgba(43,237,231,0.8)); /* Stronger glow on hover */
+    filter: drop-shadow(0 0 14px rgba(43,237,231,0.9)); /* Hot Ice Blue on Hover */
   }
 
   .topbar .brand strong {
@@ -1446,58 +1426,60 @@ body{ padding-top: var(--header-h); }
     letter-spacing: -0.02em;
     line-height: 1;
     color: #e8eef9;
-    white-space: nowrap; /* Keeps name on one line */
+    white-space: nowrap;
   }
 
-  /* 4. The Nav Menu (Scrollable, No Wrapping) */
+  /* 4. The Nav Menu (Scrollable) */
   .nav-actions {
     display: flex;
     align-items: center;
-    gap: 24px;
-    height: 40px; /* Taller separator */
+    gap: 20px; /* Tighter gap to fit more items */
+    height: 44px; /* Taller separator */
     border-left: 1px solid rgba(255,255,255,.15);
-    padding-left: 24px;
+    padding-left: 20px;
     
     /* Horizontal Scroll Logic */
     flex-grow: 1;
     overflow-x: auto; 
     overflow-y: hidden;
-    white-space: nowrap; /* CRITICAL: Prevents 3-line wrapping */
+    white-space: nowrap; 
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Hide scrollbar Firefox */
+    scrollbar-width: none;
   }
-  .nav-actions::-webkit-scrollbar { display: none; } /* Hide scrollbar Chrome */
+  .nav-actions::-webkit-scrollbar { display: none; }
 
-  /* 5. The Links (Tighter, Ice Blue Hover) */
+  /* 5. The Links (2-Line Support + Ice Blue Hover) */
   .topbar .navlink {
     position: relative;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    text-align: center; /* Centers the stacked text */
     color: #ffffff;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 14px;
     text-decoration: none;
-    line-height: 1; /* Fixes vertical spacing */
-    padding: 8px 0;
+    line-height: 1.15; /* Tight leading for 2 lines */
+    padding: 4px 0;
     transition: color .2s ease, text-shadow .2s ease, transform .2s ease;
   }
 
-  /* HOVER STATE: Ice Blue Only */
+  /* HOVER STATE: PURE ICE BLUE (No Orange) */
   .topbar .navlink:hover,
   .topbar .navlink:focus-visible,
   .topbar .navlink[aria-current="page"] {
     color: var(--ice-blue);
     transform: translateY(-1px);
     text-shadow: 
-      0 0 8px rgba(43,237,231,.60),
-      0 0 16px rgba(43,237,231,.35);
+      0 0 10px rgba(43,237,231,.75),
+      0 0 20px rgba(43,237,231,.45);
     outline: 0;
   }
 
-  /* Hide Name on Mobile to save space */
+  /* Mobile Tweak: Hide Brand Name to save space */
   @media (max-width: 900px) {
     .topbar .brand strong { display: none; } 
-    .nav-actions { gap: 20px; padding-left: 20px; }
+    .nav-actions { gap: 16px; padding-left: 16px; }
   }
 </style>
 </head>
@@ -1516,11 +1498,13 @@ body{ padding-top: var(--header-h); }
         <a class="navlink" href="https://industry5.pro/ai" aria-current="page">AI</a>
         <a class="navlink" href="https://industry5.pro/cyber" aria-current="page">Security</a>
         <a class="navlink" href="https://industry5.pro/cloud20" aria-current="page">Cloud 2.0</a>
-        <a class="navlink" href="https://industry5.pro/uc" aria-current="page">UC &amp; Contact Center</a>
+        
+        <a class="navlink" href="https://industry5.pro/uc" aria-current="page">UC &amp;<br>Contact Center</a>
+        
         <a class="navlink" href="https://industry5.pro/aiot" aria-current="page">AIoT</a>
-        <a class="navlink" href="https://industry5.pro/peplink" aria-current="page">5G &amp; Satellite</a>
+        <a class="navlink" href="https://industry5.pro/peplink" aria-current="page">5G &amp;<br>Satellite</a>
         <a class="navlink" href="https://industry5.pro/blog" aria-current="page">Blog</a>
-        <a class="navlink" href="https://calendly.com/industry5pro/30min"target="_blank" rel="noopener" aria-current="page">Book Lou</a>
+        <a class="navlink" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener" aria-current="page">Book Lou</a>
       </div>
     </nav>
   </div>
