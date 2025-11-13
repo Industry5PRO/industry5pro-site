@@ -322,15 +322,38 @@ header .brand .title{
     </div>
 
     <div class="li-embed" data-type="linkedin">
-      <iframe
-        src="https://www.linkedin.com/embed/feed/update/urn:li:share:7394762264907694081?collapsed=1"
-        height="595"
-        width="504"
-        frameborder="0"
-        allowfullscreen
-        title="Supermetrics AI post – LinkedIn">
-      </iframe>
-    </div>
+            <!-- NEW TOOLBAR -->
+            <div class="toolbar">
+              <button class="li-view active" data-mode="teaser" type="button">Less text</button>
+              <button class="li-view" data-mode="full" type="button">Full post</button>
+              <a class="li-view" href="https://partners.supermetrics.com/Industry5PRO-AI" target="_blank" rel="noopener">
+                Try Supermetrics AI
+              </a>
+            </div>
+
+            <!-- TEASER IFRAME (collapsed=1) -->
+            <iframe
+              data-mode="teaser"
+              src="https://www.linkedin.com/embed/feed/update/urn:li:share:7394762264907694081?collapsed=1"
+              height="595"
+              width="504"
+              frameborder="0"
+              allowfullscreen
+              title="Supermetrics AI post – LinkedIn (Teaser)">
+            </iframe>
+            
+            <!-- FULL POST IFRAME (no collapse) -->
+            <iframe
+              data-mode="full"
+              src="https://www.linkedin.com/embed/feed/update/urn:li:share:7394762264907694081"
+              height="1393"
+              width="504"
+              frameborder="0"
+              allowfullscreen
+              title="Supermetrics AI post – LinkedIn (Full)"
+              style="display:none">
+            </iframe>
+          </div>
   </article>
   
  <!-- AF Part 1 -->
