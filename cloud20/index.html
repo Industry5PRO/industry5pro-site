@@ -428,6 +428,36 @@ a.whitepaper-jump.btn{
   box-shadow:0 8px 20px rgba(0,0,0,.35);
   border:1px solid rgba(255,255,255,.18);
 }
+.icp-card .tag{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:38px;
+  padding:8px 20px;
+  border-radius:999px;
+  background:linear-gradient(180deg,var(--lumen),#ff8c3a);
+  color:#050505;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.25px;
+  text-transform:uppercase;
+  margin-bottom:10px;
+  box-shadow:0 8px 20px rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.18);
+  text-align:center;
+  min-width:260px;
+  text-shadow:
+    0 0 2px rgba(255,255,255,.95),
+    0 0 8px rgba(255,255,255,.45),
+    0 0 14px rgba(43,237,231,.35);
+}
+
+@media (max-width:640px){
+  .icp-card .tag{
+    min-width:0;
+    width:100%;
+  }
+}
 
   </style>
 </head>
