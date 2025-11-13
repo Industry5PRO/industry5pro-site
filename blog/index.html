@@ -1038,72 +1038,71 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Auto "Published:" dates
+ <script>
+  // Auto "Published:" dates from LinkedIn IDs
   (function(){
-    const fmt   = { year:'numeric', month:'short', day:'numeric' };
-    const today = new Date().toLocaleDateString('en-US', fmt);
-
-    const idMap = {
-      'af-part1':'Oct 28, 2025',
-      'af-part2':'Oct 30, 2025',
-      'af-part3':'Nov 1, 2025',
-      'post-aws-outage':'Oct 24, 2025',
-      'post-amzn-q3':'Oct 31, 2025',
-      'af-part4':'Nov 7, 2025',
-      'af-part6':'Nov 7, 2025'
-    };
-
-    const ugcMap = {
-      '7390411903644221440':'Nov 1, 2025',
-      '7387332455696973824':'Oct 30, 2025',
-      '7387337149869686784':'Oct 28, 2025',
-      '7390051055952240641':'Oct 31, 2025',
-      '7386400673040379904':'Oct 24, 2025',
-      '7392569793050169345':'Nov 7, 2025',
-      '7392675380630806529':'Nov 7, 2025'
-    };
-
-    const slugMap = {
-      'ai-foundations-part-3-security-backup-louis-tortora-bdxee':'Nov 1, 2025',
-      'when-one-cloud-fails-designing-multi-cloud-continuity-louis-tortora-zaxte':'Oct 30, 2025',
-      'resilience-design-how-network-as-a-service-powers-ai-louis-tortora-pm59e':'Oct 28, 2025',
-      'amazons-blockbuster-q3-earnings-signal-ai-fueled-cloud-louis-tortora-cbpme':'Oct 31, 2025',
-      'cloud-chaos-real-roi-what-aws-outage-taught-us-louis-tortora-lbome':'Oct 24, 2025',
-      'ai-foundations-part-4-connectivity-orchestration-louis-tortora-gyowe':'Nov 7, 2025',
-      'ai-foundations-part-6-application-intelligence-where-louis-tortora-ocrhe':'Nov 7, 2025'
-    };
-
-    function getUgcIdFrom(card){
-      const fr = card.querySelector('iframe[src*="linkedin.com/embed/feed/update/urn:li:ugcPost:"]');
-      if(!fr) return null;
-      const m = fr.src.match(/ugcPost:(\d+)/);
-      return m ? m[1] : null;
-    }
-    function getPulseSlugFrom(card){
-      const a = card.querySelector('a[href*="linkedin.com/pulse/"]');
-      if(!a) return null;
-      const m = a.href.match(/linkedin\.com\/pulse\/([^/?#]+)/);
-      return m ? m[1].replace(/\/$/, '') : null;
+    const fmt = { year:'numeric', month:'short', day:'numeric' };
+    
+    // 1. The Magic Function: Decodes LinkedIn ID to Date
+    function getLinkedInDate(id) {
+      try {
+        // Convert the ID to binary, take the first 41 bits, convert back to decimal (Unix timestamp)
+        const asBinary = BigInt(id).toString(2);
+        const first41Chars = asBinary.slice(0, 41);
+        const timestamp = parseInt(first41Chars, 2);
+        return new Date(timestamp).toLocaleDateString('en-US', fmt);
+      } catch (e) {
+        return null; 
+      }
     }
 
-    document.querySelectorAll('article.card').forEach(card=>{
-      const fromAttr = card.getAttribute('data-pub');
-      const fromId   = card.id && idMap[card.id];
-      const ugcId    = getUgcIdFrom(card);
-      const fromUgc  = ugcId && ugcMap[ugcId];
-      const slug     = getPulseSlugFrom(card);
-      const fromSlug = slug && slugMap[slug];
-      const pub = fromAttr || fromId || fromUgc || fromSlug || today;
+    // 2. Helper to find the ID inside the card's iframe src
+    function extractIdFromCard(card) {
+      const iframe = card.querySelector('iframe');
+      if (!iframe) return null;
+      
+      // Looking for patterns like: urn:li:share:12345 OR urn:li:ugcPost:12345
+      const src = iframe.src;
+      const match = src.match(/(?:share|ugcPost|activity):(\d+)/);
+      return match ? match[1] : null;
+    }
 
+    // 3. Run logic on all cards
+    document.querySelectorAll('article.card').forEach(card => {
+      // Option A: Manual Override (Highest Priority)
+      // If you put <article data-pub="Oct 12, 2025">, we use that.
+      let pubDate = card.getAttribute('data-pub');
+
+      // Option B: Auto-Extract from LinkedIn (The "Magic")
+      if (!pubDate) {
+        const liId = extractIdFromCard(card);
+        if (liId) {
+          pubDate = getLinkedInDate(liId);
+        }
+      }
+
+      // Option C: Fallback to Today
+      if (!pubDate) {
+        pubDate = new Date().toLocaleDateString('en-US', fmt);
+      }
+
+      // Render it
       let meta = card.querySelector('.meta');
-      if(!meta){
+      if (!meta) {
         meta = document.createElement('p');
         meta.className = 'meta';
-        card.appendChild(meta);
+        // Insert meta after the tags but before the embed
+        const tags = card.querySelector('.tags');
+        if (tags) {
+          tags.insertAdjacentElement('afterend', meta);
+        } else {
+          card.appendChild(meta);
+        }
       }
-      meta.textContent = `Published: ${pub}.`;
+      meta.textContent = `Published: ${pubDate}`;
     });
   })();
+
 
   // Blog Header Link Rewrite
   (function rewriteBlogHeaderLinks(){
