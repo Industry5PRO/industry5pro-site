@@ -309,6 +309,28 @@ header,
   background:var(--lumen-charcoal);
   box-shadow:none;   /* optional: removes any bottom shadow */
 }
+/* Final Cloud 2.0 charcoal + glow cleanup */
+
+/* White paper card – strong orange glow, no green tint */
+.whitepaper{
+  border: 1px solid var(--lumen); /* keep Lumen orange frame */
+  box-shadow:
+    0 0 18px rgba(255, 106, 19, 0.9),
+    0 0 40px rgba(255, 106, 19, 0.6);
+  background: #1B1B1D;
+}
+
+/* Bottom CTA rail – charcoal, no visible border line */
+.cta-rail{
+  background: #1B1B1D;
+  border: none;
+  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.65);
+}
+
+/* Make sure inner CTA content sits on the same charcoal */
+.cta-rail-inner{
+  background: transparent;
+}
 
   </style>
 </head>
