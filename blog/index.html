@@ -1038,73 +1038,50 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
- <script>
-  // Auto "Published:" dates from LinkedIn IDs
+<script>
+  // 1. The Magic LinkedIn Date Script (New)
   (function(){
     const fmt = { year:'numeric', month:'short', day:'numeric' };
     
-    // 1. The Magic Function: Decodes LinkedIn ID to Date
     function getLinkedInDate(id) {
       try {
-        // Convert the ID to binary, take the first 41 bits, convert back to decimal (Unix timestamp)
         const asBinary = BigInt(id).toString(2);
         const first41Chars = asBinary.slice(0, 41);
         const timestamp = parseInt(first41Chars, 2);
         return new Date(timestamp).toLocaleDateString('en-US', fmt);
-      } catch (e) {
-        return null; 
-      }
+      } catch (e) { return null; }
     }
 
-    // 2. Helper to find the ID inside the card's iframe src
     function extractIdFromCard(card) {
       const iframe = card.querySelector('iframe');
       if (!iframe) return null;
-      
-      // Looking for patterns like: urn:li:share:12345 OR urn:li:ugcPost:12345
-      const src = iframe.src;
-      const match = src.match(/(?:share|ugcPost|activity):(\d+)/);
+      const match = iframe.src.match(/(?:share|ugcPost|activity):(\d+)/);
       return match ? match[1] : null;
     }
 
-    // 3. Run logic on all cards
     document.querySelectorAll('article.card').forEach(card => {
-      // Option A: Manual Override (Highest Priority)
-      // If you put <article data-pub="Oct 12, 2025">, we use that.
       let pubDate = card.getAttribute('data-pub');
-
-      // Option B: Auto-Extract from LinkedIn (The "Magic")
+      
       if (!pubDate) {
         const liId = extractIdFromCard(card);
-        if (liId) {
-          pubDate = getLinkedInDate(liId);
-        }
+        if (liId) pubDate = getLinkedInDate(liId);
       }
+      
+      if (!pubDate) pubDate = new Date().toLocaleDateString('en-US', fmt);
 
-      // Option C: Fallback to Today
-      if (!pubDate) {
-        pubDate = new Date().toLocaleDateString('en-US', fmt);
-      }
-
-      // Render it
       let meta = card.querySelector('.meta');
       if (!meta) {
         meta = document.createElement('p');
         meta.className = 'meta';
-        // Insert meta after the tags but before the embed
         const tags = card.querySelector('.tags');
-        if (tags) {
-          tags.insertAdjacentElement('afterend', meta);
-        } else {
-          card.appendChild(meta);
-        }
+        if (tags) tags.insertAdjacentElement('afterend', meta);
+        else card.appendChild(meta);
       }
       meta.textContent = `Published: ${pubDate}`;
     });
   })();
 
-
-  // Blog Header Link Rewrite
+  // 2. Blog Header Link Rewrite (Keep this!)
   (function rewriteBlogHeaderLinks(){
     const map = {
       "outcome obsessed": "/#outcome-obsessed",
@@ -1124,7 +1101,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   })();
 </script>
-<!-- enhanced-controls-end -->
 </body>
 </html>
 
