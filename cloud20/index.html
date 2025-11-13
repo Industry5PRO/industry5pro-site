@@ -387,6 +387,30 @@ header,
   border-color:rgba(43,237,231,1);
   transform:translateY(-1px);
 }
+/* ---- Final polish overrides ---- */
+
+/* 1) "View inline" pill – keep charcoal + ice text, kill the blue glow */
+a.whitepaper-jump.btn{
+  background:#1B1B1D !important;          /* charcoal pill */
+  color:#e8eef9 !important;               /* ice text */
+  border:1px solid rgba(255,255,255,.18); /* subtle border */
+  box-shadow:none !important;             /* remove blue shadow */
+}
+
+/* 2) Quadrant section – no orange border, blend into charcoal */
+.cloud20-quadrant-section,
+.cloud20-quadrant-shell{
+  border:none !important;
+  background:#1B1B1D;                     /* same charcoal backdrop */
+}
+
+/* 3) "Ready to place compute and data where they win?" – 
+      no border, full charcoal background */
+.cloud20-ready-section,
+.cloud20-ready-shell{
+  border:none !important;
+  background:#1B1B1D;                     /* seamless with the rest */
+}
 
   </style>
 </head>
