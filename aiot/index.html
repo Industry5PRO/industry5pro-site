@@ -393,6 +393,20 @@ body{ padding-top: var(--header-h); }
   height:56px;
   width:auto;
 }
+/* Tighten header height to match logo */
+:root{
+  --header-h: 56px; /* was 64px, this shrinks the sticky gap */
+}
+
+.hdr-inner{
+  padding-top: 6px;
+  padding-bottom: 6px;  /* was 14px top and bottom */
+}
+
+/* Make profile card background pure black so it blends in */
+.hero-pic{
+  background:#000; /* override the dark gray background */
+}
 
 
 
