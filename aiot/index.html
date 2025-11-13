@@ -377,6 +377,22 @@ body{ padding-top: var(--header-h); }
   text-shadow: 0 0 8px var(--siemens-glow);
   transform: translateY(-1px);
 }
+/* === HEADER TWEAKS: logo + height === */
+:root{
+  --header-h: 56px;      /* header roughly matches logo height */
+}
+
+/* Shrink header to hug the logo a bit tighter */
+.hdr-inner{
+  min-height: var(--header-h);
+  padding: 6px 24px;     /* was 14px 24px – this trims the black bar */
+}
+
+/* Make logo match your 56x56 size (width stays auto) */
+.brand .logo{
+  height:56px;
+  width:auto;
+}
 
 
 
