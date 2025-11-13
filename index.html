@@ -1371,40 +1371,42 @@ body{ padding-top: var(--header-h); }
     border-color: rgba(255,255,255,0.08) !important; 
   }
 </style>
-  <style id="master-header-v2">
+  <style id="master-header-v3">
   :root{
-    --header-h: 54px;           /* Much slimmer (was 72px) */
-    --ice-blue: #2BEDE7;        /* The Lumen Ice Blue */
-    --lumen-charcoal: #1B1B1D;  /* Your background match */
+    --header-h: 72px;           /* Taller to fit 55px logo */
+    --ice-blue: #2BEDE7;        /* Lumen Ice Blue */
+    --lumen-charcoal: #1B1B1D;  /* Background match */
   }
 
-  /* 1. The Slim Sticky Container */
+  /* 1. The Sticky Container */
   .topbar {
     position: fixed !important;
     top: 0; left: 0; right: 0;
     z-index: 99999;
     height: var(--header-h);
-    background: rgba(27,27,29,.85); /* Slightly more opaque for readability */
+    background: rgba(27,27,29,.90); /* Higher opacity for contrast */
     backdrop-filter: saturate(140%) blur(12px);
     border-bottom: 1px solid rgba(255,255,255,.08);
     display: flex;
     align-items: center;
     isolation: isolate;
+    overflow: hidden; /* Stops the whole bar from scrolling */
   }
 
-  /* Push body content down just enough so it doesn't hide behind header */
+  /* Adjust body padding so content doesn't hide behind the taller bar */
   body { padding-top: var(--header-h); }
   main, .hero, .page-start { margin-top: 0 !important; }
 
-  /* 2. Layout & Spacing (Nudged Left) */
+  /* 2. Layout Container */
   .topbar .wrap {
     width: 100%;
     max-width: 1080px;
     margin: 0 auto;
-    padding: 0 24px; /* standard edges */
+    padding: 0 24px;
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between; /* Pushes Brand left, Nav right */
   }
 
   .nav {
@@ -1414,63 +1416,73 @@ body{ padding-top: var(--header-h); }
     height: 100%;
   }
 
-  /* Brand: Tightened gap */
+  /* 3. Brand & Logo (55px + Glow) */
   .topbar .brand {
     display: flex;
     align-items: center;
-    gap: 14px; /* Was 18px */
-    margin-right: 20px; /* Space before the pipe separator */
+    gap: 16px;
+    margin-right: 24px; 
     text-decoration: none;
     color: #fff;
+    flex-shrink: 0; /* Prevents logo from getting squished */
   }
 
-  /* Logo: Scaled to fit slim bar */
   .topbar .brand .logo {
-    height: 36px; /* Smaller to fit 54px bar */
-    width: auto;
+    height: 55px; /* The requested size */
+    width: 55px;
     display: block;
-    filter: none;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(43,237,231,0.5)); /* THE GLOW */
+    transition: filter 0.3s ease;
+  }
+  
+  .topbar .brand .logo:hover {
+    filter: drop-shadow(0 0 14px rgba(43,237,231,0.8)); /* Stronger glow on hover */
   }
 
-  /* Brand Name */
   .topbar .brand strong {
     font-size: 18px;
     font-weight: 800;
     letter-spacing: -0.02em;
     line-height: 1;
     color: #e8eef9;
+    white-space: nowrap; /* Keeps name on one line */
   }
 
-  /* 3. The Menu (Separator & Links) */
+  /* 4. The Nav Menu (Scrollable, No Wrapping) */
   .nav-actions {
     display: flex;
     align-items: center;
-    gap: 24px; /* Was 34px - Nudged items closer */
-    height: 32px; /* Height of the pipe separator */
-    border-left: 1px solid rgba(255,255,255,.15); /* The Pipe */
-    padding-left: 24px; /* Space after the pipe */
-    overflow-x: auto; /* Scrollable on tiny screens */
-    scrollbar-width: none; /* Hide scrollbar Firefox */
+    gap: 24px;
+    height: 40px; /* Taller separator */
+    border-left: 1px solid rgba(255,255,255,.15);
+    padding-left: 24px;
+    
+    /* Horizontal Scroll Logic */
+    flex-grow: 1;
+    overflow-x: auto; 
+    overflow-y: hidden;
+    white-space: nowrap; /* CRITICAL: Prevents 3-line wrapping */
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Hide scrollbar Firefox */
   }
   .nav-actions::-webkit-scrollbar { display: none; } /* Hide scrollbar Chrome */
 
-  /* 4. The Links (Ice Blue Hover + Fixed 'g') */
+  /* 5. The Links (Tighter, Ice Blue Hover) */
   .topbar .navlink {
     position: relative;
-    display: inline-flex; /* Better alignment than inline-block */
+    display: inline-flex;
     align-items: center;
     color: #ffffff;
     font-weight: 700;
     font-size: 15px;
     text-decoration: none;
-    line-height: 1.5; /* Fixes the cut-off 'g' */
-    padding: 4px 0;   /* Minimal vertical padding */
+    line-height: 1; /* Fixes vertical spacing */
+    padding: 8px 0;
     transition: color .2s ease, text-shadow .2s ease, transform .2s ease;
-    white-space: nowrap;
   }
 
-  /* HOVER STATE: Ice Blue Only (Matches Footer) */
+  /* HOVER STATE: Ice Blue Only */
   .topbar .navlink:hover,
   .topbar .navlink:focus-visible,
   .topbar .navlink[aria-current="page"] {
@@ -1482,14 +1494,10 @@ body{ padding-top: var(--header-h); }
     outline: 0;
   }
 
-  /* Remove old "pill" background effects if any remain */
-  .topbar .navlink::before { content: none !important; }
-  .topbar .navlink::after { content: none !important; }
-
-  /* Mobile Tweak */
+  /* Hide Name on Mobile to save space */
   @media (max-width: 900px) {
-    .topbar .brand strong { display: none; } /* Hide text on mobile to save space */
-    .nav-actions { gap: 18px; padding-left: 18px; }
+    .topbar .brand strong { display: none; } 
+    .nav-actions { gap: 20px; padding-left: 20px; }
   }
 </style>
 </head>
