@@ -1354,6 +1354,23 @@ body{ padding-top: var(--header-h); }
 
 </style>
   </style>
+  <style id="lumen-charcoal-skin">
+  :root {
+    --lumen-charcoal: #1B1B1D;
+  }
+
+  /* 1. Set global body background */
+  body {
+    background-color: var(--lumen-charcoal) !important;
+  }
+
+  /* 2. Force Hero Card to match body (seamless look) */
+  .hero.card {
+    background-color: var(--lumen-charcoal) !important;
+    /* Optional: make border more subtle since bg is same as body */
+    border-color: rgba(255,255,255,0.08) !important; 
+  }
+</style>
 </head>
 <body>
 <!-- ===== Sticky Topbar (text-only nav) ===== -->
