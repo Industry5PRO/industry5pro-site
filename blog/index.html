@@ -841,8 +841,7 @@ header .brand .title{
   </article>
 
 </section>
-<div id="pagination-controls" style="display:flex; justify-content:center; gap:8px; margin: 24px 0 40px;">
-  </div>
+<div id="pagination-controls" style="display:flex; justify-content:center; gap:8px; margin: 24px 0 40px;"></div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -856,7 +855,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const filterButtons = Array.from(document.querySelectorAll('.filter-btn'));
   const paginationContainer = document.getElementById('pagination-controls');
 
-  // 1. CORE FILTER FUNCTION
+  // CORE FILTER FUNCTION
   function getMatchingCards() {
     const normalizedFilter = currentFilter.toLowerCase();
     if (normalizedFilter === 'all' || normalizedFilter === 'all articles') {
@@ -868,39 +867,32 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // 2. RENDER FUNCTION (Shows/Hides cards based on Page + Filter)
+  // RENDER FUNCTION
   function render() {
     const matches = getMatchingCards();
     const totalPages = Math.ceil(matches.length / ITEMS_PER_PAGE);
 
-    // Ensure current page is valid (e.g., if we filtered down to 1 page, don't stay on page 5)
     if (currentPage > totalPages) currentPage = 1;
     if (currentPage < 1) currentPage = 1;
 
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
     const endIndex = startIndex + ITEMS_PER_PAGE;
     
-    // First, hide ALL cards
+    // Hide ALL cards first
     allCards.forEach(card => card.style.display = 'none');
 
-    // Then, show only the slice for this page
+    // Show slice
     const pageSlice = matches.slice(startIndex, endIndex);
-    pageSlice.forEach(card => {
-      card.style.display = ''; 
-      // Optional: Add a fade-in animation here if you want
-    });
+    pageSlice.forEach(card => card.style.display = '');
 
-    // Finally, draw the page buttons
     renderPagination(totalPages);
   }
 
-  // 3. PAGINATION BUTTONS
+  // PAGINATION BUTTONS
   function renderPagination(totalPages) {
-    paginationContainer.innerHTML = ''; // Clear old buttons
+    paginationContainer.innerHTML = ''; 
+    if (totalPages <= 1) return; 
 
-    if (totalPages <= 1) return; // Don't show buttons if there's only 1 page
-
-    // Create generic button maker
     const createBtn = (text, pageNum, isActive = false) => {
       const btn = document.createElement('button');
       btn.className = `page-btn ${isActive ? 'active' : ''}`;
@@ -909,69 +901,34 @@ document.addEventListener('DOMContentLoaded', function () {
       btn.addEventListener('click', () => {
         currentPage = pageNum;
         render();
-        // Smooth scroll to top of grid so user sees new items
         document.getElementById('all').scrollIntoView({behavior: 'smooth', block: 'start'});
       });
       return btn;
     };
 
-    // Prev Button
-    if (currentPage > 1) {
-      paginationContainer.appendChild(createBtn('← Prev', currentPage - 1));
-    }
-
-    // Numbered Buttons
+    if (currentPage > 1) paginationContainer.appendChild(createBtn('← Prev', currentPage - 1));
     for (let i = 1; i <= totalPages; i++) {
       paginationContainer.appendChild(createBtn(i, i, i === currentPage));
     }
-
-    // Next Button
-    if (currentPage < totalPages) {
-      paginationContainer.appendChild(createBtn('Next →', currentPage + 1));
-    }
+    if (currentPage < totalPages) paginationContainer.appendChild(createBtn('Next →', currentPage + 1));
   }
 
-  // 4. EVENT LISTENERS FOR FILTERS
+  // EVENT LISTENERS
   filterButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      // Visual active state for pills
       filterButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-
-      // Set state and re-render
       currentFilter = btn.getAttribute('data-filter') || btn.innerText;
-      currentPage = 1; // Always reset to page 1 when filtering
+      currentPage = 1; 
       render();
     });
   });
 
-  // Initialize
+  // Init
   render();
 });
 </script>
-
-<script>
-(function rewriteBlogHeaderLinks(){
-  const map = {
-    "outcome obsessed": "/#outcome-obsessed",
-    "products": "/#products",
-    "industries": "/#industries-we-serve",
-    "ai readiness assessment": "/ai-readiness.html",
-    "ai foundations & blog": "/blog.html",
-    "book": "https://calendly.com/industry5pro/30min"
-  };
-  document.querySelectorAll("header a").forEach(a => {
-    const t = (a.textContent || "").trim().toLowerCase();
-    if (t in map) {
-      a.removeAttribute("data-link");
-      a.href = map[t];
-      if (t === "book") { a.target = "_blank"; a.rel = "noopener"; }
-    }
-  });
-})();
-
-  </script>
 
 <footer>
   <div style="text-align:center;color:#cfd6e3;margin-bottom:16px;">
@@ -998,39 +955,19 @@ document.addEventListener('DOMContentLoaded', function () {
 </footer>
 
 <script>
-  // Year in footer
+  // A. Year in footer
   const ySpan = document.getElementById('y');
   if(ySpan) ySpan.textContent = new Date().getFullYear();
 
-  // Tag filter logic
-  (function(){
-    const chips = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('article.card');
-    chips.forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        chips.forEach(c=>c.classList.remove('active'));
-        btn.classList.add('active');
-        const tag = btn.dataset.filter;
-        cards.forEach(card=>{
-          if(tag==='all'){ card.style.display=''; return; }
-          const tags = (card.getAttribute('data-tags')||'').split(',').map(s=>s.trim());
-          card.style.display = tags.includes(tag) ? '' : 'none';
-        });
-        // scroll back to top of grid for UX
-        document.getElementById('all').scrollIntoView({behavior:'smooth',block:'start'});
-      });
-    });
-  })();
-
-  // LinkedIn embed toggles
+  // B. LinkedIn embed toggles
   document.addEventListener('click', function(e){
     const btn = e.target.closest('.li-view'); 
     if(!btn) return;
-    const panel = btn.closest('.li-embed');
-    if(!panel) return; // Safety check
-    
-    if(btn.tagName === 'A') return; // Don't trap external links
+    if(btn.tagName === 'A') return; // Ignore links
 
+    const panel = btn.closest('.li-embed');
+    if(!panel) return;
+    
     const mode = btn.getAttribute('data-mode');
     panel.querySelectorAll('.li-view').forEach(b=>b.classList.toggle('active', b===btn));
     panel.querySelectorAll('iframe[data-mode]').forEach(fr=>{
@@ -1038,8 +975,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-<script>
-  // 1. The Magic LinkedIn Date Script (New)
+  // C. Magic LinkedIn Date Script
   (function(){
     const fmt = { year:'numeric', month:'short', day:'numeric' };
     
@@ -1061,12 +997,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.querySelectorAll('article.card').forEach(card => {
       let pubDate = card.getAttribute('data-pub');
-      
       if (!pubDate) {
         const liId = extractIdFromCard(card);
         if (liId) pubDate = getLinkedInDate(liId);
       }
-      
       if (!pubDate) pubDate = new Date().toLocaleDateString('en-US', fmt);
 
       let meta = card.querySelector('.meta');
@@ -1081,7 +1015,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   })();
 
-  // 2. Blog Header Link Rewrite (Keep this!)
+  // D. Blog Header Link Rewrite
   (function rewriteBlogHeaderLinks(){
     const map = {
       "outcome obsessed": "/#outcome-obsessed",
@@ -1101,6 +1035,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   })();
 </script>
+
 </body>
 </html>
-
