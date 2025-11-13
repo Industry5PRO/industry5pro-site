@@ -1481,6 +1481,18 @@ body{ padding-top: var(--header-h); }
     .topbar .brand strong { display: none; } 
     .nav-actions { gap: 16px; padding-left: 16px; }
   }
+  <style id="header-spacing-fix">
+  /* 1. Pull the container (and the line) closer to the Logo */
+  .topbar .brand {
+    margin-right: 12px !important; /* Was 20px -> Moves line Left */
+  }
+
+  /* 2. Push the "AI" text further away from the line */
+  .nav-actions {
+    padding-left: 32px !important; /* Was 20px -> Moves text Right */
+    border-left: 1px solid rgba(255,255,255,0.15); /* Ensure border stays visible */
+  }
+</style>
 </style>
 </head>
 <body>
