@@ -153,7 +153,16 @@ html,body{
 
     /* ===== Quadrant ===== */
     .quad{max-width:980px;margin:24px auto;background:#0a0a0a;border:1px solid var(--lumen) !important;border-radius:14px;padding:18px;box-shadow:0 10px 40px rgba(255,215,0,.08);overflow:hidden}
-    .quad a img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--lumen-blue-light) !important;box-shadow:0 0 14px rgba(43,237,231,.25)}
+    .quad a img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:10px;
+  border:none;  /* no outline so it looks like it's floating */
+  /* big, even ice-blue glow on all sides */
+  box-shadow:0 0 40px 16px rgba(43,237,231,.9);
+}
+
     .cta-bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:14px;padding:12px;border-top:1px dashed rgba(255,106,19,.35)}
     .note{color:var(--silver);font-size:.92rem}
     .pill-cta{
