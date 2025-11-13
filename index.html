@@ -3126,7 +3126,137 @@ document.querySelectorAll('#products .card, #products .tile, #verticals .card, #
   }, true);
 })();
 </script>
+<style id="master-header-final-fix">
+  /* 1. GLOBAL VARIABLES & OVERRIDES */
+  :root {
+    --header-h: 76px;
+    --ice-blue: #2BEDE7;        /* The ONLY accent color allowed */
+    --lumen-charcoal: #1B1B1D;  /* Background match */
+    --orange: transparent !important; /* Kill the orange variable */
+  }
 
+  /* 2. TOPBAR CONTAINER */
+  .topbar {
+    position: fixed !important;
+    top: 0; left: 0; right: 0;
+    z-index: 999999 !important;
+    height: var(--header-h);
+    background: rgba(27,27,29,0.95) !important;
+    backdrop-filter: saturate(140%) blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    overflow: visible !important; /* Allows logo glow & menus to breathe */
+  }
+
+  .topbar .wrap {
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* 3. BRAND & LOGO (Force Glow) */
+  .topbar .brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-right: 20px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  /* FORCE the logo size and glow, overriding any previous 'filter: none' */
+  .topbar .brand .logo {
+    height: 55px !important;
+    width: 55px !important;
+    display: block !important;
+    object-fit: contain;
+    background: transparent !important;
+    box-shadow: none !important;
+    filter: drop-shadow(0 0 8px rgba(43,237,231,0.6)) !important; /* ICE BLUE GLOW */
+    transition: filter 0.3s ease;
+  }
+
+  .topbar .brand .logo:hover {
+    filter: drop-shadow(0 0 16px rgba(43,237,231,1)) !important;
+  }
+
+  /* Brand Name */
+  .topbar .brand strong {
+    font-size: 18px;
+    font-weight: 800;
+    color: #e8eef9;
+    white-space: nowrap;
+  }
+
+  /* 4. NAV ACTIONS (Fix "Book Lou" Cutoff) */
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    height: 100%;
+    border-left: 1px solid rgba(255,255,255,0.15);
+    padding-left: 24px;
+    padding-right: 10px; /* CRITICAL: Right padding prevents "Book Lou" cutoff */
+    flex-grow: 1;
+    justify-content: flex-end; /* Pushes items to the right */
+    
+    /* Scroll logic for mobile */
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav-actions::-webkit-scrollbar { display: none; }
+
+  /* 5. NAV LINKS (Ice Blue Hover, No Orange) */
+  .topbar .navlink {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff !important; /* Force White base */
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.2;
+    text-decoration: none;
+    white-space: nowrap; /* Prevents 3-line break */
+    padding: 4px 0;
+    transition: all 0.2s ease;
+    flex-shrink: 0; /* Prevents buttons from squishing */
+  }
+
+  /* THE HOVER STATE - Pure Ice Blue */
+  .topbar .navlink:hover,
+  .topbar .navlink:focus-visible,
+  .topbar .navlink[aria-current="page"] {
+    color: var(--ice-blue) !important;
+    transform: translateY(-1px);
+    text-shadow: 
+      0 0 10px rgba(43,237,231,0.75),
+      0 0 20px rgba(43,237,231,0.45) !important;
+    outline: 0;
+  }
+
+  /* KILL OLD EFFECTS (Orange text, weird pills) */
+  .topbar .navlink::before, 
+  .topbar .navlink::after { 
+    content: none !important; 
+    background: none !important;
+  }
+
+  /* Mobile Tweak */
+  @media (max-width: 900px) {
+    .topbar .brand strong { display: none; }
+    .nav-actions { gap: 18px; padding-left: 18px; }
+  }
+</style>
 
   
 
