@@ -6,19 +6,28 @@
   <title>Industry5.pro — Cloud 2.0</title>
   <meta name="description" content="Cloud 2.0: network, edge, and multi cloud with AI in the loop. Lumen featured. Supplier-agnostic design for measurable outcomes." />
   <style>
-    :root{
-      --black:#000000;
-      --white:#FFFFFF;
-      --money:#85BB65;          /* money green */
-      --gold:#FFD700;           /* real gold (kept for legacy areas if needed) */
-      --silver:#C0C0C0;
-      --lumen:#FF6A13;          /* Lumen orange */
-      --lumen-blue:#00A3E0;     /* Lumen blue */
-      --lumen-blue-light:#2BEDE7; /* lighter ice-blue */
-      --lumen-blue-dark:#006B8F;  /* dark blue for inner glows */
-    }
+:root{
+  --black:#000000;
+  --white:#FFFFFF;
+  --money:#85BB65;          /* money green */
+  --gold:#FFD700;           /* real gold (kept for legacy areas if needed) */
+  --silver:#C0C0C0;
+  --lumen:#FF6A13;          /* Lumen orange */
+  --lumen-blue:#00A3E0;     /* Lumen blue */
+  --lumen-blue-light:#2BEDE7; /* lighter ice-blue */
+  --lumen-blue-dark:#006B8F;  /* dark blue for inner glows */
+  --lumen-charcoal:#1B1B1D;   /* match cyber page backdrop */
+}
+
     *{box-sizing:border-box}
-    html,body{margin:0;background:var(--black);color:var(--white);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;overflow-x:hidden}
+    html,body{
+  margin:0;
+  background:var(--lumen-charcoal);
+  color:var(--white);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  overflow-x:hidden;
+}
+
     a{color:var(--money);text-decoration:none}
     a:hover{opacity:.95}
     .wrap{max-width:1180px;margin:0 auto;padding:24px}
