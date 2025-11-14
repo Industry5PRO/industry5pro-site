@@ -1,104 +1,493 @@
-diff --git a/cloud20/index.html b/cloud20/index.html
-index 7f6adcdf346daf88603f70d01f3135428306399e..87f779c2c47059cae56d5c2ace1e69b63ac4484f 100644
---- a/cloud20/index.html
-+++ b/cloud20/index.html
-@@ -282,51 +282,51 @@
-           <a class="navlink" href="/blog">Blog</a>
-           <a class="navlink" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
-         </div>
-       </nav>
-     </div>
-   </div>
- 
-   <main class="wrap">
- 
-     <section class="hero">
-       <div class="hero-grid">
-         <div>
-           <div class="kicker" style="font-weight:800; margin-bottom:6px; color:var(--lumen-orange);">
-             Cloud <span style="color:#2BEDE7">2.0</span> Architecture
-           </div>
-           
-           <h1 style="font-size: clamp(32px, 4.5vw, 46px); line-height: 1.15; margin: 0 0 14px; color:#fff;">
-             Network + Edge + Multi-Cloud<br>with AI in the Loop
-           </h1>
- 
-           <p class="lead" style="font-size: clamp(17px, 1.8vw, 20px); color: #d5dcef; margin: 0 0 24px; max-width: 650px;">
-             Cloud 2.0 places workloads where they perform best across core, edge, and on-prem sites, with a programmable network and security that travel with the app. We feature Lumen for enterprise foundations while staying supplier-agnostic.
-           </p>
- 
-           <div class="cta-row">
--            <a class="btn btn-primary-orange" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Start Cloud 2.0 Discovery</a>
-+            <a class="btn btn-secondary-blue" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Start Cloud 2.0 Discovery</a>
-             <a class="btn btn-secondary-blue" href="#resilience-cases">See Cloud 2.0 Case Studies</a>
-           </div>
-         </div>
- 
-         <div class="hero-portrait">
-           <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora" width="340" height="340" loading="eager" decoding="async"/>
-         </div>
-       </div>
-     </section>
- 
-     <section class="kpi-grid" id="kpi-ticker">
-       <div class="kpi-item orange">
-         <div class="kpi-stat">↓<span data-target="40" data-decimals="0">0</span>ms</div>
-         <h3 class="kpi-title">p95 Latency Reduction</h3>
-         <p class="kpi-desc">Move compute to the edge, closer to users and devices, with services like Lumen Edge Bare Metal.</p>
-       </div>
-       <div class="kpi-item orange">
-         <div class="kpi-stat">↓<span data-target="35" data-decimals="0">0</span>%</div>
-         <h3 class="kpi-title">Cloud Egress Cost</h3>
-         <p class="kpi-desc">Use NaaS and private routing to bypass public internet egress fees between clouds and data centers.</p>
-       </div>
-       <div class="kpi-item ice-blue">
-         <div class="kpi-stat">↑<span data-target="99.99" data-decimals="2">0</span>%</div>
-         <h3 class="kpi-title">Service Uptime (SLA)</h3>
-         <p class="kpi-desc">Achieve true resilience with diverse, redundant network paths and automated failover.</p>
-@@ -447,37 +447,46 @@
-         <div class="btns">
-           <a class="btn btn-primary-orange" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Start Cloud 2.0 Discovery</a>
-           <a class="btn btn-secondary-blue" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
-         </div>
-       </div>
-     </section>
-   </main>
- 
-   <footer class="footer">
-     <div>© <span id="footer-year"></span> Industry5.pro | Built on trust. Paid by results.</div>
-     <div class="socials">
-       <a href="https://www.linkedin.com/in/louis-tortora7/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.48 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.8 2.67 4.8 6.14V23h-4v-6.5c0-1.55-.03-3.55-2.17-3.55-2.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg></a>
-       <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.51 5.51 0 0 0 12 7.5zm0 2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5zM18 6.2a1 1 0 1 0 1 1 1 1 0 0 0-1-1z"/></svg></a>
-       <a href="https://www.facebook.com/profile.php?id=61582481880019" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.07C22 6.49 17.52 2 11.93 2 6.35 2 1.86 6.49 1.86 12.07c0 5.02 3.66 9.18 8.44 9.95v-7.03H7.9V12.1h2.4V9.86c0-2.37 1.4-3.68 3.55-3.68 1.03 0 2.11.18 2.11.18v2.32h-1.19c-1.17 0-1.53.73-1.53 1.47v1.95h2.61l-.46 2.89h-2.19v7.03c4.78-.77 8.44-4.93 8.44-9.95z"/></svg></a>
-       <a href="https://wa.me/14076945495" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 3.9A10 10 0 0 0 2.7 17.7L2 22l4.4-1.2A10 10 0 1 0 20 3.9zm-8 16.2c-1.7 0-3.3-.5-4.7-1.6l-.3-.2-2.8.8.8-2.7-.2-.3A7.87 7.87 0 0 1 12 4.1a8 8 0 0 1 0 16zm4.5-5.3c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.6.1c-.2.2-.6.8-.7 1-.1.2-.3.2-.5.1-1-.4-2-.9-2.8-1.8-.2-.2-.4-.5-.3-.7.1-.2.3-.4.4-.6l.2-.3c.1-.2 0-.4 0-.5 0-.1-.6-1.5-.8-2.1-.2-.6-.4-.5-.6-.5h-.5c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.1 3 .9 1.6 2.1 2.2 1.9.7 2.2.8c.3.1 1.4.1 1.9-.1.6-.2 1.4-.7 1.6-1.3.2-.6.2-1.1.1-1.2z"/></svg></a>
-       <a href="mailto:lou@industry5.pro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
-     </div>
-   </footer>
- 
-   <script>
-     document.getElementById('footer-year').textContent = new Date().getFullYear();
-     document.querySelector('.btn-secondary-blue[href="#cloud20-whitepaper-viewer"]').addEventListener('click', function(e) {
-       e.preventDefault(); const v = document.querySelector(this.getAttribute('href'));
-       if(v){ const h = v.style.display === 'none'; v.style.display = h ? 'block' : 'none'; if(h) v.scrollIntoView({behavior:'smooth',block:'center'}); }
-     });
-+    document.querySelectorAll('a[href="#resilience-cases"]').forEach(link => {
-+      link.addEventListener('click', e => {
-+        const target = document.getElementById('resilience-cases');
-+        if(target){
-+          e.preventDefault();
-+          target.scrollIntoView({behavior: 'smooth', block: 'start'});
-+        }
-+      });
-+    });
-     document.addEventListener("DOMContentLoaded", () => {
-       const s = document.getElementById("kpi-ticker"); if(!s)return;
-       new IntersectionObserver((e,o)=>{ e.forEach(x=>{ if(x.isIntersecting){
-         x.target.querySelectorAll("[data-target]").forEach(c=>{
-           const t=+c.dataset.target, d=c.dataset.decimals?+c.dataset.decimals:0, i=t/50; let r=0;
-           const u=()=>{ r+=i; const v=r>=t?t:r; c.textContent=d>0?v.toFixed(d):Math.ceil(v); if(r<t)requestAnimationFrame(u); }; u();
-         }); o.unobserve(x.target);
-       }})},{threshold:0.5}).observe(s);
-     });
-   </script>
- </body>
- </html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Cloud 2.0 & NaaS Advisory (Lumen) | Industry5.pro</title>
+  <meta name="description" content="Ditch legacy cloud costs. We are supplier-agnostic advisors for Cloud 2.0, specializing in Lumen NaaS, edge compute, and multi-cloud. We design for latency, cost, and resilience. Get your impact-first audit.">
+  <meta name="color-scheme" content="dark">
+
+  <link rel="icon" href="/assets/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+  <style id="cloud20-theme">
+    :root {
+      /* Colors */
+      --lumen-orange: #FF6A13;
+      --ice-blue: #2BEDE7;
+      --lumen-charcoal: #1B1B1D;
+      
+      /* Theme Mappings */
+      --page-accent: var(--lumen-orange);
+      --page-accent-secondary: var(--ice-blue);
+      
+      /* Backgrounds & Text */
+      --card-bg: #0a0f1a;
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text-muted: #aeb8c4;
+      --text-light: #e8eef9;
+      
+      /* Layout */
+      --header-h: 76px;
+    }
+
+    /* Global Resets */
+    *, *:before, *:after { box-sizing: border-box; }
+    body { 
+      padding-top: var(--header-h) !important; 
+      background-color: var(--lumen-charcoal);
+      color: var(--text-light);
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial;
+      margin: 0;
+    }
+    main, .hero, .page-start { margin-top: 0 !important; }
+    a { color: var(--page-accent-secondary); text-decoration: none; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 24px; }
+
+    /* === TOPBAR === */
+    .topbar {
+      position: fixed !important;
+      top: 0; left: 0; right: 0;
+      z-index: 99999 !important;
+      height: var(--header-h);
+      background: rgba(27,27,29,0.95) !important;
+      backdrop-filter: saturate(140%) blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+    }
+    .topbar .wrap {
+      width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 24px;
+      height: 100%; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav { display: flex; align-items: center; width: 100%; height: 100%; }
+
+    /* Brand */
+    .topbar .brand {
+      display: flex; align-items: center; gap: 16px; margin-right: 4px !important; flex-shrink: 0;
+    }
+    .topbar .brand .logo {
+      height: 55px !important; width: 55px !important; display: block !important;
+      object-fit: contain; background: transparent !important; box-shadow: none !important;
+      filter: drop-shadow(0 0 8px rgba(43,237,231,0.6)) !important; /* ICE BLUE GLOW */
+      transition: filter 0.3s ease;
+    }
+    .topbar .brand .logo:hover { filter: drop-shadow(0 0 16px rgba(43,237,231,1)) !important; }
+    .topbar .brand strong { font-size: 18px; font-weight: 800 !important; color: #e8eef9 !important; white-space: nowrap; }
+
+    /* Nav Actions */
+    .nav-actions {
+      display: flex; align-items: center; gap: 20px; height: 44px;
+      border-left: 1px solid rgba(255,255,255,0.15);
+      padding-left: 40px !important; padding-right: 40px !important;
+      flex-grow: 1; justify-content: flex-end;
+      overflow-x: auto; overflow-y: hidden;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    }
+    .nav-actions::-webkit-scrollbar { display: none; }
+
+    /* Nav Links */
+    .topbar .navlink {
+      position: relative; display: inline-flex; align-items: center; justify-content: center;
+      text-align: center; color: #ffffff !important; font-weight: 800 !important;
+      font-size: 14px; line-height: 1.2 !important; white-space: normal !important;
+      padding: 4px 0; transition: all 0.2s ease; flex-shrink: 0;
+    }
+    .topbar .navlink:hover,
+    .topbar .navlink:focus-visible,
+    .topbar .navlink[aria-current="page"] {
+      color: var(--ice-blue) !important; transform: translateY(-1px);
+      text-shadow: 0 0 10px rgba(43,237,231,0.75), 0 0 20px rgba(43,237,231,0.45) !important;
+      outline: 0;
+    }
+    @media (max-width: 900px) {
+      .topbar .brand strong { display: none; } 
+      .nav-actions { gap: 16px; padding-left: 16px !important; }
+    }
+
+    /* === BUTTONS (PILLS) === */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 12px 24px; font-size: 1rem; font-weight: 700; border-radius: 12px;
+      text-decoration: none; border: 1px solid transparent; transition: all 0.2s ease; cursor: pointer;
+    }
+    /* Primary Orange */
+    .btn-primary-orange {
+      background: var(--lumen-orange); color: #0b1220; border-color: var(--lumen-orange);
+    }
+    .btn-primary-orange:hover {
+      background: #fff; color: #0b1220; transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255,106,19,0.3);
+    }
+    /* Secondary Blue */
+    .btn-secondary-blue {
+      background: transparent; color: var(--ice-blue); border-color: var(--ice-blue);
+    }
+    .btn-secondary-blue:hover {
+      background: var(--ice-blue); color: #0b1220; transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(43,237,231,0.3);
+    }
+
+    /* === HERO === */
+    .hero { padding: 40px 0 10px; }
+    .hero-grid {
+      display: grid; grid-template-columns: minmax(0, 1fr) 340px;
+      gap: 40px; align-items: center; padding-left: 0;
+    }
+    .kicker { color:var(--lumen-orange); font-weight:700; font-size:.95rem; letter-spacing:.08em; text-transform:uppercase; }
+    .hero h1 { font-size:2.4rem; line-height:1.2; margin:.4rem 0 0; }
+    .lead { color: var(--text-muted); max-width:760px; font-size:1.05rem; margin: 0 0 24px; }
+    .hero-portrait img { display:block; width:100%; height:auto; border-radius:18px; }
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+    
+    @media (max-width:980px){ 
+      .hero-grid { grid-template-columns: 1fr; } 
+      .hero-portrait { display: none; } 
+    }
+
+    /* === KPI TICKER === */
+    .kpi-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 24px; margin-bottom: 24px;
+    }
+    .kpi-item { text-align: center; padding: 16px; border-right: 1px solid var(--card-border); }
+    .kpi-item:last-child { border-right: none; }
+    .kpi-stat { font-size: 3rem; font-weight: 800; color: var(--page-accent); line-height: 1.1; margin-bottom: 8px; }
+    .kpi-title { font-size: 1.1rem; font-weight: 600; color: #fff; margin-bottom: 8px; }
+    .kpi-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; margin: 0; }
+    .kpi-item.ice-blue .kpi-stat { color: var(--page-accent-secondary); }
+    
+    @media (max-width: 900px) {
+      .kpi-grid { grid-template-columns: 1fr; }
+      .kpi-item { border-right: none; border-bottom: 1px solid var(--card-border); }
+      .kpi-item:last-child { border-bottom: none; }
+    }
+
+    /* === QUADRANT === */
+    .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 24px; margin-bottom: 24px; }
+    .card h2 { margin: 0 0 16px 0; font-size: 1.8rem; color: white; }
+    .card h2 .highlight { color: var(--page-accent); }
+    
+    .quadrant-wrap {
+      position: relative; background: #000; border: 1px solid var(--ice-blue);
+      border-radius: 16px; padding: 40px 24px 24px; overflow: hidden;
+      box-shadow: 0 0 26px rgba(43,237,231,.55);
+    }
+    .quadrant-title { position: absolute; top: 12px; left: 24px; font-size: 1.1rem; font-weight: 700; color: #FFD700; }
+    .quadrant-grid {
+      display: grid; grid-template-columns: repeat(10, 1fr); grid-template-rows: repeat(10, 1fr);
+      height: 600px; position: relative;
+      background: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+      background-size: 10% 10%;
+    }
+    .axis-y { position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: #FFD700; opacity: 0.7; }
+    .axis-x { position: absolute; left: 0; right: 0; top: 50%; height: 2px; background: #FFD700; opacity: 0.7; }
+    .axis-label { position: absolute; color: var(--text-muted); font-size: 0.8rem; }
+    .axis-label.x-axis { bottom: -20px; left: 50%; transform: translateX(-50%); width: 100%; text-align: center; }
+    .axis-label.y-axis { top: 50%; left: -8px; transform: translateY(-50%) rotate(-90deg); }
+    .quadrant-label { position: absolute; color: #fff; font-weight: 700; font-size: 0.9rem; }
+    .q-label-tr { top: 10px; right: 10px; text-align: right; }
+    .q-label-tl { top: 10px; left: 10px; }
+    .q-label-br { bottom: 10px; right: 10px; text-align: right; }
+    .q-label-bl { bottom: 10px; left: 10px; }
+    .q-label-tr .highlight { color: var(--ice-blue); }
+
+    /* Vendors */
+    .vendor { grid-column: var(--x); grid-row: var(--y); display: flex; align-items: center; justify-content: center; position: relative; }
+    .vendor-dot { width: 16px; height: 16px; background: var(--page-accent-secondary); border: 2px solid #fff; border-radius: 50%; box-shadow: 0 0 10px var(--ice-blue), 0 0 20px var(--ice-blue); transition: all 0.2s ease; }
+    .vendor-dot.leader { background: var(--page-accent) !important; box-shadow: 0 0 10px var(--lumen-orange), 0 0 20px var(--lumen-orange) !important; }
+    .vendor-label { position: absolute; left: 100%; top: 50%; transform: translate(12px, -50%); color: #fff; font-weight: 600; font-size: 0.9rem; white-space: nowrap; text-shadow: 0 0 5px #000; }
+    .vendor:hover .vendor-dot { transform: scale(1.5); }
+    
+    @media (max-width: 600px) {
+      .quadrant-grid { height: 400px; }
+      .vendor-dot { width: 12px; height: 12px; }
+      .vendor-label { font-size: 0.75rem; transform: translate(8px, -50%); }
+    }
+
+    /* --- WHITEPAPER --- */
+    .whitepaper { margin-top: 24px; background: var(--card-bg); border: 1px solid var(--lumen-orange); border-radius: 16px; box-shadow: 0 0 18px rgba(255, 106, 19, 0.5), 0 0 40px rgba(255, 106, 19, 0.3); }
+    .wp-heading { margin: 0 0 6px; }
+    .wp-eyebrow { display:inline-block; color: var(--lumen-orange); font-weight: 700; font-size: .95rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 4px; }
+    .wp-title { margin:0; font-size:2.1rem; line-height:1.2; color:#ffffff; }
+    .whitepaper p { margin: 6px 0 12px; color: var(--text-muted); font-size: 1rem; }
+    .whitepaper .meta { color: #9fb2c7; font-size: .92rem; margin-top: 6px; }
+    .whitepaper .viewer { margin-top:12px; border-radius:12px; overflow:hidden; border:1px solid rgba(255,106,19,.35); background:#0f131b; }
+    .whitepaper .viewer iframe { width:100%; height:720px; border:0; display:block; }
+    @media (max-width:900px){ .whitepaper .viewer iframe{height:520px} }
+
+    /* --- RESILIENCE GRID (ICP) --- */
+    .icp-wrap h2 { font-size: 1.8rem; color: white; }
+    .icp-wrap h2 .highlight { color: var(--page-accent-secondary); }
+    .icp-wrap p { color: var(--text-muted); }
+    .icp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; }
+    @media (max-width: 900px){ .icp-grid{grid-template-columns: 1fr} }
+    .icp-card {
+      background: var(--card-bg); border: 1px solid var(--lumen-orange); border-radius:16px; padding:16px;
+      box-shadow: 0 0 18px rgba(255,106,19,.4); transition: box-shadow .2s ease, transform .15s ease;
+      display: flex; flex-direction: column;
+    }
+    .icp-card:hover { box-shadow: 0 0 26px rgba(255,106,19,.7); transform: translateY(-2px); }
+    .icp-card .tag {
+      display:inline-flex; align-items:center; justify-content:center; text-align:center; min-height: 38px;
+      padding: 8px 16px; font-weight: 800; letter-spacing: .2px; color: #0b1220;
+      background: linear-gradient(180deg, var(--lumen-orange), #ff8c3a); border: 1px solid var(--lumen-orange);
+      border-radius: 9999px; margin: 0 0 10px; cursor:pointer;
+    }
+    .icp-card h3 { color: #fff; margin: 6px 0 8px 0; font-size: 1.2rem; }
+    .icp-card h3 .icp-link { color: var(--page-accent-secondary); text-decoration: none; border-bottom: 1px dashed transparent; transition: all .15s ease; }
+    .icp-card h3 .icp-link:hover { border-bottom-color: var(--ice-blue); }
+    .icp-card p { color: var(--text-light) !important; font-size: 0.95rem; line-height: 1.6; flex-grow: 1; }
+    .icp-card p:last-of-type { margin-top: auto; }
+    .icp-card p b { color: var(--page-accent-secondary) !important; font-weight: 700; }
+
+    /* --- CTA RAIL --- */
+    .cta-rail { margin: 28px 0 10px; padding: 24px; border-radius: 16px; background: var(--card-bg); border: 1px solid var(--card-border); }
+    .cta-rail-inner { display:flex; flex-wrap:wrap; gap:16px; align-items:center; justify-content:space-between; }
+    .cta-rail h3 { margin:0; color:#fff; font-size:1.3rem; }
+    .cta-rail p { margin:4px 0 0; color:var(--text-muted); max-width:720px; font-size:.98rem; }
+    @media (max-width:900px){ .cta-rail-inner{flex-direction:column;align-items:flex-start} .cta-rail .btns{display:flex;gap:10px;flex-wrap:wrap} }
+
+    /* --- FOOTER --- */
+    .footer { border-top:1px solid var(--card-border); padding: 24px; margin-top: 32px; text-align: center; color: var(--text-muted); }
+    .socials { display:flex; gap:16px; justify-content:center; margin-top: 16px; }
+    .socials a { color: #fff; transition: color 0.2s ease, transform 0.2s ease; }
+    .socials a:hover { color: var(--ice-blue); transform: translateY(-2px); }
+    .socials svg { width: 24px; height: 24px; fill: currentColor; }
+    
+    /* Utility */
+    section[id]{ scroll-margin-top: 90px; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="wrap">
+      <nav class="nav" aria-label="Primary">
+        <div class="brand">
+         <img class="logo" src="/assets/industry5logo.svg" alt="Industry5.pro logo" />
+          <strong style="color: #fff;">Industry5.pro</strong>
+        </div>
+
+        <div class="nav-actions">
+          <a class="navlink" href="/">Home</a>
+          <a class="navlink" href="/ai">AI</a>
+          <a class="navlink" href="/cyber">Security</a>
+          <a class="navlink" href="/cloud20" aria-current="page">Cloud 2.0</a>
+          <a class="navlink" href="/ccaas">UC &amp;<br>Contact Center</a>
+          <a class="navlink" href="/aiot">AIoT</a>
+          <a class="navlink" href="/peplink">5G &amp;<br>Satellite</a>
+          <a class="navlink" href="/blog">Blog</a>
+          <a class="navlink" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="kicker" style="font-weight:800; margin-bottom:6px; color:var(--lumen-orange);">
+            Cloud <span style="color:#2BEDE7">2.0</span> Architecture
+          </div>
+          
+          <h1 style="font-size: clamp(32px, 4.5vw, 46px); line-height: 1.15; margin: 0 0 14px; color:#fff;">
+            Network + Edge + Multi-Cloud<br>with AI in the Loop
+          </h1>
+
+          <p class="lead" style="font-size: clamp(17px, 1.8vw, 20px); color: #d5dcef; margin: 0 0 24px; max-width: 650px;">
+            Cloud 2.0 places workloads where they perform best across core, edge, and on-prem sites, with a programmable network and security that travel with the app. We feature Lumen for enterprise foundations while staying supplier-agnostic.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn btn-secondary-blue" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Start Cloud 2.0 Discovery</a>
+            <a class="btn btn-secondary-blue" href="#resilience-cases">See Cloud 2.0 Case Studies</a>
+          </div>
+        </div>
+
+        <div class="hero-portrait">
+          <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora" width="340" height="340" loading="eager" decoding="async"/>
+        </div>
+      </div>
+    </section>
+
+    <section class="kpi-grid" id="kpi-ticker">
+      <div class="kpi-item orange">
+        <div class="kpi-stat">↓<span data-target="40" data-decimals="0">0</span>ms</div>
+        <h3 class="kpi-title">p95 Latency Reduction</h3>
+        <p class="kpi-desc">Move compute to the edge, closer to users and devices, with services like Lumen Edge Bare Metal.</p>
+      </div>
+      <div class="kpi-item orange">
+        <div class="kpi-stat">↓<span data-target="35" data-decimals="0">0</span>%</div>
+        <h3 class="kpi-title">Cloud Egress Cost</h3>
+        <p class="kpi-desc">Use NaaS and private routing to bypass public internet egress fees between clouds and data centers.</p>
+      </div>
+      <div class="kpi-item ice-blue">
+        <div class="kpi-stat">↑<span data-target="99.99" data-decimals="2">0</span>%</div>
+        <h3 class="kpi-title">Service Uptime (SLA)</h3>
+        <p class="kpi-desc">Achieve true resilience with diverse, redundant network paths and automated failover.</p>
+      </div>
+    </section>
+
+    <section class="card" id="quadrant">
+      <h2>Cloud 2.0 Quadrant: <span class="highlight">NaaS Fabric vs. Edge Compute</span></h2>
+      <p style="color: var(--text-muted); margin-top: -12px; margin-bottom: 20px;">
+        The new stack is defined by who controls the network *fabric* and who provides the *compute* at the metro edge. <strong>Lumen</strong> is uniquely positioned as a leader in both, enabling true end-to-end workload orchestration.
+      </p>
+      <div class="quadrant-wrap">
+        <div class="quadrant-title">Cloud 2.0 Readiness — NaaS Fabric vs. Edge Compute</div>
+        <div class="quadrant-grid">
+          <div class="quadrant-label q-label-tl"><strong>Challengers</strong><br><span style="color:var(--text-muted); font-weight: 400;">(Strong Edge, Building NaaS)</span></div>
+          <div class="quadrant-label q-label-tr"><strong>Leaders</strong><br><span style="color:var(--text-muted); font-weight: 400;">(Strong Edge & NaaS Fabric)</span></div>
+          <div class="quadrant-label q-label-bl"><strong>Niche Players</strong><br><span style="color:var(--text-muted); font-weight: 400;">(Legacy Colocation/Transit)</span></div>
+          <div class="quadrant-label q-label-br"><strong>Fabric Specialists</strong><br><span style="color:var(--text-muted); font-weight: 400;">(Strong NaaS, Building Edge)</span></div>
+          <div class="axis-y"></div><div class="axis-x"></div>
+          <div class="axis-label y-axis">Edge Compute & Service →</div>
+          <div class="axis-label x-axis">← Legacy Fabric | NaaS & Programmable Fabric | Hyperscale Fabric →</div>
+          <div class="vendor lumen" style="--x: 7; --y: 2;"><div class="vendor-dot leader"></div><span class="vendor-label">Lumen</span></div>
+          <div class="vendor aws" style="--x: 6; --y: 3;"><div class="vendor-dot"></div><span class="vendor-label">AWS</span></div>
+          <div class="vendor google" style="--x: 7; --y: 4;"><div class="vendor-dot"></div><span class="vendor-label">Google Cloud</span></div>
+          <div class="vendor microsoft" style="--x: 5; --y: 5;"><div class="vendor-dot"></div><span class="vendor-label">Microsoft Azure</span></div>
+          <div class="vendor equinix" style="--x: 3; --y: 6;"><div class="vendor-dot"></div><span class="vendor-label">Equinix</span></div>
+          <div class="vendor digitalrealty" style="--x: 3; --y: 7;"><div class="vendor-dot"></div><span class="vendor-label">Digital Realty</span></div>
+          <div class="vendor coresite" style="--x: 3; --y: 8;"><div a class="vendor-dot"></div><span class="vendor-label">CoreSite</span></div>
+          <div class="vendor att" style="--x: 2; --y: 7;"><div class="vendor-dot"></div><span class="vendor-label">AT&T</span></div>
+          <div class="vendor verizon" style="--x: 2; --y: 8;"><div class="vendor-dot"></div><span class="vendor-label">Verizon</span></div>
+          <div class="vendor tmobile" style="--x: 2; --y: 9;"><div class="vendor-dot"></div><span class="vendor-label">T-Mobile</span></div>
+          <div class="vendor cloudflare" style="--x: 8; --y: 5;"><div class="vendor-dot"></div><span class="vendor-label">Cloudflare</span></div>
+          <div class="vendor akamai" style="--x: 8; --y: 6;"><div class="vendor-dot"></div><span class="vendor-label">Akamai</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="whitepaper card" id="cloud20-whitepaper">
+      <div class="wp-heading">
+        <span class="wp-eyebrow">Cloud <span style="color: var(--ice-blue); text-shadow: 0 0 8px var(--ice-blue);">2.0</span></span>
+        <h1 class="wp-title">Because AI Won't Run on Yesterday’s Internet</h1>
+      </div>
+      <p>This research-driven view maps how AI reshapes data centers, networks, and commercial motions through 2030. (From Dave Ward, CTO, Lumen)</p>
+      <div class="cta-row">
+        <a class="btn btn-primary-orange" href="/assets/preparing-cloud-two-enterprise-networks.pdf" download>Download PDF</a>
+        <a class="btn btn-secondary-blue" href="#cloud20-whitepaper-viewer">View Inline</a>
+      </div>
+      <div class="viewer" id="cloud20-whitepaper-viewer" style="display: none;">
+        <iframe src="/assets/preparing-cloud-two-enterprise-networks.pdf#view=FitH" title="Cloud 2.0 white paper" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <section class="icp-wrap" id="resilience-cases" aria-label="Cloud 2.0 use cases">
+      <div class="icp-header">
+        <h2>Where Cloud <span class="highlight" style="color: var(--ice-blue); text-shadow: 0 0 8px var(--ice-blue);">2.0</span> Delivers Measurable Resilience</h2>
+        <p>Use these as starting points. We shape the plan to your uptime targets, compliance, and unit economics.</p>
+      </div>
+      <div class="icp-grid">
+        <article class="icp-card">
+          <div class="tag">Digital Native SaaS</div>
+          <h3><a class="icp-link" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Cloud 2.0 for SaaS Resilience</a></h3>
+          <p>Spread services across regions and clouds so deploys stay fast and outages are boring. NaaS simplifies multi-cloud routing.</p>
+          <p><b>KPIs:</b> error rate, release velocity, RPO/RTO.</p>
+        </article>
+        <article class="icp-card">
+          <div class="tag">Financial Services</div>
+          <h3><a class="icp-link" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Trading Performance & Compliance</a></h3>
+          <p>Deterministic paths to venues, data residency by design, and policy as code with audit evidence built in. Failover is rehearsed.</p>
+          <p><b>KPIs:</b> p95 latency, failover time, fraud signal lag.</p>
+        </article>
+        <article class="icp-card">
+          <div class="tag">Healthcare & Life Sciences</div>
+          <h3><a class="icp-link" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Clinical Uptime & AI at the Edge</a></h3>
+          <p>Imaging and device inference runs close to care while PHI stays segmented and recoverable. Integrations are predictable and tested.</p>
+          <p><b>KPIs:</b> uptime, time to diagnosis, DR test pass rate.</p>
+        </article>
+        <article class="icp-card">
+          <div class="tag">Manufacturing & Industry</div>
+          <h3><a class="icp-link" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Plant to Cloud Reliability</a></h3>
+          <p>Edge compute at the line, private wireless on the floor, and deterministic backhaul to MES and historians. Analytics sync without drift.</p>
+          <p><b>KPIs:</b> OEE, cycle time, MTTR, data freshness.</p>
+        </article>
+      </div>
+      <div class="icp-grid" style="margin-top: 16px;">
+        <article class="icp-card">
+          <div class="tag">Retail and CPG</div>
+          <h3><a class="icp-link" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Omnichannel Inventory & POS</a></h3>
+          <p>Resilient SD-WAN for POS and payments, with edge caching for real-time inventory and pricing. Stops outages from stopping sales.</p>
+          <p><b>KPIs:</b> POS uptime, stock accuracy, checkout time.</p>
+        </article>
+        <article class="icp-card">
+          <div class="tag">Logistics, Fleet, and Warehousing</div>
+          <h3><a class="icp-link" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Network as a Reliability Layer</a></h3>
+          <p>Low latency networks for robots and scanners, clean failover, and telemetry landing in the right cloud for planning while local actions stay on site.</p>
+          <p><b>KPIs:</b> dock dwell, pick rate, order accuracy, ETA accuracy.</p>
+        </article>
+        <article class="icp-card">
+          <div class="tag">Utilities and Critical Infrastructure</div>
+          <h3><a class="icp-link" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Grid Telemetry and Event Response</a></h3>
+          <p>Private transport for controls, streaming telemetry pipelines, and segmented recovery playbooks. Built to handle storms and audits alike.</p>
+          <p><b>KPIs:</b> SAIDI/SAIFI, event detection time, recovery time.</p>
+        </article>
+        <article class="icp-card">
+          <div class="tag">Public Sector and Education</div>
+          <h3><a class="icp-link" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Mission Resilience with Budget Discipline</a></h3>
+          <p>Identity-centric access, campus edge where it matters, and clear data residency. Designed for accountability without sacrificing uptime.</p>
+          <p><b>KPIs:</b> service uptime, incident closure time, cost per user.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta-rail">
+      <div class="cta-rail-inner">
+        <div>
+          <h3>Ready to place compute and data where they win?</h3>
+          <p>Two fast paths: scope your use case now or book time to map Cloud 2.0, NaaS, and edge around your KPIs.</p>
+        </div>
+        <div class="btns">
+          <a class="btn btn-primary-orange" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Start Cloud 2.0 Discovery</a>
+          <a class="btn btn-secondary-blue" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>© <span id="footer-year"></span> Industry5.pro | Built on trust. Paid by results.</div>
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/louis-tortora7/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.48 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.8 2.67 4.8 6.14V23h-4v-6.5c0-1.55-.03-3.55-2.17-3.55-2.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg></a>
+      <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.51 5.51 0 0 0 12 7.5zm0 2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5zM18 6.2a1 1 0 1 0 1 1 1 1 0 0 0-1-1z"/></svg></a>
+      <a href="https://www.facebook.com/profile.php?id=61582481880019" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.07C22 6.49 17.52 2 11.93 2 6.35 2 1.86 6.49 1.86 12.07c0 5.02 3.66 9.18 8.44 9.95v-7.03H7.9V12.1h2.4V9.86c0-2.37 1.4-3.68 3.55-3.68 1.03 0 2.11.18 2.11.18v2.32h-1.19c-1.17 0-1.53.73-1.53 1.47v1.95h2.61l-.46 2.89h-2.19v7.03c4.78-.77 8.44-4.93 8.44-9.95z"/></svg></a>
+      <a href="https://wa.me/14076945495" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 3.9A10 10 0 0 0 2.7 17.7L2 22l4.4-1.2A10 10 0 1 0 20 3.9zm-8 16.2c-1.7 0-3.3-.5-4.7-1.6l-.3-.2-2.8.8.8-2.7-.2-.3A7.87 7.87 0 0 1 12 4.1a8 8 0 0 1 0 16zm4.5-5.3c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.6.1c-.2.2-.6.8-.7 1-.1.2-.3.2-.5.1-1-.4-2-.9-2.8-1.8-.2-.2-.4-.5-.3-.7.1-.2.3-.4.4-.6l.2-.3c.1-.2 0-.4 0-.5 0-.1-.6-1.5-.8-2.1-.2-.6-.4-.5-.6-.5h-.5c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.1 3 .9 1.6 2.1 2.2 1.9.7 2.2.8c.3.1 1.4.1 1.9-.1.6-.2 1.4-.7 1.6-1.3.2-.6.2-1.1.1-1.2z"/></svg></a>
+      <a href="mailto:lou@industry5.pro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+    document.querySelector('.btn-secondary-blue[href="#cloud20-whitepaper-viewer"]').addEventListener('click', function(e) {
+      e.preventDefault(); const v = document.querySelector(this.getAttribute('href'));
+      if(v){ const h = v.style.display === 'none'; v.style.display = h ? 'block' : 'none'; if(h) v.scrollIntoView({behavior:'smooth',block:'center'}); }
+    });
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('a[href="#resilience-cases"]').forEach(link => {
+      link.addEventListener('click', e => {
+        const target = document.getElementById('resilience-cases');
+        if(target && !prefersReducedMotion){
+          e.preventDefault();
+          target.scrollIntoView({behavior: 'smooth', block: 'start'});
+        }
+      });
+    });
+    document.addEventListener("DOMContentLoaded", () => {
+      const s = document.getElementById("kpi-ticker"); if(!s)return;
+      new IntersectionObserver((e,o)=>{ e.forEach(x=>{ if(x.isIntersecting){
+        x.target.querySelectorAll("[data-target]").forEach(c=>{
+          const t=+c.dataset.target, d=c.dataset.decimals?+c.dataset.decimals:0, i=t/50; let r=0;
+          const u=()=>{ r+=i; const v=r>=t?t:r; c.textContent=d>0?v.toFixed(d):Math.ceil(v); if(r<t)requestAnimationFrame(u); }; u();
+        }); o.unobserve(x.target);
+      }})},{threshold:0.5}).observe(s);
+    });
+  </script>
+</body>
+</html>
