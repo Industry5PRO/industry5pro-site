@@ -361,41 +361,7 @@
       opacity: 0.7;
     }
 
-    /* Vendor Datapoint */
-    .vendor {
-      grid-column: var(--x);
-      grid-row: var(--y);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    .vendor-dot {
-      width: 16px;
-      height: 16px;
-      background: var(--nice-blue);
-      border: 2px solid #fff;
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--nice-blue), 0 0 20px var(--nice-blue);
-      transition: all 0.2s ease;
-    }
-   .vendor-label {
-      position: absolute;
-      left: 75%;
-      top: 50%;
-      transform: translate(2px, -50%); /* <-- This is the change (was 12px) */
-      color: #fff;
-      font-weight: 600;
-      font-size: 0.9rem;
-      white-space: nowrap;
-      text-shadow: 0 0 5px #000;
-    }
-    .vendor:hover .vendor-dot {
-      transform: scale(1.5);
-      background-color: var(--genesys-orange);
-      box-shadow: 0 0 10px var(--genesys-orange), 0 0 20px var(--genesys-orange);
-    }
-    /* --- Quadrant Axis Labels --- */
+    /* Quadrant Axis Labels */
     .quad-axis-label {
       position: absolute;
       color: #FFD700; /* This is the yellow/gold from your quadrant title */
@@ -416,6 +382,41 @@
       bottom: 8px; /* Positions it inside the card's bottom padding */
       left: 50%;
       transform: translateX(-50%); /* Centers it horizontally */
+    }
+    
+    /* Vendor Datapoint */
+    .vendor {
+      grid-column: var(--x);
+      grid-row: var(--y);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .vendor-dot {
+      width: 16px;
+      height: 16px;
+      background: var(--nice-blue);
+      border: 2px solid #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--nice-blue), 0 0 20px var(--nice-blue);
+      transition: all 0.2s ease;
+    }
+   .vendor-label {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(14px, -50%); /* 14px right of center */
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      text-shadow: 0 0 5px #000;
+    }
+    .vendor:hover .vendor-dot {
+      transform: scale(1.5);
+      background-color: var(--genesys-orange);
+      box-shadow: 0 0 10px var(--genesys-orange), 0 0 20px var(--genesys-orange);
     }
     
     /* Vendor Placements */
@@ -446,13 +447,11 @@
       align-items: stretch; /* Makes columns equal height */
       margin-top: 24px;
     }
-    /* This is the left grid column (video) */
-    .voice-grid-new > div:first-child {
+    .voice-grid-new > div:first-child { /* Video column */
       display: flex;
       flex-direction: column;
     }
-    /* This is the right grid column (ICPs) */
-    .voice-grid-new > div:last-child {
+    .voice-grid-new > div:last-child { /* ICP column */
       display: flex;
       flex-direction: column;
       gap: 16px;
@@ -486,25 +485,6 @@
       }
     }
     
-    /* --- Embedded Video (Stretches) --- */
-    .video-embed-small {
-      position: relative;
-      width: 100%;
-      flex-grow: 1; /* This is the fix: makes video fill vertical space */
-      min-height: 350px; /* Good default for mobile stacking */
-      overflow: hidden;
-      border-radius: 12px;
-    }
-    .video-embed-small iframe,
-    .video-embed-small.yt-lite-embed { /* Apply to lite embed */
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0; 
-    }
-    
     /* PDF Viewer Style */
     .viewer { 
       margin-top:16px; 
@@ -515,42 +495,6 @@
     }
     .viewer iframe { width:100%; height:720px; border:0; display:block; }
     @media (max-width:900px){ .viewer iframe{height:520px} }
-    
-    /* --- Lite YouTube Embed Styles --- */
-    .yt-lite-embed {
-      position: relative;
-      display: block;
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-    }
-    .yt-lite-play {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 68px;
-      height: 48px;
-      background: rgba(0,0,0,0.6);
-      border: 0;
-      border-radius: 8px;
-      cursor: pointer;
-      opacity: 0.9;
-      transition: opacity 0.2s ease, transform 0.1s ease;
-    }
-    .yt-lite-play:hover {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1.05);
-    }
-    .yt-lite-play::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-40%, -50%);
-      border-left: 18px solid #fff;
-      border-top: 11px solid transparent;
-      border-bottom: 11px solid transparent;
-    }
 
     /* Footer Styles */
     .footer {
@@ -675,28 +619,27 @@
           This is our internal map for 2025, focusing on built-in AI. Leaders like <strong>NICE</strong> and <strong>Genesys</strong> show massive AI breadth and enterprise scale, while others solve for specific use cases. Your ideal fit depends on your outcomes, not just the "dot."
         </p>
 
-    <div class="quadrant-wrap">
-        <div class="quadrant-title">UCaaS/CCaaS with Built-In AI — Enterprise Readiness vs AI Breadth</div>
-        <div class="quadrant-grid">
-          <div class="axis-y"></div>
-          <div class="axis-x"></div>
-          <div class="vendor nice"><div class="vendor-dot"></div><span class="vendor-label">NICE</span></div>
-          <div class="vendor genesys"><div class="vendor-dot"></div><span class="vendor-label">Genesys</span></div>
-          <div class="vendor five9"><div class="vendor-dot"></div><span class="vendor-label">Five9</span></div>
-          <div class="vendor talkdesk"><div class="vendor-dot"></div><span class="vendor-label">Talkdesk</span></div>
-          <div class="vendor cisco"><div class="vendor-dot"></div><span class="vendor-label">Cisco Webex</span></div>
-          <div class="vendor ringcentral"><div class="vendor-dot"></div><span class="vendor-label">RingCentral</span></div>
-          <div class="vendor dialpad"><div class="vendor-dot"></div><span class="vendor-label">Dialpad</span></div>
-          <div class="vendor zoom"><div class="vendor-dot"></div><span class="vendor-label">Zoom</span></div>
-          <div class="vendor eightbyeight"><div class="vendor-dot"></div><span class="vendor-label">8x8</span></div>
-          <div class="vendor vonage"><div class="vendor-dot"></div><span class="vendor-label">Vonage</span></div>
-          <div class="vendor ujet"><div class="vendor-dot"></div><span class="vendor-label">ujet.cx</span></div>
-          <div class="vendor contentguru"><div class="vendor-dot"></div><span class="vendor-label">Content Guru</span></div>
+        <div class="quadrant-wrap">
+          <div class="quadrant-title">UCaaS/CCaaS with Built-In AI — Enterprise Readiness vs AI Breadth</div>
+          <div class="quadrant-grid">
+            <div class="axis-y"></div>
+            <div class="axis-x"></div>
+            <div class="vendor nice"><div class="vendor-dot"></div><span class="vendor-label">NICE</span></div>
+            <div class="vendor genesys"><div class="vendor-dot"></div><span class="vendor-label">Genesys</span></div>
+            <div class="vendor five9"><div class="vendor-dot"></div><span class="vendor-label">Five9</span></div>
+            <div class="vendor talkdesk"><div class="vendor-dot"></div><span class="vendor-label">Talkdesk</span></div>
+            <div class="vendor cisco"><div class="vendor-dot"></div><span class="vendor-label">Cisco Webex</span></div>
+            <div class="vendor ringcentral"><div class="vendor-dot"></div><span class="vendor-label">RingCentral</span></div>
+            <div class="vendor dialpad"><div class="vendor-dot"></div><span class="vendor-label">Dialpad</span></div>
+            <div class="vendor zoom"><div class="vendor-dot"></div><span class="vendor-label">Zoom</span></div>
+            <div class="vendor eightbyeight"><div class="vendor-dot"></div><span class="vendor-label">8x8</span></div>
+            <div class="vendor vonage"><div class="vendor-dot"></div><span class="vendor-label">Vonage</span></div>
+            <div class="vendor ujet"><div class="vendor-dot"></div><span class="vendor-label">ujet.cx</span></div>
+            <div class="vendor contentguru"><div class="vendor-dot"></div><span class="vendor-label">Content Guru</span></div>
 
-        </div> <div class="quad-axis-label quad-label-y">Enterprise Readiness ↑</div>
-        <div class="quad-axis-label quad-label-x">AI Breadth →</div>
-
-      </div> 
+          </div>
+          <div class="quad-axis-label quad-label-y">Enterprise Readiness ↑</div>
+          <div class="quad-axis-label quad-label-x">AI Breadth →</div>
         </div>
       </section>
 
