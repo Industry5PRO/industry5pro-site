@@ -65,7 +65,7 @@
       display: flex;
       align-items: center;
       gap: 16px;
-      margin-right: 4px !important; /* FINAL NUDGE: Moves line Left */
+      margin-right: 0px !important; /* FINAL NUDGE: Moves line Left */
       text-decoration: none;
       flex-shrink: 0;
     }
@@ -96,7 +96,7 @@
       gap: 20px;
       height: 44px;
       border-left: 1px solid rgba(255,255,255,0.15);
-      padding-left: 40px !important;   /* FINAL NUDGE: Moves text Right */
+      padding-left: 44px !important;   /* FINAL NUDGE: Moves text Right */
       padding-right: 40px !important;  /* "Book Lou" Cutoff Fix */
       flex-grow: 1;
       justify-content: flex-end;
@@ -501,14 +501,20 @@
     }
 
     /* --- Resilience Grid (2x2) --- */
+    .icp-wrap {
+      max-width: 1080px;
+      margin: 28px auto 10px;
+      padding: 0 4px;
+    }
     .icp-wrap h2 {
       font-size: 1.8rem;
       color: white;
+      margin: 8px 0 14px;
     }
     .icp-wrap h2 .highlight {
       color: var(--page-accent-secondary); /* Ice Blue */
     }
-    .icp-wrap p { color: var(--text-muted); }
+    .icp-wrap > p { color: var(--text-muted); margin: 6px 0 0; }
     
     .icp-grid {
       display: grid;
@@ -671,7 +677,7 @@
         <span class="wp-eyebrow">
           Cloud <span style="color: var(--ice-blue); text-shadow: 0 0 8px var(--ice-blue);">2.0</span>
         </span>
-        <h1 class="wp-title">Because AI Won't Run on Yesterday’s Internet</h1>
+        <h1 class="wp-title">Because AI Will Not Run on Yesterday’s Internet</h1>
       </div>
       <p>This research-driven view maps how AI reshapes data centers, networks, and commercial motions through 2030. (From Dave Ward, CTO, Lumen)</p>
 
@@ -817,7 +823,7 @@
 
         <article class="icp-card">
           <div class="tag">Logistics, Fleet, and Warehousing</div>
-          <h3><a class="icp-link" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Network as a Reliability Layer</a></h3>
+          <h3><a class="icp-link" href="httpsD://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Network as a Reliability Layer</a></h3>
           <p>Low latency networks for robots and scanners, clean failover, and telemetry landing in the right cloud for planning while local actions stay on site.</p>
           <p><b>KPIs:</b> dock dwell, pick rate, order accuracy, ETA accuracy.</p>
         </article>
