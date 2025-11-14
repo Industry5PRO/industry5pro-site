@@ -148,16 +148,18 @@
   <!-- === Cyber Page Styles === -->
   <style id="cyber-theme">
     :root {
-      /* Re-using old vars, but applying them selectively */
-      --veeam-green: #00B336;
-      --lumen-blue: #00A9E0;
-      --lumen-orange: #FF6A13;
-      --ice-blue: #2BEDE7;
-      --text-muted: #A9A9AD;
-      --card-bg: #232326;
-      --card-border: #2C2C30;
-      --outline: #2C2C30; /* from old file */
-    }
+  /* Re-using old vars, but applying them selectively */
+  --veeam-green: #00B336;
+  --lumen-blue: #00A9E0;
+  --lumen-orange: #FF6A13;
+  --ice-blue: #2BEDE7;
+  --eleven-purple: #a146f9;   /* 11:11 Systems */
+  --text-muted: #A9A9AD;
+  --card-bg: #232326;
+  --card-border: #2C2C30;
+  --outline: #2C2C30; /* from old file */
+}
+
 
     .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
     section{padding:42px 0;border-top:1px solid var(--outline)}
@@ -247,76 +249,207 @@
       background: rgba(0,179,54,0.1); transform: translateY(-2px);
     }
 
-    /* === NEW HTML Quadrant === */
-    .quadrant-wrap {
-      position: relative;
-      background: #000;
-      border: 1px solid var(--veeam-green);
-      border-radius: 16px;
-      padding: 48px 24px 24px; /* More top padding for labels */
-      overflow: hidden;
-      box-shadow: 0 0 26px rgba(0,179,54,0.4);
-      margin: 40px 0;
-      height: 600px;
-    }
-    .quadrant-title { 
-      position: absolute; top: 12px; left: 24px; color: #fff; font-weight: 700; 
-      font-size: 1.1rem;
-    }
-    .quadrant-grid {
-      display: grid; grid-template-columns: repeat(10, 1fr); grid-template-rows: repeat(10, 1fr);
-      height: 100%; width: 100%;
-      background: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-                  linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-      background-size: 10% 10%;
-    }
-    .axis-y { position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: var(--lumen-blue); opacity: 0.5; }
-    .axis-x { position: absolute; left: 0; right: 0; top: 50%; height: 2px; background: var(--lumen-blue); opacity: 0.5; }
-    
-    /* Quadrant Labels */
-    .quadrant-label {
-      position: absolute; color: #fff; font-weight: 700; font-size: 0.9rem;
-    }
-    .q-label-tr { top: 10px; right: 10px; text-align: right; }
-    .q-label-tl { top: 10px; left: 10px; }
-    .q-label-br { bottom: 10px; right: 10px; text-align: right; }
-    .q-label-bl { bottom: 10px; left: 10px; }
-    .q-label-tr .highlight { color: var(--veeam-green); }
-    .quadrant-label small { color: var(--text-muted); font-weight: 400; font-size: 0.8rem; }
-    
-    /* Axis Labels */
-    .axis-label { position: absolute; color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; }
-    .axis-label.x-axis { bottom: -20px; left: 50%; transform: translateX(-50%); width: 100%; text-align: center; }
-    .axis-label.y-axis { top: 50%; left: -20px; transform: translateY(-50%) rotate(-90deg); }
+  /* === Quadrant 2.0 - dynamic scatter === */
+.quadrant-section {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  color: #f5f7ff;
+  background: #05060a;
+  padding: 32px 24px;
+  border-radius: 16px;
+  max-width: 980px;
+  margin: 40px auto;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+}
 
-    /* Vendors */
-    .vendor { grid-column: var(--x); grid-row: var(--y); display: flex; align-items: center; justify-content: center; }
-    .vendor-dot {
-      width: 16px; height: 16px; border: 2px solid #fff; border-radius: 50%;
-      background: var(--ice-blue); /* Default: Ice Blue */
-      box-shadow: 0 0 10px var(--ice-blue); transition: all 0.2s ease;
-      z-index: 2;
-    }
-    .vendor-dot.leader { background: var(--veeam-green) !important; box-shadow: 0 0 15px var(--veeam-green) !important; }
-    .vendor-dot.accent { background: var(--lumen-orange) !important; box-shadow: 0 0 15px var(--lumen-orange) !important; }
-    
-    .vendor-label {
-      position: absolute;
-      /* Position label relative to dot */
-      top: 50%; 
-      left: 50%;
-      transform: translate(var(--lx, 20px), var(--ly, -50%)); /* --lx/--ly for offset */
-      color: #fff; font-weight: 600; font-size: 0.9rem;
-      white-space: nowrap; text-shadow: 0 0 4px #000;
-      z-index: 1;
-    }
-    .vendor:hover .vendor-dot { transform: scale(1.5); z-index: 3; }
+.quadrant-section h2 {
+  margin: 0 0 12px;
+  font-size: 1.6rem;
+  letter-spacing: 0.03em;
+}
 
-    @media (max-width: 600px) {
-      .quadrant-grid { height: 400px; }
-      .vendor-dot { width: 12px; height: 12px; }
-      .vendor-label { font-size: 0.75rem; }
-    }
+.quadrant-section p {
+  margin: 0 0 20px;
+  color: var(--text-muted);
+  max-width: 800px;
+}
+
+.quadrant-wrapper {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 16px;
+  align-items: stretch;
+}
+
+/* Plot area */
+.quadrant-plot {
+  position: relative;
+  background: radial-gradient(circle at top, #171a24 0, #080910 52%, #040509 100%);
+  border-radius: 14px;
+  overflow: hidden;
+  min-height: 360px;
+  aspect-ratio: 16 / 9;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Grid where points get placed */
+.quadrant-grid {
+  position: absolute;
+  inset: 12% 8% 16% 10%;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(to top, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 10% 100%, 100% 12.5%;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+/* Axis labels */
+.axis-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(232, 238, 255, 0.85);
+}
+
+.axis-label-y {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.axis-label-x {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+/* Legend */
+.quadrant-legend {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin-top: 10px;
+  font-size: 0.75rem;
+  opacity: 0.9;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  box-shadow: 0 0 12px currentColor;
+}
+
+.legend-swatch-default { color: var(--ice-blue); background: var(--ice-blue); }
+.legend-swatch-lumen   { color: var(--lumen-orange); background: var(--lumen-orange); }
+.legend-swatch-veeam   { color: var(--veeam-green); background: var(--veeam-green); }
+.legend-swatch-1111    { color: var(--eleven-purple); background: var(--eleven-purple); }
+
+/* Points */
+.quad-point {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  color: var(--ice-blue); /* default color for everyone */
+}
+
+/* X shaped marker */
+.quad-marker {
+  position: relative;
+  width: 16px;
+  height: 16px;
+}
+
+.quad-marker::before,
+.quad-marker::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 2px;
+  height: 16px;
+  background: currentColor;
+  border-radius: 999px;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.quad-marker::before { transform: rotate(45deg); }
+.quad-marker::after  { transform: rotate(-45deg); }
+
+/* Label chip */
+.quad-label {
+  position: absolute;
+  top: 50%;
+  left: 18px;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: rgba(7, 10, 18, 0.9);
+  border: 1px solid rgba(150, 175, 255, 0.25);
+  backdrop-filter: blur(4px);
+  color: #f5f7ff;
+}
+
+/* Hover behavior - same base color, but glowing bigger */
+.quad-point:hover .quad-marker {
+  transform: scale(1.25);
+}
+
+/* On hover, swap color for specific vendors */
+.quad-point[data-vendor="lumen"]:hover {
+  color: var(--lumen-orange);
+}
+
+.quad-point[data-vendor="veeam"]:hover {
+  color: var(--veeam-green);
+}
+
+.quad-point[data-vendor="1111"]:hover {
+  color: var(--eleven-purple);
+}
+
+/* Label border picks up the same accent on hover */
+.quad-point:hover .quad-label {
+  border-color: currentColor;
+}
+
+/* Mobile tweaks */
+@media (max-width: 720px) {
+  .quadrant-wrapper {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .axis-label-y {
+    order: -1;
+    writing-mode: horizontal-tb;
+    justify-content: center;
+    margin-bottom: 6px;
+  }
+
+  .quadrant-plot {
+    min-height: 260px;
+  }
+
+  .quad-label {
+    max-width: 140px;
+    white-space: normal;
+  }
+}
+
 
     /* Checklist & Form */
     .checklist{display:grid;grid-template-columns:repeat(3, 1fr);gap:12px;margin:24px 0}
@@ -451,45 +584,48 @@
     </div>
 
     <!-- HTML QUADRANT -->
-    <section id="quadrant" class="anchor">
-      <h2 style="font-size:1.8rem; margin-bottom:12px;">Cyber Resilience Quadrant</h2>
-      <p style="color:var(--text-muted); max-width:800px; margin-bottom:24px;">
-        There isn’t one vendor that does it all. Resilience comes from a backbone of <strong>Identity</strong>, <strong>Data Truth</strong>, and <strong>Recoverability</strong>.
-      </p>
-      
-      <div class="quadrant-wrap">
-        <div class="quadrant-title">Cyber Market: Enterprise Readiness vs. Platform Comprehensiveness</div>
-        <div class="quadrant-grid">
-          <!-- Quadrant Labels -->
-          <div class="quadrant-label q-label-tl"><strong>Niche Specialists</strong><br><small>(Strong in one area, SMB-focused)</small></div>
-          <div class="quadrant-label q-label-tr"><strong>Enterprise Leaders</strong><br><small>(High Readiness & Comprehensive Platform)</small></div>
-          <div class="quadrant-label q-label-bl"><strong>Legacy Players</strong><br><small>(Low Platform Breadth, Hardware-focused)</small></div>
-          <div class="quadrant-label q-label-br"><strong>Platform Challengers</strong><br><small>(Comprehensive Platform, Scaling Readiness)</small></div>
-          
-          <!-- Axis -->
-          <div class="axis-y"></div>
-          <div class="axis-x"></div>
-          <div class="axis-label x-axis">← Narrow | Platform Comprehensiveness (Protect, Detect, Recover) | Comprehensive →</div>
-          <div class="axis-label y-axis">Enterprise Readiness →</div>
+   <!-- HTML Quadrant 2.0 -->
+<section id="quadrant" class="anchor quadrant-section">
+  <h2>Cyber Resilience Overlay - Top Global Players</h2>
+  <p>
+    There is no single vendor that can handle every control. This overlay shows how MDR, SASE,
+    and backup players cluster on a spectrum of <strong>holistic simplicity</strong> and
+    <strong>enterprise readiness</strong>, then highlights where Lumen and Veeam sit when we design it right.
+  </p>
 
-          <!-- Vendors (De-cluttered) -->
-          <div class="vendor" style="--x: 8; --y: 2;"><div class="vendor-dot leader"></div><span class="vendor-label" style="--lx: -10px; --ly: -30px;">Veeam</span></div>
-          <div class="vendor" style="--x: 7; --y: 3;"><div class="vendor-dot accent"></div><span class="vendor-label" style="--lx: -10px; --ly: 20px;">Lumen</span></div>
-          <div class="vendor" style="--x: 9; --y: 2;"><div class="vendor-dot"></div><span class="vendor-label" style="--lx: 20px; --ly: -8px;">Palo Alto</span></div>
-          <div class="vendor" style="--x: 8; --y: 4;"><div class="vendor-dot"></div><span class="vendor-label" style="--lx: 20px; --ly: -8px;">CrowdStrike</span></div>
-          
-          <div class="vendor" style="--x: 3; --y: 4;"><div class="vendor-dot"></div><span class="vendor-label" style="--lx: 20px; --ly: -8px;">Fortinet</span></div>
-          <div class="vendor" style="--x: 4; --y: 5;"><div class="vendor-dot"></div><span class="vendor-label" style="--lx: 20px; --ly: -8px;">Cisco</span></div>
-          
-          <div class="vendor" style="--x: 3; --y: 8;"><div class="vendor-dot"></div><span class="vendor-label" style="--lx: 20px; --ly: -8px;">Barracuda</span></div>
-          <div class="vendor" style="--x: 2; --y: 7;"><div class="vendor-dot"></div><span class="vendor-label" style="--lx: 20px; --ly: -8px;">Sophos</span></div>
-          
-          <div class="vendor" style="--x: 7; --y: 7;"><div class="vendor-dot"></div><span class="vendor-label" style="--lx: -10px; --ly: 20px;">Arctic Wolf</span></div>
-          <div class="vendor" style="--x: 8; --y: 8;"><div class="vendor-dot"></div><span class="vendor-label" style="--lx: 20px; --ly: -8px;">SentinelOne</span></div>
-          <div class="vendor" style="--x: 6; --y: 6;"><div class="vendor-dot"></div><span class="vendor-label" style="--lx: -10px; --ly: 20px;">11:11 Systems</span></div>
-        </div>
+  <div class="quadrant-wrapper">
+    <!-- Y axis label -->
+    <div class="axis-label axis-label-y">
+      Enterprise &amp; Compliance Ready
+    </div>
+
+    <!-- Plot area -->
+    <div class="quadrant-plot">
+      <div class="quadrant-grid"></div>
+      <!-- X axis label -->
+      <div class="axis-label axis-label-x">
+        Holistic &amp; Simplicity
       </div>
-    </section>
+    </div>
+
+    <!-- Legend -->
+    <div class="quadrant-legend">
+      <span class="legend-item">
+        <span class="legend-swatch legend-swatch-default"></span> Other suppliers
+      </span>
+      <span class="legend-item">
+        <span class="legend-swatch legend-swatch-lumen"></span> Lumen overlay
+      </span>
+      <span class="legend-item">
+        <span class="legend-swatch legend-swatch-veeam"></span> Veeam anchor
+      </span>
+      <span class="legend-item">
+        <span class="legend-swatch legend-swatch-1111"></span> 11:11 Systems
+      </span>
+    </div>
+  </div>
+</section>
+
 
     <!-- CHECKLIST -->
     <section id="checklist" class="anchor">
@@ -553,6 +689,55 @@
   <!-- === SCRIPTS === -->
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+        // Cyber Quadrant 2.0 - plot points from data
+    (function () {
+      const points = [
+        { name: "Trustwave (MDR)",                 x: 56, y: 74, vendor: "default" },
+        { name: "LevelBlue (MSSP, WAAP mngd)",     x: 62, y: 71, vendor: "default" },
+        { name: "Field Effect (MDR)",              x: 60, y: 60, vendor: "default" },
+        { name: "SilverSky (MDR)",                 x: 64, y: 62, vendor: "default" },
+        { name: "Ontinue (Microsoft MDR)",         x: 61, y: 79, vendor: "default" },
+        { name: "Open Systems (MDR + SASE)",       x: 67, y: 76, vendor: "default" },
+        { name: "eSentire (MDR)",                  x: 72, y: 78, vendor: "default" },
+        { name: "Veeam (Backup / Instant Recovery)", x: 75, y: 84, vendor: "veeam" },
+        { name: "Dataprise (Veeam VCSP)",          x: 77, y: 64, vendor: "default" },
+        { name: "Coro (All in one SMB / MM)",      x: 79, y: 56, vendor: "default" },
+        { name: "Akamai (Zero Trust / WAAP)",      x: 82, y: 86, vendor: "default" },
+        { name: "11:11 Systems (DRaaS for Veeam)", x: 80, y: 88, vendor: "1111" },
+        // Your Lumen overlay point
+        { name: "Lumen (Backbone + DDoS + Edge)",  x: 73, y: 82, vendor: "lumen" }
+      ];
+
+      // Axis ranges to match the PNG
+      const xMin = 40, xMax = 90;
+      const yMin = 55, yMax = 90;
+
+      const grid = document.querySelector(".quadrant-grid");
+      if (!grid) return;
+
+      points.forEach(p => {
+        const left = (p.x - xMin) / (xMax - xMin) * 100;
+        const top  = (1 - (p.y - yMin) / (yMax - yMin)) * 100;
+
+        const wrapper = document.createElement("div");
+        wrapper.className = "quad-point";
+        wrapper.dataset.vendor = p.vendor || "default";
+        wrapper.style.left = left + "%";
+        wrapper.style.top  = top + "%";
+
+        const marker = document.createElement("div");
+        marker.className = "quad-marker";
+
+        const label = document.createElement("div");
+        label.className = "quad-label";
+        label.textContent = p.name;
+
+        wrapper.appendChild(marker);
+        wrapper.appendChild(label);
+        grid.appendChild(wrapper);
+      });
+    })();
+
 
     // KPI Ticker Animation
     document.addEventListener("DOMContentLoaded", () => {
