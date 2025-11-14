@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
-  <title>Cloud 2.0 (Updated) | Industry5.pro</title>
+  <title>Cloud 2.0 & NaaS Advisory (Lumen) | Industry5.pro</title>
   <meta name="description" content="Ditch legacy cloud costs. We are supplier-agnostic advisors for Cloud 2.0, specializing in Lumen NaaS, edge compute, and multi-cloud. We design for latency, cost, and resilience. Get your impact-first audit.">
   <meta name="color-scheme" content="dark">
-
+  
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
@@ -171,6 +171,7 @@
     
     a {
       color: var(--page-accent-secondary);
+      text-decoration: none;
     }
 
     /* --- Page Card --- */
@@ -253,25 +254,7 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(43,237,231,0.3);
     }
-    /* --- Text Link for Case Studies --- */
-.text-link {
-  display: inline-block;
-  font-weight: 700;
-  color: var(--ice-blue);
-  text-decoration: none;
-  border-bottom: 1px dashed var(--ice-blue);
-  transition: all 0.2s ease;
-  margin-top: 16px; /* Space it from the video above */
-}
-.text-link:hover {
-  color: #fff;
-  border-bottom-color: #fff;
-}
-.text-link::after {
-  content: ' →'; /* Arrow */
-  display: inline-block;
-  margin-left: 4px;
-}
+    
     .whitepaper .viewer { 
       margin-top:12px; 
       border-radius:12px; 
@@ -293,6 +276,8 @@
       align-items: center;
       padding-left: 0;
     }
+    .hero-portrait img { display:block; width:100%; height:auto; border-radius:18px; }
+    
     @media (max-width:980px){ 
       .hero-grid {
         grid-template-columns: 1fr;
@@ -315,10 +300,11 @@
       margin:.4rem 0 0;
       text-transform:none !important
     }
-    .sub{
+    .lead{ /* Lead text in hero */
       color: var(--text-muted);
       max-width:760px;
       font-size:1.05rem;
+      margin: 0 0 24px;
     }
     .hero-pic{
       justify-self:end;
@@ -343,7 +329,7 @@
       .hero{padding:28px 0 10px}
       .hero-grid{grid-template-columns:1fr;gap:18px;}
       .hero-pic{display: none;}
-      .hero .sub{font-size:1rem}
+      .hero .lead{font-size:1rem}
       .hero h1{font-size:clamp(1.8rem,6vw,2.2rem)}
     }
 
@@ -511,6 +497,86 @@
       .vendor-label { font-size: 0.75rem; transform: translate(8px, -50%); }
     }
 
+    /* --- Featured Video Section --- */
+    .video-wrap {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+      margin-top: 16px;
+      /* Break out of the card's 24px padding */
+      margin-left: -24px;
+      margin-right: -24px;
+      /* Remove side borders and radius to sit flush */
+      border-radius: 0;
+      border-left: 0;
+      border-right: 0;
+      /* Keep top/bottom borders */
+      border-top: 1px solid var(--card-border);
+      border-bottom: 1px solid var(--card-border);
+    }
+    .video-wrap iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* --- Lite YouTube Embed Styles --- */
+    .yt-lite-embed {
+      position: relative;
+      display: block;
+    }
+    .yt-lite-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 68px;
+      height: 48px;
+      background: rgba(0,0,0,0.6);
+      border: 0;
+      border-radius: 8px;
+      cursor: pointer;
+      opacity: 0.9;
+      transition: opacity 0.2s ease, transform 0.1s ease;
+    }
+    .yt-lite-play:hover {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.05);
+    }
+    .yt-lite-play::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-40%, -50%);
+      border-left: 18px solid #fff;
+      border-top: 11px solid transparent;
+      border-bottom: 11px solid transparent;
+    }
+
+    /* --- Text Link for Case Studies --- */
+    .text-link {
+      display: inline-block;
+      font-weight: 700;
+      color: var(--ice-blue);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--ice-blue);
+      transition: all 0.2s ease;
+      margin-top: 16px; /* Space it from the video above */
+    }
+    .text-link:hover {
+      color: #fff;
+      border-bottom-color: #fff;
+    }
+    .text-link::after {
+      content: ' →'; /* Arrow */
+      display: inline-block;
+      margin-left: 4px;
+    }
+
     /* --- Resilience Grid (2x2) --- */
     .icp-wrap h2 {
       font-size: 1.8rem;
@@ -669,7 +735,9 @@
       </nav>
     </div>
   </div>
- <main class="wrap">
+
+  <main class="wrap">
+
     <section class="hero">
       <div class="hero-grid">
         <div>
@@ -685,11 +753,10 @@
             Cloud 2.0 places workloads where they perform best across core, edge, and on-prem sites, with a programmable network and security that travel with the app. We feature Lumen for enterprise foundations while staying supplier-agnostic.
           </p>
 
-     <div class="cta-row">
-  <a class="btn btn-primary-orange" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Start Cloud 2.0 Discovery</a>
-  
-  <a class="btn btn-secondary-blue" href="#resilience-cases">See Cloud 2.0 Case Studies</a>
-</div>
+          <div class="cta-row">
+            <a class="btn btn-primary-orange" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Start Cloud 2.0 Discovery</a>
+            <a class="btn btn-secondary-blue" href="#resilience-cases">See Cloud 2.0 Case Studies</a>
+          </div>
         </div>
 
         <div class="hero-portrait">
@@ -700,25 +767,17 @@
 
     <section class="kpi-grid" id="kpi-ticker">
       <div class="kpi-item orange">
-        <div class="kpi-stat">
-          ↓<span data-target="40" data-decimals="0">0</span>ms
-        </div>
+        <div class="kpi-stat">↓<span data-target="40" data-decimals="0">0</span>ms</div>
         <h3 class="kpi-title">p95 Latency Reduction</h3>
         <p class="kpi-desc">Move compute to the edge, closer to users and devices, with services like Lumen Edge Bare Metal.</p>
       </div>
-      
       <div class="kpi-item orange">
-        <div class="kpi-stat">
-          ↓<span data-target="35" data-decimals="0">0</span>%
-        </div>
+        <div class="kpi-stat">↓<span data-target="35" data-decimals="0">0</span>%</div>
         <h3 class="kpi-title">Cloud Egress Cost</h3>
         <p class="kpi-desc">Use NaaS and private routing to bypass public internet egress fees between clouds and data centers.</p>
       </div>
-
       <div class="kpi-item ice-blue">
-        <div class="kpi-stat">
-          ↑<span data-target="99.99" data-decimals="2">0</span>%
-        </div>
+        <div class="kpi-stat">↑<span data-target="99.99" data-decimals="2">0</span>%</div>
         <h3 class="kpi-title">Service Uptime (SLA)</h3>
         <p class="kpi-desc">Achieve true resilience with diverse, redundant network paths and automated failover.</p>
       </div>
@@ -729,7 +788,6 @@
       <p style="color: var(--text-muted); margin-top: -12px; margin-bottom: 20px;">
         The new stack is defined by who controls the network *fabric* and who provides the *compute* at the metro edge. <strong>Lumen</strong> is uniquely positioned as a leader in both, enabling true end-to-end workload orchestration.
       </p>
-
       <div class="quadrant-wrap">
         <div class="quadrant-title">Cloud 2.0 Readiness — NaaS Fabric vs. Edge Compute</div>
         <div class="quadrant-grid">
@@ -737,12 +795,9 @@
           <div class="quadrant-label q-label-tr"><strong>Leaders</strong><br><span style="color:var(--text-muted); font-weight: 400;">(Strong Edge & NaaS Fabric)</span></div>
           <div class="quadrant-label q-label-bl"><strong>Niche Players</strong><br><span style="color:var(--text-muted); font-weight: 400;">(Legacy Colocation/Transit)</span></div>
           <div class="quadrant-label q-label-br"><strong>Fabric Specialists</strong><br><span style="color:var(--text-muted); font-weight: 400;">(Strong NaaS, Building Edge)</span></div>
-          
-          <div class="axis-y"></div>
-          <div class="axis-x"></div>
+          <div class="axis-y"></div><div class="axis-x"></div>
           <div class="axis-label y-axis">Edge Compute & Service →</div>
           <div class="axis-label x-axis">← Legacy Fabric | NaaS & Programmable Fabric | Hyperscale Fabric →</div>
-
           <div class="vendor lumen" style="--x: 7; --y: 2;"><div class="vendor-dot leader"></div><span class="vendor-label">Lumen</span></div>
           <div class="vendor aws" style="--x: 6; --y: 3;"><div class="vendor-dot"></div><span class="vendor-label">AWS</span></div>
           <div class="vendor google" style="--x: 7; --y: 4;"><div class="vendor-dot"></div><span class="vendor-label">Google Cloud</span></div>
@@ -755,121 +810,38 @@
           <div class="vendor tmobile" style="--x: 2; --y: 9;"><div class="vendor-dot"></div><span class="vendor-label">T-Mobile</span></div>
           <div class="vendor cloudflare" style="--x: 8; --y: 5;"><div class="vendor-dot"></div><span class="vendor-label">Cloudflare</span></div>
           <div class="vendor akamai" style="--x: 8; --y: 6;"><div class="vendor-dot"></div><span class="vendor-label">Akamai</span></div>
-
         </div>
       </div>
     </section>
 
     <section class="whitepaper card" id="cloud20-whitepaper">
       <div class="wp-heading">
-        <span class="wp-eyebrow">
-          Cloud <span style="color: var(--ice-blue); text-shadow: 0 0 8px var(--ice-blue);">2.0</span>
-        </span>
+        <span class="wp-eyebrow">Cloud <span style="color: var(--ice-blue); text-shadow: 0 0 8px var(--ice-blue);">2.0</span></span>
         <h1 class="wp-title">Because AI Won't Run on Yesterday’s Internet</h1>
       </div>
       <p>This research-driven view maps how AI reshapes data centers, networks, and commercial motions through 2030. (From Dave Ward, CTO, Lumen)</p>
-
       <div class="cta-row">
         <a class="btn btn-primary-orange" href="/assets/preparing-cloud-two-enterprise-networks.pdf" download>Download PDF</a>
         <a class="btn btn-secondary-blue" href="#cloud20-whitepaper-viewer">View Inline</a>
       </div>
-
       <div class="viewer" id="cloud20-whitepaper-viewer" style="display: none;">
         <iframe src="/assets/preparing-cloud-two-enterprise-networks.pdf#view=FitH" title="Cloud 2.0 white paper" loading="lazy"></iframe>
       </div>
     </section>
 
-    <section class="icp-wrap" id="resilience-cases" aria-label="Cloud 2.0 use cases">
-      <div class="icp-header">
-        <h2>Where Cloud <span class="highlight" style="color: var(--ice-blue); text-shadow: 0 0 8px var(--ice-blue);">2.0</span> Delivers Measurable Resilience</h2>
-        <p>Use these as starting points. We shape the plan to your uptime targets, compliance, and unit economics.</p>
-      </div>
-
-      <div class="icp-grid">
-        <article class="icp-card">
-          <div class="tag">Digital Native SaaS</div>
-          <h3><a class="icp-link" href="https://www.lumen.com/en-us/resources/customer-success-stories.html" target="_blank" rel="noopener">Cloud 2.0 for SaaS Resilience</a></h3>
-          <p>Spread services across regions and clouds so deploys stay fast and outages are boring. NaaS simplifies multi-cloud routing.</p>
-          <p><b>KPIs:</b> error rate, release velocity, RPO/RTO.</p>
-        </article>
-
-        <article class="icp-card">
-          <div class="tag">Financial Services</div>
-          <h3><a class="icp-link" href="https://www.lumen.com/en-us/resources/customer-success-stories.html" target="_blank" rel="noopener">Trading Performance & Compliance</a></h3>
-          <p>Deterministic paths to venues, data residency by design, and policy as code with audit evidence built in. Failover is rehearsed.</p>
-          <p><b>KPIs:</b> p95 latency, failover time, fraud signal lag.</p>
-        </article>
-
-        <article class="icp-card">
-          <div class="tag">Healthcare & Life Sciences</div>
-          <h3><a class="icp-link" href="https://www.lumen.com/en-us/resources/customer-success-stories.html" target="_blank" rel="noopener">Clinical Uptime & AI at the Edge</a></h3>
-          <p>Imaging and device inference runs close to care while PHI stays segmented and recoverable. Integrations are predictable and tested.</p>
-          <p><b>KPIs:</b> uptime, time to diagnosis, DR test pass rate.</p>
-        </article>
-
-        <article class="icp-card">
-          <div class="tag">Manufacturing & Industry</div>
-          <h3><a class="icp-link" href="https://www.lumen.com/en-us/resources/customer-success-stories.html" target="_blank" rel="noopener">Plant to Cloud Reliability</a></h3>
-          <p>Edge compute at the line, private wireless on the floor, and deterministic backhaul to MES and historians. Analytics sync without drift.</p>
-          <p><b>KPIs:</b> OEE, cycle time, MTTR, data freshness.</p>
-        </article>
-      </div>
-      
-      <div class="icp-grid" style="margin-top: 16px;">
-        <article class="icp-card">
-          <div class="tag">Retail and CPG</div>
-          <h3><a class="icp-link" href="https://www.lumen.com/en-us/resources/customer-success-stories.html" target="_blank" rel="noopener">Omnichannel Inventory & POS</a></h3>
-          <p>Resilient SD-WAN for POS and payments, with edge caching for real-time inventory and pricing. Stops outages from stopping sales.</p>
-          <p><b>KPIs:</b> POS uptime, stock accuracy, checkout time.</p>
-        </article>
-
-        <article class="icp-card">
-          <div class="tag">Logistics, Fleet, and Warehousing</div>
-          <h3><a class="icp-link" href="https://www.lumen.com/en-us/resources/customer-success-stories.html" target="_blank" rel="noopener">Network as a Reliability Layer</a></h3>
-          <p>Low latency networks for robots and scanners, clean failover, and telemetry landing in the right cloud for planning while local actions stay on site.</p>
-          <p><b>KPIs:</b> dock dwell, pick rate, order accuracy, ETA accuracy.</p>
-        </article>
-
-        <article class="icp-card">
-          <div class="tag">Utilities and Critical Infrastructure</div>
-          <h3><a class="icp-link" href="https://www.lumen.com/en-us/resources/customer-success-stories.html" target="_blank" rel="noopener">Grid Telemetry and Event Response</a></h3>
-          <p>Private transport for controls, streaming telemetry pipelines, and segmented recovery playbooks. Built to handle storms and audits alike.</p>
-          <p><b>KPIs:</b> SAIDI/SAIFI, event detection time, recovery time.</p>
-        </article>
-
-        <article class="icp-card">
-          <div class="tag">Public Sector and Education</div>
-          <h3><a class="icp-link" href="https://www.lumen.com/en-us/resources/customer-success-stories.html" target="_blank" rel="noopener">Mission Resilience with Budget Discipline</a></h3>
-          <p>Identity-centric access, campus edge where it matters, and clear data residency. Designed for accountability without sacrificing uptime.</p>
-          <p><b>KPIs:</b> service uptime, incident closure time, cost per user.</p>
-        </article>
-      </div>
-    </section>
-
-   <section class="card" id="city-furniture-case-study">
+    <section class="card" id="city-furniture-case-study">
       <span class="wp-eyebrow" style="color: var(--ice-blue);">
         Featured Cloud 2.0 Case Study: Retail & CPG
       </span>
-      
       <h2 style="color: #fff; margin-top: 4px; font-size: 2.1rem; line-height: 1.2;">
         City Furniture: 100% Cloud with Lumen® NaaS
       </h2>
-      
       <p style="color: var(--text-muted); font-size: 1rem; max-width: 800px; margin-bottom: 16px;">
         A win with City Furniture where they went with a NaaS product enabling their entire company to be 100% cloud without any on-prem servers. This is Cloud 2.0 in practice: agility, resilience, and cost-efficiency driven by the network.
       </p>
 
-      <div class="video-wrap">
-        <iframe 
-          src="https://www.youtube.com/embed/tZCcFlAuJY4?si=GihgbGCfels4zBZ8" 
-          title="YouTube video player" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-          referrerpolicy="strict-origin-when-cross-origin" 
-          allowfullscreen 
-          loading="lazy">
-        </iframe>
-      </div>
+      <div class="video-wrap yt-lite-embed" data-id="tZCcFlAuJY4" data-label="Play City Furniture Case Study">
+        </div>
 
       <p style="margin-top: 12px; margin-bottom: 0; text-align: center;">
         <a href="https://blog.centurylink.com/connectivity-is-king-how-city-furniture-scaled-5x-with-an-ai-ready-cloudified-network/" class="text-link" target="_blank" rel="noopener">
@@ -877,7 +849,66 @@
         </a>
       </p>
     </section>
-   
+
+    <section class="icp-wrap" id="resilience-cases" aria-label="Cloud 2.0 use cases">
+      <div class="icp-header">
+        <h2>Where Cloud <span class="highlight" style="color: var(--ice-blue); text-shadow: 0 0 8px var(--ice-blue);">2.0</span> Delivers Measurable Resilience</h2>
+        <p>Use these as starting points. We shape the plan to your uptime targets, compliance, and unit economics.</p>
+      </div>
+      <div class="icp-grid">
+        <article class="icp-card">
+          <a href="https://www.lumen.com/en-us/resources/customer-success-stories.html" target="_blank" rel="noopener" class="tag">Digital Native SaaS</a>
+          <h3><a class="icp-link" href="https://www.lumen.com/en-us/resources/customer-success-stories.html" target="_blank" rel="noopener">Cloud 2.0 for SaaS Resilience</a></h3>
+          <p>Spread services across regions and clouds so deploys stay fast and outages are boring. NaaS simplifies multi-cloud routing.</p>
+          <p><b>KPIs:</b> error rate, release velocity, RPO/RTO.</p>
+        </article>
+        <article class="icp-card">
+          <a href="https://www.lumen.com/en-us/resources/customer-success-stories.html" target="_blank" rel="noopener" class="tag">Financial Services</a>
+          <h3><a class="icp-link" href="https://www.lumen.com/en-us/resources/customer-success-stories.html" target="_blank" rel="noopener">Trading Performance & Compliance</a></h3>
+          <p>Deterministic paths to venues, data residency by design, and policy as code with audit evidence built in. Failover is rehearsed.</p>
+          <p><b>KPIs:</b> p95 latency, failover time, fraud signal lag.</p>
+        </article>
+        <article class="icp-card">
+          <a href="https://www.lumen.com/en-us/resources/customer-success-stories.html" target="_blank" rel="noopener" class="tag">Healthcare & Life Sciences</a>
+          <h3><a class="icp-link" href="https://www.lumen.com/en-us/resources/customer-success-stories.html" target="_blank" rel="noopener">Clinical Uptime & AI at the Edge</a></h3>
+          <p>Imaging and device inference runs close to care while PHI stays segmented and recoverable. Integrations are predictable and tested.</p>
+          <p><b>KPIs:</b> uptime, time to diagnosis, DR test pass rate.</p>
+        </article>
+        <article class="icp-card">
+          <a href="https://www.lumen.com/en-us/resources/customer-success-stories.html" target="_blank" rel="noopener" class="tag">Manufacturing & Industry</a>
+          <h3><a class="icp-link" href="https://www.lumen.com/en-us/resources/customer-success-stories.html" target="_blank" rel="noopener">Plant to Cloud Reliability</a></h3>
+          <p>Edge compute at the line, private wireless on the floor, and deterministic backhaul to MES and historians. Analytics sync without drift.</p>
+          <p><b>KPIs:</b> OEE, cycle time, MTTR, data freshness.</p>
+        </article>
+      </div>
+      <div class="icp-grid" style="margin-top: 16px;">
+        <article class="icp-card">
+          <a href="https://www.lumen.com/en-us/resources/customer-success-stories.html" target="_blank" rel="noopener" class="tag">Retail and CPG</a>
+          <h3><a class="icp-link" href="https://www.lumen.com/en-us/resources/customer-success-stories.html" target="_blank" rel="noopener">Omnichannel Inventory & POS</a></h3>
+          <p>Resilient SD-WAN for POS and payments, with edge caching for real-time inventory and pricing. Stops outages from stopping sales.</p>
+          <p><b>KPIs:</b> POS uptime, stock accuracy, checkout time.</p>
+        </article>
+        <article class="icp-card">
+          <a href="https://www.lumen.com/en-us/resources/customer-success-stories.html" target="_blank" rel="noopener" class="tag">Logistics, Fleet, and Warehousing</a>
+          <h3><a class="icp-link" href="https://www.lumen.com/en-us/resources/customer-success-stories.html" target="_blank" rel="noopener">Network as a Reliability Layer</a></h3>
+          <p>Low latency networks for robots and scanners, clean failover, and telemetry landing in the right cloud for planning while local actions stay on site.</p>
+          <p><b>KPIs:</b> dock dwell, pick rate, order accuracy, ETA accuracy.</p>
+        </article>
+        <article class="icp-card">
+          <a href="https://www.lumen.com/en-us/resources/customer-success-stories.html" target="_blank" rel="noopener" class="tag">Utilities and Critical Infrastructure</a>
+          <h3><a class="icp-link" href="https://www.lumen.com/en-us/resources/customer-success-stories.html" target="_blank" rel="noopener">Grid Telemetry and Event Response</a></h3>
+          <p>Private transport for controls, streaming telemetry pipelines, and segmented recovery playbooks. Built to handle storms and audits alike.</p>
+          <p><b>KPIs:</b> SAIDI/SAIFI, event detection time, recovery time.</p>
+        </article>
+        <article class="icp-card">
+          <a href="https://www.lumen.com/en-us/resources/customer-success-stories.html" target="_blank" rel="noopener" class="tag">Public Sector and Education</a>
+          <h3><a class="icp-link" href="https://www.lumen.com/en-us/resources/customer-success-stories.html" target="_blank" rel="noopener">Mission Resilience with Budget Discipline</a></h3>
+          <p>Identity-centric access, campus edge where it matters, and clear data residency. Designed for accountability without sacrificing uptime.</p>
+          <p><b>KPIs:</b> service uptime, incident closure time, cost per user.</p>
+        </article>
+      </div>
+    </section>
+
     <section class="cta-rail">
       <div class="cta-rail-inner">
         <div>
@@ -923,19 +954,15 @@
       const targetId = this.getAttribute('href');
       const viewer = document.querySelector(targetId);
       if (viewer) {
-        // Toggle display
         const isHidden = viewer.style.display === 'none' || viewer.style.display === '';
         viewer.style.display = isHidden ? 'block' : 'none';
-        
-        // Scroll to it if we're opening it
         if (isHidden) {
           viewer.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       }
     });
-  </script>
   
-  <script>
+    // KPI Counter Script
     document.addEventListener("DOMContentLoaded", () => {
       const kpiSection = document.getElementById("kpi-ticker");
       if (!kpiSection) return;
@@ -956,22 +983,17 @@
 
             const updateCount = () => {
               current += increment;
-              let val = 0;
-              
-              if (current >= target) {
-                val = target;
-              } else {
-                val = current;
-              }
+              let val = (current >= target) ? target : current;
               
               if (decimals > 0) {
-                counter.textContent = (Math.round(val * 100) / 100).toFixed(decimals);
+                counter.textContent = val.toFixed(decimals);
               } else {
                 counter.textContent = Math.ceil(val);
               }
 
-              if (current >= target) return;
-              requestAnimationFrame(updateCount);
+              if (current < target) {
+                requestAnimationFrame(updateCount);
+              }
             };
             updateCount();
           });
@@ -987,16 +1009,59 @@
 
       observer.observe(kpiSection);
     });
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    document.querySelectorAll('a[href="#resilience-cases"]').forEach(link => {
-      link.addEventListener('click', e => {
-        const target = document.getElementById('resilience-cases');
-        if(target && !prefersReducedMotion){
-          e.preventDefault();
-          target.scrollIntoView({behavior: 'smooth', block: 'start'});
-        }
-      });
+  </script>
+
+  <script>
+  (function(){
+    function initLiteYouTube(container) {
+      var videoId = container.dataset.id;
+      if (!videoId) return;
+
+      var playLabel = container.dataset.label || 'Play';
+      
+      // Set up the poster image
+      var posterUrl = "https://img.youtube.com/vi/"+videoId+"/maxresdefault.jpg";
+      var img = new Image();
+      img.src = posterUrl;
+      img.onload = function() {
+        container.style.backgroundImage = 'url("' + posterUrl + '")';
+      };
+      img.onerror = function() {
+        // Fallback to high-quality default if max-res fails
+        container.style.backgroundImage = 'url("https://img.youtube.com/vi/'+videoId+'/hqdefault.jpg")';
+      }
+      container.style.backgroundPosition = 'center';
+      container.style.backgroundSize = 'cover';
+      container.style.cursor = 'pointer';
+
+      // Add the play button
+      var playBtn = document.createElement('button');
+      playBtn.type = 'button';
+      playBtn.className = 'yt-lite-play';
+      playBtn.setAttribute('aria-label', playLabel);
+      container.appendChild(playBtn);
+      
+      // On click, load the iframe
+      container.addEventListener('click', function(e) {
+        e.preventDefault();
+        var iframe = document.createElement('iframe');
+        iframe.src = "https://www.youtube.com/embed/"+videoId+"?autoplay=1&rel=0";
+        iframe.setAttribute('allow',"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.setAttribute('frameborder', '0');
+        iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;';
+        
+        container.innerHTML = ''; // Clear the container
+        container.appendChild(iframe);
+        container.style.cursor = 'default';
+      }, { once: true });
+    }
+
+    // Find all containers and initialize
+    document.querySelectorAll('.yt-lite-embed').forEach(function(el) {
+      initLiteYouTube(el);
     });
+  })();
   </script>
 
 </body>
