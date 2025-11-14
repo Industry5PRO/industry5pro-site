@@ -614,33 +614,35 @@
           </div>
         </div>
       </section>
-
-      <section class="card" id="lumen-voice-video-intro">
-      <h2 style="color: #fff; font-size: 1.8rem; line-height: 1.2; margin-bottom: 16px;">
-        Lumen Cloud Voice (Intro)
-      </h2>
-      
-      <div class="video-wrap yt-lite-embed" data-id="PiESwUVWyUo" data-label="Play Lumen Cloud Voice Intro">
-        </div>
-    </section>
     
-  <section class="card" id="lumen-cloud-voice">
+<section class="card" id="lumen-cloud-voice">
         <h2>Lumen Cloud Voice</h2>
         
         <div class="voice-grid">
           <div>
             <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6;">
-              Lumen Cloud Voice is a fully managed, cloud-enabled calling and collaboration platform. With three tiers of service levels and the ability to integrate with existing systems (like Microsoft Teams), Cloud Voice enables reliable, secure communications to help keep your employees and customers connected.
+              Lumen Cloud Voice is a fully managed, cloud-enabled calling and collaboration platform. With three tiers of service levels and the ability to integrate with existing systems (like Microsoft Teams as an example), Cloud Voice enables reliable, secure communications to help keep your employees and customers connected.
             </p>
-            
-            <div class="cta-row">
+
+            <div class="video-embed-small yt-lite-embed" data-id="PiESwUVWyUo" data-label="Play Lumen Cloud Voice Intro">
+              </div>
+
+            <div class="cta-stack">
               <a href="/assets/lumen-cloud-voice-datasheet.pdf" class="btn btn-primary" target="_blank" rel="noopener" download>
                 Download Data Sheet
               </a>
-              <a href="https://www.lumen.com/en-us/services/lumen-cloud-voice.html" class="btn btn-secondary" target="_blank" rel="noopener">
+              <a href="#lumen-datasheet-viewer" class="btn btn-secondary">
                 View Inline
               </a>
+              <a href="https://calendly.com/industry5pro/30min" class="btn btn-secondary" target="_blank" rel="noopener">
+                Book a UC Audit
+              </a>
             </div>
+
+            <div class="viewer" id="lumen-datasheet-viewer" style="display: none;">
+              <iframe src="/assets/lumen-cloud-voice-datasheet.pdf#view=FitH" title="Lumen Cloud Voice Data Sheet" loading="lazy"></iframe>
+            </div>
+
           </div>
           
           <div>
@@ -694,46 +696,34 @@
   </script>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const kpiSection = document.getElementById("kpi-ticker");
-      if (!kpiSection) return;
+    // Footer Year
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
 
-      const animateCounters = (entries, observer) => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
+    // --- Viewer Toggle Logic (Handles multiple buttons) ---
+    function initViewerToggle(buttonSelector) {
+      const button = document.querySelector(buttonSelector);
+      if (!button) return;
 
-          const counters = entry.target.querySelectorAll("[data-target]");
-          counters.forEach(counter => {
-            const target = +counter.dataset.target;
-            const duration = 1500; // 1.5 seconds
-            const stepTime = 30; // update ~33 times per sec
-            const steps = Math.ceil(duration / stepTime);
-            const increment = target / steps;
-            let current = 0;
-
-            const updateCount = () => {
-              current += increment;
-              if (current >= target) {
-                counter.textContent = target;
-                return;
-              }
-              counter.textContent = Math.ceil(current);
-              requestAnimationFrame(updateCount);
-            };
-            updateCount();
-          });
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const viewer = document.querySelector(targetId);
+        if (viewer) {
+          // Toggle display
+          const isHidden = viewer.style.display === 'none' || viewer.style.display === '';
+          viewer.style.display = isHidden ? 'block' : 'none';
           
-          observer.unobserve(entry.target);
-        });
-      };
-
-      const observer = new IntersectionObserver(animateCounters, {
-        root: null,
-        threshold: 0.5
+          // Scroll to it if we're opening it
+          if (isHidden) {
+            viewer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }
       });
+    }
 
-      observer.observe(kpiSection);
-    });
+    // Initialize both viewer buttons
+    initViewerToggle('.btn-secondary-blue[href="#cloud20-whitepaper-viewer"]');
+    initViewerToggle('.btn-secondary[href="#lumen-datasheet-viewer"]');
   </script>
 
 </body>
