@@ -289,6 +289,39 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
     }
+    /* --- Lumen Cloud Voice Section --- */
+.voice-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 50/50 split */
+  gap: 24px;
+  align-items: start;
+}
+.icp-box {
+  background: #1B1B1D; /* Match body bg */
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 20px;
+}
+.icp-box h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+  color: #fff;
+}
+.icp-box p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+.icp-box .highlight {
+  color: var(--genesys-orange); /* Use page's orange highlight */
+}
+
+@media (max-width: 900px) {
+  .voice-grid {
+    grid-template-columns: 1fr;
+  }
+}
     .feature-card {
       background: #1B1B1D; /* Match body bg */
       border: 1px solid var(--card-border);
