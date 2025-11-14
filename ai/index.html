@@ -70,7 +70,7 @@
     height: 55px !important;
     width: 55px !important;
     display: block !important;
-    object-fit: contain;
+    object-fit: contain; /* Ensures logo sits inside the 55x55 box without distortion */
     background: transparent !important;
     box-shadow: none !important;
     /* DRUID GREEN GLOW */
@@ -262,10 +262,10 @@
   <div class="topbar">
     <div class="wrap">
       <nav class="nav" aria-label="Primary">
-        <div class="brand">
-         <img class="logo" src="/assets/industry5-logo.png" alt="Industry5.pro logo" />
+        <a class="brand" href="/">
+         <img class="logo" src="/assets/industry5logo.svg" alt="Industry5.pro logo" />
           <strong>Industry5.pro</strong>
-        </div>
+        </a>
   
         <div class="nav-actions">
           <a class="navlink" href="/">Home</a>
@@ -331,7 +331,7 @@
         </a>
         <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-banking" target="_blank" rel="noopener">
           <strong class="knum" data-target="40" data-suffix="%">0</strong>
-          reduction in avg. handling time and ops overhead
+          reduction in average handling time and operational overhead
         </a>
         <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-banking" target="_blank" rel="noopener">
           <strong class="knum" data-target="25" data-suffix="%">0</strong>
