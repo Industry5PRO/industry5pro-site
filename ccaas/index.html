@@ -161,7 +161,32 @@
     .hero .sub-h1 strong {
       color: var(--page-accent); /* NICE Blue */
     }
-
+/* === ADD THIS: Hero Grid Layout (Copied from Index) === */
+    .hero .hero-grid{
+      display:grid;
+      grid-template-columns: minmax(0,1fr) 320px; /* text on left, 320px image on right */
+      gap:24px;
+      align-items:center;
+    }
+    .hero-photo{
+      display:flex;
+      justify-content:flex-end;
+    }
+    .hero-photo img{
+      width:100%;
+      max-width:320px;
+      height:auto;
+      object-fit:contain;
+      filter:drop-shadow(0 10px 20px rgba(0,0,0,.35));
+    }
+    /* Mobile: Stack hero text/image */
+    @media (max-width:900px){
+      .hero .hero-grid{grid-template-columns:1fr}
+      .hero-photo{
+        display: none; /* Hides photo on mobile, matching homepage */
+      }
+    }
+    /* === END ADD === */
     /* --- Buttons --- */
     .btn {
       display: inline-flex;
@@ -473,19 +498,29 @@
     <div class="wrap">
       
       <!-- Hero Section -->
+      <!-- Hero Section -->
       <section class="hero">
-        <h1>Stop Buying Bundles.<br>Start Building CX.</h1>
-        <p class="sub-h1">
-          Your carrier's "all-in-one" CCaaS bundle isn't an AI strategy—it's a quota. 
-          We are <strong>supplier-agnostic advisors</strong> who audit your stack against your P&L. 
-          First, we prove the impact. Then, we build the solution.
-        </p>
-        <div style="display:flex; flex-wrap:wrap; gap: 12px;">
-          <a href="#quadrant" class="btn btn-primary">See the 2025 AI Quadrant</a>
-          <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener" class="btn btn-secondary">Book an Agnostic Audit</a>
+        <!-- NEW Grid Wrapper -->
+        <div class="hero-grid">
+          <!-- Column 1: Text Content -->
+          <div>
+            <h1>Stop Buying Bundles.<br>Start Building CX.</h1>
+            <p class="sub-h1">
+              Your carrier's "all-in-one" CCaaS bundle isn't an AI strategy—it's a quota. 
+              We are <strong>supplier-agnostic advisors</strong> who audit your stack against your P&L. 
+              First, we prove the impact. Then, we build the solution.
+            </p>
+            <div style="display:flex; flex-wrap:wrap; gap: 12px;">
+              <a href="#quadrant" class="btn btn-primary">See the 2025 AI Quadrant</a>
+              <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener" class="btn btn-secondary">Book an Agnostic Audit</a>
+            </div>
+          </div>
+          <!-- Column 2: Profile Photo (Copied from index.html) -->
+          <figure class="hero-photo">
+            <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora" width="320" height="320" loading="eager" decoding="async">
+          </figure>
         </div>
       </section>
-
       <!-- === KPI Ticker === -->
       <section class="kpi-grid" id="kpi-ticker">
         <div class="kpi-item">
