@@ -417,7 +417,6 @@
     }
 
     /* --- Lumen Cloud Voice Section --- */
-    /* NEW LAYOUT: Video Left, ICPs Right */
     .voice-grid-new {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -425,12 +424,12 @@
       align-items: stretch; /* Makes columns equal height */
       margin-top: 24px;
     }
-    /* This div holds the video */
-    .voice-grid-new > div:first-child {
+    .voice-grid-new > div:first-child { /* Video column */
+      display: flex;
+      flex-direction: column;
       height: 100%;
     }
-    /* This div holds the ICP boxes */
-    .voice-grid-new > div:last-child {
+    .voice-grid-new > div:last-child { /* ICP column */
       display: flex;
       flex-direction: column;
       gap: 16px;
@@ -469,10 +468,10 @@
     .video-embed-small {
       position: relative;
       height: 100%; /* Fills the grid cell */
+      width: 100%;
       min-height: 350px; /* Good default for mobile */
       overflow: hidden;
       border-radius: 12px;
-      border: 1px solid var(--card-border);
     }
     .video-embed-small iframe,
     .video-embed-small.yt-lite-embed { /* Apply to lite embed */
@@ -499,6 +498,8 @@
     .yt-lite-embed {
       position: relative;
       display: block;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
     }
     .yt-lite-play {
       position: absolute;
@@ -749,97 +750,100 @@
     const ySpan = document.getElementById('y');
     if(ySpan) ySpan.textContent = new Date().getFullYear();
 
-    // --- KPI Counter ---
+    // --- All scripts to run after DOM is loaded ---
     document.addEventListener("DOMContentLoaded", () => {
-      const kpiSection = document.getElementById("kpi-ticker");
-      if (!kpiSection) return;
-
-      const animateCounters = (entries, observer) => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-          const counters = entry.target.querySelectorAll("[data-target]");
-          counters.forEach(counter => {
-            const target = +counter.dataset.target;
-            const duration = 1500, stepTime = 30;
-            const steps = Math.ceil(duration / stepTime);
-            const increment = target / steps;
-            let current = 0;
-            const updateCount = () => {
-              current += increment;
-              if (current >= target) { counter.textContent = target; return; }
-              counter.textContent = Math.ceil(current);
-              requestAnimationFrame(updateCount);
-            };
-            updateCount();
-          });
-          observer.unobserve(entry.target);
-        });
-      };
-      new IntersectionObserver(animateCounters, { threshold: 0.5 }).observe(kpiSection);
-    });
-
-    // --- Viewer Toggle Logic (Handles multiple buttons) ---
-    function initViewerToggle(buttonSelector) {
-      const button = document.querySelector(buttonSelector);
-      if (!button) return;
-
-      button.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const viewer = document.querySelector(targetId);
-        if (viewer) {
-          const isHidden = viewer.style.display === 'none' || viewer.style.display === '';
-          viewer.style.display = isHidden ? 'block' : 'none';
-          if (isHidden) {
-            viewer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          }
-        }
-      });
-    }
     
-    // Initialize BOTH viewer buttons
-    initViewerToggle('a[href="#cloud20-whitepaper-viewer"]');
-    initViewerToggle('a[href="#lumen-datasheet-viewer"]');
-
-    // --- Lite YouTube Embed Script ---
-    (function(){
-      function initLiteYouTube(container) {
-        var videoId = container.dataset.id;
-        if (!videoId) return;
-
-        var playLabel = container.dataset.label || 'Play';
-        
-        var posterUrl = "https://img.youtube.com/vi/"+videoId+"/maxresdefault.jpg";
-        var img = new Image();
-        img.src = posterUrl;
-        img.onload = () => { container.style.backgroundImage = 'url("' + posterUrl + '")'; };
-        img.onerror = () => { container.style.backgroundImage = 'url("https://img.youtube.com/vi/'+videoId+'/hqdefault.jpg")'; };
-        container.style.backgroundPosition = 'center';
-        container.style.backgroundSize = 'cover';
-        container.style.cursor = 'pointer';
-
-        var playBtn = document.createElement('button');
-        playBtn.type = 'button';
-        playBtn.className = 'yt-lite-play';
-        playBtn.setAttribute('aria-label', playLabel);
-        container.appendChild(playBtn);
-        
-        container.addEventListener('click', function(e) {
-          e.preventDefault();
-          var iframe = document.createElement('iframe');
-          iframe.src = "https://www.youtube.com/embed/"+videoId+"?autoplay=1&rel=0";
-          iframe.setAttribute('allow',"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
-          iframe.setAttribute('allowfullscreen', '');
-          iframe.setAttribute('frameborder', '0');
-          iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;';
-          
-          container.innerHTML = '';
-          container.appendChild(iframe);
-          container.style.cursor = 'default';
-        }, { once: true });
+      // --- KPI Counter ---
+      const kpiSection = document.getElementById("kpi-ticker");
+      if (kpiSection) {
+        const animateCounters = (entries, observer) => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const counters = entry.target.querySelectorAll("[data-target]");
+            counters.forEach(counter => {
+              const target = +counter.dataset.target;
+              const duration = 1500, stepTime = 30;
+              const steps = Math.ceil(duration / stepTime);
+              const increment = target / steps;
+              let current = 0;
+              const updateCount = () => {
+                current += increment;
+                if (current >= target) { counter.textContent = target; return; }
+                counter.textContent = Math.ceil(current);
+                requestAnimationFrame(updateCount);
+              };
+              updateCount();
+            });
+            observer.unobserve(entry.target);
+          });
+        };
+        new IntersectionObserver(animateCounters, { threshold: 0.5 }).observe(kpiSection);
       }
-      document.querySelectorAll('.yt-lite-embed').forEach(el => initLiteYouTube(el));
-    })();
+
+      // --- Viewer Toggle Logic (Handles multiple buttons) ---
+      function initViewerToggle(buttonSelector) {
+        const button = document.querySelector(buttonSelector);
+        if (!button) return;
+
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const viewer = document.querySelector(targetId);
+          if (viewer) {
+            const isHidden = viewer.style.display === 'none' || viewer.style.display === '';
+            viewer.style.display = isHidden ? 'block' : 'none';
+            if (isHidden) {
+              viewer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+          }
+        });
+      }
+      
+      // Initialize BOTH viewer buttons
+      initViewerToggle('a[href="#cloud20-whitepaper-viewer"]');
+      initViewerToggle('a[href="#lumen-datasheet-viewer"]');
+
+      // --- Lite YouTube Embed Script ---
+      (function(){
+        function initLiteYouTube(container) {
+          var videoId = container.dataset.id;
+          if (!videoId) return;
+
+          var playLabel = container.dataset.label || 'Play';
+          
+          var posterUrl = "https://img.youtube.com/vi/"+videoId+"/maxresdefault.jpg";
+          var img = new Image();
+          img.src = posterUrl;
+          img.onload = () => { container.style.backgroundImage = 'url("' + posterUrl + '")'; };
+          img.onerror = () => { container.style.backgroundImage = 'url("https://img.youtube.com/vi/'+videoId+'/hqdefault.jpg")'; };
+          container.style.backgroundPosition = 'center';
+          container.style.backgroundSize = 'cover';
+          container.style.cursor = 'pointer';
+
+          var playBtn = document.createElement('button');
+          playBtn.type = 'button';
+          playBtn.className = 'yt-lite-play';
+          playBtn.setAttribute('aria-label', playLabel);
+          container.appendChild(playBtn);
+          
+          container.addEventListener('click', function(e) {
+            e.preventDefault();
+            var iframe = document.createElement('iframe');
+            iframe.src = "https://www.youtube.com/embed/"+videoId+"?autoplay=1&rel=0";
+            iframe.setAttribute('allow',"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+            iframe.setAttribute('allowfullscreen', '');
+            iframe.setAttribute('frameborder', '0');
+            iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;';
+            
+            container.innerHTML = '';
+            container.appendChild(iframe);
+            container.style.cursor = 'default';
+          }, { once: true });
+        }
+        document.querySelectorAll('.yt-lite-embed').forEach(el => initLiteYouTube(el));
+      })();
+
+    }); // End DOMContentLoaded
   </script>
 
 </body>
