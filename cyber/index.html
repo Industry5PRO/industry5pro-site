@@ -249,7 +249,7 @@
       background: rgba(0,179,54,0.1); transform: translateY(-2px);
     }
 
-  /* === Quadrant 2.0 - dynamic scatter === */
+/* Quadrant: Security Effectiveness vs Integration & UX */
 .quadrant-section {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
   color: #f5f7ff;
@@ -291,7 +291,7 @@
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* Grid where points get placed */
+/* Grid where points live */
 .quadrant-grid {
   position: absolute;
   inset: 12% 8% 16% 10%;
@@ -327,65 +327,24 @@
   text-align: center;
 }
 
-/* Legend */
-.quadrant-legend {
-  grid-column: 1 / -1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 16px;
-  margin-top: 10px;
-  font-size: 0.75rem;
-  opacity: 0.9;
-}
-
-.legend-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.legend-swatch {
-  width: 12px;
-  height: 12px;
-  border-radius: 999px;
-  box-shadow: 0 0 12px currentColor;
-}
-
-.legend-swatch-default { color: var(--ice-blue); background: var(--ice-blue); }
-.legend-swatch-lumen   { color: var(--lumen-orange); background: var(--lumen-orange); }
-.legend-swatch-veeam   { color: var(--veeam-green); background: var(--veeam-green); }
-.legend-swatch-1111    { color: var(--eleven-purple); background: var(--eleven-purple); }
-
 /* Points */
 .quad-point {
   position: absolute;
   transform: translate(-50%, -50%);
   pointer-events: auto;
-  color: var(--ice-blue); /* default color for everyone */
+  color: var(--ice-blue); /* everyone idle in ice blue */
 }
 
-/* X shaped marker */
+/* Circle marker */
 .quad-marker {
-  position: relative;
-  width: 16px;
-  height: 16px;
-}
-
-.quad-marker::before,
-.quad-marker::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 2px;
-  height: 16px;
-  background: currentColor;
+  width: 14px;
+  height: 14px;
   border-radius: 999px;
+  border: 2px solid currentColor;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.18) 0, transparent 70%);
   box-shadow: 0 0 10px currentColor;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-
-.quad-marker::before { transform: rotate(45deg); }
-.quad-marker::after  { transform: rotate(-45deg); }
 
 /* Label chip */
 .quad-label {
@@ -403,9 +362,10 @@
   color: #f5f7ff;
 }
 
-/* Hover behavior - same base color, but glowing bigger */
+/* Hover behavior */
 .quad-point:hover .quad-marker {
-  transform: scale(1.25);
+  transform: scale(1.35);
+  box-shadow: 0 0 14px currentColor;
 }
 
 /* On hover, swap color for specific vendors */
@@ -421,7 +381,7 @@
   color: var(--eleven-purple);
 }
 
-/* Label border picks up the same accent on hover */
+/* Label border picks up accent on hover */
 .quad-point:hover .quad-label {
   border-color: currentColor;
 }
@@ -449,6 +409,7 @@
     white-space: normal;
   }
 }
+
 
 
     /* Checklist & Form */
@@ -583,20 +544,18 @@
       </div>
     </div>
 
-    <!-- HTML QUADRANT -->
-   <!-- HTML Quadrant 2.0 -->
 <section id="quadrant" class="anchor quadrant-section">
-  <h2>Cyber Resilience Overlay - Top Global Players</h2>
+  <h2>Cyber Resilience Overlay – Security vs Integration</h2>
   <p>
-    There is no single vendor that can handle every control. This overlay shows how MDR, SASE,
-    and backup players cluster on a spectrum of <strong>holistic simplicity</strong> and
-    <strong>enterprise readiness</strong>, then highlights where Lumen and Veeam sit when we design it right.
+    This map compares global MDR, SASE, and backup players by
+    <strong>security effectiveness</strong> (threat detection and response speed)
+    on the vertical axis and <strong>integration and user experience</strong> on the horizontal axis.
   </p>
 
   <div class="quadrant-wrapper">
     <!-- Y axis label -->
     <div class="axis-label axis-label-y">
-      Enterprise &amp; Compliance Ready
+      Security Effectiveness
     </div>
 
     <!-- Plot area -->
@@ -604,27 +563,12 @@
       <div class="quadrant-grid"></div>
       <!-- X axis label -->
       <div class="axis-label axis-label-x">
-        Holistic &amp; Simplicity
+        Integration &amp; UX
       </div>
-    </div>
-
-    <!-- Legend -->
-    <div class="quadrant-legend">
-      <span class="legend-item">
-        <span class="legend-swatch legend-swatch-default"></span> Other suppliers
-      </span>
-      <span class="legend-item">
-        <span class="legend-swatch legend-swatch-lumen"></span> Lumen overlay
-      </span>
-      <span class="legend-item">
-        <span class="legend-swatch legend-swatch-veeam"></span> Veeam anchor
-      </span>
-      <span class="legend-item">
-        <span class="legend-swatch legend-swatch-1111"></span> 11:11 Systems
-      </span>
     </div>
   </div>
 </section>
+
 
 
     <!-- CHECKLIST -->
@@ -689,26 +633,38 @@
   <!-- === SCRIPTS === -->
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
-        // Cyber Quadrant 2.0 - plot points from data
+         // Cyber quadrant: Security Effectiveness (Y) vs Integration & UX (X)
     (function () {
+      // X: Integration & UX
+      // Y: Security effectiveness, specifically detection and response
       const points = [
-        { name: "Trustwave (MDR)",                 x: 56, y: 74, vendor: "default" },
-        { name: "LevelBlue (MSSP, WAAP mngd)",     x: 62, y: 71, vendor: "default" },
-        { name: "Field Effect (MDR)",              x: 60, y: 60, vendor: "default" },
-        { name: "SilverSky (MDR)",                 x: 64, y: 62, vendor: "default" },
-        { name: "Ontinue (Microsoft MDR)",         x: 61, y: 79, vendor: "default" },
-        { name: "Open Systems (MDR + SASE)",       x: 67, y: 76, vendor: "default" },
-        { name: "eSentire (MDR)",                  x: 72, y: 78, vendor: "default" },
-        { name: "Veeam (Backup / Instant Recovery)", x: 75, y: 84, vendor: "veeam" },
-        { name: "Dataprise (Veeam VCSP)",          x: 77, y: 64, vendor: "default" },
-        { name: "Coro (All in one SMB / MM)",      x: 79, y: 56, vendor: "default" },
-        { name: "Akamai (Zero Trust / WAAP)",      x: 82, y: 86, vendor: "default" },
-        { name: "11:11 Systems (DRaaS for Veeam)", x: 80, y: 88, vendor: "1111" },
-        // Your Lumen overlay point
-        { name: "Lumen (Backbone + DDoS + Edge)",  x: 73, y: 82, vendor: "lumen" }
+        // Strong MDRs with good but heavier UX
+        { name: "eSentire (MDR)",                    x: 72, y: 88, vendor: "default" }, // sub-15 min MTTC, deep integrations 
+        { name: "Open Systems (MDR + SASE)",        x: 74, y: 81, vendor: "default" }, // Microsoft-aligned MXDR and SASE, strong MDR and integrations 
+        { name: "Ontinue (Microsoft MDR)",          x: 77, y: 83, vendor: "default" }, // Microsoft-verified MXDR, tight Defender and Sentinel focus 
+
+        // Established MDR / MSSP
+        { name: "Trustwave (MDR)",                  x: 66, y: 82, vendor: "default" }, // IDC leader in MDR, strong threat intel and response 
+        { name: "LevelBlue (MSSP, WAAP mngd)",      x: 68, y: 80, vendor: "default" }, // pure-play MSS plus Akamai WAAP partnership 
+        { name: "Field Effect (MDR)",               x: 64, y: 75, vendor: "default" },
+        { name: "SilverSky (MDR)",                  x: 62, y: 72, vendor: "default" },
+
+        // Web and app security specialist
+        { name: "Akamai (Zero Trust / WAAP)",       x: 70, y: 86, vendor: "default" }, // WAAP leader, very strong app/API protection 
+
+        // Veeam ecosystem: resilience and DR
+        { name: "Veeam (Backup / Instant Recovery)", x: 78, y: 70, vendor: "veeam" },  // strong restore and integrations, less about real time detection
+        { name: "Dataprise (Veeam VCSP)",           x: 76, y: 74, vendor: "default" },
+        { name: "11:11 Systems (DRaaS for Veeam)",  x: 80, y: 76, vendor: "1111" },
+
+        // SMB friendly all in one
+        { name: "Coro (All-in-one SMB/MM)",         x: 82, y: 68, vendor: "default" }, // all-in-one platform designed for SMB simplicity 
+
+        // Network and edge security
+        { name: "Lumen (Backbone + DDoS + Edge)",   x: 73, y: 73, vendor: "lumen" }   // strong at network and DDoS, solid integrations via backbone
       ];
 
-      // Axis ranges to match the PNG
+      // Axis ranges, we map 40..90 horizontally and 55..90 vertically
       const xMin = 40, xMax = 90;
       const yMin = 55, yMax = 90;
 
