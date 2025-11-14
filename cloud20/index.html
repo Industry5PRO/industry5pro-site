@@ -253,7 +253,25 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(43,237,231,0.3);
     }
-    
+    /* --- Text Link for Case Studies --- */
+.text-link {
+  display: inline-block;
+  font-weight: 700;
+  color: var(--ice-blue);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--ice-blue);
+  transition: all 0.2s ease;
+  margin-top: 16px; /* Space it from the video above */
+}
+.text-link:hover {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+.text-link::after {
+  content: ' →'; /* Arrow */
+  display: inline-block;
+  margin-left: 4px;
+}
     .whitepaper .viewer { 
       margin-top:12px; 
       border-radius:12px; 
