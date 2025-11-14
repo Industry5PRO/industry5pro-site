@@ -1,656 +1,957 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Injectable AI • Omnichannel • Featured: DRUID AI</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- === SEO === -->
+  <title>Cloud 2.0 & NaaS Advisory (Lumen) | Industry5.pro</title>
+  <meta name="description" content="Ditch legacy cloud costs. We are supplier-agnostic advisors for Cloud 2.0, specializing in Lumen NaaS, edge compute, and multi-cloud. We design for latency, cost, and resilience. Get your impact-first audit.">
+  <meta name="color-scheme" content="dark">
 
-<style id="master-header-ai">
-:root{
-  --bg:#0e1117; --card:#141821; --ink:#0b1220; --text:#e8eef9; --muted:#a9b3c4;
-  /* DRUID AI specific accent colors */
-  --druid:#1DDF5A;        /* DRUID Neon Green */
-  --druid-ink:#074650;    /* deep teal */
-  --druid-pastel:#D2FDB1; /* KPI pills */
-  --ice:#2BEDE7;          /* your ice-blue (kept for harmony) */
+  <!-- === Favicons (from your index) === -->
+  <link rel="icon" href="/assets/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
 
-  /* CYBER MASTER HEADER VARIABLES REPURPOSED FOR DRUID AI PAGE */
-  --header-h: 76px;
-  --page-accent: var(--druid); /* Use DRUID green for the primary glow/hover color */
-  --lumen-charcoal: #1B1B1D; /* Keeping the dark background from Cyber header style */
-  --card-border: rgba(255,255,255,.14);
-}
+  <!-- === MASTER HEADER STYLES (v5.1 - Final Spacing) === -->
+  <style id="master-header-v5-final">
+    :root {
+      --header-h: 76px;
+      --ice-blue: #2BEDE7;
+      --lumen-charcoal: #1B1B1D;
+    }
+    
+    body { 
+      padding-top: var(--header-h) !important; 
+      background-color: var(--lumen-charcoal);
+      color: #e8eef9;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    *, *:before, *:after { box-sizing: inherit; }
+    main, .hero, .page-start { margin-top: 0 !important; }
 
-/* Global */
-*{box-sizing:border-box}
-html,body{height:100%}
-body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial; padding-top: var(--header-h) !important; }
-a{color:inherit;text-decoration:none}
-.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
-/* Override margin on main for new fixed header style */
-main{ margin-top: 0 !important; }
+    .topbar {
+      position: fixed !important;
+      top: 0; left: 0; right: 0;
+      z-index: 99999 !important;
+      height: var(--header-h);
+      background: rgba(27,27,29,0.95) !important;
+      backdrop-filter: saturate(140%) blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      overflow: visible !important;
+    }
+    .topbar .wrap {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav { 
+      display: flex; 
+      align-items: center; 
+      width: 100%; 
+      height: 100%; 
+    }
 
-/* === CYBER HEADER STYLES APPLIED === */
-.topbar {
-  position: fixed !important;
-  top: 0; left: 0; right: 0;
-  z-index: 99999 !important;
-  height: var(--header-h);
-  background: rgba(14,17,23,0.95) !important; /* Use existing background for consistency */
-  backdrop-filter: saturate(140%) blur(12px);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  display: flex;
-  align-items: center;
-  overflow: visible !important;
-}
-.topbar .wrap {
-  width: 100%;
-  max-width: 1180px; /* Wider wrap from Cyber page */
-  margin: 0 auto;
-  padding: 0 24px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.nav { display: flex; align-items: center; width: 100%; height: 100%; }
+    .topbar .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-right: 4px !important; /* FINAL NUDGE: Moves line Left */
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .topbar .brand .logo {
+      height: 55px !important;
+      width: 55px !important;
+      display: block !important;
+      object-fit: contain;
+      background: transparent !important;
+      box-shadow: none !important;
+      filter: drop-shadow(0 0 8px rgba(43,237,231,0.6)) !important; /* ICE BLUE GLOW */
+      transition: filter 0.3s ease;
+    }
+    .topbar .brand .logo:hover {
+      filter: drop-shadow(0 0 16px rgba(43,237,231,1)) !important;
+    }
+    .topbar .brand strong {
+      font-size: 18px;
+      font-weight: 800 !important;
+      color: #e8eef9 !important;
+      white-space: nowrap;
+      text-shadow: none !important;
+    }
 
-/* BRAND (DRUID Glow) */
-.topbar .brand {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  text-decoration: none;
-  flex-shrink: 0;
-  margin-right: 30px !important; 
-}
-.topbar .brand .logo {
-  height: 55px !important;
-  width: 55px !important;
-  display: block !important;
-  object-fit: contain;
-  background: transparent !important;
-  box-shadow: none !important;
-  /* GLOW: Use DRUID GREEN for Brand glow */
-  filter: drop-shadow(0 0 8px rgba(29,223,90,0.6)) !important; 
-  transition: filter 0.3s ease;
-}
-.topbar .brand .logo:hover {
-  filter: drop-shadow(0 0 16px rgba(29,223,90,1)) !important;
-}
-.topbar .brand strong {
-  font-size: 18px;
-  font-weight: 800 !important;
-  color: #e8eef9 !important;
-  white-space: nowrap;
-  text-shadow: none !important;
-}
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      height: 44px;
+      border-left: 1px solid rgba(255,255,255,0.15);
+      padding-left: 40px !important;   /* FINAL NUDGE: Moves text Right */
+      padding-right: 40px !important;  /* "Book Lou" Cutoff Fix */
+      flex-grow: 1;
+      justify-content: flex-end;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .nav-actions::-webkit-scrollbar { display: none; }
 
-/* NAV ACTIONS (No Divider Line) */
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 24px; /* Wider gap */
-  height: 44px;
-  padding-left: 0 !important;   
-  padding-right: 10px !important; 
-  flex-grow: 1;
-  justify-content: flex-end;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-.nav-actions::-webkit-scrollbar { display: none; }
+    .topbar .navlink {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #ffffff !important;
+      font-weight: 800 !important;
+      font-size: 14px;
+      text-decoration: none;
+      line-height: 1.2 !important;
+      white-space: normal !important; /* Allows <br> to work */
+      padding: 4px 0;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+    
+    /* Force Ice Blue Hover (No Orange) */
+    .topbar .navlink:hover,
+    .topbar .navlink:focus-visible {
+      color: var(--ice-blue) !important;
+      transform: translateY(-1px);
+      text-shadow: 0 0 10px rgba(43,237,231,0.75), 0 0 20px rgba(43,237,231,0.45) !important;
+      outline: 0;
+    }
+    
+    /* Active page link matches hover state */
+    .topbar .navlink[aria-current="page"] {
+      color: var(--ice-blue) !important;
+      text-shadow: 0 0 10px rgba(43,237,231,0.75), 0 0 20px rgba(43,237,231,0.45) !important;
+    }
 
-/* NAV LINKS (DRUID Hover) */
-.topbar .navlink {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #ffffff !important;
-  font-weight: 800 !important;
-  font-size: 14px;
-  text-decoration: none;
-  line-height: 1.2 !important;
-  white-space: normal !important;
-  padding: 4px 0;
-  transition: all 0.2s ease;
-  flex-shrink: 0;
-}
 
-/* HOVER: Force DRUID Green */
-.topbar .navlink:hover,
-.topbar .navlink:focus-visible,
-.topbar .navlink[aria-current="page"] {
-  color: var(--druid) !important;
-  transform: translateY(-1px);
-  /* DRUID green glow */
-  text-shadow: 0 0 10px rgba(29,223,90,0.75), 0 0 20px rgba(29,223,90,0.45) !important;
-  outline: 0;
-}
-/* CUSTOM STYLING FOR START AI READINESS BUTTON */
-.nav-actions .start-ai {
-    background: var(--druid-ink); 
-    color: var(--druid);
-    border: 1px solid rgba(29,223,90,.45);
-    box-shadow: 0 0 10px rgba(29,223,90,.28), 0 0 24px rgba(29,223,90,.18);
-    padding: 10px 14px;
-    border-radius: 12px;
-}
-.nav-actions .start-ai:hover {
-    color: var(--druid) !important;
-    text-shadow: none !important;
-    box-shadow: 0 0 14px rgba(29,223,90,.45), 0 0 32px rgba(29,223,90,.28);
-}
+    /* Kill any old pill/underline styles */
+    .topbar .navlink::before, 
+    .topbar .navlink::after { 
+      content: none !important; 
+      display: none !important; 
+    }
+    
+    @media (max-width: 900px) {
+      .topbar .brand strong { display: none; } 
+      .nav-actions { gap: 16px; padding-left: 16px !important; }
+    }
+  </style>
 
-@media (max-width: 900px) {
-  .topbar .brand strong { display: none; } 
-  .nav-actions { gap: 16px; padding-left: 16px !important; }
-}
-/* === END CYBER HEADER STYLES === */
+  <!-- === Cloud 2.0 Page Styles === -->
+  <style id="cloud20-theme">
+    :root {
+      --lumen-orange: #FF6A13;
+      --ice-blue: #2BEDE7;
+      --page-accent: var(--lumen-orange);
+      --page-accent-secondary: var(--ice-blue);
+      
+      --card-bg: #0a0f1a; /* Darker than charcoal */
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text-muted: #aeb8c4;
+      --text-light: #e8eef9;
+    }
 
-/* Hero */
-.hero{margin:28px 0 18px}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:center}
-@media (max-width:980px){ .hero-grid{grid-template-columns:1fr} .hero-portrait{display:none} }
-.kicker{color:var(--druid);font-weight:800;margin-bottom:6px}
-.hero h1{font-size:clamp(28px,5.2vw,46px);line-height:1.1;margin:0 0 8px}
-.lead{font-size:clamp(16px,1.8vw,19px);color:#d5dcef;margin:0 0 14px}
-.cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:12px;font-weight:800;
-  border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);color:#fff;
-  transition:transform .15s, box-shadow .2s, border-color .2s;
-}
-.btn:hover{transform:translateY(-1px)}
-.btn.primary{background:var(--druid-ink);color:var(--druid);border-color:rgba(29,223,90,.45);
-  box-shadow:0 0 10px rgba(29,223,90,.28), 0 0 24px rgba(29,223,90,.18)}
-.btn.primary:hover{box-shadow:0 0 14px rgba(29,223,90,.45), 0 0 32px rgba(29,223,90,.28)}
-.hero-portrait{display:flex;justify-content:flex-end}
-.hero-portrait img{width:100%;max-width:340px;height:auto;object-fit:contain;filter:drop-shadow(0 10px 22px rgba(0,0,0,.35))}
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    
+    a {
+      color: var(--page-accent-secondary); /* Ice Blue links */
+    }
 
-/* Featured partner frame */
-.feature{
-  margin:22px 0;background:#0b111a;border-radius:16px;padding:18px;
-  border:1px solid rgba(29,223,90,.55);
-  box-shadow:0 8px 30px rgba(29,223,90,.10),0 0 20px rgba(29,223,90,.18);
-}
-.feature-head{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
-.feature h2{margin:0;font-size:1.6rem}
-.badges{display:flex;flex-wrap:wrap;gap:8px}
-.cap{
-  display:inline-flex;align-items:center;justify-content:center;padding:8px 12px;border-radius:999px;font-weight:800;border:1px solid transparent;
-  transition:transform .15s, box-shadow .2s;
-}
-.cap.perma{background:var(--druid-ink);color:var(--druid);
-  box-shadow:0 0 10px rgba(29,223,90,.28),0 0 24px rgba(29,223,90,.18)}
-.cap.inverse{background:var(--druid);color:var(--druid-ink);
-  box-shadow:0 0 10px rgba(29,223,90,.28),0 0 24px rgba(29,223,90,.18)}
-.feature p{color:#c9d6e6;margin:10px 0 14px}
-.feature-cta{display:flex;flex-wrap:wrap;gap:10px}
-.feature-cta a{padding:10px 14px;border-radius:12px;font-weight:800;border:1px solid rgba(255,255,255,.14)}
-.feature-cta .primary{background:var(--druid);color:var(--druid-ink);border-color:rgba(29,223,90,.55);
-  box-shadow:0 0 10px rgba(29,223,90,.28),0 0 24px rgba(29,223,90,.18)}
-.feature-cta .ghost{background:transparent;color:#e8eef9}
-.feature-cta .ghost:hover{border-color:rgba(29,223,90,.45);box-shadow:0 0 14px rgba(29,223,90,.35)}
+    /* --- Page Card --- */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .card h2 {
+      margin: 0 0 16px 0;
+      font-size: 1.8rem;
+      color: white;
+    }
+    .card h2 .highlight {
+      color: var(--page-accent); /* Orange highlight */
+    }
 
-/* Grid: 3 rows x 2 */
-.grid-two{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-@media (max-width:880px){ .grid-two{grid-template-columns:1fr} }
+    /* --- Whitepaper Section --- */
+    .whitepaper {
+      margin-top: 24px;
+      background: var(--card-bg);
+      border: 1px solid var(--lumen-orange);
+      border-radius: 16px;
+      box-shadow: 0 0 18px rgba(255, 106, 19, 0.5), 0 0 40px rgba(255, 106, 19, 0.3);
+    }
+    .wp-heading { margin: 0 0 6px; }
+    .wp-eyebrow {
+      display:inline-block;
+      color: var(--lumen-orange);
+      font-weight: 700;
+      font-size: .95rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .wp-title { margin:0; font-size:2.1rem; line-height:1.2; color:#ffffff; }
+    .whitepaper p { margin: 6px 0 12px; color: var(--text-muted); font-size: 1rem; }
+    .whitepaper .meta { color: #9fb2c7; font-size: .92rem; margin-top: 6px; }
+    .whitepaper .cta-row { display:flex; gap:10px; flex-wrap:wrap; margin:12px 0; }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 12px;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .btn-primary-orange {
+      background: var(--lumen-orange);
+      color: #0b1220;
+      border-color: var(--lumen-orange);
+    }
+    .btn-primary-orange:hover {
+      background: #fff;
+      color: #0b1220;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255,106,19,0.3);
+    }
+    .btn-secondary-blue {
+      background: transparent;
+      color: var(--ice-blue);
+      border-color: var(--ice-blue);
+    }
+    .btn-secondary-blue:hover {
+      background: var(--ice-blue);
+      color: #0b1220;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(43,237,231,0.3);
+    }
+    
+    .whitepaper .viewer { 
+      margin-top:12px; 
+      border-radius:12px; 
+      overflow:hidden; 
+      border:1px solid rgba(255,106,19,.35); 
+      background:#0f131b;
+    }
+    .whitepaper .viewer iframe { width:100%; height:720px; border:0; display:block; }
+    @media (max-width:900px){ .whitepaper .viewer iframe{height:520px} }
 
-.card{
-  background:#0f1726;border:1px solid rgba(255,255,255,.10);border-radius:14px;padding:14px;
-  transition:transform .15s, box-shadow .2s, border-color .2s;
-}
-.card:hover{transform:translateY(-2px);border-color:rgba(29,223,90,.45);box-shadow:0 0 14px rgba(29,223,90,.35)}
-.card h3{margin:0 0 10px;font-size:1.12rem}
+    /* --- Hero Section --- */
+    .hero {
+      padding: 40px 0 10px;
+    }
+    .hero-grid{
+      max-width:1080px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:28px;
+      align-items:center;
+    }
+    .kicker{
+      color:var(--lumen-orange);
+      font-weight:700;
+      font-size:.95rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .hero h1{
+      font-size:2.4rem;
+      line-height:1.2;
+      margin:.4rem 0 0;
+      text-transform:none !important
+    }
+    .sub{
+      color: var(--text-muted);
+      max-width:760px;
+      font-size:1.05rem;
+    }
+    .hero-pic{
+      justify-self:end;
+      width:320px;
+      max-width:36vw;
+      border:0;
+      background:var(--lumen-charcoal);
+      box-shadow:none;
+      border-radius:18px;
+      overflow:hidden;
+    }
+    .hero-pic img{
+      display:block;
+      width:100%;
+      height:auto;
+      object-fit:cover;
+      filter:none;
+    }
+    @media (max-width:900px){
+      .hero{padding:28px 0 10px}
+      .hero-grid{grid-template-columns:1fr;gap:18px;}
+      .hero-pic{display: none;} /* Hide pic on mobile */
+      .hero .sub{font-size:1rem}
+      .hero h1{font-size:clamp(1.8rem,6vw,2.2rem)}
+    }
 
-/* yt-lite: stays sized, iframe injected INSIDE (no replacement) */
-.yt-lite{
-  position:relative;width:100%;padding-bottom:56.25%;
-  background:#000 center/cover no-repeat;
-  border:1px solid rgba(255,255,255,.10);border-radius:10px;overflow:hidden;cursor:pointer;
-}
-.yt-lite::after{
-  content:"";position:absolute;right:12px;bottom:12px;width:56px;height:56px;border-radius:50%;
-  background:rgba(0,0,0,.55);box-shadow:0 0 14px rgba(0,0,0,.5);
-}
-.yt-lite::before{
-  content:"";position:absolute;right:34px;bottom:30px;border-left:16px solid #fff;border-top:10px solid transparent;border-bottom:10px solid transparent;
-}
-.yt-lite.playing{cursor:auto}
-.yt-lite.playing::before,.yt-lite.playing::after{display:none} /* hide play badge when playing */
+    /* === NEW KPI Ticker Section === */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .kpi-item {
+      text-align: center;
+      padding: 16px;
+      border-right: 1px solid var(--card-border);
+    }
+    .kpi-grid .kpi-item:last-child {
+      border-right: none;
+    }
+    .kpi-stat {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--page-accent); /* Orange */
+      line-height: 1.1;
+      margin-bottom: 8px;
+      min-height: 53px; 
+    }
+    .kpi-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .kpi-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .kpi-item.ice-blue .kpi-stat {
+      color: var(--page-accent-secondary); /* Ice Blue */
+    }
+    @media (max-width: 900px) {
+      .kpi-grid { grid-template-columns: 1fr; }
+      .kpi-item { 
+        border-right: none; 
+        border-bottom: 1px solid var(--card-border);
+      }
+      .kpi-grid .kpi-item:last-child {
+        border-bottom: none;
+      }
+    }
 
-.blurb{color:#cfd8e6;margin:10px 0 10px}
+    /* --- Quadrant (HTML Version) --- */
+    .quadrant-wrap {
+      position: relative;
+      background: #000;
+      border: 1px solid var(--ice-blue);
+      border-radius: 16px;
+      padding: 40px 24px 24px;
+      overflow: hidden;
+      box-shadow: 0 0 26px rgba(43,237,231,.55);
+    }
+    .quadrant-title {
+      position: absolute;
+      top: 12px; left: 24px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #FFD700; /* Gold title */
+    }
+    .quadrant-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      grid-template-rows: repeat(10, 1fr);
+      height: 600px;
+      position: relative;
+      background: 
+        linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+      background-size: 10% 10%;
+    }
+    .axis-y {
+      position: absolute;
+      left: 50%; /* Center Y-Axis */
+      top: 0; bottom: 0;
+      width: 2px;
+      background: #FFD700;
+      opacity: 0.7;
+    }
+    .axis-x {
+      position: absolute;
+      left: 0; right: 0;
+      top: 50%; /* Center X-Axis */
+      height: 2px;
+      background: #FFD700;
+      opacity: 0.7;
+    }
+    .axis-label {
+      position: absolute;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+    .axis-label.x-axis {
+      bottom: -20px; left: 50%; transform: translateX(-50%);
+      width: 100%; text-align: center;
+    }
+    .axis-label.y-axis {
+      top: 50%; left: -8px; transform: translateY(-50%) rotate(-90deg);
+    }
+    .quadrant-label {
+      position: absolute;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .q-label-tr { top: 10px; right: 10px; text-align: right; }
+    .q-label-tl { top: 10px; left: 10px; }
+    .q-label-br { bottom: 10px; right: 10px; text-align: right; }
+    .q-label-bl { bottom: 10px; left: 10px; }
+    .q-label-tr .highlight { color: var(--ice-blue); }
 
-/* KPI pill links */
-.kpis{display:flex;flex-wrap:wrap;gap:8px}
-.kpi{
-  display:inline-flex;align-items:center;justify-content:center;padding:8px 12px;border-radius:999px;font-weight:800;
-  background:var(--druid-pastel);color:#000;border:0;
-  transition:transform .15s, box-shadow .2s;
-}
-.kpi:hover{transform:translateY(-1px);box-shadow:0 0 10px rgba(29,223,90,.28), 0 0 20px rgba(29,223,90,.20)}
+    /* Vendor Datapoint */
+    .vendor {
+      grid-column: var(--x);
+      grid-row: var(--y);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .vendor-dot {
+      width: 16px;
+      height: 16px;
+      background: var(--page-accent-secondary); /* Ice Blue */
+      border: 2px solid #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--ice-blue), 0 0 20px var(--ice-blue);
+      transition: all 0.2s ease;
+    }
+    .vendor-dot.leader {
+      background: var(--page-accent) !important; /* Orange */
+      box-shadow: 0 0 10px var(--lumen-orange), 0 0 20px var(--lumen-orange) !important;
+    }
+    .vendor-label {
+      position: absolute;
+      left: 100%;
+      top: 50%;
+      transform: translate(12px, -50%);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      text-shadow: 0 0 5px #000;
+    }
+    .vendor:hover .vendor-dot {
+      transform: scale(1.5);
+    }
+    
+    /* Vendor Placements (Grid lines 1-11) */
+    /* Leaders */
+    .vendor.lumen { --x: 7; --y: 2; }
+    /* Challengers */
+    .vendor.aws { --x: 6; --y: 3; }
+    .vendor.google { --x: 7; --y: 4; }
+    .vendor.microsoft { --x: 5; --y: 5; }
+    /* Fabric Specialists */
+    .vendor.cloudflare { --x: 8; --y: 5; }
+    .vendor.akamai { --x: 8; --y: 6; }
+    /* Niche Players */
+    .vendor.equinix { --x: 3; --y: 6; }
+    .vendor.digitalrealty { --x: 3; --y: 7; }
+    .vendor.coresite { --x: 3; --y: 8; }
+    .vendor.att { --x: 2; --y: 7; }
+    .vendor.verizon { --x: 2; --y: 8; }
+    .vendor.tmobile { --x: 2; --y: 9; }
+    
+    @media (max-width: 600px) {
+      .quadrant-grid { height: 400px; }
+      .vendor-dot { width: 12px; height: 12px; }
+      .vendor-label { font-size: 0.75rem; transform: translate(8px, -50%); }
+    }
 
-/* Quadrant */
-.quad{
-  margin:24px 0;background:#0b111a;border:1px solid rgba(29,223,90,.45);border-radius:14px;padding:18px;
-  box-shadow:0 10px 34px rgba(29,223,90,.12)
-}
-.quad a img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid rgba(29,223,90,.35)}
+    /* --- Resilience Grid (2x2) --- */
+    .icp-wrap h2 {
+      font-size: 1.8rem;
+      color: white;
+    }
+    .icp-wrap h2 .highlight {
+      color: var(--page-accent-secondary); /* Ice Blue */
+    }
+    .icp-wrap p { color: var(--text-muted); }
+    
+    .icp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* 2 Columns */
+      gap: 16px;
+      margin-top: 18px;
+    }
+    @media (max-width: 900px){ .icp-grid{grid-template-columns: 1fr} }
+    
+    .icp-card{
+      background: var(--card-bg);
+      border: 1px solid var(--lumen-orange);
+      border-radius:16px;
+      padding:16px;
+      box-shadow: 0 0 18px rgba(255,106,19,.4);
+      transition: box-shadow .2s ease, transform .15s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .icp-card:hover {
+      box-shadow: 0 0 26px rgba(255,106,19,.7);
+      transform: translateY(-2px);
+    }
+    .icp-card .tag {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      min-height: 38px;
+      padding: 8px 16px;
+      font-weight: 800;
+      letter-spacing: .2px;
+      color: #0b1220;
+      background: linear-gradient(180deg, var(--lumen-orange), #ff8c3a);
+      border: 1px solid var(--lumen-orange);
+      border-radius: 9999px;
+      margin: 0 0 10px;
+      text-decoration:none;
+      cursor:pointer;
+    }
+    .icp-card h3 {
+      color: #fff;
+      margin: 6px 0 8px 0;
+      font-size: 1.2rem;
+    }
+    .icp-card h3 .icp-link {
+      color: var(--page-accent-secondary); /* Ice Blue */
+      text-decoration: none;
+      border-bottom: 1px dashed transparent;
+      transition: all .15s ease;
+    }
+    .icp-card h3 .icp-link:hover {
+      border-bottom-color: var(--ice-blue);
+    }
+    .icp-card p {
+      color: var(--text-light) !important;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      flex-grow: 1; /* Makes cards in a row equal height */
+    }
+    .icp-card p:last-of-type {
+      margin-top: auto; /* Pushes KPIs to the bottom */
+    }
+    .icp-card p b {
+      color: var(--page-accent-secondary) !important;
+      font-weight: 700;
+    }
 
-/* AI Readiness teaser */
-.section{margin:28px 0}
-.card-soft{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px}
-.card-soft h3{margin:0 0 8px}
-.card-soft p{margin:0 0 12px;color:#cfd6e3}
+    /* --- Bottom CTA Rail --- */
+    .cta-rail{
+      margin: 28px 0 10px;
+      padding: 24px;
+      border-radius: 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+    }
+    .cta-rail-inner{
+      display:flex;
+      flex-wrap:wrap;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between
+    }
+    .cta-rail h3 { margin:0; color:#fff; font-size:1.3rem; }
+    .cta-rail p { margin:4px 0 0; color:var(--text-muted); max-width:720px; font-size:.98rem; }
+    
+    @media (max-width:900px){
+      .cta-rail-inner{flex-direction:column;align-items:flex-start}
+      .cta-rail .btns{display:flex;gap:10px;flex-wrap:wrap}
+    }
 
-/* Blog / Bloomberg small CTAs match site style */
-.btn-ghost{
-  display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:12px;font-weight:800;
-  border:1px solid rgba(255,255,255,.16);color:#d5dcef;background:transparent;
-  transition:color .15s, box-shadow .2s, border-color .2s, transform .15s;
-}
-.btn-ghost:hover{
-  color:var(--druid); border-color:rgba(29,223,90,.6); 
-  box-shadow:0 0 12px rgba(29,223,90,.45), 0 0 24px rgba(29,223,90,.25);
-  transform:translateY(-1px);
-}
+    /* --- Footer --- */
+    .footer {
+      border-top:1px solid var(--card-border); 
+      padding: 24px; 
+      margin-top: 32px;
+      text-align: center;
+      color: var(--text-muted);
+    }
+    .socials {
+      display:flex; 
+      gap:16px; 
+      justify-content:center;
+      margin-top: 16px;
+    }
+    .socials a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+    .socials a:hover {
+      color: var(--ice-blue);
+      transform: translateY(-2px);
+    }
+    .socials svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+    
+    /* Utility */
+    section[id]{ scroll-margin-top: 90px; } /* Anchor link offset */
 
-/* Footer (Original AI footer style, but updating to Cyber structure below) */
-footer{margin:32px 0 24px}
-.footer-inner{max-width:1120px;margin:0 auto;padding:0 16px;text-align:center;color:var(--muted)}
-.socials{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:10px 0}
-.socials a{
-  width:40px;height:40px;display:grid;place-items:center;border-radius:999px;
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:#e6eef5;
-  transition:transform .15s, box-shadow .2s, border-color .2s;
-}
-
-/* DRUID-green outline pill on hover + text glow */
-.btn.btn-outline-green{
-  background:transparent; color:#d5dcef; border:1px solid rgba(255,255,255,.16);
-  transition: color .15s ease, border-color .2s ease, box-shadow .2s ease, text-shadow .15s ease, transform .15s ease;
-}
-.btn.btn-outline-green:hover,
-.btn.btn-outline-green:focus-visible{
-  color:#1DDF5A; /* DRUID green text */
-  border-color:#1DDF5A;
-  text-shadow:0 0 6px rgba(29,223,90,.85), 0 0 14px rgba(29,223,90,.45);
-  box-shadow:0 0 12px rgba(29,223,90,.45), 0 0 24px rgba(29,223,90,.25);
-  transform:translateY(-1px);
-  outline:0;
-}
-/* Socials Hover Re-style for DRUID green glow */
-.socials a:hover,
-.socials a:focus-visible{
-  transform:translateY(-2px);
-  border-color:#1DDF5A;
-  /* outer + inner glows */
-  box-shadow:
-    0 0 12px rgba(29,223,90,.45),
-    0 0 24px rgba(29,223,90,.25),
-    inset 0 0 10px rgba(29,223,90,.35),
-    inset 0 0 18px rgba(29,223,90,.20);
-  color:#1DDF5A;
-  outline:0;
-}
-
-/* DRUID KPI pills */
-#druid-feature .kpis{
-  display:grid !important;
-  grid-template-columns: 1fr !important;
-  gap:10px !important;
-}
-#druid-feature .kpi{
-  display:inline-block !important;
-  width:100% !important;
-  text-align:center !important;
-  vertical-align:middle !important;
-  min-height:44px !important;
-  background:#D2FDB1 !important; 
-  color:#000 !important;
-  border:0 !important;
-  border-radius:999px !important;
-  font-weight:800 !important;
-  font-size:0.95rem !important;
-  line-height:1.2 !important;
-  padding:10px 12px !important;
-  white-space:normal !important;
-  word-break:keep-all !important;
-  transition:transform .15s ease, box-shadow .2s ease !important;
-}
-#druid-feature .kpi strong{display:inline-block !important; margin-right:6px !important}
-#druid-feature .kpi:hover,
-#druid-feature .kpi:focus-visible{
-  transform:translateY(-1px) !important;
-  box-shadow:0 0 10px rgba(29,223,90,.28), 0 0 22px rgba(29,223,90,.2) !important;
-  outline:0 !important;
-}
-#druid-feature .knum{
-  font-variant-numeric: tabular-nums;
-  letter-spacing: .3px;
-  min-width: 2ch;
-}
-
-/* === CYBER FOOTER STYLES APPLIED === */
-.footer { border-top:1px solid var(--card-border); padding: 40px 0; margin-top: 40px; text-align: center; color: var(--muted); }
-.socials { display: flex; gap: 16px; justify-content: center; margin-top: 16px; }
-.socials a { color: #fff; text-decoration: none; transition: all 0.2s ease; }
-.socials a:hover { 
-  color: var(--druid); /* DRUID GREEN HOVER */
-  transform: translateY(-2px);
-  text-shadow: 0 0 10px var(--druid);
-}
-.socials svg { width: 24px; height: 24px; fill: currentColor; }
-/* === END CYBER FOOTER STYLES === */
-</style>
+  </style>
 </head>
 <body>
 
-<div class="topbar">
-  <div class="wrap">
-    <nav class="nav" aria-label="Primary">
-      <div class="brand">
-       <img class="logo" src="/assets/industry5-logo.png" alt="Industry5.pro logo" />
-        <strong class="title">Industry5.pro</strong>
-      </div>
-
-      <div class="nav-actions">
-        <a class="navlink" href="/">Home</a>
-        <a class="navlink" href="/ai" aria-current="page">AI</a>
-        <a class="navlink" href="/cyber">Security</a>
-        <a class="navlink" href="/cloud20">Cloud 2.0</a>
-        <a class="navlink" href="/ccaas">UC &amp;<br>Contact Center</a>
-        <a class="navlink" href="/aiot">AIoT</a>
-        <a class="navlink" href="/peplink">5G &amp;<br>Satellite</a>
-        <a class="navlink" href="/blog">Blog</a>
-        <a class="navlink start-ai" href="https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform" target="_blank" rel="noopener">Start AI Readiness</a>
-      </div>
-    </nav>
+  <!-- === MASTER HEADER HTML === -->
+  <div class="topbar">
+    <div class="wrap">
+      <nav class="nav" aria-label="Primary">
+        <div class="brand">
+         <!-- Using your logo from the blog page -->
+         <img class="logo" src="/assets/industry5logo.svg" alt="Industry5.pro logo" />
+          <strong style="color: #fff;">Industry5.pro</strong>
+        </div>
+  
+        <div class="nav-actions">
+          <a class="navlink" href="/">Home</a>
+          <a class="navlink" href="/ai">AI</a>
+          <a class="navlink" href="/cyber">Security</a>
+          <!-- This link is now 'active' -->
+          <a class="navlink" href="/cloud20" aria-current="page">Cloud 2.0</a>
+          <a class="navlink" href="/ccaas">UC &amp;<br>Contact Center</a>
+          <a class="navlink" href="/aiot">AIoT</a>
+          <a class="navlink" href="/peplink">5G &amp;<br>Satellite</a>
+          <a class="navlink" href="/blog">Blog</a>
+          <a class="navlink" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
+        </div>
+      </nav>
+    </div>
   </div>
-</div>
-<main class="wrap">
 
-  <section class="hero">
-    <div class="hero-grid">
-      <div>
-        <div class="kicker">Injectable AI Agents for Omnichannel</div>
-        <h1>Add assistants, quality, analytics, and automation to the stack you already run</h1>
-        <p class="lead">
-          Use AI where it pays first. Automate Tier 0 and Tier 1, give live agents real time help, and route with context across chat, voice, email, and apps.
-          When a platform change is smart, evaluate options with uptime, identity, and compliance in mind. Outcomes first, tools second.
-        </p>
-        <div class="cta-row">
-          <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform" target="_blank" rel="noopener">Start AI Readiness</a>
-          <a class="btn btn-outline-green" href="https://www.druidai.com/case-studies" target="_blank" rel="noopener">See DRUID case studies</a>
+  <!-- === MAIN PAGE CONTENT === -->
+  <main class="wrap">
+
+    <!-- White paper card -->
+    <section class="whitepaper card" id="cloud20-whitepaper">
+      <div class="wp-heading">
+        <span class="wp-eyebrow">
+          Cloud <span style="color: var(--ice-blue); text-shadow: 0 0 8px var(--ice-blue);">2.0</span>
+        </span>
+        <h1 class="wp-title">Because AI Won't Run on Yesterday’s Internet</h1>
+      </div>
+      <p>This research-driven view maps how AI reshapes data centers, networks, and commercial motions through 2030. (From Dave Ward, CTO, Lumen)</p>
+
+      <div class="cta-row">
+        <a class="btn btn-primary-orange" href="/assets/preparing-cloud-two-enterprise-networks.pdf" download>Download PDF</a>
+        <a class="btn btn-secondary-blue" href="#cloud20-whitepaper-viewer">View Inline</a>
+      </div>
+
+      <div class="viewer" id="cloud20-whitepaper-viewer" style="display: none;">
+        <iframe src="/assets/preparing-cloud-two-enterprise-networks.pdf#view=FitH" title="Cloud 2.0 white paper" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="kicker">Cloud 2.0</div>
+          <h1>Network + Edge + Multi-Cloud with AI in the Loop</h1>
+          <p class="sub">
+            Cloud 2.0 places workloads where they perform best across core, edge, and on-prem sites, with a programmable network and security that travel with the app. We feature Lumen for enterprise foundations while staying supplier-agnostic.
+          </p>
+        </div>
+        <div class="hero-pic">
+          <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora | Industry5.pro" />
         </div>
       </div>
-      <div class="hero-portrait"><img src="/assets/lou-portrait@2x.png" alt="Louis Tortora" loading="eager" decoding="async"/></div>
-    </div>
-  </section>
+    </section>
 
-  <section class="feature" id="druid-feature">
-  <div class="feature-head">
-    <h2>Featured Partner: DRUID AI</h2>
-    <div class="badges">
-      <span class="cap inverse">Agentic AI</span>
-      <span class="cap perma">Omnichannel</span>
-      <span class="cap perma">Low code</span>
-      <span class="cap perma">On prem or private cloud</span>
-      <span class="cap perma">Regulated industries</span>
-    </div>
-  </div>
-
-  <p>
-    DRUID brings process agents, knowledge agents, and orchestration across Customer Support, HR, Sales and Marketing, IT Helpdesk, Banking, Healthcare, and Retail with controls that pass audits.
-  </p>
-
-  <div class="grid-two">
-
-    <article class="card">
-      <h3>Banking</h3>
-      <div class="yt-lite" data-id="4zWW_I80wrg"></div>
-      <p class="blurb">Speed onboarding, automate KYC flows, and guide customers with context while keeping data under control.</p>
-      <div class="kpis">
-        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-banking" target="_blank" rel="noopener">
-          <strong class="knum" data-target="60" data-suffix="%">0</strong>
-          reduction in onboarding time and costs
-        </a>
-        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-banking" target="_blank" rel="noopener">
-          <strong class="knum" data-target="40" data-suffix="%">0</strong>
-          reduction in average handling time and operational overhead
-        </a>
-        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-banking" target="_blank" rel="noopener">
-          <strong class="knum" data-target="25" data-suffix="%">0</strong>
-          increase in first-contact resolution
-        </a>
+    <!-- === NEW KPI Ticker === -->
+    <section class="kpi-grid" id="kpi-ticker">
+      <div class="kpi-item orange">
+        <div class="kpi-stat">
+          ↓<span data-target="40" data-decimals="0">0</span>ms
+        </div>
+        <h3 class="kpi-title">p95 Latency Reduction</h3>
+        <p class="kpi-desc">Move compute to the edge, closer to users and devices, with services like Lumen Edge Bare Metal.</p>
       </div>
-    </article>
-
-    <article class="card">
-      <h3>Customer Support</h3>
-      <div class="yt-lite" data-id="eaQvLKagfTM"></div>
-      <p class="blurb">Deflect Tier 0 and Tier 1, give agents real time assist, and resolve faster across voice and chat.</p>
-      <div class="kpis">
-        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-customer-support" target="_blank" rel="noopener">
-          <strong class="knum" data-target="20" data-suffix="%">0</strong>
-          fewer calls
-        </a>
-        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-customer-support" target="_blank" rel="noopener">
-          <strong class="knum" data-target="10" data-suffix="%">0</strong>
-          shorter calls
-        </a>
-        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-customer-support" target="_blank" rel="noopener">
-          <strong class="knum" data-target="30" data-suffix="%">0</strong>
-          agent time saved
-        </a>
+      
+      <div class="kpi-item orange">
+        <div class="kpi-stat">
+          ↓<span data-target="35" data-decimals="0">0</span>%
+        </div>
+        <h3 class="kpi-title">Cloud Egress Cost</h3>
+        <p class="kpi-desc">Use NaaS and private routing to bypass public internet egress fees between clouds and data centers.</p>
       </div>
-    </article>
 
-    <article class="card">
-      <h3>HR</h3>
-      <div class="yt-lite" data-id="uKuTEIRbdCw"></div>
-      <p class="blurb">Automate routine questions, speed onboarding, and keep people work focused on people.</p>
-      <div class="kpis">
-        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-hr" target="_blank" rel="noopener">
-          <strong class="knum" data-target="80" data-suffix="%">0</strong>
-          tasks automated
-        </a>
-        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-hr" target="_blank" rel="noopener">
-          <strong class="knum" data-target="75" data-suffix="%">0</strong>
-          faster onboarding
-        </a>
-        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-hr" target="_blank" rel="noopener">
-          <strong class="knum" data-target="30" data-suffix="%">0</strong>
-          sourcing time saved
-        </a>
+      <div class="kpi-item ice-blue">
+        <div class="kpi-stat">
+          ↑<span data-target="99.99" data-decimals="2">0</span>%
+        </div>
+        <h3 class="kpi-title">Service Uptime (SLA)</h3>
+        <p class="kpi-desc">Achieve true resilience with diverse, redundant network paths and automated failover.</p>
       </div>
-    </article>
+    </section>
 
-    <article class="card">
-      <h3>Sales and Marketing</h3>
-      <div class="yt-lite" data-id="Qfa6Ly9LobI"></div>
-      <p class="blurb">Guide buyers, qualify faster, and keep follow ups tight across every channel.</p>
-      <div class="kpis">
-        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-sales-and-marketing" target="_blank" rel="noopener">
-          <strong class="knum" data-target="35" data-suffix="%">0</strong>
-          rep time saved
-        </a>
-        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-sales-and-marketing" target="_blank" rel="noopener">
-          <strong class="knum" data-target="30" data-suffix="%">0</strong>
-          faster service
-        </a>
-        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-sales-and-marketing" target="_blank" rel="noopener">
-          <strong class="knum" data-target="25" data-suffix="%">0</strong>
-          CSAT lift
-        </a>
+    <!-- === NEW HTML Quadrant === -->
+    <section class="card" id="quadrant">
+      <h2>Cloud 2.0 Quadrant: <span class="highlight">NaaS Fabric vs. Edge Compute</span></h2>
+      <p style="color: var(--text-muted); margin-top: -12px; margin-bottom: 20px;">
+        The new stack is defined by who controls the network *fabric* and who provides the *compute* at the metro edge. <strong>Lumen</strong> is uniquely positioned as a leader in both, enabling true end-to-end workload orchestration.
+      </p>
+
+      <div class="quadrant-wrap">
+        <div class="quadrant-title">Cloud 2.0 Readiness — NaaS Fabric vs. Edge Compute</div>
+        <div class="quadrant-grid">
+          <!-- Quadrant Labels -->
+          <div class="quadrant-label q-label-tl"><strong>Challengers</strong><br><span style="color:var(--text-muted); font-weight: 400;">(Strong Edge, Building NaaS)</span></div>
+          <div class="quadrant-label q-label-tr"><strong>Leaders</strong><br><span style="color:var(--text-muted); font-weight: 400;">(Strong Edge & NaaS Fabric)</span></div>
+          <div class="quadrant-label q-label-bl"><strong>Niche Players</strong><br><span style="color:var(--text-muted); font-weight: 400;">(Legacy Colocation/Transit)</span></div>
+          <div class="quadrant-label q-label-br"><strong>Fabric Specialists</strong><br><span style="color:var(--text-muted); font-weight: 400;">(Strong NaaS, Building Edge)</span></div>
+          
+          <!-- Axis -->
+          <div class="axis-y"></div>
+          <div class="axis-x"></div>
+          <div class="axis-label y-axis">Edge Compute & Service →</div>
+          <div class="axis-label x-axis">← Legacy Fabric | NaaS & Programmable Fabric | Hyperscale Fabric →</div>
+
+          <!-- Vendors (SEO-friendly HTML) -->
+          <div class="vendor lumen" style="--x: 7; --y: 2;"><div class="vendor-dot leader"></div><span class="vendor-label">Lumen</span></div>
+          <div class="vendor aws" style="--x: 6; --y: 3;"><div class="vendor-dot"></div><span class="vendor-label">AWS</span></div>
+          <div class="vendor google" style="--x: 7; --y: 4;"><div class="vendor-dot"></div><span class="vendor-label">Google Cloud</span></div>
+          <div class="vendor microsoft" style="--x: 5; --y: 5;"><div class="vendor-dot"></div><span class="vendor-label">Microsoft Azure</span></div>
+          <div class="vendor equinix" style="--x: 3; --y: 6;"><div class="vendor-dot"></div><span class="vendor-label">Equinix</span></div>
+          <div class="vendor digitalrealty" style="--x: 3; --y: 7;"><div class="vendor-dot"></div><span class="vendor-label">Digital Realty</span></div>
+          <div class="vendor coresite" style="--x: 3; --y: 8;"><div class="vendor-dot"></div><span class="vendor-label">CoreSite</span></div>
+          <div class="vendor att" style="--x: 2; --y: 7;"><div class="vendor-dot"></div><span class="vendor-label">AT&T</span></div>
+          <div class="vendor verizon" style="--x: 2; --y: 8;"><div class="vendor-dot"></div><span class="vendor-label">Verizon</span></div>
+          <div class="vendor tmobile" style="--x: 2; --y: 9;"><div class="vendor-dot"></div><span class="vendor-label">T-Mobile</span></div>
+          <div class="vendor cloudflare" style="--x: 8; --y: 5;"><div class="vendor-dot"></div><span class="vendor-label">Cloudflare</span></div>
+          <div class="vendor akamai" style="--x: 8; --y: 6;"><div class="vendor-dot"></div><span class="vendor-label">Akamai</span></div>
+
+        </div>
       </div>
-    </article>
+    </section>
 
-    <article class="card">
-      <h3>Healthcare</h3>
-      <div class="yt-lite" data-id="fKAJ6gAmQsU"></div>
-      <p class="blurb">Book more visits, pre qualify cases, and respect privacy rules without slowing care.</p>
-      <div class="kpis">
-        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-healthcare" target="_blank" rel="noopener">
-          <strong class="knum" data-target="25" data-suffix="%">0</strong>
-          more appointments
-        </a>
-        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-healthcare" target="_blank" rel="noopener">
-          <strong class="knum" data-target="15" data-suffix="%">0</strong>
-          booking revenue
-        </a>
-        <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-healthcare" target="_blank" rel="noopener">
-          <strong class="knum" data-target="70" data-suffix="%">0</strong>
-          pre qualified cases
-        </a>
+    <!-- === NEW 2x2 Resilience Grid === -->
+    <section class="icp-wrap" aria-label="Cloud 2.0 use cases">
+      <div class="icp-header">
+        <h2>Where Cloud <span class="highlight" style="color: var(--ice-blue); text-shadow: 0 0 8px var(--ice-blue);">2.0</span> Delivers Measurable Resilience</h2>
+        <p>Use these as starting points. We shape the plan to your uptime targets, compliance, and unit economics.</p>
       </div>
-    </article>
 
-    <article class="card">
-      <h3>Retail and CPG</h3>
-      <div class="yt-lite" data-id="UJWccsf8ejA"></div>
-      <p class="blurb">Lift conversion, automate order ops, and cut queues with smart guidance.</p>
-      <div class="kpis">
-        <a class="kpi" href="https://www.druidai.com/solutions/retail-ai-agents" target="_blank" rel="noopener">
-          <strong class="knum" data-target="30" data-suffix="%">0</strong>
-          conversion lift
-        </a>
-        <a class="kpi" href="https://www.druidai.com/solutions/retail-ai-agents" target="_blank" rel="noopener">
-          <strong class="knum" data-target="60" data-suffix="%">0</strong>
-          auto resolved
-        </a>
-        <a class="kpi" href="https://www.druidai.com/solutions/retail-ai-agents" target="_blank" rel="noopener">
-          <strong class="knum" data-target="40" data-suffix="%">0</strong>
-          ops efficiency
-        </a>
+      <!-- ROW 1 OF 2 -->
+      <div class="icp-grid">
+        <article class="icp-card">
+          <div class="tag">Digital Native SaaS</div>
+          <h3><a class="icp-link" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Cloud 2.0 for SaaS Resilience</a></h3>
+          <p>Spread services across regions and clouds so deploys stay fast and outages are boring. NaaS simplifies multi-cloud routing.</p>
+          <p><b>KPIs:</b> error rate, release velocity, RPO/RTO.</p>
+        </article>
+
+        <article class="icp-card">
+          <div class="tag">Financial Services</div>
+          <h3><a class="icp-link" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Trading Performance & Compliance</a></h3>
+          <p>Deterministic paths to venues, data residency by design, and policy as code with audit evidence built in. Failover is rehearsed.</p>
+          <p><b>KPIs:</b> p95 latency, failover time, fraud signal lag.</p>
+        </article>
+
+        <article class="icp-card">
+          <div class="tag">Healthcare & Life Sciences</div>
+          <h3><a class="icp-link" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Clinical Uptime & AI at the Edge</a></h3>
+          <p>Imaging and device inference runs close to care while PHI stays segmented and recoverable. Integrations are predictable and tested.</p>
+          <p><b>KPIs:</b> uptime, time to diagnosis, DR test pass rate.</p>
+        </article>
+
+        <article class="icp-card">
+          <div class="tag">Manufacturing & Industry</div>
+          <h3><a class="icp-link" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Plant to Cloud Reliability</a></h3>
+          <p>Edge compute at the line, private wireless on the floor, and deterministic backhaul to MES and historians. Analytics sync without drift.</p>
+          <p><b>KPIs:</b> OEE, cycle time, MTTR, data freshness.</p>
+        </article>
       </div>
-    </article>
+      
+      <!-- ROW 2 OF 2 (The 4 missing cards) -->
+      <div class="icp-grid" style="margin-top: 16px;">
+        <article class="icp-card">
+          <div class="tag">Retail and CPG</div>
+          <h3><a class="icp-link" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Omnichannel Inventory & POS</a></h3>
+          <p>Resilient SD-WAN for POS and payments, with edge caching for real-time inventory and pricing. Stops outages from stopping sales.</p>
+          <p><b>KPIs:</b> POS uptime, stock accuracy, checkout time.</p>
+        </article>
 
-  </div>
-</section>
+        <article class="icp-card">
+          <div class="tag">Logistics, Fleet, and Warehousing</div>
+          <h3><a class="icp-link" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Network as a Reliability Layer</a></h3>
+          <p>Low latency networks for robots and scanners, clean failover, and telemetry landing in the right cloud for planning while local actions stay on site.</p>
+          <p><b>KPIs:</b> dock dwell, pick rate, order accuracy, ETA accuracy.</p>
+        </article>
 
+        <article class="icp-card">
+          <div class="tag">Utilities and Critical Infrastructure</div>
+          <h3><a class="icp-link" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Grid Telemetry and Event Response</a></h3>
+          <p>Private transport for controls, streaming telemetry pipelines, and segmented recovery playbooks. Built to handle storms and audits alike.</p>
+          <p><b>KPIs:</b> SAIDI/SAIFI, event detection time, recovery time.</p>
+        </article>
 
-  <section class="quad" id="injectable-quadrant">
-    <h3 style="margin:0 0 8px">Injectable AI for Omnichannel: Market view</h3>
-    <p class="quad-note">Many teams want AI outcomes without a platform swap. Injectable AI lets you add real time assist, quality, analytics, and voice bots to what you already run, faster value, lower risk. Not exhaustive. We partner widely beyond what fits here; this snapshot shows battle tested options. If your stack points to others, we will evaluate those too.</p>
-    <a href="/ai" aria-label="Open AI Readiness">
-      <img src="/assets/ai_voice_injectable_quadrant_clean12.png" alt="Injectable AI Omnichannel Quadrant"/>
-    </a>
-  </section>
+        <article class="icp-card">
+          <div class="tag">Public Sector and Education</div>
+          <h3><a class="icp-link" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Mission Resilience with Budget Discipline</a></h3>
+          <p>Identity-centric access, campus edge where it matters, and clear data residency. Designed for accountability without sacrificing uptime.</p>
+          <p><b>KPIs:</b> service uptime, incident closure time, cost per user.</p>
+        </article>
+      </div>
+    </section>
 
-<section class="section" id="erdoes-fii">
-  <div class="card-soft">
-    <h3>“AI is a new way of working” — Mary Callahan Erdoes</h3>
+    <!-- Bottom CTA strip -->
+    <section class="cta-rail">
+      <div class="cta-rail-inner">
+        <div>
+          <h3>Ready to place compute and data where they win?</h3>
+          <p>Two fast paths: scope your use case now or book time to map Cloud 2.0, NaaS, and edge around your KPIs.</p>
+        </div>
+        <div class="btns">
+          <a class="btn btn-primary-orange" href="https://near.tl/sm/7_71IlONk" target="_blank" rel="noopener">Start Cloud 2.0 Discovery</a>
+          <a class="btn btn-secondary-blue" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    <div class="bbg-embed">
-      <iframe
-        src="https://www.bloomberg.com/media-manifest/embed/iframe?id=6c8c8431-5ab8-4e9f-bb4a-5ff51c1cf991"
-        allowscriptaccess="always"
-        frameborder="0"
-        allow="autoplay; encrypted-media"
-        loading="lazy"
-        referrerpolicy="strict-origin-when-cross-origin"
-      ></iframe>
-    </div>
-
-    <p class="blurb">
-      Start by eliminating the no joy work. That is the spark. Then leap from step one to step ten by rethinking the whole process. 
-      AI is not replacing people, it multiplies potential. Curiosity becomes advantage, and execution gets faster, cheaper, and better.
-    </p>
-
-  </div>
-</section>
-
-</main>
-
-<footer class="footer">
-  <div class="footer-inner">
-    <div>© <span id="y"></span> Industry5.pro | Built on trust. Paid by results.</div>
+  <!-- === Footer === -->
+  <footer class="footer">
+    <div>© <span id="footer-year"></span> Industry5.pro | Built on trust. Paid by results.</div>
     <div class="socials">
-      <a href="https://www.linkedin.com/in/louis-tortora5/" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.48 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.8 2.67 4.8 6.14V23h-4v-6.5c0-1.55-.03-3.55-2.17-3.55-2.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg>
+      <a href="https://www.linkedin.com/in/louis-tortora7/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.48 2.5S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.8 2.67 4.8 6.14V23h-4v-6.5c0-1.55-.03-3.55-2.17-3.55-2.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg>
       </a>
       <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 1.9.25 2.3.42.6.23 1.1.52 1.6.97.46.45.75 1 .97 1.6.17.4.36 1.1.36 2.3.07 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 1.9-.42 2.3a4 4 0 0 1-.97 1.6 4 4 0 0 1-1.6.97c-.4.17-1.1.36-2.3.42-1.3.07-1.7.07-4.9.07s-3.5 0-4.9-.07c-1.2-.06-1.9-.25-2.3-.42a4 4 0 0 1-1.6-.97 4 4 0 0 1-.97-1.6c-.17-.4-.36-1.1-.42-2.3C3.2 15.6 3.2 15.2 3.2 12s0-3.6.07-4.9c.06-1.2.25-1.9.42-2.3.23-.6.52-1.1.97-1.6.45-.46 1-.75 1.6-.97.4-.17 1.1-.36 2.3-.42C8.4 2.2 8.8 2.2 12 2.2Z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.51 5.51 0 0 0 12 7.5zm0 2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5zM18 6.2a1 1 0 1 0 1 1 1 1 0 0 0-1-1z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61582481880019" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.07C22 6.49 17.52 2 11.93 2 6.35 2 1.86 6.49 1.86 12.07c0 5.02 3.66 9.18 8.44 9.95v-7.03H7.9V12.1h2.4V9.86c0-2.37 1.4-3.68 3.55-3.68 1.03 0 2.11.18 2.11.18v2.32h-1.19c-1.17 0-1.53.73-1.53 1.47v1.95h2.61l-.46 2.89h-2.19v7.03c4.78-.77 8.44-4.93 8.44-9.95z"/></svg>
+      </a>
+      <a href="https://wa.me/14076945495" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 3.9A10 10 0 0 0 2.7 17.7L2 22l4.4-1.2A10 10 0 1 0 20 3.9zm-8 16.2c-1.7 0-3.3-.5-4.7-1.6l-.3-.2-2.8.8.8-2.7-.2-.3A7.87 7.87 0 0 1 12 4.1a8 8 0 0 1 0 16zm4.5-5.3c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.6.1c-.2.2-.6.8-.7 1-.1.2-.3.2-.5.1-1-.4-2-.9-2.8-1.8-.2-.2-.4-.5-.3-.7.1-.2.3-.4.4-.6l.2-.3c.1-.2 0-.4 0-.5 0-.1-.6-1.5-.8-2.1-.2-.6-.4-.5-.6-.5h-.5c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.1 3 .9 1.6 2.1 2.2 1.9.7 2.2.8c.3.1 1.4.1 1.9-.1.6-.2 1.4-.7 1.6-1.3.2-.6.2-1.1.1-1.2z"/></svg>
       </a>
       <a href="mailto:lou@industry5.pro" aria-label="Email">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 4h20a2 2 0 0 1 2 2v1l-12 7L0 7V6a2 2 0 0 1 2-2zm0 6.236V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-7.764l-9.386 5.52a2 2 0 0 1-2.228 0L2 10.236z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
       </a>
     </div>
-  </div>
-</footer>
-<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+  </footer>
 
+  <!-- === Scripts === -->
+  <script>
+    // Footer Year
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
 
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll('#druid-feature .yt-lite').forEach(function(el){
-    var id = el.dataset.id; if(!id) return;
-
-    // crisp poster
-    var hi = new Image();
-    hi.onload = function(){ el.style.backgroundImage = "url('"+hi.src+"')"; };
-    hi.onerror = function(){ el.style.backgroundImage = "url('https://img.youtube.com/vi/"+id+"/sddefault.jpg')"; };
-    hi.src = "https://img.youtube.com/vi/"+id+"/maxresdefault.jpg";
-
-    // click to play INSIDE wrapper
-    el.addEventListener('click', function(){
-      if (el.classList.contains('playing')) return;
-      el.classList.add('playing');
-      var iframe = document.createElement('iframe');
-      iframe.src = "https://www.youtube.com/embed/"+id+"?autoplay=1&rel=0";
-      iframe.setAttribute('allow',"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
-      iframe.allowFullscreen = true;
-      iframe.referrerPolicy = "strict-origin-when-cross-origin";
-      Object.assign(iframe.style,{position:'absolute',inset:'0',width:'100%',height:'100%',border:'0'});
-      el.appendChild(iframe);
-    }, {passive:true});
-  });
-});
-</script>
-<script>
-(function(){
-  // Respect users who prefer reduced motion
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
-
-  function animateNumber(el, target, duration, suffix){
-    if (reduce){ el.textContent = target + (suffix||""); return; }
-    var start = 0, t0 = performance.now();
-    function frame(t){
-      var p = Math.min(1, (t - t0)/duration);
-      var v = Math.round(start + (target - start) * easeOutCubic(p));
-      el.textContent = v + (suffix||"");
-      if (p < 1) requestAnimationFrame(frame);
-    }
-    requestAnimationFrame(frame);
-  }
-
-  // Observe KPI numbers only in the DRUID feature section
-  var seen = new WeakSet();
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if (!entry.isIntersecting) return;
-      var el = entry.target;
-      if (seen.has(el)) return;
-      seen.add(el);
-      var target = parseInt(el.getAttribute('data-target'), 10) || 0;
-      var suffix = el.getAttribute('data-suffix') || '';
-      animateNumber(el, target, 900, suffix);  // ~0.9s per number
+    // Whitepaper inline viewer toggle
+    document.querySelector('.btn-secondary-blue[href="#cloud20-whitepaper-viewer"]').addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const viewer = document.querySelector(targetId);
+      if (viewer) {
+        // Toggle display
+        const isHidden = viewer.style.display === 'none' || viewer.style.display === '';
+        viewer.style.display = isHidden ? 'block' : 'none';
+        
+        // Scroll to it if we're opening it
+        if (isHidden) {
+          viewer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
     });
-  }, { root: null, rootMargin: '0px 0px -20% 0px', threshold: 0.4 });
+  </script>
+  
+  <!-- KPI Counter Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const kpiSection = document.getElementById("kpi-ticker");
+      if (!kpiSection) return;
 
-  document.querySelectorAll('#druid-feature .knum').forEach(function(el){
-    io.observe(el);
-  });
-})();
-</script>
+      const animateCounters = (entries, observer) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+
+          const counters = entry.target.querySelectorAll("[data-target]");
+          counters.forEach(counter => {
+            const target = +counter.dataset.target;
+            const decimals = counter.dataset.decimals ? +counter.dataset.decimals : 0;
+            const duration = 1500; // 1.5 seconds
+            const stepTime = 30;
+            const steps = Math.ceil(duration / stepTime);
+            const increment = target / steps;
+            let current = 0;
+
+            const updateCount = () => {
+              current += increment;
+              let val = 0;
+              
+              if (current >= target) {
+                val = target;
+              } else {
+                val = current;
+              }
+              
+              if (decimals > 0) {
+                counter.textContent = (Math.round(val * 100) / 100).toFixed(decimals);
+              } else {
+                counter.textContent = Math.ceil(val);
+              }
+
+              if (current >= target) return;
+              requestAnimationFrame(updateCount);
+            };
+            updateCount();
+          });
+          
+          observer.unobserve(entry.target);
+        });
+      };
+
+      const observer = new IntersectionObserver(animateCounters, {
+        root: null,
+        threshold: 0.5 // Start when 50% of the section is visible
+      });
+
+      observer.observe(kpiSection);
+    });
+  </script>
 
 </body>
 </html>
