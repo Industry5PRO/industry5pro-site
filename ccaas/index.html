@@ -361,27 +361,29 @@
       opacity: 0.7;
     }
 
-    /* Quadrant Axis Labels */
+   /* --- Quadrant Axis Labels --- */
     .quad-axis-label {
       position: absolute;
-      color: #FFD700; /* This is the yellow/gold from your quadrant title */
+      color: #FFD700; /* Yellow/Gold */
       font-size: 0.8rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       white-space: nowrap;
-      z-index: 10; /* Ensures it's on top of any grid lines */
+      z-index: 10;
     }
-  .quad-label-y {
-      left: 3px; /* Nudged 4px closer to the edge */
+    .quad-label-y {
       top: 50%;
-      transform: translateY(-50%) rotate(-90deg); /* Rotates it vertically */
+      /* This pushes the label 20px OUTSIDE the left edge of the grid */
+      left: -20px; 
+      transform: translateY(-50%) rotate(-90deg);
       transform-origin: center;
     }
     .quad-label-x {
-      bottom: 8px; /* Positions it inside the card's bottom padding */
       left: 50%;
-      transform: translateX(-50%); /* Centers it horizontally */
+      /* This pushes the label 20px OUTSIDE the bottom edge of the grid */
+      bottom: -20px; 
+      transform: translateX(-50%);
     }
     
     /* Vendor Datapoint */
