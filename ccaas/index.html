@@ -13,7 +13,111 @@
   <link rel="icon" href="/assets/favicon.ico" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
 
-  
+  <!-- === MASTER HEADER STYLES (v4 Final) === -->
+  <style id="master-header-v4">
+    :root{
+      --header-h: 76px;           /* Taller to fit 55px logo + 2 lines of text */
+      --ice-blue: #2BEDE7;        /* The Lumen Ice Blue */
+      --lumen-charcoal: #1B1B1D;  /* Background match */
+    }
+    body { 
+      padding-top: var(--header-h); 
+      background-color: var(--lumen-charcoal);
+      color: #e8eef9;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+    main, .hero, .page-start { 
+      margin-top: 0 !important; 
+    }
+
+    .topbar {
+      position: fixed !important; top: 0; left: 0; right: 0;
+      z-index: 99999;
+      height: var(--header-h);
+      background: rgba(27,27,29,.95) !important;
+      backdrop-filter: saturate(140%) blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      display: flex; align-items: center;
+      isolation: isolate;
+      overflow: visible !important; /* For glow */
+    }
+    .topbar .wrap {
+      width: 100%; max-width: 1080px; margin: 0 auto;
+      padding: 0 24px; height: 100%;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav { 
+      display: flex; align-items: center; 
+      width: 100%; height: 100%; 
+    }
+
+    .topbar .brand {
+      display: flex; align-items: center; gap: 16px;
+      margin-right: 2px !important; /* Spacing Fix */
+      text-decoration: none; color: #fff; flex-shrink: 0; 
+    }
+    .topbar .brand .logo {
+      height: 55px !important; width: 55px !important;
+      display: block !important; object-fit: contain;
+      background: transparent !important; box-shadow: none !important;
+      filter: drop-shadow(0 0 8px rgba(43,237,231,0.6)) !important; 
+      transition: filter 0.3s ease;
+    }
+    .topbar .brand .logo:hover { 
+      filter: drop-shadow(0 0 16px rgba(43,237,231,1)) !important; 
+    }
+    .topbar .brand strong {
+      font-size: 18px; font-weight: 800; 
+      color: #e8eef9 !important; white-space: nowrap;
+      text-shadow: none !important;
+    }
+    .nav-actions {
+      display: flex; align-items: center; gap: 20px;
+      height: 44px;
+      border-left: 1px solid rgba(255,255,255,.15);
+      padding-left: 42px !important; /* Spacing Fix */
+      padding-right: 40px !important; /* Book Lou Fix */
+      flex-grow: 1; justify-content: flex-end;
+      overflow-x: auto; overflow-y: hidden;
+      white-space: nowrap; -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .nav-actions::-webkit-scrollbar { display: none; }
+    
+    .topbar .navlink {
+      position: relative; display: inline-flex;
+      align-items: center; justify-content: center; text-align: center;
+      color: #ffffff !important; font-weight: 700;
+      font-size: 14px; text-decoration: none;
+      line-height: 1.15; padding: 4px 0;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+    
+    /* KILL ALL ORANGE/ZOMBIE STYLES */
+    .topbar .navlink:hover,
+    .topbar .navlink:focus-visible,
+    .topbar .navlink[aria-current="page"] {
+      color: var(--ice-blue) !important;
+      transform: translateY(-1px);
+      text-shadow: 0 0 10px rgba(43,237,231,0.75), 0 0 20px rgba(43,237,231,0.45) !important;
+      outline: 0;
+    }
+    .topbar .navlink::before, 
+    .topbar .navlink::after { 
+      content: none !important; display: none !important; 
+    }
+    
+    @media (max-width: 900px) {
+      .topbar .brand strong { display: none; } 
+      .nav-actions { gap: 16px; padding-left: 16px !important; }
+    }
+  </style>
 
   <!-- === NEW CCaaS PAGE STYLES === -->
   <style id="ccaas-theme">
@@ -571,6 +675,48 @@
       observer.observe(kpiSection);
     });
   </script>
+<!-- === FINAL HEADER OVERRIDE === -->
+<style id="master-header-final-fix">
+  :root {
+    --ice-blue: #2BEDE7 !important;
+  }
 
+  /* 1. FIX LOGO GLOW: Override 'filter: none' */
+  .topbar .brand .logo {
+    filter: drop-shadow(0 0 8px rgba(43,237,231,0.6)) !important; /* Force Ice Blue Glow */
+  }
+  .topbar .brand .logo:hover {
+    filter: drop-shadow(0 0 16px rgba(43,237,231,1)) !important; /* Brighter on hover */
+  }
+
+  /* 2. FIX 3-LINE WRAP: Allow wrapping on links */
+  .topbar .navlink {
+    white-space: normal !important; /* Allows <br> to work */
+    line-height: 1.2 !important;    /* Keeps text tight */
+  }
+
+  /* 3. FIX "BOOK LOU" CUTOFF: Add spacing */
+  .nav-actions {
+    padding-right: 40px !important; /* Adds safe-zone on the right */
+  }
+  
+  /* 4. FIX ORANGE HOVER: Force Ice Blue */
+  .topbar .navlink:hover,
+  .topbar .navlink:focus-visible,
+  .topbar .navlink[aria-current="page"] {
+    color: var(--ice-blue) !important;
+    text-shadow: 
+      0 0 10px rgba(43,237,231,0.75),
+      0 0 20px rgba(43,237,231,0.45) !important;
+  }
+  
+  /* 5. NUDGE DIVIDER LINE: Use the final spacing */
+  .topbar .brand {
+    margin-right: 2px !important;
+  }
+  .nav-actions {
+    padding-left: 42px !important;
+  }
+</style>
 </body>
 </html>
