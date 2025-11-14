@@ -222,10 +222,14 @@
     .pillar { 
       background: var(--card-bg); border: 1px solid var(--card-border); 
       border-radius: 16px; padding: 18px; 
-      display: grid; grid-template-rows: auto 1fr auto; min-height: 280px;
+      display: grid; /* Keep display:grid */
+      /* REMOVED grid-template-rows and min-height */
     }
-    .pillar h3 { color: var(--lumen-blue); font-size: 1.1rem; margin: 0 0 12px; }
-    .pillar ul { padding-left: 18px; margin: 0 0 12px 0; font-size: 0.9rem; color: #D3D3D9; flex-grow: 1; }
+    .pillar ul { 
+      padding-left: 18px; margin: 0 0 12px 0; font-size: 0.9rem; color: #D3D3D9; 
+      /* REMOVED flex-grow: 1; */
+    }
+    
     .pillar li { margin-bottom: 6px; }
     .pillar .pill { align-self: flex-start; } 
 
