@@ -230,6 +230,57 @@
       transition: all 0.2s ease;
       cursor: pointer;
     }
+    <style>
+  /* ... other styles above ... */
+
+  /* Buttons */
+  .btn.btn-outline-green{
+    background:transparent; color:#d5dcef; border:1px solid rgba(255,255,255,.16);
+    transition: all .2s ease;
+  }
+  
+  /* --- PASTE YOUR NEW CODE HERE --- */
+
+  /* Primary Pill (Start AI Readiness) */
+  .btn.primary {
+    background: var(--druid-ink);
+    color: var(--druid-green);
+    border: 1px solid rgba(29, 223, 90, .45);
+    box-shadow: 0 0 10px rgba(29, 223, 90, .28), 0 0 24px rgba(29, 223, 90, .18);
+  }
+  .btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 14px rgba(29, 223, 90, .55), 0 0 32px rgba(29, 223, 90, .35);
+    color: #fff;
+  }
+
+  /* Ghost Pill (See DRUID case studies) */
+  .btn.btn-outline-green {
+    background: transparent;
+    color: #d5dcef;
+    border: 1px solid rgba(255, 255, 255, .16);
+  }
+  .btn.btn-outline-green:hover {
+    border-color: var(--druid-green);
+    color: var(--druid-green);
+    text-shadow: 0 0 6px rgba(29, 223, 90, .85);
+    box-shadow: 0 0 12px rgba(29, 223, 90, .45);
+    transform: translateY(-2px);
+  }
+
+  /* Mobile Fix */
+  @media (max-width: 980px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .hero-portrait {
+      display: none;
+    }
+  }
+
+  /* ... Footer styles below ... */
+</style>
     .btn-primary-orange {
       background: var(--lumen-orange);
       color: #0b1220;
@@ -267,13 +318,13 @@
     .hero {
       padding: 40px 0 10px;
     }
-/* Hero Grid - Updated with left padding to center align with KPIs */
+/* Hero Grid: Text moves Left, Image stays Right */
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0,1fr) 340px;
-  gap: 24px; 
+  grid-template-columns: minmax(0, 1fr) 340px; /* Text takes available space, Image fixed width */
+  gap: 40px; /* Increased gap to keep image pushed right while text stays left */
   align-items: center;
-  padding-left: 60px; /* This pushes the content to the right */
+  padding-left: 0; /* REMOVED the 60px padding to nudge text left */
 }
 
 /* Ensure mobile resets the padding so it doesn't look squished */
@@ -705,7 +756,6 @@
       </div>
     </div>
   </section>
-
     <!-- === NEW KPI Ticker === -->
     <section class="kpi-grid" id="kpi-ticker">
       <div class="kpi-item orange">
