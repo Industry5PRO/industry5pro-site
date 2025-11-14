@@ -8,8 +8,8 @@
 <style>
 :root{
   --bg:#0e1117; --card:#141821; --ink:#0b1220; --text:#e8eef9; --muted:#a9b3c4;
-  /* Industry5 green for nav hover */
-  --i5-green:#85BB65;
+  /* Industry5 green for nav hover - NOW DRUID GREEN */
+  --i5-green:#1DDF5A;
   /* DRUID */
   --druid:#1DDF5A;        /* glow + borders */
   --druid-ink:#074650;    /* deep teal */
@@ -47,8 +47,9 @@ header{
   border:1px solid rgba(255,255,255,.14);color:#d5dcef;background:rgba(255,255,255,.06);
   transition:color .15s, box-shadow .2s, border-color .2s, transform .15s;
 }
+/* Nav links now hover with DRUID green */
 .nav a:hover{
-  color:#1DDF5A; /* DRUID green */
+  color:var(--druid); /* DRUID green */
   border-color:rgba(29,223,90,.55);
   box-shadow:0 0 12px rgba(29,223,90,.45), 0 0 24px rgba(29,223,90,.25);
   transform:translateY(-1px);
@@ -143,7 +144,7 @@ header{
   background:var(--druid-pastel);color:#000;border:0;
   transition:transform .15s, box-shadow .2s;
 }
-.kpi:hover{transform:translateY(-1px);box-shadow:0 0 10px rgba(29,223,90,.28),0 0 20px rgba(29,223,90,.20)}
+.kpi:hover{transform:translateY(-1px);box-shadow:0 0 10px rgba(29,223,90,.28), 0 0 20px rgba(29,223,90,.20)}
 
 /* Quadrant */
 .quad{
@@ -164,9 +165,10 @@ header{
   border:1px solid rgba(255,255,255,.16);color:#d5dcef;background:transparent;
   transition:color .15s, box-shadow .2s, border-color .2s, transform .15s;
 }
+/* Ghost Button Hover - Now uses DRUID Green */
 .btn-ghost:hover{
-  color:var(--i5-green); border-color:rgba(133,187,101,.6);
-  box-shadow:0 0 12px rgba(133,187,101,.45), 0 0 24px rgba(133,187,101,.25);
+  color:var(--i5-green); border-color:rgba(29,223,90,.6); /* DRUID color */
+  box-shadow:0 0 12px rgba(29,223,90,.45), 0 0 24px rgba(29,223,90,.25);
   transform:translateY(-1px);
 }
 
@@ -179,6 +181,7 @@ footer{margin:32px 0 24px}
   background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:#e6eef5;
   transition:transform .15s, box-shadow .2s, border-color .2s;
 }
+/* Socials Hover - Now uses DRUID Green */
 .socials a:hover{transform:translateY(-2px);border-color:rgba(29,223,90,.45);box-shadow:0 0 10px rgba(29,223,90,.35)}
 
   /* Bloomberg embed keeps aspect ratio */
@@ -204,6 +207,7 @@ footer{margin:32px 0 24px}
   transform:translateY(-1px);
   outline:0;
 }
+/* Socials Hover Re-style for DRUID green glow */
 .socials a:hover,
 .socials a:focus-visible{
   transform:translateY(-2px);
@@ -344,7 +348,6 @@ body.with-fixed-header { padding-top: var(--hdr-h, 72px); }
 </head>
 <body>
 
-<!-- Header -->
 <header class="site-header">
   <div class="header-bar">
     <a class="brand" href="/"><img class="logo" src="/assets/industry5-logo.png" alt="Industry5.pro" width="44" height="44"/><span class="title">Industry5.pro</span></a>
@@ -358,7 +361,6 @@ body.with-fixed-header { padding-top: var(--hdr-h, 72px); }
 
 <main class="wrap">
 
-  <!-- Hero -->
   <section class="hero">
     <div class="hero-grid">
       <div>
@@ -377,8 +379,7 @@ body.with-fixed-header { padding-top: var(--hdr-h, 72px); }
     </div>
   </section>
 
-  <!-- Featured Partner: DRUID AI -->
-<section class="feature" id="druid-feature">
+  <section class="feature" id="druid-feature">
   <div class="feature-head">
     <h2>Featured Partner: DRUID AI</h2>
     <div class="badges">
@@ -394,10 +395,8 @@ body.with-fixed-header { padding-top: var(--hdr-h, 72px); }
     DRUID brings process agents, knowledge agents, and orchestration across Customer Support, HR, Sales and Marketing, IT Helpdesk, Banking, Healthcare, and Retail with controls that pass audits.
   </p>
 
-  <!-- 3 rows × 2 columns -->
   <div class="grid-two">
 
-    <!-- Banking -->
     <article class="card">
       <h3>Banking</h3>
       <div class="yt-lite" data-id="4zWW_I80wrg"></div>
@@ -418,7 +417,6 @@ body.with-fixed-header { padding-top: var(--hdr-h, 72px); }
       </div>
     </article>
 
-    <!-- Customer Support -->
     <article class="card">
       <h3>Customer Support</h3>
       <div class="yt-lite" data-id="eaQvLKagfTM"></div>
@@ -439,7 +437,6 @@ body.with-fixed-header { padding-top: var(--hdr-h, 72px); }
       </div>
     </article>
 
-    <!-- HR -->
     <article class="card">
       <h3>HR</h3>
       <div class="yt-lite" data-id="uKuTEIRbdCw"></div>
@@ -460,7 +457,6 @@ body.with-fixed-header { padding-top: var(--hdr-h, 72px); }
       </div>
     </article>
 
-    <!-- Sales & Marketing -->
     <article class="card">
       <h3>Sales and Marketing</h3>
       <div class="yt-lite" data-id="Qfa6Ly9LobI"></div>
@@ -481,7 +477,6 @@ body.with-fixed-header { padding-top: var(--hdr-h, 72px); }
       </div>
     </article>
 
-    <!-- Healthcare -->
     <article class="card">
       <h3>Healthcare</h3>
       <div class="yt-lite" data-id="fKAJ6gAmQsU"></div>
@@ -502,7 +497,6 @@ body.with-fixed-header { padding-top: var(--hdr-h, 72px); }
       </div>
     </article>
 
-    <!-- Retail & CPG -->
     <article class="card">
       <h3>Retail and CPG</h3>
       <div class="yt-lite" data-id="UJWccsf8ejA"></div>
@@ -527,7 +521,6 @@ body.with-fixed-header { padding-top: var(--hdr-h, 72px); }
 </section>
 
 
-  <!-- Injectable AI Omnichannel Quadrant -->
   <section class="quad" id="injectable-quadrant">
     <h3 style="margin:0 0 8px">Injectable AI for Omnichannel: Market view</h3>
     <p class="quad-note">Many teams want AI outcomes without a platform swap. Injectable AI lets you add real time assist, quality, analytics, and voice bots to what you already run, faster value, lower risk. Not exhaustive. We partner widely beyond what fits here; this snapshot shows battle tested options. If your stack points to others, we will evaluate those too.</p>
@@ -536,12 +529,10 @@ body.with-fixed-header { padding-top: var(--hdr-h, 72px); }
     </a>
   </section>
 
-<!-- Bloomberg — featured insight -->
 <section class="section" id="erdoes-fii">
   <div class="card-soft">
     <h3>“AI is a new way of working” — Mary Callahan Erdoes</h3>
 
-    <!-- Responsive Bloomberg embed -->
     <div class="bbg-embed">
       <iframe
         src="https://www.bloomberg.com/media-manifest/embed/iframe?id=6c8c8431-5ab8-4e9f-bb4a-5ff51c1cf991"
@@ -563,7 +554,6 @@ body.with-fixed-header { padding-top: var(--hdr-h, 72px); }
 
 </main>
 
-<!-- Footer -->
 <footer>
   <div class="footer-inner">
     <div>© <span id="y"></span> Industry5.pro — built on trust, paid by results</div>
