@@ -424,16 +424,16 @@
       align-items: stretch; /* Makes columns equal height */
       margin-top: 24px;
     }
-    .voice-grid-new > div:first-child { /* Video column */
+    /* This is the left grid column (video) */
+    .voice-grid-new > div:first-child {
       display: flex;
       flex-direction: column;
-      height: 100%;
     }
-    .voice-grid-new > div:last-child { /* ICP column */
+    /* This is the right grid column (ICPs) */
+    .voice-grid-new > div:last-child {
       display: flex;
       flex-direction: column;
       gap: 16px;
-      height: 100%;
     }
 
     .icp-box {
@@ -467,9 +467,9 @@
     /* --- Embedded Video (Stretches) --- */
     .video-embed-small {
       position: relative;
-      height: 100%; /* Fills the grid cell */
       width: 100%;
-      min-height: 350px; /* Good default for mobile */
+      flex-grow: 1; /* This is the fix: makes video fill vertical space */
+      min-height: 350px; /* Good default for mobile stacking */
       overflow: hidden;
       border-radius: 12px;
     }
@@ -480,7 +480,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      border: 0; /* Remove border from lite embed */
+      border: 0; 
     }
     
     /* PDF Viewer Style */
@@ -574,7 +574,7 @@
           <a class="navlink" href="https://industry5.pro/ai">AI</a>
           <a class="navlink" href="https://industry5.pro/cyber">Security</a>
           <a class="navlink" href="https://industry5.pro/cloud20">Cloud 2.0</a>
-          <a class="navlink" href="https://industry5.pro/ccaas" aria-current="page">UC &amp;<br>Contact Center</a>
+          <a class="navlink" href="https://industry5.pro/uc" aria-current="page">UC &amp;<br>Contact Center</a>
           <a class="navlink" href="https://industry5.pro/aiot">AIoT</a>
           <a class="navlink" href="https://industry5.pro/peplink">5G &amp;<br>Satellite</a>
           <a class="navlink" href="https://industry5.pro/blog">Blog</a>
@@ -841,7 +841,7 @@
           }, { once: true });
         }
         document.querySelectorAll('.yt-lite-embed').forEach(el => initLiteYouTube(el));
-      })();
+      })(); // End Lite YouTube
 
     }); // End DOMContentLoaded
   </script>
