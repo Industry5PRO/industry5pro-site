@@ -4,17 +4,114 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
-  <!-- === SEO === -->
   <title>CCaaS & Agentic AI Advisory | Industry5.pro</title>
   <meta name="description" content="Stop buying bundled 'gotchas.' We are supplier-agnostic CCaaS advisors who audit and integrate elite platforms (NICE, Genesys) to drive CX outcomes. Get your impact-first audit.">
   <meta name="color-scheme" content="dark">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
 
-  <!-- === Favicons (from your index) === -->
   <link rel="icon" href="/assets/favicon.ico" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
 
+  <style id="master-header-ccaas">
+    :root {
+      --header-h: 76px;
+      --genesys-orange: #FF6A13; /* Page theme color */
+      --lumen-charcoal: #1B1B1D;
+    }
+    
+    body { 
+      padding-top: var(--header-h) !important; 
+      background-color: var(--lumen-charcoal);
+      color: #e8eef9;
+      /* CORRECT FONT */
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    *, *:before, *:after { box-sizing: inherit; }
+    main, .hero, .page-start { margin-top: 0 !important; }
 
-  <!-- === NEW CCaaS PAGE STYLES === -->
+    .topbar {
+      position: fixed !important; top: 0; left: 0; right: 0;
+      z-index: 99999 !important; height: var(--header-h);
+      background: rgba(27,27,29,.95) !important;
+      backdrop-filter: saturate(140%) blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      display: flex; align-items: center;
+      overflow: visible !important;
+    }
+    .topbar .wrap {
+      width: 100%; max-width: 1080px; margin: 0 auto;
+      padding: 0 24px; height: 100%;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav { 
+      display: flex; align-items: center; 
+      width: 100%; height: 100%; 
+    }
+
+    .topbar .brand {
+      display: flex; align-items: center; gap: 16px;
+      margin-right: 2px !important; text-decoration: none; flex-shrink: 0; 
+    }
+    .topbar .brand .logo {
+      height: 55px !important; width: 55px !important;
+      display: block !important; object-fit: contain;
+      /* GENESYS ORANGE GLOW */
+      filter: drop-shadow(0 0 8px rgba(255,106,19,0.6)) !important; 
+      transition: filter 0.3s ease;
+    }
+    .topbar .brand .logo:hover { 
+      filter: drop-shadow(0 0 16px rgba(255,106,19,1)) !important; 
+    }
+    .topbar .brand strong {
+      font-size: 18px; font-weight: 800; 
+      color: #e8eef9 !important; white-space: nowrap;
+    }
+    
+    .nav-actions {
+      display: flex; align-items: center; gap: 20px;
+      height: 44px;
+      border-left: 1px solid rgba(255,255,255,.15);
+      padding-left: 42px !important;
+      padding-right: 40px !important;
+      flex-grow: 1; justify-content: flex-end;
+      overflow-x: auto; overflow-y: hidden;
+      white-space: nowrap; -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .nav-actions::-webkit-scrollbar { display: none; }
+    
+    .topbar .navlink {
+      position: relative; display: inline-flex;
+      align-items: center; justify-content: center; text-align: center;
+      color: #ffffff !important; /* Default White */
+      font-weight: 700;
+      font-size: 14px; text-decoration: none;
+      line-height: 1.2; padding: 4px 0;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+      white-space: normal !important;
+    }
+    
+    /* HOVER/ACTIVE: Force Genesys Orange */
+    .topbar .navlink:hover,
+    .topbar .navlink:focus-visible,
+    .topbar .navlink[aria-current="page"] {
+      color: var(--genesys-orange) !important;
+      transform: translateY(-1px);
+      text-shadow: 0 0 10px rgba(255,106,19,0.75), 0 0 20px rgba(255,106,19,0.45) !important;
+      outline: 0;
+    }
+    
+    @media (max-width: 900px) {
+      .topbar .brand strong { display: none; } 
+      .nav-actions { gap: 16px; padding-left: 16px !important; }
+    }
+  </style>
+
   <style id="ccaas-theme">
     :root {
       /* --- Page Theme --- */
@@ -33,6 +130,7 @@
       margin: 0 auto;
       padding: 24px;
     }
+    a { text-decoration: none; } /* Added */
 
     /* --- Hero --- */
     .hero {
@@ -56,10 +154,9 @@
     .hero .sub-h1 strong {
       color: var(--page-accent); /* NICE Blue */
     }
-    /* === HERO GRID LAYOUT (420px) === */
     .hero .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0,1fr) 420px; /* Large 420px column */
+      grid-template-columns: minmax(0,1fr) 420px;
       gap: 24px;
       align-items: center;
     }
@@ -69,7 +166,7 @@
     }
     .hero-photo img {
       width: 100%;
-      max-width: 420px; /* Large 420px image */
+      max-width: 420px;
       height: auto;
       object-fit: contain;
       filter: drop-shadow(0 10px 20px rgba(0,0,0,.35));
@@ -78,9 +175,7 @@
       .hero .hero-grid { grid-template-columns: 1fr; }
       .hero-photo { display: none; }
     }
-    /* === END HERO GRID === */
 
-    /* === END ADD === */
     /* --- Buttons --- */
     .btn {
       display: inline-flex;
@@ -173,7 +268,6 @@
       line-height: 1.5;
       margin: 0;
     }
-    /* Orange highlight for the "roll down" metric */
     .kpi-item.orange .kpi-stat {
       color: var(--genesys-orange);
     }
@@ -347,115 +441,23 @@
       transition: color 0.2s ease, transform 0.2s ease;
     }
     .socials a:hover {
-      color: var(--ice-blue);
-      transform: translateY(-2px);
+      color: var(--genesys-orange); /* Changed hover to Orange */
     }
     .socials svg {
       width: 24px;
       height: 24px;
       fill: currentColor;
     }
-<style id="master-header-ccaas">
-  :root {
-    --header-h: 76px;
-    --genesys-orange: #FF6A13; /* Page theme color */
-    --lumen-charcoal: #1B1B1D;
-  }
-  
-  body { 
-    padding-top: var(--header-h) !important; 
-  }
-
-  .topbar {
-    position: fixed !important; top: 0; left: 0; right: 0;
-    z-index: 99999 !important; height: var(--header-h);
-    background: rgba(27,27,29,.95) !important;
-    backdrop-filter: saturate(140%) blur(12px);
-    border-bottom: 1px solid rgba(255,255,255,.08);
-    display: flex; align-items: center;
-    overflow: visible !important;
-  }
-  .topbar .wrap {
-    width: 100%; max-width: 1080px; margin: 0 auto;
-    padding: 0 24px; height: 100%;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .nav { 
-    display: flex; align-items: center; 
-    width: 100%; height: 100%; 
-  }
-
-  .topbar .brand {
-    display: flex; align-items: center; gap: 16px;
-    margin-right: 2px !important; text-decoration: none; flex-shrink: 0; 
-  }
-  .topbar .brand .logo {
-    height: 55px !important; width: 55px !important;
-    display: block !important; object-fit: contain;
-    /* GENESYS ORANGE GLOW */
-    filter: drop-shadow(0 0 8px rgba(255,106,19,0.6)) !important; 
-    transition: filter 0.3s ease;
-  }
-  .topbar .brand .logo:hover { 
-    filter: drop-shadow(0 0 16px rgba(255,106,19,1)) !important; 
-  }
-  .topbar .brand strong {
-    font-size: 18px; font-weight: 800; 
-    color: #e8eef9 !important; white-space: nowrap;
-  }
-  
-  .nav-actions {
-    display: flex; align-items: center; gap: 20px;
-    height: 44px;
-    border-left: 1px solid rgba(255,255,255,.15);
-    padding-left: 42px !important;
-    padding-right: 40px !important;
-    flex-grow: 1; justify-content: flex-end;
-    overflow-x: auto; overflow-y: hidden;
-    white-space: nowrap; -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .nav-actions::-webkit-scrollbar { display: none; }
-  
-  .topbar .navlink {
-    position: relative; display: inline-flex;
-    align-items: center; justify-content: center; text-align: center;
-    color: #ffffff !important; /* Default White */
-    font-weight: 700;
-    font-size: 14px; text-decoration: none;
-    line-height: 1.2; padding: 4px 0;
-    transition: all 0.2s ease;
-    flex-shrink: 0;
-    white-space: normal !important;
-  }
-  
-  /* HOVER/ACTIVE: Force Genesys Orange */
-  .topbar .navlink:hover,
-  .topbar .navlink:focus-visible,
-  .topbar .navlink[aria-current="page"] {
-    color: var(--genesys-orange) !important;
-    transform: translateY(-1px);
-    text-shadow: 0 0 10px rgba(255,106,19,0.75), 0 0 20px rgba(255,106,19,0.45) !important;
-    outline: 0;
-  }
-  
-  @media (max-width: 900px) {
-    .topbar .brand strong { display: none; } 
-    .nav-actions { gap: 16px; padding-left: 16px !important; }
-  }
-</style>
   </style>
 </head>
 
 <body>
 
-  <!-- === MASTER HEADER HTML (Copied from Index) === -->
   <div class="topbar">
     <div class="wrap">
       <nav class="nav" aria-label="Primary">
         <div class="brand">
          <img class="logo" src="/assets/industry5logo.svg" alt="Industry5.pro logo" />
-          <div class="dot" aria-hidden="true" style="display: none;"></div>
           <strong>Industry5.pro</strong>
         </div>
   
@@ -464,7 +466,6 @@
           <a class="navlink" href="https://industry5.pro/cyber">Security</a>
           <a class="navlink" href="https://industry5.pro/cloud20">Cloud 2.0</a>
           <a class="navlink" href="https://industry5.pro/uc" aria-current="page">UC &amp;<br>Contact Center</a>
-          
           <a class="navlink" href="https://industry5.pro/aiot">AIoT</a>
           <a class="navlink" href="https://industry5.pro/peplink">5G &amp;<br>Satellite</a>
           <a class="navlink" href="https://industry5.pro/blog">Blog</a>
@@ -474,15 +475,11 @@
     </div>
   </div>
 
-  <!-- === NEW CCaaS PAGE CONTENT === -->
   <main>
     <div class="wrap">
       
-    <!-- Hero Section -->
-      <section class="hero">
-        <!-- NEW Grid Wrapper -->
+    <section class="hero">
         <div class="hero-grid">
-          <!-- Column 1: Text Content -->
           <div>
             <h1>Stop Buying Bundles.<br>Start Building CX.</h1>
             <p class="sub-h1">
@@ -495,16 +492,13 @@
               <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener" class="btn btn-secondary">Book an Agnostic Audit</a>
             </div>
           </div>
-          <!-- Column 2: Profile Photo (420px) -->
           <figure class="hero-photo">
             <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora" width="420" height="420" loading="eager" decoding="async">
           </figure>
         </div>
       </section>
-      <!-- === KPI Ticker === -->
       <section class="kpi-grid" id="kpi-ticker">
         <div class="kpi-item">
-          <!-- Rolls UP -->
           <div class="kpi-stat">
             <span data-target="30">0</span>%
           </div>
@@ -513,7 +507,6 @@
         </div>
         
         <div class="kpi-item">
-          <!-- Rolls UP -->
           <div class="kpi-stat">
             <span data-target="25">0</span>%
           </div>
@@ -522,7 +515,6 @@
         </div>
 
         <div class="kpi-item orange">
-          <!-- Rolls UP (Handles reduction in text) -->
           <div class="kpi-stat">
             <span data-target="40">0</span>%
           </div>
@@ -531,7 +523,6 @@
         </div>
       </section>
 
-      <!-- 3-Col Feature Grid -->
       <section class="card features-grid">
         <div class="feature-card">
           <h3>Agnostic Validation</h3>
@@ -547,7 +538,6 @@
         </div>
       </section>
 
-      <!-- The Quadrant (HTML Version) -->
       <section class="card" id="quadrant">
         <h2>CCaaS Landscape: <span class="highlight">AI Breadth vs. Enterprise Readiness</span></h2>
         <p style="color: var(--text-muted); margin-top: -12px; margin-bottom: 20px;">
@@ -557,13 +547,11 @@
         <div class="quadrant-wrap">
           <div class="quadrant-title">UCaaS/CCaaS with Built-In AI — Enterprise Readiness vs AI Breadth</div>
           <div class="quadrant-grid">
-            <!-- Axis -->
             <div class="axis-y"></div>
             <div class="axis-x"></div>
             <div class="axis-label y-axis">Enterprise Readiness →</div>
             <div class="axis-label x-axis">← Narrow | AI Breadth Across the Stack | Comprehensive →</div>
 
-            <!-- Vendors (SEO-friendly HTML) -->
             <div class="vendor nice"><div class="vendor-dot"></div><span class="vendor-label">NICE</span></div>
             <div class="vendor genesys"><div class="vendor-dot"></div><span class="vendor-label">Genesys</span></div>
             <div class="vendor five9"><div class="vendor-dot"></div><span class="vendor-label">Five9</span></div>
@@ -583,7 +571,6 @@
     </div>
   </main>
 
-  <!-- === MASTER FOOTER HTML (Copied from Index) === -->
   <footer class="footer">
     <div style="text-align:center;color: var(--text-muted); margin-bottom:16px;">
       © <span id="y"></span> Industry5.pro | Outcome-Obsessed. Supplier-Agnostic. Paid by results.
@@ -607,13 +594,11 @@
     </div>
   </footer>
 
-  <!-- === MASTER SCRIPTS (Footer Year) === -->
   <script>
     const ySpan = document.getElementById('y');
     if(ySpan) ySpan.textContent = new Date().getFullYear();
   </script>
 
-  <!-- === KPI Counter Script === -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const kpiSection = document.getElementById("kpi-ticker");
@@ -644,20 +629,18 @@
             updateCount();
           });
           
-          // Stop observing after it has animated once
           observer.unobserve(entry.target);
         });
       };
 
       const observer = new IntersectionObserver(animateCounters, {
         root: null,
-        threshold: 0.5 // Start when 50% of the section is visible
+        threshold: 0.5
       });
 
       observer.observe(kpiSection);
     });
   </script>
-<!-- === FINAL HEADER OVERRIDE === -->
 
 </body>
 </html>
