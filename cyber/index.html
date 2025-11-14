@@ -4,16 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
-  <!-- === SEO === -->
   <title>Cyber Resilience & Ransomware Recovery Advisory | Industry5.pro</title>
   <meta name="description" content="Agnostic cyber resilience. We audit your stack and align Lumen network defense with Veeam immutable backups to guarantee recovery. Stop threats, pass audits, and recover in minutes.">
   <meta name="color-scheme" content="dark">
 
-  <!-- === Favicons === -->
   <link rel="icon" href="/assets/favicon.ico" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
 
-  <!-- === MASTER HEADER STYLES (Cyber Variant) === -->
   <style id="master-header-cyber">
     :root {
       --header-h: 76px;
@@ -27,7 +24,7 @@
       padding-top: var(--header-h) !important; 
       background-color: var(--lumen-charcoal);
       color: #EAEAEA;
-      font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial; /* Matching other pages */
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial;
       margin: 0;
       box-sizing: border-box;
     }
@@ -49,7 +46,7 @@
     }
     .topbar .wrap {
       width: 100%;
-      max-width: 1180px; /* Wider wrap for this page */
+      max-width: 1180px; 
       margin: 0 auto;
       padding: 0 24px;
       height: 100%;
@@ -59,14 +56,14 @@
     }
     .nav { display: flex; align-items: center; width: 100%; height: 100%; }
 
-    /* BRAND (Veeam Glow) */
+    /* BRAND (No Dot) */
     .topbar .brand {
       display: flex;
       align-items: center;
       gap: 16px;
+      margin-right: 0px !important; /* FINAL NUDGE: Moves line Left */
       text-decoration: none;
       flex-shrink: 0;
-      margin-right: 30px !important; /* Spacing for no-divider look */
     }
     .topbar .brand .logo {
       height: 55px !important;
@@ -89,15 +86,15 @@
       text-shadow: none !important;
     }
 
-    /* NAV ACTIONS (No Divider Line) */
+    /* NAV ACTIONS */
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 24px; /* Wider gap */
+      gap: 24px;
       height: 44px;
-      border-left: none !important; /* NO DIVIDER */
-      padding-left: 0 !important;   
-      padding-right: 10px !important; 
+      border-left: 1px solid rgba(255,255,255,0.15);
+      padding-left: 44px !important;   /* FINAL NUDGE: Moves text Right */
+      padding-right: 40px !important; 
       flex-grow: 1;
       justify-content: flex-end;
       overflow-x: auto;
@@ -119,13 +116,13 @@
       font-size: 14px;
       text-decoration: none;
       line-height: 1.2 !important;
-      white-space: normal !important; /* Allows <br> to work */
+      white-space: normal !important;
       padding: 4px 0;
       transition: all 0.2s ease;
       flex-shrink: 0;
     }
     
-    /* HOVER: Force Veeam Green */
+    /* HOVER: Veeam Green */
     .topbar .navlink:hover,
     .topbar .navlink:focus-visible,
     .topbar .navlink[aria-current="page"] {
@@ -145,10 +142,8 @@
     }
   </style>
 
-  <!-- === Cyber Page Styles === -->
   <style id="cyber-theme">
     :root {
-      /* Re-using old vars, but applying them selectively */
       --veeam-green: #00B336;
       --lumen-blue: #00A9E0;
       --lumen-orange: #FF6A13;
@@ -156,7 +151,7 @@
       --text-muted: #A9A9AD;
       --card-bg: #232326;
       --card-border: #2C2C30;
-      --outline: #2C2C30; /* from old file */
+      --outline: #2C2C30; 
     }
 
     .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
@@ -247,13 +242,13 @@
       background: rgba(0,179,54,0.1); transform: translateY(-2px);
     }
 
-    /* === NEW HTML Quadrant === */
+    /* === HTML Quadrant === */
     .quadrant-wrap {
       position: relative;
       background: #000;
       border: 1px solid var(--veeam-green);
       border-radius: 16px;
-      padding: 48px 24px 24px; /* More top padding for labels */
+      padding: 48px 24px 32px; /* More top/bottom padding */
       overflow: hidden;
       box-shadow: 0 0 26px rgba(0,179,54,0.4);
       margin: 40px 0;
@@ -281,19 +276,18 @@
     .q-label-tl { top: 10px; left: 10px; }
     .q-label-br { bottom: 10px; right: 10px; text-align: right; }
     .q-label-bl { bottom: 10px; left: 10px; }
-    .q-label-tr .highlight { color: var(--veeam-green); }
-    .quadrant-label small { color: var(--text-muted); font-weight: 400; font-size: 0.8rem; }
+    .quadrant-label small { color: var(--text-muted); font-weight: 400; font-size: 0.8rem; display: block; }
     
     /* Axis Labels */
-    .axis-label { position: absolute; color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; }
-    .axis-label.x-axis { bottom: -20px; left: 50%; transform: translateX(-50%); width: 100%; text-align: center; }
-    .axis-label.y-axis { top: 50%; left: -20px; transform: translateY(-50%) rotate(-90deg); }
+    .axis-label { position: absolute; color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px;}
+    .axis-label.x-axis { bottom: -24px; left: 50%; transform: translateX(-50%); width: 100%; text-align: center; }
+    .axis-label.y-axis { top: 50%; left: -30px; transform: translateY(-50%) rotate(-90deg); }
 
     /* Vendors */
     .vendor { grid-column: var(--x); grid-row: var(--y); display: flex; align-items: center; justify-content: center; }
     .vendor-dot {
       width: 16px; height: 16px; border: 2px solid #fff; border-radius: 50%;
-      background: var(--ice-blue); /* Default: Ice Blue */
+      background: var(--ice-blue); /* Default */
       box-shadow: 0 0 10px var(--ice-blue); transition: all 0.2s ease;
       z-index: 2;
     }
@@ -302,26 +296,24 @@
     
     .vendor-label {
       position: absolute;
-      /* Position label relative to dot */
       top: 50%; 
       left: 50%;
       transform: translate(var(--lx, 20px), var(--ly, -50%)); /* --lx/--ly for offset */
       color: #fff; font-weight: 600; font-size: 0.9rem;
-      white-space: nowrap; text-shadow: 0 0 4px #000;
+      white-space: nowrap; text-shadow: 0 0 5px #000, 0 0 3px #000;
       z-index: 1;
     }
     .vendor:hover .vendor-dot { transform: scale(1.5); z-index: 3; }
-
-    @media (max-width: 600px) {
-      .quadrant-grid { height: 400px; }
-      .vendor-dot { width: 12px; height: 12px; }
-      .vendor-label { font-size: 0.75rem; }
+    
+    /* Checklist 3x3 Grid */
+    .checklist{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr); /* 3x3 Grid */
+      gap:12px;
+      margin:24px 0;
     }
-
-    /* Checklist & Form */
-    .checklist{display:grid;grid-template-columns:repeat(3, 1fr);gap:12px;margin:24px 0}
     .check{display:flex;gap:12px;align-items:flex-start;background:var(--card-bg);border:1px solid var(--card-border);padding:12px;border-radius:8px}
-    .check input{accent-color:var(--veeam-green); margin-top: 4px; transform: scale(1.2);}
+    .check input{accent-color:var(--veeam-green); margin-top: 4px; transform: scale(1.2); flex-shrink: 0;}
     .check label{line-height:1.4; font-size: 0.9rem;}
     .check small{display:block;color:var(--muted);font-size:12px;margin-top:4px}
     .form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
@@ -338,7 +330,6 @@
     .socials a:hover { 
       color: var(--veeam-green); /* VEEAM GREEN HOVER */
       transform: translateY(-2px);
-      text-shadow: 0 0 10px var(--veeam-green);
     }
     .socials svg { width: 24px; height: 24px; fill: currentColor; }
 
@@ -347,14 +338,16 @@
       .hero-pic { display: none; }
       .kpis, .pillars { grid-template-columns: 1fr 1fr; }
     }
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
+      .checklist { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 500px) {
       .kpis, .pillars, .checklist { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- === MASTER HEADER (Cyber Variant) === -->
   <div class="topbar">
     <div class="wrap">
       <nav class="nav" aria-label="Primary">
@@ -379,14 +372,13 @@
   </div>
 
   <main class="wrap">
-    <!-- HERO -->
     <section class="hero">
       <div class="hero-grid">
         <div>
           <h1>Protect Data. Predict Threats.<br><span style="color:var(--veeam-green)">Prevent Downtime.</span></h1>
           <p class="sub">
             Unify network security, data protection, and rapid recovery into one measurable cyber resilience motion.
-            We align Lumen capabilities with Veeam-powered recoverability and a supplier-agnostic ecosystem.
+            We align Lumen capabilities with Veeam-powered recoverability and a supplier-agnostic ecosystem through Telarus.
           </p>
           <div class="cta-row">
             <a class="pill primary" href="#form">Start Cyber Discovery</a>
@@ -394,13 +386,11 @@
           </div>
           <div class="meta">No fear tactics. Only outcomes, SLAs, and time to recover.</div>
         </div>
-        <!-- Profile Pic: 340px, no glow, blends in -->
         <figure class="hero-pic">
           <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora" />
         </figure>
       </div>
 
-      <!-- KPIs -->
       <div class="kpis" id="kpi-ticker">
         <div class="kpi">
           <div class="knum" data-target="43" data-suffix="%">0%</div>
@@ -421,58 +411,53 @@
       </div>
     </section>
 
-    <!-- PILLARS -->
     <div class="pillars">
-      <div class="pillar">
+      <div class="pillar card">
         <h3>Protect</h3>
         <ul><li>Zero Trust & MFA</li><li>Endpoint (EDR)</li><li>Vuln/Patch Mgmt</li></ul>
         <a class="pill outline" href="#form">Assess</a>
       </div>
-      <div class="pillar">
+      <div class="pillar card">
         <h3>Detect</h3>
         <ul><li>24/7 MDR/XDR</li><li>DDoS Monitoring</li><li>SIEM/Log Retention</li></ul>
         <a class="pill outline" href="#form">Assess</a>
       </div>
-      <div class="pillar">
+      <div class="pillar card">
         <h3>Respond</h3>
         <ul><li>IR Playbooks</li><li>Tabletop Exercises</li><li>Escalation SLAs</li></ul>
         <a class="pill outline" href="#form">Assess</a>
       </div>
-      <div class="pillar">
+      <div class="pillar card">
         <h3>Recover</h3>
         <ul><li>Immutable Backups</li><li>Veeam Instant Recovery</li><li>RPO/RTO Alignment</li></ul>
         <a class="pill outline" href="#form">Assess</a>
       </div>
-      <div class="pillar">
+      <div class="pillar card">
         <h3>Govern</h3>
         <ul><li>HIPAA/PCI/ISO</li><li>Data Retention</li><li>Vendor Risk</li></ul>
         <a class="pill outline" href="#form">Assess</a>
       </div>
     </div>
-
-    <!-- HTML QUADRANT -->
+    
     <section id="quadrant" class="anchor">
       <h2 style="font-size:1.8rem; margin-bottom:12px;">Cyber Resilience Quadrant</h2>
       <p style="color:var(--text-muted); max-width:800px; margin-bottom:24px;">
-        There isn’t one vendor that does it all. Resilience comes from a backbone of <strong>Identity</strong>, <strong>Data Truth</strong>, and <strong>Recoverability</strong>.
+        Resilience isn't one tool. It's an outcome. We build a unified stack by aligning Enterprise Leaders (like Veeam & Lumen) with specialists (like 11:11) to create a single, measurable security posture.
       </p>
       
       <div class="quadrant-wrap">
         <div class="quadrant-title">Cyber Market: Enterprise Readiness vs. Platform Comprehensiveness</div>
         <div class="quadrant-grid">
-          <!-- Quadrant Labels -->
-          <div class="quadrant-label q-label-tl"><strong>Niche Specialists</strong><br><small>(Strong in one area, SMB-focused)</small></div>
+          <div class="quadrant-label q-label-tl"><strong>Niche Specialists</strong><br><small>(SMB / Point Solutions)</small></div>
           <div class="quadrant-label q-label-tr"><strong>Enterprise Leaders</strong><br><small>(High Readiness & Comprehensive Platform)</small></div>
           <div class="quadrant-label q-label-bl"><strong>Legacy Players</strong><br><small>(Low Platform Breadth, Hardware-focused)</small></div>
           <div class="quadrant-label q-label-br"><strong>Platform Challengers</strong><br><small>(Comprehensive Platform, Scaling Readiness)</small></div>
           
-          <!-- Axis -->
           <div class="axis-y"></div>
           <div class="axis-x"></div>
           <div class="axis-label x-axis">← Narrow | Platform Comprehensiveness (Protect, Detect, Recover) | Comprehensive →</div>
-          <div class="axis-label y-axis">Enterprise Readiness →</div>
+          <div class="axis-label y-axis">SMB | Enterprise & Compliance Ready | →</div>
 
-          <!-- Vendors (De-cluttered) -->
           <div class="vendor" style="--x: 8; --y: 2;"><div class="vendor-dot leader"></div><span class="vendor-label" style="--lx: -10px; --ly: -30px;">Veeam</span></div>
           <div class="vendor" style="--x: 7; --y: 3;"><div class="vendor-dot accent"></div><span class="vendor-label" style="--lx: -10px; --ly: 20px;">Lumen</span></div>
           <div class="vendor" style="--x: 9; --y: 2;"><div class="vendor-dot"></div><span class="vendor-label" style="--lx: 20px; --ly: -8px;">Palo Alto</span></div>
@@ -491,13 +476,12 @@
       </div>
     </section>
 
-    <!-- CHECKLIST -->
     <section id="checklist" class="anchor">
-      <h2>Cyber Resilience Checklist</h2>
+      <h2>Resilience Checklist</h2>
       <p class="lead">Check the boxes you already meet. Anything unchecked becomes a target for discovery and a short path to value.</p>
       
       <div class="checklist">
-        <div class="check"><input type="checkbox" id="c1"><label for="c1"><strong>MFA Everywhere</strong><small>Privileged accounts, VPN, SaaS, critical systems</small></label></div>
+        <div class="check"><input type="checkbox" id="c1"><label for="c1"><strong>MFA Everywhere</strong><small>Privileged, VPN, SaaS</small></label></div>
         <div class="check"><input type="checkbox" id="c2"><label for="c2"><strong>Endpoint (EDR)</strong><small>100% Coverage & Response Workflow</small></label></div>
         <div class="check"><input type="checkbox" id="c3"><label for="c3"><strong>Immutable Backups</strong><small>Object Lock, Air Gapped, or Hardened Repo</small></label></div>
         <div class="check"><input type="checkbox" id="c4"><label for="c4"><strong>24/7 Monitoring</strong><small>MDR or SOC (Alarms reach humans)</small></label></div>
@@ -505,7 +489,6 @@
         <div class="check"><input type="checkbox" id="c6"><label for="c6"><strong>DDoS Runbook</strong><small>Lumen Scrubbing & Contacts Verified</small></label></div>
         <div class="check"><input type="checkbox" id="c7"><label for="c7"><strong>Compliance Mapping</strong><small>HIPAA/PCI/ISO Evidence Ready</small></label></div>
         <div class="check"><input type="checkbox" id="c8"><label for="c8"><strong>Restore Testing</strong><small>Veeam Instant Recovery Validated</small></label></div>
-        <!-- NEW 9th Item -->
         <div class="check"><input type="checkbox" id="c9"><label for="c9"><strong>Data Encryption</strong><small>Data At Rest (DAR) & In Transit (DIT)</small></label></div>
       </div>
       
@@ -515,7 +498,6 @@
       </div>
     </section>
 
-    <!-- FORM -->
     <section id="form" class="anchor">
       <h2>Cyber Pre-Intake Form</h2>
       <p class="lead">Three minutes to surface your top risks and recovery blind spots. You receive a prioritized action plan that maps posture to business impact.</p>
@@ -528,7 +510,6 @@
     </section>
   </main>
 
-  <!-- === MASTER FOOTER (Cyber Variant) === -->
   <footer class="footer">
     <div>© <span id="y"></span> Industry5.pro | Built on trust. Paid by results.</div>
     <div class="socials">
@@ -550,7 +531,6 @@
     </div>
   </footer>
 
-  <!-- === SCRIPTS === -->
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
 
@@ -565,7 +545,7 @@
           
           const counter = entry.target;
           const target = +counter.dataset.target;
-          const decimals = counter.dataset.decimals ? +counter.dataset.decimals : 0;
+          const decimals = counter.dataset.suffix === "M" ? 2 : 0;
           const duration = 1500;
           const stepTime = 30;
           const steps = Math.ceil(duration / stepTime);
@@ -618,6 +598,7 @@
         const gaps = [];
 
         checks.forEach(c => {
+          // Use innerText to respect <br> tags
           const label = c.nextElementSibling.innerText.replace('\n', ' - ');
           const status = c.checked ? "[x]" : "[ ]";
           (c.checked ? met : gaps).push(`  • ${status} ${label}`);
