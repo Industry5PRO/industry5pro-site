@@ -2569,23 +2569,30 @@ tags: ["cloud","wavelength","naas"]
 </script>
 <script>
 (function(){
-  // Tile labels to retarget (normalized)
-  var targets = [
-    "ai agents & automation",
+  // --- Define Destinations ---
+  var AI_DEST = "https://industry5.pro/ai-readiness.html";
+  var CCAAS_DEST = "/ccaas";
+
+  // --- Define Link Targets ---
+  var aiTargets = [
+    "ai agents & automation"
+  ];
+  var ccaasTargets = [
     "contact center & cx",
     "ucaas / voip",
     "ucaas & voip"
   ];
 
-  // New destination (same tab)
-  var DEST = "https://industry5.pro/ai-readiness.html";
-
+  // --- Helper Functions ---
   function norm(s){ return (s||"").toLowerCase().replace(/\s+/g," ").trim(); }
   function clean(s){ return norm(s).replace(/[|\/\\\-–—:,.;!]/g,"").replace(/\s+/g," "); }
-  function setLink(a){
-    a.setAttribute("href", DEST);
+  
+  function setLink(a, dest){
+    if (!a) return;
+    a.setAttribute("href", dest);
     a.removeAttribute("target");
     a.removeAttribute("rel");
+    a.removeAttribute("data-appointment"); // Stop other scripts from hijacking it
   }
 
   try {
@@ -2594,16 +2601,27 @@ tags: ["cloud","wavelength","naas"]
 
     nodes.forEach(function(el){
       var text = clean(el.textContent);
-      for (var i=0;i<targets.length;i++){
-        if (text === clean(targets[i])) {
-          var a = el.tagName.toLowerCase() === "a" ? el : el.closest("a");
-          if (a) setLink(a);
-          break;
+      var a = el.tagName.toLowerCase() === "a" ? el : el.closest("a");
+      if (!a) return; // Not a link, skip
+
+      // Check for AI target
+      for (var i=0; i < aiTargets.length; i++){
+        if (text === clean(aiTargets[i])) {
+          setLink(a, AI_DEST);
+          return; // Stop processing this element
+        }
+      }
+      
+      // Check for CCaaS target
+      for (var i=0; i < ccaasTargets.length; i++){
+        if (text === clean(ccaasTargets[i])) {
+          setLink(a, CCAAS_DEST);
+          return; // Stop processing this element
         }
       }
     });
   } catch(e){
-    console.warn("AI Readiness link update skipped:", e);
+    console.warn("Product link retargeting skipped:", e);
   }
 })();
 </script>
