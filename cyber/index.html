@@ -3,924 +3,381 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cyber Security and Data Resilience | Industry5.pro</title>
-  <meta name="description" content="Unify network security, data protection, and rapid recovery into one measurable cyber resilience motion with Industry5.pro." />
-  <style>
-    :root{
-      --lumen-charcoal:#1B1B1D;
-      --lumen-gray:#F2F2F2;
-      --lumen-orange:#FF6A13;
-      --veeam-green:#00B336;
-      --text:#EAEAEA;
-      --muted:#A9A9AD;
-      --card:#232326;
-      --outline:#2C2C30;
-    }
-    html,body{margin:0;background:var(--lumen-charcoal);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;height:auto}
+  
+  <title>Cyber Resilience & Ransomware Recovery Advisory | Industry5.pro</title>
+  <meta name="description" content="Unify network security, data protection, and rapid recovery. We align Lumen network defense with Veeam immutable backups for measurable cyber resilience.">
+  <meta name="color-scheme" content="dark">
 
-    .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
-    header.hero{position:relative;overflow:hidden;isolation:isolate}
-    .hero::before{
-      content:"";position:absolute;inset:-40% -20% auto -20%;
-      height:140%;
+  <link rel="icon" href="/assets/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+  <style id="master-header-cyber">
+    :root {
+      --header-h: 76px;
+      --veeam-green: #00B336; /* Cyber Accent Color */
+      --lumen-charcoal: #1B1B1D;
+    }
+    
+    body { 
+      padding-top: var(--header-h) !important; 
+      background-color: var(--lumen-charcoal);
+      color: #EAEAEA;
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    *, *:before, *:after { box-sizing: inherit; }
+    main, .hero, .page-start { margin-top: 0 !important; }
+
+    /* TOPBAR */
+    .topbar {
+      position: fixed !important;
+      top: 0; left: 0; right: 0;
+      z-index: 99999 !important;
+      height: var(--header-h);
+      background: rgba(27,27,29,0.95) !important;
+      backdrop-filter: saturate(140%) blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      overflow: visible !important;
+    }
+    .topbar .wrap {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav { display: flex; align-items: center; width: 100%; height: 100%; }
+
+    /* BRAND (No Dot) */
+    .topbar .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .topbar .brand .logo {
+      height: 55px !important;
+      width: 55px !important;
+      display: block !important;
+      object-fit: contain;
+      background: transparent !important;
+      box-shadow: none !important;
+      /* Veeam Green Glow */
+      filter: drop-shadow(0 0 8px rgba(0,179,54,0.6)) !important; 
+      transition: filter 0.3s ease;
+    }
+    .topbar .brand .logo:hover {
+      filter: drop-shadow(0 0 16px rgba(0,179,54,1)) !important;
+    }
+    .topbar .brand strong {
+      font-size: 18px;
+      font-weight: 800 !important;
+      color: #e8eef9 !important;
+      white-space: nowrap;
+    }
+
+    /* NAV ACTIONS (No Divider Line) */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      height: 44px;
+      /* Border removed per request */
+      padding-left: 0 !important;   
+      padding-right: 40px !important;
+      flex-grow: 1;
+      justify-content: flex-end;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .nav-actions::-webkit-scrollbar { display: none; }
+
+    /* NAV LINKS */
+    .topbar .navlink {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #ffffff !important;
+      font-weight: 800 !important;
+      font-size: 14px;
+      text-decoration: none;
+      line-height: 1.2 !important;
+      white-space: normal !important;
+      padding: 4px 0;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+    
+    /* HOVER: Veeam Green */
+    .topbar .navlink:hover,
+    .topbar .navlink:focus-visible,
+    .topbar .navlink[aria-current="page"] {
+      color: var(--veeam-green) !important;
+      transform: translateY(-1px);
+      text-shadow: 0 0 10px rgba(0,179,54,0.75), 0 0 20px rgba(0,179,54,0.45) !important;
+      outline: 0;
+    }
+
+    @media (max-width: 900px) {
+      .topbar .brand strong { display: none; } 
+      .nav-actions { gap: 16px; padding-left: 16px !important; }
+    }
+  </style>
+
+  <style id="cyber-theme">
+    :root {
+      --veeam-green: #00B336;
+      --lumen-blue: #00A9E0;
+      --lumen-orange: #FF6A13;
+      --text-muted: #A9A9AD;
+      --card-bg: #232326;
+      --card-border: #2C2C30;
+    }
+
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+    
+    /* Hero */
+    .hero { padding: 40px 0 20px; position: relative; overflow: hidden; }
+    .hero::before {
+      content:""; position:absolute; inset:-40% -20% auto -20%; height:140%;
       background:
-        radial-gradient(60rem 60rem at 10% -10%, rgba(0,179,54,.20), transparent 60%),
-        radial-gradient(50rem 50rem at 90% 0%, rgba(255,106,19,.18), transparent 55%),
-        radial-gradient(30rem 30rem at 50% 100%, rgba(0,179,54,.12), transparent 60%);
-      filter:blur(40px);z-index:-1;opacity:.8
+        radial-gradient(60rem 60rem at 10% -10%, rgba(0,179,54,.15), transparent 60%),
+        radial-gradient(50rem 50rem at 90% 0%, rgba(255,106,19,.12), transparent 55%);
+      filter:blur(40px); z-index:-1; opacity:.8;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
+      align-items: center;
+    }
+    .hero h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1.1; margin: 0 0 16px; }
+    .sub { color: #DADAE0; font-size: 1.15rem; line-height: 1.6; max-width: 600px; }
+    
+    .hero-pic {
+      justify-self: end;
+      width: 100%; max-width: 420px;
+      border-radius: 18px; overflow: hidden;
+      box-shadow: 0 0 24px rgba(0,179,54,0.15); /* Green shadow */
+    }
+    .hero-pic img { width: 100%; display: block; }
+
+    /* KPIs */
+    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 32px; }
+    .kpi { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 16px; text-align: center; }
+    .knum { font-size: 2rem; font-weight: 800; color: var(--veeam-green); }
+    .kdesc { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
+
+    /* Pillars */
+    .pillars { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin: 40px 0; }
+    .pillar { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; }
+    .pillar h3 { color: var(--lumen-blue); font-size: 1.1rem; margin: 0 0 12px; }
+    .pillar ul { padding-left: 16px; margin: 0; font-size: 0.9rem; color: #D3D3D9; flex-grow: 1; }
+    .pillar li { margin-bottom: 6px; }
+    
+    /* Buttons */
+    .pill {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 10px 18px; border-radius: 999px; font-weight: 600; font-size: 0.9rem;
+      text-decoration: none; transition: all 0.2s ease; cursor: pointer;
+    }
+    .pill.primary {
+      background: var(--veeam-green); color: #0b1220; border: 1px solid var(--veeam-green);
+    }
+    .pill.primary:hover {
+      background: #fff; transform: translateY(-2px); box-shadow: 0 0 15px rgba(0,179,54,0.5);
+    }
+    .pill.outline {
+      background: transparent; color: var(--veeam-green); border: 1px solid var(--veeam-green);
+    }
+    .pill.outline:hover {
+      background: rgba(0,179,54,0.1); transform: translateY(-2px);
     }
 
-    .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0}
-    .brand{display:flex;gap:12px;align-items:center}
-    .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--veeam-green);box-shadow:0 0 16px rgba(0,179,54,.8)}
-    .nav-actions{display:flex;gap:10px;flex-wrap:wrap}
-
-    .pill{
-      display:inline-block;padding:12px 18px;border-radius:999px;
-      border:1px solid var(--outline);background:#202023;color:var(--text);
-      font-weight:600;box-shadow:0 0 0 0 rgba(0,179,54,0);
-      transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease
+    /* HTML Quadrant (Cyber) */
+    .quadrant-wrap {
+      background: #000; border: 1px solid var(--veeam-green); border-radius: 16px;
+      padding: 40px 24px 24px; position: relative; height: 600px; margin: 40px 0;
+      box-shadow: 0 0 20px rgba(0,179,54,0.2);
     }
-    .pill.primary{background:var(--lumen-orange);color:#1b1b1d;border-color:#cc5007}
-    .pill:hover{transform:translateY(-1px);box-shadow:0 0 18px 2px rgba(0,179,54,.35);border-color:rgba(0,179,54,.55)}
-    .pill.primary:hover{box-shadow:0 0 22px 4px rgba(255,106,19,.35)}
-    .outline{background:transparent;border:1px solid var(--outline)}
-    .outline:hover{border-color:rgba(0,179,54,.6);box-shadow:0 0 18px 2px rgba(0,179,54,.35)}
+    .quadrant-title { position: absolute; top: 12px; left: 24px; color: #fff; font-weight: 700; }
+    .quadrant-grid {
+      display: grid; grid-template-columns: repeat(10, 1fr); grid-template-rows: repeat(10, 1fr);
+      height: 100%; width: 100%;
+      background: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 10% 10%;
+    }
+    .axis-y { position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: var(--lumen-blue); opacity: 0.7; }
+    .axis-x { position: absolute; left: 0; right: 0; top: 50%; height: 2px; background: var(--lumen-blue); opacity: 0.7; }
+    
+    .vendor { 
+      grid-column: var(--x); grid-row: var(--y); display: flex; align-items: center; justify-content: center; position: relative; 
+    }
+    .vendor-dot {
+      width: 16px; height: 16px; background: var(--lumen-blue); border: 2px solid #fff; border-radius: 50%;
+      box-shadow: 0 0 10px var(--lumen-blue); transition: all 0.2s ease;
+    }
+    .vendor-dot.leader { background: var(--veeam-green) !important; box-shadow: 0 0 15px var(--veeam-green) !important; }
+    .vendor-label {
+      position: absolute; left: 100%; top: 50%; transform: translate(10px, -50%);
+      color: #fff; font-weight: 600; font-size: 0.85rem; white-space: nowrap; text-shadow: 0 0 4px #000;
+    }
+    
+    /* Checklist & Form */
+    .checklist { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; margin: 24px 0; }
+    .check { display: flex; gap: 12px; align-items: flex-start; background: var(--card-bg); border: 1px solid var(--card-border); padding: 12px; border-radius: 8px; }
+    .check input { accent-color: var(--veeam-green); margin-top: 4px; transform: scale(1.2); }
+    
+    .form-wrap { background: #111114; border: 1px solid var(--card-border); border-radius: 16px; padding: 10px; margin: 40px 0; }
+    .iframe-shell { position: relative; padding-top: 740px; background: #0f0f12; border-radius: 12px; }
+    .iframe-shell iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
-    .hero-content{padding:48px 0 28px}
-    h1{font-size:clamp(32px,4vw,56px);line-height:1.05;margin:10px 0 12px}
-    .sub{
-  max-width: 980px;        /* wider so it wraps to ~3 lines */
-  color:#DADAE0;
-  font-size:clamp(16px,2vw,20px);
-}
+    /* Footer */
+    .footer { border-top: 1px solid var(--card-border); padding: 40px 0; margin-top: 40px; text-align: center; color: var(--text-muted); }
+    .socials { display: flex; gap: 12px; justify-content: center; margin-top: 16px; }
+    .socials a { color: #fff; transition: color 0.2s; }
+    .socials a:hover { color: var(--veeam-green); }
 
-    .cta-row{display:flex;gap:12px;margin:22px 0 6px;flex-wrap:wrap}
-    .meta{font-size:14px;color:var(--muted)}
-
-    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:26px 0 8px}
-    .kpi{background:var(--card);border:1px solid var(--outline);border-radius:16px;padding:16px}
-    .knum{font-weight:800;font-size:28px}
-    .kdesc{color:var(--muted);font-size:14px;margin-top:6px}
-
-    section{padding:42px 0;border-top:1px solid var(--outline)}
-    h2{font-size:clamp(22px,2.6vw,32px);margin:0 0 14px}
-    p.lead{color:#D6D6DB;max-width:860px}
-
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-    .card{background:var(--card);border:1px solid var(--outline);border-radius:16px;padding:18px}
-    .tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid var(--outline);color:#D7D7DC}
-    .tag .bullet{width:8px;height:8px;border-radius:999px;background:var(--veeam-green);box-shadow:0 0 12px rgba(0,179,54,.7)}
-
-    .pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-    .pillar h3{margin:6px 0 6px;font-size:18px}
-    .pillar ul{margin:0;padding-left:18px;color:#D3D3D9}
-    .pillar li{margin:6px 0}
-
-    .checklist{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-top:14px}
-    .check{display:flex;gap:10px;align-items:flex-start;background:#202023;border:1px solid var(--outline);border-radius:14px;padding:12px}
-    .check input{margin-top:2px;accent-color:var(--veeam-green)}
-    .check label{line-height:1.35}
-    .check small{display:block;color:var(--muted);font-size:12px;margin-top:4px}
-
-    .form-wrap{background:#111114;border:1px solid var(--outline);border-radius:16px;padding:10px}
-    .form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    .iframe-shell{position:relative;padding-top: min(70vh,740px);background:#0f0f12;border-radius:12px;border:1px dashed #303036}
-    .iframe-shell iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px}
-
-    .band{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
-    @media (max-width:900px){.band{grid-template-columns:1fr}}
-    .note{font-size:14px;color:var(--muted);margin-top:6px}
-
-    .cta-footer{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:34px 0}
-    .cta-buttons{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-
-    .anchor{scroll-margin-top:90px}
-    /* === Sticky Topbar + Brand tweaks === */
-.topbar{
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: rgba(27,27,29,.75);
-  backdrop-filter: saturate(140%) blur(10px);
-  border-bottom: 1px solid var(--outline);
-}
-
-/* Nav container stays the same layout */
-.nav{display:flex;justify-content:space-between;align-items:center;padding:12px 0}
-
-/* Brand row: add logo + bigger wordmark */
-.brand{display:flex;gap:10px;align-items:center}
-.brand .logo{
-  width:28px;height:28px;border-radius:6px;
-  box-shadow:0 0 12px rgba(0,179,54,.5)
-}
-.brand strong{
-  font-weight:800;
-  font-size: clamp(20px, 2.6vw, 24px); /* larger than before */
-  letter-spacing:.2px
-}
-/* Hero grid + avatar sizing */
-.hero-content{padding:34px 0 28px;}
-.hero-grid{
-  display:grid;
-  grid-template-columns:1.15fr .85fr;
-  gap:22px;
-  align-items:center;
-}
-@media (max-width:940px){ .hero-grid{ grid-template-columns:1fr } }
-
-.avatar-card{
-  justify-self:end;
-  background:var(--card);
-  border:1px solid var(--outline);
-  border-radius:16px;
-  padding:12px;
-  box-shadow:0 0 24px rgba(0,179,54,.15);
-  max-width:260px;            /* “just right” on desktop */
-}
-.avatar-img{
-  width:100%;
-  height:auto;
-  border-radius:12px;
-  box-shadow:0 0 22px rgba(0,179,54,.25);
-}
-@media (max-width:940px){ .avatar-card{ max-width:200px } }
-.avatar-caption{font-size:12px;color:var(--muted);margin-top:8px;text-align:center}
-/* KPIs: lock to a single row on desktop/tablet */
-.kpis{
-  display:grid;
-  grid-template-columns: repeat(4, minmax(220px, 1fr));
-  gap:14px;
-}
-@media (max-width: 860px){
-  .kpis{
-    grid-template-columns: repeat(2, minmax(220px, 1fr)); /* 2x2 on mobile */
-  }
-}
-    /* Two-column hero layout for text + avatar */
-.hero-content{padding:34px 0 28px;}
-.hero-grid{
-  display:grid;
-  grid-template-columns:1.15fr .85fr;
-  gap:22px;
-  align-items:center;
-}
-@media (max-width:940px){ .hero-grid{ grid-template-columns:1fr } }
-
-/* Avatar sizing (matches index) */
-.avatar-card{
-  justify-self:end;background:var(--card);border:1px solid var(--outline);
-  border-radius:16px;padding:12px;box-shadow:0 0 24px rgba(0,179,54,.15);
-  max-width:260px;
-}
-.avatar-img{ width:100%;height:auto;border-radius:12px;box-shadow:0 0 22px rgba(0,179,54,.25) }
-@media (max-width:940px){ .avatar-card{ max-width:200px } }
-.avatar-caption{font-size:12px;color:var(--muted);margin-top:8px;text-align:center}
-
-/* KPIs: full-width row under the grid */
-.hero-kpis{ margin-top:22px; }
-.kpis{
-  display:grid;
-  grid-template-columns: repeat(4, minmax(220px, 1fr));
-  gap:14px;
-}
-@media (max-width: 860px){
-  .kpis{ grid-template-columns: repeat(2, minmax(220px, 1fr)); }
-}
-/* Overrides: avatar floats, no border/shadow */
-.avatar-card{
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  max-width: 260px;        /* keep index-like size */
-}
-.avatar-img{
-  border-radius: 12px;     /* keep your shape */
-  box-shadow: none !important;
-}
-/* Force first line to stay together and honor the <br> */
-h1 .keep{ white-space: nowrap !important; }
-
-/* Let the headline breathe so it can fit that first line */
-h1{ letter-spacing: 0 !important; }
-
-/* Make the intro paragraph ~3 lines instead of squeezed */
-.sub{
-  max-width: 1000px !important;   /* bump up/down: 940–1040 until it’s 3 lines on your screen */
-  text-wrap: pretty;
-}
-/* Larger hero portrait (match AI page vibe) */
-.avatar-card{
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  max-width: 360px;                /* ⬅️ increase from 260px */
-  justify-self: end;
-}
-
-.avatar-img{
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: none !important;     /* keep it “floating” */
-}
-
-/* Slightly smaller on narrower screens */
-@media (max-width: 1100px){
-  .avatar-card{ max-width: 320px; }
-}
-@media (max-width: 940px){
-  .avatar-card{ max-width: 240px; }
-}
-/* Social buttons */
-.socials{
-  display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:12px;
-}
-.social-btn{
-  display:inline-flex; align-items:center; gap:8px;
-  padding:10px 14px; border-radius:999px;
-  border:1px solid var(--outline); background:#202023; color:var(--text);
-  font-weight:600; text-decoration:none;
-  transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease, color .2s ease;
-}
-.social-btn svg{ width:18px; height:18px; display:block }
-.social-btn:hover{
-  transform:translateY(-1px);
-  background: var(--lumen-orange);
-  color:#1B1B1D; /* readable on orange */
-  border-color: var(--veeam-green);
-  /* green edge + soft orange center glow */
-  box-shadow:
-    0 0 18px 2px rgba(0,179,54,.35),
-    0 0 26px 8px rgba(255,106,19,.20);
-}
-.brand .logo{
-  width:28px; height:28px; display:block;
-  border-radius:6px; box-shadow:0 0 12px rgba(0,179,54,.5);
-}
-.brand strong{ font-weight:800; font-size:clamp(20px,2.6vw,24px); letter-spacing:.2px }
-/* Icons-only socials */
-.socials{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:12px; }
-.icon-btn{
-  display:inline-flex; align-items:center; justify-content:center;
-  width:42px; height:42px; border-radius:999px;
-  border:1px solid var(--outline); background:#202023; color:var(--text);
-  transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease, color .2s ease;
-}
-.icon-btn svg{ width:18px; height:18px; display:block }
-.icon-btn:hover{
-  transform:translateY(-1px);
-  background: var(--lumen-orange);
-  color:#1B1B1D;           /* readable on orange */
-  border-color: var(--veeam-green);
-  box-shadow:
-    0 0 18px 2px rgba(0,179,54,.35),  /* green edge */
-    0 0 26px 8px rgba(255,106,19,.20);/* orange center glow */
-}
-.icon-btn svg { width:18px; height:18px; display:block; }
-.icon-btn svg rect, .icon-btn svg circle, .icon-btn svg path { 
-  fill: none; stroke: currentColor; stroke-width: 1.6;
-}
-/* Keep FB/WhatsApp filled look by overriding their paths */
-.icon-btn[data-fill] svg path { fill: currentColor; stroke: none; }
-/* Pillar cards: equal visual baseline for CTA */
-.pillars .pillar{ display:flex; flex-direction:column; }
-.pillars .pillar .pill{ margin-top:auto; align-self:flex-start; }
-/* Make each pillar card a 3-row grid: title, flexible list, CTA at bottom */
-.pillars > .card.pillar{
-  display:grid;
-  grid-template-rows: auto 1fr auto; /* header | fills | CTA */
-  min-height: 280px;                  /* adjust if you want them taller/shorter */
-}
-
-/* Tidy spacing so the list doesn't push CTAs unevenly */
-.pillars > .card.pillar h3{ margin:6px 0 6px; }
-.pillars > .card.pillar ul{ margin:0 0 12px 18px; }
-
-/* Anchor the "Assess ..." pill to the bottom and keep it left-aligned */
-.pillars > .card.pillar .pill{
-  align-self:start;    /* left */
-  margin-top:0;        /* grid places it; no auto margin needed */
-}
-.brand .logo{
-  width:28px; height:28px; display:block;
-  border-radius:6px;
-  box-shadow:0 0 12px rgba(0,179,54,.5);
-}
-/* General mobile spacing + full-width CTAs when needed */
-@media (max-width: 640px){
-  .wrap{ padding: 0 14px; }
-  .cta-row .pill{ width:100%; text-align:center; }
-  .cta-buttons .pill{ width:100%; text-align:center; }
-  .avatar-card{ margin: 10px auto 0; justify-self:center; }
-}
-
-/* Hero grid stacks cleanly on tablets/phones */
-@media (max-width: 940px){
-  .hero-grid{ grid-template-columns: 1fr; }
-}
-
-/* KPI grid: 2x2 on phones, single column on very small screens */
-@media (max-width: 860px){
-  .kpis{ grid-template-columns: repeat(2, minmax(140px,1fr)); }
-}
-@media (max-width: 420px){
-  .kpis{ grid-template-columns: 1fr; }
-}
-
-/* Pillar cards: keep CTAs aligned at bottom even when text wraps more on mobile */
-@media (max-width: 860px){
-  .pillars > .card.pillar{ min-height: 0; }  /* let them shrink naturally */
-}
-/* Base: keep normal text color */
-#cta-start, #cta-plan{
-  color: #1b1b1d;                 /* black/dark text, matches your pill primary style */
-  text-shadow: none;
-  transition: color .15s ease, text-shadow .2s ease;
-}
-
-/* Hover/focus/active: veeam green text + soft glow; bg unchanged */
-#cta-start:hover, #cta-start:focus, #cta-start:active,
-#cta-plan:hover,  #cta-plan:focus,  #cta-plan:active{
-  color: var(--veeam-green);
-  text-shadow:
-    0 0 6px rgba(0,179,54,.6),
-    0 0 12px rgba(0,179,54,.35);
-  outline: none;
-}
-
-/* Optional: improve tap feedback on touch devices */
-@media (hover:none){
-  #cta-start:active, #cta-plan:active{
-    color: var(--veeam-green);
-    text-shadow: 0 0 10px rgba(0,179,54,.6);
-  }
-}
-/* Text-only neon pop on hover/press (background unchanged) */
-#cta-open, #cta-schedule{
-  color:#1b1b1d;            /* keep normal dark text */
-  text-shadow:none;
-  transition: color .15s ease, text-shadow .2s ease;
-}
-#cta-open:hover, #cta-open:focus, #cta-open:active,
-#cta-schedule:hover, #cta-schedule:focus, #cta-schedule:active{
-  color: var(--veeam-green);
-  text-shadow:
-    0 0 6px rgba(0,179,54,.6),
-    0 0 12px rgba(0,179,54,.35);
-  outline:none;
-}
-
-/* Better tap feedback on touch devices */
-@media (hover:none){
-  #cta-open:active, #cta-schedule:active{
-    color: var(--veeam-green);
-    text-shadow: 0 0 10px rgba(0,179,54,.6);
-  }
-}
-/* Veeam-green text glow on hover/click (background unchanged) */
-#cta-plan{
-  color:#1b1b1d;              /* normal state */
-  text-shadow:none;
-  transition: color .15s ease, text-shadow .2s ease;
-}
-#cta-plan:hover,
-#cta-plan:focus,
-#cta-plan:active{
-  color: var(--veeam-green);
-  text-shadow:
-    0 0 6px rgba(0,179,54,.6),
-    0 0 12px rgba(0,179,54,.35);
-  outline:none;
-}
-
-/* Touch pop */
-@media (hover:none){
-  #cta-plan:active{
-    color: var(--veeam-green);
-    text-shadow: 0 0 10px rgba(0,179,54,.6);
-  }
-}
-/* 1) Center text inside top nav pills */
-.nav-actions .pill{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  line-height:1.1;
-}
-
-/* 2) Hero mobile polish: better stacking + readable sizes */
-@media (max-width: 640px){
-  .hero-content{ padding:24px 0 20px; }
-  h1{ font-size: clamp(26px, 7.5vw, 34px); line-height:1.12; }
-  .sub{ max-width:100%; font-size:15.5px; }
-  .avatar-card{ justify-self:center; margin:10px auto 0; max-width:220px; }
-  .wrap{ padding: 0 14px; }
-}
-
-/* 3) Center KPI number + label inside each stat pill */
-.kpis .kpi{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-}
-.kpis .knum{ text-align:center; }
-.kpis .kdesc{ text-align:center; }
-
-/* 4) Center text inside the five "Assess ..." pills (keep buttons left in cards) */
-.pill{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-}
-.pillars > .card.pillar .pill{
-  align-self:flex-start; /* stays left within the card grid */
-}
-
-
+    @media (max-width: 900px) {
+      .hero-grid, .pillars { grid-template-columns: 1fr; }
+      .hero-pic { display: none; }
+      .kpis { grid-template-columns: 1fr 1fr; }
+    }
   </style>
 </head>
 <body>
 
- <!-- ===== Sticky Topbar ===== -->
   <div class="topbar">
     <div class="wrap">
       <nav class="nav" aria-label="Primary">
-      <div class="brand">
-  <img class="logo"
-       src="/assets/industry5-logo.png"
-       alt="Industry5.pro logo" />
-  <div class="dot" aria-hidden="true"></div>
-  <strong>Industry5.pro</strong>
-</div>
-
+        <div class="brand">
+         <img class="logo" src="/assets/industry5logo.svg" alt="Industry5.pro logo" />
+          <strong style="color: #fff;">Industry5.pro</strong>
+        </div>
+  
         <div class="nav-actions">
-          <a class="pill outline" href="/">Home</a>
-          <a class="pill outline" href="#stack">The Stack</a>
-          <a class="pill outline" href="#checklist">Resilience Checklist</a>
-          <a class="pill primary" id="cta-start" href="#form">Start Cyber Discovery</a>
-
+          <a class="navlink" href="/">Home</a>
+          <a class="navlink" href="/ai">AI</a>
+          <a class="navlink" href="/cyber" aria-current="page">Security</a>
+          <a class="navlink" href="/cloud20">Cloud 2.0</a>
+          <a class="navlink" href="/ccaas">UC &amp;<br>Contact Center</a>
+          <a class="navlink" href="/aiot">AIoT</a>
+          <a class="navlink" href="/peplink">5G &amp;<br>Satellite</a>
+          <a class="navlink" href="/blog">Blog</a>
+          <a class="navlink" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
         </div>
       </nav>
     </div>
   </div>
 
- <header class="hero">
-  <div class="wrap">
-    <div class="hero-content">
-
-      <!-- 2-column block: text (left) + portrait (right) -->
+  <main class="wrap">
+    <section class="hero">
       <div class="hero-grid">
-        <!-- LEFT column -->
         <div>
-          <h1>
-  <span class="keep">Protect Data. Predict Threats.</span><br>
-  <span>Prevent Downtime.</span>
-</h1>
-
+          <h1>Protect Data. Predict Threats.<br><span style="color:var(--veeam-green)">Prevent Downtime.</span></h1>
           <p class="sub">
             Unify network security, data protection, and rapid recovery into one measurable cyber resilience motion.
-            We align Lumen capabilities with Veeam powered recoverability and a supplier agnostic ecosystem through Telarus.
+            We align Lumen capabilities with Veeam-powered recoverability and a supplier-agnostic ecosystem through Telarus.
           </p>
-          <div class="cta-row">
-            <a class="pill primary" id="cta-start" href="#form">Start Cyber Discovery</a>
-            <a class="pill" href="#checklist">Run the Resilience Checklist</a>
-          </div>
-          <div class="meta">No fear tactics. Only outcomes, SLAs, and time to recover that finance teams appreciate.</div>
-        </div>
-
-        <!-- RIGHT column (portrait sits beside the meta, above KPIs) -->
-        <aside class="avatar-card">
-  <img class="avatar-img" src="/assets/lou-portrait@2x.png" alt="Louis Tortora profile" />
-</aside>
-      </div>
-
-      <!-- KPIs BELOW the two-column grid, full-width -->
-      <div class="hero-kpis">
-        <div class="kpis" role="list">
-          <div class="kpi" role="listitem" aria-label="SMB/MM share of breach victims">
-            <div class="knum" data-target="43" data-suffix="%">0%</div>
-            <div class="kdesc">SMB/MM share of breach victims</div>
-          </div>
-          <div class="kpi" role="listitem" aria-label="Average US breach cost">
-            <div class="knum" data-target="9.48" data-suffix="M">$0M</div>
-            <div class="kdesc">Average US breach cost</div>
-          </div>
-          <div class="kpi" role="listitem" aria-label="Firms that test backups annually">
-            <div class="knum" data-target="38" data-suffix="%">0%</div>
-            <div class="kdesc">Firms that test backups annually</div>
-          </div>
-          <div class="kpi" role="listitem" aria-label="Enterprise share of breach victims">
-            <div class="knum" data-target="22" data-suffix="%">0%</div>
-            <div class="kdesc">Enterprise share of breach victims<span aria-hidden="true">*</span></div>
+          <div style="display:flex; gap:12px; margin-top:24px;">
+            <a class="pill primary" href="#form">Start Cyber Discovery</a>
+            <a class="pill outline" href="#checklist">Run Resilience Checklist</a>
           </div>
         </div>
-        <div class="meta" style="margin-top:4px">
-          <small>* Enterprise = ≥ 1,000 employees. Buckets follow DBIR large-org definition; shares may not sum to 100% across all categories.</small>
+        <figure class="hero-pic">
+          <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora" />
+        </figure>
+      </div>
+
+      <div class="kpis">
+        <div class="kpi">
+          <div class="knum">43%</div>
+          <div class="kdesc">SMB share of breach victims</div>
+        </div>
+        <div class="kpi">
+          <div class="knum">$9.48M</div>
+          <div class="kdesc">Avg US breach cost</div>
+        </div>
+        <div class="kpi">
+          <div class="knum">38%</div>
+          <div class="kdesc">Firms testing backups annually</div>
+        </div>
+        <div class="kpi">
+          <div class="knum">22%</div>
+          <div class="kdesc">Enterprise share of victims</div>
         </div>
       </div>
+    </section>
 
-    </div>
-  </div>
-</header>
-
-
-<section id="stack" class="anchor">
-  <div class="wrap">
-    <h2>Unified Defense through Strategic Partners</h2>
-    <p class="lead">Build on Lumen network security and DDoS defense, add Veeam immutability and instant recovery, and source the right complement through Telarus. We orchestrate the pieces and own the outcome with you.</p>
-    <div class="grid" style="margin-top:14px">
-      <div class="card">
-        <span class="tag"><span class="bullet"></span> Lumen</span>
-        <p style="margin:10px 0 0">Adaptive network security, edge to core visibility, scrubbing for volumetric attacks, and performance built for real workloads.</p>
-      </div>
-      <div class="card">
-        <span class="tag"><span class="bullet"></span> Veeam</span>
-        <p style="margin:10px 0 0">Immutable backups and instant recovery across hybrid estates. Your last line of defense when everything else is on fire.</p>
-      </div>
-      <div class="card">
-        <span class="tag"><span class="bullet"></span> Telarus</span>
-        <p style="margin:10px 0 0">Access to hundreds of vetted cyber suppliers. Competitive options without vendor lock in.</p>
-      </div>
-      <div class="card">
-        <span class="tag"><span class="bullet"></span> Industry5.pro</span>
-        <p style="margin:10px 0 0">Outcome obsessed architecture, ROI mapping, and a clean path from discovery to deployment to validation.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="pillars" class="anchor">
-  <div class="wrap">
-    <h2>Start with an Outcome</h2>
     <div class="pillars">
-      <div class="card pillar">
+      <div class="pillar">
         <h3>Protect</h3>
-        <ul>
-          <li>Zero trust access and MFA adoption</li>
-          <li>Email and endpoint threat prevention</li>
-          <li>Vulnerability and patch cadence</li>
-        </ul>
-        <a class="pill" href="#form" style="margin-top:10px">Assess Protect</a>
+        <ul><li>Zero Trust & MFA</li><li>Endpoint (EDR)</li><li>Vuln/Patch Mgmt</li></ul>
+        <a class="pill outline" style="margin-top:auto; font-size:0.8rem" href="#form">Assess</a>
       </div>
-      <div class="card pillar">
+      <div class="pillar">
         <h3>Detect</h3>
-        <ul>
-          <li>Managed detection and response coverage</li>
-          <li>DDoS monitoring with runbooks</li>
-          <li>Log retention and SIEM visibility</li>
-        </ul>
-        <a class="pill" href="#form" style="margin-top:10px">Assess Detect</a>
+        <ul><li>24/7 MDR/XDR</li><li>DDoS Monitoring</li><li>SIEM/Log Retention</li></ul>
+        <a class="pill outline" style="margin-top:auto; font-size:0.8rem" href="#form">Assess</a>
       </div>
-      <div class="card pillar">
+      <div class="pillar">
         <h3>Respond</h3>
-        <ul>
-          <li>Incident response playbooks and RTO targets</li>
-          <li>Tabletop frequency and ownership</li>
-          <li>Escalation paths with SLAs</li>
-        </ul>
-        <a class="pill" href="#form" style="margin-top:10px">Assess Respond</a>
+        <ul><li>IR Playbooks</li><li>Tabletop Exercises</li><li>Escalation SLAs</li></ul>
+        <a class="pill outline" style="margin-top:auto; font-size:0.8rem" href="#form">Assess</a>
       </div>
-      <div class="card pillar">
+      <div class="pillar">
         <h3>Recover</h3>
-        <ul>
-          <li>Immutable backups and air gapped copies</li>
-          <li>Veeam instant recovery tested</li>
-          <li>RPO alignment with business impact</li>
-        </ul>
-        <a class="pill" href="#form" style="margin-top:10px">Assess Recover</a>
+        <ul><li>Immutable Backups</li><li>Veeam Instant Recovery</li><li>RPO/RTO Alignment</li></ul>
+        <a class="pill outline" style="margin-top:auto; font-size:0.8rem" href="#form">Assess</a>
       </div>
-      <div class="card pillar">
-        <h3>Govern and Comply</h3>
-        <ul>
-          <li>HIPAA, PCI, ISO 27001 mapping</li>
-          <li>Data retention and eDiscovery</li>
-          <li>Vendor risk and third party review</li>
-        </ul>
-        <a class="pill" href="#form" style="margin-top:10px">Assess Governance</a>
-      </div>
-    </div>
-  </div>
-</section>
-  <section id="cyber-quadrant" class="anchor" style="padding:32px 0">
-  <div class="wrap">
-    <h2 style="margin-bottom:8px">Cyber Resilience Overlay — How to Read This Quadrant</h2>
-
-  <p class="lead" style="max-width:1040px">
-  There isn’t one vendor that truly does it all across <strong>Protect, Detect, Respond, Recover,</strong> and
-  <strong>Govern &amp; Comply</strong> at an enterprise level without tradeoffs. Resilience comes from a simple backbone:
-  <strong>identity</strong> at the front door, <strong>data/telemetry</strong> as truth, and <strong>recoverability</strong> as the safety net,
-  then layering best of breed where it matters. Think <em>separate failure domains</em>, clean integrations, and SLAs you can defend.
-</p>
-
-
-    <ul class="meta" style="list-style:none;padding:0;margin:8px 0 16px;color:#A9A9AD;font-size:13px">
-      <li><strong style="color:#EAEAEA">Protect:</strong> Zero trust, WAAP/WAF, email/endpoint hardening.</li>
-      <li><strong style="color:#EAEAEA">Detect:</strong> 24×7 MDR/XDR coverage and fast MTTR.</li>
-      <li><strong style="color:#EAEAEA">Respond:</strong> Runbooks, comms, forensics, and ownership.</li>
-      <li><strong style="color:#EAEAEA">Recover:</strong> Immutability, instant recovery, and DRaaS testing.</li>
-      <li><strong style="color:#EAEAEA">Govern &amp; Comply:</strong> Policies, evidence, retention, third-party risk.</li>
-    </ul>
-
-    <figure style="margin:12px 0">
-      <img
-        src="/assets/industry5pro_cyber_quadrant_v4.png"
-        alt="Quadrant of cyber players by simplicity versus enterprise readiness"
-        style="width:100%;height:auto;border-radius:12px;display:block" />
-      <figcaption class="meta" style="margin-top:8px;color:#A9A9AD;font-size:12px">
-        Directional placement based on public capabilities (MDR/WAAP/DRaaS), testing/runbooks, and packaging simplicity.
-      </figcaption>
-    </figure>
-  </div>
-</section>
-
-
-<section id="checklist" class="anchor">
-  <div class="wrap">
-    <h2>Cyber Resilience Checklist</h2>
-    <p class="lead">Check the boxes you already meet. Anything unchecked becomes a target for discovery and a short path to value.</p>
-
-    <div class="checklist" role="group" aria-label="Resilience checklist">
-      <div class="check"><input type="checkbox" id="c1"><label for="c1"><strong>MFA on everything</strong><small>Privileged accounts, VPN, SaaS, critical systems</small></label></div>
-      <div class="check"><input type="checkbox" id="c2"><label for="c2"><strong>Endpoint prevention with EDR</strong><small>Coverage rate and response workflow defined</small></label></div>
-      <div class="check"><input type="checkbox" id="c3"><label for="c3"><strong>Email security with active DMARC</strong><small>Impersonation and link detonation protection</small></label></div>
-
-      <div class="check"><input type="checkbox" id="c4"><label for="c4"><strong>Twenty four seven monitoring or MDR</strong><small>Alarms reach humans who act in minutes</small></label></div>
-      <div class="check"><input type="checkbox" id="c5"><label for="c5"><strong>DDoS detection and runbook</strong><small>Lumen scrubbing and contacts verified</small></label></div>
-      <div class="check"><input type="checkbox" id="c6"><label for="c6"><strong>Centralized logs with retention</strong><small>Searchable SIEM and saved investigations</small></label></div>
-
-      <div class="check"><input type="checkbox" id="c7"><label for="c7"><strong>Incident response plan</strong><small>Named owners, time targets, decision trees</small></label></div>
-      <div class="check"><input type="checkbox" id="c8"><label for="c8"><strong>Tabletop exercises quarterly</strong><small>Scope includes execs, legal, and PR</small></label></div>
-      <div class="check"><input type="checkbox" id="c9"><label for="c9"><strong>Third party breach comms draft</strong><small>Customer notices and regulator language ready</small></label></div>
-
-      <div class="check"><input type="checkbox" id="c10"><label for="c10"><strong>Immutable backups</strong><small>Object lock or hardened repo not joined to AD</small></label></div>
-      <div class="check"><input type="checkbox" id="c11"><label for="c11"><strong>Restore tests monthly</strong><small>Veeam instant recovery validated to targets</small></label></div>
-      <div class="check"><input type="checkbox" id="c12"><label for="c12"><strong>RPO and RTO documented</strong><small>Aligned to critical app tiers and revenue impact</small></label></div>
-
-      <div class="check"><input type="checkbox" id="c13"><label for="c13"><strong>Security policy set</strong><small>Versioned, acknowledged, enforced</small></label></div>
-      <div class="check"><input type="checkbox" id="c14"><label for="c14"><strong>Compliance mapping</strong><small>HIPAA or PCI or ISO controls and evidence</small></label></div>
-      <div class="check"><input type="checkbox" id="c15"><label for="c15"><strong>Vendor risk review</strong><small>Critical suppliers scored with remediation paths</small></label></div>
-    </div>
-
-      <div class="form-actions">
-  <a class="pill primary" id="cta-plan" href="#form">Turn Gaps Into a Plan</a>
-  <a class="pill outline" href="#roi">See the ROI Angle</a>
-  <!-- NEW: user export -->
-  <button class="pill outline" id="download-checklist">Download My Checklist</button>
-</div>
-
-    </div>
-  </div>
-</section>
-
-<section id="form" class="anchor">
-  <div class="wrap">
-    <h2>Cyber Pre Intake Form</h2>
-    <p class="lead">Three minutes to surface your top risks and recovery blind spots. You receive a prioritized action plan that maps posture to business impact.</p>
-
-    <div class="form-wrap">
-      <div class="iframe-shell">
-        <iframe
-          src="https://near.tl/sm/PKoP8D7PR"
-          title="Cyber Pre Intake Form"
-          loading="lazy"
-          allow="fullscreen; clipboard-read; clipboard-write"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-
-      <div class="form-actions">
-        <a class="pill primary"
-   id="cta-open"
-   target="_blank" rel="noopener"
-   href="https://near.tl/sm/PKoP8D7PR">
-  Open Form in New Tab
-</a>
-
+      <div class="pillar">
+        <h3>Govern</h3>
+        <ul><li>HIPAA/PCI/ISO</li><li>Data Retention</li><li>Vendor Risk</li></ul>
+        <a class="pill outline" style="margin-top:auto; font-size:0.8rem" href="#form">Assess</a>
       </div>
     </div>
 
-    <div class="note">If the embed is blocked by a corporate filter use the open in new tab button.</div>
-  </div>
-</section>
+    <section id="quadrant">
+      <h2 style="font-size:1.8rem; margin-bottom:12px;">Cyber Resilience Quadrant</h2>
+      <p style="color:var(--text-muted); max-width:800px; margin-bottom:24px;">
+        There isn’t one vendor that does it all. Resilience comes from a backbone of <strong>Identity</strong>, <strong>Data Truth</strong>, and <strong>Recoverability</strong>.
+      </p>
+      
+      <div class="quadrant-wrap">
+        <div class="quadrant-title">Cyber Market: Enterprise Readiness vs. Integration Simplicity</div>
+        <div class="quadrant-grid">
+          <div class="axis-y"></div>
+          <div class="axis-x"></div>
+          
+          <div class="vendor" style="--x:8; --y:2"><div class="vendor-dot leader"></div><span class="vendor-label">Veeam</span></div>
+          <div class="vendor" style="--x:7; --y:3"><div class="vendor-dot leader"></div><span class="vendor-label">Lumen</span></div>
+          <div class="vendor" style="--x:9; --y:2"><div class="vendor-dot"></div><span class="vendor-label">Palo Alto</span></div>
+          <div class="vendor" style="--x:8; --y:3"><div class="vendor-dot"></div><span class="vendor-label">CrowdStrike</span></div>
+          
+          <div class="vendor" style="--x:3; --y:3"><div class="vendor-dot"></div><span class="vendor-label">Fortinet</span></div>
+          <div class="vendor" style="--x:4; --y:4"><div class="vendor-dot"></div><span class="vendor-label">Cisco</span></div>
+          
+          <div class="vendor" style="--x:3; --y:8"><div class="vendor-dot"></div><span class="vendor-label">Barracuda</span></div>
+          <div class="vendor" style="--x:2; --y:7"><div class="vendor-dot"></div><span class="vendor-label">Sophos</span></div>
+          
+          <div class="vendor" style="--x:7; --y:7"><div class="vendor-dot"></div><span class="vendor-label">Arctic Wolf</span></div>
+          <div class="vendor" style="--x:8; --y:8"><div class="vendor-dot"></div><span class="vendor-label">SentinelOne</span></div>
+        </div>
+      </div>
+    </section>
 
-<section id="roi" class="anchor">
-  <div class="wrap band">
-    <div>
-      <h2>Why Cyber ROI Matters</h2>
-      <p class="lead">Security tools remain cost centers until they are tied to recoverability, uptime, and customer trust. We translate controls into finance metrics you can defend. Faster response, smaller blast radius, and verified time to recover beat fear every time.</p>
-      <div class="note">We align RPO and RTO to revenue at risk then prove it with restore tests and network performance you can feel.</div>
-    </div>
-    <div class="card">
-      <strong style="display:block;margin-bottom:8px">What You Receive</strong>
-      <ul style="margin:0;padding-left:18px;color:#D3D3DA">
-        <li>Scorecard across Protect, Detect, Respond, Recover, Govern</li>
-        <li>Two quick wins that cut risk now</li>
-        <li>Recovery test plan with clear owners</li>
-        <li>Stack options through an advisory first approach with pros and cons</li>
-      </ul>
-      <a class="pill" href="#form" style="margin-top:12px;display:inline-block">Get My Scorecard</a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap cta-footer">
-    <h2>No fear. Only facts, SLAs, and results.</h2>
-
-    <div class="cta-buttons">
-      <!-- Correct Calendly link -->
-   <a class="pill primary"
-   id="cta-schedule"
-   href="https://calendly.com/industry5pro/30min"
-   target="_blank" rel="noopener">
-  Schedule Cyber Review
-</a>
-
-
-      <!-- Force a download of your checklist (swap .pdf if needed) -->
-     <a class="pill outline"
-   id="dl-checklist"
-   href="/assets/Industry5pro_Cyber_Resilience_Checklist.pdf"
-   download="Industry5pro_Cyber_Resilience_Checklist.pdf"
-   type="application/pdf">
-  Download Checklist
-</a>
-
-    </div>
-
-    <!-- Socials -->
-  <!-- Socials: icons only -->
-<div class="socials" aria-label="Industry5.pro social links">
-  <!-- Facebook -->
-  <a class="icon-btn" data-fill aria-label="Facebook"
-     href="https://www.facebook.com/profile.php?id=61582481880019"
-     target="_blank" rel="noopener noreferrer">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M22 12a10 10 0 1 0-11.563 9.874v-6.985H7.898V12h2.539V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.63.771-1.63 1.562V12h2.773l-.443 2.889h-2.33v6.985A10.002 10.002 0 0 0 22 12z"/>
-    </svg>
-  </a>
-
-  <!-- Instagram -->
-  <a class="icon-btn" aria-label="Instagram"
-   href="https://www.instagram.com/industry5pro/"
-   target="_blank" rel="noopener noreferrer">
-  <svg viewBox="0 0 24 24" aria-hidden="true">
-    <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-    <circle cx="12" cy="12" r="4"></circle>
-    <circle cx="17.5" cy="6.5" r="1.25"></circle>
-  </svg>
-</a>
-
-
-  <!-- Email -->
-  <a class="icon-btn" aria-label="Email"
-     href="mailto:lou@industry5.pro?subject=Cyber%20Review%20Inquiry">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2v.01L12 12 4 6.01V6h16zM4 18V8l8 6 8-6v10H4z"/>
-    </svg>
-  </a>
-
-  <!-- WhatsApp -->
-  <a class="icon-btn" data-fill aria-label="WhatsApp"
-     href="https://wa.me/14076945495" target="_blank" rel="noopener noreferrer">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.966-.273-.099-.472-.148-.671.15-.198.297-.769.966-.942 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.173.198-.297.298-.495.099-.198.05-.372-.025-.521-.074-.149-.671-1.611-.92-2.206-.242-.582-.487-.503-.671-.512l-.572-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.48 0 1.463 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.08 4.487.71.306 1.263.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.718 2.006-1.41.248-.69.248-1.282.173-1.41-.074-.124-.272-.198-.57-.347zM12.004 2C6.478 2 2 6.477 2 12.003c0 2.105.555 4.074 1.523 5.784L2 22l4.33-1.133a9.953 9.953 0 0 0 5.674 1.74h.001c5.526 0 10.004-4.477 10.004-10.003C22.01 6.477 17.53 2 12.004 2z"/>
-    </svg>
-  </a>
-</div>
-
-
-    <div class="meta">© 2025 Industry5.pro | Outcome obsessed and supplier agnostic</div>
-  </div>
-</footer>
-
-
-
-<script>
-  // Smooth scroll for anchors
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener('click',e=>{
-      const id=a.getAttribute('href').slice(1);
-      const el=document.getElementById(id);
-      if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth',block:'start'}) }
-    })
-  });
-
-  // Count up animation for KPI numbers
-  function animateCount(el){
-    const target=parseFloat(el.dataset.target||"0");
-    const suffix=el.dataset.suffix||"";
-    const isMoney=el.textContent.trim().startsWith("$");
-    const dur=1200; const start=performance.now();
-    function step(t){
-      const p=Math.min(1,(t-start)/dur);
-      const val=target*p;
-      const out=(isMoney?"$":"") + (target%1!==0 ? val.toFixed(2) : Math.round(val)) + suffix;
-      el.textContent=out;
-      if(p<1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  document.querySelectorAll('.knum').forEach(animateCount);
-</script>
-<script>
-(function(){
-  const link = document.getElementById('dl-checklist');
-  if(!link) return;
-
-  link.addEventListener('click', async function(e){
-    try{
-      // If the browser honors the download attr, this won't run.
-      // We only run if navigation was prevented or the server blocks it.
-      e.preventDefault();
-      const url = link.getAttribute('href');
-      const res = await fetch(url, { mode: 'same-origin' });
-      if(!res.ok) throw new Error('Fetch failed: ' + res.status);
-
-      const blob = await res.blob();
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = link.getAttribute('download') || 'Industry5pro_Cyber_Resilience_Checklist.pdf';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      setTimeout(()=>URL.revokeObjectURL(a.href), 1500);
-    }catch(err){
-      // As a last resort, open in a new tab so users can save manually
-      window.open(link.href, '_blank', 'noopener');
-    }
-  }, { passive:false });
-})();
-</script>
-<script>
-(function(){
-  const btn = document.getElementById('download-checklist');
-  if(!btn) return;
-
-  function getText(node){
-    // Grab strong + small text cleanly (e.g., "MFA on everything — Privileged accounts…")
-    const strong = node.querySelector('strong')?.textContent?.trim() || '';
-    const small  = node.querySelector('small')?.textContent?.trim()  || '';
-    return small ? `${strong} — ${small}` : strong;
-  }
-
-  btn.addEventListener('click', function(){
-    const checks = Array.from(document.querySelectorAll('#checklist .check'));
-    if (!checks.length){
-      alert('No checklist items found.');
-      return;
-    }
-
-    const met  = [];
-    const gaps = [];
-
-    checks.forEach(box => {
-      const input = box.querySelector('input[type="checkbox"]');
-      const label = box.querySelector('label');
-      if (!input || !label) return;
-      const line = getText(label);
-      (input.checked ? met : gaps).push(line);
-    });
-
-    const now = new Date();
-    const dt  = now.toLocaleString([], {year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit'});
-    const title = 'Cyber Resilience Checklist — Personal Summary';
-    const hdr   = `Generated: ${dt}\n`;
-
-    const metBlock = met.length
-      ? `\nMET ✅ (${met.length})\n${met.map(x => `  • ${x}`).join('\n')}\n`
-      : `\nMET ✅ (0)\n  • (none)\n`;
-
-    const gapBlock = gaps.length
-      ? `\nGAPS ❌ (${gaps.length})\n${gaps.map(x => `  • ${x}`).join('\n')}\n`
-      : `\nGAPS ❌ (0)\n  • (none)\n`;
-
-    const footer = `\nTip: Turn Gaps Into a Plan → industry5.pro/cyber\n`;
-
-    const content = `${title}\n${hdr}${metBlock}${gapBlock}${footer}`;
-
-    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
-    const a = document.createElement('a');
-    const stamp = now.toISOString().slice(0,10);
-    a.href = URL.createObjectURL(blob);
-    a.download = `My_Cyber_Resilience_Checklist_${stamp}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(()=>URL.revokeObjectURL(a.href), 1200);
-  });
-})();
-</script>
-
-</body>
-</html>
+    <section id="checklist">
+      <h2>Resilience Checklist</h2>
+      <p style="color:var(--text-muted)">Check what you have. Download
