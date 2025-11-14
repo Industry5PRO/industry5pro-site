@@ -361,7 +361,7 @@
       opacity: 0.7;
     }
 
-   /* --- Quadrant Axis Labels --- */
+ /* --- Quadrant Axis Labels --- */
     .quad-axis-label {
       position: absolute;
       color: #FFD700; /* Yellow/Gold */
@@ -373,17 +373,15 @@
       z-index: 10;
     }
     .quad-label-y {
+      left: 12px; /* Sits in the card's left padding */
       top: 50%;
-      /* This pushes the label 20px OUTSIDE the left edge of the grid */
-      left: -20px; 
-      transform: translateY(-50%) rotate(-90deg);
+      transform: translateY(-50%) rotate(-90deg); /* Rotates it vertically */
       transform-origin: center;
     }
     .quad-label-x {
+      bottom: 8px; /* Sits in the card's bottom padding */
       left: 50%;
-      /* This pushes the label 20px OUTSIDE the bottom edge of the grid */
-      bottom: -20px; 
-      transform: translateX(-50%);
+      transform: translateX(-50%); /* Centers it horizontally */
     }
     
     /* Vendor Datapoint */
@@ -622,28 +620,28 @@
         </p>
 
         <div class="quadrant-wrap">
-          <div class="quadrant-title">UCaaS/CCaaS with Built-In AI — Enterprise Readiness vs AI Breadth</div>
-          <div class="quadrant-grid">
-            <div class="axis-y"></div>
-            <div class="axis-x"></div>
-            
-            <div class="quad-axis-label quad-label-y">Enterprise Readiness →</div>
-            <div class="quad-axis-label quad-label-x">AI Breadth →</div>
-    
-            <div class="vendor nice"><div class="vendor-dot"></div><span class="vendor-label">NICE</span></div>
-            <div class="vendor genesys"><div class="vendor-dot"></div><span class="vendor-label">Genesys</span></div>
-            <div class="vendor five9"><div class="vendor-dot"></div><span class="vendor-label">Five9</span></div>
-            <div class="vendor talkdesk"><div class="vendor-dot"></div><span class="vendor-label">Talkdesk</span></div>
-            <div class="vendor cisco"><div class="vendor-dot"></div><span class="vendor-label">Cisco Webex</span></div>
-            <div class="vendor ringcentral"><div class="vendor-dot"></div><span class="vendor-label">RingCentral</span></div>
-            <div class="vendor dialpad"><div class="vendor-dot"></div><span class="vendor-label">Dialpad</span></div>
-            <div class="vendor zoom"><div class="vendor-dot"></div><span class="vendor-label">Zoom</span></div>
-            <div class="vendor eightbyeight"><div class="vendor-dot"></div><span class="vendor-label">8x8</span></div>
-            <div class="vendor vonage"><div class="vendor-dot"></div><span class="vendor-label">Vonage</span></div>
-            <div class="vendor ujet"><div class="vendor-dot"></div><span class="vendor-label">ujet.cx</span></div>
-            <div class="vendor contentguru"><div class="vendor-dot"></div><span class="vendor-label">Content Guru</span></div>
+        <div class="quadrant-title">UCaaS/CCaaS with Built-In AI — Enterprise Readiness vs AI Breadth</div>
+        <div class="quadrant-grid">
+          <div class="axis-y"></div>
+          <div class="axis-x"></div>
+          
+          <div class="vendor nice"><div class="vendor-dot"></div><span class="vendor-label">NICE</span></div>
+          <div class="vendor genesys"><div class="vendor-dot"></div><span class="vendor-label">Genesys</span></div>
+          <div class="vendor five9"><div class="vendor-dot"></div><span class="vendor-label">Five9</span></div>
+          <div class="vendor talkdesk"><div class="vendor-dot"></div><span class="vendor-label">Talkdesk</span></div>
+          <div class="vendor cisco"><div class="vendor-dot"></div><span class="vendor-label">Cisco Webex</span></div>
+          <div class="vendor ringcentral"><div class="vendor-dot"></div><span class="vendor-label">RingCentral</span></div>
+          <div class="vendor dialpad"><div class="vendor-dot"></div><span class="vendor-label">Dialpad</span></div>
+          <div class="vendor zoom"><div class="vendor-dot"></div><span class="vendor-label">Zoom</span></div>
+          <div class="vendor eightbyeight"><div class="vendor-dot"></div><span class="vendor-label">8x8</span></div>
+          <div class="vendor vonage"><div class="vendor-dot"></div><span class="vendor-label">Vonage</span></div>
+          <div class="vendor ujet"><div class="vendor-dot"></div><span class="vendor-label">ujet.cx</span></div>
+          <div class="vendor contentguru"><div class="vendor-dot"></div><span class="vendor-label">Content Guru</span></div>
 
-          </div>
+        </div> <div class="quad-axis-label quad-label-y">Enterprise Readiness ↑</div>
+        <div class="quad-axis-label quad-label-x">AI Breadth →</div>
+        
+      </div> ```
           
       </section>
 
