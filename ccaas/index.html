@@ -211,6 +211,14 @@
       color: #0b1220;
       transform: translateY(-2px);
     }
+    /* Button Row (Horizontal) */
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-top: 24px;
+    }
 
     /* --- Page Card --- */
     .card {
@@ -410,11 +418,12 @@
     }
 
     /* --- Lumen Cloud Voice Section --- */
-    .voice-grid {
+    .voice-grid-new { /* NEW GRID FOR THIS SECTION */
       display: grid;
       grid-template-columns: 1fr 1fr; /* 50/50 split */
       gap: 24px;
       align-items: start;
+      margin-top: 20px; /* Space between blurb and grid */
     }
     .icp-box {
       background: #1B1B1D; /* Match body bg */
@@ -438,7 +447,7 @@
     }
 
     @media (max-width: 900px) {
-      .voice-grid {
+      .voice-grid-new {
         grid-template-columns: 1fr;
       }
     }
@@ -451,7 +460,6 @@
       overflow: hidden;
       border-radius: 12px;
       border: 1px solid var(--card-border);
-      margin-top: 20px;
     }
     .video-embed-small iframe {
       position: absolute;
@@ -465,18 +473,6 @@
       border: 1px solid var(--card-border);
     }
     
-    /* --- CTA Button Stack (Vertical) --- */
-    .cta-stack {
-      display: grid;
-      grid-template-columns: minmax(0, 300px); /* Constrain button width */
-      gap: 16px; /* Increased gap */
-      margin-top: 20px;
-    }
-    /* Make buttons full-width within the stack */
-    .cta-stack .btn {
-      width: 100%;
-    }
-
     /* PDF Viewer Style */
     .viewer { 
       margin-top:16px; 
@@ -650,9 +646,6 @@
           <div class="quadrant-grid">
             <div class="axis-y"></div>
             <div class="axis-x"></div>
-            <div class="axis-label y-axis">Enterprise Readiness →</div>
-            <div class="axis-label x-axis">← Narrow | AI Breadth Across the Stack | Comprehensive →</div>
-
             <div class="vendor nice"><div class="vendor-dot"></div><span class="vendor-label">NICE</span></div>
             <div class="vendor genesys"><div class="vendor-dot"></div><span class="vendor-label">Genesys</span></div>
             <div class="vendor five9"><div class="vendor-dot"></div><span class="vendor-label">Five9</span></div>
@@ -673,31 +666,14 @@
       <section class="card" id="lumen-cloud-voice">
         <h2>Lumen Cloud Voice</h2>
         
-        <div class="voice-grid">
-          <div>
-            <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6;">
-              Lumen Cloud Voice is a fully managed, cloud-enabled calling and collaboration platform. With three tiers of service levels and the ability to integrate with existing systems (like Microsoft Teams as an example), Cloud Voice enables reliable, secure communications to help keep your employees and customers connected.
-            </p>
+        <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px;">
+          Lumen Cloud Voice is a fully managed, cloud-enabled calling and collaboration platform. With three tiers of service levels and the ability to integrate with existing systems (like Microsoft Teams as an example), Cloud Voice enables reliable, secure communications to help keep your employees and customers connected.
+        </p>
 
+        <div class="voice-grid-new">
+          <div>
             <div class="video-embed-small yt-lite-embed" data-id="PiESwUVWyUo" data-label="Play Lumen Cloud Voice Intro">
               </div>
-
-            <div class="cta-stack">
-              <a href="/assets/lumen-cloud-voice-datasheet.pdf" class="btn btn-primary" target="_blank" rel="noopener" download>
-                Download Data Sheet
-              </a>
-              <a href="#lumen-datasheet-viewer" class="btn btn-secondary">
-                View Inline
-              </a>
-              <a href="https://calendly.com/industry5pro/30min" class="btn btn-secondary" target="_blank" rel="noopener">
-                Book a UC Audit
-              </a>
-            </div>
-
-            <div class="viewer" id="lumen-datasheet-viewer" style="display: none;">
-              <iframe src="/assets/lumen-cloud-voice-datasheet.pdf#view=FitH" title="Lumen Cloud Voice Data Sheet" loading="lazy"></iframe>
-            </div>
-
           </div>
           
           <div>
@@ -715,6 +691,20 @@
               </p>
             </div>
           </div>
+        </div> <div class="cta-row" style="justify-content: center; margin-top: 24px;">
+          <a href="/assets/lumen-cloud-voice-datasheet.pdf" class="btn btn-primary" target="_blank" rel="noopener" download>
+            Download Data Sheet
+          </a>
+          <a href="#lumen-datasheet-viewer" class="btn btn-secondary">
+            View Inline
+          </a>
+          <a href="https://calendly.com/industry5pro/30min" class="btn btn-secondary" target="_blank" rel="noopener">
+            Book a UC Audit
+          </a>
+        </div>
+
+        <div class="viewer" id="lumen-datasheet-viewer" style="display: none;">
+          <iframe src="/assets/lumen-cloud-voice-datasheet.pdf#view=FitH" title="Lumen Cloud Voice Data Sheet" loading="lazy"></iframe>
         </div>
       </section>
       </div>
