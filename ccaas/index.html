@@ -162,31 +162,7 @@
       color: var(--page-accent); /* NICE Blue */
     }
     /* === ADD THIS: Hero Grid Layout === */
-    .hero .hero-grid{
-      display:grid;
-      grid-template-columns: minmax(0,1fr) 420px; /* <-- Larger 420px column */
-      gap:24px;
-      align-items:center;
-    }
-    .hero-photo{
-      display:flex;
-      justify-content:flex-end;
-    }
-    .hero-photo img{
-      width:100%;
-      max-width:420px; /* <-- Larger 420px image */
-      height:auto;
-      object-fit:contain;
-      filter:drop-shadow(0 10px 20px rgba(0,0,0,.35));
-    }
-    /* Mobile: Stack hero text/image */
-    @media (max-width:900px){
-      .hero .hero-grid{grid-template-columns:1fr}
-      .hero-photo{
-        display: none; /* Hides photo on mobile */
-      }
-    }
-    /* === END ADD === */
+    
 /* === ADD THIS: Hero Grid Layout (Copied from Index) === */
     .hero .hero-grid{
       display:grid;
