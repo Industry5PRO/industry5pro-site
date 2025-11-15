@@ -649,12 +649,34 @@
   margin-top: 12px;    /* was 24px or bigger */
 }
 /* Make the Cloud Voice video much larger */
+/* Lumen Cloud Voice: ICP text + video layout */
 #lumen-cloud-voice .icp-content{
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); /* bigger right column */
-  column-gap: 40px;
-  align-items: flex-start;
+  display:grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr); /* more room for text */
+  column-gap:32px;
+  align-items:flex-start;
 }
+
+/* Let ICP 1 + ICP 2 stretch nicely */
+#lumen-cloud-voice .icp-text{
+  max-width:none;
+}
+
+/* Keep video big, but not overpowering */
+#lumen-cloud-voice .icp-video{
+  max-width:560px;           /* ~20% smaller than full column */
+  width:100%;
+  justify-self:flex-end;
+}
+
+/* Make sure the video/iframe fills its box cleanly */
+#lumen-cloud-voice .icp-video iframe,
+#lumen-cloud-voice .icp-video img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
 
 /* Let the video use all of its column */
 #lumen-cloud-voice .icp-video{
@@ -813,28 +835,31 @@
   </p>
 
   <!-- Updated ICP Section with Video Embed -->
- <!-- ICP Section with custom thumbnail video -->
 <div class="icp-section">
   <div class="icp-content">
-    
-    <!-- Left: ICP Text Content -->
     <div class="icp-text">
       <div class="icp-card">
         <h3>ICP 1: Microsoft Teams Calling</h3>
-        <p>
-          Your org runs on Microsoft Teams and needs affordable, reliable PSTN calling.
-          You want simple, predictable pricing without a complex contact center platform.
-        </p>
+        <p>Your org runs on Microsoft Teams and needs affordable, reliable PSTN calling. You want simple, predictable pricing without a complex contact center platform.</p>
       </div>
       <div class="icp-card">
         <h3>ICP 2: Resilient SIP Trunking</h3>
-        <p>
-          You need a <span class="highlight">diverse, secondary carrier path</span> for 911,
-          failover, or a BYOC (Bring Your Own Carrier) integration with an existing PBX
-          or CCaaS platform.
-        </p>
+        <p>You need a diverse, secondary carrier path for 911, failover, or a BYOC (Bring Your Own Carrier) integration with an existing PBX or CCaaS platform.</p>
       </div>
     </div>
+
+    <div class="icp-video">
+      <div class="video-wrapper">
+        <img src="/assets/lumen-cloud-voice-thumb.png"
+             alt="Lumen Cloud Voice overview"
+             loading="lazy">
+        <button class="play-badge" type="button">
+          ▶ WATCH OVERVIEW
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- Right: video thumbnail with bottom-left play pill -->
     <button
