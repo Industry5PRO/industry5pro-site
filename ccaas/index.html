@@ -440,21 +440,12 @@
     }
 
     /* --- Lumen Cloud Voice Section --- */
+    /* This rule is now for a SINGLE column layout */
     .voice-grid-new {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 24px;
-      align-items: stretch; /* Makes columns equal height */
       margin-top: 24px;
-    }
-    .voice-grid-new > div:first-child { /* Video column */
-      display: flex;
-      flex-direction: column;
-    }
-    .voice-grid-new > div:last-child { /* ICP column */
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
     }
 
     .icp-box {
@@ -462,7 +453,6 @@
       border: 1px solid var(--card-border);
       border-radius: 12px;
       padding: 20px;
-      flex-grow: 1; /* Makes boxes fill height */
     }
     .icp-box h4 {
       margin: 0 0 10px 0;
@@ -477,12 +467,6 @@
     }
     .icp-box .highlight {
       color: var(--genesys-orange);
-    }
-    
-    @media (max-width: 900px) {
-      .voice-grid-new {
-        grid-template-columns: 1fr;
-      }
     }
     
     /* PDF Viewer Style */
@@ -620,29 +604,30 @@
         </p>
 
         <div class="quadrant-wrap">
-        <div class="quadrant-title">UCaaS/CCaaS with Built-In AI — Enterprise Readiness vs AI Breadth</div>
-        <div class="quadrant-grid">
-          <div class="axis-y"></div>
-          <div class="axis-x"></div>
-          
-          <div class="vendor nice"><div class="vendor-dot"></div><span class="vendor-label">NICE</span></div>
-          <div class="vendor genesys"><div class="vendor-dot"></div><span class="vendor-label">Genesys</span></div>
-          <div class="vendor five9"><div class="vendor-dot"></div><span class="vendor-label">Five9</span></div>
-          <div class="vendor talkdesk"><div class="vendor-dot"></div><span class="vendor-label">Talkdesk</span></div>
-          <div class="vendor cisco"><div class="vendor-dot"></div><span class="vendor-label">Cisco Webex</span></div>
-          <div class="vendor ringcentral"><div class="vendor-dot"></div><span class="vendor-label">RingCentral</span></div>
-          <div class="vendor dialpad"><div class="vendor-dot"></div><span class="vendor-label">Dialpad</span></div>
-          <div class="vendor zoom"><div class="vendor-dot"></div><span class="vendor-label">Zoom</span></div>
-          <div class="vendor eightbyeight"><div class="vendor-dot"></div><span class="vendor-label">8x8</span></div>
-          <div class="vendor vonage"><div class="vendor-dot"></div><span class="vendor-label">Vonage</span></div>
-          <div class="vendor ujet"><div class="vendor-dot"></div><span class="vendor-label">ujet.cx</span></div>
-          <div class="vendor contentguru"><div class="vendor-dot"></div><span class="vendor-label">Content Guru</span></div>
+          <div class="quadrant-title">UCaaS/CCaaS with Built-In AI — Enterprise Readiness vs AI Breadth</div>
+          <div class="quadrant-grid">
+            <div class="axis-y"></div>
+            <div class="axis-x"></div>
+            
+            <div class="vendor nice"><div class="vendor-dot"></div><span class="vendor-label">NICE</span></div>
+            <div class="vendor genesys"><div class="vendor-dot"></div><span class="vendor-label">Genesys</span></div>
+            <div class="vendor five9"><div class="vendor-dot"></div><span class="vendor-label">Five9</span></div>
+            <div class="vendor talkdesk"><div class="vendor-dot"></div><span class="vendor-label">Talkdesk</span></div>
+            <div class="vendor cisco"><div class="vendor-dot"></div><span class="vendor-label">Cisco Webex</span></div>
+            <div class="vendor ringcentral"><div class="vendor-dot"></div><span class="vendor-label">RingCentral</span></div>
+            <div class="vendor dialpad"><div class="vendor-dot"></div><span class="vendor-label">Dialpad</span></div>
+            <div class="vendor zoom"><div class="vendor-dot"></div><span class="vendor-label">Zoom</span></div>
+            <div class="vendor eightbyeight"><div class="vendor-dot"></div><span class="vendor-label">8x8</span></div>
+            <div class="vendor vonage"><div class="vendor-dot"></div><span class="vendor-label">Vonage</span></div>
+            <div class="vendor ujet"><div class="vendor-dot"></div><span class="vendor-label">ujet.cx</span></div>
+            <div class="vendor contentguru"><div class="vendor-dot"></div><span class="vendor-label">Content Guru</span></div>
 
-        </div> <div class="quad-axis-label quad-label-y">Enterprise Readiness → </div>
-        <div class="quad-axis-label quad-label-x">AI Breadth →</div>
+          </div> 
+          <div class="quad-axis-label quad-label-y">Enterprise Readiness ↑</div>
+          <div class="quad-axis-label quad-label-x">AI Breadth →</div>
         
-      </div> 
-          
+        </div> 
+            
       </section>
 
       <section class="card" id="lumen-cloud-voice">
@@ -653,7 +638,6 @@
         </p>
 
         <div class="voice-grid-new">
-                 
           <div>
             <div class="icp-box">
               <h4>ICP 1: Microsoft Teams Calling</h4>
@@ -662,14 +646,16 @@
               </p>
             </div>
             
-            <div class="icp-box">
+            <div class="icp-box" style="margin-top: 16px;">
               <h4>ICP 2: Resilient SIP Trunking</h4>
               <p>
                 You need a <span class="highlight">diverse, secondary carrier path</span> for 911, failover, or a BYOC (Bring Your Own Carrier) integration with an existing PBX or CCaaS platform.
               </T>
             </div>
           </div>
-        </div> <div class="cta-row" style="justify-content: center; margin-top: 24px;">
+        </div> 
+        
+        <div class="cta-row" style="justify-content: center; margin-top: 24px;">
           <a href="/assets/lumen-cloud-voice-data-sheet.pdf" class="btn btn-primary" target="_blank" rel="noopener" download>
             Download Data Sheet
           </a>
@@ -768,10 +754,14 @@
       // Initialize BOTH viewer buttons
       initViewerToggle('a[href="#cloud20-whitepaper-viewer"]');
       initViewerToggle('a[href="#lumen-datasheet-viewer"]');
-
-      
+    
     }); // End DOMContentLoaded
   </script>
 
 </body>
 </html>
+
+}
+i have added <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" /> to the file to fix the caching issue as you recommended. now please get the video to work. it's still showing up as a large gray box on the top of the section.
