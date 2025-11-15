@@ -479,6 +479,17 @@
     }
     .viewer iframe { width:100%; height:720px; border:0; display:block; }
     @media (max-width:900px){ .viewer iframe{height:520px} }
+    
+/* Lumen Cloud Voice inline viewer: keep it within the center column */
+#lumen-datasheet-viewer{
+  max-width: 900px;     /* cap the width on desktop */
+  margin: 24px auto 0;  /* center it */
+}
+
+/* Override the generic iframe height just for this viewer */
+#lumen-datasheet-viewer iframe{
+  height: 520px;        /* or 600px/65vh if you want taller */
+}
 
     /* Footer Styles */
     .footer {
@@ -717,17 +728,6 @@
   }
 }
 /* --- END CSS FIX --- */
-/* Lumen Cloud Voice inline viewer width */
-#lumen-datasheet-viewer{
-  max-width: 900px;      /* cap the width on big screens */
-  margin: 24px auto 0;   /* center it under the section */
-}
-
-#lumen-datasheet-viewer iframe{
-  width: 100%;           /* fill that 900px max-width */
-  height: 65vh;          /* adjust if you want it taller/shorter */
-}
-
 
   </style>
 </head>
