@@ -548,6 +548,101 @@
         max-width: 100%;
     }
 }
+/* Layout for Lumen Cloud Voice ICP + video */
+.icp-section{
+  margin-top:24px;
+}
+
+.icp-content{
+  display:grid;
+  grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);
+  gap:24px;
+  align-items:flex-start;
+}
+
+/* Optional: tighten ICP text if you want it shorter */
+.icp-text .icp-card p{
+  max-width: 40rem;
+}
+
+/* Video shell with 16:9 aspect and custom thumb */
+.video-shell{
+  position:relative;
+  width:100%;
+  aspect-ratio:16 / 9;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.12);
+  background:#000;
+  overflow:hidden;
+  cursor:pointer;
+  padding:0;
+  display:block;
+}
+
+/* When playing, iframe fills the shell */
+.video-shell iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+/* Thumbnail layer */
+.video-thumb{
+  position:absolute;
+  inset:0;
+}
+
+.video-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* Bottom-left play pill */
+.play-pill{
+  position:absolute;
+  left:16px;
+  bottom:16px;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 14px 6px 12px;
+  border-radius:999px;
+  background:rgba(0,0,0,.78);
+  color:#fff;
+  font-size:.85rem;
+  font-weight:600;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  box-shadow:0 0 12px rgba(0,0,0,.8);
+  pointer-events:none; /* clicks go to the shell */
+}
+
+.play-pill::before{
+  content:"▶";
+  font-size:.8rem;
+}
+
+/* Hover glow in Lumen ice blue */
+.video-shell:hover .play-pill{
+  color:var(--lumen-blue-light);
+  box-shadow:0 0 18px rgba(0,163,224,.8);
+}
+
+/* Mobile: stack video under ICPs */
+@media (max-width: 900px){
+  .icp-content{
+    grid-template-columns:1fr;
+  }
+  
+  .video-shell{
+    max-width:560px;
+    margin:0 auto;
+  }
+}
 
   </style>
 </head>
@@ -680,25 +775,50 @@
   </p>
 
   <!-- Updated ICP Section with Video Embed -->
-  <div class="icp-section">
-    <div class="icp-content">
-      <!-- ICP Text Content -->
-      <div class="icp-text">
-        <div class="icp-card">
-          <h3>ICP 1: Microsoft Teams Calling</h3>
-          <p>Your org runs on Microsoft Teams and needs affordable, reliable PSTN calling. You want simple, predictable pricing without a complex contact center platform.</p>
-        </div>
-        <div class="icp-card">
-          <h3>ICP 2: Resilient SIP Trunking</h3>
-          <p>You need a diverse, secondary carrier path for 911, failover, or a BYOC (Bring Your Own Carrier) integration with an existing PBX or CCaaS platform.</p>
-        </div>
+ <!-- ICP Section with custom thumbnail video -->
+<div class="icp-section">
+  <div class="icp-content">
+    
+    <!-- Left: ICP Text Content -->
+    <div class="icp-text">
+      <div class="icp-card">
+        <h3>ICP 1: Microsoft Teams Calling</h3>
+        <p>
+          Your org runs on Microsoft Teams and needs affordable, reliable PSTN calling.
+          You want simple, predictable pricing without a complex contact center platform.
+        </p>
       </div>
-      <!-- YouTube Video Embed -->
-      <div class="icp-video">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/PiESwUVWyUo?si=zWyR2LOC8ksiUDu6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="icp-card">
+        <h3>ICP 2: Resilient SIP Trunking</h3>
+        <p>
+          You need a <span class="highlight">diverse, secondary carrier path</span> for 911,
+          failover, or a BYOC (Bring Your Own Carrier) integration with an existing PBX
+          or CCaaS platform.
+        </p>
       </div>
     </div>
+
+    <!-- Right: video thumbnail with bottom-left play pill -->
+    <button
+      class="video-shell"
+      type="button"
+      data-youtube="https://www.youtube.com/embed/PiESwUVWyUo?si=zWyR2LOC8ksiUDu6"
+      aria-label="Play Lumen Cloud Voice overview video"
+    >
+      <div class="video-thumb">
+        <!-- 👇 Use any image you want as thumbnail -->
+        <img
+          src="/assets/lumen-cloud-voice-thumb.jpg"
+          alt="Lumen Cloud Voice overview"
+          loading="lazy"
+        />
+        <span class="play-pill">Watch overview</span>
+      </div>
+    </button>
+
   </div>
+</div>
+
   
   <!-- CTA Section (Download and Book Audit) -->
   <div class="cta-row" style="justify-content: center; margin-top: 24px;">
@@ -805,10 +925,33 @@
     }); // End DOMContentLoaded
   </script>
 
+  <script>
+  // Swap thumbnail for autoplaying YouTube iframe when clicked
+  document.addEventListener('click', function (evt) {
+    const shell = evt.target.closest('.video-shell');
+    if (!shell || shell.classList.contains('is-playing')) return;
+
+    const yt = shell.dataset.youtube;
+    if (!yt) return;
+
+    const iframe = document.createElement('iframe');
+    iframe.src = yt + (yt.includes('?') ? '&' : '?') + 'autoplay=1';
+    iframe.title = 'Lumen Cloud Voice video';
+    iframe.loading = 'lazy';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    iframe.allowFullscreen = true;
+
+    shell.innerHTML = '';
+    shell.appendChild(iframe);
+    shell.classList.add('is-playing');
+  });
+</script>
+
 </body>
 </html>
 
 }
-i have added <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Expires" content="0" /> to the file to fix the caching issue as you recommended. now please get the video to work. it's still showing up as a large gray box on the top of the section.
+<meta http-equiv="Expires" content="0" /> 
