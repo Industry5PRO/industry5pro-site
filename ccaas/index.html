@@ -769,46 +769,7 @@
       initViewerToggle('a[href="#cloud20-whitepaper-viewer"]');
       initViewerToggle('a[href="#lumen-datasheet-viewer"]');
 
-      // --- Lite YouTube Embed Script ---
-      (function(){
-        function initLiteYouTube(container) {
-          var videoId = container.dataset.id;
-          if (!videoId) return;
-
-          var playLabel = container.dataset.label || 'Play';
-          
-          var posterUrl = "https://img.youtube.com/vi/"+videoId+"/maxresdefault.jpg";
-          var img = new Image();
-          img.src = posterUrl;
-          img.onload = () => { container.style.backgroundImage = 'url("' + posterUrl + '")'; };
-          img.onerror = () => { container.style.backgroundImage = 'url("https://img.youtube.com/vi/'+videoId+'/hqdefault.jpg")'; };
-          container.style.backgroundPosition = 'center';
-          container.style.backgroundSize = 'cover';
-          container.style.cursor = 'pointer';
-
-          var playBtn = document.createElement('button');
-          playBtn.type = 'button';
-          playBtn.className = 'yt-lite-play';
-          playBtn.setAttribute('aria-label', playLabel);
-          container.appendChild(playBtn);
-          
-          container.addEventListener('click', function(e) {
-            e.preventDefault();
-            var iframe = document.createElement('iframe');
-            iframe.src = "https://www.youtube.com/embed/"+videoId+"?autoplay=1&rel=0";
-            iframe.setAttribute('allow',"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
-            iframe.setAttribute('allowfullscreen', '');
-            iframe.setAttribute('frameborder', '0');
-            iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;';
-            
-            container.innerHTML = '';
-            container.appendChild(iframe);
-            container.style.cursor = 'default';
-          }, { once: true });
-        }
-        document.querySelectorAll('.yt-lite-embed').forEach(el => initLiteYouTube(el));
-      })(); // End Lite YouTube
-
+      
     }); // End DOMContentLoaded
   </script>
 
