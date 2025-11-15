@@ -653,12 +653,12 @@
 */
 
 /* --- Lumen Cloud Voice Section --- */
-#lumen-cloud-voice .icp-content {
-  display: grid;
-  /* This creates the 60% / 40% ratio you drew */
-  grid-template-columns: 1.5fr 1fr;
-  gap: 32px;
-  align-items: flex-start; /* Aligns items to the top of the columns */
+#lumen-cloud-voice .icp-content{
+  display:grid;
+  /* text about 46 percent, video about 54 percent */
+  grid-template-columns:minmax(0,1.1fr) minmax(0,1.3fr);
+  gap:32px;
+  align-items:flex-start;
 }
 
 /* Let the text and video columns stack on mobile */
