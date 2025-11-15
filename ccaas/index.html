@@ -119,7 +119,7 @@
       --page-accent: var(--nice-blue);
       
       /* --- Base Styles --- */
-      --card-bg: #20222B; /* Darker than charcoal */
+      --card-bg: #2022B; /* Darker than charcoal */
       --card-border: rgba(255, 255, 255, 0.1);
       --text-muted: #aeb8c4;
     }
@@ -655,28 +655,15 @@
 /* --- Lumen Cloud Voice Section --- */
 #lumen-cloud-voice .icp-content {
   display: grid;
-  /* This creates the 50/50 "same sized" layout you requested */
-  grid-template-columns: 1fr 1fr;
+  /* This creates the 2/3 and 1/3 "2 and 1 card area" you requested */
+  grid-template-columns: 2fr 1fr;
   gap: 32px;
   align-items: flex-start; /* Aligns items to the top of the columns */
 }
 
-/* --- NEW: Make ICP 1 and ICP 2 side-by-side --- */
-#lumen-cloud-voice .icp-text {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px; /* Inner gap for the cards */
-  align-items: flex-start;
-}
-
-
 /* Let the text and video columns stack on mobile */
 @media (max-width: 900px) {
   #lumen-cloud-voice .icp-content {
-    grid-template-columns: 1fr;
-  }
-  /* --- NEW: Stack ICP cards on mobile --- */
-  #lumen-cloud-voice .icp-text {
     grid-template-columns: 1fr;
   }
 }
