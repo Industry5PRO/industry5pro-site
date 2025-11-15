@@ -645,85 +645,46 @@
     margin:0 auto;
   }
 }
-#lumen-cloud-voice .cta-row{
-  margin-top: 12px;    /* was 24px or bigger */
-}
-/* Make the Cloud Voice video much larger */
-/* Lumen Cloud Voice: ICP text + video layout */
-/* Lumen Cloud Voice: ICP text + video layout */
-#lumen-cloud-voice .icp-content{
-  display:grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr); /* more room for text */
-  column-gap:32px;
-  align-items:flex-start;
-}
 
-/* Let ICP 1 + ICP 2 stretch nicely */
-#lumen-cloud-voice .icp-text{
-  max-width:none;
+/* --- START CSS FIX --- */
+/* All the duplicate/conflicting CSS rules for 
+  #lumen-cloud-voice have been removed and 
+  replaced with this single, consolidated block.
+*/
+
+/* --- Lumen Cloud Voice Section --- */
+#lumen-cloud-voice .icp-content {
+  display: grid;
+  /* This creates the 50/50 "same sized" layout you requested */
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: flex-start; /* Aligns items to the top of the columns */
 }
 
-/* Keep video big, but not overpowering */
-#lumen-cloud-voice .icp-video{
-  max-width:560px;           /* ~20% smaller than full column */
-  width:100%;
-  justify-self:flex-end;
+/* Let the text and video columns stack on mobile */
+@media (max-width: 900px) {
+  #lumen-cloud-voice .icp-content {
+    grid-template-columns: 1fr;
+  }
 }
 
-/* Make sure the video/iframe fills its box cleanly */
-#lumen-cloud-voice .icp-video iframe,
-#lumen-cloud-voice .icp-video img{
-  width:100%;
-  height:auto;
-  display:block;
-}
-
-/* Let ICP 1 + ICP 2 stretch nicely */
-#lumen-cloud-voice .icp-text{
-  max-width:none;
-}
-
-/* Keep video big, but not overpowering */
-#lumen-cloud-voice .icp-video{
-  max-width:560px;           /* ~20% smaller than full column */
-  width:100%;
-  justify-self:flex-end;
-}
-
-/* Make sure the video/iframe fills its box cleanly */
-#lumen-cloud-voice .icp-video iframe,
-#lumen-cloud-voice .icp-video img{
-  width:100%;
-  height:auto;
-  display:block;
-}
-
-
-/* Let the video use all of its column */
-#lumen-cloud-voice .icp-video{
+/* Make the video container (and the shell inside it) fill the column */
+#lumen-cloud-voice .icp-video {
   max-width: none;
   width: 100%;
+  justify-self: stretch; /* Ensures it fills the grid cell */
 }
 
-/* Whether it's an iframe or a thumbnail img, stretch it */
-#lumen-cloud-voice .icp-video iframe,
-#lumen-cloud-voice .icp-video img{
+/* Make sure the video shell itself uses the full width */
+#lumen-cloud-voice .video-shell {
   width: 100%;
-  height: auto;
-  display: block;
 }
 
-/* Optional: keep a clean 16:9 frame so it feels big + consistent */
-#lumen-cloud-voice .icp-video .video-wrapper{
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
+/* Adjust margin on the CTA row */
+#lumen-cloud-voice .cta-row {
+  margin-top: 12px;
 }
-#lumen-cloud-voice .icp-video .video-wrapper iframe,
-#lumen-cloud-voice .icp-video .video-wrapper img{
-  position: absolute;
-  inset: 0;
-}
+/* --- END CSS FIX --- */
 
   </style>
 </head>
@@ -848,81 +809,62 @@
             
       </section>
 
-     <section class="card" id="lumen-cloud-voice">
-  <h2>Lumen Cloud Voice</h2>
-  
-  <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px;">
-    Lumen Cloud Voice is a fully managed, cloud-enabled calling and collaboration platform. With three tiers of service levels and the ability to integrate with existing systems (like Microsoft Teams as an example), Cloud Voice enables reliable, secure communications to help keep your employees and customers connected.
-  </p>
-
-  <!-- Updated ICP Section with Video Embed -->
-<div class="icp-section">
-  <div class="icp-content">
-    <div class="icp-text">
-      <div class="icp-card">
-        <h3>ICP 1: Microsoft Teams Calling</h3>
-        <p>Your org runs on Microsoft Teams and needs affordable, reliable PSTN calling. You want simple, predictable pricing without a complex contact center platform.</p>
+    <section class="card" id="lumen-cloud-voice">
+      <h2>Lumen Cloud Voice</h2>
+      
+      <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px;">
+        Lumen Cloud Voice is a fully managed, cloud-enabled calling and collaboration platform. With three tiers of service levels and the ability to integrate with existing systems (like Microsoft Teams as an example), Cloud Voice enables reliable, secure communications to help keep your employees and customers connected.
+      </p>
+    
+      <div class="icp-section">
+        <div class="icp-content">
+          
+          <div class="icp-text">
+            <div class="icp-card">
+              <h3>ICP 1: Microsoft Teams Calling</h3>
+              <p>Your org runs on Microsoft Teams and needs affordable, reliable PSTN calling. You want simple, predictable pricing without a complex contact center platform.</p>
+            </div>
+            <div class="icp-card">
+              <h3>ICP 2: Resilient SIP Trunking</h3>
+              <p>You need a diverse, secondary carrier path for 911, failover, or a BYOC (Bring Your Own Carrier) integration with an existing PBX or CCaaS platform.</p>
+            </div>
+          </div>
+    
+          <div class="icp-video">
+            <button
+              class="video-shell"
+              type="button"
+              data-youtube="https://www.youtube.com/embed/PiESwUVWyUo?si=zWyR2LOC8ksiUDu6"
+              aria-label="Play Lumen Cloud Voice overview video"
+            >
+              <div class="video-thumb">
+                <img
+                  src="/assets/lumen-cloud-voice-thumb.jpg"
+                  alt="Lumen Cloud Voice overview"
+                  loading="lazy"
+                />
+                <span class="play-pill">Watch overview</span>
+              </div>
+            </button>
+          </div>
+    
+        </div> </div> <div class="cta-row" style="justify-content: center; margin-top: 24px;">
+        <a href="/assets/lumen-cloud-voice-data-sheet.pdf" class="btn btn-primary" target="_blank" rel="noopener" download>
+          Download Data Sheet
+        </a>
+        <a href="#lumen-datasheet-viewer" class="btn btn-secondary">
+          View Inline
+        </a>
+        <a href="https://calendly.com/industry5pro/30min" class="btn btn-secondary" target="_blank" rel="noopener">
+          Book a UC Audit
+        </a>
       </div>
-      <div class="icp-card">
-        <h3>ICP 2: Resilient SIP Trunking</h3>
-        <p>You need a diverse, secondary carrier path for 911, failover, or a BYOC (Bring Your Own Carrier) integration with an existing PBX or CCaaS platform.</p>
+    
+      <div class="viewer" id="lumen-datasheet-viewer" style="display: none;">
+        <iframe src="/assets/lumen-cloud-voice-data-sheet.pdf#view=FitH" title="Lumen Cloud Voice Data Sheet" loading="lazy"></iframe>
       </div>
+    </section>
     </div>
-
-    <div class="icp-video">
-      <div class="video-wrapper">
-        <img src="/assets/lumen-cloud-voice-thumb.png"
-             alt="Lumen Cloud Voice overview"
-             loading="lazy">
-        <button class="play-badge" type="button">
-          ▶ WATCH OVERVIEW
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-    <!-- Right: video thumbnail with bottom-left play pill -->
-    <button
-      class="video-shell"
-      type="button"
-      data-youtube="https://www.youtube.com/embed/PiESwUVWyUo?si=zWyR2LOC8ksiUDu6"
-      aria-label="Play Lumen Cloud Voice overview video"
-    >
-      <div class="video-thumb">
-        <!-- 👇 Use any image you want as thumbnail -->
-        <img
-          src="/assets/lumen-cloud-voice-thumb.jpg"
-          alt="Lumen Cloud Voice overview"
-          loading="lazy"
-        />
-        <span class="play-pill">Watch overview</span>
-      </div>
-    </button>
-
-  </div>
-</div>
-
-  
-  <!-- CTA Section (Download and Book Audit) -->
-  <div class="cta-row" style="justify-content: center; margin-top: 24px;">
-    <a href="/assets/lumen-cloud-voice-data-sheet.pdf" class="btn btn-primary" target="_blank" rel="noopener" download>
-      Download Data Sheet
-    </a>
-    <a href="#lumen-datasheet-viewer" class="btn btn-secondary">
-      View Inline
-    </a>
-    <a href="https://calendly.com/industry5pro/30min" class="btn btn-secondary" target="_blank" rel="noopener">
-      Book a UC Audit
-    </a>
-  </div>
-
-  <div class="viewer" id="lumen-datasheet-viewer" style="display: none;">
-    <iframe src="/assets/lumen-cloud-voice-data-sheet.pdf#view=FitH" title="Lumen Cloud Voice Data Sheet" loading="lazy"></iframe>
-  </div>
-</section>
-
-      </div>
   </main>
 
   <footer class="footer">
@@ -1034,8 +976,3 @@
 
 </body>
 </html>
-
-}
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Expires" content="0" /> 
