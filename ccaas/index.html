@@ -555,15 +555,17 @@
 
 .icp-content{
   display:grid;
-  grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);
+  /* give the text more room vs. video */
+  grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);
   gap:24px;
   align-items:flex-start;
 }
 
-/* Optional: tighten ICP text if you want it shorter */
+/* let the copy breathe all the way across its column */
 .icp-text .icp-card p{
-  max-width: 40rem;
+  max-width: 100%;
 }
+
 
 /* Video shell with 16:9 aspect and custom thumb */
 .video-shell{
@@ -642,6 +644,9 @@
     max-width:560px;
     margin:0 auto;
   }
+}
+#lumen-cloud-voice .cta-row{
+  margin-top: 12px;    /* was 24px or bigger */
 }
 
   </style>
