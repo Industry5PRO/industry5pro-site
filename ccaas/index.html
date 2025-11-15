@@ -650,11 +650,32 @@
 }
 /* Make the Cloud Voice video much larger */
 /* Lumen Cloud Voice: ICP text + video layout */
+/* Lumen Cloud Voice: ICP text + video layout */
 #lumen-cloud-voice .icp-content{
   display:grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr); /* more room for text */
   column-gap:32px;
   align-items:flex-start;
+}
+
+/* Let ICP 1 + ICP 2 stretch nicely */
+#lumen-cloud-voice .icp-text{
+  max-width:none;
+}
+
+/* Keep video big, but not overpowering */
+#lumen-cloud-voice .icp-video{
+  max-width:560px;           /* ~20% smaller than full column */
+  width:100%;
+  justify-self:flex-end;
+}
+
+/* Make sure the video/iframe fills its box cleanly */
+#lumen-cloud-voice .icp-video iframe,
+#lumen-cloud-voice .icp-video img{
+  width:100%;
+  height:auto;
+  display:block;
 }
 
 /* Let ICP 1 + ICP 2 stretch nicely */
