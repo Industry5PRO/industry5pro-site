@@ -648,6 +648,39 @@
 #lumen-cloud-voice .cta-row{
   margin-top: 12px;    /* was 24px or bigger */
 }
+/* Make the Cloud Voice video much larger */
+#lumen-cloud-voice .icp-content{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); /* bigger right column */
+  column-gap: 40px;
+  align-items: flex-start;
+}
+
+/* Let the video use all of its column */
+#lumen-cloud-voice .icp-video{
+  max-width: none;
+  width: 100%;
+}
+
+/* Whether it's an iframe or a thumbnail img, stretch it */
+#lumen-cloud-voice .icp-video iframe,
+#lumen-cloud-voice .icp-video img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Optional: keep a clean 16:9 frame so it feels big + consistent */
+#lumen-cloud-voice .icp-video .video-wrapper{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+#lumen-cloud-voice .icp-video .video-wrapper iframe,
+#lumen-cloud-voice .icp-video .video-wrapper img{
+  position: absolute;
+  inset: 0;
+}
 
   </style>
 </head>
