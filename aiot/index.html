@@ -135,128 +135,14 @@
     h1{font-size:2.1rem; line-height:1.2; margin:.4rem 0 0}
     .sub{color:var(--silver); max-width:900px; font-size:1.05rem}
 
-    /* START NEW QUADRANT CSS
-    */
+    /* Quadrant (Static Image) */
     .quad{
       margin:24px auto; background:#0a0a0a; border:1px solid rgba(255,215,0,.35);
       border-radius:14px; padding:18px; box-shadow:0 10px 40px rgba(255,215,0,.08);
     }
-    .quadrant-wrap {
-      position: relative;
-      background: #000;
-      border: 1px solid rgba(255,215,0,.35);
-      border-radius: 12px;
-      padding: 40px 24px 24px;
-      overflow: hidden;
+    .quad a img{
+      width:100%; height:auto; display:block; border-radius:10px; border:1px solid rgba(133,187,101,.35)
     }
-    .quadrant-title {
-      position: absolute;
-      top: 12px; left: 24px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--gold); /* Gold title */
-    }
-    .quadrant-grid {
-      display: grid;
-      grid-template-columns: repeat(10, 1fr);
-      grid-template-rows: repeat(10, 1fr);
-      height: 600px;
-      position: relative;
-      background: 
-        linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
-      background-size: 10% 10%;
-    }
-    .axis-y {
-      position: absolute;
-      left: 50%; /* Centered Y-Axis */
-      top: 0; bottom: 0;
-      width: 2px;
-      background: var(--gold);
-      opacity: 0.7;
-    }
-    .axis-x {
-      position: absolute;
-      left: 0; right: 0;
-      bottom: 50%; /* Centered X-Axis */
-      height: 2px;
-      background: var(--gold);
-      opacity: 0.7;
-    }
-
-    /* Quadrant Axis Labels */
-    .quad-axis-label {
-      position: absolute;
-      color: var(--gold);
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      white-space: nowrap;
-      z-index: 10;
-    }
-    /* Y-Axis Label: Enterprise AI Readiness */
-    .quad-label-y {
-      left: 12px;
-      top: 50%;
-      transform: translateY(-50%) rotate(-90deg);
-      transform-origin: center;
-    }
-    /* X-Axis Label: AIoT Breadth */
-    .quad-label-x {
-      bottom: 8px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    /* Axis arrows */
-    .quad-label-y::after { content: ' →'; }
-    .quad-label-x::after { content: ' →'; }
-    
-    /* Vendor Datapoint */
-    .vendor {
-      grid-column: var(--x);
-      grid-row: var(--y);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    .vendor-dot {
-      width: 16px;
-      height: 16px;
-      /* Default: Money Green */
-      background: var(--money);
-      border: 2px solid #fff;
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--money), 0 0 20px var(--money);
-      transition: all 0.2s ease;
-    }
-   .vendor-label {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(14px, -50%); /* 14px right of center */
-      color: #fff;
-      font-weight: 600;
-      font-size: 0.9rem;
-      white-space: nowrap;
-      text-shadow: 0 0 5px #000;
-    }
-    /* Hover: Siemens Green */
-    .vendor:hover .vendor-dot {
-      transform: scale(1.5);
-      background-color: var(--siemens-green);
-      box-shadow: 0 0 10px var(--siemens-glow), 0 0 20px var(--siemens-glow);
-    }
-    
-    @media (max-width: 600px) {
-      .quadrant-grid { height: 400px; }
-      .vendor-dot { width: 12px; height: 12px; }
-      .vendor-label { font-size: 0.75rem; transform: translate(8px, -50%); }
-    }
-    /* END NEW QUADRANT CSS
-    */
-
     .cta-bar{
       display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between;
       margin-top:14px; padding:12px; border-top:1px dashed rgba(255,215,0,.35)
@@ -499,39 +385,20 @@
 
 
   <section class="quad">
-    <div class="quadrant-wrap">
-      <div class="quadrant-title">AIoT Landscape: Enterprise AI Readiness vs. AIoT Breadth</div>
-      <div class="quadrant-grid">
-        <div class="axis-y"></div>
-        <div class="axis-x"></div>
-        
-        <div class="vendor" style="--x: 9; --y: 1;">
-          <div class="vendor-dot"></div><span class="vendor-label">Aeris</span>
-        </div>
-        
-        <div class="vendor" style="--x: 4; --y: 2;">
-          <div class="vendor-dot"></div><span class="vendor-label">Siemens</span>
-        </div>
-        
-        <div class="vendor" style="--x: 3; --y: 6;">
-          <div class="vendor-dot"></div><span class="vendor-label">Verizon</span>
-        </div>
-        
-        <div class="vendor" style="--x: 2; --y: 7;">
-          <div class="vendor-dot"></div><span class="vendor-label">T-Mobile</span>
-        </div>
-
-      </div> 
-      <div class="quad-axis-label quad-label-y">Enterprise AI Readiness</div>
-      <div class="quad-axis-label quad-label-x">AIoT Breadth (Niche to Comprehensive)</div>
-    
-    </div> 
-    
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform" target="_blank" rel="noopener">
+      <img
+        src="/assets/aiot_quadrant_i5_colors.png?v=5"
+        alt="AIoT Landscape Quadrant — Carrier Agnostic View"
+        onerror="this.onerror=null;this.style.border='2px solid red';this.alt='Quadrant image not found at /assets/aiot_quadrant_i5_colors.png';"
+      />
+    </a>
     <div class="cta-bar">
-      <div class="note">We’ll scope connectivity, security, edge, and data pipelines around your outcomes.</div>
-      <a class="pill-cta accent" href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform" target="_blank" rel="noopener">Request Scope and Pricing</a>
+      <div class="note">Click the quadrant to open the AIoT intake form. We’ll scope connectivity, security, edge, and data pipelines around your outcomes.</div>
+      <a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform" target="_blank" rel="noopener">Request Scope and Pricing</a>
     </div>
   </section>
+
+
   <section class="menu">
     <h2>Application Specific and Client Specific Menu</h2>
     <div class="grid">
@@ -544,7 +411,7 @@
       <a class="chip" href="/blog?tag=logistics-warehousing#case-studies">Logistics and Warehousing</a>
       <a class="chip" href="/blog?tag=agri-drones#case-studies">Agriculture and Drones</a>
       <a class="chip" href="/blog?tag=oil-gas-mining#case-studies">Oil Gas and Mining</a>
-      <a class_="chip" href="/blog?tag=buildings-campus#case-studies">Smart Buildings and Campuses</a>
+      <a class="chip" href="/blog?tag=buildings-campus#case-studies">Smart Buildings and Campuses</a>
       <a class="chip" href="/blog?tag=public-safety#case-studies">Public Safety</a>
       <a class="chip" href="/blog?tag=energy-ev#case-studies">Energy Storage and EV</a>
       <a class="chip" href="/blog?tag=maritime#case-studies">Maritime</a>
