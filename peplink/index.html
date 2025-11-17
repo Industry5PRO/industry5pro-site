@@ -536,6 +536,47 @@
   new ResizeObserver(setH).observe(hdr);
 })();
 </script>
+<script>
+(function(){
+  const counters = document.querySelectorAll('.knum');
+  if (!counters.length) return;
+
+  const easeOut = t => t * (2 - t);
+
+  function animateCounter(el){
+    const target = Number(el.dataset.target) || 0;
+    const suffix = el.dataset.suffix || '';
+    const duration = 1400;
+    const start = performance.now();
+
+    function tick(now){
+      const progress = Math.min(1, (now - start) / duration);
+      const eased = easeOut(progress);
+      const value = Math.round(target * eased);
+      el.textContent = value + (suffix && !suffix.startsWith('%') ? '' : '');
+      if (suffix && suffix.startsWith('%')) {
+        el.textContent = value + suffix;      // e.g. "40%"
+      } else if (suffix && !suffix.startsWith('%') && progress === 1){
+        el.textContent = value + suffix;      // e.g. "0.9% uptime" style
+      }
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  counters.forEach(el => io.observe(el));
+})();
+</script>
 
 </body>
 </html>
