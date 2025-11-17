@@ -15,18 +15,20 @@
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
 
   <style id="master-header-aiot">
-    :root {
-      --header-h: 76px;
-      --siemens-green: #29EAD7;
-      --siemens-glow: rgba(41, 234, 215, 0.75);
-      --gold-border: rgba(255, 215, 0, 0.25);
-      --page-bg: #000000;
-    }
+:root{
+  --black:#000000;
+  --white:#FFFFFF;
+  --page-bg:#1B1B1D;         /* charcoal page background */
+  --accent:#FF6A13;
+  --accent-soft:#332112;
+  --lumen-charcoal:#1B1B1D;  /* reuse across the page */
+}
+
     
     body { 
       padding-top: var(--header-h) !important; 
-      background-color: var(--page-bg);
-      color: #e8eef9;
+      background: var(--lumen-charcoal);
+      color:#f5f5f5;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       margin: 0;
       box-sizing: border-box;
@@ -242,23 +244,23 @@
     .hero-copy h1{ font-size:2.1rem; line-height:1.2; margin:.4rem 0 0 }
     .hero-copy .sub{ color:#C0C0C0; max-width: 760px; font-size:1.05rem }
 
-    /* Profile card (your original styles, preserved) */
-    .hero-pic{
-      justify-self: end;
-      width: 320px; max-width: 36vw;
-      border-radius: 18px;
-      overflow: hidden;
-      background:#000 !important;
-      border:0 !important;
-      box-shadow:none !important;
-    }
-    .hero-pic img{
-      display:block; width:100%; height:auto; object-fit:cover;
-      filter: saturate(1.03) contrast(1.02);
-      background:#000 !important;
-      border:0 !important;
-      box-shadow:none !important;
-    }
+ /* Profile card (your original styles, preserved) */
+.hero-pic{
+  justify-self: end;
+  width: 320px; max-width: 36vw;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--lumen-charcoal) !important;
+  border:0 !important;
+  box-shadow:none !important;
+}
+   .hero-pic img{
+  display:block; width:100%; height:auto; object-fit:cover;
+  filter: saturate(1.03) contrast(1.02);
+  background: var(--lumen-charcoal) !important;
+  border:0 !important;
+  box-shadow:none !important;
+}
 
     /* Mobile stack */
     @media (max-width: 900px){
