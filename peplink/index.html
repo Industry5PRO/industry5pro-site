@@ -100,6 +100,18 @@
   .tile p{margin:0;color:var(--muted)}
   .tile:hover{border-color:var(--ice);box-shadow:0 0 14px rgba(43,237,231,.35),0 0 28px rgba(43,237,231,.2);transform:translateY(-2px)}
 
+  .icp-grid .icp-card p{
+  margin: 2px 0;
+}
+.icp-grid .icp-card p strong:first-child{
+  color:#e8eef9;
+}
+.icp-grid .knum{
+  color:var(--peplink);           /* Peplink yellow numbers */
+  font-weight:800;
+  margin-right:4px;
+}
+
   /* Quadrant: card + Peplink yellow glow trim */
   .quad{
     background:var(--card);
@@ -228,11 +240,24 @@
     color:#0b0b0b;
     border-color:var(--peplink-yellow);
   }
+    
 
   /* Make sure header link color defaults don’t override pill text */
   .hdr .nav-actions a.pill-cta{ color:#0b0b0b !important; }
+    
+.icp-grid .icp-card p{
+  margin: 2px 0;
+}
+.icp-grid .icp-card p strong:first-child{
+  color:#e8eef9;
+}
+.icp-grid .knum{
+  color:var(--peplink);           /* Peplink yellow numbers */
+  font-weight:800;
+  margin-right:4px;
+}
 
-  /* If your hero pill uses the same classes, it will match automatically */
+
 </style>
 
 </head>
@@ -294,16 +319,106 @@
 
   <!-- ICP -->
   <section id="icp" class="card" style="margin-top:14px">
-    <h2 style="margin:0 0 10px">Ideal Customer Profiles</h2>
-    <div class="grid">
-      <div class="tile"><h3>Branch & Retail</h3><p>Primary or backup WAN for POS, VoIP, kiosks. Zero-touch rollout, day-one revenue.</p></div>
-      <div class="tile"><h3>Construction & Field</h3><p>Portable sites with shifting carriers. Bonded uploads, drones, and safety cams.</p></div>
-      <div class="tile"><h3>Fleet & Transit</h3><p>SD-WAN on wheels: telemetry, dispatch, passenger Wi-Fi, video offload.</p></div>
-      <div class="tile"><h3>Maritime</h3><p>Ship-to-shore SD-WAN blending LTE/5G and marina Wi-Fi for resilient comms.</p></div>
-      <div class="tile"><h3>Pop-ups & Events</h3><p>Temporary venues with enterprise policies. Roll in, power up, transact.</p></div>
-      <div class="tile"><h3>Failover for Fiber</h3><p>Session-persistent failover that users don’t notice. Keep CX online.</p></div>
-    </div>
-  </section>
+  <h2 style="margin:0 0 10px">Ideal Customer Profiles</h2>
+  <p class="muted" style="margin:0 0 12px">
+    Each FWA design starts with the problem, then we match Peplink hardware, carriers, and policies to the outcome.
+  </p>
+
+  <div class="grid icp-grid">
+    <!-- 1. Branch & Retail -->
+    <article class="tile icp-card">
+      <h3>Branch &amp; Retail</h3>
+      <p><strong>Problem:</strong> POS, Wi-Fi, and VoIP die every time the primary circuit blips.</p>
+      <p><strong>Solution:</strong> Dual-SIM Peplink routers with SpeedFusion failover across two carriers.</p>
+      <p><strong>Result:</strong>
+        <strong class="knum" data-target="40" data-suffix="%">0</strong>
+        fewer revenue-impacting outages during peak trading.
+      </p>
+    </article>
+
+    <!-- 2. Construction & Field -->
+    <article class="tile icp-card">
+      <h3>Construction &amp; Field Sites</h3>
+      <p><strong>Problem:</strong> New sites need connectivity in days, not months of fiber lead times.</p>
+      <p><strong>Solution:</strong> Ruggedized Peplink FWA with bonded 5G/LTE and priority for safety cams and uploads.</p>
+      <p><strong>Result:</strong>
+        <strong class="knum" data-target="70" data-suffix="%">0</strong>
+        faster day-one turn-up for new projects.
+      </p>
+    </article>
+
+    <!-- 3. Fleet & Transit -->
+    <article class="tile icp-card">
+      <h3>Fleet &amp; Transit</h3>
+      <p><strong>Problem:</strong> Vehicles lose signal on route, dropping dispatch and telematics.</p>
+      <p><strong>Solution:</strong> In-vehicle Peplink with multi-carrier roaming and SpeedFusion tunnels back to HQ.</p>
+      <p><strong>Result:</strong>
+        <strong class="knum" data-target="95" data-suffix="%">0</strong>
+        trip coverage for telemetry and video offload on priority routes.
+      </p>
+    </article>
+
+    <!-- 4. Maritime -->
+    <article class="tile icp-card">
+      <h3>Maritime</h3>
+      <p><strong>Problem:</strong> Vessels bounce between marina Wi-Fi and weak coastal LTE with no consistency.</p>
+      <p><strong>Solution:</strong> Peplink maritime routers blending LTE/5G, Wi-Fi WAN, and satellite where needed.</p>
+      <p><strong>Result:</strong>
+        <strong class="knum" data-target="99" data-suffix=".9% uptime">0</strong>
+        connectivity target for crew welfare, OT, and CX apps near shore.
+      </p>
+    </article>
+
+    <!-- 5. Pop-ups & Events -->
+    <article class="tile icp-card">
+      <h3>Pop-ups &amp; Events</h3>
+      <p><strong>Problem:</strong> Temporary sites need compliant Wi-Fi and card processing with no on-site IT.</p>
+      <p><strong>Solution:</strong> Pre-staged Peplink kits with SSIDs, VLANs, and captive portal baked in.</p>
+      <p><strong>Result:</strong>
+        <strong class="knum" data-target="90" data-suffix="%">0</strong>
+        of locations ready to transact within one hour of power-on.
+      </p>
+    </article>
+
+    <!-- 6. Fiber Failover -->
+    <article class="tile icp-card">
+      <h3>Fiber Failover</h3>
+      <p><strong>Problem:</strong> “Backup LTE” exists on paper, but users still feel every outage.</p>
+      <p><strong>Solution:</strong> Session-aware SpeedFusion failover so calls, VPNs, and apps ride through transport loss.</p>
+      <p><strong>Result:</strong>
+        <strong class="knum" data-target="80" data-suffix="%">0</strong>
+        reduction in user-reported incidents during core/last-mile events.
+      </p>
+    </article>
+
+    <!-- 7. Agriculture & Smart Farms -->
+    <article class="tile icp-card">
+      <h3>Agriculture &amp; Smart Farms</h3>
+      <p><strong>Problem:</strong> Fields and barns sit outside fiber and Wi-Fi, so sensors stay offline.</p>
+      <p><strong>Solution:</strong> Peplink FWA at the edge with long-range Wi-Fi and private LTE for sensors and cameras.</p>
+      <p><strong>Result:</strong>
+        <strong class="knum" data-target="30" data-suffix="%">0</strong>
+        gain in usable sensor data for irrigation and yield decisions.
+      </p>
+    </article>
+
+    <!-- 8. Public Safety & First Responders -->
+    <article class="tile icp-card">
+      <h3>Public Safety &amp; First Responders</h3>
+      <p><strong>Problem:</strong> Command vehicles and trailers lose connectivity when incidents move.</p>
+      <p><strong>Solution:</strong> Multi-carrier Peplink routers with QoS for CAD, body-cam, and incident video.</p>
+      <p><strong>Result:</strong>
+        <strong class="knum" data-target="50" data-suffix="%">0</strong>
+        faster time-to-connect at incident scenes versus waiting on temporary circuits.
+      </p>
+    </article>
+  </div>
+
+  <p class="muted" style="margin:12px 0 0;font-size:.8rem">
+    *KPI ranges are illustrative, based on real FWA rollouts. We tune actual targets to your baseline, carriers, and SLAs.*
+  </p>
+</section>
+
 
   <!-- Quadrant -->
   <section id="quadrant" class="quad" style="margin-top:14px">
