@@ -480,27 +480,30 @@
 /* KPI column under the hint text */
 .siemens-kpi-col{
   margin-top: 10px;
-  display:flex;
-  flex-direction:column;
-  gap:6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .siemens-kpi-col .kpi-item{
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex-wrap: wrap;        /* lets long lines wrap nicely */
 }
 
-/* Count-up number style */
 .siemens-kpi-col .knum.siemens{
-  font-size:1.25rem;
-  font-weight:700;
-  color:var(--siemens-green);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--siemens-green);
+  flex-shrink: 0;
+  display: inline-block;  /* <— important: stay on same line */
+  margin-right: 4px;
 }
 
-/* KPI description text */
 .siemens-kpi-col .kpi-item span{
-  font-size:.9rem;
-  color:var(--text-muted);
+  font-size: .9rem;
+  color: var(--text-muted);
 }
 
 /* Small attribution line */
