@@ -472,6 +472,86 @@
         flex-direction:column;
       }
     }
+/* Siemens green variable (if you don't have one yet) */
+:root{
+  --siemens-green:#00A19A;
+}
+
+/* KPI column under the hint text */
+.siemens-kpi-col{
+  margin-top: 10px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.siemens-kpi-col .kpi-item{
+  display:flex;
+  flex-direction:column;
+}
+
+/* Count-up number style */
+.siemens-kpi-col .knum.siemens{
+  font-size:1.25rem;
+  font-weight:700;
+  color:var(--siemens-green);
+}
+
+/* KPI description text */
+.siemens-kpi-col .kpi-item span{
+  font-size:.9rem;
+  color:var(--text-muted);
+}
+
+/* Small attribution line */
+.kpi-note{
+  margin-top:8px;
+  font-size:.8rem;
+  color:var(--text-muted);
+}
+
+/* Siemens CTA row */
+.siemens-cta-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin:14px 0 6px;
+}
+
+/* Try Insights Hub Free = Siemens green pill */
+.siemens-cta-row .pill-cta.siemens-primary{
+  background:var(--siemens-green);
+  color:#000;
+  border:none;
+  box-shadow:0 0 14px rgba(0,161,154,.45);
+}
+
+.siemens-cta-row .pill-cta.siemens-primary:hover{
+  background:#b2fff6;
+  color:#000;
+  box-shadow:0 0 18px rgba(178,255,246,.9);
+}
+
+/* Book Lou = Siemens green text + glow on hover */
+.siemens-cta-row .pill-cta.siemens-lou{
+  background:transparent;
+  color:var(--siemens-green);
+  border:1px solid rgba(0,161,154,.55);
+  box-shadow:none;
+}
+
+.siemens-cta-row .pill-cta.siemens-lou:hover{
+  background:rgba(0,161,154,.18);
+  color:var(--siemens-green);
+  box-shadow:0 0 14px rgba(0,161,154,.7);
+}
+
+/* Mobile stack */
+@media (max-width:900px){
+  .siemens-cta-row{
+    flex-direction:column;
+  }
+}
 
 
     /* START MASTER FOOTER CSS
@@ -598,15 +678,16 @@
     <li>Scrap, rework, and first-pass yield</li>
     <li>Energy per unit and sustainability targets</li>
     <li>Time from event to insight for operators and leadership</li>
+    <li>Maintenance backlog and planner effectiveness</li>
   </ul>
 
   <div class="siemens-cta-row">
-    <a class="pill-cta accent"
+    <a class="pill-cta siemens-primary"
        href="https://developer.siemens.com/insights-hub/overview.html"
        target="_blank" rel="noopener">
       Try Insights Hub Free
     </a>
-    <a class="pill-cta"
+    <a class="pill-cta siemens-lou"
        href="https://calendly.com/industry5pro/30min"
        target="_blank" rel="noopener">
       Book Lou
@@ -618,22 +699,40 @@
     and Industrial Edge actually earn their keep.
   </p>
 
-  <!-- NEW: 3 horizontal KPIs under the hint text -->
-  <div class="siemens-kpi-row">
+  <!-- NEW: 6 vertical KPIs with count-up numbers -->
+  <div class="siemens-kpi-col">
     <div class="kpi-item">
-      <strong class="knum" data-target="18" data-suffix="%">0</strong>
-      <span>OEE improvement on pilot lines</span>
+      <strong class="knum siemens" data-target="99" data-suffix="%">0</strong>
+      <span>line uptime on critical pilot lines after tightening alerts and edge analytics.</span>
     </div>
     <div class="kpi-item">
-      <strong class="knum" data-target="32" data-suffix="%">0</strong>
-      <span>reduction in unplanned downtime</span>
+      <strong class="knum siemens" data-target="35" data-suffix="%">0</strong>
+      <span>reduction in unplanned downtime hours by catching issues earlier.</span>
     </div>
     <div class="kpi-item">
-      <strong class="knum" data-target="22" data-suffix="%">0</strong>
-      <span>less scrap and rework per batch</span>
+      <strong class="knum siemens" data-target="18" data-suffix="%">0</strong>
+      <span>scrap and rework reduction from better first-pass yield visibility.</span>
+    </div>
+    <div class="kpi-item">
+      <strong class="knum siemens" data-target="12" data-suffix="%">0</strong>
+      <span>lower energy use per unit produced through line-level insights.</span>
+    </div>
+    <div class="kpi-item">
+      <strong class="knum siemens" data-target="50" data-suffix="%">0</strong>
+      <span>faster time from event to operator insight with real-time dashboards.</span>
+    </div>
+    <div class="kpi-item">
+      <strong class="knum siemens" data-target="25" data-suffix="%">0</strong>
+      <span>reduction in maintenance backlog by prioritizing based on live asset data.</span>
     </div>
   </div>
+
+  <p class="kpi-note">
+    *Illustrative ranges based on public Siemens case studies (e.g., Perfetti Van Melle) and similar
+    industrial IoT rollouts.&nbsp;Your mileage will depend on starting baseline and execution.*
+  </p>
 </div>
+
      
           <div class="siemens-media">
             <div class="video-card">
