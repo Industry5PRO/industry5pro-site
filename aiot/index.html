@@ -591,6 +591,52 @@
   transform: translateY(-1px);
   box-shadow: 0 0 26px rgba(0,161,155,.8);
 }
+.siemens-video{
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background:#000;
+}
+
+/* Thumbnail state */
+.siemens-thumb{
+  display: block;
+  position: relative;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+}
+
+.siemens-thumb img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Play badge bottom-left */
+.play-badge{
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.75);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Hide iframe until click */
+.siemens-video iframe{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: none;
+}
 
 
     /* START MASTER FOOTER CSS
@@ -773,29 +819,48 @@
 
      
           <div class="siemens-media">
-            <div class="video-card">
-              <h4>Insights Hub: Insights Hub Monitor - Getting Started</h4>
-              <div class="video-frame">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/mG8t9-in1xk?si=6NDtMTG-e7fJIqAB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-              </div>
-            </div>
+  <div class="siemens-media">
+  <div class="video-card">
+    <h4>Insights Hub: Insights Hub Monitor - Getting Started</h4>
+    <div class="video-frame siemens-video" data-yt="mG8t9-in1xk">
+      <button class="siemens-thumb" type="button">
+        <img src="/assets/Insights-Hub-Thumb.jpg"
+             alt="Insights Hub introduction video thumbnail">
+        <span class="play-badge">
+          ▶ Watch Insights Hub overview
+        </span>
+      </button>
 
-            <div class="video-card">
-              <h4>Industrial Edge live demo</h4>
-              <div class="video-frame">
-                <iframe width="560" height="315"
-                  src="https://www.youtube.com/embed/0gSsyXGQpI0?si=u-XApmuABvRHjh7x"
-                  title="Industrial Edge live demo"
-                  loading="lazy"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  allowfullscreen>
-                </iframe>
-              </div>
-            </div>
-          </div>
-        </div>
+      <iframe
+        title="Insights Hub introduction video"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="video-card">
+    <h4>Industrial Edge live demo</h4>
+    <div class="video-frame siemens-video" data-yt="0gSsyXGQpI0">
+      <button class="siemens-thumb" type="button">
+        <img src="/assets/Industrial_edge-thumb.jpg"
+             alt="Siemens Industrial Edge live demo thumbnail">
+        <span class="play-badge">
+          ▶ Watch Industrial Edge live demo
+        </span>
+      </button>
+
+      <iframe
+        title="Siemens Industrial Edge live demo"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
+    </div>
+  </div>
+      </div>
+
       </details>
 
     <details><summary>Smart City</summary><div class="sec">
@@ -961,6 +1026,23 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.3 });
 
   counters.forEach(el => observer.observe(el));
+});
+</script>
+<script>
+document.querySelectorAll('.siemens-video').forEach(function(box){
+  var btn = box.querySelector('.siemens-thumb');
+  var iframe = box.querySelector('iframe');
+  var ytId = box.getAttribute('data-yt');
+
+  if(!btn || !iframe || !ytId) return;
+
+  btn.addEventListener('click', function(){
+    if(!iframe.src){
+      iframe.src = 'https://www.youtube.com/embed/' + ytId + '?autoplay=1&rel=0';
+    }
+    btn.style.display = 'none';
+    iframe.style.display = 'block';
+  });
 });
 </script>
 
