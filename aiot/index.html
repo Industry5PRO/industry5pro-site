@@ -271,7 +271,20 @@
       }
       .hero-pic{ justify-self: start; width: 56vw; }
     }
-    
+    /* Unified Book Lou pill */
+.pill-cta.book-lou{
+  background:#0f131b;
+  color:#e8eef9;
+  border:1px solid rgba(255,255,255,.22);
+  box-shadow:0 0 14px rgba(178,255,246,.55);
+}
+
+.pill-cta.book-lou:hover{
+  background:#b2fff6;
+  color:#000;
+  box-shadow:0 0 20px rgba(178,255,246,.9);
+}
+
     /* Your original CTA rail styles */
     .cta-rail{ margin: 24px auto; }
     .cta-rail-inner{
@@ -381,18 +394,16 @@
         <p class="sub">
           We lead with Aeris because the facts support it: platform scale from Ericsson’s IoT stack, multi MNO eSIM, deep security, and a carrier agnostic approach tailored to each use case and geography. For industrial operations, Siemens is our leader: Industrial Edge for on line inference, Insights Hub for data and twins, native PLC and SCADA integration, and IEC 62443 level security. Everyone has a niche. I can help clear the air. Scan below and send me a consulting request.
         </p>
-        <div class="btns hero-ctas">
-        <a class="pill-cta accent"
-           href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform"
-           target="_blank" rel="noopener">
-          Start AIoT Discovery
-        </a>
-        <a href="https://calendly.com/industry5pro/30min"
-           class="book-lou"
-           target="_blank" rel="noopener">
-          Book Lou
-        </a>
-      </div>
+        <div class="hero-actions">
+  <a class="pill-cta accent" href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform?usp=header" target="_blank" rel="noopener">
+    Start AIoT Discovery
+  </a>
+<a class="pill-cta book-lou" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">
+  Book Lou
+</a>
+
+</div>
+
       </div>
 
       <div class="hero-pic">
