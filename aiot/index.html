@@ -325,6 +325,78 @@
       text-shadow: 0 0 8px var(--siemens-glow);
       transform: translateY(-1px);
     }
+        /* Siemens manufacturing layout inside Industry Applications */
+    .siemens-layout{
+      display:grid;
+      grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);
+      gap:24px;
+      align-items:flex-start;
+      margin-top:16px;
+    }
+    .siemens-copy h3{
+      font-size:1.2rem;
+      margin-bottom:8px;
+      color:var(--white);
+    }
+    .siemens-copy p{
+      color:var(--text-muted);
+      margin-bottom:10px;
+    }
+    .siemens-copy .kpi-list{
+      list-style:none;
+      padding:0;
+      margin:10px 0 14px;
+      font-size:.95rem;
+      color:var(--text-muted);
+    }
+    .siemens-copy .kpi-list li::before{
+      content:"•";
+      margin-right:6px;
+      color:var(--accent);
+    }
+    .siemens-cta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin:12px 0 6px;
+    }
+    .siemens-copy .hint{
+      font-size:.85rem;
+      color:var(--text-muted);
+      opacity:.9;
+    }
+    .siemens-media{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+    .siemens-media .video-card h4{
+      font-size:.95rem;
+      margin-bottom:6px;
+      color:var(--white);
+    }
+    .siemens-media .video-frame{
+      position:relative;
+      padding-top:56.25%;        /* 16:9 */
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:0 0 18px rgba(178,255,246,.32);
+    }
+    .siemens-media .video-frame iframe{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+    }
+    @media (max-width:960px){
+      .siemens-layout{
+        grid-template-columns:1fr;
+      }
+      .siemens-media{
+        margin-top:8px;
+      }
+    }
+
 
     /* START MASTER FOOTER CSS
       This is the new, consistent footer block, themed for AIoT.
@@ -430,15 +502,79 @@
   <section class="paper">
     <h2>Micro White Paper — Industry Applications</h2>
 
-    <details open>
-      <summary>Manufacturing</summary>
-      <div class="sec">
-        <div class="kpis"><span class="pill">OEE</span><span class="pill">MTBF</span><span class="pill">Scrap Rate</span><span class="pill">Throughput</span><span class="pill">Energy per Unit</span></div>
-        <div>ICP: multi-site plants, PLC heavy, downtime sensitivity, readiness for Private 5G or robust Wi-Fi plus cellular backup.</div>
-        <div>Plays: machine telemetry → lakehouse, predictive maintenance, vision QA at edge, worker safety wearables, AMR/AGV control.</div>
-        <div class="ex">Pattern: eSIM modules → secure APN → CMP → cloud feature store → model serving at line-side gateway.</div>
-      </div>
-    </details>
+          <details open>
+        <summary>Manufacturing</summary>
+        <div class="sec siemens-layout">
+          <div class="siemens-copy">
+            <h3>Manufacturing — Siemens Insights Hub + Industrial Edge</h3>
+            <p>
+              When you’re trying to bring legacy OT, modern PLCs, and cloud analytics into the same conversation,
+              Siemens is usually on my shortlist. Insights Hub gives you a cloud-based industrial IoT layer to collect,
+              normalize, and visualize data from lines, cells, and plants. Industrial Edge pushes analytics down to the line
+              so you can run AI inference close to the machines, even when the WAN is having a bad day.
+            </p>
+
+            <h4>What we actually measure</h4>
+            <ul class="kpi-list">
+              <li>OEE and line uptime across plants</li>
+              <li>Unplanned downtime, MTTR, and maintenance backlog</li>
+              <li>Scrap, rework, and first-pass yield</li>
+              <li>Energy per unit and sustainability targets</li>
+              <li>Time from event to insight for operators and leadership</li>
+            </ul>
+
+            <div class="siemens-cta-row">
+              <a class="pill-cta accent"
+                 href="https://developer.siemens.com/insights-hub/overview.html"
+                 target="_blank" rel="noopener">
+                Try Insights Hub Free
+              </a>
+              <a class="pill-cta"
+                 href="https://calendly.com/industry5pro/30min"
+                 target="_blank" rel="noopener">
+                Book Lou
+              </a>
+            </div>
+
+            <p class="hint">
+              We’ll map your existing PLC, MES/SCADA, and historian landscape, then decide where Insights Hub
+              and Industrial Edge actually earn their keep.
+            </p>
+          </div>
+
+          <div class="siemens-media">
+            <div class="video-card">
+              <h4>Insights Hub: industrial IoT overview</h4>
+              <div class="video-frame">
+                <iframe width="560" height="315"
+                  src="https://www.youtube.com/embed/ySO2LcaO-8g?si=FLGBd9db9oAYFs0o"
+                  title="Insights Hub overview"
+                  loading="lazy"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen>
+                </iframe>
+              </div>
+            </div>
+
+            <div class="video-card">
+              <h4>Industrial Edge live demo</h4>
+              <div class="video-frame">
+                <iframe width="560" height="315"
+                  src="https://www.youtube.com/embed/0gSsyXGQpI0?si=u-XApmuABvRHjh7x"
+                  title="Industrial Edge live demo"
+                  loading="lazy"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen>
+                </iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
 
     <details><summary>Smart City</summary><div class="sec">
       <div class="kpis"><span class="pill">Response Time</span><span class="pill">Energy Savings</span><span class="pill">Traffic Flow</span></div>
