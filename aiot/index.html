@@ -375,19 +375,7 @@
       margin-bottom:6px;
       color:var(--white);
     }
-    .siemens-media .video-frame{
-      position:relative;
-      padding-top:56.25%;        /* 16:9 */
-      border-radius:12px;
-      overflow:hidden;
-      box-shadow:0 0 18px rgba(178,255,246,.32);
-    }
-    .siemens-media .video-frame iframe{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-    }
+    
     @media (max-width:960px){
       .siemens-layout{
         grid-template-columns:1fr;
@@ -396,38 +384,7 @@
         margin-top:8px;
       }
     }
-    /* Featured Siemens story card */
-    .featured-story{
-      margin:40px auto 32px;
-      padding:22px 18px;
-      border-radius:18px;
-      background:radial-gradient(circle at top left,#22232a,#121216);
-      border:1px solid rgba(178,255,246,.38);
-      box-shadow:0 0 26px rgba(178,255,246,.25);
-    }
-    .featured-story h2{
-      font-size:1.35rem;
-      margin-bottom:10px;
-      color:var(--white);
-    }
-    .featured-story p{
-      color:var(--text-muted);
-      margin-bottom:10px;
-    }
-    .featured-story blockquote{
-      margin:10px 0 14px;
-      padding-left:14px;
-      border-left:3px solid var(--accent);
-      font-style:italic;
-      color:var(--white);
-    }
-    .featured-story blockquote .attribution{
-      display:block;
-      margin-top:4px;
-      font-size:.85rem;
-      font-style:normal;
-      color:var(--text-muted);
-    }
+
     .story-cta-row{
       display:flex;
       flex-wrap:wrap;
@@ -591,12 +548,6 @@
   transform: translateY(-1px);
   box-shadow: 0 0 26px rgba(0,161,155,.8);
 }
-.siemens-video{
-  position: relative;
-  border-radius: 18px;
-  overflow: hidden;
-  background:#000;
-}
 
 /* Thumbnail state */
 .siemens-thumb{
@@ -628,15 +579,69 @@
   font-size: 0.9rem;
 }
 
-/* Hide iframe until click */
+/* Siemens video layout – no black bar */
+.siemens-media .video-frame{
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 18px rgba(178,255,246,.32);
+  background:#000;
+  padding-top: 0;              /* kill the old padding trick */
+}
+
+/* Keep a clean 16:9 box */
+.siemens-video{
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 18px;
+  overflow: hidden;
+  background:#000;
+}
+
+/* Thumb + iframe both fill the box */
+.siemens-video .siemens-thumb,
 .siemens-video iframe{
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+}
+
+/* Thumbnail state */
+.siemens-thumb{
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.siemens-thumb img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Play badge bottom-left */
+.play-badge{
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.75);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Hide iframe until click */
+.siemens-video iframe{
   border: 0;
   display: none;
 }
+
 
 
     /* START MASTER FOOTER CSS
