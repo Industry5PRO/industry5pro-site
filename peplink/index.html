@@ -9,19 +9,15 @@
 
 <style>
   :root{
-  --bg:#1B1B1D;                   /* charcoal like other pages */
-  --surface:#11141b;
-  --accent:#FFC300;               /* keep Peplink yellow as accent */
-  --peplink:#FFC300;
-  --text:#f5f7fb;
-  --muted:#a9b4c7;
-  --chip:#202632;
-  --border-soft:rgba(255,255,255,.08);
-  --pill-radius:999px;
-  --nav-bg:#1B1B1D;               /* header background */
-  --nav-h:72px;                   /* thicker sticky header */
-}
-
+    --bg:#0e1117;
+    --card:#141821;
+    --ink:#0b0b0b;
+    --muted:#a9b3c4;
+    --ice:#2BEDE7;                  /* ice-blue glow */
+    --peplink:#FCB71B;              /* Peplink yellow */
+    --peplink-dk:#F3A400;           /* gradient bottom tint */
+    --text:#e8eef9;
+  }
 
   *{box-sizing:border-box}
   html,body{height:100%}
@@ -38,43 +34,23 @@
     transform:none !important;
   }
   @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-.hdr{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:var(--nav-bg);
-  border-bottom:1px solid rgba(255,255,255,.06);
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-}
-
-.hdr-inner{
-  max-width:1200px;
-  margin:0 auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  height:var(--nav-h);
-  padding:0 24px;
-}
+    .hdr{ background:rgba(0,0,0,.92); }
+  }
+  .hdr-inner{
+    max-width:1080px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:14px 24px;
+  }
   .brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.2px}
- .logo{
-  height:56px;
-  width:auto;
-  display:block;
-  object-fit:contain;
-  border-radius:0;
-  background:transparent;
-  filter: drop-shadow(0 0 12px rgba(255,195,0,.6)); /* Peplink yellow glow */
-}
-
+  .logo{width:44px;height:44px;border-radius:12px;display:block;object-fit:contain;filter:drop-shadow(0 0 10px rgba(133,187,101,.40))}
   .brand .title{font-size:20px; line-height:1; color:#ffffff} /* white, not ice-blue */
 
- .nav a:hover{
-  color:var(--accent);             /* Peplink yellow */
-  text-shadow:0 0 10px rgba(255,195,0,.75);
+  .nav-actions{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+  
+.nav-actions a:hover{
+  color:var(--peplink); /* Peplink yellow */
+  text-shadow:0 0 6px rgba(252,183,27,.8), 0 0 14px rgba(252,183,27,.45);
 }
-
 
 
   /* Pills: Peplink yellow fill + black text + permanent ice glow */
@@ -124,12 +100,6 @@
 
   .icp-grid .icp-card p{
   margin: 2px 0;
-}
-body{
-  margin:0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: var(--bg);
-  color: var(--text);
 }
 
 
