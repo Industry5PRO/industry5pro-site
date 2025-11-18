@@ -101,14 +101,7 @@
   .icp-grid .icp-card p{
   margin: 2px 0;
 }
-.icp-grid .icp-card p strong:first-child{
-  color:#e8eef9;
-}
-.icp-grid .knum{
-  color:var(--peplink);           /* Peplink yellow numbers */
-  font-weight:800;
-  margin-right:4px;
-}
+
 
   /* Quadrant: card + Peplink yellow glow trim */
   .quad{
@@ -246,14 +239,7 @@
 .icp-grid .icp-card p{
   margin: 2px 0;
 }
-.icp-grid .icp-card p strong:first-child{
-  color:#e8eef9;
-}
-.icp-grid .knum{
-  color:var(--peplink);           /* Peplink yellow numbers */
-  font-weight:800;
-  margin-right:4px;
-}
+
 /* ICP section layout */
 .icp-section{
   background: #11151f;
@@ -293,10 +279,6 @@
   line-height: 1.5;
 }
 
-.icp-card p strong{
-  font-weight: 600;
-}
-
 /* KPI line */
 .icp-kpi{
   margin-top: 10px;
@@ -323,6 +305,23 @@
 
 .icp-case a:hover{
   color: var(--peplink);
+}
+/* Problem / Solution / Result label styling (ice blue) */
+.icp-grid .icp-card p strong:first-child{
+  color:#e8eef9;      /* ice blue for "Problem.", "Solution.", "Result." */
+  font-weight:600;
+}
+
+/* KPI number styling (Peplink yellow, rolling numbers) */
+.icp-grid .knum{
+  color:var(--peplink);   /* Peplink yellow numbers */
+  font-weight:800;
+  margin-right:4px;
+}
+
+/* General strong inside ICP paragraphs (just in case) */
+.icp-card p strong{
+  font-weight:600;
 }
 
 
@@ -386,158 +385,106 @@
   </section>
 
   <!-- ICP -->
- <section id="icp" class="card icp-section" style="margin-top:14px">
-  <h2 style="margin:0 0 14px">Ideal Customer Profiles</h2>
+<section id="icp" class="card" style="margin-top:14px">
+  <h2 style="margin:0 0 10px">Ideal Customer Profiles</h2>
+  <p class="muted" style="margin:0 0 12px">
+    Each FWA design starts with the problem, then we match Peplink hardware, carriers, and policies to the outcome.
+  </p>
 
-  <div class="icp-grid">
-
+  <div class="grid icp-grid">
     <!-- 1. Branch & Retail -->
-    <article class="icp-card">
-      <h3>Branch & Retail</h3>
-
-      <p><strong>Problem.</strong> Card present revenue and POS uptime are exposed when a single fiber or cable circuit drops.</p>
-      <p><strong>Solution.</strong> Peplink multi WAN routers with 5G or LTE FWA and SpeedFusion session persistence across wired and wireless.</p>
-      <p><strong>Result.</strong> Transactions clear even during provider outages and PCI traffic stays segmented.</p>
-
-      <p class="icp-kpi">
-        <strong class="knum" data-target="99.99" data-suffix="%">0</strong>
-        effective POS and branch uptime with hot failover in production deployments.
-      </p>
-
-      <p class="icp-case">
-        <a href="https://www.peplink.com/case-studies/retail/" target="_blank" rel="noopener">View case studies</a>
+    <article class="tile icp-card">
+      <h3>Branch &amp; Retail</h3>
+      <p><strong>Problem:</strong> POS, Wi-Fi, and VoIP die every time the primary circuit blips.</p>
+      <p><strong>Solution:</strong> Dual-SIM Peplink routers with SpeedFusion failover across two carriers.</p>
+      <p><strong>Result:</strong>
+        <strong class="knum" data-target="40" data-suffix="%">0</strong>
+        fewer revenue-impacting outages during peak trading.
       </p>
     </article>
 
-    <!-- 2. Construction & Field Sites -->
-    <article class="icp-card">
-      <h3>Construction & Field Sites</h3>
-
-      <p><strong>Problem.</strong> Remote job sites need cameras, tablets, and safety systems online long before fiber arrives.</p>
-      <p><strong>Solution.</strong> Ruggedized Peplink routers with bonded 5G and LTE links plus traffic shaping for video, VoIP, and SCADA.</p>
-      <p><strong>Result.</strong> Day one connectivity for office trailers, crews, and IoT without waiting for trenching.</p>
-
-      <p class="icp-kpi">
-        <strong class="knum" data-target="80" data-suffix="%">0</strong>
-        faster site turn up versus waiting on wireline builds.
-      </p>
-
-      <p class="icp-case">
-        <a href="https://www.peplink.com/case-studies/smart-construction/" target="_blank" rel="noopener">View case studies</a>
+    <!-- 2. Construction & Field -->
+    <article class="tile icp-card">
+      <h3>Construction &amp; Field Sites</h3>
+      <p><strong>Problem:</strong> New sites need connectivity in days, not months of fiber lead times.</p>
+      <p><strong>Solution:</strong> Ruggedized Peplink FWA with bonded 5G/LTE and priority for safety cams and uploads.</p>
+      <p><strong>Result:</strong>
+        <strong class="knum" data-target="70" data-suffix="%">0</strong>
+        faster day-one turn-up for new projects.
       </p>
     </article>
 
     <!-- 3. Fleet & Transit -->
-    <article class="icp-card">
-      <h3>Fleet & Transit</h3>
-
-      <p><strong>Problem.</strong> Buses, trucks, and service fleets lose telemetry, navigation, and passenger Wi Fi whenever a single carrier drops.</p>
-      <p><strong>Solution.</strong> Peplink SD WAN on wheels with dual modems, multi carrier SIMs, and centralized InControl management.</p>
-      <p><strong>Result.</strong> Continuous data feeds to dispatch and better rider experience without data bill shock.</p>
-
-      <p class="icp-kpi">
-        <strong class="knum" data-target="60" data-suffix="%">0</strong>
-        reduction in connectivity related support tickets reported by fleet customers.
-      </p>
-
-      <p class="icp-case">
-        <a href="https://www.peplink.com/case-studies/logistics-internet/" target="_blank" rel="noopener">View case studies</a>
+    <article class="tile icp-card">
+      <h3>Fleet &amp; Transit</h3>
+      <p><strong>Problem:</strong> Vehicles lose signal on route, dropping dispatch and telematics.</p>
+      <p><strong>Solution:</strong> In-vehicle Peplink with multi-carrier roaming and SpeedFusion tunnels back to HQ.</p>
+      <p><strong>Result:</strong>
+        <strong class="knum" data-target="95" data-suffix="%">0</strong>
+        trip coverage for telemetry and video offload on priority routes.
       </p>
     </article>
 
     <!-- 4. Maritime -->
-    <article class="icp-card">
+    <article class="tile icp-card">
       <h3>Maritime</h3>
-
-      <p><strong>Problem.</strong> Vessels need resilient connectivity between shore, marina Wi Fi, and cellular with tight power and antenna constraints.</p>
-      <p><strong>Solution.</strong> Peplink maritime routers and antennas blending LTE or 5G, Wi Fi as WAN, and satellite where required.</p>
-      <p><strong>Result.</strong> Stable links for crew welfare, OT systems, and guest internet while optimizing data spend.</p>
-
-      <p class="icp-kpi">
-        <strong class="knum" data-target="45" data-suffix="%">0</strong>
-        savings on satellite and roaming costs through intelligent WAN selection.
-      </p>
-
-      <p class="icp-case">
-        <a href="https://www.peplink.com/tag/maritime/" target="_blank" rel="noopener">View case studies</a>
+      <p><strong>Problem:</strong> Vessels bounce between marina Wi-Fi and weak coastal LTE with no consistency.</p>
+      <p><strong>Solution:</strong> Peplink maritime routers blending LTE/5G, Wi-Fi WAN, and satellite where needed.</p>
+      <p><strong>Result:</strong>
+        <strong class="knum" data-target="99" data-suffix=".9% uptime">0</strong>
+        connectivity target for crew welfare, OT, and CX apps near shore.
       </p>
     </article>
 
-    <!-- 5. Pop ups & Events -->
-    <article class="icp-card">
-      <h3>Pop ups & Events</h3>
-
-      <p><strong>Problem.</strong> Temporary sites need card readers, kiosks, and production crews online for a few hours or days.</p>
-      <p><strong>Solution.</strong> Portable Peplink kits with 5G or LTE FWA, Wi Fi, and pre templated policies for POS and production VLANs.</p>
-      <p><strong>Result.</strong> Roll in, power on, transact, and tear down without calling a carrier.</p>
-
-      <p class="icp-kpi">
+    <!-- 5. Pop-ups & Events -->
+    <article class="tile icp-card">
+      <h3>Pop-ups &amp; Events</h3>
+      <p><strong>Problem:</strong> Temporary sites need compliant Wi-Fi and card processing with no on-site IT.</p>
+      <p><strong>Solution:</strong> Pre-staged Peplink kits with SSIDs, VLANs, and captive portal baked in.</p>
+      <p><strong>Result:</strong>
         <strong class="knum" data-target="90" data-suffix="%">0</strong>
-        faster time to first transaction compared to temporary wireline builds.
-      </p>
-
-      <p class="icp-case">
-        <a href="https://www.peplink.com/case-studies/event-internet/" target="_blank" rel="noopener">View case studies</a>
+        of locations ready to transact within one hour of power-on.
       </p>
     </article>
 
     <!-- 6. Fiber Failover -->
-    <article class="icp-card">
+    <article class="tile icp-card">
       <h3>Fiber Failover</h3>
-
-      <p><strong>Problem.</strong> Single threaded fiber circuits take down voice, apps, and CX when a backhoe or carrier change hits.</p>
-      <p><strong>Solution.</strong> Peplink hot failover with 5G or LTE FWA and wired primary, using SpeedFusion to keep sessions pinned.</p>
-      <p><strong>Result.</strong> Users do not notice outages and contact center metrics stay within SLA.</p>
-
-      <p class="icp-kpi">
-        <strong class="knum" data-target="0" data-suffix=" min">0</strong>
-        dropped calls during carrier outages in well tuned hot failover designs.
-      </p>
-
-      <p class="icp-case">
-        <a href="https://www.peplink.com/case-studies/hot-failover/" target="_blank" rel="noopener">View case studies</a>
+      <p><strong>Problem:</strong> “Backup LTE” exists on paper, but users still feel every outage.</p>
+      <p><strong>Solution:</strong> Session-aware SpeedFusion failover so calls, VPNs, and apps ride through transport loss.</p>
+      <p><strong>Result:</strong>
+        <strong class="knum" data-target="80" data-suffix="%">0</strong>
+        reduction in user-reported incidents during core/last-mile events.
       </p>
     </article>
 
     <!-- 7. Agriculture & Smart Farms -->
-    <article class="icp-card">
-      <h3>Agriculture & Smart Farms</h3>
-
-      <p><strong>Problem.</strong> Fields, barns, and remote pumps sit outside fiber reach while sensors and automation depend on IP.</p>
-      <p><strong>Solution.</strong> Peplink outdoor routers and antennas with multi carrier 4G or 5G plus Wi Fi back to cameras and controllers.</p>
-      <p><strong>Result.</strong> Always on connectivity for irrigation, soil sensors, and livestock monitoring.</p>
-
-      <p class="icp-kpi">
-        <strong class="knum" data-target="25" data-suffix="%">0</strong>
-        improvement in operational efficiency when OT data is always reachable.
-      </p>
-
-      <p class="icp-case">
-        <a href="https://www.peplink.com/case-studies/farming-internet/" target="_blank" rel="noopener">View case studies</a>
+    <article class="tile icp-card">
+      <h3>Agriculture &amp; Smart Farms</h3>
+      <p><strong>Problem:</strong> Fields and barns sit outside fiber and Wi-Fi, so sensors stay offline.</p>
+      <p><strong>Solution:</strong> Peplink FWA at the edge with long-range Wi-Fi and private LTE for sensors and cameras.</p>
+      <p><strong>Result:</strong>
+        <strong class="knum" data-target="30" data-suffix="%">0</strong>
+        gain in usable sensor data for irrigation and yield decisions.
       </p>
     </article>
 
     <!-- 8. Public Safety & First Responders -->
-    <article class="icp-card">
-      <h3>Public Safety & First Responders</h3>
-
-      <p><strong>Problem.</strong> Patrol vehicles, command posts, and incident scenes cannot tolerate dead zones or VPN drops.</p>
-      <p><strong>Solution.</strong> Peplink public safety bundles with band 14, multi carrier SIMs, GPS, and priority routing for CAD and body cam traffic.</p>
-      <p><strong>Result.</strong> More reliable situational awareness and better use of in vehicle and on person tech.</p>
-
-      <p class="icp-kpi">
-        <strong class="knum" data-target="99" data-suffix="%">0</strong>
-        connectivity availability for priority applications in live deployments.
-      </p>
-
-      <p class="icp-case">
-        <a href="https://www.peplink.com/case-studies/public-safety-network/" target="_blank" rel="noopener">View case studies</a>
+    <article class="tile icp-card">
+      <h3>Public Safety &amp; First Responders</h3>
+      <p><strong>Problem:</strong> Command vehicles and trailers lose connectivity when incidents move.</p>
+      <p><strong>Solution:</strong> Multi-carrier Peplink routers with QoS for CAD, body-cam, and incident video.</p>
+      <p><strong>Result:</strong>
+        <strong class="knum" data-target="50" data-suffix="%">0</strong>
+        faster time-to-connect at incident scenes versus waiting on temporary circuits.
       </p>
     </article>
-
   </div>
-</section>
 
+  <p class="muted" style="margin:12px 0 0;font-size:.8rem">
+    *KPI ranges are illustrative, based on real FWA rollouts. We tune actual targets to your baseline, carriers, and SLAs.*
+  </p>
+</section>
 
 
   <!-- Quadrant -->
