@@ -154,9 +154,11 @@
 
     /* Hero */
     .hero { padding: 40px 0 20px; border-top: none; }
+    
+    /* FIXED: Widen column to 420px to allow bigger image */
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0,1fr) 340px;
+      grid-template-columns: minmax(0,1fr) 420px; 
       gap: 24px;
       align-items: center;
     }
@@ -183,10 +185,13 @@
       margin-bottom: 24px;
     }
     
-    /* Hero Photo - Fixed Size */
+    /* Hero Photo - INCREASED TO 420px */
     .hero-photo { display: flex; justify-content: flex-end; }
     .hero-photo img {
-      width: 100%; max-width: 340px; height: auto; object-fit: contain;
+      width: 100%; 
+      max-width: 420px; /* Increased from 340px */
+      height: auto; 
+      object-fit: contain;
       filter: drop-shadow(0 10px 20px rgba(0,0,0,.35));
     }
 
@@ -332,7 +337,7 @@
           </div>
         </div>
         <figure class="hero-photo">
-          <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora" width="340" height="340" loading="eager" decoding="async" />
+          <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora" />
         </figure>
       </div>
     </section>
