@@ -4,173 +4,160 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
-  <!-- === SEO === -->
   <title>Cyber Resilience & Ransomware Recovery Advisory | Industry5.pro</title>
   <meta name="description" content="Agnostic cyber resilience. We audit your stack and align Lumen network defense with Veeam immutable backups to guarantee recovery. Stop threats, pass audits, and recover in minutes.">
+  <meta name="author" content="Industry5.pro">
+  <link rel="canonical" href="https://industry5.pro/cyber">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Cyber Resilience & Recovery">
+  <meta property="og:description" content="Aligning network defense with immutable recovery. Featured Partners: Lumen & Veeam.">
+  <meta property="og:url" content="https://industry5.pro/cyber">
+  <meta property="og:image" content="https://industry5.pro/assets/industry5-logo.png">
+
   <meta name="color-scheme" content="dark">
 
-  <!-- === Favicons === -->
   <link rel="icon" href="/assets/favicon.ico" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
 
-  <!-- === MASTER HEADER STYLES (Cyber Variant) === -->
-  <style id="master-header-cyber">
+  <style>
+    /* --- CORE VARIABLES (CYBER THEME: VEEAM GREEN) --- */
     :root {
-      --header-h: 76px;
-      --veeam-green: #00B336; /* Page Accent */
-      --lumen-charcoal: #1B1B1D;
+      --bg: #1B1B1D;
+      --panel: #232326;
+      --card-bg: #232326;
+      --card-border: #2C2C30;
+      --text: #EAEAEA;
+      --text-muted: #A9A9AD;
+      --line: rgba(255,255,255,0.08);
+      --outline: #2C2C30;
+
+      /* Page Specific Accents */
+      --accent: #00B336;           /* Veeam Green */
+      --gold: #FFD700;             /* Standard Gold (for Blog/SDR) */
       --ice-blue: #2BEDE7;
       --lumen-orange: #FF6A13;
+      --eleven-purple: #a146f9;
     }
     
-    body { 
-      padding-top: var(--header-h) !important; 
-      background-color: var(--lumen-charcoal);
-      color: #EAEAEA;
-      font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial; /* Matching other pages */
-      margin: 0;
-      box-sizing: border-box;
-    }
+    /* --- RESET & BASE --- */
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial; box-sizing: border-box;}
     *, *:before, *:after { box-sizing: inherit; }
-    main, .hero, .page-start { margin-top: 0 !important; }
-
-    /* TOPBAR */
-    .topbar {
-      position: fixed !important;
-      top: 0; left: 0; right: 0;
-      z-index: 99999 !important;
-      height: var(--header-h);
-      background: rgba(27,27,29,0.95) !important;
-      backdrop-filter: saturate(140%) blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      display: flex;
-      align-items: center;
-      overflow: visible !important;
-    }
-    .topbar .wrap {
-      width: 100%;
-      max-width: 1180px; /* Wider wrap for this page */
-      margin: 0 auto;
-      padding: 0 24px;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .nav { display: flex; align-items: center; width: 100%; height: 100%; }
-
-    /* BRAND (Veeam Glow) */
-    .topbar .brand {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      text-decoration: none;
-      flex-shrink: 0;
-      margin-right: 30px !important; /* Spacing for no-divider look */
-    }
-    .topbar .brand .logo {
-      height: 55px !important;
-      width: 55px !important;
-      display: block !important;
-      object-fit: contain;
-      background: transparent !important;
-      box-shadow: none !important;
-      filter: drop-shadow(0 0 8px rgba(0,179,54,0.6)) !important; /* VEEAM GREEN GLOW */
-      transition: filter 0.3s ease;
-    }
-    .topbar .brand .logo:hover {
-      filter: drop-shadow(0 0 16px rgba(0,179,54,1)) !important;
-    }
-    .topbar .brand strong {
-      font-size: 18px;
-      font-weight: 800 !important;
-      color: #e8eef9 !important;
-      white-space: nowrap;
-      text-shadow: none !important;
-    }
-
-    /* NAV ACTIONS (No Divider Line) */
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 24px; /* Wider gap */
-      height: 44px;
-      border-left: none !important; /* NO DIVIDER */
-      padding-left: 0 !important;   
-      padding-right: 10px !important; 
-      flex-grow: 1;
-      justify-content: flex-end;
-      overflow-x: auto;
-      overflow-y: hidden;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
-    .nav-actions::-webkit-scrollbar { display: none; }
-
-    /* NAV LINKS (Veeam Hover) */
-    .topbar .navlink {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: #ffffff !important;
-      font-weight: 800 !important;
-      font-size: 14px;
-      text-decoration: none;
-      line-height: 1.2 !important;
-      white-space: normal !important; /* Allows <br> to work */
-      padding: 4px 0;
-      transition: all 0.2s ease;
-      flex-shrink: 0;
-    }
-    
-    /* HOVER: Force Veeam Green */
-    .topbar .navlink:hover,
-    .topbar .navlink:focus-visible,
-    .topbar .navlink[aria-current="page"] {
-      color: var(--veeam-green) !important;
-      transform: translateY(-1px);
-      text-shadow: 0 0 10px rgba(0,179,54,0.75), 0 0 20px rgba(0,179,54,0.45) !important;
-      outline: 0;
-    }
-
-    .topbar .navlink::before, .topbar .navlink::after { 
-      content: none !important; display: none !important; 
-    }
-    
-    @media (max-width: 900px) {
-      .topbar .brand strong { display: none; } 
-      .nav-actions { gap: 16px; padding-left: 16px !important; }
-    }
-  </style>
-
-  <!-- === Cyber Page Styles === -->
-  <style id="cyber-theme">
-    :root {
-  /* Re-using old vars, but applying them selectively */
-  --veeam-green: #00B336;
-  --lumen-blue: #00A9E0;
-  --lumen-orange: #FF6A13;
-  --ice-blue: #2BEDE7;
-  --eleven-purple: #a146f9;   /* 11:11 Systems */
-  --text-muted: #A9A9AD;
-  --card-bg: #232326;
-  --card-border: #2C2C30;
-  --outline: #2C2C30; /* from old file */
-}
-
-
-    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+    a{color:inherit;text-decoration:none;transition:color .2s ease;}
+    a:hover{text-decoration:none;}
+    img{max-width:100%;display:block}
+    button{font-family:inherit;}
     section{padding:42px 0;border-top:1px solid var(--outline)}
     section:first-of-type { border-top: none; }
-    .anchor{scroll-margin-top:90px} /* Offset for sticky header */
+    .anchor{scroll-margin-top:90px}
+
+    /* --- 3. MASTER HEADER & NAV --- */
+    header {
+      position: sticky; top: 0; z-index: 99999;
+      background: linear-gradient(180deg,rgba(27,27,29,0.95),rgba(27,27,29,0.85));
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
     
+    .header-center {
+      max-width: 1100px; 
+      margin: 0 auto; 
+      padding: 14px 18px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      gap: 20px; 
+    }
+
+    /* Branding */
+    .brand { display: flex; align-items: center; gap: 16px; text-decoration: none; flex-shrink: 0; }
+    
+    /* LOGO: 75px + VEEAM GREEN GLOW */
+    .brand img.logo {
+      width: 75px !important; height: 75px !important; 
+      border-radius: 14px; display: block; object-fit: contain; 
+      background: transparent;
+      filter: drop-shadow(0 0 8px rgba(0, 179, 54, 0.5));
+      transition: filter 0.3s ease;
+    }
+    .brand:hover img.logo { filter: drop-shadow(0 0 14px rgba(0, 179, 54, 0.9)); }
+    
+    .brand .title {
+      font-weight: 800; 
+      font-size: 26px; 
+      color: #fff; line-height: 1; letter-spacing: 0.2px;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial;
+    }
+
+    /* Navigation */
+    .main-nav { 
+      display: flex; gap: 20px; align-items: center; flex-wrap: wrap; 
+      justify-content: flex-end; 
+    }
+
+    /* Nav Links */
+    .main-nav a {
+      position: relative; color: #cfe3d4; 
+      font-weight: 500; 
+      font-size: 0.85rem; 
+      line-height: 1.2; text-align: center; display: inline-flex; 
+      align-items: center; justify-content: center;
+      transition: color .15s ease, text-shadow .15s ease;
+    }
+
+    /* Page Specific Active State (Security) */
+    .main-nav a.active {
+      color: var(--accent);
+      text-shadow: 0 0 10px rgba(0, 179, 54, 0.6);
+    }
+
+    /* Hover Effects */
+    .main-nav a:not(.nav-sdr):hover {
+      color: var(--accent); /* Veeam Green Hover */
+      text-shadow: 0 0 6px rgba(0, 179, 54, 0.85), 0 0 14px rgba(0, 179, 54, 0.45);
+    }
+
+    /* Underline Animation */
+    .main-nav a:not(.nav-sdr)::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px;
+      background: var(--accent); 
+      transform: scaleX(0); transform-origin: left; 
+      transition: transform .25s ease;
+    }
+    .main-nav a:not(.nav-sdr):hover::after { transform: scaleX(1); }
+    .main-nav a.active::after { transform: scaleX(1); }
+
+    /* --- AI SDR SPECIAL BUTTON --- */
+    .main-nav a.nav-sdr {
+      color: #fff !important;
+      font-weight: 800;
+      text-transform: uppercase;
+      border: none;
+      background: transparent;
+      padding: 6px 4px;
+      transition: all 0.25s ease;
+    }
+    
+    .main-nav a.nav-sdr:hover {
+      color: var(--gold) !important;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 1100px) {
+      .header-center { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .main-nav { gap: 16px 24px; justify-content: flex-start; }
+      .main-nav a { text-align: left; display: inline-block; }
+    }
+
+    /* === PAGE CONTENT STYLES === */
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
     /* Hero */
-    .hero { padding: 40px 0 20px; position: relative; overflow: hidden; }
+    .hero { padding: 40px 0 20px; position: relative; overflow: hidden; border-top: none; }
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.15fr 340px; /* 340px Pic */
+      grid-template-columns: 1.15fr 340px;
       gap: 32px;
       align-items: center;
     }
@@ -190,11 +177,11 @@
     .cta-row { display:flex; gap:12px; margin:24px 0 6px; flex-wrap:wrap; }
     .meta { font-size:14px; color:var(--text-muted); }
 
-    /* Hero Pic - 340px NO GLOW, Blended BG */
+    /* Hero Pic */
     .hero-pic {
       justify-self: end;
       width: 100%; 
-      max-width: 340px; /* AI Page Size */
+      max-width: 340px; 
       border-radius: 18px; 
       overflow: hidden;
       background: transparent !important; 
@@ -210,8 +197,8 @@
 
     /* KPIs */
     .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 32px; }
-    .kpi { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 16px; text-align: center; }
-    .knum { font-size: 2.5rem; font-weight: 800; color: var(--veeam-green); line-height: 1.1; min-height: 44px; }
+    .kpi { background: var(--panel); border: 1px solid var(--card-border); border-radius: 12px; padding: 16px; text-align: center; }
+    .knum { font-size: 2.5rem; font-weight: 800; color: var(--accent); line-height: 1.1; min-height: 44px; }
     .kdesc { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
 
     /* Pillars */
@@ -220,20 +207,15 @@
     
     .pillars { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin: 40px 0; }
     .pillar { 
-      background: var(--card-bg); border: 1px solid var(--card-border); 
+      background: var(--panel); border: 1px solid var(--card-border); 
       border-radius: 16px; padding: 18px; 
-      display: grid; /* Keep display:grid */
-      /* REMOVED grid-template-rows and min-height */
+      display: grid;
     }
-    .pillar ul { 
-      padding-left: 18px; margin: 0 0 12px 0; font-size: 0.9rem; color: #D3D3D9; 
-      /* REMOVED flex-grow: 1; */
-    }
-    
+    .pillar ul { padding-left: 18px; margin: 0 0 12px 0; font-size: 0.9rem; color: #D3D3D9; }
     .pillar li { margin-bottom: 6px; }
     .pillar .pill { align-self: flex-start; } 
 
-    /* Buttons */
+    /* Pills/Buttons */
     .pill {
       display: inline-flex; align-items: center; justify-content: center;
       padding: 10px 18px; border-radius: 999px; font-weight: 600; font-size: 0.9rem;
@@ -241,204 +223,85 @@
       border: 1px solid transparent;
     }
     .pill.primary {
-      background: var(--veeam-green); color: #0b1220; border-color: var(--veeam-green);
+      background: var(--accent); color: #0b1220; border-color: var(--accent);
     }
     .pill.primary:hover {
       background: #fff; transform: translateY(-2px); box-shadow: 0 0 15px rgba(0,179,54,0.5);
     }
     .pill.outline {
-      background: transparent; color: var(--veeam-green); border: 1px solid var(--veeam-green);
+      background: transparent; color: var(--accent); border: 1px solid var(--accent);
     }
     .pill.outline:hover {
       background: rgba(0,179,54,0.1); transform: translateY(-2px);
     }
 
-/* Quadrant: Security Effectiveness vs Integration & UX */
-.quadrant-section {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
-  color: #f5f7ff;
-  background: #05060a;
-  padding: 32px 24px;
-  border-radius: 16px;
-  max-width: 980px;
-  margin: 40px auto;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
-}
+    /* Quadrant Section */
+    .quadrant-section {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+      color: #f5f7ff;
+      background: #05060a;
+      padding: 32px 24px;
+      border-radius: 16px;
+      max-width: 980px;
+      margin: 40px auto;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+    }
+    .quadrant-section h2 { margin: 0 0 12px; font-size: 1.6rem; letter-spacing: 0.03em; }
+    .quadrant-section p { margin: 0 0 20px; color: var(--text-muted); max-width: 800px; }
 
-.quadrant-section h2 {
-  margin: 0 0 12px;
-  font-size: 1.6rem;
-  letter-spacing: 0.03em;
-}
+    .quadrant-wrapper { display: grid; grid-template-columns: auto 1fr; gap: 8px 16px; align-items: stretch; }
+    .quadrant-plot {
+      position: relative;
+      background: radial-gradient(circle at top, #171a24 0, #080910 52%, #040509 100%);
+      border-radius: 14px; overflow: hidden; min-height: 360px; aspect-ratio: 16 / 9;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .quadrant-grid {
+      position: absolute; inset: 12% 8% 16% 10%;
+      background-image: linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to top, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 10% 100%, 100% 12.5%; border-radius: 10px;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+    }
+    .axis-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(232, 238, 255, 0.85); }
+    .axis-label-y { writing-mode: vertical-rl; text-orientation: mixed; display: flex; align-items: center; justify-content: center; }
+    .axis-label-x { position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%); text-align: center; }
 
-.quadrant-section p {
-  margin: 0 0 20px;
-  color: var(--text-muted);
-  max-width: 800px;
-}
-
-.quadrant-wrapper {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 8px 16px;
-  align-items: stretch;
-}
-
-/* Plot area */
-.quadrant-plot {
-  position: relative;
-  background: radial-gradient(circle at top, #171a24 0, #080910 52%, #040509 100%);
-  border-radius: 14px;
-  overflow: hidden;
-  min-height: 360px;
-  aspect-ratio: 16 / 9;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-/* Grid where points live */
-.quadrant-grid {
-  position: absolute;
-  inset: 12% 8% 16% 10%;
-  background-image:
-    linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px),
-    linear-gradient(to top, rgba(255,255,255,0.06) 1px, transparent 1px);
-  background-size: 10% 100%, 100% 12.5%;
-  border-radius: 10px;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
-}
-
-/* Axis labels */
-.axis-label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: rgba(232, 238, 255, 0.85);
-}
-
-.axis-label-y {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.axis-label-x {
-  position: absolute;
-  bottom: 4px;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-}
-
-/* Points */
-.quad-point {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  pointer-events: auto;
-  color: var(--ice-blue); /* everyone idle in ice blue */
-}
-
-/* Circle marker */
-.quad-marker {
-  width: 14px;
-  height: 14px;
-  border-radius: 999px;
-  border: 2px solid currentColor;
-  background: radial-gradient(circle at center, rgba(255,255,255,0.18) 0, transparent 70%);
-  box-shadow: 0 0 10px currentColor;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-/* Label chip */
-.quad-label {
-  position: absolute;
-  top: 50%;
-  left: 18px;
-  transform: translateY(-50%);
-  white-space: nowrap;
-  font-size: 0.7rem;
-  padding: 2px 6px;
-  border-radius: 999px;
-  background: rgba(7, 10, 18, 0.9);
-  border: 1px solid rgba(150, 175, 255, 0.25);
-  backdrop-filter: blur(4px);
-  color: #f5f7ff;
-}
-
-/* Hover behavior */
-.quad-point:hover .quad-marker {
-  transform: scale(1.35);
-  box-shadow: 0 0 14px currentColor;
-}
-
-/* On hover, swap color for specific vendors */
-.quad-point[data-vendor="lumen"]:hover {
-  color: var(--lumen-orange);
-}
-
-.quad-point[data-vendor="veeam"]:hover {
-  color: var(--veeam-green);
-}
-
-.quad-point[data-vendor="1111"]:hover {
-  color: var(--eleven-purple);
-}
-
-/* Label border picks up accent on hover */
-.quad-point:hover .quad-label {
-  border-color: currentColor;
-}
-
-/* Mobile tweaks */
-@media (max-width: 720px) {
-  .quadrant-wrapper {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-  }
-
-  .axis-label-y {
-    order: -1;
-    writing-mode: horizontal-tb;
-    justify-content: center;
-    margin-bottom: 6px;
-  }
-
-  .quadrant-plot {
-    min-height: 260px;
-  }
-
-  .quad-label {
-    max-width: 140px;
-    white-space: normal;
-  }
-}
-
-
+    .quad-point { position: absolute; transform: translate(-50%, -50%); pointer-events: auto; color: var(--ice-blue); }
+    .quad-marker {
+      width: 14px; height: 14px; border-radius: 999px; border: 2px solid currentColor;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.18) 0, transparent 70%);
+      box-shadow: 0 0 10px currentColor; transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .quad-label {
+      position: absolute; top: 50%; left: 18px; transform: translateY(-50%); white-space: nowrap;
+      font-size: 0.7rem; padding: 2px 6px; border-radius: 999px;
+      background: rgba(7, 10, 18, 0.9); border: 1px solid rgba(150, 175, 255, 0.25);
+      backdrop-filter: blur(4px); color: #f5f7ff;
+    }
+    .quad-point:hover .quad-marker { transform: scale(1.35); box-shadow: 0 0 14px currentColor; }
+    .quad-point[data-vendor="lumen"]:hover { color: var(--lumen-orange); }
+    .quad-point[data-vendor="veeam"]:hover { color: var(--accent); }
+    .quad-point[data-vendor="1111"]:hover { color: var(--eleven-purple); }
+    .quad-point:hover .quad-label { border-color: currentColor; }
 
     /* Checklist & Form */
     .checklist{display:grid;grid-template-columns:repeat(3, 1fr);gap:12px;margin:24px 0}
-    .check{display:flex;gap:12px;align-items:flex-start;background:var(--card-bg);border:1px solid var(--card-border);padding:12px;border-radius:8px}
-    .check input{accent-color:var(--veeam-green); margin-top: 4px; transform: scale(1.2);}
+    .check{display:flex;gap:12px;align-items:flex-start;background:var(--panel);border:1px solid var(--card-border);padding:12px;border-radius:8px}
+    .check input{accent-color:var(--accent); margin-top: 4px; transform: scale(1.2);}
     .check label{line-height:1.4; font-size: 0.9rem;}
-    .check small{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+    .check small{display:block;color:var(--text-muted);font-size:12px;margin-top:4px}
     .form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
     
     .form-wrap{background:#111114;border:1px solid var(--card-border);border-radius:16px;padding:10px; margin: 40px 0;}
     .iframe-shell{position:relative;padding-top:740px;background:#0f0f12;border-radius:12px;}
     .iframe-shell iframe{position:absolute;inset:0;width:100%;height:100%;border:0; border-radius:12px;}
-    .note{font-size:14px;color:var(--text-muted);margin-top:10px; text-align: center;}
 
     /* Footer */
-    .footer { border-top:1px solid var(--card-border); padding: 40px 0; margin-top: 40px; text-align: center; color: var(--text-muted); }
-    .socials { display: flex; gap: 16px; justify-content: center; margin-top: 16px; }
-    .socials a { color: #fff; text-decoration: none; transition: all 0.2s ease; }
-    .socials a:hover { 
-      color: var(--veeam-green); /* VEEAM GREEN HOVER */
-      transform: translateY(-2px);
-      text-shadow: 0 0 10px var(--veeam-green);
-    }
-    .socials svg { width: 24px; height: 24px; fill: currentColor; }
+    .footer{border-top:1px solid var(--line);margin-top:40px;padding:32px 20px;text-align:center;color:var(--text-muted)}
+    .socials{display:flex;gap:16px;justify-content:center;margin-top:16px}
+    .socials a{color:#fff;transition:all .2s ease}
+    .socials a:hover{color:var(--accent);transform:translateY(-2px);text-shadow:0 0 10px var(--accent)}
+    .socials svg{width:24px;height:24px;fill:currentColor}
 
     @media (max-width: 900px) {
       .hero-grid { grid-template-columns: 1fr; } 
@@ -452,36 +315,33 @@
 </head>
 <body>
 
-  <!-- === MASTER HEADER (Cyber Variant) === -->
-  <div class="topbar">
-    <div class="wrap">
-      <nav class="nav" aria-label="Primary">
-        <div class="brand">
-         <img class="logo" src="/assets/industry5logo.svg" alt="Industry5.pro logo" />
-          <strong style="color: #fff;">Industry5.pro</strong>
-        </div>
-  
-        <div class="nav-actions">
-          <a class="navlink" href="/">Home</a>
-          <a class="navlink" href="/ai">AI</a>
-          <a class="navlink" href="/cyber" aria-current="page">Security</a>
-          <a class="navlink" href="/cloud20">Cloud 2.0</a>
-          <a class="navlink" href="/ccaas">UC &amp;<br>Contact Center</a>
-          <a class="navlink" href="/aiot">AIoT</a>
-          <a class="navlink" href="/peplink">5G &amp;<br>Satellite</a>
-          <a class="navlink" href="/blog">Blog</a>
-          <a class="navlink" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
-        </div>
+  <header>
+    <div class="header-center">
+      <a class="brand" href="/">
+         <img src="/assets/industry5logo.svg" alt="Industry5.pro logo" class="logo" width="75" height="75" loading="eager" decoding="async">
+         <span class="title">Industry5.pro</span>
+      </a>
+      
+      <nav class="main-nav">
+        <a href="/">Home</a>
+        <a href="/ai">AI &<br>Omnichannel</a>
+        <a href="/cyber" class="active">Security</a>
+        <a href="/cloud20">Cloud 2.0 &<br>Network</a>
+        <a href="/ccaas">UC &<br>Contact Center</a>
+        <a href="/aiot">AIoT</a>
+        <a href="/peplink">5G &<br>Satellite</a>
+        <a href="/ai-sdr.html" class="nav-sdr">AI SDR</a>
+        <a href="/blog">Blog</a>
+        <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
       </nav>
     </div>
-  </div>
+  </header>
 
   <main class="wrap">
-    <!-- HERO -->
     <section class="hero">
       <div class="hero-grid">
         <div>
-          <h1>Protect Data. Predict Threats.<br><span style="color:var(--veeam-green)">Prevent Downtime.</span></h1>
+          <h1>Protect Data. Predict Threats.<br><span style="color:var(--accent)">Prevent Downtime.</span></h1>
           <p class="sub">
             Unify network security, data protection, and rapid recovery into one measurable cyber resilience motion.
             We align Lumen capabilities with Veeam-powered recoverability and a supplier-agnostic ecosystem.
@@ -492,13 +352,11 @@
           </div>
           <div class="meta">No fear tactics. Only outcomes, SLAs, and time to recover.</div>
         </div>
-        <!-- Profile Pic: 340px, no glow, blends in -->
         <figure class="hero-pic">
           <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora" />
         </figure>
       </div>
 
-      <!-- KPIs -->
       <div class="kpis" id="kpi-ticker">
         <div class="kpi">
           <div class="knum" data-target="43" data-suffix="%">0%</div>
@@ -519,7 +377,6 @@
       </div>
     </section>
 
-    <!-- PILLARS -->
     <div class="pillars">
       <div class="pillar">
         <h3>Protect</h3>
@@ -548,34 +405,23 @@
       </div>
     </div>
 
-<section id="quadrant" class="anchor quadrant-section">
-  <h2>Cyber Resilience Overlay – Security vs Integration</h2>
-  <p>
-    This map compares global MDR, SASE, and backup players by
-    <strong>security effectiveness</strong> (threat detection and response speed)
-    on the vertical axis and <strong>integration and user experience</strong> on the horizontal axis.
-  </p>
+    <section id="quadrant" class="anchor quadrant-section">
+      <h2>Cyber Resilience Overlay – Security vs Integration</h2>
+      <p>
+        This map compares global MDR, SASE, and backup players by
+        <strong>security effectiveness</strong> (threat detection and response speed)
+        on the vertical axis and <strong>integration and user experience</strong> on the horizontal axis.
+      </p>
 
-  <div class="quadrant-wrapper">
-    <!-- Y axis label -->
-    <div class="axis-label axis-label-y">
-      Security Effectiveness
-    </div>
-
-    <!-- Plot area -->
-    <div class="quadrant-plot">
-      <div class="quadrant-grid"></div>
-      <!-- X axis label -->
-      <div class="axis-label axis-label-x">
-        Integration &amp; UX
+      <div class="quadrant-wrapper">
+        <div class="axis-label axis-label-y">Security Effectiveness</div>
+        <div class="quadrant-plot">
+          <div class="quadrant-grid"></div>
+          <div class="axis-label axis-label-x">Integration &amp; UX</div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-
-
-    <!-- CHECKLIST -->
     <section id="checklist" class="anchor">
       <h2>Cyber Resilience Checklist</h2>
       <p class="lead">Check the boxes you already meet. Anything unchecked becomes a target for discovery and a short path to value.</p>
@@ -589,7 +435,6 @@
         <div class="check"><input type="checkbox" id="c6"><label for="c6"><strong>DDoS Runbook</strong><small>Lumen Scrubbing & Contacts Verified</small></label></div>
         <div class="check"><input type="checkbox" id="c7"><label for="c7"><strong>Compliance Mapping</strong><small>HIPAA/PCI/ISO Evidence Ready</small></label></div>
         <div class="check"><input type="checkbox" id="c8"><label for="c8"><strong>Restore Testing</strong><small>Veeam Instant Recovery Validated</small></label></div>
-        <!-- NEW 9th Item -->
         <div class="check"><input type="checkbox" id="c9"><label for="c9"><strong>Data Encryption</strong><small>Data At Rest (DAR) & In Transit (DIT)</small></label></div>
       </div>
       
@@ -599,7 +444,6 @@
       </div>
     </section>
 
-    <!-- FORM -->
     <section id="form" class="anchor">
       <h2>Cyber Pre-Intake Form</h2>
       <p class="lead">Three minutes to surface your top risks and recovery blind spots. You receive a prioritized action plan that maps posture to business impact.</p>
@@ -608,67 +452,58 @@
           <iframe src="https://near.tl/sm/PKoP8D7PR" title="Cyber Intake" loading="lazy" allow="fullscreen; clipboard-read; clipboard-write" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
-      
     </section>
   </main>
 
-  <!-- === MASTER FOOTER (Cyber Variant) === -->
   <footer class="footer">
-    <div>© <span id="y"></span> Industry5.pro | Built on trust. Paid by results.</div>
-    <div class="socials">
-      <a href="https://www.linkedin.com/in/louis-tortora7/" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.48 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.8 2.67 4.8 6.14V23h-4v-6.5c0-1.55-.03-3.55-2.17-3.55-2.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg>
-      </a>
-      <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.51 5.51 0 0 0 12 7.5zm0 2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5zM18 6.2a1 1 0 1 0 1 1 1 1 0 0 0-1-1z"/></svg>
-      </a>
-      <a href="https://www.facebook.com/profile.php?id=61582481880019" target="_blank" rel="noopener" aria-label="Facebook">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.07C22 6.49 17.52 2 11.93 2 6.35 2 1.86 6.49 1.86 12.07c0 5.02 3.66 9.18 8.44 9.95v-7.03H7.9V12.1h2.4V9.86c0-2.37 1.4-3.68 3.55-3.68 1.03 0 2.11.18 2.11.18v2.32h-1.19c-1.17 0-1.53.73-1.53 1.47v1.95h2.61l-.46 2.89h-2.19v7.03c4.78-.77 8.44-4.93 8.44-9.95z"/></svg>
-      </a>
-      <a href="https://wa.me/14076945495" target="_blank" rel="noopener" aria-label="WhatsApp">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163A11.867 11.867 0 0 1 0 11.989C0 5.371 5.373 0 11.99 0 18.606 0 24 5.371 24 11.989S18.606 24 11.99 24a11.9 11.9 0 0 1-5.642-1.437L.057 24Zm6.597-3.807c1.676.995 3.276 1.591 5.35 1.593 5.448 0 9.884-4.429 9.884-9.88 0-5.45-4.436-9.88-9.884-9.88-5.449 0-9.88 4.43-9.88 9.88 0 2.266.738 3.891 1.977 5.59L3.5 20.5l3.154-.307zm11.387-5.464c-.066-.11-.242-.176-.506-.307-.264-.132-1.56-.77-1.8-.857-.242-.088-.418-.132-.594.132-.176.264-.682.857-.836 1.033-.154.176-.308.198-.572.066-.264-.132-1.116-.41-2.125-1.308-.785-.7-1.314-1.56-1.469-1.823-.154-.264-.017-.407.115-.539.118-.117.264-.308.396-.462.132-.154.176-.264.264-.44.088-.176.044-.33-.022-.462-.066-.132-.594-1.43-.814-1.958-.214-.514-.432-.445-.594-.453l-.506-.009c-.176 0-.462.066-.704.33-.242.264-.924.902-.924 2.202s.946 2.552 1.077 2.73c.132.176 1.862 2.842 4.508 3.986.63.27 1.122.432 1.505.553.632.202 1.206.174 1.661.105.506-.077 1.56-.638 1.78-1.255.22-.616.22-1.144.154-1.255z"/></svg>
-      </a>
-      <a href="mailto:lou@industry5.pro" aria-label="Email">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 4h20a2 2 0 0 1 2 2v1l-12 7L0 7V6a2 2 0 0 1 2-2zm0 6.236V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-7.764l-9.386 5.52a2 2 0 0 1-2.228 0L2 10.236z"/></svg>
-      </a>
+    <div class="footer-inner">
+      <div>© <span id="y"></span> Industry5.pro | Built on trust. Paid by results.</div>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/louis-tortora7/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.48 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.8 2.67 4.8 6.14V23h-4v-6.5c0-1.55-.03-3.55-2.17-3.55-2.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61582481880019" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.675 0h-21.35C.592 0 0 .592 0 1.325v21.351C0 23.408.592 24 1.325 24h11.49v-9.294H9.691V11.01h3.124V8.414c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.313h3.587l-.467 3.696h-3.12V24h6.117C23.408 24 24 23.408 24 22.676V1.325C24 .592 23.408 0 22.675 0z"/></svg>
+        </a>
+        <a href="https://wa.me/14076945495" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163A11.867 11.867 0 0 1 0 11.989C0 5.371 5.373 0 11.99 0 18.606 0 24 5.371 24 11.989S18.606 24 11.99 24a11.9 11.9 0 0 1-5.642-1.437L.057 24Zm6.597-3.807c1.676.995 3.276 1.591 5.35 1.593 5.448 0 9.884-4.429 9.884-9.88 0-5.45-4.436-9.88-9.884-9.88-5.449 0-9.88 4.43-9.88 9.88 0 2.266.738 3.891 1.977 5.59L3.5 20.5l3.154-.307zm11.387-5.464c-.066-.11-.242-.176-.506-.307-.264-.132-1.56-.77-1.8-.857-.242-.088-.418-.132-.594.132-.176.264-.682.857-.836 1.033-.154.176-.308.198-.572.066-.264-.132-1.116-.41-2.125-1.308-.785-.7-1.314-1.56-1.469-1.823-.154-.264-.017-.407.115-.539.118-.117.264-.308.396-.462.132-.154.176-.264.264-.44.088-.176.044-.33-.022-.462-.066-.132-.594-1.43-.814-1.958-.214-.514-.432-.445-.594-.453l-.506-.009c-.176 0-.462.066-.704.33-.242.264-.924.902-.924 2.202s.946 2.552 1.077 2.73c.132.176 1.862 2.842 4.508 3.986.63.27 1.122.432 1.505.553.632.202 1.206.174 1.661.105.506-.077 1.56-.638 1.78-1.255.22-.616.22-1.144.154-1.255z"/></svg>
+        </a>
+        <a href="mailto:lou@industry5.pro" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 4h20a2 2 0 0 1 2 2v1l-12 7L0 7V6a2 2 0 0 1 2-2zm0 6.236V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-7.764l-9.386 5.52a2 2 0 0 1-2.228 0L2 10.236z"/></svg>
+        </a>
+      </div>
     </div>
   </footer>
 
-  <!-- === SCRIPTS === -->
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
-         // Cyber quadrant: Security Effectiveness (Y) vs Integration & UX (X)
+    
+    // Cyber quadrant script
     (function () {
-      // X: Integration & UX
-      // Y: Security effectiveness, specifically detection and response
       const points = [
-        // Strong MDRs with good but heavier UX
-        { name: "eSentire (MDR)",                    x: 72, y: 88, vendor: "default" }, // sub-15 min MTTC, deep integrations 
-        { name: "Open Systems (MDR + SASE)",        x: 74, y: 81, vendor: "default" }, // Microsoft-aligned MXDR and SASE, strong MDR and integrations 
-        { name: "Ontinue (Microsoft MDR)",          x: 77, y: 83, vendor: "default" }, // Microsoft-verified MXDR, tight Defender and Sentinel focus 
+        { name: "eSentire (MDR)",                    x: 72, y: 88, vendor: "default" }, 
+        { name: "Open Systems (MDR + SASE)",        x: 74, y: 81, vendor: "default" }, 
+        { name: "Ontinue (Microsoft MDR)",          x: 77, y: 83, vendor: "default" }, 
 
-        // Established MDR / MSSP
-        { name: "Trustwave (MDR)",                  x: 66, y: 82, vendor: "default" }, // IDC leader in MDR, strong threat intel and response 
-        { name: "LevelBlue (MSSP, WAAP mngd)",      x: 68, y: 77, vendor: "default" }, // pure-play MSS plus Akamai WAAP partnership 
+        { name: "Trustwave (MDR)",                  x: 66, y: 82, vendor: "default" }, 
+        { name: "LevelBlue (MSSP, WAAP mngd)",      x: 68, y: 77, vendor: "default" }, 
         { name: "Field Effect (MDR)",               x: 64, y: 75, vendor: "default" },
         { name: "SilverSky (MDR)",                  x: 62, y: 72, vendor: "default" },
 
-        // Web and app security specialist
-        { name: "Akamai (Zero Trust / WAAP)",       x: 70, y: 86, vendor: "default" }, // WAAP leader, very strong app/API protection 
+        { name: "Akamai (Zero Trust / WAAP)",       x: 70, y: 86, vendor: "default" }, 
 
-        // Veeam ecosystem: resilience and DR
-        { name: "Veeam (Backup / Instant Recovery)", x: 78, y: 70, vendor: "veeam" },  // strong restore and integrations, less about real time detection
+        { name: "Veeam (Backup / Instant Recovery)", x: 78, y: 70, vendor: "veeam" },  
         { name: "Dataprise (Veeam VCSP)",           x: 76, y: 74, vendor: "default" },
         { name: "11:11 Systems (DRaaS)",  x: 80, y: 76, vendor: "1111" },
 
-        // SMB friendly all in one
-        { name: "Coro (All-in-one SMB/MM)",         x: 82, y: 68, vendor: "default" }, // all-in-one platform designed for SMB simplicity 
+        { name: "Coro (All-in-one SMB/MM)",         x: 82, y: 68, vendor: "default" }, 
 
-        // Network and edge security
-        { name: "Lumen (Backbone + DDoS + Edge)",   x: 73, y: 72, vendor: "lumen" }   // strong at network and DDoS, solid integrations via backbone
+        { name: "Lumen (Backbone + DDoS + Edge)",   x: 73, y: 72, vendor: "lumen" }   
       ];
 
-      // Axis ranges, we map 40..90 horizontally and 55..90 vertically
       const xMin = 40, xMax = 90;
       const yMin = 55, yMax = 90;
 
@@ -698,7 +533,6 @@
       });
     })();
 
-
     // KPI Ticker Animation
     document.addEventListener("DOMContentLoaded", () => {
       const kpiCounters = document.querySelectorAll(".knum[data-target]");
@@ -720,19 +554,11 @@
           const updateCount = () => {
             current += increment;
             let val = (current >= target) ? target : current;
-            let valStr = val.toFixed(decimals);
-            
-            if (decimals > 0 && val < 1) valStr = val.toFixed(decimals);
-            if (decimals === 0) valStr = Math.ceil(val).toString();
+            let valStr = decimals > 0 && val < 1 ? val.toFixed(decimals) : (decimals === 0 ? Math.ceil(val).toString() : val.toFixed(decimals));
 
             counter.textContent = counter.textContent.startsWith('$') ? `$${valStr}` : valStr;
-            if (counter.dataset.suffix) {
-              counter.textContent += counter.dataset.suffix;
-            }
-
-            if (current < target) {
-              requestAnimationFrame(updateCount);
-            }
+            if (counter.dataset.suffix) counter.textContent += counter.dataset.suffix;
+            if (current < target) requestAnimationFrame(updateCount);
           };
           updateCount();
           observer.unobserve(counter);
@@ -743,16 +569,10 @@
       kpiCounters.forEach(c => observer.observe(c));
     });
 
-    // Checklist Download
+    // Checklist Download Script
     (function(){
       const btn = document.getElementById('download-checklist');
       if(!btn) return;
-
-      function getText(node){
-        const strong = node.querySelector('strong')?.textContent?.trim() || '';
-        const small  = node.querySelector('small')?.textContent?.trim()  || '';
-        return small ? `${strong} - ${small}` : strong;
-      }
 
       btn.addEventListener('click', function(){
         const checks = Array.from(document.querySelectorAll('.check input'));
@@ -788,6 +608,5 @@
       });
     })();
   </script>
-
 </body>
 </html>
