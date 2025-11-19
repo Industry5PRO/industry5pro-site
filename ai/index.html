@@ -5,174 +5,176 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Injectable AI • Omnichannel • Featured: DRUID AI</title>
 
+<meta name="description" content="Add assistants, quality, analytics, and automation to the stack you already run. Featured Partner: DRUID AI.">
+<meta name="author" content="Industry5.pro">
+<link rel="canonical" href="https://industry5.pro/ai">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Injectable AI • Omnichannel">
+<meta property="og:description" content="Outcomes first, tools second. Automate Tier 0/1 and assist live agents.">
+<meta property="og:url" content="https://industry5.pro/ai">
+<meta property="og:image" content="https://industry5.pro/assets/industry5-logo.png">
+
+<meta name="color-scheme" content="dark">
+
 <style>
+ /* --- CORE VARIABLES (AI PAGE THEME: DRUID GREEN) --- */
  :root {
-    --header-h: 76px;
-    --druid-green: #1DDF5A; /* NEON GREEN */
-    --lumen-charcoal: #1B1B1D;
-    --text-muted: #A9A9AD;
-    --card-border: #2C2C30;
-    
-    /* UPDATED: Charcoal Backgrounds */
-    --bg: #1B1B1D;   /* Matches Cyber Page background */
-    --card: #232326; /* Matches Cyber Page cards */
-    
-    /* Other variables kept as is */
-    --ink: #0b1220; 
+    --bg: #1B1B1D;
+    --panel: #232326;
     --text: #e8eef9;
+    --muted: #A9A9AD;
+    --line: rgba(255,255,255,0.08);
+    
+    /* Page Specific Accents */
+    --accent: #1DDF5A;           /* Druid Neon Green */
+    --gold: #FFD700;             /* Standard Gold (for Blog/SDR) */
     --druid-ink: #074650;    
-    --druid-pastel: #D2FDB1; 
-}
+    --druid-pastel: #D2FDB1;
+ }
+
+  /* --- RESET & BASE --- */
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+  a{color:inherit;text-decoration:none;transition:color .2s ease;}
+  a:hover{text-decoration:none;}
+  img{max-width:100%;display:block}
+  button{font-family:inherit;}
+
+  /* --- 3. MASTER HEADER & NAV --- */
+  header {
+    position: sticky; top: 0; z-index: 99999;
+    background: linear-gradient(180deg,rgba(27,27,29,0.95),rgba(27,27,29,0.85));
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
   
-  /* Global Resets from Cyber Page */
-  body { 
-    padding-top: var(--header-h) !important; 
-    background-color: var(--bg);
-    color: var(--text);
-    font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial;
-    margin: 0;
-    box-sizing: border-box;
+  .header-center {
+    max-width: 1100px; 
+    margin: 0 auto; 
+    padding: 14px 18px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    gap: 20px; 
   }
-  *, *:before, *:after { box-sizing: inherit; }
-  main, .hero, .page-start { margin-top: 0 !important; }
-  a { text-decoration: none; color: inherit; }
 
-  /* === TOPBAR (Fixed Header from Cyber Page) === */
-  .topbar {
-    position: fixed !important;
-    top: 0; left: 0; right: 0;
-    z-index: 99999 !important;
-    height: var(--header-h);
-    background: rgba(27,27,29,0.95) !important;
-    backdrop-filter: saturate(140%) blur(12px);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    display: flex;
-    align-items: center;
-    overflow: visible !important;
-  }
-  .topbar .wrap {
-    width: 100%;
-    max-width: 1180px; /* Wider wrap for header */
-    margin: 0 auto;
-    padding: 0 24px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .nav { display: flex; align-items: center; width: 100%; height: 100%; }
-
-  /* BRAND (Green Glow) */
-  .topbar .brand {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    text-decoration: none;
-    flex-shrink: 0;
-    margin-right: 30px !important; 
-  }
-  .topbar .brand .logo {
-    height: 55px !important;
-    width: 55px !important;
-    display: block !important;
-    object-fit: contain;
-    background: transparent !important;
-    box-shadow: none !important;
-    /* DRUID GREEN GLOW */
-    filter: drop-shadow(0 0 8px rgba(29,223,90,0.6)) !important; 
+  /* Branding */
+  .brand { display: flex; align-items: center; gap: 16px; text-decoration: none; flex-shrink: 0; }
+  
+  /* LOGO: 75px + DRUID GREEN GLOW */
+  .brand img.logo {
+    width: 75px !important; height: 75px !important; 
+    border-radius: 14px; display: block; object-fit: contain; 
+    background: transparent;
+    filter: drop-shadow(0 0 8px rgba(29, 223, 90, 0.5));
     transition: filter 0.3s ease;
   }
-  .topbar .brand .logo:hover {
-    filter: drop-shadow(0 0 16px rgba(29,223,90,1)) !important;
-  }
-  .topbar .brand strong {
-    font-size: 18px;
-    font-weight: 800 !important;
-    color: #e8eef9 !important;
-    white-space: nowrap;
-    text-shadow: none !important;
+  .brand:hover img.logo { filter: drop-shadow(0 0 14px rgba(29, 223, 90, 0.9)); }
+  
+  .brand .title {
+    font-weight: 800; 
+    font-size: 26px; 
+    color: #fff; line-height: 1; letter-spacing: 0.2px;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial;
   }
 
-  /* NAV ACTIONS (No Divider Line) */
-  .nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 24px; 
-    height: 44px;
-    border-left: none !important; 
-    padding-left: 0 !important;   
-    padding-right: 10px !important; 
-    flex-grow: 1;
-    justify-content: flex-end;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+  /* Navigation */
+  .main-nav { 
+    display: flex; gap: 20px; align-items: center; flex-wrap: wrap; 
+    justify-content: flex-end; 
   }
-  .nav-actions::-webkit-scrollbar { display: none; }
 
-  /* NAV LINKS */
-  .topbar .navlink {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #ffffff !important;
-    font-weight: 800 !important;
-    font-size: 14px;
-    text-decoration: none;
-    line-height: 1.2 !important;
-    white-space: normal !important; 
-    padding: 4px 0;
-    transition: all 0.2s ease;
-    flex-shrink: 0;
+  /* Nav Links */
+  .main-nav a {
+    position: relative; color: #cfe3d4; 
+    font-weight: 500; 
+    font-size: 0.85rem; 
+    line-height: 1.2; text-align: center; display: inline-flex; 
+    align-items: center; justify-content: center;
+    transition: color .15s ease, text-shadow .15s ease;
+  }
+
+  /* Page Specific Active State (AI) */
+  .main-nav a.active {
+    color: var(--accent);
+    text-shadow: 0 0 10px rgba(29, 223, 90, 0.6);
+  }
+
+  /* Hover Effects */
+  .main-nav a:not(.nav-sdr):hover {
+    color: var(--accent); /* Page Accent Hover */
+    text-shadow: 0 0 6px rgba(29, 223, 90, 0.85), 0 0 14px rgba(29, 223, 90, 0.45);
+  }
+
+  /* Underline Animation */
+  .main-nav a:not(.nav-sdr)::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px;
+    background: var(--accent); 
+    transform: scaleX(0); transform-origin: left; 
+    transition: transform .25s ease;
+  }
+  .main-nav a:not(.nav-sdr):hover::after { transform: scaleX(1); }
+  .main-nav a.active::after { transform: scaleX(1); }
+
+  /* --- AI SDR SPECIAL BUTTON --- */
+  .main-nav a.nav-sdr {
+    color: #fff !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    border: none;
+    background: transparent;
+    padding: 6px 4px;
+    transition: all 0.25s ease;
   }
   
-  /* HOVER & ACTIVE: DRUID Green */
-  .topbar .navlink:hover,
-  .topbar .navlink:focus-visible,
-  .topbar .navlink[aria-current="page"] {
-    color: var(--druid-green) !important;
+  .main-nav a.nav-sdr:hover {
+    color: var(--gold) !important;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
     transform: translateY(-1px);
-    text-shadow: 0 0 10px rgba(29,223,90,0.75), 0 0 20px rgba(29,223,90,0.45) !important;
-    outline: 0;
   }
 
-  .topbar .navlink::before, .topbar .navlink::after { 
-    content: none !important; display: none !important; 
-  }
-  
-  @media (max-width: 900px) {
-    .topbar .brand strong { display: none; } 
-    .nav-actions { gap: 16px; padding-left: 16px !important; }
+  @media (max-width: 1100px) {
+    .header-center { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .main-nav { gap: 16px 24px; justify-content: flex-start; }
+    .main-nav a { text-align: left; display: inline-block; }
   }
 
-  /* === MAIN CONTENT STYLES (Preserved from AI Page) === */
+  /* === PAGE CONTENT STYLES === */
   .wrap{max-width:1120px;margin:0 auto;padding:0 16px}
 
-  /* Hero - INCREASED PADDING HERE to push content down */
-  .hero{ padding: 60px 0 20px; margin: 0; }
-  
+  .hero{ padding: 40px 0 20px; margin: 0; }
   .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:center}
   @media (max-width:980px){ .hero-grid{grid-template-columns:1fr} .hero-portrait{display:none} }
-  .kicker{color:var(--druid-green);font-weight:800;margin-bottom:6px}
+  
+  .kicker{color:var(--accent);font-weight:800;margin-bottom:6px}
   .hero h1{font-size:clamp(28px,5.2vw,46px);line-height:1.1;margin:0 0 8px}
   .lead{font-size:clamp(16px,1.8vw,19px);color:#d5dcef;margin:0 0 14px}
   .cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+  
   .btn{
     display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:12px;font-weight:800;
     border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);color:#fff;
     transition:transform .15s, box-shadow .2s, border-color .2s;
   }
   .btn:hover{transform:translateY(-1px)}
-  .btn.primary{background:var(--druid-ink);color:var(--druid-green);border-color:rgba(29,223,90,.45);
+  .btn.primary{background:var(--druid-ink);color:var(--accent);border-color:rgba(29,223,90,.45);
     box-shadow:0 0 10px rgba(29,223,90,.28), 0 0 24px rgba(29,223,90,.18)}
   .btn.primary:hover{box-shadow:0 0 14px rgba(29,223,90,.45), 0 0 32px rgba(29,223,90,.28)}
+  
+  .btn.btn-outline-green{
+    background:transparent; color:#d5dcef; border:1px solid rgba(255,255,255,.16);
+    transition: all .2s ease;
+  }
+  .btn.btn-outline-green:hover{
+    color:var(--accent); border-color:var(--accent);
+    text-shadow:0 0 6px rgba(29,223,90,.85); box-shadow:0 0 12px rgba(29,223,90,.45);
+    transform:translateY(-1px);
+  }
+
   .hero-portrait{display:flex;justify-content:flex-end}
   .hero-portrait img{width:100%;max-width:340px;height:auto;object-fit:contain;filter:drop-shadow(0 10px 22px rgba(0,0,0,.35))}
 
-  /* Featured partner frame */
+  /* Feature Section */
   .feature{
     margin:22px 0;background:#0b111a;border-radius:16px;padding:18px;
     border:1px solid rgba(29,223,90,.55);
@@ -185,11 +187,12 @@
     display:inline-flex;align-items:center;justify-content:center;padding:8px 12px;border-radius:999px;font-weight:800;border:1px solid transparent;
     transition:transform .15s, box-shadow .2s;
   }
-  .cap.perma{background:var(--druid-ink);color:var(--druid-green);
+  .cap.perma{background:var(--druid-ink);color:var(--accent);
     box-shadow:0 0 10px rgba(29,223,90,.28),0 0 24px rgba(29,223,90,.18)}
-  .cap.inverse{background:var(--druid-green);color:var(--druid-ink);
+  .cap.inverse{background:var(--accent);color:var(--druid-ink);
     box-shadow:0 0 10px rgba(29,223,90,.28),0 0 24px rgba(29,223,90,.18)}
   .feature p{color:#c9d6e6;margin:10px 0 14px}
+  
   .grid-two{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
   @media (max-width:880px){ .grid-two{grid-template-columns:1fr} }
 
@@ -200,7 +203,6 @@
   .card:hover{transform:translateY(-2px);border-color:rgba(29,223,90,.45);box-shadow:0 0 14px rgba(29,223,90,.35)}
   .card h3{margin:0 0 10px;font-size:1.12rem}
   
-  /* yt-lite & KPIs */
   .yt-lite{
     position:relative;width:100%;padding-bottom:56.25%;
     background:#000 center/cover no-repeat;
@@ -217,11 +219,10 @@
   .yt-lite.playing::before,.yt-lite.playing::after{display:none}
   .blurb{color:#cfd8e6;margin:10px 0 10px}
 
-  /* DRUID specific KPI styles */
   #druid-feature .kpis{ display:grid !important; grid-template-columns: 1fr !important; gap:10px !important; }
   #druid-feature .kpi{
     display:inline-block !important; width:100% !important; text-align:center !important;
-    background:#D2FDB1 !important; color:#000 !important; border:0 !important; border-radius:999px !important;
+    background:var(--druid-pastel) !important; color:#000 !important; border:0 !important; border-radius:999px !important;
     font-weight:800 !important; padding:10px 12px !important;
     transition:transform .15s ease, box-shadow .2s ease !important;
   }
@@ -229,64 +230,48 @@
   #druid-feature .knum{ font-variant-numeric: tabular-nums; letter-spacing: .3px; min-width: 2ch; }
   #druid-feature .kpi strong{ margin-right:6px !important; display:inline-block !important; }
 
-  /* Quadrant & Section */
   .quad{
     margin:24px 0;background:#0b111a;border:1px solid rgba(29,223,90,.45);border-radius:14px;padding:18px;
     box-shadow:0 10px 34px rgba(29,223,90,.12)
   }
+  .quad-note { color: var(--muted); font-size: 0.95rem; margin-bottom: 16px; }
   .quad a img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid rgba(29,223,90,.35)}
   .section{margin:28px 0}
-  .card-soft{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px}
+  .card-soft{background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px}
   .bbg-embed{ position:relative; width:100%; padding-bottom:56.25%; border:1px solid rgba(255,255,255,.14); border-radius:12px; overflow:hidden; }
   .bbg-embed iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; display:block; }
-  
-  /* Buttons */
-  .btn.btn-outline-green{
-    background:transparent; color:#d5dcef; border:1px solid rgba(255,255,255,.16);
-    transition: all .2s ease;
-  }
-  .btn.btn-outline-green:hover{
-    color:var(--druid-green); border-color:var(--druid-green);
-    text-shadow:0 0 6px rgba(29,223,90,.85); box-shadow:0 0 12px rgba(29,223,90,.45);
-    transform:translateY(-1px);
-  }
 
-  /* === FOOTER (From Cyber Page) === */
-  .footer { border-top:1px solid var(--card-border); padding: 40px 0; margin-top: 40px; text-align: center; color: var(--text-muted); }
-  .socials { display: flex; gap: 16px; justify-content: center; margin-top: 16px; }
-  .socials a { color: #fff; text-decoration: none; transition: all 0.2s ease; }
-  .socials a:hover { 
-    color: var(--druid-green); /* DRUID GREEN HOVER */
-    transform: translateY(-2px);
-    text-shadow: 0 0 10px var(--druid-green);
-  }
-  .socials svg { width: 24px; height: 24px; fill: currentColor; }
+  /* Footer */
+  .footer{border-top:1px solid var(--line);margin-top:40px;padding:32px 20px;text-align:center;color:var(--muted)}
+  .socials{display:flex;gap:16px;justify-content:center;margin-top:16px}
+  .socials a{color:#fff;transition:all .2s ease}
+  .socials a:hover{color:var(--accent);transform:translateY(-2px);text-shadow:0 0 10px var(--accent)}
+  .socials svg{width:24px;height:24px;fill:currentColor}
 </style>
 </head>
 <body>
 
-  <div class="topbar">
-    <div class="wrap">
-      <nav class="nav" aria-label="Primary">
-        <a class="brand" href="/">
-         <img class="logo" src="/assets/industry5logo.svg" alt="Industry5.pro logo" />
-          <strong>Industry5.pro</strong>
-        </a>
-  
-        <div class="nav-actions">
-          <a class="navlink" href="/">Home</a>
-          <a class="navlink" href="/ai" aria-current="page">AI</a>
-          <a class="navlink" href="/cyber">Security</a>
-          <a class="navlink" href="/cloud20">Cloud 2.0</a>
-          <a class="navlink" href="/ccaas">UC &amp;<br>Contact Center</a>
-          <a class="navlink" href="/aiot">AIoT</a>
-          <a class="navlink" href="/peplink">5G &amp;<br>Satellite</a>
-          <a class="navlink" href="/blog">Blog</a>
-          <a class="navlink" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
-        </div>
-      </nav>
-    </div>
+<header>
+  <div class="header-center">
+    <a class="brand" href="/">
+       <img src="/assets/industry5logo.svg" alt="Industry5.pro logo" class="logo" width="75" height="75" loading="eager" decoding="async">
+       <span class="title">Industry5.pro</span>
+    </a>
+    
+    <nav class="main-nav">
+      <a href="/">Home</a>
+      <a href="/ai" class="active">AI &<br>Omnichannel</a>
+      <a href="/cyber">Security</a>
+      <a href="/cloud20">Cloud 2.0 &<br>Network</a>
+      <a href="/ccaas">UC &<br>Contact Center</a>
+      <a href="/aiot">AIoT</a>
+      <a href="/peplink">5G &<br>Satellite</a>
+      <a href="/ai-sdr.html" class="nav-sdr">AI SDR</a>
+      <a href="/blog">Blog</a>
+      <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
+    </nav>
   </div>
+</header>
 
 <main class="wrap">
 
@@ -325,23 +310,19 @@
   </p>
 
   <div class="grid-two">
-
     <article class="card">
       <h3>Banking</h3>
       <div class="yt-lite" data-id="4zWW_I80wrg"></div>
       <p class="blurb">Speed onboarding, automate KYC flows, and guide customers with context while keeping data under control.</p>
       <div class="kpis">
         <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-banking" target="_blank" rel="noopener">
-          <strong class="knum" data-target="60" data-suffix="%">0</strong>
-          reduction in onboarding time and costs
+          <strong class="knum" data-target="60" data-suffix="%">0</strong> reduction in onboarding time
         </a>
         <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-banking" target="_blank" rel="noopener">
-          <strong class="knum" data-target="40" data-suffix="%">0</strong>
-          reduction in average handling time and operational overhead
+          <strong class="knum" data-target="40" data-suffix="%">0</strong> reduction in AHT
         </a>
         <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-banking" target="_blank" rel="noopener">
-          <strong class="knum" data-target="25" data-suffix="%">0</strong>
-          increase in first-contact resolution
+          <strong class="knum" data-target="25" data-suffix="%">0</strong> increase in FCR
         </a>
       </div>
     </article>
@@ -352,16 +333,13 @@
       <p class="blurb">Deflect Tier 0 and Tier 1, give agents real time assist, and resolve faster across voice and chat.</p>
       <div class="kpis">
         <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-customer-support" target="_blank" rel="noopener">
-          <strong class="knum" data-target="20" data-suffix="%">0</strong>
-          fewer calls
+          <strong class="knum" data-target="20" data-suffix="%">0</strong> fewer calls
         </a>
         <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-customer-support" target="_blank" rel="noopener">
-          <strong class="knum" data-target="10" data-suffix="%">0</strong>
-          shorter calls
+          <strong class="knum" data-target="10" data-suffix="%">0</strong> shorter calls
         </a>
         <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-customer-support" target="_blank" rel="noopener">
-          <strong class="knum" data-target="30" data-suffix="%">0</strong>
-          agent time saved
+          <strong class="knum" data-target="30" data-suffix="%">0</strong> agent time saved
         </a>
       </div>
     </article>
@@ -372,16 +350,13 @@
       <p class="blurb">Automate routine questions, speed onboarding, and keep people work focused on people.</p>
       <div class="kpis">
         <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-hr" target="_blank" rel="noopener">
-          <strong class="knum" data-target="80" data-suffix="%">0</strong>
-          tasks automated
+          <strong class="knum" data-target="80" data-suffix="%">0</strong> tasks automated
         </a>
         <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-hr" target="_blank" rel="noopener">
-          <strong class="knum" data-target="75" data-suffix="%">0</strong>
-          faster onboarding
+          <strong class="knum" data-target="75" data-suffix="%">0</strong> faster onboarding
         </a>
         <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-hr" target="_blank" rel="noopener">
-          <strong class="knum" data-target="30" data-suffix="%">0</strong>
-          sourcing time saved
+          <strong class="knum" data-target="30" data-suffix="%">0</strong> sourcing time saved
         </a>
       </div>
     </article>
@@ -392,16 +367,13 @@
       <p class="blurb">Guide buyers, qualify faster, and keep follow ups tight across every channel.</p>
       <div class="kpis">
         <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-sales-and-marketing" target="_blank" rel="noopener">
-          <strong class="knum" data-target="35" data-suffix="%">0</strong>
-          rep time saved
+          <strong class="knum" data-target="35" data-suffix="%">0</strong> rep time saved
         </a>
         <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-sales-and-marketing" target="_blank" rel="noopener">
-          <strong class="knum" data-target="30" data-suffix="%">0</strong>
-          faster service
+          <strong class="knum" data-target="30" data-suffix="%">0</strong> faster service
         </a>
         <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-sales-and-marketing" target="_blank" rel="noopener">
-          <strong class="knum" data-target="25" data-suffix="%">0</strong>
-          CSAT lift
+          <strong class="knum" data-target="25" data-suffix="%">0</strong> CSAT lift
         </a>
       </div>
     </article>
@@ -412,16 +384,13 @@
       <p class="blurb">Book more visits, pre qualify cases, and respect privacy rules without slowing care.</p>
       <div class="kpis">
         <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-healthcare" target="_blank" rel="noopener">
-          <strong class="knum" data-target="25" data-suffix="%">0</strong>
-          more appointments
+          <strong class="knum" data-target="25" data-suffix="%">0</strong> more appointments
         </a>
         <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-healthcare" target="_blank" rel="noopener">
-          <strong class="knum" data-target="15" data-suffix="%">0</strong>
-          booking revenue
+          <strong class="knum" data-target="15" data-suffix="%">0</strong> booking revenue
         </a>
         <a class="kpi" href="https://www.druidai.com/solutions/ai-agents-for-healthcare" target="_blank" rel="noopener">
-          <strong class="knum" data-target="70" data-suffix="%">0</strong>
-          pre qualified cases
+          <strong class="knum" data-target="70" data-suffix="%">0</strong> pre qualified cases
         </a>
       </div>
     </article>
@@ -432,54 +401,47 @@
       <p class="blurb">Lift conversion, automate order ops, and cut queues with smart guidance.</p>
       <div class="kpis">
         <a class="kpi" href="https://www.druidai.com/solutions/retail-ai-agents" target="_blank" rel="noopener">
-          <strong class="knum" data-target="30" data-suffix="%">0</strong>
-          conversion lift
+          <strong class="knum" data-target="30" data-suffix="%">0</strong> conversion lift
         </a>
         <a class="kpi" href="https://www.druidai.com/solutions/retail-ai-agents" target="_blank" rel="noopener">
-          <strong class="knum" data-target="60" data-suffix="%">0</strong>
-          auto resolved
+          <strong class="knum" data-target="60" data-suffix="%">0</strong> auto resolved
         </a>
         <a class="kpi" href="https://www.druidai.com/solutions/retail-ai-agents" target="_blank" rel="noopener">
-          <strong class="knum" data-target="40" data-suffix="%">0</strong>
-          ops efficiency
+          <strong class="knum" data-target="40" data-suffix="%">0</strong> ops efficiency
         </a>
       </div>
     </article>
 
   </div>
-</section>
-
+  </section>
 
   <section class="quad" id="injectable-quadrant">
     <h3 style="margin:0 0 8px">Injectable AI for Omnichannel: Market view</h3>
-    <p class="quad-note">Many teams want AI outcomes without a platform swap. Injectable AI lets you add real time assist, quality, analytics, and voice bots to what you already run, faster value, lower risk. Not exhaustive. We partner widely beyond what fits here; this snapshot shows battle tested options. If your stack points to others, we will evaluate those too.</p>
+    <p class="quad-note">Many teams want AI outcomes without a platform swap. Injectable AI lets you add real time assist, quality, analytics, and voice bots to what you already run. Faster value, lower risk.</p>
     <a href="/ai" aria-label="Open AI Readiness">
       <img src="/assets/ai_voice_injectable_quadrant_clean12.png" alt="Injectable AI Omnichannel Quadrant"/>
     </a>
   </section>
 
-<section class="section" id="erdoes-fii">
-  <div class="card-soft">
-    <h3>“AI is a new way of working” — Mary Callahan Erdoes</h3>
-
-    <div class="bbg-embed">
-      <iframe
-        src="https://www.bloomberg.com/media-manifest/embed/iframe?id=6c8c8431-5ab8-4e9f-bb4a-5ff51c1cf991"
-        allowscriptaccess="always"
-        frameborder="0"
-        allow="autoplay; encrypted-media"
-        loading="lazy"
-        referrerpolicy="strict-origin-when-cross-origin"
-      ></iframe>
+  <section class="section" id="erdoes-fii">
+    <div class="card-soft">
+      <h3>“AI is a new way of working” — Mary Callahan Erdoes</h3>
+      <div class="bbg-embed">
+        <iframe
+          src="https://www.bloomberg.com/media-manifest/embed/iframe?id=6c8c8431-5ab8-4e9f-bb4a-5ff51c1cf991"
+          allowscriptaccess="always"
+          frameborder="0"
+          allow="autoplay; encrypted-media"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
+      </div>
+      <p class="blurb">
+        Start by eliminating the no joy work. That is the spark. Then leap from step one to step ten by rethinking the whole process. 
+        AI is not replacing people, it multiplies potential. Curiosity becomes advantage, and execution gets faster, cheaper, and better.
+      </p>
     </div>
-
-    <p class="blurb">
-      Start by eliminating the no joy work. That is the spark. Then leap from step one to step ten by rethinking the whole process. 
-      AI is not replacing people, it multiplies potential. Curiosity becomes advantage, and execution gets faster, cheaper, and better.
-    </p>
-
-  </div>
-</section>
+  </section>
 
 </main>
 
@@ -488,88 +450,74 @@
     <div>© <span id="y"></span> Industry5.pro | Built on trust. Paid by results.</div>
     <div class="socials">
       <a href="https://www.linkedin.com/in/louis-tortora7/" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.48 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.8 2.67 4.8 6.14V23h-4v-6.5c0-1.55-.03-3.55-2.17-3.55-2.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.48 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.8 2.67 4.8 6.14V23h-4v-6.5c0-1.55-.03-3.55-2.17-3.55-2.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg>
       </a>
       <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 1.9.25 2.3.42.6.23 1.1.52 1.6.97.46.45.75 1 .97 1.6.17.4.36 1.1.36 2.3.07 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 1.9-.42 2.3a4 4 0 0 1-.97 1.6 4 4 0 0 1-1.6.97c-.4.17-1.1.36-2.3.42-1.3.07-1.7.07-4.9.07s-3.5 0-4.9-.07c-1.2-.06-1.9-.25-2.3-.42a4 4 0 0 1-1.6-.97 4 4 0 0 1-.97-1.6c-.17-.4-.36-1.1-.42-2.3C3.2 15.6 3.2 15.2 3.2 12s0-3.6.07-4.9c.06-1.2.25-1.9.42-2.3.23-.6.52-1.1.97-1.6.45-.46 1-.75 1.6-.97.4-.17 1.1-.36 2.3-.42C8.4 2.2 8.8 2.2 12 2.2Z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 1.9.25 2.3.42.6.23 1.1.52 1.6.97.46.45.75 1 .97 1.6.17.4.36 1.1.36 2.3.07 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 1.9-.42 2.3a4 4 0 0 1-.97 1.6 4 4 0 0 1-1.6.97c-.4.17-1.1.36-2.3.42-1.3.07-1.7.07-4.9.07s-3.5 0-4.9-.07c-1.2-.06-1.9-.25-2.3-.42a4 4 0 0 1-1.6-.97 4 4 0 0 1-.97-1.6c-.17-.4-.36-1.1-.42-2.3C3.2 15.6 3.2 15.2 3.2 12s0-3.6.07-4.9c.06-1.2.25-1.9.42-2.3.23-.6.52-1.1.97-1.6.45-.46 1-.75 1.6-.97.4-.17 1.1-.36 2.3-.42C8.4 2.2 8.8 2.2 12 2.2Z"/></svg>
       </a>
       <a href="https://www.facebook.com/profile.php?id=61582481880019" target="_blank" rel="noopener" aria-label="Facebook">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.07C22 6.49 17.52 2 11.93 2 6.35 2 1.86 6.49 1.86 12.07c0 5.02 3.66 9.18 8.44 9.95v-7.03H7.9V12.1h2.4V9.86c0-2.37 1.4-3.68 3.55-3.68 1.03 0 2.11.18 2.11.18v2.32h-1.19c-1.17 0-1.53.73-1.53 1.47v1.95h2.61l-.46 2.89h-2.19v7.03c4.78-.77 8.44-4.93 8.44-9.95z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.07C22 6.49 17.52 2 11.93 2 6.35 2 1.86 6.49 1.86 12.07c0 5.02 3.66 9.18 8.44 9.95v-7.03H7.9V12.1h2.4V9.86c0-2.37 1.4-3.68 3.55-3.68 1.03 0 2.11.18 2.11.18v2.32h-1.19c-1.17 0-1.53.73-1.53 1.47v1.95h2.61l-.46 2.89h-2.19v7.03c4.78-.77 8.44-4.93 8.44-9.95z"/></svg>
       </a>
       <a href="https://wa.me/14076945495" target="_blank" rel="noopener" aria-label="WhatsApp">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163A11.867 11.867 0 0 1 0 11.989C0 5.371 5.373 0 11.99 0 18.606 0 24 5.371 24 11.989S18.606 24 11.99 24a11.9 11.9 0 0 1-5.642-1.437L.057 24Zm6.597-3.807c1.676.995 3.276 1.591 5.35 1.593 5.448 0 9.884-4.429 9.884-9.88 0-5.45-4.436-9.88-9.884-9.88-5.449 0-9.88 4.43-9.88 9.88 0 2.266.738 3.891 1.977 5.59L3.5 20.5l3.154-.307zm11.387-5.464c-.066-.11-.242-.176-.506-.307-.264-.132-1.56-.77-1.8-.857-.242-.088-.418-.132-.594.132-.176.264-.682.857-.836 1.033-.154.176-.308.198-.572.066-.264-.132-1.116-.41-2.125-1.308-.785-.7-1.314-1.56-1.469-1.823-.154-.264-.017-.407.115-.539.118-.117.264-.308.396-.462.132-.154.176-.264.264-.44.088-.176.044-.33-.022-.462-.066-.132-.594-1.43-.814-1.958-.214-.514-.432-.445-.594-.453l-.506-.009c-.176 0-.462.066-.704.33-.242.264-.924.902-.924 2.202s.946 2.552 1.077 2.73c.132.176 1.862 2.842 4.508 3.986.63.27 1.122.432 1.505.553.632.202 1.206.174 1.661.105.506-.077 1.56-.638 1.78-1.255.22-.616.22-1.144.154-1.255z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163A11.867 11.867 0 0 1 0 11.989C0 5.371 5.373 0 11.99 0 18.606 0 24 5.371 24 11.989S18.606 24 11.99 24a11.9 11.9 0 0 1-5.642-1.437L.057 24Zm6.597-3.807c1.676.995 3.276 1.591 5.35 1.593 5.448 0 9.884-4.429 9.884-9.88 0-5.45-4.436-9.88-9.884-9.88-5.449 0-9.88 4.43-9.88 9.88 0 2.266.738 3.891 1.977 5.59L3.5 20.5l3.154-.307zm11.387-5.464c-.066-.11-.242-.176-.506-.307-.264-.132-1.56-.77-1.8-.857-.242-.088-.418-.132-.594.132-.176.264-.682.857-.836 1.033-.154.176-.308.198-.572.066-.264-.132-1.116-.41-2.125-1.308-.785-.7-1.314-1.56-1.469-1.823-.154-.264-.017-.407.115-.539.118-.117.264-.308.396-.462.132-.154.176-.264.264-.44.088-.176.044-.33-.022-.462-.066-.132-.594-1.43-.814-1.958-.214-.514-.432-.445-.594-.453l-.506-.009c-.176 0-.462.066-.704.33-.242.264-.924.902-.924 2.202s.946 2.552 1.077 2.73c.132.176 1.862 2.842 4.508 3.986.63.27 1.122.432 1.505.553.632.202 1.206.174 1.661.105.506-.077 1.56-.638 1.78-1.255.22-.616.22-1.144.154-1.255z"/></svg>
       </a>
       <a href="mailto:lou@industry5.pro" aria-label="Email">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 4h20a2 2 0 0 1 2 2v1l-12 7L0 7V6a2 2 0 0 1 2-2zm0 6.236V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-7.764l-9.386 5.52a2 2 0 0 1-2.228 0L2 10.236z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20a2 2 0 0 1 2 2v1l-12 7L0 7V6a2 2 0 0 1 2-2zm0 6.236V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-7.764l-9.386 5.52a2 2 0 0 1-2.228 0L2 10.236z"/></svg>
       </a>
     </div>
   </div>
 </footer>
+
 <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll('#druid-feature .yt-lite').forEach(function(el){
-    var id = el.dataset.id; if(!id) return;
-
-    // crisp poster
-    var hi = new Image();
-    hi.onload = function(){ el.style.backgroundImage = "url('"+hi.src+"')"; };
-    hi.onerror = function(){ el.style.backgroundImage = "url('https://img.youtube.com/vi/"+id+"/sddefault.jpg')"; };
-    hi.src = "https://img.youtube.com/vi/"+id+"/maxresdefault.jpg";
-
-    // click to play INSIDE wrapper
-    el.addEventListener('click', function(){
-      if (el.classList.contains('playing')) return;
-      el.classList.add('playing');
-      var iframe = document.createElement('iframe');
-      iframe.src = "https://www.youtube.com/embed/"+id+"?autoplay=1&rel=0";
-      iframe.setAttribute('allow',"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
-      iframe.allowFullscreen = true;
-      iframe.referrerPolicy = "strict-origin-when-cross-origin";
-      Object.assign(iframe.style,{position:'absolute',inset:'0',width:'100%',height:'100%',border:'0'});
-      el.appendChild(iframe);
-    }, {passive:true});
-  });
-});
-</script>
 <script>
 (function(){
-  // Respect users who prefer reduced motion
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
-
-  function animateNumber(el, target, duration, suffix){
-    if (reduce){ el.textContent = target + (suffix||""); return; }
-    var start = 0, t0 = performance.now();
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function easeOutCubic(t){return 1-Math.pow(1-t,3)}
+  function animateNumber(el,target,duration,suffix){
+    if(reduce){el.textContent=target+(suffix||"");return;}
+    var start=0, t0=performance.now();
     function frame(t){
-      var p = Math.min(1, (t - t0)/duration);
-      var v = Math.round(start + (target - start) * easeOutCubic(p));
-      el.textContent = v + (suffix||"");
-      if (p < 1) requestAnimationFrame(frame);
+      var p=Math.min(1,(t-t0)/duration);
+      var v=Math.round(start+(target-start)*easeOutCubic(p));
+      el.textContent=v+(suffix||"");
+      if(p<1)requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);
   }
-
-  // Observe KPI numbers only in the DRUID feature section
-  var seen = new WeakSet();
-  var io = new IntersectionObserver(function(entries){
+  var seen=new WeakSet();
+  var io=new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
-      if (!entry.isIntersecting) return;
-      var el = entry.target;
-      if (seen.has(el)) return;
+      if(!entry.isIntersecting)return;
+      var el=entry.target;
+      if(seen.has(el))return;
       seen.add(el);
-      var target = parseInt(el.getAttribute('data-target'), 10) || 0;
-      var suffix = el.getAttribute('data-suffix') || '';
-      animateNumber(el, target, 900, suffix);  // ~0.9s per number
+      var target=parseInt(el.getAttribute('data-target'),10)||0;
+      var suffix=el.getAttribute('data-suffix')||'';
+      animateNumber(el,target,900,suffix);
     });
-  }, { root: null, rootMargin: '0px 0px -20% 0px', threshold: 0.4 });
-
-  document.querySelectorAll('#druid-feature .knum').forEach(function(el){
-    io.observe(el);
-  });
+  },{threshold:0.4});
+  document.querySelectorAll('#druid-feature .knum').forEach(function(el){io.observe(el);});
 })();
+
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('#druid-feature .yt-lite').forEach(function(el){
+    var id=el.dataset.id;if(!id)return;
+    var hi=new Image();
+    hi.onload=function(){el.style.backgroundImage="url('"+hi.src+"')";};
+    hi.src="https://img.youtube.com/vi/"+id+"/maxresdefault.jpg";
+    el.addEventListener('click',function(){
+      if(el.classList.contains('playing'))return;
+      el.classList.add('playing');
+      var iframe=document.createElement('iframe');
+      iframe.src="https://www.youtube.com/embed/"+id+"?autoplay=1&rel=0";
+      iframe.setAttribute('allow',"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+      iframe.allowFullscreen=true;
+      iframe.referrerPolicy="strict-origin-when-cross-origin";
+      Object.assign(iframe.style,{position:'absolute',inset:'0',width:'100%',height:'100%',border:'0'});
+      el.appendChild(iframe);
+    },{passive:true});
+  });
+});
 </script>
 
 </body>
