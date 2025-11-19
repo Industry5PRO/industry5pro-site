@@ -5,608 +5,534 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Peplink FWA • Outcome-Obsessed | Industry5.pro</title>
 <meta name="description" content="Fast, resilient Fixed Wireless Access with Peplink. Built for branch, fleet, construction, retail pop-ups, and maritime—designed to scale with enterprise controls." />
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Expires" content="0" />
+<meta name="author" content="Industry5.pro">
+<link rel="canonical" href="https://industry5.pro/peplink">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Peplink FWA • Outcome-Obsessed">
+<meta property="og:description" content="Fast, resilient Fixed Wireless Access with Peplink.">
+<meta property="og:url" content="https://industry5.pro/peplink">
+<meta property="og:image" content="https://industry5.pro/assets/industry5-logo.png">
+
+<meta name="color-scheme" content="dark">
+
 <link rel="icon" href="/assets/favicon.ico" />
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
 
-<style id="master-header-peplink">
+<style>
+  /* --- CORE VARIABLES (PEPLINK THEME: YELLOW/GOLD) --- */
   :root {
-    --header-h: 76px;
-    --peplink-yellow: #FCB71B; /* Peplink Yellow/Gold */
-    --peplink-glow: rgba(252,183,27,0.7);
-    --peplink-glow-hover: rgba(252,183,27,1);
-    --peplink-text-glow: rgba(252,183,27,0.75);
-    
-    --lumen-charcoal: #1B1B1D;
+    --bg: #1B1B1D;
+    --panel: #262626; /* Slightly lighter for cards */
+    --card-bg: #262626; 
+    --card-border: rgba(255, 255, 255, 0.08);
+    --text: #f5f7fb;
+    --text-muted: #a9b4c7;
+    --line: rgba(255,255,255,0.08);
+    --outline: #2C2C30;
+
+    /* Page Specific Accents */
+    --accent: #FCB71B;           /* Peplink Yellow */
+    --accent-glow: rgba(252,183,27,0.7);
+    --gold: #FFD700;             /* Standard Gold (for Blog/SDR) */
+    --ice: #2BEDE7;
   }
   
-  body { 
-    padding-top: var(--header-h) !important; 
-    background-color: var(--lumen-charcoal);
-    color: #e8eef9;
-    font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial;
-    margin: 0;
-    box-sizing: border-box;
-  }
+  /* --- RESET & BASE --- */
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial; box-sizing: border-box;}
   *, *:before, *:after { box-sizing: inherit; }
-  main, .hero, .page-start { margin-top: 0 !important; }
+  a{color:inherit;text-decoration:none;transition:color .2s ease;}
+  a:hover{text-decoration:none;}
+  img{max-width:100%;display:block}
+  button{font-family:inherit;}
+  section{padding:42px 0;border-top:1px solid var(--outline)}
+  section:first-of-type { border-top: none; }
+  .anchor{scroll-margin-top:90px}
 
-  .topbar {
-    position: fixed !important; top: 0; left: 0; right: 0;
-    z-index: 99999 !important; height: var(--header-h);
-    background: rgba(27,27,29,.95) !important;
-    backdrop-filter: saturate(140%) blur(12px);
-    border-bottom: 1px solid rgba(255,255,255,.08);
-    display: flex; align-items: center;
-    overflow: visible !important;
+  /* --- 3. MASTER HEADER & NAV --- */
+  header {
+    position: sticky; top: 0; z-index: 99999;
+    background: linear-gradient(180deg,rgba(27,27,29,0.95),rgba(27,27,29,0.85));
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
   }
-  .topbar .wrap {
-    width: 100%; max-width: 1080px; margin: 0 auto;
-    padding: 0 24px; height: 100%;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .nav { 
-    display: flex; align-items: center; 
-    width: 100%; height: 100%; 
+  
+  .header-center {
+    max-width: 1100px; 
+    margin: 0 auto; 
+    padding: 14px 18px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    gap: 20px; 
   }
 
-  .topbar .brand {
-    display: flex; align-items: center; gap: 16px;
-    margin-right: 2px !important; text-decoration: none; flex-shrink: 0; 
-  }
-  .topbar .brand .logo {
-    height: 55px !important; width: 55px !important;
-    display: block !important; object-fit: contain;
-    /* PEPLINK YELLOW GLOW */
-    filter: drop-shadow(0 0 8px var(--peplink-glow)) !important; 
+  /* Branding */
+  .brand { display: flex; align-items: center; gap: 16px; text-decoration: none; flex-shrink: 0; }
+  
+  /* LOGO: 75px + PEPLINK YELLOW GLOW */
+  .brand img.logo {
+    width: 75px !important; height: 75px !important; 
+    border-radius: 14px; display: block; object-fit: contain; 
+    background: transparent;
+    filter: drop-shadow(0 0 8px rgba(252, 183, 27, 0.5));
     transition: filter 0.3s ease;
   }
-  .topbar .brand .logo:hover { 
-    filter: drop-shadow(0 0 16px var(--peplink-glow-hover)) !important; 
-  }
-  .topbar .brand strong {
-    font-size: 18px; font-weight: 800; 
-    color: #e8eef9 !important; white-space: nowrap;
-  }
+  .brand:hover img.logo { filter: drop-shadow(0 0 14px rgba(252, 183, 27, 0.9)); }
   
-  .nav-actions {
-    display: flex; align-items: center; gap: 20px;
-    height: 44px;
-    border-left: 1px solid rgba(255,255,255,.15);
-    padding-left: 42px !important;
-    padding-right: 40px !important;
-    flex-grow: 1; justify-content: flex-end;
-    overflow-x: auto; overflow-y: hidden;
-    white-space: nowrap; -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .nav-actions::-webkit-scrollbar { display: none; }
-  
-  .topbar .navlink {
-    position: relative; display: inline-flex;
-    align-items: center; justify-content: center; text-align: center;
-    color: #ffffff !important; /* Default White */
-    font-weight: 700;
-    font-size: 14px; text-decoration: none;
-    line-height: 1.2; padding: 4px 0;
-    transition: all 0.2s ease;
-    flex-shrink: 0;
-    white-space: normal !important;
-  }
-  
-  /* HOVER/ACTIVE: Force Peplink Yellow */
-  .topbar .navlink:hover,
-  .topbar .navlink:focus-visible,
-  .topbar .navlink[aria-current="page"] {
-    color: var(--peplink-yellow) !important;
-    transform: translateY(-1px);
-    text-shadow: 0 0 10px var(--peplink-text-glow), 0 0 20px var(--peplink-text-glow) !important;
-    outline: 0;
-  }
-  
-  @media (max-width: 900px) {
-    .topbar .brand strong { display: none; } 
-    .nav-actions { gap: 16px; padding-left: 16px !important; }
-  }
-</style>
-
-<style id="peplink-theme">
-  :root{
-    --bg:#1B1B1D;           /* charcoal like other pages */
-    --surface:#11141b;
-    --card:#11141b;
-    --text-main:#f5f7fb;
-    --text-muted:#a9b4c7;
-    --accent:#FCB71B;       /* Peplink yellow */
-    --ice:#2BEDE7;
-    --border-soft:rgba(255,255,255,.08);
-    --nav-h:72px;
-    --pill-radius:999px;
+  .brand .title {
+    font-weight: 800; 
+    font-size: 26px; 
+    color: #fff; line-height: 1; letter-spacing: 0.2px;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial;
   }
 
-  /* Global styles from original file */
-  a{color:var(--accent); text-decoration:none} /* Peplink links are yellow */
-  a:hover{opacity:.9}
-  .wrap{max-width:1080px; margin:0 auto; padding:24px} /* Use 1080px to match header */
+  /* Navigation */
+  .main-nav { 
+    display: flex; gap: 20px; align-items: center; flex-wrap: wrap; 
+    justify-content: flex-end; 
+  }
 
-  /* Page container */
-  .page{
-    max-width:1080px;
-    margin:0 auto;
-    padding:24px 20px 40px;
+  /* Nav Links */
+  .main-nav a {
+    position: relative; color: #cfe3d4; 
+    font-weight: 500; 
+    font-size: 0.85rem; 
+    line-height: 1.2; text-align: center; display: inline-flex; 
+    align-items: center; justify-content: center;
+    transition: color .15s ease, text-shadow .15s ease;
   }
-  
-.card{
-    background: #262626;
-    border-radius:16px;
-    border:1px solid var(--border-soft);
-    padding:18px 20px;
-  }
-  .muted{color:var(--text-muted);}
 
-  /* ========= HERO ========= */
-  .hero{
-    display:grid;
-    grid-template-columns:1.2fr 1fr;
-    gap:20px;
-    align-items:center;
-  }
-  .hero h1{
-    font-size:clamp(26px,4.6vw,42px);
-    line-height:1.1;
-    margin:0 0 10px;
-  }
-  .hero .lead{
-    margin:0 0 12px;
-    color:#d5dcef;
-  }
-  .hero-cta{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:6px;
-  }
-  
-  /* Pill CTA */
-  .pill-cta{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    padding:10px 20px;
-    min-height:40px;
-    border-radius:var(--pill-radius);
-    font-weight:800;
-    letter-spacing:.2px;
-    border:1px solid var(--accent);
-    background:var(--accent);
-    color:#0b0b0b;
-    white-space:nowrap;
-    box-shadow: 0 0 10px rgba(252,183,27,.35), 0 0 22px rgba(252,183,27,.2);
-    transition:transform .15s ease, box-shadow .18s ease;
-  }
-  .pill-cta:hover,
-  .pill-cta:focus-visible{
-    transform:translateY(-1px);
-    box-shadow: 0 0 16px rgba(252,183,27,.75), 0 0 32px rgba(252,183,27,.45);
-    outline:0;
-    color:#0b0b0b;
-  }
-  .hero-cta .ghost{
-    background:#0f131b;
-    border:1px solid rgba(255,255,255,.18);
-    color:#e8eef9;
-    box-shadow:none;
-  }
-  .hero-cta .ghost:hover{
+  /* Page Specific Active State (Peplink) */
+  .main-nav a.active {
     color: var(--accent);
-    border-color: var(--accent);
-    box-shadow:0 0 12px rgba(252,183,27,.55),0 0 24px rgba(252,183,27,.3);
+    text-shadow: 0 0 10px rgba(252, 183, 27, 0.6);
   }
 
-  .yt-wrap{
-    border-radius:14px;
-    border:1px solid var(--accent);
-    overflow:hidden;
-    box-shadow:0 0 20px rgba(252,183,27,.55),0 0 32px rgba(252,183,27,.3);
-  }
-  .yt-wrap iframe{
-    display:block;
-    width:100%;
-    aspect-ratio:16/9;
-    border:0;
+  /* Hover Effects */
+  .main-nav a:not(.nav-sdr):hover {
+    color: var(--accent); /* Yellow Hover */
+    text-shadow: 0 0 6px rgba(252, 183, 27, 0.85), 0 0 14px rgba(252, 183, 27, 0.45);
   }
 
-  /* ========= ICP GRID ========= */
-  .icp-section{
-    margin-top:14px;
-    background: #5c5c5c;
+  /* Underline Animation */
+  .main-nav a:not(.nav-sdr)::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px;
+    background: var(--accent); 
+    transform: scaleX(0); transform-origin: left; 
+    transition: transform .25s ease;
   }
-  .icp-section h2{margin:0 0 12px;}
+  .main-nav a:not(.nav-sdr):hover::after { transform: scaleX(1); }
+  .main-nav a.active::after { transform: scaleX(1); }
 
-  .icp-grid{
-    display:grid;
-    gap:18px;
+  /* --- AI SDR SPECIAL BUTTON --- */
+  .main-nav a.nav-sdr {
+    color: #fff !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    border: none;
+    background: transparent;
+    padding: 6px 4px;
+    transition: all 0.25s ease;
   }
-  @media (min-width:900px){
-    .icp-grid{
-      grid-template-columns:repeat(2,minmax(0,1fr));
-    }
-  }
-
-  .icp-card{
-    background: #262626;
-    border-radius:14px;
-    padding:16px 18px 14px;
-    border:1px solid rgba(255,199,0,.85);  /* Peplink yellow */
-    box-shadow:0 0 24px rgba(255,199,0,.45);
-  }
-  .icp-card h3{
-    margin:0 0 8px;
-    font-size:1.05rem;
-    color:var(--accent);
-  }
-  .icp-card p{
-    margin:4px 0;
-    font-size:.95rem;
-    line-height:1.5;
-    color:var(--text-muted);        /* descriptions in soft gray */
-  }
-  .icp-card p strong:first-child{
-    color:#ffffff;
-    font-weight:700;
-  }
-  .icp-kpi{
-    margin-top:8px;
-    font-size:.95rem;
-  }
-  .icp-kpi .knum{
-    font-weight:800;
-    color:var(--accent);            /* Peplink yellow numbers */
-    margin-right:4px;
-  }
-  .icp-case{
-    margin-top:8px;
-  }
-  .icp-case a{
-    font-size:.9rem;
-    text-decoration:underline;
-    color:#b7d9ff;
-  }
-  .icp-case a:hover{color:var(--accent);}
-
-  /* ========= Quadrant & Intake ========= */
-  .quad{
-    margin-top:14px;
-    background:var(--card);
-    border-radius:16px;
-    border:1px solid var(--border-soft);
-    padding:16px 18px 18px;
-    box-shadow:0 0 18px rgba(252,183,27,.45);
-  }
-  .quad svg{
-    width:100%;
-    height:auto;
-    display:block;
-    border-radius:12px;
-  }
-
-  .intake{margin:14px 0;}
-
-  .form-embed iframe{
-    width:100%;
-    min-height:760px;
-    border:0;
-    border-radius:12px;
-    background:#0f131b;
-  }
-
-  /* ========= NEW MASTER FOOTER ========= */
-  .footer {
-    border-top:1px solid rgba(255,215,0,.35); /* Peplink Gold border */
-    padding: 24px; 
-    margin-top: 32px;
-    text-align: center;
-    color: var(--text-muted);
-  }
-  .socials {
-    display:flex; 
-    gap:16px; 
-    justify-content:center;
-    margin-top: 16px;
-  }
-  .socials a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.2s ease, transform 0.2s ease, text-shadow 0.2s ease;
-  }
-  .socials a:hover {
-    color: var(--accent); /* Peplink yellow hover */
-    text-shadow: 0 0 8px rgba(252,183,27,.7), 0 0 14px rgba(252,183,27,.5);
+  
+  .main-nav a.nav-sdr:hover {
+    color: var(--gold) !important;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
     transform: translateY(-1px);
   }
-  .socials svg {
-    width: 24px;
-    height: 24px;
-    fill: currentColor;
+
+  @media (max-width: 1100px) {
+    .header-center { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .main-nav { gap: 16px 24px; justify-content: flex-start; }
+    .main-nav a { text-align: left; display: inline-block; }
   }
 
-  /* ========= Responsive ========= */
-  @media (max-width:900px){
-    .hero{
-      grid-template-columns:1fr;
-    }
+  /* === PAGE CONTENT STYLES === */
+  .page { max-width: 1100px; margin: 0 auto; padding: 24px 20px 40px; }
+
+  /* Cards */
+  .card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    border: 1px solid var(--card-border);
+    padding: 24px;
+    margin-bottom: 24px;
   }
+  .muted { color: var(--text-muted); }
+
+  /* Hero */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 32px;
+    align-items: center;
+    padding-bottom: 10px;
+    border-top: none;
+  }
+  .hero h1 {
+    font-size: clamp(26px, 4.6vw, 42px);
+    line-height: 1.1;
+    margin: 0 0 14px;
+    color: #fff;
+  }
+  .hero .lead {
+    margin: 0 0 20px;
+    color: #d5dcef;
+    font-size: 1.1rem;
+  }
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 6px;
+  }
+
+  /* Pill CTA */
+  .pill-cta {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 10px 20px; min-height: 40px; border-radius: 999px;
+    font-weight: 800; letter-spacing: .2px;
+    border: 1px solid var(--accent); background: var(--accent);
+    color: #0b0b0b; white-space: nowrap;
+    box-shadow: 0 0 10px rgba(252,183,27,.35), 0 0 22px rgba(252,183,27,.2);
+    transition: transform .15s ease, box-shadow .18s ease;
+  }
+  .pill-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 16px rgba(252,183,27,.75), 0 0 32px rgba(252,183,27,.45);
+    color: #0b0b0b;
+  }
+  .pill-cta.ghost {
+    background: #0f131b; border: 1px solid rgba(255,255,255,.18); color: #e8eef9;
+    box-shadow: none;
+  }
+  .pill-cta.ghost:hover {
+    color: var(--accent); border-color: var(--accent);
+    box-shadow: 0 0 12px rgba(252,183,27,.55), 0 0 24px rgba(252,183,27,.3);
+  }
+
+  .yt-wrap {
+    border-radius: 14px;
+    border: 1px solid var(--accent);
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(252,183,27,.55), 0 0 32px rgba(252,183,27,.3);
+  }
+  .yt-wrap iframe { display: block; width: 100%; aspect-ratio: 16/9; border: 0; }
+
+  /* ICP Grid */
+  .icp-section { margin-top: 14px; }
+  .icp-section h2 { margin: 0 0 16px; font-size: 1.8rem; color: #fff; }
+  .icp-grid { display: grid; gap: 18px; }
+  @media (min-width:900px) { .icp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+  .icp-card {
+    background: #262626; border-radius: 14px; padding: 16px 18px 14px;
+    border: 1px solid rgba(255,199,0,.85);
+    box-shadow: 0 0 24px rgba(255,199,0,.45);
+    display: flex; flex-direction: column;
+  }
+  .icp-card h3 { margin: 0 0 8px; font-size: 1.1rem; color: var(--accent); }
+  .icp-card p { margin: 4px 0; font-size: .95rem; line-height: 1.5; color: var(--text-muted); flex-grow: 1; }
+  .icp-card p strong:first-child { color: #ffffff; font-weight: 700; }
+  
+  .icp-kpi { margin-top: 8px; font-size: .95rem; color: #fff !important; }
+  .icp-kpi .knum { font-weight: 800; color: var(--accent); margin-right: 4px; }
+  
+  .icp-case { margin-top: 8px; }
+  .icp-case a { font-size: .9rem; text-decoration: underline; color: #b7d9ff; }
+  .icp-case a:hover { color: var(--accent); }
+
+  /* Quadrant */
+  .quad {
+    margin-top: 14px; background: var(--card-bg); border-radius: 16px;
+    border: 1px solid var(--card-border); padding: 16px 18px 18px;
+    box-shadow: 0 0 18px rgba(252,183,27,.45);
+  }
+  .quad svg { width: 100%; height: auto; display: block; border-radius: 12px; }
+
+  /* Intake Form */
+  .intake { margin: 14px 0; }
+  .form-embed iframe {
+    width: 100%; min-height: 760px; border: 0;
+    border-radius: 12px; background: #0f131b;
+  }
+
+  /* Footer */
+  .footer{border-top:1px solid var(--line);margin-top:40px;padding:32px 20px;text-align:center;color:var(--text-muted)}
+  .socials{display:flex;gap:16px;justify-content:center;margin-top:16px}
+  .socials a{color:#fff;transition:all .2s ease}
+  .socials a:hover{color:var(--accent);transform:translateY(-2px);text-shadow:0 0 10px var(--accent)}
+  .socials svg{width:24px;height:24px;fill:currentColor}
+
+  @media (max-width:900px) { .hero { grid-template-columns: 1fr; } }
 </style>
 </head>
 
-<body class="peplink-page">
+<body>
 
-<div class="topbar">
-  <div class="wrap">
-    <nav class="nav" aria-label="Primary">
-      <div class="brand">
-       <img class="logo" src="/assets/industry5logo.svg" alt="Industry5.pro logo" />
-        <strong>Industry5.pro</strong>
-      </div>
+  <header>
+    <div class="header-center">
+      <a class="brand" href="/">
+         <img src="/assets/industry5logo.svg" alt="Industry5.pro logo" class="logo" width="75" height="75" loading="eager" decoding="async">
+         <span class="title">Industry5.pro</span>
+      </a>
+      
+      <nav class="main-nav">
+        <a href="/">Home</a>
+        <a href="/ai">AI &<br>Omnichannel</a>
+        <a href="/cyber">Security</a>
+        <a href="/cloud20">Cloud 2.0 &<br>Network</a>
+        <a href="/ccaas">UC &<br>Contact Center</a>
+        <a href="/aiot">AIoT</a>
+        <a href="/peplink" class="active">5G &<br>Satellite</a>
+        <a href="/ai-sdr.html" class="nav-sdr">AI SDR</a>
+        <a href="/blog">Blog</a>
+        <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
+      </nav>
+    </div>
+  </header>
 
-     <div class="nav-actions">
-        <a class="navlink" href="/">Home</a>
-        <a class="navlink" href="/ai">AI</a>
-        <a class="navlink" href="/cyber">Security</a>
-        <a class="navlink" href="/cloud20">Cloud 2.0</a>
-        <a class="navlink" href="/ccaas">UC &amp;<br>Contact Center</a>
-        <a class="navlink" href="/aiot">AIoT</a>
-        <a class="navlink" href="/peplink" aria-current="page">5G &amp;<br>Satellite</a>
-        <a class="navlink" href="/blog">Blog</a>
-        <a class="navlink" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
-      </div>
-    </nav>
-  </div>
-</div>
-<main>
-  <div class="page">
+  <main>
+    <div class="page">
 
-    <section class="card">
-      <div class="hero">
-        <div>
-          <h1>Fixed Wireless Access that’s fast, resilient, and enterprise-ready</h1>
-          <p class="lead">
-            Peplink delivers multi-WAN bonding, seamless failover, and centralized control; purpose-built for branches,
-            fleets, construction, pop-ups, and maritime.
-          </p>
-          <div class="hero-cta">
-            <a class="pill-cta" href="#intake">Start FWA Discovery</a>
-            <a class="pill-cta ghost" href="https://www.peplink.com/" target="_blank" rel="noopener">
-              Explore Peplink
-            </a>
+      <section class="card">
+        <div class="hero">
+          <div>
+            <h1>Fixed Wireless Access that’s fast, resilient, and enterprise-ready</h1>
+            <p class="lead">
+              Peplink delivers multi-WAN bonding, seamless failover, and centralized control; purpose-built for branches,
+              fleets, construction, pop-ups, and maritime.
+            </p>
+            <div class="hero-cta">
+              <a class="pill-cta" href="#intake">Start FWA Discovery</a>
+              <a class="pill-cta ghost" href="https://www.peplink.com/" target="_blank" rel="noopener">
+                Explore Peplink
+              </a>
+            </div>
+          </div>
+
+          <div class="yt-wrap">
+            <iframe
+              src="https://www.youtube.com/embed/p8cz0f8GYdA?rel=0&modestbranding=1&playsinline=1"
+              title="Peplink FWA overview"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen></iframe>
           </div>
         </div>
+      </section>
 
-        <div class="yt-wrap">
-          <iframe
-            src="https://www.youtube.com/embed/p8cz0f8GYdA?rel=0&modestbranding=1&playsinline=1"
-            title="Peplink FWA overview"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen></iframe>
+      <section class="card" style="margin-top:14px">
+        <h2 style="margin:0 0 8px; color: #fff;">Why FWA, why Peplink</h2>
+        <p class="muted" style="margin:0; line-height: 1.6;">
+          FWA wins where fiber is slow to deploy, sites are mobile, or day-one connectivity is critical. Peplink adds
+          the reliability layer that ops and CX demand with SpeedFusion bonding, carrier diversity, and centralized
+          orchestration—so your sites stay online and your teams stay productive.
+        </p>
+      </section>
+
+      <section id="icp" class="icp-section">
+        <h2>Ideal Customer Profiles</h2>
+
+        <div class="icp-grid">
+          <article class="icp-card">
+            <h3>Branch &amp; Retail</h3>
+            <p><strong>Problem.</strong> Card-present revenue and POS uptime are exposed when a single fiber or cable circuit drops.</p>
+            <p><strong>Solution.</strong> Peplink multi-WAN routers with 5G or LTE FWA and SpeedFusion session persistence across wired and wireless.</p>
+            <p><strong>Result.</strong> Transactions clear even during provider outages and PCI traffic stays segmented.</p>
+            <p class="icp-kpi">
+              <span class="knum" data-target="99.99" data-suffix="%">0</span>
+              effective POS and branch uptime with hot failover in production deployments.
+            </p>
+            <p class="icp-case">
+              <a href="https://www.peplink.com/case-studies/retail/" target="_blank" rel="noopener">View case studies</a>
+            </p>
+          </article>
+
+          <article class="icp-card">
+            <h3>Construction &amp; Field Sites</h3>
+            <p><strong>Problem.</strong> Remote job sites need cameras, tablets, and safety systems online long before fiber arrives.</p>
+            <p><strong>Solution.</strong> Ruggedized Peplink routers with bonded 5G and LTE links plus traffic shaping for video, VoIP, and SCADA.</p>
+            <p><strong>Result.</strong> Day-one connectivity for office trailers, crews, and IoT without waiting for trenching.</p>
+            <p class="icp-kpi">
+              <span class="knum" data-target="80" data-suffix="%">0</span>
+              faster site turn-up versus waiting on wireline builds.
+            </p>
+            <p class="icp-case">
+              <a href="https://www.peplink.com/case-studies/smart-construction/" target="_blank" rel="noopener">View case studies</a>
+            </p>
+          </article>
+
+          <article class="icp-card">
+            <h3>Fleet &amp; Transit</h3>
+            <p><strong>Problem.</strong> Buses, trucks, and service fleets lose telemetry, navigation, and passenger Wi-Fi whenever a single carrier drops.</p>
+            <p><strong>Solution.</strong> Peplink SD-WAN on wheels with dual modems, multi-carrier SIMs, and centralized InControl management.</p>
+            <p><strong>Result.</strong> Continuous data feeds to dispatch and better rider experience without data bill shock.</p>
+            <p class="icp-kpi">
+              <span class="knum" data-target="60" data-suffix="%">0</span>
+              reduction in connectivity-related support tickets reported by fleet customers.
+            </p>
+            <p class="icp-case">
+              <a href="https://www.peplink.com/case-studies/logistics-internet/" target="_blank" rel="noopener">View case studies</a>
+            </p>
+          </article>
+
+          <article class="icp-card">
+            <h3>Maritime</h3>
+            <p><strong>Problem.</strong> Vessels need resilient connectivity between shore, marina Wi-Fi, and cellular with tight power and antenna constraints.</p>
+            <p><strong>Solution.</strong> Peplink maritime routers and antennas blending LTE or 5G, Wi-Fi as WAN, and satellite where required.</p>
+            <p><strong>Result.</strong> Stable links for crew welfare, OT systems, and guest internet while optimizing data spend.</p>
+            <p class="icp-kpi">
+              <span class="knum" data-target="45" data-suffix="%">0</span>
+              savings on satellite and roaming costs through intelligent WAN selection.
+            </p>
+            <p class="icp-case">
+              <a href="https://www.peplink.com/tag/maritime/" target="_blank" rel="noopener">View case studies</a>
+            </p>
+          </article>
+
+          <article class="icp-card">
+            <h3>Pop-ups &amp; Events</h3>
+            <p><strong>Problem.</strong> Temporary sites need card readers, kiosks, and production crews online for a few hours or days.</p>
+            <p><strong>Solution.</strong> Portable Peplink kits with 5G or LTE FWA, Wi-Fi, and pre-templated policies for POS and production VLANs.</p>
+            <p><strong>Result.</strong> Roll in, power on, transact, and tear down without calling a carrier.</p>
+            <p class="icp-kpi">
+              <span class="knum" data-target="90" data-suffix="%">0</span>
+              faster time to first transaction compared to temporary wireline builds.
+            </p>
+            <p class="icp-case">
+              <a href="https://www.peplink.com/case-studies/event-internet/" target="_blank" rel="noopener">View case studies</a>
+            </p>
+          </article>
+
+          <article class="icp-card">
+            <h3>Fiber Failover</h3>
+            <p><strong>Problem.</strong> Single-threaded fiber circuits take down voice, apps, and CX when a backhoe or carrier change hits.</p>
+            <p><strong>Solution.</strong> Peplink hot failover with 5G or LTE FWA and wired primary, using SpeedFusion to keep sessions pinned.</p>
+            <p><strong>Result.</strong> Users don’t notice outages and contact center metrics stay within SLA.</p>
+            <p class="icp-kpi">
+              <span class="knum" data-target="0" data-suffix=" dropped calls">0</span>
+              during carrier outages in well-tuned hot-failover designs.
+            </p>
+            <p class="icp-case">
+              <a href="https://www.peplink.com/case-studies/hot-failover/" target="_blank" rel="noopener">View case studies</a>
+            </p>
+          </article>
+
+          <article class="icp-card">
+            <h3>Agriculture &amp; Smart Farms</h3>
+            <p><strong>Problem.</strong> Fields, barns, and remote pumps sit outside fiber reach while sensors and automation depend on IP.</p>
+            <p><strong>Solution.</strong> Peplink outdoor routers and antennas with multi-carrier 4G or 5G plus Wi-Fi back to cameras and controllers.</p>
+            <p><strong>Result.</strong> Always-on connectivity for irrigation, soil sensors, and livestock monitoring.</p>
+            <p class="icp-kpi">
+              <span class="knum" data-target="25" data-suffix="%">0</span>
+              improvement in operational efficiency when OT data is always reachable.
+            </p>
+            <p class="icp-case">
+              <a href="https://www.peplink.com/case-studies/farming-internet/" target="_blank" rel="noopener">View case studies</a>
+            </p>
+          </article>
+
+          <article class="icp-card">
+            <h3>Public Safety &amp; First Responders</h3>
+            <p><strong>Problem.</strong> Patrol vehicles, command posts, and incident scenes cannot tolerate dead zones or VPN drops.</p>
+            <p><strong>Solution.</strong> Peplink public-safety bundles with band 14, multi-carrier SIMs, GPS, and priority routing for CAD and body-cam traffic.</p>
+            <p><strong>Result.</strong> More reliable situational awareness and better use of in-vehicle and on-person tech.</p>
+            <p class="icp-kpi">
+              <span class="knum" data-target="99" data-suffix="%">0</span>
+              connectivity availability for priority applications in live deployments.
+            </p>
+            <p class="icp-case">
+              <a href="https://www.peplink.com/case-studies/public-safety-network/" target="_blank" rel="noopener">View case studies</a>
+            </p>
+          </article>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="card" style="margin-top:14px">
-      <h2 style="margin:0 0 8px">Why FWA, why Peplink</h2>
-      <p class="muted" style="margin:0">
-        FWA wins where fiber is slow to deploy, sites are mobile, or day-one connectivity is critical. Peplink adds
-        the reliability layer that ops and CX demand with SpeedFusion bonding, carrier diversity, and centralized
-        orchestration—so your sites stay online and your teams stay productive.
-      </p>
-    </section>
+      <section id="quadrant" class="quad">
+        <h3 style="margin:0 0 8px; color:#fff;">FWA Landscape — Affordability vs Enterprise Readiness</h3>
+        <svg viewBox="0 0 800 520" aria-labelledby="quadTitle" role="img">
+          <title id="quadTitle">Affordability vs Enterprise Readiness</title>
+          <rect x="0" y="0" width="800" height="520" fill="#141821" rx="12" />
+          <g stroke="rgba(255,255,255,0.15)" stroke-width="1">
+            <line x1="100" y1="60" x2="100" y2="460" />
+            <line x1="250" y1="60" x2="250" y2="460" />
+            <line x1="400" y1="60" x2="400" y2="460" />
+            <line x1="550" y1="60" x2="550" y2="460" />
+            <line x1="700" y1="60" x2="700" y2="460" />
+            <line x1="80" y1="420" x2="740" y2="420" />
+            <line x1="80" y1="340" x2="740" y2="340" />
+            <line x1="80" y1="260" x2="740" y2="260" />
+            <line x1="80" y1="180" x2="740" y2="180" />
+          </g>
+          <g stroke="#2BEDE7" stroke-width="2">
+            <line x1="80" y1="460" x2="740" y2="460" />
+            <line x1="80" y1="460" x2="80" y2="60" />
+          </g>
+          <g fill="#cfe7ff" font-family="system-ui,Segoe UI,Arial" font-size="14">
+            <text x="410" y="496" text-anchor="middle">Affordability →</text>
+            <text x="20" y="260" transform="rotate(-90,20,260)" text-anchor="middle">Enterprise Readiness →</text>
+          </g>
+          <g aria-label="Peplink">
+            <circle cx="520" cy="200" r="26" fill="#FCB71B" stroke="#d89a13" stroke-opacity=".9"/>
+            <text x="520" y="200" dy="5" text-anchor="middle" font-size="12" font-weight="700" fill="#0b0b0b">Peplink</text>
+          </g>
+          <g aria-label="Cradlepoint">
+            <circle cx="430" cy="230" r="22" fill="#2BEDE7" stroke="#ffffff" stroke-opacity=".35"/>
+            <text x="430" y="230" dy="5" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">Cradlepoint</text>
+          </g>
+          <g aria-label="Cisco / Meraki">
+            <circle cx="330" cy="270" r="20" fill="#FF6A13" stroke="#ffffff" stroke-opacity=".35"/>
+            <text x="330" y="270" dy="5" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">Cisco / Meraki</text>
+          </g>
+          <g>
+            <text x="400" y="80" text-anchor="middle" fill="#a9b3c4" font-size="12">
+              Illustrative placement. We’ll validate placement based on your coverage, SLAs, and scale needs.
+            </text>
+          </g>
+        </svg>
+        <p class="muted" style="margin:8px 0 0">
+          Not a gotcha chart. We’ll validate placement live against your footprint, SLAs, and budget.
+        </p>
+      </section>
 
-    <section id="icp" class="card icp-section">
-      <h2>Ideal Customer Profiles</h2>
+      <section id="intake" class="card intake">
+        <h2 style="margin:0 0 8px; color:#fff;">Get my plan</h2>
+        <p class="muted" style="margin:0 0 12px">
+          Outline your sites, carriers, and uptime targets. We’ll review your 30-day rollout and ROI live.
+        </p>
+        <div class="form-embed">
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform?usp=header"
+            title="FWA Discovery Intake"></iframe>
+        </div>
+      </section>
 
-      <div class="icp-grid">
-
-        <article class="icp-card">
-          <h3>Branch &amp; Retail</h3>
-          <p><strong>Problem.</strong> Card-present revenue and POS uptime are exposed when a single fiber or cable circuit drops.</p>
-          <p><strong>Solution.</strong> Peplink multi-WAN routers with 5G or LTE FWA and SpeedFusion session persistence across wired and wireless.</p>
-          <p><strong>Result.</strong> Transactions clear even during provider outages and PCI traffic stays segmented.</p>
-          <p class="icp-kpi">
-            <span class="knum" data-target="99.99" data-suffix="%">0</span>
-            effective POS and branch uptime with hot failover in production deployments.
-          </p>
-          <p class="icp-case">
-            <a href="https://www.peplink.com/case-studies/retail/" target="_blank" rel="noopener">View case studies</a>
-          </p>
-        </article>
-
-        <article class="icp-card">
-          <h3>Construction &amp; Field Sites</h3>
-          <p><strong>Problem.</strong> Remote job sites need cameras, tablets, and safety systems online long before fiber arrives.</p>
-          <p><strong>Solution.</strong> Ruggedized Peplink routers with bonded 5G and LTE links plus traffic shaping for video, VoIP, and SCADA.</p>
-          <p><strong>Result.</strong> Day-one connectivity for office trailers, crews, and IoT without waiting for trenching.</p>
-          <p class="icp-kpi">
-            <span class="knum" data-target="80" data-suffix="%">0</span>
-            faster site turn-up versus waiting on wireline builds.
-          </p>
-          <p class="icp-case">
-            <a href="https://www.peplink.com/case-studies/smart-construction/" target="_blank" rel="noopener">View case studies</a>
-          </p>
-        </article>
-
-        <article class="icp-card">
-          <h3>Fleet &amp; Transit</h3>
-          <p><strong>Problem.</strong> Buses, trucks, and service fleets lose telemetry, navigation, and passenger Wi-Fi whenever a single carrier drops.</p>
-          <p><strong>Solution.</strong> Peplink SD-WAN on wheels with dual modems, multi-carrier SIMs, and centralized InControl management.</p>
-          <p><strong>Result.</strong> Continuous data feeds to dispatch and better rider experience without data bill shock.</p>
-          <p class="icp-kpi">
-            <span class="knum" data-target="60" data-suffix="%">0</span>
-            reduction in connectivity-related support tickets reported by fleet customers.
-          </p>
-          <p class="icp-case">
-            <a href="https://www.peplink.com/case-studies/logistics-internet/" target="_blank" rel="noopener">View case studies</a>
-          </p>
-        </article>
-
-        <article class="icp-card">
-          <h3>Maritime</h3>
-          <p><strong>Problem.</strong> Vessels need resilient connectivity between shore, marina Wi-Fi, and cellular with tight power and antenna constraints.</p>
-          <p><strong>Solution.</strong> Peplink maritime routers and antennas blending LTE or 5G, Wi-Fi as WAN, and satellite where required.</p>
-          <p><strong>Result.</strong> Stable links for crew welfare, OT systems, and guest internet while optimizing data spend.</p>
-          <p class="icp-kpi">
-            <span class="knum" data-target="45" data-suffix="%">0</span>
-            savings on satellite and roaming costs through intelligent WAN selection.
-          </p>
-          <p class="icp-case">
-            <a href="https://www.peplink.com/tag/maritime/" target="_blank" rel="noopener">View case studies</a>
-          </p>
-        </article>
-
-        <article class="icp-card">
-          <h3>Pop-ups &amp; Events</h3>
-          <p><strong>Problem.</strong> Temporary sites need card readers, kiosks, and production crews online for a few hours or days.</p>
-          <p><strong>Solution.</strong> Portable Peplink kits with 5G or LTE FWA, Wi-Fi, and pre-templated policies for POS and production VLANs.</p>
-          <p><strong>Result.</strong> Roll in, power on, transact, and tear down without calling a carrier.</p>
-          <p class="icp-kpi">
-            <span class="knum" data-target="90" data-suffix="%">0</span>
-            faster time to first transaction compared to temporary wireline builds.
-          </p>
-          <p class="icp-case">
-            <a href="https://www.peplink.com/case-studies/event-internet/" target="_blank" rel="noopener">View case studies</a>
-          </p>
-        </article>
-
-        <article class="icp-card">
-          <h3>Fiber Failover</h3>
-          <p><strong>Problem.</strong> Single-threaded fiber circuits take down voice, apps, and CX when a backhoe or carrier change hits.</p>
-          <p><strong>Solution.</strong> Peplink hot failover with 5G or LTE FWA and wired primary, using SpeedFusion to keep sessions pinned.</p>
-          <p><strong>Result.</strong> Users don’t notice outages and contact center metrics stay within SLA.</p>
-          <p class="icp-kpi">
-            <span class="knum" data-target="0" data-suffix=" dropped calls">0</span>
-            during carrier outages in well-tuned hot-failover designs.
-          </p>
-          <p class="icp-case">
-            <a href="https://www.peplink.com/case-studies/hot-failover/" target="_blank" rel="noopener">View case studies</a>
-          </p>
-        </article>
-
-        <article class="icp-card">
-          <h3>Agriculture &amp; Smart Farms</h3>
-          <p><strong>Problem.</strong> Fields, barns, and remote pumps sit outside fiber reach while sensors and automation depend on IP.</p>
-          <p><strong>Solution.</strong> Peplink outdoor routers and antennas with multi-carrier 4G or 5G plus Wi-Fi back to cameras and controllers.</p>
-          <p><strong>Result.</strong> Always-on connectivity for irrigation, soil sensors, and livestock monitoring.</p>
-          <p class="icp-kpi">
-            <span class="knum" data-target="25" data-suffix="%">0</span>
-            improvement in operational efficiency when OT data is always reachable.
-          </p>
-          <p class="icp-case">
-            <a href="https://www.peplink.com/case-studies/farming-internet/" target="_blank" rel="noopener">View case studies</a>
-          </p>
-        </article>
-
-        <article class="icp-card">
-          <h3>Public Safety &amp; First Responders</h3>
-          <p><strong>Problem.</strong> Patrol vehicles, command posts, and incident scenes cannot tolerate dead zones or VPN drops.</p>
-          <p><strong>Solution.</strong> Peplink public-safety bundles with band 14, multi-carrier SIMs, GPS, and priority routing for CAD and body-cam traffic.</p>
-          <p><strong>Result.</strong> More reliable situational awareness and better use of in-vehicle and on-person tech.</p>
-          <p class="icp-kpi">
-            <span class="knum" data-target="99" data-suffix="%">0</span>
-            connectivity availability for priority applications in live deployments.
-          </p>
-          <p class="icp-case">
-            <a href="https://www.peplink.com/case-studies/public-safety-network/" target="_blank" rel="noopener">View case studies</a>
-          </p>
-        </article>
-
-      </div>
-    </section>
-
-    <section id="quadrant" class="quad">
-      <h3 style="margin:0 0 8px">FWA Landscape — Affordability vs Enterprise Readiness (marker size ≈ scalability)</h3>
-      <svg viewBox="0 0 800 520" aria-labelledby="quadTitle" role="img">
-        <title id="quadTitle">Affordability vs Enterprise Readiness</title>
-        <rect x="0" y="0" width="800" height="520" fill="#141821" rx="12" />
-        <g stroke="rgba(255,255,255,0.15)" stroke-width="1">
-          <line x1="100" y1="60" x2="100" y2="460" />
-          <line x1="250" y1="60" x2="250" y2="460" />
-          <line x1="400" y1="60" x2="400" y2="460" />
-          <line x1="550" y1="60" x2="550" y2="460" />
-          <line x1="700" y1="60" x2="700" y2="460" />
-          <line x1="80" y1="420" x2="740" y2="420" />
-          <line x1="80" y1="340" x2="740" y2="340" />
-          <line x1="80" y1="260" x2="740" y2="260" />
-          <line x1="80" y1="180" x2="740" y2="180" />
-        </g>
-        <g stroke="#2BEDE7" stroke-width="2">
-          <line x1="80" y1="460" x2="740" y2="460" />
-          <line x1="80" y1="460" x2="80" y2="60" />
-        </g>
-        <g fill="#cfe7ff" font-family="system-ui,Segoe UI,Arial" font-size="14">
-          <text x="410" y="496" text-anchor="middle">Affordability →</text>
-          <text x="20" y="260" transform="rotate(-90,20,260)" text-anchor="middle">Enterprise Readiness →</text>
-        </g>
-        <g aria-label="Peplink">
-          <circle cx="520" cy="200" r="26" fill="#FCB71B" stroke="#d89a13" stroke-opacity=".9"/>
-          <text x="520" y="200" dy="5" text-anchor="middle" font-size="12" font-weight="700" fill="#0b0b0b">Peplink</text>
-        </g>
-        <g aria-label="Cradlepoint">
-          <circle cx="430" cy="230" r="22" fill="#2BEDE7" stroke="#ffffff" stroke-opacity=".35"/>
-          <text x="430" y="230" dy="5" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">Cradlepoint</text>
-        </g>
-        <g aria-label="Cisco / Meraki">
-          <circle cx="330" cy="270" r="20" fill="#FF6A13" stroke="#ffffff" stroke-opacity=".35"/>
-          <text x="330" y="270" dy="5" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">Cisco / Meraki</text>
-        </g>
-        <g>
-          <text x="400" y="80" text-anchor="middle" fill="#a9b3c4" font-size="12">
-            Illustrative placement. We’ll validate placement based on your coverage, SLAs, and scale needs.
-          </text>
-        </g>
-      </svg>
-      <p class="muted" style="margin:8px 0 0">
-        Not a gotcha chart. We’ll validate placement live against your footprint, SLAs, and budget.
-      </p>
-    </section>
-
-    <section id="intake" class="card intake">
-      <h2 style="margin:0 0 8px">Get my plan</h2>
-      <p class="muted" style="margin:0 0 12px">
-        Outline your sites, carriers, and uptime targets. We’ll review your 30-day rollout and ROI live.
-      </p>
-      <div class="form-embed">
-        <iframe
-          src="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform?usp=header"
-          title="FWA Discovery Intake"></iframe>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div style="text-align:center; margin-bottom:16px;">
-        © <span id="y"></span> Industry5.pro | Outcome-Obsessed. Supplier-Agnostic. Paid by results.
-      </div>
-      <div class="socials" aria-label="Follow Industry5.pro">
-        <a href="https://www.linkedin.com/in/louis-tortora7/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.48 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.5h5V24H0V8.5zM8 8.5h4.8v2.1h.07c.67-1.2 2.3-2.47 4.73-2.47 5.06 0 6 3.33 6 7.66V24h-5v-6.8c0-1.62-.03-3.7-2.25-3.7-2.25 0-2.6 1.76-2.6 3.58V24H8V8.5z"/></svg>
-        </a>
-        <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.51 5.51 0 0 0 12 7.5zm0 2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5zM18 6.2a1 1 0 1 0 1 1 1 1 0 0 0-1-1z"/></svg>
-        </a>
-        <a href="https://www.facebook.com/profile.php?id=61582481880019" target="_blank" rel="noopener" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.675 0h-21.35C.592 0 0 .592 0 1.325v21.351C0 23.408.592 24 1.325 24h11.49v-9.294H9.691V11.01h3.124V8.414c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.313h3.587l-.467 3.696h-3.12V24h6.117C23.408 24 24 23.408 24 22.676V1.325C24 .592 23.408 0 22.675 0z"/></svg>
-        </a>
-        <a href="https://wa.me/14076945495" target="_blank" rel="noopener" aria-label="WhatsApp">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163A11.867 11.867 0 0 1 0 11.989C0 5.371 5.373 0 11.99 0 18.606 0 24 5.371 24 11.989S18.606 24 11.99 24a11.9 11.9 0 0 1-5.642-1.437L.057 24Zm6.597-3.807c1.676.995 3.276 1.591 5.35 1.593 5.448 0 9.884-4.429 9.884-9.88 0-5.45-4.436-9.88-9.884-9.88-5.449 0-9.88 4.43-9.88 9.88 0 2.266.738 3.891 1.977 5.59L3.5 20.5l3.154-.307zm11.387-5.464c-.066-.11-.242-.176-.506-.307-.264-.132-1.56-.77-1.8-.857-.242-.088-.418-.132-.594.132-.176.264-.682.857-.836 1.033-.154.176-.308.198-.572.066-.264-.132-1.116-.41-2.125-1.308-.785-.7-1.314-1.56-1.469-1.823-.154-.264-.017-.407.115-.539.118-.117.264-.308.396-.462.132-.154.176-.264.264-.44.088-.176.044-.33-.022-.462-.066-.132-.594-1.43-.814-1.958-.214-.514-.432-.445-.594-.453l-.506-.009c-.176 0-.462.066-.704.33-.242.264-.924.902-.924 2.202s.946 2.552 1.077 2.73c.132.176 1.862 2.842 4.508 3.986.63.27 1.122.432 1.505.553.632.202 1.206.174 1.661.105.506-.077 1.56-.638 1.78-1.255.22-.616.22-1.144.154-1.255z"/></svg>
-      </a>
-      <a href="mailto:lou@industry5.pro" aria-label="Email">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20a2 2 0 0 1 2 2v1l-12 7L0 7V6a2 2 0 0 1 2-2zm0 6.236V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-7.764l-9.386 5.52a2 2 0 0 1-2.228 0L2 10.236z"/></svg>
-      </a>
+      <footer class="footer">
+        <div style="text-align:center; margin-bottom:16px;">
+          © <span id="y"></span> Industry5.pro | Outcome-Obsessed. Supplier-Agnostic. Paid by results.
+        </div>
+        <div class="socials" aria-label="Follow Industry5.pro">
+          <a href="https://www.linkedin.com/in/louis-tortora7/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.48 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.5h5V24H0V8.5zM8 8.5h4.8v2.1h.07c.67-1.2 2.3-2.47 4.73-2.47 5.06 0 6 3.33 6 7.66V24h-5v-6.8c0-1.62-.03-3.7-2.25-3.7-2.25 0-2.6 1.76-2.6 3.58V24H8V8.5z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61582481880019" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.675 0h-21.35C.592 0 0 .592 0 1.325v21.351C0 23.408.592 24 1.325 24h11.49v-9.294H9.691V11.01h3.124V8.414c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.313h3.587l-.467 3.696h-3.12V24h6.117C23.408 24 24 23.408 24 22.676V1.325C24 .592 23.408 0 22.675 0z"/></svg>
+          </a>
+          <a href="https://wa.me/14076945495" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163A11.867 11.867 0 0 1 0 11.989C0 5.371 5.373 0 11.99 0 18.606 0 24 5.371 24 11.989S18.606 24 11.99 24a11.9 11.9 0 0 1-5.642-1.437L.057 24Zm6.597-3.807c1.676.995 3.276 1.591 5.35 1.593 5.448 0 9.884-4.429 9.884-9.88 0-5.45-4.436-9.88-9.884-9.88-5.449 0-9.88 4.43-9.88 9.88 0 2.266.738 3.891 1.977 5.59L3.5 20.5l3.154-.307zm11.387-5.464c-.066-.11-.242-.176-.506-.307-.264-.132-1.56-.77-1.8-.857-.242-.088-.418-.132-.594.132-.176.264-.682.857-.836 1.033-.154.176-.308.198-.572.066-.264-.132-1.116-.41-2.125-1.308-.785-.7-1.314-1.56-1.469-1.823-.154-.264-.017-.407.115-.539.118-.117.264-.308.396-.462.132-.154.176-.264.264-.44.088-.176.044-.33-.022-.462-.066-.132-.594-1.43-.814-1.958-.214-.514-.432-.445-.594-.453l-.506-.009c-.176 0-.462.066-.704.33-.242.264-.924.902-.924 2.202s.946 2.552 1.077 2.73c.132.176 1.862 2.842 4.508 3.986.63.27 1.122.432 1.505.553.632.202 1.206.174 1.661.105.506-.077 1.56-.638 1.78-1.255.22-.616.22-1.144.154-1.255z"/></svg>
+          </a>
+          <a href="mailto:lou@industry5.pro" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20a2 2 0 0 1 2 2v1l-12 7L0 7V6a2 2 0 0 1 2-2zm0 6.236V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-7.764l-9.386 5.52a2 2 0 0 1-2.228 0L2 10.236z"/></svg>
+          </a>
+        </div>
+      </footer>
     </div>
-  </footer>
-  </div>
-</main>
+  </main>
 
 <script>
   // footer year
