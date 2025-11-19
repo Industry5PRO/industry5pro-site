@@ -61,20 +61,23 @@
   }
 
   /* Branding */
-  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
+  .brand { display: flex; align-items: center; gap: 16px; text-decoration: none; flex-shrink: 0; }
   
-  /* LOGO: Gold Glow + SVG + 55px SIZE */
+  /* LOGO: 75px SIZE + Gold Glow */
   .brand img.logo {
-    width: 55px !important; height: 55px !important; 
-    border-radius: 12px; display: block; object-fit: contain; 
+    width: 75px !important; height: 75px !important; 
+    border-radius: 14px; display: block; object-fit: contain; 
     background: transparent;
     filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
     transition: filter 0.3s ease;
   }
   .brand:hover img.logo { filter: drop-shadow(0 0 14px rgba(255, 215, 0, 0.9)); }
   
+  /* Larger Title */
   .brand .title {
-    font-weight: 800; font-size: 20px; color: #fff; line-height: 1; letter-spacing: 0.2px;
+    font-weight: 800; 
+    font-size: 26px; /* Increased from 20px */
+    color: #fff; line-height: 1; letter-spacing: 0.2px;
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial;
   }
 
@@ -84,8 +87,11 @@
     justify-content: flex-end; 
   }
 
+  /* Standard Links: Normal Weight (Reverted from Bold) */
   .main-nav a {
-    position: relative; color: #cfe3d4; font-weight: 600; font-size: 0.85rem; 
+    position: relative; color: #cfe3d4; 
+    font-weight: 500; /* Reverted to normal weight */
+    font-size: 0.85rem; 
     line-height: 1.2; text-align: center; display: inline-flex; 
     align-items: center; justify-content: center;
     transition: color .15s ease, text-shadow .15s ease;
@@ -104,14 +110,14 @@
   }
   .main-nav a:not(.nav-sdr):hover::after { transform: scaleX(1); background: var(--gold); }
 
-  /* --- AI SDR BUTTON (White, No Pill, All Caps) --- */
+  /* --- AI SDR BUTTON (White, No Pill, All Caps, BOLD) --- */
   .main-nav a.nav-sdr {
     color: #fff !important;        /* White Text */
-    font-weight: 800;
+    font-weight: 800;              /* Still Bold to stand out */
     text-transform: uppercase;     /* All Caps */
     border: none;                  /* No Border */
     background: transparent;       /* No Background */
-    padding: 6px 4px;              /* Standard Spacing */
+    padding: 6px 4px;
     transition: all 0.25s ease;
   }
   
@@ -247,7 +253,7 @@
 <header>
   <div class="header-center">
     <a class="brand" href="/">
-       <img src="/assets/industry5logo.svg" alt="Industry5.pro logo" class="logo" width="55" height="55" loading="eager" decoding="async">
+       <img src="/assets/industry5logo.svg" alt="Industry5.pro logo" class="logo" width="75" height="75" loading="eager" decoding="async">
        <span class="title">Industry5.pro</span>
     </a>
     
