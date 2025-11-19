@@ -50,17 +50,21 @@
     border-bottom: 1px solid var(--line);
   }
   
+  /* Wider container to fit all nav items on one line if possible */
   .header-center {
-    max-width: 1200px; margin: 0 auto; padding: 14px 16px;
+    max-width: 1350px; margin: 0 auto; padding: 14px 16px;
     display: flex; align-items: center; justify-content: space-between; gap: 20px;
   }
 
-  /* Branding */
+  /* Branding - Exact Match to Index */
   .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  
+  /* Logo Style from Index */
   .brand img.logo {
-    width: 44px; height: 44px; border-radius: 12px; object-fit: contain; background: transparent;
-    /* MONEY GREEN GLOW */
-    filter: drop-shadow(0 0 8px rgba(133,187,101,0.6));
+    width: 44px !important; height: 44px !important; 
+    border-radius: 12px; display: block; object-fit: contain; 
+    background: transparent;
+    filter: drop-shadow(0 0 10px rgba(133,187,101,.40));
     transition: filter 0.3s ease;
   }
   .brand:hover img.logo { filter: drop-shadow(0 0 14px rgba(133,187,101,0.9)); }
@@ -71,9 +75,10 @@
   }
 
   /* Navigation */
-  .main-nav { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; margin-left: auto; }
+  .main-nav { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-left: auto; }
   .main-nav a {
-    position: relative; color: #cfe3d4; font-weight: 500; font-size: 0.9rem; padding: 4px 2px;
+    position: relative; color: #cfe3d4; font-weight: 500; font-size: 0.85rem; padding: 6px 4px;
+    white-space: nowrap; /* Prevent splitting words */
     transition: color .15s ease, text-shadow .15s ease;
   }
   
@@ -85,39 +90,39 @@
   
   /* Underline Animation */
   .main-nav a:not(.nav-sdr)::after {
-    content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px;
+    content: ""; position: absolute; left: 0; right: 0; bottom: 2px; height: 2px;
     background: var(--accent);
     transform: scaleX(0); transform-origin: left;
     transition: transform .25s ease;
   }
   .main-nav a:not(.nav-sdr):hover::after { transform: scaleX(1); background: var(--gold); }
 
-  /* --- NEW SDR SPECIAL NAV ITEM --- */
+  /* --- NEW AI SDR SPECIAL BUTTON --- */
   .main-nav a.nav-sdr {
-    color: var(--accent) !important; /* Money Green */
-    font-weight: 700;
-    border: 1px solid rgba(133,187,101,0.4);
-    border-radius: 20px;
-    padding: 4px 14px;
-    background: rgba(133,187,101,0.05);
+    color: var(--accent) !important; /* Money Green Text */
+    font-weight: 800;
+    border: 1px solid var(--accent); /* Money Green Border */
+    border-radius: 999px;
+    padding: 6px 16px;
+    background: rgba(133,187,101,0.08);
     transition: all 0.25s ease;
-    box-shadow: 0 0 8px rgba(133,187,101,0.1);
+    box-shadow: 0 0 10px rgba(133,187,101,0.15);
   }
   
   /* Hover: Turns to Gold */
   .main-nav a.nav-sdr:hover {
     color: var(--gold) !important;
     border-color: var(--gold);
-    background: rgba(255,215,0,0.08);
-    box-shadow: 0 0 12px rgba(255,215,0,0.3);
+    background: rgba(255,215,0,0.1);
+    box-shadow: 0 0 15px rgba(255,215,0,0.4);
     transform: translateY(-1px);
     text-shadow: 0 0 8px rgba(255,215,0,0.5);
   }
 
   /* Responsive Header */
-  @media (max-width: 1050px) {
+  @media (max-width: 1200px) {
     .header-center { flex-direction: column; align-items: flex-start; gap: 12px; }
-    .main-nav { margin-left: 0; gap: 12px; justify-content: flex-start; }
+    .main-nav { margin-left: 0; gap: 10px 16px; justify-content: flex-start; }
   }
 
   /* --- 4. HERO SECTION --- */
@@ -264,16 +269,26 @@
 <header>
   <div class="header-center">
     <a class="brand" href="/">
-       <img src="/assets/industry5-logo.png" alt="Industry5.pro logo" class="logo" width="44" height="44" loading="eager">
+       <img src="/assets/industry5-logo.png" 
+            alt="Industry5.pro logo" 
+            class="logo" 
+            width="44" height="44" 
+            loading="eager" 
+            decoding="async">
        <span class="title">Industry5.pro</span>
     </a>
     
     <nav class="main-nav">
       <a href="/">Home</a>
-      <a href="/ai-security.html">AI Security</a>
+      
+      <a href="/ai-omnichannel.html">AI & Omnichannel</a>
+      
+      <a href="/security.html">Security</a>
+      
       <a href="/cloud-2.html">Cloud 2.0</a>
       <a href="/uc-cc.html">UC & Contact Center</a>
-      <a href="/aiot-5g.html">AIoT 5G & Satellite</a>
+      
+      <a href="/aiot-5g.html">AIoT, 5G & Satellite</a>
       
       <a href="/ai-sdr.html" class="nav-sdr">AI SDR</a>
       
@@ -441,4 +456,240 @@
       <div class="li-embed" data-type="linkedin">
         <div class="toolbar">
           <button class="li-view active" data-mode="teaser" type="button">Summary</button>
-          <button class="li-view
+          <button class="li-view" data-mode="full" type="button">Full Post</button>
+        </div>
+        <iframe data-mode="teaser" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7392629341584510976?collapsed=1" height="638" allowfullscreen title="Part 5 Teaser"></iframe>
+        <iframe data-mode="full" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7392629341584510976" height="1079" allowfullscreen title="Part 5 Full" style="display:none"></iframe>
+      </div>
+    </article>
+
+    <article id="af-part6" class="card" data-tags="AI Foundations,AI,Analytics,Higher Ed">
+      <h3>AI Foundations | Part 6: App Intelligence</h3>
+      <p>Culture before code. Vision before velocity. How to align teams and keep transformation accountable.</p>
+      <div class="tags"><span class="tag">AI</span><span class="tag">Analytics</span></div>
+      <div class="li-embed" data-type="linkedin">
+        <div class="toolbar">
+          <button class="li-view active" data-mode="teaser" type="button">Summary</button>
+          <button class="li-view" data-mode="full" type="button">Full Post</button>
+        </div>
+        <iframe data-mode="teaser" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7392675380630806529?collapsed=1" height="621" allowfullscreen title="Part 6 Teaser"></iframe>
+        <iframe data-mode="full" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7392675380630806529" height="1209" allowfullscreen title="Part 6 Full" style="display:none"></iframe>
+      </div>
+    </article>
+
+    <article id="finops-latency" class="card" data-tags="FinOps,AI,Network,Cloud">
+      <h3>FinOps Meets Physics | The Latency Tax</h3>
+      <p>Low latency isn't just about speed, it's about cost. Optimizing routes reduces the "latency tax".</p>
+      <div class="tags"><span class="tag">FinOps</span><span class="tag">Network</span></div>
+      <div class="li-embed" data-type="linkedin">
+        <div class="toolbar">
+           <button class="li-view active" data-mode="teaser" type="button">Summary</button>
+           <button class="li-view" data-mode="full" type="button">Full Post</button>
+        </div>
+        <iframe data-mode="teaser" src="https://www.linkedin.com/embed/feed/update/urn:li:share:7394100660230647808?collapsed=1" height="634" width="504" frameborder="0" allowfullscreen title="FinOps Teaser"></iframe>
+        <iframe data-mode="full" src="https://www.linkedin.com/embed/feed/update/urn:li:share:7394100660230647808" height="1537" width="504" frameborder="0" allowfullscreen title="FinOps Full" style="display:none"></iframe>
+      </div>
+    </article>
+
+    <article id="post-amzn-q3" class="card" data-tags="AI,Cloud,Analytics">
+      <h3>Amazon’s blockbuster Q3</h3>
+      <p>What the numbers say about AI demand, economic impact, and how to build resilient stacks.</p>
+      <div class="tags"><span class="tag">AI</span><span class="tag">Cloud</span></div>
+      <div class="li-embed" data-type="linkedin">
+        <div class="toolbar">
+          <button class="li-view active" data-mode="teaser" type="button">Summary</button>
+          <button class="li-view" data-mode="full" type="button">Full Post</button>
+        </div>
+        <iframe data-mode="teaser" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7390051055952240641?collapsed=1" height="561" allowfullscreen title="Amazon Q3 Teaser"></iframe>
+        <iframe data-mode="full" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7390051055952240641" height="1065" allowfullscreen title="Amazon Q3 Full" style="display:none"></iframe>
+      </div>
+    </article>
+
+    <article id="post-aws-outage" class="card" data-tags="Cloud,Continuity,Resilience">
+      <h3>Cloud Chaos | What AWS outage taught us</h3>
+      <p>From incident to insight: design for failure, test failover, and ship value during turbulence.</p>
+      <div class="tags"><span class="tag">Cloud</span><span class="tag">Resilience</span></div>
+      <div class="li-embed" data-type="linkedin">
+        <div class="toolbar">
+          <button class="li-view active" data-mode="teaser" type="button">Summary</button>
+          <button class="li-view" data-mode="full" type="button">Full Post</button>
+        </div>
+        <iframe data-mode="teaser" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7386400673040379904?collapsed=1" height="595" allowfullscreen title="AWS Outage Teaser"></iframe>
+        <iframe data-mode="full" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7386400673040379904" height="994" allowfullscreen title="AWS Outage Full" style="display:none"></iframe>
+      </div>
+    </article>
+
+  </section>
+  
+  <div id="pagination-controls"></div>
+</main>
+
+<footer>
+  <div style="text-align:center;color:#cfd6e3;margin-bottom:16px;">
+    © <span id="y">2025</span> Industry5.pro | Outcome-Obsessed. Supplier-Agnostic. Paid by results.
+  </div>
+  
+  <div class="socials" aria-label="Follow Industry5.pro">
+    <a href="https://www.linkedin.com/in/louis-tortora7/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5c0 1.38-1.12 2.5-2.48 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.5h5V24H0V8.5zM8 8.5h4.8v2.1h.07c.67-1.2 2.3-2.47 4.73-2.47 5.06 0 6 3.33 6 7.66V24h-5v-6.8c0-1.62-.03-3.7-2.25-3.7-2.25 0-2.6 1.76-2.6 3.58V24H8V8.5z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61582481880019" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M22.675 0h-21.35C.592 0 0 .592 0 1.325v21.351C0 23.408.592 24 1.325 24h11.49v-9.294H9.691V11.01h3.124V8.414c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.313h3.587l-.467 3.696h-3.12V24h6.117C23.408 24 24 23.408 24 22.676V1.325C24 .592 23.408 0 22.675 0z"/></svg>
+    </a>
+    <a href="https://wa.me/14076945495" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M.057 24l1.687-6.163A11.867 11.867 0 0 1 0 11.989C0 5.371 5.373 0 11.99 0 18.606 0 24 5.371 24 11.989S18.606 24 11.99 24a11.9 11.9 0 0 1-5.642-1.437L.057 24Zm6.597-3.807c1.676.995 3.276 1.591 5.35 1.593 5.448 0 9.884-4.429 9.884-9.88 0-5.45-4.436-9.88-9.884-9.88-5.449 0-9.88 4.43-9.88 9.88 0 2.266.738 3.891 1.977 5.59L3.5 20.5l3.154-.307zm11.387-5.464c-.066-.11-.242-.176-.506-.307-.264-.132-1.56-.77-1.8-.857-.242-.088-.418-.132-.594.132-.176.264-.682.857-.836 1.033-.154.176-.308.198-.572.066-.264-.132-1.116-.41-2.125-1.308-.785-.7-1.314-1.56-1.469-1.823-.154-.264-.017-.407.115-.539.118-.117.264-.308.396-.462.132-.154.176-.264.264-.44.088-.176.044-.33-.022-.462-.066-.132-.594-1.43-.814-1.958-.214-.514-.432-.445-.594-.453l-.506-.009c-.176 0-.462.066-.704.33-.242.264-.924.902-.924 2.202s.946 2.552 1.077 2.73c.132.176 1.862 2.842 4.508 3.986.63.27 1.122.432 1.505.553.632.202 1.206.174 1.661.105.506-.077 1.56-.638 1.78-1.255.22-.616.22-1.144.154-1.255z"/></svg>
+    </a>
+    <a href="mailto:lou@industry5.pro" aria-label="Email">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 4h20a2 2 0 0 1 2 2v1l-12 7L0 7V6a2 2 0 0 1 2-2zm0 6.236V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-7.764l-9.386 5.52a2 2 0 0 1-2.228 0L2 10.236z"/></svg>
+    </a>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // --- 1. FOOTER YEAR ---
+  const ySpan = document.getElementById('y');
+  if(ySpan) ySpan.textContent = new Date().getFullYear();
+
+  // --- 2. FILTER & PAGINATION LOGIC ---
+  const ITEMS_PER_PAGE = 6; 
+  let currentPage = 1;
+  let currentFilter = 'all';
+
+  const allCards = Array.from(document.querySelectorAll('article.card'));
+  const filterButtons = Array.from(document.querySelectorAll('.filter-btn'));
+  const paginationContainer = document.getElementById('pagination-controls');
+
+  function getMatchingCards() {
+    const normalizedFilter = currentFilter.toLowerCase();
+    if (normalizedFilter === 'all' || normalizedFilter === 'all articles') {
+      return allCards;
+    }
+    return allCards.filter(card => {
+      const tags = (card.getAttribute('data-tags') || '').toLowerCase();
+      // Simple partial match
+      return tags.includes(normalizedFilter);
+    });
+  }
+
+  function render() {
+    const matches = getMatchingCards();
+    const totalPages = Math.ceil(matches.length / ITEMS_PER_PAGE);
+
+    if (currentPage > totalPages) currentPage = 1;
+    if (currentPage < 1) currentPage = 1;
+
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const endIndex = startIndex + ITEMS_PER_PAGE;
+    
+    // Reset
+    allCards.forEach(card => card.style.display = 'none');
+
+    // Show active slice
+    const pageSlice = matches.slice(startIndex, endIndex);
+    pageSlice.forEach(card => card.style.display = '');
+
+    renderPagination(totalPages);
+  }
+
+  function renderPagination(totalPages) {
+    paginationContainer.innerHTML = ''; 
+    if (totalPages <= 1) return; 
+
+    const createBtn = (text, pageNum, isActive = false) => {
+      const btn = document.createElement('button');
+      btn.className = `page-btn ${isActive ? 'active' : ''}`;
+      btn.textContent = text;
+      btn.type = 'button';
+      btn.addEventListener('click', () => {
+        currentPage = pageNum;
+        render();
+        document.getElementById('all').scrollIntoView({behavior: 'smooth', block: 'start'});
+      });
+      return btn;
+    };
+
+    if (currentPage > 1) paginationContainer.appendChild(createBtn('← Prev', currentPage - 1));
+    for (let i = 1; i <= totalPages; i++) {
+      paginationContainer.appendChild(createBtn(i, i, i === currentPage));
+    }
+    if (currentPage < totalPages) paginationContainer.appendChild(createBtn('Next →', currentPage + 1));
+  }
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.getAttribute('data-filter') || btn.innerText;
+      currentPage = 1; 
+      render();
+    });
+  });
+
+  render();
+
+  // --- 3. LINKEDIN TOGGLES ---
+  document.addEventListener('click', function(e){
+    const btn = e.target.closest('.li-view'); 
+    if(!btn) return;
+    if(btn.tagName === 'A') return; 
+
+    const panel = btn.closest('.li-embed');
+    if(!panel) return;
+    
+    const mode = btn.getAttribute('data-mode');
+    panel.querySelectorAll('.li-view').forEach(b=>b.classList.toggle('active', b===btn));
+    panel.querySelectorAll('iframe[data-mode]').forEach(fr=>{
+      fr.style.display = (fr.getAttribute('data-mode') === mode) ? '' : 'none';
+    });
+  });
+
+  // --- 4. DATE INJECTION ---
+  (function(){
+    const fmt = { year:'numeric', month:'short', day:'numeric' };
+    
+    function getLinkedInDate(id) {
+      try {
+        const asBinary = BigInt(id).toString(2);
+        const first41Chars = asBinary.slice(0, 41);
+        const timestamp = parseInt(first41Chars, 2);
+        return new Date(timestamp).toLocaleDateString('en-US', fmt);
+      } catch (e) { return null; }
+    }
+
+    function extractIdFromCard(card) {
+      const iframe = card.querySelector('iframe');
+      if (!iframe) return null;
+      const match = iframe.src.match(/(?:share|ugcPost|activity):(\d+)/);
+      return match ? match[1] : null;
+    }
+
+    document.querySelectorAll('article.card').forEach(card => {
+      let meta = card.querySelector('.meta');
+      if (!meta) {
+        meta = document.createElement('p');
+        meta.className = 'meta';
+        const tags = card.querySelector('.tags');
+        if (tags) tags.insertAdjacentElement('afterend', meta);
+        else card.appendChild(meta);
+      }
+
+      let pubDate = card.getAttribute('data-pub');
+      if (!pubDate) {
+        const liId = extractIdFromCard(card);
+        if (liId) pubDate = getLinkedInDate(liId);
+      }
+      // Fallback only if absolutely necessary
+      if (!pubDate) pubDate = new Date().toLocaleDateString('en-US', fmt);
+      
+      meta.textContent = `Published: ${pubDate}`;
+    });
+  })();
+});
+</script>
+</body>
+</html>
