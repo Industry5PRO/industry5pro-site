@@ -27,8 +27,9 @@
     --muted: #bfc7d5;
     
     /* Brand Colors */
-    --accent: #85BB65;           /* Money Green (Default Link/Brand) */
-    --gold: #FFD700;             /* Standard Hover/Highlight */
+    --accent: #85BB65;           /* Money Green */
+    --gold: #FFD700;             /* Standard Gold */
+    --bright-yellow: #FFFF33;    /* High Vis Yellow (For SDR Hover) */
     
     /* Vertical Specific Glows */
     --veeam-green: #00B159;      /* Cyber / Backup */
@@ -50,16 +51,19 @@
     border-bottom: 1px solid var(--line);
   }
   
-  /* Wider container to fit all nav items on one line if possible */
+  /* ALIGNMENT FIX: Matches Hero Width (1100px) & clusters content left */
   .header-center {
-    max-width: 1350px; margin: 0 auto; padding: 14px 16px;
-    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    max-width: 1100px; 
+    margin: 0 auto; 
+    padding: 14px 18px; /* Matches Hero Padding exactly */
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-start; /* Brings Brand & Home closer */
+    gap: 32px; /* Adjustable distance between Brand and Menu */
   }
 
-  /* Branding - Exact Match to Index */
-  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-  
-  /* Logo Style from Index */
+  /* Branding */
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
   .brand img.logo {
     width: 44px !important; height: 44px !important; 
     border-radius: 12px; display: block; object-fit: contain; 
@@ -74,55 +78,70 @@
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial;
   }
 
-  /* Navigation */
-  .main-nav { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-left: auto; }
+  /* Navigation Container */
+  .main-nav { 
+    display: flex; 
+    gap: 20px; 
+    align-items: center; 
+    flex-wrap: wrap; 
+  }
+
+  /* Nav Links */
   .main-nav a {
-    position: relative; color: #cfe3d4; font-weight: 500; font-size: 0.85rem; padding: 6px 4px;
-    white-space: nowrap; /* Prevent splitting words */
+    position: relative; 
+    color: #cfe3d4; 
+    font-weight: 600; 
+    font-size: 0.85rem; 
+    line-height: 1.2; /* Tight leading for double lines */
+    text-align: center;
+    display: inline-flex; /* Allows stacking text */
+    align-items: center;
+    justify-content: center;
     transition: color .15s ease, text-shadow .15s ease;
   }
-  
+
   /* Standard Hover Effects (Gold) */
   .main-nav a:not(.nav-sdr):hover {
     color: var(--gold);
     text-shadow: 0 0 6px rgba(255,215,0,.85), 0 0 14px rgba(255,215,0,.45);
   }
-  
+
   /* Underline Animation */
   .main-nav a:not(.nav-sdr)::after {
-    content: ""; position: absolute; left: 0; right: 0; bottom: 2px; height: 2px;
+    content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px;
     background: var(--accent);
     transform: scaleX(0); transform-origin: left;
     transition: transform .25s ease;
   }
   .main-nav a:not(.nav-sdr):hover::after { transform: scaleX(1); background: var(--gold); }
 
-  /* --- NEW AI SDR SPECIAL BUTTON --- */
+  /* --- SPECIAL: AI SDR BUTTON --- */
   .main-nav a.nav-sdr {
-    color: var(--accent) !important; /* Money Green Text */
+    color: var(--gold) !important;       /* Gold Text */
     font-weight: 800;
-    border: 1px solid var(--accent); /* Money Green Border */
+    border: 1px solid var(--accent);     /* Money Green Border */
     border-radius: 999px;
-    padding: 6px 16px;
-    background: rgba(133,187,101,0.08);
-    transition: all 0.25s ease;
+    padding: 6px 18px;
+    background: rgba(133,187,101,0.1);   /* Subtle Green Tint */
     box-shadow: 0 0 10px rgba(133,187,101,0.15);
+    transition: all 0.25s ease;
   }
   
-  /* Hover: Turns to Gold */
+  /* Hover: GLOW BRIGHT YELLOW */
   .main-nav a.nav-sdr:hover {
-    color: var(--gold) !important;
-    border-color: var(--gold);
-    background: rgba(255,215,0,0.1);
-    box-shadow: 0 0 15px rgba(255,215,0,0.4);
+    color: var(--bright-yellow) !important;
+    border-color: var(--bright-yellow);
+    background: rgba(255, 255, 51, 0.15);
+    box-shadow: 0 0 15px rgba(255, 255, 51, 0.6);
+    text-shadow: 0 0 8px rgba(255, 255, 51, 0.8);
     transform: translateY(-1px);
-    text-shadow: 0 0 8px rgba(255,215,0,0.5);
   }
 
   /* Responsive Header */
-  @media (max-width: 1200px) {
-    .header-center { flex-direction: column; align-items: flex-start; gap: 12px; }
-    .main-nav { margin-left: 0; gap: 10px 16px; justify-content: flex-start; }
+  @media (max-width: 1100px) {
+    .header-center { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .main-nav { gap: 16px 24px; justify-content: flex-start; }
+    .main-nav a { text-align: left; display: inline-block; }
   }
 
   /* --- 4. HERO SECTION --- */
@@ -136,7 +155,7 @@
   .hero h1{margin:0 0 16px;font-size:clamp(2rem, 4vw, 3rem);line-height:1.1;color:#fff;font-weight:800;}
   .hero p{font-size:1.15rem;color:#cfd6e3;line-height:1.6;max-width:620px;}
 
-  /* Foundations Series Card (Hero Side) */
+  /* Foundations Series Card */
   .hero-series-card {
     background: var(--panel);
     border: 1px solid var(--line);
@@ -177,7 +196,7 @@
     transform:translateY(-1px);
   }
   
-  /* Mobile Scroll for filters */
+  /* Mobile Scroll */
   @media (max-width: 768px) {
     .filter-row {flex-wrap: nowrap; overflow-x: auto; padding-bottom: 12px; -webkit-overflow-scrolling: touch; scrollbar-width: none;}
     .filter-row::-webkit-scrollbar { display: none; }
@@ -204,7 +223,7 @@
   }
   .meta{color:var(--muted); font-size:0.85rem; margin-top:auto; padding-top:12px; border-top:1px solid rgba(255,255,255,0.05);}
 
-  /* --- 7. SPECIAL HOVER EFFECTS (THE GLOW) --- */
+  /* --- 7. SPECIAL HOVER EFFECTS --- */
   
   /* Default Gold Glow */
   .card:hover{
@@ -281,14 +300,15 @@
     <nav class="main-nav">
       <a href="/">Home</a>
       
-      <a href="/ai-omnichannel.html">AI & Omnichannel</a>
+      <a href="/ai-omnichannel.html">AI &<br>Omnichannel</a>
       
       <a href="/security.html">Security</a>
-      
       <a href="/cloud-2.html">Cloud 2.0</a>
-      <a href="/uc-cc.html">UC & Contact Center</a>
+
+      <a href="/uc-cc.html">UC &<br>Contact Center</a>
       
-      <a href="/aiot-5g.html">AIoT, 5G & Satellite</a>
+      <a href="/aiot.html">AIoT</a>
+      <a href="/5g-satellite.html">5G & Satellite</a>
       
       <a href="/ai-sdr.html" class="nav-sdr">AI SDR</a>
       
