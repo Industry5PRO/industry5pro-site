@@ -73,10 +73,10 @@
   }
   .brand:hover img.logo { filter: drop-shadow(0 0 14px rgba(255, 215, 0, 0.9)); }
   
-  /* Larger Title */
+  /* Brand Text */
   .brand .title {
     font-weight: 800; 
-    font-size: 26px; /* Increased from 20px */
+    font-size: 26px; 
     color: #fff; line-height: 1; letter-spacing: 0.2px;
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial;
   }
@@ -87,41 +87,46 @@
     justify-content: flex-end; 
   }
 
-  /* Standard Links: Normal Weight (Reverted from Bold) */
+  /* Base Link Style */
   .main-nav a {
     position: relative; color: #cfe3d4; 
-    font-weight: 500; /* Reverted to normal weight */
+    font-weight: 500; /* Normal weight for standard links */
     font-size: 0.85rem; 
     line-height: 1.2; text-align: center; display: inline-flex; 
     align-items: center; justify-content: center;
     transition: color .15s ease, text-shadow .15s ease;
   }
 
-  /* Standard Links Hover */
-  .main-nav a:not(.nav-sdr):hover {
+  /* Hover Color (All Links) */
+  .main-nav a:hover {
     color: var(--gold);
     text-shadow: 0 0 6px rgba(255,215,0,.85), 0 0 14px rgba(255,215,0,.45);
   }
 
-  /* Standard Links Underline */
-  .main-nav a:not(.nav-sdr)::after {
+  /* Underline Animation (APPLIED TO ALL LINKS NOW) */
+  .main-nav a::after {
     content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px;
-    background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
+    background: var(--accent); /* Money Green Bar */
+    transform: scaleX(0); transform-origin: left; 
+    transition: transform .25s ease;
   }
-  .main-nav a:not(.nav-sdr):hover::after { transform: scaleX(1); background: var(--gold); }
+  .main-nav a:hover::after { 
+    transform: scaleX(1); 
+    background: var(--gold); /* Turns Gold on Hover */
+  }
 
-  /* --- AI SDR BUTTON (White, No Pill, All Caps, BOLD) --- */
+  /* --- AI SDR SPECIAL STYLING --- */
   .main-nav a.nav-sdr {
     color: #fff !important;        /* White Text */
-    font-weight: 800;              /* Still Bold to stand out */
-    text-transform: uppercase;     /* All Caps */
-    border: none;                  /* No Border */
-    background: transparent;       /* No Background */
+    font-weight: 800;              /* BOLD */
+    text-transform: uppercase;     /* ALL CAPS */
+    border: none;                  
+    background: transparent;       
     padding: 6px 4px;
     transition: all 0.25s ease;
   }
   
-  /* AI SDR Hover (Gold Glow) */
+  /* AI SDR Hover Specifics (Enhances the shared hover above) */
   .main-nav a.nav-sdr:hover {
     color: var(--gold) !important;
     text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
