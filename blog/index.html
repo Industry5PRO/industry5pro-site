@@ -51,27 +51,32 @@
     border-bottom: 1px solid var(--line);
   }
   
-  /* ALIGNMENT FIX: Matches Hero Width (1100px) & clusters content left */
+  /* ALIGNMENT FIX: Maximize space between Brand and Nav */
   .header-center {
     max-width: 1100px; 
     margin: 0 auto; 
-    padding: 14px 18px; /* Matches Hero Padding exactly */
+    padding: 14px 18px; 
     display: flex; 
     align-items: center; 
-    justify-content: flex-start; /* Brings Brand & Home closer */
-    gap: 32px; /* Adjustable distance between Brand and Menu */
+    justify-content: space-between; /* Pushes Nav to far right */
+    gap: 20px; 
   }
 
   /* Branding */
   .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
+  
+  /* LOGO: Gold Glow + SVG path */
   .brand img.logo {
     width: 44px !important; height: 44px !important; 
     border-radius: 12px; display: block; object-fit: contain; 
     background: transparent;
-    filter: drop-shadow(0 0 10px rgba(133,187,101,.40));
+    /* GOLD GLOW */
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
     transition: filter 0.3s ease;
   }
-  .brand:hover img.logo { filter: drop-shadow(0 0 14px rgba(133,187,101,0.9)); }
+  .brand:hover img.logo { 
+    filter: drop-shadow(0 0 14px rgba(255, 215, 0, 0.9)); 
+  }
   
   .brand .title {
     font-weight: 800; font-size: 20px; color: #fff; line-height: 1; letter-spacing: 0.2px;
@@ -84,6 +89,7 @@
     gap: 20px; 
     align-items: center; 
     flex-wrap: wrap; 
+    justify-content: flex-end; /* Ensures right alignment */
   }
 
   /* Nav Links */
@@ -92,9 +98,9 @@
     color: #cfe3d4; 
     font-weight: 600; 
     font-size: 0.85rem; 
-    line-height: 1.2; /* Tight leading for double lines */
+    line-height: 1.2; 
     text-align: center;
-    display: inline-flex; /* Allows stacking text */
+    display: inline-flex; 
     align-items: center;
     justify-content: center;
     transition: color .15s ease, text-shadow .15s ease;
@@ -288,7 +294,7 @@
 <header>
   <div class="header-center">
     <a class="brand" href="/">
-       <img src="/assets/industry5-logo.png" 
+       <img src="/assets/industry5logo.svg" 
             alt="Industry5.pro logo" 
             class="logo" 
             width="44" height="44" 
@@ -308,7 +314,8 @@
       <a href="/uc-cc.html">UC &<br>Contact Center</a>
       
       <a href="/aiot.html">AIoT</a>
-      <a href="/5g-satellite.html">5G & Satellite</a>
+      
+      <a href="/5g-satellite.html">5G &<br>Satellite</a>
       
       <a href="/ai-sdr.html" class="nav-sdr">AI SDR</a>
       
