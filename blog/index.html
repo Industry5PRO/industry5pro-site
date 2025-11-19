@@ -6,12 +6,12 @@
 <title>Industry5.pro — AI Foundations & Strategic Insights</title>
 <meta name="description" content="The playbook for the infrastructure era. Insights on AI Stacks, NaaS, GPUaaS, and Data Governance. Bridging technical capability with measurable ROI.">
 <meta name="author" content="Industry5.pro">
-<link rel="canonical" href="https://industry5.pro/blog.html">
+<link rel="canonical" href="https://industry5.pro/blog">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Industry5.pro — AI Foundations">
 <meta property="og:description" content="Outcome-obsessed insights for the AI infrastructure era.">
-<meta property="og:url" content="https://industry5.pro/blog.html">
+<meta property="og:url" content="https://industry5.pro/blog">
 <meta property="og:image" content="https://industry5.pro/assets/industry5-logo.png">
 
 <meta name="color-scheme" content="dark">
@@ -29,7 +29,6 @@
     /* Brand Colors */
     --accent: #85BB65;           /* Money Green */
     --gold: #FFD700;             /* Standard Gold */
-    --bright-yellow: #FFFF33;    /* High Vis Yellow (For SDR Hover) */
     
     /* Vertical Specific Glows */
     --veeam-green: #00B159;      /* Cyber / Backup */
@@ -92,28 +91,35 @@
     transition: color .15s ease, text-shadow .15s ease;
   }
 
+  /* Standard Links Hover */
   .main-nav a:not(.nav-sdr):hover {
     color: var(--gold);
     text-shadow: 0 0 6px rgba(255,215,0,.85), 0 0 14px rgba(255,215,0,.45);
   }
 
+  /* Standard Links Underline */
   .main-nav a:not(.nav-sdr)::after {
     content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px;
     background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
   }
   .main-nav a:not(.nav-sdr):hover::after { transform: scaleX(1); background: var(--gold); }
 
-  /* AI SDR Button */
+  /* --- AI SDR BUTTON (White, No Pill, All Caps) --- */
   .main-nav a.nav-sdr {
-    color: var(--gold) !important; font-weight: 800;
-    border: 1px solid var(--accent); border-radius: 999px;
-    padding: 6px 18px; background: rgba(133,187,101,0.1);
-    box-shadow: 0 0 10px rgba(133,187,101,0.15); transition: all 0.25s ease;
+    color: #fff !important;        /* White Text */
+    font-weight: 800;
+    text-transform: uppercase;     /* All Caps */
+    border: none;                  /* No Border */
+    background: transparent;       /* No Background */
+    padding: 6px 4px;              /* Standard Spacing */
+    transition: all 0.25s ease;
   }
+  
+  /* AI SDR Hover (Gold Glow) */
   .main-nav a.nav-sdr:hover {
-    color: var(--bright-yellow) !important; border-color: var(--bright-yellow);
-    background: rgba(255, 255, 51, 0.15); box-shadow: 0 0 15px rgba(255, 255, 51, 0.6);
-    text-shadow: 0 0 8px rgba(255, 255, 51, 0.8); transform: translateY(-1px);
+    color: var(--gold) !important;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+    transform: translateY(-1px);
   }
 
   @media (max-width: 1100px) {
@@ -125,7 +131,6 @@
   /* --- 4. HERO SECTION --- */
   .hero{max-width:1100px;margin:32px auto 0;padding:0 18px 24px;}
   
-  /* Widen right col to 410px to fit "Part 5" on one line */
   .hero-grid {
     display: grid; 
     grid-template-columns: 1fr 410px; 
@@ -260,7 +265,7 @@
       
       <a href="/ai-sdr.html" class="nav-sdr">AI SDR</a>
       
-      <a href="/blog.html" style="color:var(--gold);">Blog</a>
+      <a href="/blog" style="color:var(--gold);">Blog</a>
       <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
     </nav>
   </div>
