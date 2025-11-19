@@ -6,142 +6,166 @@
   
   <title>CCaaS & Agentic AI Advisory | Industry5.pro</title>
   <meta name="description" content="Stop buying bundled 'gotchas.' We are supplier-agnostic CCaaS advisors who audit and integrate elite platforms (NICE, Genesys) to drive CX outcomes. Get your impact-first audit.">
+  <meta name="author" content="Industry5.pro">
+  <link rel="canonical" href="https://industry5.pro/ccaas">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CCaaS & Agentic AI Advisory">
+  <meta property="og:description" content="Stop Buying Bundles. Start Building CX. Featured Partner: Lumen Cloud Voice.">
+  <meta property="og:url" content="https://industry5.pro/ccaas">
+  <meta property="og:image" content="https://industry5.pro/assets/industry5-logo.png">
+
   <meta name="color-scheme" content="dark">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
 
   <link rel="icon" href="/assets/favicon.ico" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
 
-  <style id="master-header-ccaas">
+  <style>
+    /* --- CORE VARIABLES (CCaaS THEME: GENESYS ORANGE) --- */
     :root {
-      --header-h: 76px;
-      --genesys-orange: #FF6A13; /* Page theme color */
-      --lumen-charcoal: #1B1B1D;
+      --bg: #1B1B1D;
+      --panel: #232326;
+      --card-bg: #1B1B1D; 
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text: #e8eef9;
+      --text-muted: #aeb8c4;
+      --line: rgba(255,255,255,0.08);
+      --outline: #2C2C30;
+
+      /* Page Specific Accents */
+      --accent: #FF4F1F;           /* Genesys Orange */
+      --accent-blue: #00A9E0;      /* NICE Blue (Secondary) */
+      --gold: #FFD700;             /* Standard Gold (for Blog/SDR) */
+      --lumen-blue-light: #b2fff6; /* For video hover */
     }
     
-    body { 
-      padding-top: var(--header-h) !important; 
-      background-color: var(--lumen-charcoal);
-      color: #e8eef9;
-      font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial;
-      margin: 0;
-      box-sizing: border-box;
-    }
+    /* --- RESET & BASE --- */
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial; box-sizing: border-box;}
     *, *:before, *:after { box-sizing: inherit; }
-    main, .hero, .page-start { margin-top: 0 !important; }
+    a{color:inherit;text-decoration:none;transition:color .2s ease;}
+    a:hover{text-decoration:none;}
+    img{max-width:100%;display:block}
+    button{font-family:inherit;}
+    section{padding:42px 0;border-top:1px solid var(--outline)}
+    section:first-of-type { border-top: none; }
+    .anchor{scroll-margin-top:90px}
 
-    .topbar {
-      position: fixed !important; top: 0; left: 0; right: 0;
-      z-index: 99999 !important; height: var(--header-h);
-      background: rgba(27,27,29,.95) !important;
-      backdrop-filter: saturate(140%) blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      display: flex; align-items: center;
-      overflow: visible !important;
+    /* --- 3. MASTER HEADER & NAV --- */
+    header {
+      position: sticky; top: 0; z-index: 99999;
+      background: linear-gradient(180deg,rgba(27,27,29,0.95),rgba(27,27,29,0.85));
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
     }
-    .topbar .wrap {
-      width: 100%; max-width: 1080px; margin: 0 auto;
-      padding: 0 24px; height: 100%;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .nav { 
-      display: flex; align-items: center; 
-      width: 100%; height: 100%; 
+    
+    .header-center {
+      max-width: 1100px; 
+      margin: 0 auto; 
+      padding: 14px 18px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      gap: 20px; 
     }
 
-    .topbar .brand {
-      display: flex; align-items: center; gap: 16px;
-      margin-right: 2px !important; text-decoration: none; flex-shrink: 0; 
-    }
-    .topbar .brand .logo {
-      height: 55px !important; width: 55px !important;
-      display: block !important; object-fit: contain;
-      /* GENESYS ORANGE GLOW */
-      filter: drop-shadow(0 0 8px rgba(255,106,19,0.6)) !important; 
+    /* Branding */
+    .brand { display: flex; align-items: center; gap: 16px; text-decoration: none; flex-shrink: 0; }
+    
+    /* LOGO: 75px + GENESYS ORANGE GLOW */
+    .brand img.logo {
+      width: 75px !important; height: 75px !important; 
+      border-radius: 14px; display: block; object-fit: contain; 
+      background: transparent;
+      filter: drop-shadow(0 0 8px rgba(255, 79, 31, 0.5));
       transition: filter 0.3s ease;
     }
-    .topbar .brand .logo:hover { 
-      filter: drop-shadow(0 0 16px rgba(255,106,19,1)) !important; 
+    .brand:hover img.logo { filter: drop-shadow(0 0 14px rgba(255, 79, 31, 0.9)); }
+    
+    .brand .title {
+      font-weight: 800; 
+      font-size: 26px; 
+      color: #fff; line-height: 1; letter-spacing: 0.2px;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial;
     }
-    .topbar .brand strong {
-      font-size: 18px; font-weight: 800; 
-      color: #e8eef9 !important; white-space: nowrap;
+
+    /* Navigation */
+    .main-nav { 
+      display: flex; gap: 20px; align-items: center; flex-wrap: wrap; 
+      justify-content: flex-end; 
+    }
+
+    /* Nav Links */
+    .main-nav a {
+      position: relative; color: #cfe3d4; 
+      font-weight: 500; 
+      font-size: 0.85rem; 
+      line-height: 1.2; text-align: center; display: inline-flex; 
+      align-items: center; justify-content: center;
+      transition: color .15s ease, text-shadow .15s ease;
+    }
+
+    /* Page Specific Active State (CCaaS) */
+    .main-nav a.active {
+      color: var(--accent);
+      text-shadow: 0 0 10px rgba(255, 79, 31, 0.6);
+    }
+
+    /* Hover Effects */
+    .main-nav a:not(.nav-sdr):hover {
+      color: var(--accent); /* Orange Hover */
+      text-shadow: 0 0 6px rgba(255, 79, 31, 0.85), 0 0 14px rgba(255, 79, 31, 0.45);
+    }
+
+    /* Underline Animation */
+    .main-nav a:not(.nav-sdr)::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px;
+      background: var(--accent); 
+      transform: scaleX(0); transform-origin: left; 
+      transition: transform .25s ease;
+    }
+    .main-nav a:not(.nav-sdr):hover::after { transform: scaleX(1); }
+    .main-nav a.active::after { transform: scaleX(1); }
+
+    /* --- AI SDR SPECIAL BUTTON --- */
+    .main-nav a.nav-sdr {
+      color: #fff !important;
+      font-weight: 800;
+      text-transform: uppercase;
+      border: none;
+      background: transparent;
+      padding: 6px 4px;
+      transition: all 0.25s ease;
     }
     
-    .nav-actions {
-      display: flex; align-items: center; gap: 20px;
-      height: 44px;
-      border-left: 1px solid rgba(255,255,255,.15);
-      padding-left: 42px !important;
-      padding-right: 40px !important;
-      flex-grow: 1; justify-content: flex-end;
-      overflow-x: auto; overflow-y: hidden;
-      white-space: nowrap; -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
-    .nav-actions::-webkit-scrollbar { display: none; }
-    
-    .topbar .navlink {
-      position: relative; display: inline-flex;
-      align-items: center; justify-content: center; text-align: center;
-      color: #ffffff !important; /* Default White */
-      font-weight: 700;
-      font-size: 14px; text-decoration: none;
-      line-height: 1.2; padding: 4px 0;
-      transition: all 0.2s ease;
-      flex-shrink: 0;
-      white-space: normal !important;
-    }
-    
-    /* HOVER/ACTIVE: Force Genesys Orange */
-    .topbar .navlink:hover,
-    .topbar .navlink:focus-visible,
-    .topbar .navlink[aria-current="page"] {
-      color: var(--genesys-orange) !important;
+    .main-nav a.nav-sdr:hover {
+      color: var(--gold) !important;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
       transform: translateY(-1px);
-      text-shadow: 0 0 10px rgba(255,106,19,0.75), 0 0 20px rgba(255,106,19,0.45) !important;
-      outline: 0;
-    }
-    
-    @media (max-width: 900px) {
-      .topbar .brand strong { display: none; } 
-      .nav-actions { gap: 16px; padding-left: 16px !important; }
-    }
-  </style>
-
-  <style id="ccaas-theme">
-    :root {
-      /* --- Page Theme --- */
-      --nice-blue: #00A9E0;
-      --genesys-orange: #FF6A13;
-      --page-accent: var(--nice-blue);
-      
-      /* --- Base Styles --- */
-      --card-bg: #2022B; /* Darker than charcoal */
-      --card-border: rgba(255, 255, 255, 0.1);
-      --text-muted: #aeb8c4;
     }
 
-    .wrap {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 24px;
+    @media (max-width: 1100px) {
+      .header-center { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .main-nav { gap: 16px 24px; justify-content: flex-start; }
+      .main-nav a { text-align: left; display: inline-block; }
     }
-    a { text-decoration: none; color: var(--ice-blue); }
 
-    /* --- Hero --- */
-    .hero {
-      padding-top: 32px;
-      padding-bottom: 32px;
+    /* === PAGE CONTENT STYLES === */
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+    /* Hero */
+    .hero { padding: 40px 0 20px; border-top: none; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) 420px;
+      gap: 24px;
+      align-items: center;
     }
     .hero h1 {
       font-size: clamp(2.2rem, 5vw, 3rem);
       line-height: 1.1;
       margin: 0 0 16px 0;
       color: white;
-      text-shadow: 0 0 20px rgba(0,169,224,0.3);
+      text-shadow: 0 0 20px rgba(255, 79, 31, 0.2);
     }
     .hero .sub-h1 {
       font-size: 1.25rem;
@@ -150,297 +174,118 @@
       max-width: 750px;
       margin-bottom: 24px;
     }
-    .hero .sub-h1 strong {
-      color: var(--page-accent); /* NICE Blue */
-    }
-    .hero .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0,1fr) 420px;
-      gap: 24px;
-      align-items: center;
-    }
-    .hero-photo {
-      display: flex;
-      justify-content: flex-end;
-    }
+    .hero .sub-h1 strong { color: var(--accent); }
+
+    .hero-photo { display: flex; justify-content: flex-end; }
     .hero-photo img {
-      width: 100%;
-      max-width: 420px;
-      height: auto;
-      object-fit: contain;
+      width: 100%; max-width: 420px; height: auto; object-fit: contain;
       filter: drop-shadow(0 10px 20px rgba(0,0,0,.35));
     }
+
     @media (max-width: 900px) {
-      .hero .hero-grid { grid-template-columns: 1fr; }
+      .hero-grid { grid-template-columns: 1fr; }
       .hero-photo { display: none; }
     }
 
-    /* --- Buttons --- */
+    /* Hero CTAs */
+    .hero-cta-block { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+    .hero-cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+    
+    /* Buttons */
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 24px;
-      font-size: 1rem;
-      font-weight: 700;
-      border-radius: 12px;
-      text-decoration: none;
-      border: 1px solid transparent;
-      transition: all 0.2s ease;
-      cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 12px 24px; font-size: 1rem; font-weight: 700; border-radius: 12px;
+      text-decoration: none; border: 1px solid transparent; transition: all 0.2s ease; cursor: pointer;
     }
     .btn-primary {
-      background-color: var(--page-accent);
-      color: #0b1220;
-      border-color: var(--page-accent);
+      background-color: var(--accent); color: #0b1220; border-color: var(--accent);
     }
     .btn-primary:hover {
-      background-color: #fff;
-      color: #0b1220;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0,169,224,0.3);
+      background-color: #fff; color: #0b1220; transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 79, 31, 0.3);
     }
     .btn-secondary {
-      background-color: transparent;
-      color: #fff;
-      border-color: var(--card-border);
+      background-color: transparent; color: #fff; border-color: var(--card-border);
     }
     .btn-secondary:hover {
-      background-color: #fff;
-      color: #0b1220;
-      transform: translateY(-2px);
+      background-color: #fff; color: #0b1220; transform: translateY(-2px);
     }
     
-    /* Hero Lumen Cloud Voice button */
-.btn-lumen-hero{
-  background: var(--lumen);          /* uses your Lumen orange (#FF6A13) */
-  color:#ffffff;
-  border:1px solid var(--lumen);
-}
-
-.btn-lumen-hero:hover,
-.btn-lumen-hero:focus{
-  background:#b2fff6;                /* Lumen blue highlight */
-  color:#000000;
-  border-color:#b2fff6;
-  box-shadow:0 0 14px rgba(178,255,246,.5);
-}
-.btn-lumen-hero{
-  background:#FF6A13;
-  color:#ffffff;
-  border:1px solid #FF6A13;
-}
-
-    /* Button Row (Horizontal) */
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 12px;
-      margin-top: 24px;
+    /* Lumen Button (Orange default, Blue hover) */
+    .btn-lumen-hero {
+      background: #FF6A13; color: #ffffff; border: 1px solid #FF6A13;
+    }
+    .btn-lumen-hero:hover {
+      background: #b2fff6; color: #000000; border-color: #b2fff6;
+      box-shadow: 0 0 14px rgba(178,255,246,.5);
     }
 
-    /* --- Page Card --- */
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 24px;
-    }
-    .card h2 {
-      margin: 0 0 16px 0;
-      font-size: 1.8rem;
-      color: white;
-    }
-    .card h2 .highlight {
-      color: var(--genesys-orange); /* Genesys Orange highlight */
-    }
-    
-    /* === KPI Ticker Section === */
+    /* KPIs */
     .kpi-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 24px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+      background: var(--panel); border: 1px solid var(--card-border); border-radius: 16px;
+      padding: 24px; margin: 32px 0;
     }
-    .kpi-item {
-      text-align: center;
-      padding: 16px;
-      border-right: 1px solid var(--card-border);
-    }
-    .kpi-grid .kpi-item:last-child {
-      border-right: none;
-    }
-    .kpi-stat {
-      font-size: 3rem;
-      font-weight: 800;
-      color: var(--page-accent); /* NICE Blue */
-      line-height: 1.1;
-      margin-bottom: 8px;
-      min-height: 53px; /* Holds space for number */
-    }
-    .kpi-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 8px;
-    }
-    .kpi-desc {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-      margin: 0;
-    }
-    .kpi-item.orange .kpi-stat {
-      color: var(--genesys-orange);
-    }
-
-    @media (max-width: 900px) {
-      .kpi-grid { grid-template-columns: 1fr; }
-      .kpi-item { 
-        border-right: none; 
-        border-bottom: 1px solid var(--card-border);
-      }
-      .kpi-grid .kpi-item:last-child {
-        border-bottom: none;
-      }
-    }
+    .kpi-item { text-align: center; padding: 16px; border-right: 1px solid var(--card-border); }
+    .kpi-item:last-child { border-right: none; }
+    .kpi-stat { font-size: 3rem; font-weight: 800; color: var(--accent-blue); line-height: 1.1; margin-bottom: 8px; }
+    .kpi-title { font-size: 1.1rem; font-weight: 600; color: #fff; margin-bottom: 8px; }
+    .kpi-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
     
-    /* --- 3-Column Feature Grid --- */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .feature-card {
-      background: #1B1B1D; /* Match body bg */
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 20px;
-    }
-    .feature-card h3 {
-      font-size: 1.2rem;
-      color: var(--page-accent);
-      margin: 0 0 12px 0;
-    }
-    .feature-card p {
-      margin: 0;
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-    @media (max-width: 900px) {
-      .features-grid { grid-template-columns: 1fr; }
+    .kpi-item.orange .kpi-stat { color: var(--accent); } /* Override for Orange */
+
+    @media (max-width: 900px) { 
+      .kpi-grid { grid-template-columns: 1fr; } 
+      .kpi-item { border-right: none; border-bottom: 1px solid var(--card-border); }
+      .kpi-item:last-child { border-bottom: none; }
     }
 
-    /* --- Quadrant (HTML Version) --- */
+    /* Features Grid */
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .feature-card { background: #1B1B1D; border: 1px solid var(--card-border); border-radius: 12px; padding: 20px; }
+    .feature-card h3 { font-size: 1.2rem; color: var(--accent); margin: 0 0 12px 0; }
+    .feature-card p { margin: 0; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+    @media (max-width: 900px) { .features-grid { grid-template-columns: 1fr; } }
+
+    /* Card & Quadrant */
+    .card { background: var(--panel); border: 1px solid var(--card-border); border-radius: 16px; padding: 24px; margin-bottom: 24px; }
+    .card h2 { margin: 0 0 16px 0; font-size: 1.8rem; color: white; }
+    .card h2 .highlight { color: var(--accent); }
+
     .quadrant-wrap {
-      position: relative;
-      background: #000;
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 40px 24px 24px;
-      overflow: hidden;
+      position: relative; background: #000; border: 1px solid var(--card-border);
+      border-radius: 12px; padding: 40px 24px 24px; overflow: hidden;
     }
-    .quadrant-title {
-      position: absolute;
-      top: 12px; left: 24px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #FFD700; /* Gold title */
-    }
+    .quadrant-title { position: absolute; top: 12px; left: 24px; font-size: 1.1rem; font-weight: 700; color: var(--gold); }
     .quadrant-grid {
-      display: grid;
-      grid-template-columns: repeat(10, 1fr);
-      grid-template-rows: repeat(10, 1fr);
-      height: 600px;
-      position: relative;
-      background: 
-        linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+      display: grid; grid-template-columns: repeat(10, 1fr); grid-template-rows: repeat(10, 1fr);
+      height: 600px; position: relative;
+      background: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
       background-size: 10% 10%;
     }
-    .axis-y {
-      position: absolute;
-      left: 30%; 
-      top: 0; bottom: 0;
-      width: 2px;
-      background: #FFD700;
-      opacity: 0.7;
-    }
-    .axis-x {
-      position: absolute;
-      left: 0; right: 0;
-      bottom: 35.7%; 
-      height: 2px;
-      background: #FFD700;
-      opacity: 0.7;
-    }
+    .axis-y { position: absolute; left: 30%; top: 0; bottom: 0; width: 2px; background: var(--gold); opacity: 0.7; }
+    .axis-x { position: absolute; left: 0; right: 0; bottom: 35.7%; height: 2px; background: var(--gold); opacity: 0.7; }
 
- /* --- Quadrant Axis Labels --- */
     .quad-axis-label {
-      position: absolute;
-      color: #FFD700; /* Yellow/Gold */
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      white-space: nowrap;
-      z-index: 10;
+      position: absolute; color: var(--gold); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; z-index: 10;
     }
-    .quad-label-y {
-      left: 12px; /* Sits in the card's left padding */
-      top: 50%;
-      transform: translateY(-50%) rotate(-90deg); /* Rotates it vertically */
-      transform-origin: center;
-    }
-    .quad-label-x {
-      bottom: 8px; /* Sits in the card's bottom padding */
-      left: 50%;
-      transform: translateX(-50%); /* Centers it horizontally */
-    }
-    
-    /* Vendor Datapoint */
-    .vendor {
-      grid-column: var(--x);
-      grid-row: var(--y);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
+    .quad-label-y { left: 12px; top: 50%; transform: translateY(-50%) rotate(-90deg); transform-origin: center; }
+    .quad-label-x { bottom: 8px; left: 50%; transform: translateX(-50%); }
+
+    .vendor { grid-column: var(--x); grid-row: var(--y); display: flex; align-items: center; justify-content: center; position: relative; }
     .vendor-dot {
-      width: 16px;
-      height: 16px;
-      background: var(--nice-blue);
-      border: 2px solid #fff;
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--nice-blue), 0 0 20px var(--nice-blue);
-      transition: all 0.2s ease;
+      width: 16px; height: 16px; background: var(--accent-blue); border: 2px solid #fff; border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-blue), 0 0 20px var(--accent-blue); transition: all 0.2s ease;
     }
-   .vendor-label {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(14px, -50%); /* 14px right of center */
-      color: #fff;
-      font-weight: 600;
-      font-size: 0.9rem;
-      white-space: nowrap;
-      text-shadow: 0 0 5px #000;
+    .vendor-label {
+      position: absolute; left: 50%; top: 50%; transform: translate(14px, -50%);
+      color: #fff; font-weight: 600; font-size: 0.9rem; white-space: nowrap; text-shadow: 0 0 5px #000;
     }
     .vendor:hover .vendor-dot {
-      transform: scale(1.5);
-      background-color: var(--genesys-orange);
-      box-shadow: 0 0 10px var(--genesys-orange), 0 0 20px var(--genesys-orange);
+      transform: scale(1.5); background-color: var(--accent); box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
     }
-    
-    /* Vendor Placements */
+
+    /* Vendor Positions */
     .vendor.nice { --x: 9; --y: 1; }
     .vendor.genesys { --x: 9; --y: 2; }
     .vendor.five9 { --x: 7; --y: 3; }
@@ -453,426 +298,122 @@
     .vendor.vonage { --x: 3; --y: 8; }
     .vendor.ujet { --x: 4; --y: 9; }
     .vendor.contentguru { --x: 2; --y: 9; }
+    @media (max-width: 600px) { .quadrant-grid { height: 400px; } .vendor-label { font-size: 0.75rem; } }
+
+    /* Lumen Cloud Voice Section */
+    #lumen-cloud-voice .icp-content { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1.3fr); gap:32px; align-items:flex-start; }
+    #lumen-cloud-voice .icp-text { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:16px; }
+    #lumen-cloud-voice .icp-card { background:#1B1B1D; border:1px solid var(--card-border); border-radius:12px; padding:16px 18px; }
+    #lumen-cloud-voice .icp-card h3 { color:#fff; margin:0 0 8px; font-size:1.1rem; }
+    #lumen-cloud-voice .icp-card p { color:var(--text-muted); font-size:0.95rem; line-height:1.5; margin:0; }
     
-    @media (max-width: 600px) {
-      .quadrant-grid { height: 400px; }
-      .vendor-dot { width: 12px; height: 12px; }
-      .vendor-label { font-size: 0.75rem; transform: translate(8px, -50%); }
+    .video-shell {
+      position:relative; width:100%; aspect-ratio:16/9; border-radius:14px; border:1px solid rgba(255,255,255,.12);
+      background:#000; overflow:hidden; cursor:pointer; padding:0; display:block;
     }
-
-    /* --- Lumen Cloud Voice Section --- */
-    /* This rule is now for a SINGLE column layout */
-    .voice-grid-new {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-      margin-top: 24px;
-    }
-
-    .icp-box {
-      background: #1B1B1D; /* Match body bg */
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 20px;
-    }
-    .icp-box h4 {
-      margin: 0 0 10px 0;
-      font-size: 1.1rem;
-      color: #fff;
-    }
-    .icp-box p {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin: 0;
-    }
-    .icp-box .highlight {
-      color: var(--genesys-orange);
-    }
+    .video-shell iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+    .video-thumb { position:absolute; inset:0; }
+    .video-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
     
-    /* PDF Viewer Style */
-    .viewer { 
-      margin-top:16px; 
-      border-radius:12px; 
-      overflow:hidden; 
-      border:1px solid var(--card-border); 
-      background:#0f131b;
+    .play-pill {
+      position:absolute; left:16px; bottom:16px; display:inline-flex; align-items:center; gap:6px;
+      padding:6px 14px 6px 12px; border-radius:999px; background:rgba(0,0,0,.78); color:#fff;
+      font-size:.85rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase; box-shadow:0 0 12px rgba(0,0,0,.8);
+      pointer-events:none;
     }
-    .viewer iframe { width:100%; height:720px; border:0; display:block; }
-    @media (max-width:900px){ .viewer iframe{height:520px} }
+    .play-pill::before { content:"▶"; font-size:.8rem; }
+    .video-shell:hover .play-pill { color:var(--lumen-blue-light); box-shadow:0 0 18px rgba(0,163,224,.8); }
     
-/* Lumen Cloud Voice inline viewer: keep it within the center column */
-#lumen-datasheet-viewer{
-  max-width: 900px;     /* cap the width on desktop */
-  margin: 24px auto 0;  /* center it */
-}
-
-/* Override the generic iframe height just for this viewer */
-#lumen-datasheet-viewer iframe{
-  height: 520px;        /* or 600px/65vh if you want taller */
-}
-
-    /* Footer Styles */
-    .footer {
-      border-top:1px solid var(--card-border); 
-      padding: 24px; 
-      margin-top: 32px;
-      text-align: center;
-      color: var(--text-muted);
-    }
-    .socials {
-      display:flex; 
-      gap:16px; 
-      justify-content:center;
-      margin-top: 16px;
-    }
-    .socials a {
-      color: #fff;
-      text-decoration: none;
-      transition: color 0.2s ease, transform 0.2s ease;
-    }
-    .socials a:hover {
-      color: var(--genesys-orange); /* Footer hover set to Orange */
-    }
-    .socials svg {
-      width: 24px;
-      height: 24px;
-      fill: currentColor;
-    }
-    /* Ensuring the section is responsive */
-.icp-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
-    margin-top: 30px;
-}
-
-.icp-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
-    width: 100%;
-}
-
-.icp-text {
-    flex: 1;
-    max-width: 50%; /* Ensures it takes up half of the section */
-}
-
-.icp-video {
-    flex: 1;
-    max-width: 50%; /* Ensures the video takes up the other half */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* If the screen is small (mobile view), stack the items vertically */
-@media (max-width: 900px) {
-    .icp-content {
-        flex-direction: column;
-        align-items: center;
+    @media (max-width: 900px){ 
+      #lumen-cloud-voice .icp-content { grid-template-columns:1fr; }
+      #lumen-cloud-voice .icp-text { display:flex; flex-direction:column; gap:16px; }
     }
 
-    .icp-text, .icp-video {
-        max-width: 100%;
-    }
-}
-/* Layout for Lumen Cloud Voice ICP + video */
-.icp-section{
-  margin-top:24px;
-}
+    /* Viewer & CTA Row */
+    #lumen-cloud-voice .cta-row { margin-top:24px; justify-content:center; gap:12px; flex-wrap:wrap; }
+    .viewer { margin-top:16px; border-radius:12px; overflow:hidden; border:1px solid var(--card-border); background:#0f131b; }
+    .viewer iframe { width:100%; height:520px; border:0; display:block; }
+    #lumen-datasheet-viewer { max-width: 900px; margin: 24px auto 0; }
 
-.icp-content{
-  display:grid;
-  /* give the text more room vs. video */
-  grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);
-  gap:24px;
-  align-items:flex-start;
-}
-
-/* let the copy breathe all the way across its column */
-.icp-text .icp-card p{
-  max-width: 100%;
-}
-
-
-/* Video shell with 16:9 aspect and custom thumb */
-.video-shell{
-  position:relative;
-  width:100%;
-  aspect-ratio:16 / 9;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.12);
-  background:#000;
-  overflow:hidden;
-  cursor:pointer;
-  padding:0;
-  display:block;
-}
-
-/* When playing, iframe fills the shell */
-.video-shell iframe{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  border:0;
-}
-
-/* Thumbnail layer */
-.video-thumb{
-  position:absolute;
-  inset:0;
-}
-
-.video-thumb img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
-
-/* Bottom-left play pill */
-.play-pill{
-  position:absolute;
-  left:16px;
-  bottom:16px;
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  padding:6px 14px 6px 12px;
-  border-radius:999px;
-  background:rgba(0,0,0,.78);
-  color:#fff;
-  font-size:.85rem;
-  font-weight:600;
-  letter-spacing:.04em;
-  text-transform:uppercase;
-  box-shadow:0 0 12px rgba(0,0,0,.8);
-  pointer-events:none; /* clicks go to the shell */
-}
-
-.play-pill::before{
-  content:"▶";
-  font-size:.8rem;
-}
-
-/* Hover glow in Lumen ice blue */
-.video-shell:hover .play-pill{
-  color:var(--lumen-blue-light);
-  box-shadow:0 0 18px rgba(0,163,224,.8);
-}
-
-/* Mobile: stack video under ICPs */
-@media (max-width: 900px){
-  .icp-content{
-    grid-template-columns:1fr;
-  }
-  
-  .video-shell{
-    max-width:560px;
-    margin:0 auto;
-  }
-}
-
-/* --- START CSS FIX --- */
-/* All the duplicate/conflicting CSS rules for 
-  #lumen-cloud-voice have been removed and 
-  replaced with this single, consolidated block.
-*/
-
-/* --- Lumen Cloud Voice Section --- */
-#lumen-cloud-voice .icp-content{
-  display:grid;
-  /* text vs video */
-  grid-template-columns:minmax(0,1.1fr) minmax(0,1.3fr);
-  gap:32px;
-  align-items:flex-start;
-}
-
-/* Text column: 2×2 ICP cards on desktop */
-#lumen-cloud-voice .icp-text{
-  max-width:none;
-}
-
-@media (min-width: 900px){
-  #lumen-cloud-voice .icp-text{
-    display:grid;
-    grid-template-columns:repeat(2, minmax(0,1fr));
-    gap:16px;
-  }
-  #lumen-cloud-voice .icp-card{
-    background:#1B1B1D;
-    border:1px solid var(--card-border);
-    border-radius:12px;
-    padding:16px 18px;
-  }
-}
-
-/* Mobile: stack everything nicely */
-@media (max-width: 899.98px){
-  #lumen-cloud-voice .icp-content{
-    grid-template-columns:1fr;
-  }
-  #lumen-cloud-voice .icp-text{
-    display:flex;
-    flex-direction:column;
-    gap:16px;
-  }
-}
-
-/* Video column */
-#lumen-cloud-voice .icp-video{
-  max-width:none;
-  width:100%;
-  justify-self:stretch;
-}
-
-#lumen-cloud-voice .video-shell{
-  width:100%;
-}
-
-/* CTA row under video – one line on desktop */
-#lumen-cloud-voice .cta-row{
-  margin-top:24px;
-  justify-content:center;
-  gap:12px;
-  flex-wrap:wrap;
-}
-
-@media (min-width: 900px){
-  #lumen-cloud-voice .cta-row{
-    flex-wrap:nowrap;
-  }
-}
-/* --- END CSS FIX --- */
-/* Hero CTA block: two rows of buttons */
-.hero-cta-block{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  margin-top:24px;
-}
-
-.hero-cta-row{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-}
-/* Pull CTAs closer to the video on Lumen Cloud Voice section */
-#lumen-cloud-voice .icp-section{
-  margin-bottom: 16px;   /* was bigger, this shrinks the gap */
-}
-/* Pull CTAs closer to the video on Lumen Cloud Voice section */
-#lumen-cloud-voice .icp-section{
-  margin-bottom: 16px;   /* was bigger, this shrinks the gap */
-}
-/* Desktop: nudge hero copy + buttons to the right a bit */
-@media (min-width: 900px){
-  .hero{
-    padding-left: 72px;   /* tweak 64–80px to taste */
-  }
-}
-
+    /* Footer */
+    .footer{border-top:1px solid var(--line);margin-top:40px;padding:32px 20px;text-align:center;color:var(--text-muted)}
+    .socials{display:flex;gap:16px;justify-content:center;margin-top:16px}
+    .socials a{color:#fff;transition:all .2s ease}
+    .socials a:hover{color:var(--accent);transform:translateY(-2px);text-shadow:0 0 10px var(--accent)}
+    .socials svg{width:24px;height:24px;fill:currentColor}
   </style>
 </head>
 
 <body>
 
-  <div class="topbar">
-    <div class="wrap">
-      <nav class="nav" aria-label="Primary">
-        <div class="brand">
-         <img class="logo" src="/assets/industry5logo.svg" alt="Industry5.pro logo" />
-          <strong>Industry5.pro</strong>
-        </div>
-  
-       <div class="nav-actions">
-          <a class="navlink" href="https://industry5.pro/">Home</a>
-          <a class="navlink" href="https://industry5.pro/ai">AI</a>
-          <a class="navlink" href="https://industry5.pro/cyber">Security</a>
-          <a class="navlink" href="https://industry5.pro/cloud20">Cloud 2.0</a>
-          <a class="navlink" href="https://industry5.pro/ccaas" aria-current="page">UC &amp;<br>Contact Center</a>
-          <a class="navlink" href="https://industry5.pro/aiot">AIoT</a>
-          <a class="navlink" href="https://industry5.pro/peplink">5G &amp;<br>Satellite</a>
-          <a class="navlink" href="https://industry5.pro/blog">Blog</a>
-          <a class="navlink" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
-        </div>
+  <header>
+    <div class="header-center">
+      <a class="brand" href="/">
+         <img src="/assets/industry5logo.svg" alt="Industry5.pro logo" class="logo" width="75" height="75" loading="eager" decoding="async">
+         <span class="title">Industry5.pro</span>
+      </a>
+      
+      <nav class="main-nav">
+        <a href="/">Home</a>
+        <a href="/ai">AI &<br>Omnichannel</a>
+        <a href="/cyber">Security</a>
+        <a href="/cloud20">Cloud 2.0 &<br>Network</a>
+        <a href="/ccaas" class="active">UC &<br>Contact Center</a>
+        <a href="/aiot">AIoT</a>
+        <a href="/peplink">5G &<br>Satellite</a>
+        <a href="/ai-sdr.html" class="nav-sdr">AI SDR</a>
+        <a href="/blog">Blog</a>
+        <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
       </nav>
     </div>
-  </div>
+  </header>
 
   <main>
     <div class="wrap">
       
-    <section class="hero">
+      <section class="hero">
         <div class="hero-grid">
           <div>
-            <h1>Stop Buying Bundles.<br>Start Building CX.</h1>
+            <h1>Stop Buying Bundles.<br><span style="color:var(--accent)">Start Building CX.</span></h1>
             <p class="sub-h1">
               Your carrier's "all-in-one" CCaaS bundle isn't an AI strategy—it's a quota. 
               We are <strong>supplier-agnostic advisors</strong> who audit your stack against your P&L. 
               First, we prove the impact. Then, we build the solution.
             </p>
-          <div class="hero-cta-block">
-  <!-- Row 1: existing CTAs -->
-  <div class="hero-cta-row">
-    <a href="#quadrant" class="btn btn-primary">
-      See the 2025 CCaaS Quadrant
-    </a>
-    <a href="https://calendly.com/industry5pro/30min"
-       target="_blank" rel="noopener"
-       class="btn btn-secondary">
-      Book a CCaaS Audit
-    </a>
-  </div>
-
-  <!-- Row 2: new Lumen Cloud Voice CTAs -->
-  <div class="hero-cta-row">
-    <a href="#lumen-cloud-voice" class="btn btn-lumen-hero">
-      See Lumen Cloud Voice
-    </a>
-    <a href="https://calendly.com/industry5pro/30min"
-       target="_blank" rel="noopener"
-       class="btn btn-secondary">
-      Book a UC Audit
-    </a>
-  </div>
-</div>
-
-
+            <div class="hero-cta-block">
+              <div class="hero-cta-row">
+                <a href="#quadrant" class="btn btn-primary">See the 2025 CCaaS Quadrant</a>
+                <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener" class="btn btn-secondary">Book a CCaaS Audit</a>
+              </div>
+              <div class="hero-cta-row">
+                <a href="#lumen-cloud-voice" class="btn btn-lumen-hero">See Lumen Cloud Voice</a>
+                <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener" class="btn btn-secondary">Book a UC Audit</a>
+              </div>
+            </div>
           </div>
           <figure class="hero-photo">
-            <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora" width="420" height="420" loading="eager" decoding="async">
+            <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora" />
           </figure>
         </div>
       </section>
+
       <section class="kpi-grid" id="kpi-ticker">
         <div class="kpi-item">
-          <div class="kpi-stat">
-            <span data-target="30">0</span>%
-          </div>
+          <div class="kpi-stat"><span data-target="30">0</span>%</div>
           <h3 class="kpi-title">AI Call Deflection</h3>
           <p class="kpi-desc">Automate and resolve routine inquiries (WISMO, passwords) before they ever reach a human agent.</p>
         </div>
         
         <div class="kpi-item">
-          <div class="kpi-stat">
-            <span data-target="25">0</span>%
-          </div>
+          <div class="kpi-stat"><span data-target="25">0</span>%</div>
           <h3 class="kpi-title">First Contact Resolution</h3>
           <p class="kpi-desc">Smarter routing and AI-Assist get the *right* answer on the first try, boosting CX and loyalty.</p>
         </div>
 
         <div class="kpi-item orange">
-          <div class="kpi-stat">
-            <span data-target="40">0</span>%
-          </div>
+          <div class="kpi-stat"><span data-target="40">0</span>%</div>
           <h3 class="kpi-title">Average Handle Time (AHT)</h3>
-          <p class="kpi-desc">Cut call times by automating after-call work and giving agents real-time answers. (AHT Reduction)</p>
+          <p class="kpi-desc">Cut call times by automating after-call work and giving agents real-time answers.</p>
         </div>
       </section>
 
@@ -894,7 +435,7 @@
       <section class="card" id="quadrant">
         <h2>CCaaS Landscape: <span class="highlight">AI Breadth vs. Enterprise Readiness</span></h2>
         <p style="color: var(--text-muted); margin-top: -12px; margin-bottom: 20px;">
-          This is our internal map for 2025, focusing on built-in AI. Leaders like <strong>NICE</strong> and <strong>Genesys</strong> show massive AI breadth and enterprise scale, while others solve for specific use cases. Your ideal fit depends on your outcomes, not just the "dot."
+          This is our internal map for 2025, focusing on built-in AI. Leaders like <strong>NICE</strong> and <strong>Genesys</strong> show massive AI breadth and enterprise scale. Your ideal fit depends on your outcomes, not just the "dot."
         </p>
 
         <div class="quadrant-wrap">
@@ -915,81 +456,58 @@
             <div class="vendor vonage"><div class="vendor-dot"></div><span class="vendor-label">Vonage</span></div>
             <div class="vendor ujet"><div class="vendor-dot"></div><span class="vendor-label">ujet.cx</span></div>
             <div class="vendor contentguru"><div class="vendor-dot"></div><span class="vendor-label">Content Guru</span></div>
-
           </div> 
           <div class="quad-axis-label quad-label-y">Enterprise Readiness →</div>
           <div class="quad-axis-label quad-label-x">AI Breadth →</div>
-        
         </div> 
-            
       </section>
 
-    <section class="card" id="lumen-cloud-voice">
-      <h2>Lumen Cloud Voice</h2>
+      <section class="card" id="lumen-cloud-voice">
+        <h2>Lumen Cloud Voice</h2>
+        <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px;">
+          Lumen Cloud Voice is a fully managed, cloud-enabled calling and collaboration platform. It enables reliable, secure communications to help keep your employees and customers connected.
+        </p>
       
-      <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px;">
-        Lumen Cloud Voice is a fully managed, cloud-enabled calling and collaboration platform. With three tiers of service levels and the ability to integrate with existing systems (like Microsoft Teams as an example), Cloud Voice enables reliable, secure communications to help keep your employees and customers connected.
-      </p>
-    
-      <div class="icp-section">
         <div class="icp-content">
-          
-  <div class="icp-card">
-    <h3>ICP 1: Microsoft Teams Calling</h3>
-    <p>Your org runs on Microsoft Teams and needs affordable, reliable PSTN calling. You want simple, predictable pricing without a complex contact center platform.</p>
-  </div>
+          <div class="icp-text">
+            <div class="icp-card">
+              <h3>ICP 1: Microsoft Teams Calling</h3>
+              <p>Your org runs on Microsoft Teams and needs affordable, reliable PSTN calling. You want simple, predictable pricing.</p>
+            </div>
+            <div class="icp-card">
+              <h3>ICP 2: Resilient SIP Trunking</h3>
+              <p>You need a diverse, secondary carrier path for 911, failover, or a BYOC integration with an existing PBX or CCaaS platform.</p>
+            </div>
+            <div class="icp-card">
+              <h3>ICP 3: Branch &amp; Remote</h3>
+              <p>You support multiple branches and remote workers and want one cloud dial plan and centralized policy.</p>
+            </div>
+            <div class="icp-card">
+              <h3>ICP 4: Voice Foundation</h3>
+              <p>You are modernizing your contact center and need carrier-grade SIP and elastic capacity under NICE or Genesys.</p>
+            </div>
+          </div>
 
-  <div class="icp-card">
-    <h3>ICP 2: Resilient SIP Trunking</h3>
-    <p>You need a diverse, secondary carrier path for 911, failover, or a BYOC (Bring Your Own Carrier) integration with an existing PBX or CCaaS platform.</p>
-  </div>
-
-  <div class="icp-card">
-    <h3>ICP 3: Branch &amp; Remote Workforce</h3>
-    <p>You support multiple branches and remote workers and want one cloud dial plan, consistent 911 behavior, and centralized policy instead of juggling local carriers.</p>
-  </div>
-
-  <div class="icp-card">
-    <h3>ICP 4: Voice Foundation for CCaaS</h3>
-    <p>You are modernizing your contact center and need carrier-grade SIP, QoS, and elastic capacity under NICE, Genesys, or other CCaaS platforms without being locked into a bundle.</p>
-  </div>
-</div>
-
-    
           <div class="icp-video">
-            <button
-              class="video-shell"
-              type="button"
-              data-youtube="https://www.youtube.com/embed/PiESwUVWyUo?si=zWyR2LOC8ksiUDu6"
-              aria-label="Play Lumen Cloud Voice overview video"
-            >
+            <button class="video-shell" type="button" data-youtube="https://www.youtube.com/embed/PiESwUVWyUo?si=zWyR2LOC8ksiUDu6" aria-label="Play Lumen Cloud Voice overview video">
               <div class="video-thumb">
-                <img
-                  src="/assets/lumen-cloud-voice-thumb.jpg"
-                  alt="Lumen Cloud Voice overview"
-                  loading="lazy"
-                />
+                <img src="/assets/lumen-cloud-voice-thumb.jpg" alt="Lumen Cloud Voice overview" loading="lazy" />
                 <span class="play-pill">Watch overview</span>
               </div>
             </button>
           </div>
-    
-        </div> </div> <div class="cta-row" style="justify-content: center; margin-top: 24px;">
-        <a href="/assets/lumen-cloud-voice-data-sheet.pdf" class="btn btn-primary" target="_blank" rel="noopener" download>
-          Download Data Sheet
-        </a>
-        <a href="#lumen-datasheet-viewer" class="btn btn-secondary">
-          View Inline
-        </a>
-        <a href="https://calendly.com/industry5pro/30min" class="btn btn-secondary" target="_blank" rel="noopener">
-          Book a UC Audit
-        </a>
-      </div>
-    
-      <div class="viewer" id="lumen-datasheet-viewer" style="display: none;">
-        <iframe src="/assets/lumen-cloud-voice-data-sheet.pdf#view=FitH" title="Lumen Cloud Voice Data Sheet" loading="lazy"></iframe>
-      </div>
-    </section>
+        </div>
+
+        <div class="cta-row">
+          <a href="/assets/lumen-cloud-voice-data-sheet.pdf" class="btn btn-primary" target="_blank" rel="noopener" download>Download Data Sheet</a>
+          <a href="#lumen-datasheet-viewer" class="btn btn-secondary">View Inline</a>
+          <a href="https://calendly.com/industry5pro/30min" class="btn btn-secondary" target="_blank" rel="noopener">Book a UC Audit</a>
+        </div>
+      
+        <div class="viewer" id="lumen-datasheet-viewer" style="display: none;">
+          <iframe src="/assets/lumen-cloud-voice-data-sheet.pdf#view=FitH" title="Lumen Cloud Voice Data Sheet" loading="lazy"></iframe>
+        </div>
+      </section>
     </div>
   </main>
 
@@ -999,106 +517,93 @@
     </div>
     <div class="socials" aria-label="Follow Industry5.pro">
       <a href="https://www.linkedin.com/in/louis-tortora7/" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.48 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.5h5V24H0V8.5zM8 8.5h4.8v2.1h.07c.67-1.2 2.3-2.47 4.73-2.47 5.06 0 6 3.33 6 7.66V24h-5v-6.8c0-1.62-.03-3.7-2.25-3.7-2.25 0-2.6 1.76-2.6 3.58V24H8V8.5z"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5c0 1.38-1.12 2.5-2.48 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.5h5V24H0V8.5zM8 8.5h4.8v2.1h.07c.67-1.2 2.3-2.47 4.73-2.47 5.06 0 6 3.33 6 7.66V24h-5v-6.8c0-1.62-.03-3.7-2.25-3.7-2.25 0-2.6 1.76-2.6 3.58V24H8V8.5z"/></svg>
       </a>
       <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.51 5.51 0 0 0 12 7.5zm0 2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5zM18 6.2a1 1 0 1 0 1 1 1 1 0 0 0-1-1z"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
       </a>
       <a href="https://www.facebook.com/profile.php?id=61582481880019" target="_blank" rel="noopener" aria-label="Facebook">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.675 0h-21.35C.592 0 0 .592 0 1.325v21.351C0 23.408.592 24 1.325 24h11.49v-9.294H9.691V11.01h3.124V8.414c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.313h3.587l-.467 3.696h-3.12V24h6.117C23.408 24 24 23.408 24 22.676V1.325C24 .592 23.408 0 22.675 0z"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M22.675 0h-21.35C.592 0 0 .592 0 1.325v21.351C0 23.408.592 24 1.325 24h11.49v-9.294H9.691V11.01h3.124V8.414c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.313h3.587l-.467 3.696h-3.12V24h6.117C23.408 24 24 23.408 24 22.676V1.325C24 .592 23.408 0 22.675 0z"/></svg>
       </a>
       <a href="https://wa.me/14076945495" target="_blank" rel="noopener" aria-label="WhatsApp">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163A11.867 11.867 0 0 1 0 11.989C0 5.371 5.373 0 11.99 0 18.606 0 24 5.371 24 11.989S18.606 24 11.99 24a11.9 11.9 0 0 1-5.642-1.437L.057 24Zm6.597-3.807c1.676.995 3.276 1.591 5.35 1.593 5.448 0 9.884-4.429 9.884-9.88 0-5.45-4.436-9.88-9.884-9.88-5.449 0-9.88 4.43-9.88 9.88 0 2.266.738 3.891 1.977 5.59L3.5 20.5l3.154-.307zm11.387-5.464c-.066-.11-.242-.176-.506-.307-.264-.132-1.56-.77-1.8-.857-.242-.088-.418-.132-.594.132-.176.264-.682.857-.836 1.033-.154.176-.308.198-.572.066-.264-.132-1.116-.41-2.125-1.308-.785-.7-1.314-1.56-1.469-1.823-.154-.264-.017-.407.115-.539.118-.117.264-.308.396-.462.132-.154.176-.264.264-.44.088-.176.044-.33-.022-.462-.066-.132-.594-1.43-.814-1.958-.214-.514-.432-.445-.594-.453l-.506-.009c-.176 0-.462.066-.704.33-.242.264-.924.902-.924 2.202s.946 2.552 1.077 2.73c.132.176 1.862 2.842 4.508 3.986.63.27 1.122.432 1.505.553.632.202 1.206.174 1.661.105.506-.077 1.56-.638 1.78-1.255.22-.616.22-1.144.154-1.255z"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M.057 24l1.687-6.163A11.867 11.867 0 0 1 0 11.989C0 5.371 5.373 0 11.99 0 18.606 0 24 5.371 24 11.989S18.606 24 11.99 24a11.9 11.9 0 0 1-5.642-1.437L.057 24Zm6.597-3.807c1.676.995 3.276 1.591 5.35 1.593 5.448 0 9.884-4.429 9.884-9.88 0-5.45-4.436-9.88-9.884-9.88-5.449 0-9.88 4.43-9.88 9.88 0 2.266.738 3.891 1.977 5.59L3.5 20.5l3.154-.307zm11.387-5.464c-.066-.11-.242-.176-.506-.307-.264-.132-1.56-.77-1.8-.857-.242-.088-.418-.132-.594.132-.176.264-.682.857-.836 1.033-.154.176-.308.198-.572.066-.264-.132-1.116-.41-2.125-1.308-.785-.7-1.314-1.56-1.469-1.823-.154-.264-.017-.407.115-.539.118-.117.264-.308.396-.462.132-.154.176-.264.264-.44.088-.176.044-.33-.022-.462-.066-.132-.594-1.43-.814-1.958-.214-.514-.432-.445-.594-.453l-.506-.009c-.176 0-.462.066-.704.33-.242.264-.924.902-.924 2.202s.946 2.552 1.077 2.73c.132.176 1.862 2.842 4.508 3.986.63.27 1.122.432 1.505.553.632.202 1.206.174 1.661.105.506-.077 1.56-.638 1.78-1.255.22-.616.22-1.144.154-1.255z"/></svg>
       </a>
       <a href="mailto:lou@industry5.pro" aria-label="Email">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20a2 2 0 0 1 2 2v1l-12 7L0 7V6a2 2 0 0 1 2-2zm0 6.236V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-7.764l-9.386 5.52a2 2 0 0 1-2.228 0L2 10.236z"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 4h20a2 2 0 0 1 2 2v1l-12 7L0 7V6a2 2 0 0 1 2-2zm0 6.236V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-7.764l-9.386 5.52a2 2 0 0 1-2.228 0L2 10.236z"/></svg>
       </a>
     </div>
   </footer>
 
   <script>
-    // --- Footer Year ---
-    const ySpan = document.getElementById('y');
-    if(ySpan) ySpan.textContent = new Date().getFullYear();
+    document.getElementById('y').textContent = new Date().getFullYear();
 
-    // --- All scripts to run after DOM is loaded ---
+    // KPI Counter Script
     document.addEventListener("DOMContentLoaded", () => {
-    
-      // --- KPI Counter ---
       const kpiSection = document.getElementById("kpi-ticker");
-      if (kpiSection) {
-        const animateCounters = (entries, observer) => {
-          entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-            const counters = entry.target.querySelectorAll("[data-target]");
-            counters.forEach(counter => {
-              const target = +counter.dataset.target;
-              const duration = 1500, stepTime = 30;
-              const steps = Math.ceil(duration / stepTime);
-              const increment = target / steps;
-              let current = 0;
-              const updateCount = () => {
-                current += increment;
-                if (current >= target) { counter.textContent = target; return; }
-                counter.textContent = Math.ceil(current);
-                requestAnimationFrame(updateCount);
-              };
-              updateCount();
-            });
-            observer.unobserve(entry.target);
+      if (!kpiSection) return;
+
+      const animateCounters = (entries, observer) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+
+          const counters = entry.target.querySelectorAll("[data-target]");
+          counters.forEach(counter => {
+            const target = +counter.dataset.target;
+            const duration = 1500;
+            const stepTime = 30;
+            const steps = Math.ceil(duration / stepTime);
+            const increment = target / steps;
+            let current = 0;
+
+            const updateCount = () => {
+              current += increment;
+              if (current >= target) { counter.textContent = target; return; }
+              counter.textContent = Math.ceil(current);
+              requestAnimationFrame(updateCount);
+            };
+            updateCount();
           });
-        };
-        new IntersectionObserver(animateCounters, { threshold: 0.5 }).observe(kpiSection);
-      }
-
-      // --- Viewer Toggle Logic (Handles multiple buttons) ---
-      function initViewerToggle(buttonSelector) {
-        const button = document.querySelector(buttonSelector);
-        if (!button) return;
-
-        button.addEventListener('click', function(e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href');
-          const viewer = document.querySelector(targetId);
-          if (viewer) {
-            const isHidden = viewer.style.display === 'none' || viewer.style.display === '';
-            viewer.style.display = isHidden ? 'block' : 'none';
-            if (isHidden) {
-              viewer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-          }
+          
+          observer.unobserve(entry.target);
         });
-      }
-      
-      // Initialize BOTH viewer buttons
-      initViewerToggle('a[href="#cloud20-whitepaper-viewer"]');
-      initViewerToggle('a[href="#lumen-datasheet-viewer"]');
-    
-    }); // End DOMContentLoaded
+      };
+
+      const observer = new IntersectionObserver(animateCounters, {
+        root: null,
+        threshold: 0.5
+      });
+
+      observer.observe(kpiSection);
+    });
+
+    // Video Viewer Toggle
+    document.querySelector('.btn-secondary[href="#lumen-datasheet-viewer"]').addEventListener('click', function(e) {
+      e.preventDefault();
+      const viewer = document.getElementById('lumen-datasheet-viewer');
+      const isHidden = viewer.style.display === 'none' || viewer.style.display === '';
+      viewer.style.display = isHidden ? 'block' : 'none';
+      if (isHidden) viewer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    // YouTube Embed
+    document.addEventListener('click', function (evt) {
+      const shell = evt.target.closest('.video-shell');
+      if (!shell || shell.classList.contains('is-playing')) return;
+
+      const yt = shell.dataset.youtube;
+      if (!yt) return;
+
+      const iframe = document.createElement('iframe');
+      iframe.src = yt + (yt.includes('?') ? '&' : '?') + 'autoplay=1';
+      iframe.title = 'Lumen Cloud Voice video';
+      iframe.loading = 'lazy';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+
+      shell.innerHTML = '';
+      shell.appendChild(iframe);
+      shell.classList.add('is-playing');
+    });
   </script>
-
-  <script>
-  // Swap thumbnail for autoplaying YouTube iframe when clicked
-  document.addEventListener('click', function (evt) {
-    const shell = evt.target.closest('.video-shell');
-    if (!shell || shell.classList.contains('is-playing')) return;
-
-    const yt = shell.dataset.youtube;
-    if (!yt) return;
-
-    const iframe = document.createElement('iframe');
-    iframe.src = yt + (yt.includes('?') ? '&' : '?') + 'autoplay=1';
-    iframe.title = 'Lumen Cloud Voice video';
-    iframe.loading = 'lazy';
-    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
-    iframe.allowFullscreen = true;
-
-    shell.innerHTML = '';
-    shell.appendChild(iframe);
-    shell.classList.add('is-playing');
-  });
-</script>
-
 </body>
 </html>
