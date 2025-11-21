@@ -4,14 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
-  <title>Cyber Resilience & Ransomware Recovery Advisory | Industry5.pro</title>
-  <meta name="description" content="Agnostic cyber resilience. We audit your stack and align Lumen network defense with Veeam immutable backups to guarantee recovery. Stop threats, pass audits, and recover in minutes.">
+  <title>Cyber Resilience & Ransomware Recovery | Industry5.pro</title>
+  <meta name="description" content="Agnostic cyber resilience. We align Lumen network defense with Commvault air-gapped vaults to guarantee recovery. Stop threats, pass audits, and restore in minutes.">
   <meta name="author" content="Industry5.pro">
   <link rel="canonical" href="https://industry5.pro/cyber">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Cyber Resilience & Recovery">
-  <meta property="og:description" content="Aligning network defense with immutable recovery. Featured Partners: Lumen & Veeam.">
+  <meta property="og:description" content="Aligning network defense with immutable recovery. Featured Partners: Lumen & Commvault.">
   <meta property="og:url" content="https://industry5.pro/cyber">
   <meta property="og:image" content="https://industry5.pro/assets/industry5-logo.png">
 
@@ -21,22 +21,22 @@
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
 
   <style>
-    /* --- CORE VARIABLES (CYBER THEME: VEEAM GREEN) --- */
+    /* --- CORE VARIABLES (THEME: LUMEN ORANGE) --- */
     :root {
       --bg: #1B1B1D;
       --panel: #232326;
       --card-bg: #232326;
-      --card-border: #2C2C30;
+      --card-border: #333;
       --text: #EAEAEA;
       --text-muted: #A9A9AD;
-      --line: rgba(255,255,255,0.08);
+      --line: rgba(255,255,255,0.1);
       --outline: #2C2C30;
 
       /* Page Specific Accents */
-      --accent: #00B336;           /* Veeam Green */
-      --gold: #FFD700;             /* Standard Gold (for Blog/SDR) */
-      --ice-blue: #2BEDE7;
-      --lumen-orange: #FF6A13;
+      --accent: #FF5E00;           /* Lumen Dark Orange */
+      --accent-glow: rgba(255, 94, 0, 0.4);
+      --gold: #FFD700;             
+      --ice-blue: #2BEDE7;          /* Commvault Blue */
       --eleven-purple: #a146f9;
     }
     
@@ -47,16 +47,20 @@
     a:hover{text-decoration:none;}
     img{max-width:100%;display:block}
     button{font-family:inherit;}
-    section{padding:42px 0;border-top:1px solid var(--outline)}
+    section{padding:60px 0;border-top:1px solid var(--outline)}
     section:first-of-type { border-top: none; }
-    .anchor{scroll-margin-top:90px}
+    .anchor{scroll-margin-top:100px}
 
-    /* --- 3. MASTER HEADER & NAV --- */
+    /* --- MASTER HEADER & NAV (STICKY FIX) --- */
     header {
-      position: sticky; top: 0; z-index: 99999;
-      background: linear-gradient(180deg,rgba(27,27,29,0.95),rgba(27,27,29,0.85));
-      backdrop-filter: blur(8px);
+      position: -webkit-sticky; /* Safari support */
+      position: sticky; 
+      top: 0; 
+      z-index: 10000; /* High Z-Index to ensure it stays on top */
+      background: rgba(27, 27, 29, 0.95);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--line);
+      width: 100%;
     }
     
     .header-center {
@@ -72,15 +76,15 @@
     /* Branding */
     .brand { display: flex; align-items: center; gap: 16px; text-decoration: none; flex-shrink: 0; }
     
-    /* LOGO: 75px + VEEAM GREEN GLOW */
+    /* LOGO: 75px + LUMEN ORANGE GLOW */
     .brand img.logo {
       width: 75px !important; height: 75px !important; 
       border-radius: 14px; display: block; object-fit: contain; 
       background: transparent;
-      filter: drop-shadow(0 0 8px rgba(0, 179, 54, 0.5));
+      filter: drop-shadow(0 0 8px rgba(255, 94, 0, 0.3));
       transition: filter 0.3s ease;
     }
-    .brand:hover img.logo { filter: drop-shadow(0 0 14px rgba(0, 179, 54, 0.9)); }
+    .brand:hover img.logo { filter: drop-shadow(0 0 14px rgba(255, 94, 0, 0.6)); }
     
     .brand .title {
       font-weight: 800; 
@@ -97,7 +101,7 @@
 
     /* Nav Links */
     .main-nav a {
-      position: relative; color: #cfe3d4; 
+      position: relative; color: #ccc; 
       font-weight: 500; 
       font-size: 0.85rem; 
       line-height: 1.2; text-align: center; display: inline-flex; 
@@ -105,16 +109,16 @@
       transition: color .15s ease, text-shadow .15s ease;
     }
 
-    /* Page Specific Active State (Security) */
+    /* Page Specific Active State */
     .main-nav a.active {
       color: var(--accent);
-      text-shadow: 0 0 10px rgba(0, 179, 54, 0.6);
+      text-shadow: 0 0 10px var(--accent-glow);
     }
 
     /* Hover Effects */
     .main-nav a:not(.nav-sdr):hover {
-      color: var(--accent); /* Veeam Green Hover */
-      text-shadow: 0 0 6px rgba(0, 179, 54, 0.85), 0 0 14px rgba(0, 179, 54, 0.45);
+      color: var(--accent);
+      text-shadow: 0 0 6px var(--accent-glow);
     }
 
     /* Underline Animation */
@@ -211,6 +215,7 @@
       border-radius: 16px; padding: 18px; 
       display: grid;
     }
+    .pillar h3 { color: var(--accent); margin-bottom: 8px; font-size: 1.1rem; }
     .pillar ul { padding-left: 18px; margin: 0 0 12px 0; font-size: 0.9rem; color: #D3D3D9; }
     .pillar li { margin-bottom: 6px; }
     .pillar .pill { align-self: flex-start; } 
@@ -223,28 +228,29 @@
       border: 1px solid transparent;
     }
     .pill.primary {
-      background: var(--accent); color: #0b1220; border-color: var(--accent);
+      background: var(--accent); color: #000; border-color: var(--accent);
     }
     .pill.primary:hover {
-      background: #fff; transform: translateY(-2px); box-shadow: 0 0 15px rgba(0,179,54,0.5);
+      background: #ff8c42; transform: translateY(-2px); box-shadow: 0 0 15px var(--accent-glow);
     }
     .pill.outline {
       background: transparent; color: var(--accent); border: 1px solid var(--accent);
     }
     .pill.outline:hover {
-      background: rgba(0,179,54,0.1); transform: translateY(-2px);
+      background: rgba(255, 94, 0, 0.1); transform: translateY(-2px);
     }
 
     /* Quadrant Section */
     .quadrant-section {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
       color: #f5f7ff;
-      background: #05060a;
+      background: #101012;
       padding: 32px 24px;
       border-radius: 16px;
       max-width: 980px;
       margin: 40px auto;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+      border: 1px solid var(--outline);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
     }
     .quadrant-section h2 { margin: 0 0 12px; font-size: 1.6rem; letter-spacing: 0.03em; }
     .quadrant-section p { margin: 0 0 20px; color: var(--text-muted); max-width: 800px; }
@@ -263,26 +269,34 @@
       box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
     }
     .axis-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(232, 238, 255, 0.85); }
-    .axis-label-y { writing-mode: vertical-rl; text-orientation: mixed; display: flex; align-items: center; justify-content: center; }
+    .axis-label-y { writing-mode: vertical-rl; text-orientation: mixed; display: flex; align-items: center; justify-content: center; transform: rotate(180deg); }
     .axis-label-x { position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%); text-align: center; }
 
-    .quad-point { position: absolute; transform: translate(-50%, -50%); pointer-events: auto; color: var(--ice-blue); }
+    .quad-point { position: absolute; transform: translate(-50%, -50%); pointer-events: auto; color: var(--ice-blue); cursor: pointer; z-index: 10; }
     .quad-marker {
-      width: 14px; height: 14px; border-radius: 999px; border: 2px solid currentColor;
+      width: 16px; height: 16px; border-radius: 50%; border: 2px solid currentColor;
       background: radial-gradient(circle at center, rgba(255,255,255,0.18) 0, transparent 70%);
       box-shadow: 0 0 10px currentColor; transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
     .quad-label {
-      position: absolute; top: 50%; left: 18px; transform: translateY(-50%); white-space: nowrap;
-      font-size: 0.7rem; padding: 2px 6px; border-radius: 999px;
+      position: absolute; top: 50%; left: 20px; transform: translateY(-50%); white-space: nowrap;
+      font-size: 0.75rem; padding: 4px 8px; border-radius: 999px;
       background: rgba(7, 10, 18, 0.9); border: 1px solid rgba(150, 175, 255, 0.25);
-      backdrop-filter: blur(4px); color: #f5f7ff;
+      backdrop-filter: blur(4px); color: #f5f7ff; pointer-events: none;
     }
+    .quad-point:hover { z-index: 20; }
     .quad-point:hover .quad-marker { transform: scale(1.35); box-shadow: 0 0 14px currentColor; }
-    .quad-point[data-vendor="lumen"]:hover { color: var(--lumen-orange); }
-    .quad-point[data-vendor="veeam"]:hover { color: var(--accent); }
-    .quad-point[data-vendor="1111"]:hover { color: var(--eleven-purple); }
+    .quad-point[data-vendor="lumen"] { color: var(--accent); }
+    .quad-point[data-vendor="commvault"] { color: var(--ice-blue); }
+    .quad-point[data-vendor="default"] { color: #888; }
     .quad-point:hover .quad-label { border-color: currentColor; }
+
+    /* Lumen Defender Block */
+    .defender-block {
+        margin-top: 40px; 
+        background: linear-gradient(180deg, #0a0500 0%, #120900 100%); /* Subtle Orange Tint */
+        border: 1px solid #331500;
+    }
 
     /* Checklist & Form */
     .checklist{display:grid;grid-template-columns:repeat(3, 1fr);gap:12px;margin:24px 0}
@@ -292,7 +306,6 @@
     .check small{display:block;color:var(--text-muted);font-size:12px;margin-top:4px}
     .form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
     
-    /* Form Wrap - Updated for Fillout */
     .form-wrap{
       background:#111114; 
       border:1px solid var(--card-border); 
@@ -346,10 +359,10 @@
     <section class="hero">
       <div class="hero-grid">
         <div>
-          <h1>Protect Data. Predict Threats.<br><span style="color:var(--accent)">Prevent Downtime.</span></h1>
+          <h1>Protect Data. Predict Threats.<br><span style="color:var(--accent)">Guarantee Recovery.</span></h1>
           <p class="sub">
-            Unify network security, data protection, and rapid recovery into one measurable cyber resilience motion.
-            We align Lumen capabilities with Veeam-powered recoverability and a supplier-agnostic ecosystem.
+            Unify network security, data protection, and rapid recovery.
+            We align <strong>Lumen</strong> network defense with <strong>Commvault</strong> air-gapped vaults to guarantee you can restore immutable data in minutes, not days.
           </p>
           <div class="cta-row">
             <a class="pill primary" href="#form">Start Cyber Discovery</a>
@@ -364,90 +377,89 @@
 
       <div class="kpis" id="kpi-ticker">
         <div class="kpi">
-          <div class="knum" data-target="43" data-suffix="%">0%</div>
-          <div class="kdesc">SMB share of breach victims</div>
+          <div class="knum" data-target="90" data-suffix="%">0%</div>
+          <div class="kdesc">Threats blocked at Network Edge</div>
         </div>
         <div class="kpi">
           <div class="knum" data-target="9.48" data-suffix="M" data-decimals="2">$0M</div>
           <div class="kdesc">Avg US breach cost</div>
         </div>
         <div class="kpi">
-          <div class="knum" data-target="38" data-suffix="%">0%</div>
-          <div class="kdesc">Firms testing backups annually</div>
+          <div class="knum" data-target="15" data-suffix="m">0m</div>
+          <div class="kdesc">Target RTO (Recovery Time)</div>
         </div>
         <div class="kpi">
-          <div class="knum" data-target="22" data-suffix="%">0%</div>
-          <div class="kdesc">Enterprise share of victims*</div>
+          <div class="knum" data-target="24" data-suffix="/7">0/0</div>
+          <div class="kdesc">SOC & Backbone Monitoring</div>
         </div>
       </div>
     </section>
 
     <div class="pillars">
       <div class="pillar">
-        <h3>Protect</h3>
-        <ul><li>Zero Trust & MFA</li><li>Endpoint (EDR)</li><li>Vuln/Patch Mgmt</li></ul>
-        <a class="pill outline" href="#form">Assess</a>
+        <h3>1. Protect</h3>
+        <ul><li>Zero Trust & MFA</li><li>Lumen SASE</li><li>Vuln/Patch Mgmt</li></ul>
+        <a class="pill outline" style="font-size:0.85rem; padding:8px 16px;" href="#form">Assess</a>
       </div>
       <div class="pillar">
-        <h3>Detect</h3>
-        <ul><li>24/7 MDR/XDR</li><li>DDoS Monitoring</li><li>SIEM/Log Retention</li></ul>
-        <a class="pill outline" href="#form">Assess</a>
+        <h3>2. Detect</h3>
+        <ul><li>Lumen Defender</li><li>Microsoft Sentinel</li><li>Log Retention</li></ul>
+        <a class="pill outline" style="font-size:0.85rem; padding:8px 16px;" href="#form">Assess</a>
       </div>
       <div class="pillar">
-        <h3>Respond</h3>
-        <ul><li>IR Playbooks</li><li>Tabletop Exercises</li><li>Escalation SLAs</li></ul>
-        <a class="pill outline" href="#form">Assess</a>
+        <h3>3. Respond</h3>
+        <ul><li>Black Lotus Labs</li><li>Rapid Threat Defense</li><li>Auto-Blocking</li></ul>
+        <a class="pill outline" style="font-size:0.85rem; padding:8px 16px;" href="#form">Assess</a>
       </div>
       <div class="pillar">
-        <h3>Recover</h3>
-        <ul><li>Immutable Backups</li><li>Veeam Instant Recovery</li><li>RPO/RTO Alignment</li></ul>
-        <a class="pill outline" href="#form">Assess</a>
+        <h3>4. Recover</h3>
+        <ul><li>Commvault Metallic</li><li>Air-Gapped Vault</li><li>Cleanroom Restore</li></ul>
+        <a class="pill outline" style="font-size:0.85rem; padding:8px 16px;" href="#form">Assess</a>
       </div>
       <div class="pillar">
-        <h3>Govern</h3>
+        <h3>5. Govern</h3>
         <ul><li>HIPAA/PCI/ISO</li><li>Data Retention</li><li>Vendor Risk</li></ul>
-        <a class="pill outline" href="#form">Assess</a>
+        <a class="pill outline" style="font-size:0.85rem; padding:8px 16px;" href="#form">Assess</a>
       </div>
     </div>
 
     <section id="quadrant" class="anchor quadrant-section">
-      <h2>Cyber Resilience Overlay – Security vs Integration</h2>
+      <h2>The Cyber Resilience Landscape</h2>
       <p>
-        This map compares global MDR, SASE, and backup players by
-        <strong>security effectiveness</strong> (threat detection and response speed)
-        on the vertical axis and <strong>integration and user experience</strong> on the horizontal axis.
+        We map the market by <strong>Security Effectiveness</strong> (Detection/Blocking Speed) vs. <strong>Integration</strong> (Stack Alignment).
+        <br><em>Note: Lumen now bridges Network and Endpoint via Microsoft, while Commvault anchors Recovery.</em>
       </p>
 
       <div class="quadrant-wrapper">
         <div class="axis-label axis-label-y">Security Effectiveness</div>
         <div class="quadrant-plot">
           <div class="quadrant-grid"></div>
-          <div class="axis-label axis-label-x">Integration &amp; UX</div>
+          <div class="axis-label axis-label-x">Integration &amp; Stack Fit</div>
         </div>
       </div>
     </section>
     
-    <section id="lumen-defender" class="anchor quadrant-section" style="margin-top: 40px; background: linear-gradient(180deg, #05060a 0%, #0b1220 100%);">
-      <h2 style="margin-bottom: 8px;">Lumen Defender AMDR: The "Easy Button" for Microsoft Security</h2>
+    <section id="lumen-defender" class="anchor defender-block quadrant-section">
+      <h2 style="margin-bottom: 8px;">Lumen Defender AMDR: <span style="color:var(--accent)">The Microsoft Accelerator</span></h2>
       <p style="margin-bottom: 24px; color: var(--text-muted);">
         Moving to Microsoft E5? Don't just license it—operationalize it. We position Lumen Defender not as another tool, but as the engine that runs your Microsoft stack.
       </p>
       
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; border-top: 1px solid rgba(255,94,0,0.2); padding-top: 24px;">
         
         <div>
           <h3 style="color: #fff; font-size: 1.1rem; margin: 0 0 12px;">The Ideal Use Case</h3>
           <ul style="padding-left: 20px; color: #D3D3D9; line-height: 1.6;">
             <li style="margin-bottom: 8px;"><strong>Microsoft-Centric:</strong> You are migrating to (or maximizing) Microsoft Sentinel and Defender XDR.</li>
             <li style="margin-bottom: 8px;"><strong>Backbone Visibility:</strong> You want to validate endpoint alerts against Black Lotus Labs® global network intelligence.</li>
-            <li style="margin-bottom: 8px;"><strong>Vendor Consolidation:</strong> You want to reduce tool sprawl by removing third-party EDR agents that conflict with Defender.</li>
+            <li style="margin-bottom: 8px;"><strong>Vendor Consolidation:</strong> You want to reduce tool sprawl by removing duplicate EDR agents.</li>
           </ul>
         </div>
 
         <div>
-          <h3 style="color: var(--lumen-orange); font-size: 1.1rem; margin: 0 0 12px;">When to Partner Elsewhere</h3>
+          <h3 style="color: var(--accent); font-size: 1.1rem; margin: 0 0 12px;">When to Partner Elsewhere</h3>
           <p style="color: #D3D3D9; font-size: 0.95rem; line-height: 1.6;">
-            If you are exclusively committed to <strong>CrowdStrike Falcon</strong> or <strong>SentinelOne</strong> agents and have no roadmap to leverage Microsoft’s native security stack, this specific service overlaps. In that case, we align you with agnostic MDR partners like Red Canary or eSentire.
+            If you are exclusively committed to <strong>CrowdStrike</strong> or <strong>SentinelOne</strong> agents and have no roadmap to leverage Microsoft’s native security stack, this service overlaps. In that case, we align you with agnostic MDR partners.
           </p>
           <div style="margin-top: 16px;">
             <a href="#form" class="pill outline" style="font-size: 0.85rem;">Validate My Stack</a>
@@ -459,10 +471,187 @@
 
     <section id="checklist" class="anchor">
       <h2>Cyber Resilience Checklist</h2>
-      <p class="lead">Check the boxes you already meet. Anything unchecked becomes a target for discovery and a short path to value.</p>
+      <p class="lead">Check the boxes you already meet. Anything unchecked becomes a target for discovery.</p>
       
       <div class="checklist">
-        <div class="check"><input type="checkbox" id="c1"><label for="c1"><strong>MFA Everywhere</strong><small>Privileged accounts, VPN, SaaS, critical systems</small></label></div>
-        <div class="check"><input type="checkbox" id="c2"><label for="c2"><strong>Endpoint (EDR)</strong><small>100% Coverage & Response Workflow</small></label></div>
-        <div class="check"><input type="checkbox" id="c3"><label for="c3"><strong>Immutable Backups</strong><small>Object Lock, Air Gapped, or Hardened Repo</small></label></div>
-        <
+        <div class="check"><input type="checkbox" id="c1"><label for="c1"><strong>MFA Everywhere</strong><small>Privileged accounts, VPN, SaaS</small></label></div>
+        <div class="check"><input type="checkbox" id="c2"><label for="c2"><strong>Endpoint (EDR)</strong><small>100% Coverage & Response</small></label></div>
+        <div class="check"><input type="checkbox" id="c3"><label for="c3"><strong>Air-Gapped Backup</strong><small>Commvault / Immutable Vault</small></label></div>
+        <div class="check"><input type="checkbox" id="c4"><label for="c4"><strong>24/7 SOC</strong><small>MDR or SOC (Eyes on Glass)</small></label></div>
+        <div class="check"><input type="checkbox" id="c5"><label for="c5"><strong>IR Plan</strong><small>Tested Quarterly (Execs, Legal)</small></label></div>
+        <div class="check"><input type="checkbox" id="c6"><label for="c6"><strong>DDoS Mitigation</strong><small>Lumen Scrubbing Active</small></label></div>
+        <div class="check"><input type="checkbox" id="c7"><label for="c7"><strong>Compliance</strong><small>HIPAA/PCI/ISO Evidence Ready</small></label></div>
+        <div class="check"><input type="checkbox" id="c8"><label for="c8"><strong>Cleanroom Recovery</strong><small>Sterile Restore Environment</small></label></div>
+        <div class="check"><input type="checkbox" id="c9"><label for="c9"><strong>Encryption</strong><small>Data At Rest & In Transit</small></label></div>
+      </div>
+      
+      <div class="form-actions">
+        <a class="pill primary" href="#form">Turn Gaps Into Plan</a>
+        <button class="pill outline" id="download-checklist">Download Checklist (.txt)</button>
+      </div>
+    </section>
+
+    <section id="form" class="anchor">
+      <h2>Cyber Pre-Intake Form</h2>
+      <p class="lead">Three minutes to surface your top risks and recovery blind spots. You receive a prioritized action plan.</p>
+      <div class="form-wrap">
+        <div style="width:100%;height:500px;" data-fillout-id="9RayHAWGeDus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
+        <script src="https://server.fillout.com/embed/v1/"></script>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>© <span id="y"></span> Industry5.pro | Built on trust. Paid by results.</div>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/louis-tortora7/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.48 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.8 2.67 4.8 6.14V23h-4v-6.5c0-1.55-.03-3.55-2.17-3.55-2.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61582481880019" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.675 0h-21.35C.592 0 0 .592 0 1.325v21.351C0 23.408.592 24 1.325 24h11.49v-9.294H9.691V11.01h3.124V8.414c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.313h3.587l-.467 3.696h-3.12V24h6.117C23.408 24 24 23.408 24 22.676V1.325C24 .592 23.408 0 22.675 0z"/></svg>
+        </a>
+        <a href="https://wa.me/14076945495" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163A11.867 11.867 0 0 1 0 11.989C0 5.371 5.373 0 11.99 0 18.606 0 24 5.371 24 11.989S18.606 24 11.99 24a11.9 11.9 0 0 1-5.642-1.437L.057 24Zm6.597-3.807c1.676.995 3.276 1.591 5.35 1.593 5.448 0 9.884-4.429 9.884-9.88 0-5.45-4.436-9.88-9.884-9.88-5.449 0-9.88 4.43-9.88 9.88 0 2.266.738 3.891 1.977 5.59L3.5 20.5l3.154-.307zm11.387-5.464c-.066-.11-.242-.176-.506-.307-.264-.132-1.56-.77-1.8-.857-.242-.088-.418-.132-.594.132-.176.264-.682.857-.836 1.033-.154.176-.308.198-.572.066-.264-.132-1.116-.41-2.125-1.308-.785-.7-1.314-1.56-1.469-1.823-.154-.264-.017-.407.115-.539.118-.117.264-.308.396-.462.132-.154.176-.264.264-.44.088-.176.044-.33-.022-.462-.066-.132-.594-1.43-.814-1.958-.214-.514-.432-.445-.594-.453l-.506-.009c-.176 0-.462.066-.704.33-.242.264-.924.902-.924 2.202s.946 2.552 1.077 2.73c.132.176 1.862 2.842 4.508 3.986.63.27 1.122.432 1.505.553.632.202 1.206.174 1.661.105.506-.077 1.56-.638 1.78-1.255.22-.616.22-1.144.154-1.255z"/></svg>
+        </a>
+        <a href="mailto:lou@industry5.pro" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 4h20a2 2 0 0 1 2 2v1l-12 7L0 7V6a2 2 0 0 1 2-2zm0 6.236V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-7.764l-9.386 5.52a2 2 0 0 1-2.228 0L2 10.236z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    
+    // Cyber quadrant script
+    (function () {
+      const points = [
+        // Leaders (Microsoft Stack + Commvault)
+        { name: "Lumen Defender (MSFT)",      x: 85, y: 85, vendor: "lumen" }, 
+        { name: "Commvault (Recovery)",       x: 80, y: 88, vendor: "commvault" },
+        
+        // Strong Tech, Less Integrated
+        { name: "CrowdStrike / S1",           x: 65, y: 88, vendor: "default" }, 
+        { name: "Red Canary (MDR)",           x: 72, y: 82, vendor: "default" }, 
+        { name: "Expel (MDR)",                x: 68, y: 80, vendor: "default" }, 
+        
+        // Network / Other
+        { name: "Lumen Network (Black Lotus)",x: 75, y: 78, vendor: "lumen" },
+        { name: "Zscaler (SASE)",             x: 65, y: 85, vendor: "default" },
+        
+        // Backup Competitors
+        { name: "Cohesity",                   x: 70, y: 75, vendor: "default" },
+        { name: "Rubrik",                     x: 68, y: 78, vendor: "default" }
+      ];
+
+      const xMin = 40, xMax = 90;
+      const yMin = 55, yMax = 90;
+
+      const grid = document.querySelector(".quadrant-grid");
+      if (!grid) return;
+
+      points.forEach(p => {
+        const left = (p.x - xMin) / (xMax - xMin) * 100;
+        const top  = (1 - (p.y - yMin) / (yMax - yMin)) * 100;
+
+        const wrapper = document.createElement("div");
+        wrapper.className = "quad-point";
+        wrapper.dataset.vendor = p.vendor || "default";
+        wrapper.style.left = left + "%";
+        wrapper.style.top  = top + "%";
+
+        const marker = document.createElement("div");
+        marker.className = "quad-marker";
+
+        const label = document.createElement("div");
+        label.className = "quad-label";
+        label.textContent = p.name;
+
+        wrapper.appendChild(marker);
+        wrapper.appendChild(label);
+        grid.appendChild(wrapper);
+      });
+    })();
+
+    // KPI Ticker Animation
+    document.addEventListener("DOMContentLoaded", () => {
+      const kpiCounters = document.querySelectorAll(".knum[data-target]");
+      if (!kpiCounters.length) return;
+
+      const animateCounters = (entries, observer) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          
+          const counter = entry.target;
+          const target = +counter.dataset.target;
+          const decimals = counter.dataset.decimals ? +counter.dataset.decimals : 0;
+          const duration = 1500;
+          const stepTime = 30;
+          const steps = Math.ceil(duration / stepTime);
+          const increment = target / steps;
+          let current = 0;
+
+          const updateCount = () => {
+            current += increment;
+            let val = (current >= target) ? target : current;
+            let valStr = decimals > 0 && val < 1 ? val.toFixed(decimals) : (decimals === 0 ? Math.ceil(val).toString() : val.toFixed(decimals));
+
+            counter.textContent = counter.textContent.startsWith('$') ? `$${valStr}` : valStr;
+            if (counter.dataset.suffix) counter.textContent += counter.dataset.suffix;
+            if (current < target) requestAnimationFrame(updateCount);
+          };
+          updateCount();
+          observer.unobserve(counter);
+        });
+      };
+
+      const observer = new IntersectionObserver(animateCounters, { root: null, threshold: 0.5 });
+      kpiCounters.forEach(c => observer.observe(c));
+    });
+
+    // Checklist Download Script
+    (function(){
+      const btn = document.getElementById('download-checklist');
+      if(!btn) return;
+
+      btn.addEventListener('click', function(){
+        const checks = Array.from(document.querySelectorAll('.check input'));
+        if (!checks.length) return;
+
+        let content = "Cyber Resilience Checklist - Industry5.pro\n\n";
+        const met  = [];
+        const gaps = [];
+
+        checks.forEach(c => {
+          const label = c.nextElementSibling.innerText.replace('\n', ' - ');
+          const status = c.checked ? "[x]" : "[ ]";
+          (c.checked ? met : gaps).push(`  • ${status} ${label}`);
+        });
+
+        const now = new Date();
+        const dt  = now.toLocaleString([], {year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit'});
+        
+        content += `CHECKED (MET) ✅\n${met.length > 0 ? met.join('\n') : "  • (none)"}\n\n`;
+        content += `UNCHECKED (GAPS) ❌\n${gaps.length > 0 ? gaps.join('\n') : "  • (none)"}\n\n`;
+        content += `Generated: ${dt}\n`;
+        content += `Tip: Turn Gaps Into a Plan → industry5.pro/cyber\n`;
+
+        const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+        const a = document.createElement('a');
+        const stamp = now.toISOString().slice(0,10);
+        a.href = URL.createObjectURL(blob);
+        a.download = `My_Cyber_Resilience_Checklist_${stamp}.txt`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(()=>URL.revokeObjectURL(a.href), 1200);
+      });
+    })();
+  </script>
+</body>
+</html>
