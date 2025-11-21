@@ -26,10 +26,10 @@
       --bg: #1B1B1D;
       --panel: #232326;
       --card-bg: #232326;
-      --card-border: #333;
+      --card-border: #2C2C30;
       --text: #EAEAEA;
       --text-muted: #A9A9AD;
-      --line: rgba(255,255,255,0.1);
+      --line: rgba(255,255,255,0.08);
       --outline: #2C2C30;
 
       /* Page Specific Accents */
@@ -41,40 +41,22 @@
     }
     
     /* --- RESET & BASE --- */
-    html { scroll-behavior: smooth; }
-    
-    body {
-        margin: 0; padding: 0;
-        background: var(--bg); color: var(--text);
-        font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial; 
-        box-sizing: border-box;
-        
-        /* CRITICAL FIX: Base padding for Desktop Header */
-        padding-top: 90px; 
-    }
-    
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial; box-sizing: border-box;}
     *, *:before, *:after { box-sizing: inherit; }
     a{color:inherit;text-decoration:none;transition:color .2s ease;}
     a:hover{text-decoration:none;}
     img{max-width:100%;display:block}
     button{font-family:inherit;}
-    section{padding:60px 0;border-top:1px solid var(--outline)}
+    section{padding:42px 0;border-top:1px solid var(--outline)}
     section:first-of-type { border-top: none; }
-    .anchor{scroll-margin-top:180px} /* High offset for anchor links */
+    .anchor{scroll-margin-top:90px}
 
-    /* --- MASTER HEADER (FIXED FORCE) --- */
+    /* --- MASTER HEADER & NAV (MATCHING CLOUD PAGE) --- */
     header {
-      position: fixed; /* FORCED LOCK */
-      top: 0; 
-      left: 0;
-      right: 0;
-      z-index: 99999; 
-      
-      background: rgba(27, 27, 29, 0.95);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      position: sticky; top: 0; z-index: 99999;
+      background: linear-gradient(180deg,rgba(27,27,29,0.95),rgba(27,27,29,0.85));
+      backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--line);
-      width: 100%;
     }
     
     .header-center {
@@ -90,7 +72,7 @@
     /* Branding */
     .brand { display: flex; align-items: center; gap: 16px; text-decoration: none; flex-shrink: 0; }
     
-    /* LOGO */
+    /* LOGO: 75px + LUMEN ORANGE GLOW */
     .brand img.logo {
       width: 75px !important; height: 75px !important; 
       border-radius: 14px; display: block; object-fit: contain; 
@@ -115,7 +97,7 @@
 
     /* Nav Links */
     .main-nav a {
-      position: relative; color: #ccc; 
+      position: relative; color: #cfe3d4; 
       font-weight: 500; 
       font-size: 0.85rem; 
       line-height: 1.2; text-align: center; display: inline-flex; 
@@ -132,7 +114,7 @@
     /* Hover Effects */
     .main-nav a:not(.nav-sdr):hover {
       color: var(--accent);
-      text-shadow: 0 0 6px var(--accent-glow);
+      text-shadow: 0 0 6px var(--accent-glow), 0 0 14px rgba(255, 94, 0, 0.2);
     }
 
     /* Underline Animation */
@@ -162,13 +144,9 @@
       transform: translateY(-1px);
     }
 
-    /* --- MOBILE HEADER ADJUSTMENTS --- */
     @media (max-width: 1100px) {
-      /* Increase body padding because header is taller on mobile */
-      body { padding-top: 160px; }
-      
-      .header-center { flex-direction: column; align-items: flex-start; gap: 16px; padding: 16px; }
-      .main-nav { gap: 12px 20px; justify-content: flex-start; width: 100%; }
+      .header-center { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .main-nav { gap: 16px 24px; justify-content: flex-start; }
       .main-nav a { text-align: left; display: inline-block; }
     }
 
@@ -528,7 +506,7 @@
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.48 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.8 2.67 4.8 6.14V23h-4v-6.5c0-1.55-.03-3.55-2.17-3.55-2.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg>
         </a>
         <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
         </a>
         <a href="https://www.facebook.com/profile.php?id=61582481880019" target="_blank" rel="noopener" aria-label="Facebook">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.675 0h-21.35C.592 0 0 .592 0 1.325v21.351C0 23.408.592 24 1.325 24h11.49v-9.294H9.691V11.01h3.124V8.414c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.313h3.587l-.467 3.696h-3.12V24h6.117C23.408 24 24 23.408 24 22.676V1.325C24 .592 23.408 0 22.675 0z"/></svg>
