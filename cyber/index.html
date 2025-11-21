@@ -525,32 +525,37 @@
     </div>
   </footer>
 
-  <script>
+<script>
     document.getElementById('y').textContent = new Date().getFullYear();
     
     // Cyber quadrant script
     (function () {
       const points = [
-        // Leaders (Microsoft Stack + Commvault)
-        { name: "Lumen Defender (MSFT)",      x: 85, y: 85, vendor: "lumen" }, 
-        { name: "Commvault (Recovery)",       x: 80, y: 88, vendor: "commvault" },
+        // --- THE LEADERS (Top Right) ---
+        // Merged "Defender" and "Network" into one Powerhouse Node
+        // High Integration (MSFT + Network) & High Security (Black Lotus)
+        { name: "Lumen Platform (Net + MSFT)", x: 88, y: 86, vendor: "lumen" }, 
         
-        // Strong Tech, Less Integrated
-        { name: "CrowdStrike / S1",           x: 65, y: 88, vendor: "default" }, 
-        { name: "Red Canary (MDR)",           x: 72, y: 82, vendor: "default" }, 
+        // Commvault anchors the Recovery story
+        { name: "Commvault (Recovery)",       x: 82, y: 89, vendor: "commvault" },
+
+        // --- STRONG SECURITY / LOWER INTEGRATION (Top Left) ---
+        // Great tools, but they are "Islands" (Agents only)
+        { name: "CrowdStrike / S1",           x: 62, y: 88, vendor: "default" }, 
+        { name: "Red Canary (MDR)",           x: 70, y: 82, vendor: "default" }, 
         { name: "Expel (MDR)",                x: 68, y: 80, vendor: "default" }, 
-        
-        // Network / Other
-        { name: "Lumen Network (Black Lotus)",x: 75, y: 78, vendor: "lumen" },
-        { name: "Zscaler (SASE)",             x: 65, y: 85, vendor: "default" },
-        
-        // Backup Competitors
-        { name: "Cohesity",                   x: 70, y: 75, vendor: "default" },
-        { name: "Rubrik",                     x: 68, y: 78, vendor: "default" }
+        { name: "Zscaler (SASE)",             x: 64, y: 84, vendor: "default" },
+
+        // --- BACKUP COMPETITORS (Middle) ---
+        { name: "Cohesity",                   x: 72, y: 76, vendor: "default" },
+        { name: "Rubrik",                     x: 70, y: 79, vendor: "default" },
+
+        // --- LEGACY / OTHER ---
+        { name: "Legacy MSSP",                x: 50, y: 60, vendor: "default" }
       ];
 
-      const xMin = 40, xMax = 90;
-      const yMin = 55, yMax = 90;
+      const xMin = 40, xMax = 95; // Expanded range slightly
+      const yMin = 50, yMax = 95;
 
       const grid = document.querySelector(".quadrant-grid");
       if (!grid) return;
@@ -578,7 +583,7 @@
       });
     })();
 
-    // KPI Ticker Animation
+    // KPI Ticker Animation (Preserved)
     document.addEventListener("DOMContentLoaded", () => {
       const kpiCounters = document.querySelectorAll(".knum[data-target]");
       if (!kpiCounters.length) return;
@@ -614,7 +619,7 @@
       kpiCounters.forEach(c => observer.observe(c));
     });
 
-    // Checklist Download Script
+    // Checklist Download Script (Preserved)
     (function(){
       const btn = document.getElementById('download-checklist');
       if(!btn) return;
