@@ -292,9 +292,14 @@
     .check small{display:block;color:var(--text-muted);font-size:12px;margin-top:4px}
     .form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
     
-    .form-wrap{background:#111114;border:1px solid var(--card-border);border-radius:16px;padding:10px; margin: 40px 0;}
-    .iframe-shell{position:relative;padding-top:740px;background:#0f0f12;border-radius:12px;}
-    .iframe-shell iframe{position:absolute;inset:0;width:100%;height:100%;border:0; border-radius:12px;}
+    /* Form Wrap - Updated for Fillout */
+    .form-wrap{
+      background:#111114; 
+      border:1px solid var(--card-border); 
+      border-radius:16px; 
+      padding:16px; 
+      margin: 40px 0;
+    }
 
     /* Footer */
     .footer{border-top:1px solid var(--line);margin-top:40px;padding:32px 20px;text-align:center;color:var(--text-muted)}
@@ -422,7 +427,7 @@
       </div>
     </section>
     
-<section id="lumen-defender" class="anchor quadrant-section" style="margin-top: 40px; background: linear-gradient(180deg, #05060a 0%, #0b1220 100%);">
+    <section id="lumen-defender" class="anchor quadrant-section" style="margin-top: 40px; background: linear-gradient(180deg, #05060a 0%, #0b1220 100%);">
       <h2 style="margin-bottom: 8px;">Lumen Defender AMDR: The "Easy Button" for Microsoft Security</h2>
       <p style="margin-bottom: 24px; color: var(--text-muted);">
         Moving to Microsoft E5? Don't just license it—operationalize it. We position Lumen Defender not as another tool, but as the engine that runs your Microsoft stack.
@@ -451,6 +456,7 @@
 
       </div>
     </section>
+
     <section id="checklist" class="anchor">
       <h2>Cyber Resilience Checklist</h2>
       <p class="lead">Check the boxes you already meet. Anything unchecked becomes a target for discovery and a short path to value.</p>
@@ -477,11 +483,11 @@
       <h2>Cyber Pre-Intake Form</h2>
       <p class="lead">Three minutes to surface your top risks and recovery blind spots. You receive a prioritized action plan that maps posture to business impact.</p>
       <div class="form-wrap">
-        <div class="iframe-shell">
-          <iframe src="https://near.tl/sm/PKoP8D7PR" title="Cyber Intake" loading="lazy" allow="fullscreen; clipboard-read; clipboard-write" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
+        <div style="width:100%;height:500px;" data-fillout-id="9RayHAWGeDus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
+        <script src="https://server.fillout.com/embed/v1/"></script>
       </div>
     </section>
+
   </main>
 
   <footer class="footer">
