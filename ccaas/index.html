@@ -300,12 +300,34 @@
     .vendor.contentguru { --x: 2; --y: 9; }
     @media (max-width: 600px) { .quadrant-grid { height: 400px; } .vendor-label { font-size: 0.75rem; } }
 
-    /* Lumen Cloud Voice Section */
-    #lumen-cloud-voice .icp-content { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1.3fr); gap:32px; align-items:flex-start; }
-    #lumen-cloud-voice .icp-text { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:16px; }
-    #lumen-cloud-voice .icp-card { background:#1B1B1D; border:1px solid var(--card-border); border-radius:12px; padding:16px 18px; }
+    /* Lumen Cloud Voice Section (UPDATED LAYOUT) */
+    #lumen-cloud-voice .icp-content { 
+      display:grid; 
+      grid-template-columns:minmax(0,1.1fr) minmax(0,1.3fr); 
+      gap:32px; 
+      align-items: stretch; /* Ensures both columns are same height */
+    }
+    
+    /* Left side cards */
+    #lumen-cloud-voice .icp-text { 
+      display:grid; 
+      grid-template-columns:repeat(2, minmax(0,1fr)); 
+      gap:16px; 
+    }
+    #lumen-cloud-voice .icp-card { 
+      background:#1B1B1D; border:1px solid var(--card-border); border-radius:12px; padding:16px 18px; 
+    }
     #lumen-cloud-voice .icp-card h3 { color:#fff; margin:0 0 8px; font-size:1.1rem; }
     #lumen-cloud-voice .icp-card p { color:var(--text-muted); font-size:0.95rem; line-height:1.5; margin:0; }
+
+    /* Right side (Video + Buttons Stack) */
+    .icp-video-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; /* Pushes video to top, buttons to bottom */
+      gap: 24px;
+      height: 100%;
+    }
     
     .video-shell {
       position:relative; width:100%; aspect-ratio:16/9; border-radius:14px; border:1px solid rgba(255,255,255,.12);
@@ -323,15 +345,20 @@
     }
     .play-pill::before { content:"▶"; font-size:.8rem; }
     .video-shell:hover .play-pill { color:var(--lumen-blue-light); box-shadow:0 0 18px rgba(0,163,224,.8); }
+
+    /* Internal Buttons (Filling the gap under video) */
+    .cta-row-internal {
+      display: flex; flex-wrap: wrap; gap: 12px;
+    }
     
     @media (max-width: 900px){ 
       #lumen-cloud-voice .icp-content { grid-template-columns:1fr; }
       #lumen-cloud-voice .icp-text { display:flex; flex-direction:column; gap:16px; }
+      .icp-video-col { gap: 16px; }
     }
 
-    /* Viewer & CTA Row */
-    #lumen-cloud-voice .cta-row { margin-top:24px; justify-content:center; gap:12px; flex-wrap:wrap; }
-    .viewer { margin-top:16px; border-radius:12px; overflow:hidden; border:1px solid var(--card-border); background:#0f131b; }
+    /* Viewer */
+    .viewer { margin-top:24px; border-radius:12px; overflow:hidden; border:1px solid var(--card-border); background:#0f131b; }
     .viewer iframe { width:100%; height:520px; border:0; display:block; }
     #lumen-datasheet-viewer { max-width: 900px; margin: 24px auto 0; }
 
@@ -488,20 +515,20 @@
             </div>
           </div>
 
-          <div class="icp-video">
+          <div class="icp-video-col">
             <button class="video-shell" type="button" data-youtube="https://www.youtube.com/embed/PiESwUVWyUo?si=zWyR2LOC8ksiUDu6" aria-label="Play Lumen Cloud Voice overview video">
               <div class="video-thumb">
                 <img src="/assets/lumen-cloud-voice-thumb.jpg" alt="Lumen Cloud Voice overview" loading="lazy" />
                 <span class="play-pill">Watch overview</span>
               </div>
             </button>
+            
+            <div class="cta-row-internal">
+              <a href="/assets/lumen-cloud-voice-data-sheet.pdf" class="btn btn-primary" target="_blank" rel="noopener" download>Download Data Sheet</a>
+              <a href="#lumen-datasheet-viewer" class="btn btn-secondary">View Inline</a>
+              <a href="https://calendly.com/industry5pro/30min" class="btn btn-secondary" target="_blank" rel="noopener">Book a UC Audit</a>
+            </div>
           </div>
-        </div>
-
-        <div class="cta-row">
-          <a href="/assets/lumen-cloud-voice-data-sheet.pdf" class="btn btn-primary" target="_blank" rel="noopener" download>Download Data Sheet</a>
-          <a href="#lumen-datasheet-viewer" class="btn btn-secondary">View Inline</a>
-          <a href="https://calendly.com/industry5pro/30min" class="btn btn-secondary" target="_blank" rel="noopener">Book a UC Audit</a>
         </div>
       
         <div class="viewer" id="lumen-datasheet-viewer" style="display: none;">
