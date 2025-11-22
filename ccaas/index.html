@@ -152,8 +152,8 @@
     /* === PAGE CONTENT STYLES === */
     .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
 
-    /* Hero - TIGHTENED SPACING */
-    .hero { padding: 40px 0 0px; border-top: none; } /* Removed bottom padding */
+    /* Hero */
+    .hero { padding: 40px 0 0px; border-top: none; }
     .hero-grid {
       display: grid;
       grid-template-columns: minmax(0,1fr) 420px;
@@ -220,12 +220,12 @@
       box-shadow: 0 0 14px rgba(178,255,246,.5);
     }
 
-    /* KPIs - TIGHTENED MARGIN */
+    /* KPIs */
     .kpi-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
       background: var(--panel); border: 1px solid var(--card-border); border-radius: 16px;
       padding: 24px; 
-      margin: 16px 0 32px 0; /* Reduced Top Margin to 16px */
+      margin: 16px 0 32px 0; 
     }
     .kpi-item { text-align: center; padding: 16px; border-right: 1px solid var(--card-border); }
     .kpi-item:last-child { border-right: none; }
@@ -233,7 +233,7 @@
     .kpi-title { font-size: 1.1rem; font-weight: 600; color: #fff; margin-bottom: 8px; }
     .kpi-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
     
-    .kpi-item.orange .kpi-stat { color: var(--accent); } /* Override for Orange */
+    .kpi-item.orange .kpi-stat { color: var(--accent); } 
 
     @media (max-width: 900px) { 
       .kpi-grid { grid-template-columns: 1fr; } 
@@ -360,6 +360,16 @@
     .viewer iframe { width:100%; height:520px; border:0; display:block; }
     #lumen-datasheet-viewer { max-width: 900px; margin: 24px auto 0; }
 
+    /* Form Section */
+    .form-wrap{
+      background:#111114; 
+      border:1px solid var(--card-border); 
+      border-radius:16px; 
+      padding:16px; 
+      margin: 20px auto 40px;
+      max-width: 900px;
+    }
+
     /* Footer */
     .footer{border-top:1px solid var(--line);margin-top:40px;padding:32px 20px;text-align:center;color:var(--text-muted)}
     .socials{display:flex;gap:16px;justify-content:center;margin-top:16px}
@@ -408,11 +418,11 @@
             <div class="hero-cta-block">
               <div class="hero-cta-row">
                 <a href="#quadrant" class="btn btn-primary">See the 2025 CCaaS Quadrant</a>
-                <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener" class="btn btn-secondary">Book a CCaaS Audit</a>
+                <a href="#form" class="btn btn-secondary">Book a CCaaS Audit</a>
               </div>
               <div class="hero-cta-row">
                 <a href="#lumen-cloud-voice" class="btn btn-lumen-hero">See Lumen Cloud Voice</a>
-                <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener" class="btn btn-secondary">Book a UC Audit</a>
+                <a href="#form" class="btn btn-secondary">Book a UC Audit</a>
               </div>
             </div>
           </div>
@@ -524,7 +534,7 @@
             <div class="cta-row-internal">
               <a href="/assets/lumen-cloud-voice-data-sheet.pdf" class="btn btn-primary" target="_blank" rel="noopener" download>Download Data Sheet</a>
               <a href="#lumen-datasheet-viewer" class="btn btn-secondary">View Inline</a>
-              <a href="https://calendly.com/industry5pro/30min" class="btn btn-secondary" target="_blank" rel="noopener">Book a UC Audit</a>
+              <a href="#form" class="btn btn-secondary">Book a UC Audit</a>
             </div>
           </div>
         </div>
@@ -533,6 +543,20 @@
           <iframe src="/assets/lumen-cloud-voice-data-sheet.pdf#view=FitH" title="Lumen Cloud Voice Data Sheet" loading="lazy"></iframe>
         </div>
       </section>
+
+      <section id="form" class="anchor">
+        <div class="form-wrap">
+          <div style="text-align: center; margin-bottom: 24px;">
+            <h2 style="font-size: 2.1rem; margin-bottom: 8px; color: #fff;">AI-First Contact Center & CX Assessment</h2>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">
+              Is your communication stack ready for the AI era? Evaluate your compliance, agent efficiency, and automation maturity in 3 minutes.
+            </p>
+          </div>
+          <div style="width:100%;height:500px;" data-fillout-id="x15TgUb6Gnus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
+          <script src="https://server.fillout.com/embed/v1/"></script>
+        </div>
+      </section>
+
     </div>
   </main>
 
