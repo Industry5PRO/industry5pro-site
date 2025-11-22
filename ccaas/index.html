@@ -152,8 +152,8 @@
     /* === PAGE CONTENT STYLES === */
     .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
 
-    /* Hero */
-    .hero { padding: 40px 0 20px; border-top: none; }
+    /* Hero - TIGHTENED SPACING */
+    .hero { padding: 40px 0 0px; border-top: none; } /* Removed bottom padding */
     .hero-grid {
       display: grid;
       grid-template-columns: minmax(0,1fr) 420px;
@@ -188,7 +188,7 @@
     }
 
     /* Hero CTAs */
-    .hero-cta-block { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+    .hero-cta-block { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; padding-bottom: 10px; }
     .hero-cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
     
     /* Buttons */
@@ -220,11 +220,12 @@
       box-shadow: 0 0 14px rgba(178,255,246,.5);
     }
 
-    /* KPIs */
+    /* KPIs - TIGHTENED MARGIN */
     .kpi-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
       background: var(--panel); border: 1px solid var(--card-border); border-radius: 16px;
-      padding: 24px; margin: 32px 0;
+      padding: 24px; 
+      margin: 16px 0 32px 0; /* Reduced Top Margin to 16px */
     }
     .kpi-item { text-align: center; padding: 16px; border-right: 1px solid var(--card-border); }
     .kpi-item:last-child { border-right: none; }
@@ -300,15 +301,14 @@
     .vendor.contentguru { --x: 2; --y: 9; }
     @media (max-width: 600px) { .quadrant-grid { height: 400px; } .vendor-label { font-size: 0.75rem; } }
 
-    /* Lumen Cloud Voice Section (UPDATED LAYOUT) */
+    /* Lumen Cloud Voice Section */
     #lumen-cloud-voice .icp-content { 
       display:grid; 
       grid-template-columns:minmax(0,1.1fr) minmax(0,1.3fr); 
       gap:32px; 
-      align-items: stretch; /* Ensures both columns are same height */
+      align-items: stretch;
     }
     
-    /* Left side cards */
     #lumen-cloud-voice .icp-text { 
       display:grid; 
       grid-template-columns:repeat(2, minmax(0,1fr)); 
@@ -320,11 +320,10 @@
     #lumen-cloud-voice .icp-card h3 { color:#fff; margin:0 0 8px; font-size:1.1rem; }
     #lumen-cloud-voice .icp-card p { color:var(--text-muted); font-size:0.95rem; line-height:1.5; margin:0; }
 
-    /* Right side (Video + Buttons Stack) */
     .icp-video-col {
       display: flex;
       flex-direction: column;
-      justify-content: space-between; /* Pushes video to top, buttons to bottom */
+      justify-content: space-between; 
       gap: 24px;
       height: 100%;
     }
@@ -346,7 +345,6 @@
     .play-pill::before { content:"▶"; font-size:.8rem; }
     .video-shell:hover .play-pill { color:var(--lumen-blue-light); box-shadow:0 0 18px rgba(0,163,224,.8); }
 
-    /* Internal Buttons (Filling the gap under video) */
     .cta-row-internal {
       display: flex; flex-wrap: wrap; gap: 12px;
     }
