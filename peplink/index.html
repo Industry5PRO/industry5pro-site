@@ -12,7 +12,7 @@
 <meta property="og:title" content="Peplink FWA • Outcome-Obsessed">
 <meta property="og:description" content="Fast, resilient Fixed Wireless Access with Peplink.">
 <meta property="og:url" content="https://industry5.pro/peplink">
-<meta property="og:image" content="https://industry5.pro/assets/industry5-logo.png">
+<meta property="og:image" content="https://industry5.pro/assets/industry5-social.png">
 
 <meta name="color-scheme" content="dark">
 
@@ -262,10 +262,6 @@
 
   /* Intake Form */
   .intake { margin: 14px 0; }
-  .form-embed iframe {
-    width: 100%; min-height: 760px; border: 0;
-    border-radius: 12px; background: #0f131b;
-  }
 
   /* Footer */
   .footer{border-top:1px solid var(--line);margin-top:40px;padding:32px 20px;text-align:center;color:var(--text-muted)}
@@ -293,12 +289,12 @@
       <nav class="main-nav">
         <a href="/">Home</a>
         <a href="/ai">AI &<br>Omnichannel</a>
-        <a href="/cyber">Security &<br>Backup</a>
+        <a href="/cyber">Security</a>
         <a href="/cloud20">Cloud 2.0 &<br>Network</a>
         <a href="/ccaas">UC &<br>Contact Center</a>
-        <a href="/peplink" class="active">5G &<br>Satellite</a>
         <a href="/aiot">AIoT</a>
-        <a href="/sdr" class="nav-sdr">AI SDR</a>
+        <a href="/peplink" class="active">5G &<br>Satellite</a>
+        <a href="/ai-sdr.html" class="nav-sdr">AI SDR</a>
         <a href="/blog">Blog</a>
         <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
       </nav>
@@ -325,7 +321,7 @@
           </div>
 
           <figure class="hero-photo">
-            <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora" />
+            <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora" width="340" height="340" />
           </figure>
         </div>
       </section>
@@ -488,16 +484,12 @@
         </div>
       </section>
 
-      <section id="intake" class="card intake">
-        <h2 style="margin:0 0 8px; color:#fff;">Get my plan</h2>
-        <p class="muted" style="margin:0 0 12px">
+      <section id="intake" class="card intake" style="padding:0; overflow:hidden;">
+        <h2 style="margin:24px 0 8px 24px; color:#fff;">Get my plan</h2>
+        <p class="muted" style="margin:0 0 12px 24px">
           Outline your sites, carriers, and uptime targets. We’ll review your 30-day rollout and ROI live.
         </p>
-        <div class="form-embed">
-          <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform?usp=header"
-            title="FWA Discovery Intake"></iframe>
-        </div>
+        <div style="width:100%;height:600px;" data-fillout-id="3ANossxqBKus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div><script src="https://server.fillout.com/embed/v1/"></script>
       </section>
 
       <footer class="footer">
@@ -525,58 +517,38 @@
     </div>
   </main>
 
-<script>
-  // footer year
-  document.getElementById('y').textContent = new Date().getFullYear();
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
 
-  // KPI counters
-  (function(){
-    const counters = document.querySelectorAll('.knum');
-    if (!counters.length) return;
-
-    const easeOut = t => t * (2 - t);
-
-    function animateCounter(el){
-      const target = parseFloat(el.dataset.target) || 0;
-      const decimals = el.dataset.target.includes('.') ? 2 : 0;
-      const suffix = el.dataset.suffix || '';
-      const duration = 1400;
-      const startTime = performance.now();
-      const startValue = suffix.includes('dropped') ? 40 : 0;
-
-      function tick(now){
-        const progress = Math.min(1, (now - startTime) / duration);
-        const eased = easeOut(progress);
-        let value;
-        if (target < startValue){
-          value = startValue + (target - startValue) * eased;
-        } else {
-          value = target * eased;
+    // KPI Counters
+    (function(){
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function animateNumber(el, target, duration, suffix){
+        if (reduce){ el.textContent = target + (suffix||""); return; }
+        var start = 0, t0 = performance.now();
+        function frame(t){
+          var p = Math.min(1, (t - t0)/duration);
+          var v = Math.round(start + (target - start) * (1 - Math.pow(1 - p, 3))); // easeOutCubic
+          el.textContent = v + (suffix||"");
+          if (p < 1) requestAnimationFrame(frame);
         }
-
-        if (decimals > 0) {
-          el.textContent = value.toFixed(decimals) + suffix;
-        } else {
-          el.textContent = Math.round(value) + suffix;
-        }
-
-        if (progress < 1) requestAnimationFrame(tick);
+        requestAnimationFrame(frame);
       }
-      requestAnimationFrame(tick);
-    }
 
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting){
-          animateCounter(entry.target);
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold:0.4 });
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(!entry.isIntersecting) return;
+          var el = entry.target;
+          var target = parseInt(el.getAttribute('data-target'), 10) || 0;
+          var suffix = el.getAttribute('data-suffix') || '';
+          animateNumber(el, target, 1000, suffix);
+          io.unobserve(el);
+        });
+      }, {threshold:0.4});
 
-    counters.forEach(el => io.observe(el));
-  })();
-</script>
+      document.querySelectorAll('.knum').forEach(function(el){ io.observe(el); });
+    })();
+  </script>
 
 </body>
 </html>
