@@ -37,6 +37,11 @@
       --accent-glow: rgba(41,234,215,0.75);
       --gold: #FFD700;             /* Standard Gold (for Blog/SDR) */
       --lumen-orange: #FF6A13;
+      
+      /* Category Colors */
+      --cat-iiot: #FF9F66; /* Industrial Orange tone */
+      --cat-aiot: #29EAD7; /* Siemens Cyan */
+      --cat-iot: #AAB2FF;  /* Periwinkle/Blue */
     }
     
     /* --- RESET & BASE --- */
@@ -154,11 +159,9 @@
 
     /* Hero */
     .hero { padding: 40px 0 20px; border-top: none; }
-    
-    /* FIXED: Widen column to 420px to allow bigger image */
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0,1fr) 420px; 
+      grid-template-columns: minmax(0,1fr) 420px; /* Wider for bigger pic */
       gap: 24px;
       align-items: center;
     }
@@ -185,13 +188,10 @@
       margin-bottom: 24px;
     }
     
-    /* Hero Photo - INCREASED TO 420px */
+    /* Hero Photo - INCREASED TO 340px to match others */
     .hero-photo { display: flex; justify-content: flex-end; }
     .hero-photo img {
-      width: 100%; 
-      max-width: 420px; /* Increased from 340px */
-      height: auto; 
-      object-fit: contain;
+      width: 100%; max-width: 340px; height: auto; object-fit: contain;
       filter: drop-shadow(0 10px 20px rgba(0,0,0,.35));
     }
 
@@ -234,24 +234,43 @@
     }
     .quad-note { color: var(--text-muted); font-size: 0.92rem; max-width: 700px; }
 
-    /* Paper & Accordions */
+    /* Paper & Accordions (Categorized) */
     .paper { margin: 32px 0; }
-    .paper h2 { font-size: 1.6rem; color: var(--accent); margin: 0 0 16px; }
+    .paper h2 { font-size: 1.8rem; color: #fff; margin: 0 0 24px; }
+    
+    /* Category Headers */
+    .cat-block { margin-bottom: 32px; }
+    .cat-header {
+      font-size: 1.4rem; font-weight: 800; margin: 0 0 6px; 
+      border-left: 4px solid; padding-left: 12px;
+    }
+    .cat-desc { color: var(--text-muted); margin: 0 0 16px 16px; font-size: 0.95rem; max-width: 700px; }
+    
+    /* Category Colors */
+    .cat-iiot { border-color: var(--cat-iiot); color: var(--cat-iiot); }
+    .cat-aiot { border-color: var(--cat-aiot); color: var(--cat-aiot); }
+    .cat-iot  { border-color: var(--cat-iot);  color: var(--cat-iot); }
+
     details {
       border: 1px solid var(--card-border); border-radius: 12px; padding: 16px;
       background: var(--panel); margin-bottom: 12px;
       transition: border-color 0.2s ease;
     }
-    details:hover { border-color: var(--accent); }
+    details:hover { border-color: rgba(255,255,255,0.2); }
+    /* Hover color matches category */
+    .cat-block.iiot details:hover { border-color: var(--cat-iiot); }
+    .cat-block.aiot details:hover { border-color: var(--cat-aiot); }
+    .cat-block.iot  details:hover { border-color: var(--cat-iot); }
+
     summary { font-weight: 700; font-size: 1.1rem; color: #fff; cursor: pointer; list-style: none; }
-    summary::-webkit-details-marker { display: none; } /* Hide default triangle */
-    summary::after { content: "+"; float: right; color: var(--accent); font-weight: 800; }
-    details[open] summary::after { content: "-"; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; float: right; color: var(--text-muted); font-weight: 800; }
+    details[open] summary::after { content: "-"; color: #fff; }
     
     .sec { margin-top: 12px; }
     .kpis { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
     .pill {
-      display: inline-block; border: 1px solid rgba(41, 234, 215, 0.4);
+      display: inline-block; border: 1px solid rgba(255,255,255,0.15);
       border-radius: 99px; padding: 4px 12px; font-size: 0.85rem; color: var(--text-muted);
     }
 
@@ -310,12 +329,12 @@
       <nav class="main-nav">
         <a href="/">Home</a>
         <a href="/ai">AI &<br>Omnichannel</a>
-        <a href="/cyber">Security &<br>Backup</a>
+        <a href="/cyber">Security</a>
         <a href="/cloud20">Cloud 2.0 &<br>Network</a>
         <a href="/ccaas">UC &<br>Contact Center</a>
-        <a href="/peplink">5G &<br>Satellite</a>
         <a href="/aiot" class="active">AIoT</a>
-        <a href="/sdr" class="nav-sdr">AI SDR</a>
+        <a href="/peplink">5G &<br>Satellite</a>
+        <a href="/ai-sdr.html" class="nav-sdr">AI SDR</a>
         <a href="/blog">Blog</a>
         <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
       </nav>
@@ -337,7 +356,7 @@
           </div>
         </div>
         <figure class="hero-photo">
-          <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora" />
+          <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora" width="340" height="340" />
         </figure>
       </div>
     </section>
@@ -356,70 +375,87 @@
     <section class="paper">
       <h2>Micro White Paper — Industry Applications</h2>
 
-      <details open>
-        <summary>Manufacturing</summary>
-        <div class="sec siemens-layout">
-          <div class="siemens-copy">
-            <h3>Siemens Insights Hub + Industrial Edge</h3>
-            <p>
-              When you’re trying to bring legacy OT, modern PLCs, and cloud analytics into the same conversation, Siemens is on the shortlist. Insights Hub gives you a cloud-based IoT layer to collect and normalize data. Industrial Edge pushes analytics down to the line for real-time inference.
-            </p>
-            <h4>What we actually measure</h4>
-            <ul class="kpi-list">
-              <li>OEE and line uptime across plants</li>
-              <li>Unplanned downtime, MTTR, and maintenance backlog</li>
-              <li>Scrap, rework, and first-pass yield</li>
-            </ul>
-            <div class="cta-row">
-              <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform" target="_blank" rel="noopener">Try Insights Hub</a>
-            </div>
-            <div class="siemens-kpi-col">
-              <div class="kpi-item">
-                <strong class="knum siemens" data-target="99" data-suffix="%">0</strong>
-                <span>line uptime on critical pilot lines.</span>
-              </div>
-              <div class="kpi-item">
-                <strong class="knum siemens" data-target="35" data-suffix="%">0</strong>
-                <span>reduction in unplanned downtime.</span>
-              </div>
-              <div class="kpi-item">
-                <strong class="knum siemens" data-target="18" data-suffix="%">0</strong>
-                <span>scrap reduction from first-pass yield visibility.</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="siemens-media">
-            <div class="video-card">
-              <h4>Insights Hub: Getting Started</h4>
-              <div class="video-frame siemens-video" data-yt="mG8t9-in1xk">
-                <button class="siemens-thumb" type="button">
-                  <img src="/assets/Insights-Hub-Thumb.jpg" alt="Insights Hub Thumb">
-                  <span class="play-badge">▶ Watch Overview</span>
-                </button>
-                <iframe loading="lazy" allow="autoplay; fullscreen"></iframe>
-              </div>
-            </div>
-            <div class="video-card">
-              <h4>Industrial Edge Live Demo</h4>
-              <div class="video-frame siemens-video" data-yt="0gSsyXGQpI0">
-                <button class="siemens-thumb" type="button">
-                  <img src="/assets/Industrial_edge-thumb.jpg" alt="Industrial Edge Thumb">
-                  <span class="play-badge">▶ Watch Demo</span>
-                </button>
-                <iframe loading="lazy" allow="autoplay; fullscreen"></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-      </details>
+      <div class="cat-block iiot">
+        <h3 class="cat-header">IIoT — Industrial Internet of Things</h3>
+        <p class="cat-desc">Specialized branch focusing on industrial machines, systems, and operations. High availability, legacy OT integration, and heavy duty automation.</p>
 
-      <details><summary>Smart City</summary><div class="sec"><div class="kpis"><span class="pill">Response Time</span><span class="pill">Energy Savings</span></div><div>Plays: Smart lighting, ALPR edge, flood sensing, air quality networks.</div></div></details>
-      <details><summary>Utilities and Grid</summary><div class="sec"><div class="kpis"><span class="pill">SAIDI</span><span class="pill">SAIFI</span></div><div>Plays: Pole-top sensors, FLISR edge analytics, AMI backhaul.</div></div></details>
-      <details><summary>Fleet and Mobility</summary><div class="sec"><div class="kpis"><span class="pill">Fuel Burn</span><span class="pill">Safety Score</span></div><div>Plays: Multi-IMSI eSIM, ADAS vision, cold chain telemetry.</div></div></details>
-      <details><summary>Healthcare</summary><div class="sec"><div class="kpis"><span class="pill">Uptime</span><span class="pill">Compliance</span></div><div>Plays: Zero-touch onboarding, PHI segmentation, anomaly detection.</div></div></details>
-      <details><summary>Retail & CPG</summary><div class="sec"><div class="kpis"><span class="pill">Shrink</span><span class="pill">Conversion</span></div><div>Plays: CV loss prevention, smart shelves, cooler telemetry.</div></div></details>
-      <details><summary>Logistics</summary><div class="sec"><div class="kpis"><span class="pill">Dock to Stock</span><span class="pill">Accuracy</span></div><div>Plays: RTLS, condition monitoring, digital twins, AMR fleets.</div></div></details>
+        <details open>
+          <summary>Manufacturing (Siemens)</summary>
+          <div class="sec siemens-layout">
+            <div class="siemens-copy">
+              <h3>Siemens Insights Hub + Industrial Edge</h3>
+              <p>
+                When you’re trying to bring legacy OT, modern PLCs, and cloud analytics into the same conversation, Siemens is on the shortlist. Insights Hub gives you a cloud-based IoT layer to collect and normalize data. Industrial Edge pushes analytics down to the line for real-time inference.
+              </p>
+              <h4>What we actually measure</h4>
+              <ul class="kpi-list">
+                <li>OEE and line uptime across plants</li>
+                <li>Unplanned downtime, MTTR, and maintenance backlog</li>
+                <li>Scrap, rework, and first-pass yield</li>
+              </ul>
+              <div class="cta-row">
+                <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform" target="_blank" rel="noopener">Try Insights Hub</a>
+              </div>
+              <div class="siemens-kpi-col">
+                <div class="kpi-item">
+                  <strong class="knum siemens" data-target="99" data-suffix="%">0</strong>
+                  <span>line uptime on critical pilot lines.</span>
+                </div>
+                <div class="kpi-item">
+                  <strong class="knum siemens" data-target="35" data-suffix="%">0</strong>
+                  <span>reduction in unplanned downtime.</span>
+                </div>
+                <div class="kpi-item">
+                  <strong class="knum siemens" data-target="18" data-suffix="%">0</strong>
+                  <span>scrap reduction from first-pass yield visibility.</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="siemens-media">
+              <div class="video-card">
+                <h4>Insights Hub: Getting Started</h4>
+                <div class="video-frame siemens-video" data-yt="mG8t9-in1xk">
+                  <button class="siemens-thumb" type="button">
+                    <img src="/assets/Insights-Hub-Thumb.jpg" alt="Insights Hub Thumb">
+                    <span class="play-badge">▶ Watch Overview</span>
+                  </button>
+                  <iframe loading="lazy" allow="autoplay; fullscreen"></iframe>
+                </div>
+              </div>
+              <div class="video-card">
+                <h4>Industrial Edge Live Demo</h4>
+                <div class="video-frame siemens-video" data-yt="0gSsyXGQpI0">
+                  <button class="siemens-thumb" type="button">
+                    <img src="/assets/Industrial_edge-thumb.jpg" alt="Industrial Edge Thumb">
+                    <span class="play-badge">▶ Watch Demo</span>
+                  </button>
+                  <iframe loading="lazy" allow="autoplay; fullscreen"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details><summary>Utilities and Grid</summary><div class="sec"><div class="kpis"><span class="pill">SAIDI</span><span class="pill">SAIFI</span></div><div>Plays: Pole-top sensors, FLISR edge analytics, AMI backhaul.</div></div></details>
+        <details><summary>Logistics & Warehousing</summary><div class="sec"><div class="kpis"><span class="pill">Dock to Stock</span><span class="pill">Accuracy</span></div><div>Plays: RTLS, condition monitoring, digital twins, AMR fleets.</div></div></details>
+      </div>
+
+      <div class="cat-block aiot">
+        <h3 class="cat-header">AIoT — Artificial Intelligence of Things</h3>
+        <p class="cat-desc">The fusion of IoT with AI. Enabling devices to analyze data, make decisions, and act autonomously at the edge without round-tripping to the cloud.</p>
+
+        <details><summary>Smart City</summary><div class="sec"><div class="kpis"><span class="pill">Response Time</span><span class="pill">Energy Savings</span></div><div>Plays: Smart lighting, ALPR edge, flood sensing, air quality networks.</div></div></details>
+        <details><summary>Healthcare</summary><div class="sec"><div class="kpis"><span class="pill">Uptime</span><span class="pill">Compliance</span></div><div>Plays: Zero-touch onboarding, PHI segmentation, anomaly detection.</div></div></details>
+        <details><summary>Retail & CPG</summary><div class="sec"><div class="kpis"><span class="pill">Shrink</span><span class="pill">Conversion</span></div><div>Plays: CV loss prevention, smart shelves, cooler telemetry.</div></div></details>
+      </div>
+
+      <div class="cat-block iot">
+        <h3 class="cat-header">IoT — Internet of Things</h3>
+        <p class="cat-desc">The foundation. Networks of connected devices collecting and exchanging data via sensors, software, and cloud connectivity. Powered by <strong>Aeris</strong>.</p>
+
+        <details><summary>Fleet and Mobility</summary><div class="sec"><div class="kpis"><span class="pill">Fuel Burn</span><span class="pill">Safety Score</span></div><div>Plays: Multi-IMSI eSIM, ADAS vision, cold chain telemetry.</div></div></details>
+      </div>
 
     </section>
 
@@ -447,7 +483,7 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.48 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.5h5V24H0V8.5zM8 8.5h4.8v2.1h.07c.67-1.2 2.3-2.47 4.73-2.47 5.06 0 6 3.33 6 7.66V24h-5v-6.8c0-1.62-.03-3.7-2.25-3.7-2.25 0-2.6 1.76-2.6 3.58V24H8V8.5z"/></svg>
       </a>
       <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 1.9.25 2.3.42.6.23 1.1.52 1.6.97.46.45.75 1 .97 1.6.17.4.36 1.1.36 2.3.07 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 1.9-.42 2.3a4 4 0 0 1-.97 1.6 4 4 0 0 1-1.6.97c-.4.17-1.1.36-2.3.42-1.3.07-1.7.07-4.9.07s-3.5 0-4.9-.07c-1.2-.06-1.9-.25-2.3-.42a4 4 0 0 1-1.6-.97 4 4 0 0 1-.97-1.6c-.17-.4-.36-1.1-.42-2.3C3.2 15.6 3.2 15.2 3.2 12s0-3.6.07-4.9c.06-1.2.25-1.9.42-2.3.23-.6.52-1.1.97-1.6.45-.46 1-.75 1.6-.97.4-.17 1.1-.36 2.3-.42C8.4 2.2 8.8 2.2 12 2.2Z"/></svg>
       </a>
       <a href="https://www.facebook.com/profile.php?id=61582481880019" target="_blank" rel="noopener" aria-label="Facebook">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.675 0h-21.35C.592 0 0 .592 0 1.325v21.351C0 23.408.592 24 1.325 24h11.49v-9.294H9.691V11.01h3.124V8.414c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.313h3.587l-.467 3.696h-3.12V24h6.117C23.408 24 24 23.408 24 22.676V1.325C24 .592 23.408 0 22.675 0z"/></svg>
