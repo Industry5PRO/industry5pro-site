@@ -277,7 +277,7 @@
       border-radius: 99px; padding: 4px 12px; font-size: 0.85rem; color: var(--text-muted);
     }
 
-    /* Siemens Feature Block */
+    /* Feature Blocks (Generic for Siemens/Aeris) */
     .siemens-layout { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; align-items: start; margin-top: 16px; }
     .siemens-copy h3 { font-size: 1.3rem; margin-bottom: 12px; color: #fff; }
     .kpi-list { list-style: none; padding: 0; margin: 16px 0; color: var(--text-muted); font-size: 0.95rem; }
@@ -319,11 +319,16 @@
     .cta-rail p { margin: 4px 0 0; color: var(--text-muted); max-width: 600px; }
 
     /* Footer */
-    .footer{border-top:1px solid var(--card-border);margin-top:40px;padding:32px 20px;text-align:center;color:var(--text-muted)}
+    .footer{border-top:1px solid var(--line);margin-top:40px;padding:32px 20px;text-align:center;color:var(--text-muted)}
     .socials{display:flex;gap:16px;justify-content:center;margin-top:16px}
     .socials a{color:#fff;transition:all .2s ease}
     .socials a:hover{color:var(--accent);transform:translateY(-2px);text-shadow:0 0 10px var(--accent)}
     .socials svg{width:24px;height:24px;fill:currentColor}
+
+    @media (max-width:900px) { 
+      .hero { grid-template-columns: 1fr; } 
+      .hero-photo { display: none; }
+    }
   </style>
 </head>
 
@@ -339,12 +344,12 @@
       <nav class="main-nav">
         <a href="/">Home</a>
         <a href="/ai">AI &<br>Omnichannel</a>
-        <a href="/cyber">Security &<br>Backup</a>
+        <a href="/cyber">Security</a>
         <a href="/cloud20">Cloud 2.0 &<br>Network</a>
-        <a href="/ccaas">UC &<br>Contact Center</a>       
-        <a href="/peplink">5G &<br>Satellite</a>
+        <a href="/ccaas">UC &<br>Contact Center</a>
         <a href="/aiot" class="active">AIoT</a>
-        <a href="/sdr" class="nav-sdr">AI SDR</a>
+        <a href="/peplink">5G &<br>Satellite</a>
+        <a href="/ai-sdr.html" class="nav-sdr">AI SDR</a>
         <a href="/blog">Blog</a>
         <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
       </nav>
@@ -446,8 +451,55 @@
             </div>
           </div>
         </details>
+        
+        <details><summary>Utilities and Grid (Aeris)</summary>
+          <div class="sec siemens-layout">
+            <div class="siemens-copy">
+              <h3>Utilities & Grid — Aeris Intelligent Connectivity</h3>
+              <p>
+                Remote grid assets don't just need connection; they need intelligence. Aeris provides a unified connectivity layer that optimizes signal across carriers, reducing blind spots and maintenance costs for AMI, reclosers, and renewables.
+              </p>
+              <h4>What we actually measure</h4>
+              <ul class="kpi-list">
+                <li>SAIDI (System Average Interruption Duration Index)</li>
+                <li>SAIFI (System Average Interruption Frequency Index)</li>
+                <li>Truck rolls and field maintenance costs</li>
+              </ul>
+              <div class="cta-row">
+                <a class="btn btn-primary" href="#intake">Start Discovery</a>
+                <a class="btn btn-secondary" href="https://www.aeris.com/resources/with-aeris-bboxx-provides-clean-energy-solutions-to-off-grid-communities/" target="_blank" rel="noopener">Read Case Study</a>
+              </div>
+              <div class="siemens-kpi-col">
+                <div class="kpi-item">
+                  <strong class="knum siemens" data-target="99.9" data-suffix="%">0</strong>
+                  <span>connectivity uptime for critical grid assets.</span>
+                </div>
+                <div class="kpi-item">
+                  <strong class="knum siemens" data-target="30" data-suffix="%">0</strong>
+                  <span>reduction in operational maintenance costs.</span>
+                </div>
+                <div class="kpi-item">
+                  <strong class="knum siemens" data-target="24" data-suffix="/7">0</strong>
+                  <span>remote visibility into off-grid solar assets.</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="siemens-media">
+              <div class="video-card">
+                <h4>Aeris Intelligent IoT Network</h4>
+                <div class="video-frame siemens-video" data-yt="VHe_bv-QRdc">
+                  <button class="siemens-thumb" type="button">
+                    <img src="https://img.youtube.com/vi/VHe_bv-QRdc/maxresdefault.jpg" alt="Aeris Video Thumb">
+                    <span class="play-badge">▶ Watch Overview</span>
+                  </button>
+                  <iframe loading="lazy" allow="autoplay; fullscreen"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
 
-        <details><summary>Utilities and Grid</summary><div class="sec"><div class="kpis"><span class="pill">SAIDI</span><span class="pill">SAIFI</span></div><div>Plays: Pole-top sensors, FLISR edge analytics, AMI backhaul.</div></div></details>
         <details><summary>Logistics & Warehousing</summary><div class="sec"><div class="kpis"><span class="pill">Dock to Stock</span><span class="pill">Accuracy</span></div><div>Plays: RTLS, condition monitoring, digital twins, AMR fleets.</div></div></details>
       </div>
 
@@ -467,6 +519,19 @@
         <details><summary>Fleet and Mobility</summary><div class="sec"><div class="kpis"><span class="pill">Fuel Burn</span><span class="pill">Safety Score</span></div><div>Plays: Multi-IMSI eSIM, ADAS vision, cold chain telemetry.</div></div></details>
       </div>
 
+    </section>
+
+    <section class="cta-rail">
+      <div class="cta-rail-inner">
+        <div>
+          <h3>Ready to turn signals into outcomes?</h3>
+          <p>Two fast paths: scope your use case now or talk it through live. We’ll align connectivity, edge, and data for measurable wins.</p>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#intake">Start AIoT Discovery</a>
+          <a class="btn btn-secondary" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
+        </div>
+      </div>
     </section>
     
     <section id="intake" class="cta-rail" style="background:transparent; border:none; padding:0;">
