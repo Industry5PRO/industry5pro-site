@@ -288,7 +288,7 @@
     
     @media (max-width: 900px) { .siemens-layout { grid-template-columns: 1fr; } }
 
-    /* Video Cards - FIX APPLIED HERE */
+    /* Video Cards */
     .siemens-media { display: flex; flex-direction: column; gap: 20px; }
     .video-card h4 { margin: 0 0 8px; color: #fff; font-size: 1rem; }
     
@@ -297,15 +297,13 @@
       border: 1px solid var(--card-border); cursor: pointer;
     }
     
+    /* --- FIX: Hide iframe initially so button is clickable --- */
     .video-frame iframe { 
       position: absolute; inset: 0; width: 100%; height: 100%; border: 0; 
-      /* HIDE IFRAME INITIALLY so button is clickable */
-      display: none; 
+      display: none; /* Hidden by default */
     }
     
-    .siemens-thumb { 
-      width: 100%; height: 100%; object-fit: cover; display: block; border: 0; padding: 0; cursor: pointer;
-    }
+    .siemens-thumb { width: 100%; height: 100%; object-fit: cover; display: block; border: 0; padding: 0; }
     .play-badge {
       position: absolute; left: 16px; bottom: 16px; background: rgba(0,0,0,0.8); color: #fff;
       padding: 6px 12px; border-radius: 99px; font-size: 0.85rem; font-weight: 600;
@@ -363,7 +361,7 @@
             We lead with Aeris because the facts support it: platform scale from Ericsson’s IoT stack, multi MNO eSIM, deep security, and a carrier agnostic approach tailored to each use case. For industrial operations, Siemens is our leader: Industrial Edge for on line inference and Insights Hub for data twins. Everyone has a niche. We help you find yours.
           </p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform" target="_blank" rel="noopener">Start AIoT Discovery</a>
+            <a class="btn btn-primary" href="#intake">Start AIoT Discovery</a>
             <a class="btn btn-secondary" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
           </div>
         </div>
@@ -374,13 +372,13 @@
     </section>
 
     <section class="quad">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform" target="_blank" rel="noopener">
+      <a href="#intake">
         <img src="/assets/aiot_quadrant_i5_colors.png?v=5" alt="AIoT Landscape Quadrant" loading="lazy"
              onerror="this.onerror=null;this.style.border='1px solid red';this.alt='Image missing';"/>
       </a>
       <div class="quad-cta-bar">
         <div class="quad-note">Click the quadrant to open the AIoT intake form. We’ll scope connectivity, security, edge, and data pipelines around your outcomes.</div>
-        <a class="btn btn-primary" style="padding:8px 16px; font-size:0.9rem;" href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform" target="_blank" rel="noopener">Request Pricing</a>
+        <a class="btn btn-primary" style="padding:8px 16px; font-size:0.9rem;" href="#intake">Request Pricing</a>
       </div>
     </section>
 
@@ -406,7 +404,7 @@
                 <li>Scrap, rework, and first-pass yield</li>
               </ul>
               <div class="cta-row">
-                <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform" target="_blank" rel="noopener">Try Insights Hub</a>
+                <a class="btn btn-primary" href="#intake">Try Insights Hub</a>
               </div>
               <div class="siemens-kpi-col">
                 <div class="kpi-item">
@@ -463,4 +461,10 @@
                 <li>Truck rolls and field maintenance costs</li>
               </ul>
               <div class="cta-row">
-                <a class="btn btn-primary" href="#intak
+                <a class="btn btn-primary" href="#intake">Start Discovery</a>
+                <a class="btn btn-secondary" href="https://www.aeris.com/resources/with-aeris-bboxx-provides-clean-energy-solutions-to-off-grid-communities/" target="_blank" rel="noopener">Read Case Study</a>
+              </div>
+              <div class="siemens-kpi-col">
+                <div class="kpi-item">
+                  <strong class="knum siemens" data-target="99.9" data-suffix="%">0</strong>
+                  <span>connectivity uptime for critical grid assets.</span>
