@@ -277,7 +277,7 @@
       border-radius: 99px; padding: 4px 12px; font-size: 0.85rem; color: var(--text-muted);
     }
 
-    /* Feature Blocks (Generic for Siemens/Aeris) */
+    /* Siemens Feature Block */
     .siemens-layout { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; align-items: start; margin-top: 16px; }
     .siemens-copy h3 { font-size: 1.3rem; margin-bottom: 12px; color: #fff; }
     .kpi-list { list-style: none; padding: 0; margin: 16px 0; color: var(--text-muted); font-size: 0.95rem; }
@@ -319,16 +319,11 @@
     .cta-rail p { margin: 4px 0 0; color: var(--text-muted); max-width: 600px; }
 
     /* Footer */
-    .footer{border-top:1px solid var(--line);margin-top:40px;padding:32px 20px;text-align:center;color:var(--text-muted)}
+    .footer{border-top:1px solid var(--card-border);margin-top:40px;padding:32px 20px;text-align:center;color:var(--text-muted)}
     .socials{display:flex;gap:16px;justify-content:center;margin-top:16px}
     .socials a{color:#fff;transition:all .2s ease}
     .socials a:hover{color:var(--accent);transform:translateY(-2px);text-shadow:0 0 10px var(--accent)}
     .socials svg{width:24px;height:24px;fill:currentColor}
-
-    @media (max-width:900px) { 
-      .hero { grid-template-columns: 1fr; } 
-      .hero-photo { display: none; }
-    }
   </style>
 </head>
 
@@ -500,7 +495,53 @@
           </div>
         </details>
 
-        <details><summary>Logistics & Warehousing</summary><div class="sec"><div class="kpis"><span class="pill">Dock to Stock</span><span class="pill">Accuracy</span></div><div>Plays: RTLS, condition monitoring, digital twins, AMR fleets.</div></div></details>
+        <details><summary>Logistics & Warehousing (Samsara)</summary>
+          <div class="sec siemens-layout">
+            <div class="siemens-copy">
+              <h3>Logistics & Warehousing — Samsara Connected Operations</h3>
+              <p>
+                Stop guessing where your assets are. Samsara merges telematics, asset tracking, and AI cameras into a single pane of glass. From the warehouse floor to the last mile, get real-time visibility that actually connects your physical operations.
+              </p>
+              <h4>What we actually measure</h4>
+              <ul class="kpi-list">
+                <li>Asset utilization and dwell time</li>
+                <li>Fleet safety and driver behavior (AI dash cams)</li>
+                <li>Cold chain temperature compliance</li>
+              </ul>
+              <div class="cta-row">
+                <a class="btn btn-primary" href="#intake">Start Discovery</a>
+                <a class="btn btn-secondary" href="https://www.samsara.com/customers/certarus" target="_blank" rel="noopener">Read Case Study</a>
+              </div>
+              <div class="siemens-kpi-col">
+                <div class="kpi-item">
+                  <strong class="knum siemens" data-target="95" data-suffix="%">0</strong>
+                  <span>invoice automation via digital workflows.</span>
+                </div>
+                <div class="kpi-item">
+                  <strong class="knum siemens" data-target="97" data-suffix="%">0</strong>
+                  <span>reduction in service downtime events.</span>
+                </div>
+                <div class="kpi-item">
+                  <strong class="knum siemens" data-target="30" data-suffix="M+">0</strong>
+                  <span>annual revenue unlocked via efficiency.</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="siemens-media">
+              <div class="video-card">
+                <h4>Samsara: Operate Smarter</h4>
+                <div class="video-frame siemens-video" data-yt="Mw1DX-iQBCg">
+                  <button class="siemens-thumb" type="button">
+                    <img src="https://img.youtube.com/vi/Mw1DX-iQBCg/maxresdefault.jpg" alt="Samsara Video Thumb">
+                    <span class="play-badge">▶ Watch Overview</span>
+                  </button>
+                  <iframe loading="lazy" allow="autoplay; fullscreen"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="cat-block aiot">
