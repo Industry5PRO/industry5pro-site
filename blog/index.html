@@ -45,6 +45,9 @@
   img{max-width:100%;display:block}
   button{font-family:inherit;}
 
+  /* Scroll offset for anchor links (Mobile Fix) */
+  article { scroll-margin-top: 100px; }
+
   /* --- 3. HEADER & NAV --- */
   header {
     position: sticky; top: 0; z-index: 50;
@@ -167,7 +170,7 @@
   }
   .hero-series-list {list-style: none; padding: 0; margin: 0;}
   .hero-series-list li {margin-bottom: 10px; font-size: 0.95rem;}
-  .hero-series-list a {display: block; color: #b0ff95; transition: all 0.2s ease;}
+  .hero-series-list a {display: block; color: #b0ff95; transition: all 0.2s ease; cursor: pointer;}
   .hero-series-list a:hover {color: var(--gold); padding-left: 6px;}
   .hero-series-list a span.part-num {color: var(--muted); font-weight: 600; margin-right: 8px;}
   .hero-series-list a:hover span.part-num {color: var(--gold);}
@@ -280,12 +283,16 @@
       <a href="/">Home</a>
       
       <a href="/ai">AI &<br>Omnichannel</a>
-      <a href="/cyber">Security &<br>Backup</a>
+      <a href="/cyber">Security</a>
+      
       <a href="/cloud20">Cloud 2.0 &<br>Network</a>
-      <a href="/ccaas">UC &<br>Contact Center</a>      
-      <a href="/peplink">5G &<br>Satellite</a>
+
+      <a href="/ccaas">UC &<br>Contact Center</a>
       <a href="/aiot">AIoT</a>
-      <a href="/sdr" class="nav-sdr">AI SDR</a>
+      <a href="/peplink">5G &<br>Satellite</a>
+      
+      <a href="/ai-sdr.html" class="nav-sdr">AI SDR</a>
+      
       <a href="/blog" style="color:var(--gold);">Blog</a>
       <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
     </nav>
@@ -343,7 +350,7 @@
   </section>
 
   <section class="grid" id="all">
-
+    
     <article id="post-ai-glass-ceiling" class="card" data-tags="AI,Cloud,Network,FinOps">
       <h3>The AI "Glass Ceiling" isn't software. It’s physics.</h3>
       <p>Why 400G is the only litmus test that matters for your infrastructure. Stop buying maps, start buying physics-verified routes.</p>
@@ -409,5 +416,4 @@
       <div class="tags"><span class="tag">CCaaS</span><span class="tag">Agentic AI</span><span class="tag">Omnichannel</span></div>
       <div class="li-embed" data-type="linkedin">
         <div class="toolbar">
-          <button class="li-view active" data-mode="teaser" type="button">Summary</button>
-          <button class="li-view" da
+ 
