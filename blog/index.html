@@ -93,43 +93,42 @@
   /* Base Link Style */
   .main-nav a {
     position: relative; color: #cfe3d4; 
-    font-weight: 500; /* Normal weight for standard links */
+    font-weight: 500; 
     font-size: 0.85rem; 
     line-height: 1.2; text-align: center; display: inline-flex; 
     align-items: center; justify-content: center;
     transition: color .15s ease, text-shadow .15s ease;
   }
 
-  /* Hover Color (All Links) */
+  /* Hover Color */
   .main-nav a:hover {
     color: var(--gold);
     text-shadow: 0 0 6px rgba(255,215,0,.85), 0 0 14px rgba(255,215,0,.45);
   }
 
-  /* Underline Animation (APPLIED TO ALL LINKS) */
+  /* Underline Animation */
   .main-nav a::after {
     content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px;
-    background: var(--accent); /* Money Green Bar */
+    background: var(--accent); 
     transform: scaleX(0); transform-origin: left; 
     transition: transform .25s ease;
   }
   .main-nav a:hover::after { 
     transform: scaleX(1); 
-    background: var(--gold); /* Turns Gold on Hover */
+    background: var(--gold); 
   }
 
   /* --- AI SDR SPECIAL STYLING --- */
   .main-nav a.nav-sdr {
-    color: #fff !important;        /* White Text */
-    font-weight: 800;              /* BOLD */
-    text-transform: uppercase;     /* ALL CAPS */
-    border: none;                  
-    background: transparent;       
+    color: #fff !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    border: none;
+    background: transparent;
     padding: 6px 4px;
     transition: all 0.25s ease;
   }
   
-  /* AI SDR Hover Specifics */
   .main-nav a.nav-sdr:hover {
     color: var(--gold) !important;
     text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
@@ -145,7 +144,6 @@
   /* --- 4. HERO SECTION --- */
   .hero{max-width:1100px;margin:32px auto 0;padding:0 18px 24px;}
   
-  /* Widen right col to 410px to fit "Part 5" on one line */
   .hero-grid {
     display: grid; 
     grid-template-columns: 1fr 410px; 
@@ -167,7 +165,7 @@
   }
   .hero-series-list {list-style: none; padding: 0; margin: 0;}
   .hero-series-list li {margin-bottom: 10px; font-size: 0.95rem;}
-  .hero-series-list a {display: block; color: #b0ff95; transition: all 0.2s ease;}
+  .hero-series-list a {display: block; color: #b0ff95; transition: all 0.2s ease; cursor: pointer;}
   .hero-series-list a:hover {color: var(--gold); padding-left: 6px;}
   .hero-series-list a span.part-num {color: var(--muted); font-weight: 600; margin-right: 8px;}
   .hero-series-list a:hover span.part-num {color: var(--gold);}
@@ -204,26 +202,20 @@
     display:flex; flex-direction:column; 
     justify-content: flex-start; 
     transition:border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+    
+    /* FIX: Ensure anchor links scroll below the fixed header */
+    scroll-margin-top: 90px; 
   }
-  /* Text Spacing Fixes */
+
   .card h3 { margin: 0 0 8px; font-size: 1.25rem; line-height: 1.3; }
-  .card p { 
-    color: var(--muted); 
-    font-size: 0.95rem; 
-    margin-bottom: 12px; /* Tighter gap */
-    flex-grow: 0; 
-  }
+  .card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 12px; flex-grow: 0; }
   
   .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
   .tag {
     padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; font-size: .75rem;
     color: #dfe7f3; background: rgba(255,255,255,0.02);
   }
-  .meta { 
-    color: var(--muted); font-size: 0.85rem; 
-    margin-bottom: 12px; 
-    padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); 
-  }
+  .meta { color: var(--muted); font-size: 0.85rem; margin-bottom: 12px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); }
 
   .card:hover{
     border-color:var(--gold); box-shadow:0 0 14px rgba(255,215,0,.2), 0 0 28px rgba(255,215,0,.1); transform:translateY(-2px);
@@ -278,14 +270,13 @@
     
     <nav class="main-nav">
       <a href="/">Home</a>
-      
       <a href="/ai">AI &<br>Omnichannel</a>
-      <a href="/cyber">Security &<br>Backup</a>
+      <a href="/cyber">Security</a>
       <a href="/cloud20">Cloud 2.0 &<br>Network</a>
-      <a href="/ccaas">UC &<br>Contact Center</a>      
-      <a href="/peplink">5G &<br>Satellite</a>
+      <a href="/ccaas">UC &<br>Contact Center</a>
       <a href="/aiot">AIoT</a>
-      <a href="/sdr" class="nav-sdr">AI SDR</a>
+      <a href="/peplink">5G &<br>Satellite</a>
+      <a href="/ai-sdr.html" class="nav-sdr">AI SDR</a>
       <a href="/blog" style="color:var(--gold);">Blog</a>
       <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
     </nav>
@@ -343,7 +334,7 @@
   </section>
 
   <section class="grid" id="all">
-
+    
     <article id="post-ai-glass-ceiling" class="card" data-tags="AI,Cloud,Network,FinOps">
       <h3>The AI "Glass Ceiling" isn't software. It’s physics.</h3>
       <p>Why 400G is the only litmus test that matters for your infrastructure. Stop buying maps, start buying physics-verified routes.</p>
@@ -420,7 +411,7 @@
     <article id="af-part3" class="card" data-tags="AI Foundations,Security,Backup,Compliance,DRaaS">
       <h3>AI Foundations | Part 3: Security &amp; Backup</h3>
       <p>Policy first, then the stack. Immutable backups, DR drills, and KPIs that prove it works.</p>
-      <div class="tags"><span class="tag">Security</span><span class="tag">Backup</span><span class="tag">Compliance</span></div>
+      <div class="tags"><span class="tag">Security</span><span class="tag">Backup</span><span class="tag">Compliance</span><span class="tag">AI Foundations</span></div>
       <div class="li-embed" data-type="linkedin">
         <div class="toolbar">
           <button class="li-view active" data-mode="teaser" type="button">Summary</button>
@@ -434,7 +425,7 @@
     <article id="af-part1" class="card" data-tags="AI Foundations,Network,NaaS,Edge,AI">
       <h3>AI Foundations | Part 1: Resilience by Design</h3>
       <p>Internet on Demand: multi-path, cellular/FWA, satellite, and Wavelength edge for AI uptime.</p>
-      <div class="tags"><span class="tag">Network</span><span class="tag">NaaS</span></div>
+      <div class="tags"><span class="tag">Network</span><span class="tag">NaaS</span><span class="tag">AI Foundations</span></div>
       <div class="li-embed" data-type="linkedin">
         <div class="toolbar">
           <button class="li-view active" data-mode="teaser" type="button">Summary</button>
@@ -448,7 +439,7 @@
     <article id="af-part2" class="card" data-tags="AI Foundations,Cloud,Continuity,Multi-Cloud">
       <h3>AI Foundations | Part 2: Multi-Cloud Continuity</h3>
       <p>Design for continuity: failovers, traffic steering, and clean SLAs. Outages become footnotes.</p>
-      <div class="tags"><span class="tag">Cloud</span><span class="tag">Multi-Cloud</span></div>
+      <div class="tags"><span class="tag">Cloud</span><span class="tag">Multi-Cloud</span><span class="tag">AI Foundations</span></div>
       <div class="li-embed" data-type="linkedin">
         <div class="toolbar">
           <button class="li-view active" data-mode="teaser" type="button">Summary</button>
@@ -462,7 +453,7 @@
     <article id="af-part4" class="card" data-tags="AI Foundations,Cloud,Network,Orchestration,Smart City">
       <h3>AI Foundations | Part 4: Connectivity</h3>
       <p>Passing the baton between edge, 5G overlays, and GPU clouds. Lumen + T-Mobile as the fabric.</p>
-      <div class="tags"><span class="tag">Network</span><span class="tag">Orchestration</span><span class="tag">Smart City</span></div>
+      <div class="tags"><span class="tag">Network</span><span class="tag">Orchestration</span><span class="tag">Smart City</span><span class="tag">AI Foundations</span></div>
       <div class="li-embed" data-type="linkedin">
         <div class="toolbar">
           <button class="li-view active" data-mode="teaser" type="button">Summary</button>
@@ -476,7 +467,7 @@
     <article id="af-part5" class="card" data-tags="AI Foundations,Cloud,GPUaaS,Colocation,Digital Twins">
       <h3>AI Foundations | Part 5: GPUaaS</h3>
       <p>How to choose scalable, resilient GPU clouds. When metal and colocation make sense.</p>
-      <div class="tags"><span class="tag">GPUaaS</span><span class="tag">Colocation</span><span class="tag">Cloud</span></div>
+      <div class="tags"><span class="tag">GPUaaS</span><span class="tag">Colocation</span><span class="tag">Cloud</span><span class="tag">AI Foundations</span></div>
       <div class="li-embed" data-type="linkedin">
         <div class="toolbar">
           <button class="li-view active" data-mode="teaser" type="button">Summary</button>
@@ -490,7 +481,7 @@
     <article id="af-part6" class="card" data-tags="AI Foundations,AI,Analytics,Higher Ed">
       <h3>AI Foundations | Part 6: App Intelligence</h3>
       <p>Culture before code. Vision before velocity. How to align teams and keep transformation accountable.</p>
-      <div class="tags"><span class="tag">AI</span><span class="tag">Analytics</span></div>
+      <div class="tags"><span class="tag">AI</span><span class="tag">Analytics</span><span class="tag">AI Foundations</span></div>
       <div class="li-embed" data-type="linkedin">
         <div class="toolbar">
           <button class="li-view active" data-mode="teaser" type="button">Summary</button>
@@ -713,6 +704,60 @@ document.addEventListener('DOMContentLoaded', function () {
       meta.textContent = `Published: ${pubDate}`;
     });
   })();
+
+  // 5. SERIES FILTER LOGIC (The Fix)
+  (function(){
+    const seriesLinks = document.querySelectorAll('.hero-series-list a');
+    if(!seriesLinks.length) return;
+
+    seriesLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        // Prevent standard hash jump for a second to handle filter logic
+        e.preventDefault();
+        
+        // 1. Get the target ID (e.g., "#af-part1")
+        const targetId = this.getAttribute('href');
+        
+        // 2. Manually trigger the "AI Foundations" filter logic
+        // We set the internal state and then force a re-render that IGNORES the page limit for this specific interaction
+        
+        currentFilter = "AI Foundations"; // This matches the tag on the cards
+        currentPage = 1;
+        
+        // Update UI for buttons
+        filterButtons.forEach(b => b.classList.remove('active'));
+        
+        // Custom Render for Series (shows ALL cards in series, ignoring page limit)
+        const matches = getMatchingCards(); // This will get all 6 parts
+        
+        // Hide all first
+        allCards.forEach(card => card.style.display = 'none');
+        
+        // Show ALL matches (Series mode)
+        matches.forEach(card => card.style.display = '');
+        
+        // Hide pagination since we are showing everything
+        paginationContainer.innerHTML = '';
+        
+        // 3. Scroll to the specific card
+        setTimeout(() => {
+            const targetCard = document.querySelector(targetId);
+            if(targetCard) {
+                targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // Visual cue
+                targetCard.style.transition = "border-color 0.5s ease, box-shadow 0.5s ease";
+                targetCard.style.borderColor = "var(--gold)";
+                targetCard.style.boxShadow = "0 0 20px rgba(255, 215, 0, 0.3)";
+                setTimeout(() => { 
+                    targetCard.style.borderColor = ""; 
+                    targetCard.style.boxShadow = ""; 
+                }, 1500);
+            }
+        }, 100);
+      });
+    });
+  })();
+
 });
 </script>
 </body>
