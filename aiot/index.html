@@ -288,7 +288,7 @@
     
     @media (max-width: 900px) { .siemens-layout { grid-template-columns: 1fr; } }
 
-    /* Video Cards */
+    /* Video Cards - FIX APPLIED HERE */
     .siemens-media { display: flex; flex-direction: column; gap: 20px; }
     .video-card h4 { margin: 0 0 8px; color: #fff; font-size: 1rem; }
     
@@ -297,13 +297,15 @@
       border: 1px solid var(--card-border); cursor: pointer;
     }
     
-    /* --- FIX: Hide iframe initially so button is clickable --- */
     .video-frame iframe { 
       position: absolute; inset: 0; width: 100%; height: 100%; border: 0; 
-      display: none; /* Hidden by default */
+      /* HIDE IFRAME INITIALLY so button is clickable */
+      display: none; 
     }
     
-    .siemens-thumb { width: 100%; height: 100%; object-fit: cover; display: block; border: 0; padding: 0; }
+    .siemens-thumb { 
+      width: 100%; height: 100%; object-fit: cover; display: block; border: 0; padding: 0; cursor: pointer;
+    }
     .play-badge {
       position: absolute; left: 16px; bottom: 16px; background: rgba(0,0,0,0.8); color: #fff;
       padding: 6px 12px; border-radius: 99px; font-size: 0.85rem; font-weight: 600;
@@ -361,7 +363,7 @@
             We lead with Aeris because the facts support it: platform scale from Ericsson’s IoT stack, multi MNO eSIM, deep security, and a carrier agnostic approach tailored to each use case. For industrial operations, Siemens is our leader: Industrial Edge for on line inference and Insights Hub for data twins. Everyone has a niche. We help you find yours.
           </p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="#intake">Start AIoT Discovery</a>
+            <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform" target="_blank" rel="noopener">Start AIoT Discovery</a>
             <a class="btn btn-secondary" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
           </div>
         </div>
@@ -372,13 +374,13 @@
     </section>
 
     <section class="quad">
-      <a href="#intake">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform" target="_blank" rel="noopener">
         <img src="/assets/aiot_quadrant_i5_colors.png?v=5" alt="AIoT Landscape Quadrant" loading="lazy"
              onerror="this.onerror=null;this.style.border='1px solid red';this.alt='Image missing';"/>
       </a>
       <div class="quad-cta-bar">
         <div class="quad-note">Click the quadrant to open the AIoT intake form. We’ll scope connectivity, security, edge, and data pipelines around your outcomes.</div>
-        <a class="btn btn-primary" style="padding:8px 16px; font-size:0.9rem;" href="#intake">Request Pricing</a>
+        <a class="btn btn-primary" style="padding:8px 16px; font-size:0.9rem;" href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform" target="_blank" rel="noopener">Request Pricing</a>
       </div>
     </section>
 
@@ -404,7 +406,7 @@
                 <li>Scrap, rework, and first-pass yield</li>
               </ul>
               <div class="cta-row">
-                <a class="btn btn-primary" href="#intake">Try Insights Hub</a>
+                <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScGju2gmyC-JFM5OP2LsAVaKpC0nxBvGOG0A6o5FE3BysTOSQ/viewform" target="_blank" rel="noopener">Try Insights Hub</a>
               </div>
               <div class="siemens-kpi-col">
                 <div class="kpi-item">
@@ -461,197 +463,4 @@
                 <li>Truck rolls and field maintenance costs</li>
               </ul>
               <div class="cta-row">
-                <a class="btn btn-primary" href="#intake">Start Discovery</a>
-                <a class="btn btn-secondary" href="https://www.aeris.com/resources/with-aeris-bboxx-provides-clean-energy-solutions-to-off-grid-communities/" target="_blank" rel="noopener">Read Case Study</a>
-              </div>
-              <div class="siemens-kpi-col">
-                <div class="kpi-item">
-                  <strong class="knum siemens" data-target="99.9" data-suffix="%">0</strong>
-                  <span>connectivity uptime for critical grid assets.</span>
-                </div>
-                <div class="kpi-item">
-                  <strong class="knum siemens" data-target="30" data-suffix="%">0</strong>
-                  <span>reduction in operational maintenance costs.</span>
-                </div>
-                <div class="kpi-item">
-                  <strong class="knum siemens" data-target="24" data-suffix="/7">0</strong>
-                  <span>remote visibility into off-grid solar assets.</span>
-                </div>
-              </div>
-            </div>
-            
-            <div class="siemens-media">
-              <div class="video-card">
-                <h4>Aeris Intelligent IoT Network</h4>
-                <div class="video-frame siemens-video" data-yt="VHe_bv-QRdc">
-                  <button class="siemens-thumb" type="button">
-                    <img src="https://img.youtube.com/vi/VHe_bv-QRdc/maxresdefault.jpg" alt="Aeris Video Thumb">
-                    <span class="play-badge">▶ Watch Overview</span>
-                  </button>
-                  <iframe loading="lazy" allow="autoplay; fullscreen"></iframe>
-                </div>
-              </div>
-            </div>
-          </div>
-        </details>
-
-        <details><summary>Logistics & Warehousing (Samsara)</summary>
-          <div class="sec siemens-layout">
-            <div class="siemens-copy">
-              <h3>Logistics & Warehousing — Samsara Connected Operations</h3>
-              <p>
-                Stop guessing where your assets are. Samsara merges telematics, asset tracking, and AI cameras into a single pane of glass. From the warehouse floor to the last mile, get real-time visibility that actually connects your physical operations.
-              </p>
-              <h4>What we actually measure</h4>
-              <ul class="kpi-list">
-                <li>Asset utilization and dwell time</li>
-                <li>Fleet safety and driver behavior (AI dash cams)</li>
-                <li>Cold chain temperature compliance</li>
-              </ul>
-              <div class="cta-row">
-                <a class="btn btn-primary" href="#intake">Start Discovery</a>
-                <a class="btn btn-secondary" href="https://www.samsara.com/customers/certarus" target="_blank" rel="noopener">Read Case Study</a>
-              </div>
-              <div class="siemens-kpi-col">
-                <div class="kpi-item">
-                  <strong class="knum siemens" data-target="95" data-suffix="%">0</strong>
-                  <span>invoice automation via digital workflows.</span>
-                </div>
-                <div class="kpi-item">
-                  <strong class="knum siemens" data-target="97" data-suffix="%">0</strong>
-                  <span>reduction in service downtime events.</span>
-                </div>
-                <div class="kpi-item">
-                  <strong class="knum siemens" data-target="30" data-suffix="M+">0</strong>
-                  <span>annual revenue unlocked via efficiency.</span>
-                </div>
-              </div>
-            </div>
-            
-            <div class="siemens-media">
-              <div class="video-card">
-                <h4>Samsara: Operate Smarter</h4>
-                <div class="video-frame siemens-video" data-yt="Mw1DX-iQBCg">
-                  <button class="siemens-thumb" type="button">
-                    <img src="https://img.youtube.com/vi/Mw1DX-iQBCg/maxresdefault.jpg" alt="Samsara Video Thumb">
-                    <span class="play-badge">▶ Watch Overview</span>
-                  </button>
-                  <iframe loading="lazy" allow="autoplay; fullscreen"></iframe>
-                </div>
-              </div>
-            </div>
-          </div>
-        </details>
-      </div>
-
-      <div class="cat-block aiot">
-        <h3 class="cat-header">AIoT — Artificial Intelligence of Things</h3>
-        <p class="cat-desc">The fusion of IoT with AI. Enabling devices to analyze data, make decisions, and act autonomously at the edge without round-tripping to the cloud.</p>
-
-        <details><summary>Smart City</summary><div class="sec"><div class="kpis"><span class="pill">Response Time</span><span class="pill">Energy Savings</span></div><div>Plays: Smart lighting, ALPR edge, flood sensing, air quality networks.</div></div></details>
-        <details><summary>Healthcare</summary><div class="sec"><div class="kpis"><span class="pill">Uptime</span><span class="pill">Compliance</span></div><div>Plays: Zero-touch onboarding, PHI segmentation, anomaly detection.</div></div></details>
-        <details><summary>Retail & CPG</summary><div class="sec"><div class="kpis"><span class="pill">Shrink</span><span class="pill">Conversion</span></div><div>Plays: CV loss prevention, smart shelves, cooler telemetry.</div></div></details>
-      </div>
-
-      <div class="cat-block iot">
-        <h3 class="cat-header">IoT — Internet of Things</h3>
-        <p class="cat-desc">The foundation. Networks of connected devices collecting and exchanging data via sensors, software, and cloud connectivity. Powered by <strong>Aeris</strong>.</p>
-
-        <details><summary>Fleet and Mobility</summary><div class="sec"><div class="kpis"><span class="pill">Fuel Burn</span><span class="pill">Safety Score</span></div><div>Plays: Multi-IMSI eSIM, ADAS vision, cold chain telemetry.</div></div></details>
-      </div>
-
-    </section>
-
-    <section class="cta-rail">
-      <div class="cta-rail-inner">
-        <div>
-          <h3>Ready to turn signals into outcomes?</h3>
-          <p>Two fast paths: scope your use case now or talk it through live. We’ll align connectivity, edge, and data for measurable wins.</p>
-        </div>
-        <div class="cta-row">
-          <a class="btn btn-primary" href="#intake">Start AIoT Discovery</a>
-          <a class="btn btn-secondary" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
-        </div>
-      </div>
-    </section>
-    
-    <section id="intake" class="cta-rail" style="background:transparent; border:none; padding:0;">
-      <div style="width:100%;height:500px;" data-fillout-id="3ANossxqBKus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div><script src="https://server.fillout.com/embed/v1/"></script>
-    </section>
-
-  </main>
-
-  <footer class="footer">
-    <div style="text-align:center; margin-bottom:16px;">
-      © <span id="y"></span> Industry5.pro | Outcome-Obsessed. Supplier-Agnostic. Paid by results.
-    </div>
-    <div class="socials" aria-label="Follow Industry5.pro">
-      <a href="https://www.linkedin.com/in/louis-tortora7/" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.48 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.5h5V24H0V8.5zM8 8.5h4.8v2.1h.07c.67-1.2 2.3-2.47 4.73-2.47 5.06 0 6 3.33 6 7.66V24h-5v-6.8c0-1.62-.03-3.7-2.25-3.7-2.25 0-2.6 1.76-2.6 3.58V24H8V8.5z"/></svg>
-      </a>
-      <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-      </a>
-      <a href="https://www.facebook.com/profile.php?id=61582481880019" target="_blank" rel="noopener" aria-label="Facebook">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.675 0h-21.35C.592 0 0 .592 0 1.325v21.351C0 23.408.592 24 1.325 24h11.49v-9.294H9.691V11.01h3.124V8.414c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.313h3.587l-.467 3.696h-3.12V24h6.117C23.408 24 24 23.408 24 22.676V1.325C24 .592 23.408 0 22.675 0z"/></svg>
-      </a>
-      <a href="https://wa.me/14076945495" target="_blank" rel="noopener" aria-label="WhatsApp">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163A11.867 11.867 0 0 1 0 11.989C0 5.371 5.373 0 11.99 0 18.606 0 24 5.371 24 11.989S18.606 24 11.99 24a11.9 11.9 0 0 1-5.642-1.437L.057 24Zm6.597-3.807c1.676.995 3.276 1.591 5.35 1.593 5.448 0 9.884-4.429 9.884-9.88 0-5.45-4.436-9.88-9.884-9.88-5.449 0-9.88 4.43-9.88 9.88 0 2.266.738 3.891 1.977 5.59L3.5 20.5l3.154-.307zm11.387-5.464c-.066-.11-.242-.176-.506-.307-.264-.132-1.56-.77-1.8-.857-.242-.088-.418-.132-.594.132-.176.264-.682.857-.836 1.033-.154.176-.308.198-.572.066-.264-.132-1.116-.41-2.125-1.308-.785-.7-1.314-1.56-1.469-1.823-.154-.264-.017-.407.115-.539.118-.117.264-.308.396-.462.132-.154.176-.264.264-.44.088-.176.044-.33-.022-.462-.066-.132-.594-1.43-.814-1.958-.214-.514-.432-.445-.594-.453l-.506-.009c-.176 0-.462.066-.704.33-.242.264-.924.902-.924 2.202s.946 2.552 1.077 2.73c.132.176 1.862 2.842 4.508 3.986.63.27 1.122.432 1.505.553.632.202 1.206.174 1.661.105.506-.077 1.56-.638 1.78-1.255.22-.616.22-1.144.154-1.255z"/></svg>
-      </a>
-      <a href="mailto:lou@industry5.pro" aria-label="Email">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20a2 2 0 0 1 2 2v1l-12 7L0 7V6a2 2 0 0 1 2-2zm0 6.236V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-7.764l-9.386 5.52a2 2 0 0 1-2.228 0L2 10.236z"/></svg>
-      </a>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    // Video Embed Logic (FIXED)
-    document.querySelectorAll('.siemens-video').forEach(function(box){
-      var btn = box.querySelector('.siemens-thumb');
-      var iframe = box.querySelector('iframe');
-      var ytId = box.getAttribute('data-yt');
-      if(!btn || !iframe || !ytId) return;
-
-      btn.addEventListener('click', function(){
-        if(!iframe.src){
-          iframe.src = 'https://www.youtube.com/embed/' + ytId + '?autoplay=1&rel=0';
-        }
-        btn.style.display = 'none';
-        iframe.style.display = 'block'; // SHOW IFRAME
-      });
-    });
-
-    // KPI Counters
-    (function(){
-      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      function animateNumber(el, target, duration, suffix){
-        if (reduce){ el.textContent = target + (suffix||""); return; }
-        var start = 0, t0 = performance.now();
-        function frame(t){
-          var p = Math.min(1, (t - t0)/duration);
-          var v = Math.round(start + (target - start) * (1 - Math.pow(1 - p, 3))); // easeOutCubic
-          el.textContent = v + (suffix||"");
-          if (p < 1) requestAnimationFrame(frame);
-        }
-        requestAnimationFrame(frame);
-      }
-
-      var io = new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){
-          if(!entry.isIntersecting) return;
-          var el = entry.target;
-          var target = parseInt(el.getAttribute('data-target'), 10) || 0;
-          var suffix = el.getAttribute('data-suffix') || '';
-          animateNumber(el, target, 1000, suffix);
-          io.unobserve(el);
-        });
-      }, {threshold:0.4});
-
-      document.querySelectorAll('.knum').forEach(function(el){ io.observe(el); });
-    })();
-  </script>
-
-</body>
-</html>
+                <a class="btn btn-primary" href="#intak
