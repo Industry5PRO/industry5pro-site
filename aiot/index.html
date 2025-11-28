@@ -225,13 +225,69 @@
       background-color: #fff; color: #0b1220; transform: translateY(-2px);
     }
 
-    /* Quadrant */
-    .quad {
-      margin: 24px 0; background: #0b111a; border: 1px solid var(--accent);
-      border-radius: 16px; padding: 24px;
-      box-shadow: 0 0 24px rgba(41, 234, 215, 0.15);
+    /* HTML Quadrant Styles */
+    .quad-section {
+      margin: 32px 0; 
+      background: #0b111a; 
+      border: 1px solid var(--accent);
+      border-radius: 16px; 
+      padding: 32px 24px;
+      box-shadow: 0 0 30px rgba(41, 234, 215, 0.15);
     }
-    .quad img { width: 100%; height: auto; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); }
+    .quad-section h2 {
+      font-size: 1.6rem;
+      color: #fff;
+      margin: 0 0 24px;
+    }
+    .quadrant-wrap {
+      position: relative;
+      background: radial-gradient(circle at top, #171a24 0, #080910 52%, #040509 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      aspect-ratio: 16 / 9;
+      min-height: 450px;
+      position: relative;
+      overflow: hidden;
+    }
+    .quad-grid {
+      position: absolute; inset: 12% 8% 12% 8%;
+      background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 10% 10%;
+      border-radius: 4px;
+    }
+    
+    /* Axis Labels */
+    .axis-label { position: absolute; color: var(--text-muted); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+    .axis-y { top: 50%; left: 12px; transform: translateY(-50%) rotate(-90deg); transform-origin: left center; white-space: nowrap; }
+    .axis-x { bottom: 12px; left: 50%; transform: translateX(-50%); white-space: nowrap; }
+    
+    /* Vendor Dots */
+    .vendor-dot {
+      position: absolute; transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      cursor: pointer; transition: z-index 0.2s;
+    }
+    .vendor-dot:hover { z-index: 100; }
+    
+    .dot-mark {
+      width: 16px; height: 16px; border-radius: 50%; border: 2px solid #fff;
+      background: var(--cat-iot); /* Default color */
+      box-shadow: 0 0 12px rgba(255,255,255,0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .vendor-dot:hover .dot-mark { transform: scale(1.4); }
+
+    /* Vendor Colors */
+    .vendor-dot.siemens .dot-mark { background: var(--cat-iiot); box-shadow: 0 0 12px var(--cat-iiot); } /* Orange */
+    .vendor-dot.epicio .dot-mark { background: var(--cat-aiot); box-shadow: 0 0 12px var(--cat-aiot); }   /* Cyan */
+    .vendor-dot.aeris .dot-mark { background: var(--cat-iot); box-shadow: 0 0 12px var(--cat-iot); }      /* Blue */
+    
+    .dot-label {
+      font-size: 0.85rem; color: #fff; font-weight: 600; white-space: nowrap;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.6); padding: 2px 6px; border-radius: 4px;
+    }
+
     .quad-cta-bar {
       display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between;
       margin-top: 18px; padding-top: 18px; border-top: 1px dashed rgba(41, 234, 215, 0.3);
@@ -361,7 +417,7 @@
           <div class="kicker">Carrier Agnostic AIoT</div>
           <h1>Data Driven Quadrant and Industry Applications</h1>
           <p class="sub">
-            We lead with **Aeris** for connectivity because the facts support it: multi-MNO eSIM and deep security. For industrial operations, **Siemens** is our leader with Industrial Edge for on-line inference. For smart cities and retail, **EPIC iO** delivers the AIoT intelligence layer with DeepInsights. Everyone has a niche. We help you find yours.
+            We lead with Aeris because the facts support it: platform scale from Ericsson’s IoT stack, multi MNO eSIM, deep security, and a carrier agnostic approach tailored to each use case. For industrial operations, Siemens is our leader: Industrial Edge for on line inference and Insights Hub for data twins. Everyone has a niche. We help you find yours.
           </p>
           <div class="cta-row">
             <a class="btn btn-primary" href="#intake">Start AIoT Discovery</a>
@@ -374,13 +430,48 @@
       </div>
     </section>
 
-    <section class="quad">
-      <a href="#intake">
-        <img src="/assets/aiot_quadrant_i5_colors.png?v=5" alt="AIoT Landscape Quadrant" loading="lazy"
-             onerror="this.onerror=null;this.style.border='1px solid red';this.alt='Image missing';"/>
-      </a>
+    <section class="quad-section">
+      <h2>AIoT Landscape — Intelligence vs. Industrial Hardening</h2>
+      <div class="quadrant-wrap">
+        <div class="quad-grid"></div>
+
+        <div class="axis-label axis-y">Industrial Hardening & Compliance →</div>
+        <div class="axis-label axis-x">Edge Intelligence & AI Depth →</div>
+
+        <div class="vendor-dot siemens" style="left: 85%; top: 15%;">
+            <div class="dot-mark"></div>
+            <div class="dot-label">Siemens</div>
+        </div>
+
+        <div class="vendor-dot epicio" style="left: 88%; top: 10%;">
+            <div class="dot-mark"></div>
+            <div class="dot-label">EPIC iO</div>
+        </div>
+        
+        <div class="vendor-dot aeris" style="left: 35%; top: 20%;">
+            <div class="dot-mark"></div>
+            <div class="dot-label">Aeris</div>
+        </div>
+
+        <div class="vendor-dot" style="left: 65%; top: 35%;">
+            <div class="dot-mark"></div>
+            <div class="dot-label">Samsara</div>
+        </div>
+
+        <div class="vendor-dot" style="left: 50%; top: 40%;">
+            <div class="dot-mark"></div>
+            <div class="dot-label">Cisco</div>
+        </div>
+
+        <div class="vendor-dot" style="left: 25%; top: 70%;">
+            <div class="dot-mark"></div>
+            <div class="dot-label">Digi</div>
+        </div>
+
+      </div>
+      
       <div class="quad-cta-bar">
-        <div class="quad-note">Click the quadrant to open the AIoT intake form. We’ll scope connectivity, security, edge, and data pipelines around your outcomes.</div>
+        <div class="quad-note">Click "Start Discovery" to see where your use case fits. We align the stack to your specific compliance (IEC 62443, HIPAA) and latency needs.</div>
         <a class="btn btn-primary" style="padding:8px 16px; font-size:0.9rem;" href="#intake">Request Pricing</a>
       </div>
     </section>
@@ -632,7 +723,7 @@
                 </div>
               </div>
                <div class="video-card">
-                <h4>Intel Partner Demo: Smart Cities</h4>
+                <h4>Intel Partner Demo: EPIC iO</h4>
                 <div class="video-frame siemens-video" data-yt="FrVLCoIMom0">
                   <button class="siemens-thumb" type="button">
                     <img src="https://img.youtube.com/vi/FrVLCoIMom0/maxresdefault.jpg" alt="Intel Smart City Demo Thumb">
@@ -681,8 +772,7 @@
             <div class="siemens-media">
               <div class="video-card">
                 <h4>EPIC iO: Connectivity</h4>
-                <div class="video-frame siemens-video" data-yt="gQewQyk8N8Y">
-                  <button class="siemens-thumb" type="button">
+                <div class="video-frame siemens-video" data-yt="gQewQyk8N8Y"> <button class="siemens-thumb" type="button">
                     <img src="https://img.youtube.com/vi/gQewQyk8N8Y/maxresdefault.jpg" alt="EPIC iO Connectivity Thumb">
                     <span class="play-badge">▶ Watch Connectivity</span>
                   </button>
