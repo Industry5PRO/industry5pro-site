@@ -225,13 +225,69 @@
       background-color: #fff; color: #0b1220; transform: translateY(-2px);
     }
 
-    /* Quadrant */
-    .quad {
-      margin: 24px 0; background: #0b111a; border: 1px solid var(--accent);
-      border-radius: 16px; padding: 24px;
-      box-shadow: 0 0 24px rgba(41, 234, 215, 0.15);
+    /* HTML Quadrant Styles */
+    .quad-section {
+      margin: 32px 0; 
+      background: #0b111a; 
+      border: 1px solid var(--accent);
+      border-radius: 16px; 
+      padding: 32px 24px;
+      box-shadow: 0 0 30px rgba(41, 234, 215, 0.15);
     }
-    .quad img { width: 100%; height: auto; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); }
+    .quad-section h2 {
+      font-size: 1.6rem;
+      color: #fff;
+      margin: 0 0 24px;
+    }
+    .quadrant-wrap {
+      position: relative;
+      background: radial-gradient(circle at top, #171a24 0, #080910 52%, #040509 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      aspect-ratio: 16 / 9;
+      min-height: 450px;
+      position: relative;
+      overflow: hidden;
+    }
+    .quad-grid {
+      position: absolute; inset: 12% 8% 12% 8%;
+      background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 10% 10%;
+      border-radius: 4px;
+    }
+    
+    /* Axis Labels */
+    .axis-label { position: absolute; color: var(--text-muted); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+    .axis-y { top: 50%; left: 12px; transform: translateY(-50%) rotate(-90deg); transform-origin: left center; white-space: nowrap; }
+    .axis-x { bottom: 12px; left: 50%; transform: translateX(-50%); white-space: nowrap; }
+    
+    /* Vendor Dots */
+    .vendor-dot {
+      position: absolute; transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      cursor: pointer; transition: z-index 0.2s;
+    }
+    .vendor-dot:hover { z-index: 100; }
+    
+    .dot-mark {
+      width: 16px; height: 16px; border-radius: 50%; border: 2px solid #fff;
+      background: var(--cat-iot); /* Default color */
+      box-shadow: 0 0 12px rgba(255,255,255,0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .vendor-dot:hover .dot-mark { transform: scale(1.4); }
+
+    /* Vendor Colors */
+    .vendor-dot.siemens .dot-mark { background: var(--cat-iiot); box-shadow: 0 0 12px var(--cat-iiot); } /* Orange */
+    .vendor-dot.epicio .dot-mark { background: var(--cat-aiot); box-shadow: 0 0 12px var(--cat-aiot); }   /* Cyan */
+    .vendor-dot.aeris .dot-mark { background: var(--cat-iot); box-shadow: 0 0 12px var(--cat-iot); }      /* Blue */
+    
+    .dot-label {
+      font-size: 0.85rem; color: #fff; font-weight: 600; white-space: nowrap;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.6); padding: 2px 6px; border-radius: 4px;
+    }
+
     .quad-cta-bar {
       display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between;
       margin-top: 18px; padding-top: 18px; border-top: 1px dashed rgba(41, 234, 215, 0.3);
@@ -342,11 +398,11 @@
       <nav class="main-nav">
         <a href="/">Home</a>
         <a href="/ai">AI &<br>Omnichannel</a>
-        <a href="/cyber">Security &<br>Backup</a>
+        <a href="/cyber">Security</a>
         <a href="/cloud20">Cloud 2.0 &<br>Network</a>
-        <a href="/ccaas">UC &<br>Contact Center</a>        
-        <a href="/peplink">5G &<br>Satellite</a>
+        <a href="/ccaas">UC &<br>Contact Center</a>
         <a href="/aiot" class="active">AIoT</a>
+        <a href="/peplink">5G &<br>Satellite</a>
         <a href="/ai-sdr.html" class="nav-sdr">AI SDR</a>
         <a href="/blog">Blog</a>
         <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
@@ -374,13 +430,48 @@
       </div>
     </section>
 
-    <section class="quad">
-      <a href="#intake">
-        <img src="/assets/aiot_quadrant_i5_colors.png?v=5" alt="AIoT Landscape Quadrant" loading="lazy"
-             onerror="this.onerror=null;this.style.border='1px solid red';this.alt='Image missing';"/>
-      </a>
+    <section class="quad-section">
+      <h2>AIoT Landscape — Intelligence vs. Industrial Hardening</h2>
+      <div class="quadrant-wrap">
+        <div class="quad-grid"></div>
+
+        <div class="axis-label axis-y">Industrial Hardening & Compliance →</div>
+        <div class="axis-label axis-x">Edge Intelligence & AI Depth →</div>
+
+        <div class="vendor-dot siemens" style="left: 85%; top: 15%;">
+            <div class="dot-mark"></div>
+            <div class="dot-label">Siemens</div>
+        </div>
+
+        <div class="vendor-dot epicio" style="left: 88%; top: 10%;">
+            <div class="dot-mark"></div>
+            <div class="dot-label">EPIC iO</div>
+        </div>
+        
+        <div class="vendor-dot aeris" style="left: 35%; top: 20%;">
+            <div class="dot-mark"></div>
+            <div class="dot-label">Aeris</div>
+        </div>
+
+        <div class="vendor-dot" style="left: 65%; top: 35%;">
+            <div class="dot-mark"></div>
+            <div class="dot-label">Samsara</div>
+        </div>
+
+        <div class="vendor-dot" style="left: 50%; top: 40%;">
+            <div class="dot-mark"></div>
+            <div class="dot-label">Cisco</div>
+        </div>
+
+        <div class="vendor-dot" style="left: 25%; top: 70%;">
+            <div class="dot-mark"></div>
+            <div class="dot-label">Digi</div>
+        </div>
+
+      </div>
+      
       <div class="quad-cta-bar">
-        <div class="quad-note">Click the quadrant to open the AIoT intake form. We’ll scope connectivity, security, edge, and data pipelines around your outcomes.</div>
+        <div class="quad-note">Click "Start Discovery" to see where your use case fits. We align the stack to your specific compliance (IEC 62443, HIPAA) and latency needs.</div>
         <a class="btn btn-primary" style="padding:8px 16px; font-size:0.9rem;" href="#intake">Request Pricing</a>
       </div>
     </section>
@@ -429,7 +520,7 @@
         <h3 class="cat-header">IIoT — Industrial Internet of Things</h3>
         <p class="cat-desc">Specialized branch focusing on industrial machines, systems, and operations. High availability, legacy OT integration, and heavy duty automation.</p>
 
-        <details open>
+        <details>
           <summary>Manufacturing (Siemens)</summary>
           <div class="sec siemens-layout">
             <div class="siemens-copy">
@@ -571,9 +662,9 @@
             <div class="siemens-media">
               <div class="video-card">
                 <h4>Samsara: Operate Smarter</h4>
-                <div class="video-frame siemens-video" data-yt="XhzO8W5FDag">
+                <div class="video-frame siemens-video" data-yt="Mw1DX-iQBCg">
                   <button class="siemens-thumb" type="button">
-                    <img src="https://img.youtube.com/vi/XhzO8W5FDag/maxresdefault.jpg" alt="Samsara Video Thumb">
+                    <img src="https://img.youtube.com/vi/Mw1DX-iQBCg/maxresdefault.jpg" alt="Samsara Video Thumb">
                     <span class="play-badge">▶ Watch Overview</span>
                   </button>
                   <iframe loading="lazy" allow="autoplay; fullscreen"></iframe>
@@ -746,7 +837,7 @@
         <h3 class="cat-header">IoT — Internet of Things</h3>
         <p class="cat-desc">The foundation. Networks of connected devices collecting and exchanging data via sensors, software, and cloud connectivity. Powered by <strong>Aeris</strong>.</p>
 
-        <details open><summary>Fleet and Mobility (Aeris)</summary>
+        <details><summary>Fleet and Mobility (Aeris)</summary>
           <div class="sec siemens-layout">
             <div class="siemens-copy">
               <h3>Fleet & Mobility — Aeris Intelligent Fleet</h3>
@@ -797,7 +888,19 @@
 
     </section>
 
-     
+    <section class="cta-rail">
+      <div class="cta-rail-inner">
+        <div>
+          <h3>Ready to turn signals into outcomes?</h3>
+          <p>Two fast paths: scope your use case now or talk it through live. We’ll align connectivity, edge, and data for measurable wins.</p>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#intake">Start AIoT Discovery</a>
+          <a class="btn btn-secondary" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
+        </div>
+      </div>
+    </section>
+    
     <section id="intake" class="cta-rail" style="background:transparent; border:none; padding:0;">
       <div style="width:100%;height:500px;" data-fillout-id="3ANossxqBKus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div><script src="https://server.fillout.com/embed/v1/"></script>
     </section>
