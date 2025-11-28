@@ -17,14 +17,20 @@
 
 <meta name="color-scheme" content="dark">
 
+<link rel="icon" href="/assets/favicon.ico" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
 <style>
  /* --- CORE VARIABLES (AI PAGE THEME: DRUID GREEN) --- */
  :root {
     --bg: #1B1B1D;
     --panel: #232326;
+    --card-bg: #1B1B1D; 
+    --card-border: rgba(255, 255, 255, 0.1);
     --text: #e8eef9;
-    --muted: #A9A9AD;
+    --text-muted: #A9A9AD;
     --line: rgba(255,255,255,0.08);
+    --outline: #2C2C30;
     
     /* Page Specific Accents */
     --accent: #1DDF5A;           /* Druid Neon Green */
@@ -35,10 +41,14 @@
 
   /* --- RESET & BASE --- */
   html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+  *, *:before, *:after { box-sizing: inherit; }
   a{color:inherit;text-decoration:none;transition:color .2s ease;}
   a:hover{text-decoration:none;}
   img{max-width:100%;display:block}
   button{font-family:inherit;}
+  section{padding:42px 0;border-top:1px solid var(--outline)}
+  section:first-of-type { border-top: none; }
+  .anchor{scroll-margin-top:90px}
 
   /* --- 3. MASTER HEADER & NAV --- */
   header {
@@ -142,7 +152,7 @@
   /* === PAGE CONTENT STYLES === */
   .wrap{max-width:1120px;margin:0 auto;padding:0 16px}
 
-  .hero{ padding: 40px 0 20px; margin: 0; }
+  .hero{ padding: 40px 0 20px; margin: 0; border-top: none; }
   .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:center}
   @media (max-width:980px){ .hero-grid{grid-template-columns:1fr} .hero-portrait{display:none} }
   
@@ -172,7 +182,13 @@
   }
 
   .hero-portrait{display:flex;justify-content:flex-end}
-  .hero-portrait img{width:100%;max-width:340px;height:auto;object-fit:contain;filter:drop-shadow(0 10px 22px rgba(0,0,0,.35))}
+  .hero-portrait img{
+      width:100%;
+      max-width:340px; /* MATCHING OTHER PAGES */
+      height:auto;
+      object-fit:contain;
+      filter:drop-shadow(0 10px 22px rgba(0,0,0,.35))
+  }
 
   /* Feature Section */
   .feature{
@@ -241,6 +257,15 @@
   .bbg-embed{ position:relative; width:100%; padding-bottom:56.25%; border:1px solid rgba(255,255,255,.14); border-radius:12px; overflow:hidden; }
   .bbg-embed iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; display:block; }
 
+  /* FAQ / OBJECTION HANDLING */
+  .card-faq {
+      background: var(--panel);
+      border-radius: 16px;
+      border: 1px solid var(--card-border);
+      padding: 24px;
+      margin: 24px 0;
+  }
+
   /* Footer */
   .footer{border-top:1px solid var(--line);margin-top:40px;padding:32px 20px;text-align:center;color:var(--muted)}
   .socials{display:flex;gap:16px;justify-content:center;margin-top:16px}
@@ -261,12 +286,12 @@
     <nav class="main-nav">
       <a href="/">Home</a>
       <a href="/ai" class="active">AI &<br>Omnichannel</a>
-      <a href="/cyber">Security &<br>Backup</a>
+      <a href="/cyber">Security</a>
       <a href="/cloud20">Cloud 2.0 &<br>Network</a>
       <a href="/ccaas">UC &<br>Contact Center</a>
-      <a href="/peplink">5G &<br>Satellite</a>
       <a href="/aiot">AIoT</a>
-      <a href="/sdr" class="nav-sdr">AI SDR</a>
+      <a href="/peplink">5G &<br>Satellite</a>
+      <a href="/ai-sdr.html" class="nav-sdr">AI SDR</a>
       <a href="/blog">Blog</a>
       <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
     </nav>
@@ -285,7 +310,7 @@
           When a platform change is smart, evaluate options with uptime, identity, and compliance in mind. Outcomes first, tools second.
         </p>
         <div class="cta-row">
-          <a class="btn primary" href="#form">Start AI Readiness</a>
+          <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform" target="_blank" rel="noopener">Start AI Readiness</a>
           <a class="btn btn-outline-green" href="https://www.druidai.com/case-studies" target="_blank" rel="noopener">See DRUID case studies</a>
         </div>
       </div>
@@ -437,16 +462,38 @@
         ></iframe>
       </div>
       <p class="blurb">
-        (AI Conversation starts @ 5:00) Start by eliminating the no joy work. That is the spark. Then leap from step one to step ten by rethinking the whole process. 
+        Start by eliminating the no joy work. That is the spark. Then leap from step one to step ten by rethinking the whole process. 
         AI is not replacing people, it multiplies potential. Curiosity becomes advantage, and execution gets faster, cheaper, and better.
       </p>
     </div>
   </section>
 
-<section id="form" class="anchor" style="padding: 40px 0;">
-    <div class="form-wrap" style="border:none; background:transparent; padding:0; margin: 0 auto; max-width: 900px;">
-      <div style="width:100%;height:600px;" data-fillout-id="wUKds7gtKLus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
-      <script src="https://server.fillout.com/embed/v1/"></script>
+  <section class="card-faq" style="margin-top: 42px;">
+    <h2 style="color: #fff; font-size: 1.6rem; margin-bottom: 24px;">Common Questions & Architectural Philosophy</h2>
+    
+    <div style="display: grid; gap: 24px;">
+      
+      <div style="padding-bottom: 20px; border-bottom: 1px solid var(--line);">
+        <h3 style="color: var(--accent); font-size: 1.15rem; margin: 0 0 8px;">"Have you ever built an AI agent before?"</h3>
+        <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">
+          Building an agent is like building a house. You *can* do it yourself, or hire a single contractor (the vendor), but without an architect, you risk ending up with a structure that collapses under load. We act as that architect—ensuring your agent is built on a solid foundation of data integrity, security, and scalability.
+        </p>
+      </div>
+
+      <div style="padding-bottom: 20px; border-bottom: 1px solid var(--line);">
+        <h3 style="color: var(--accent); font-size: 1.15rem; margin: 0 0 8px;">"Why shouldn't I just go direct to Druid?"</h3>
+        <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">
+          When you speak to a single supplier, you see the world through their lens—and their bias. They sell features; we sell outcomes. By engaging through Industry5, you get their technology *plus* our unbiased architectural oversight. We ensure the solution fits *your* environment, not just their sales deck.
+        </p>
+      </div>
+
+      <div>
+        <h3 style="color: var(--accent); font-size: 1.15rem; margin: 0 0 8px;">"Does it matter which platform we choose?"</h3>
+        <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">
+          Honestly? The specific logo on the box matters less than the implementation. What matters is that it <strong>sticks</strong>. Our role is to ensure adoption, integration, and ROI so you can leapfrog your competition fast, regardless of whether the engine is Druid, Microsoft, or Google.
+        </p>
+      </div>
+
     </div>
   </section>
 
@@ -457,89 +504,74 @@
     <div>© <span id="y"></span> Industry5.pro | Built on trust. Paid by results.</div>
     <div class="socials">
       <a href="https://www.linkedin.com/in/louis-tortora7/" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.48 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.8 2.67 4.8 6.14V23h-4v-6.5c0-1.55-.03-3.55-2.17-3.55-2.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.48 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.8 2.67 4.8 6.14V23h-4v-6.5c0-1.55-.03-3.55-2.17-3.55-2.17 0-2.5 1.7-2.5 3.45V23h-4V8.5z"/></svg>
       </a>
       <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 1.9.25 2.3.42.6.23 1.1.52 1.6.97.46.45.75 1 .97 1.6.17.4.36 1.1.36 2.3.07 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 1.9-.42 2.3a4 4 0 0 1-.97 1.6 4 4 0 0 1-1.6.97c-.4.17-1.1.36-2.3.42-1.3.07-1.7.07-4.9.07s-3.5 0-4.9-.07c-1.2-.06-1.9-.25-2.3-.42a4 4 0 0 1-1.6-.97 4 4 0 0 1-.97-1.6c-.17-.4-.36-1.1-.42-2.3C3.2 15.6 3.2 15.2 3.2 12s0-3.6.07-4.9c.06-1.2.25-1.9.42-2.3.23-.6.52-1.1.97-1.6.45-.46 1-.75 1.6-.97.4-.17 1.1-.36 2.3-.42C8.4 2.2 8.8 2.2 12 2.2Z"/></svg>
       </a>
       <a href="https://www.facebook.com/profile.php?id=61582481880019" target="_blank" rel="noopener" aria-label="Facebook">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.675 0h-21.35C.592 0 0 .592 0 1.325v21.351C0 23.408.592 24 1.325 24h11.49v-9.294H9.691V11.01h3.124V8.414c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.313h3.587l-.467 3.696h-3.12V24h6.117C23.408 24 24 23.408 24 22.676V1.325C24 .592 23.408 0 22.675 0z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.07C22 6.49 17.52 2 11.93 2 6.35 2 1.86 6.49 1.86 12.07c0 5.02 3.66 9.18 8.44 9.95v-7.03H7.9V12.1h2.4V9.86c0-2.37 1.4-3.68 3.55-3.68 1.03 0 2.11.18 2.11.18v2.32h-1.19c-1.17 0-1.53.73-1.53 1.47v1.95h2.61l-.46 2.89h-2.19v7.03c4.78-.77 8.44-4.93 8.44-9.95z"/></svg>
       </a>
       <a href="https://wa.me/14076945495" target="_blank" rel="noopener" aria-label="WhatsApp">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163A11.867 11.867 0 0 1 0 11.989C0 5.371 5.373 0 11.99 0 18.606 0 24 5.371 24 11.989S18.606 24 11.99 24a11.9 11.9 0 0 1-5.642-1.437L.057 24Zm6.597-3.807c1.676.995 3.276 1.591 5.35 1.593 5.448 0 9.884-4.429 9.884-9.88 0-5.45-4.436-9.88-9.884-9.88-5.449 0-9.88 4.43-9.88 9.88 0 2.266.738 3.891 1.977 5.59L3.5 20.5l3.154-.307zm11.387-5.464c-.066-.11-.242-.176-.506-.307-.264-.132-1.56-.77-1.8-.857-.242-.088-.418-.132-.594.132-.176.264-.682.857-.836 1.033-.154.176-.308.198-.572.066-.264-.132-1.116-.41-2.125-1.308-.785-.7-1.314-1.56-1.469-1.823-.154-.264-.017-.407.115-.539.118-.117.264-.308.396-.462.132-.154.176-.264.264-.44.088-.176.044-.33-.022-.462-.066-.132-.594-1.43-.814-1.958-.214-.514-.432-.445-.594-.453l-.506-.009c-.176 0-.462.066-.704.33-.242.264-.924.902-.924 2.202s.946 2.552 1.077 2.73c.132.176 1.862 2.842 4.508 3.986.63.27 1.122.432 1.505.553.632.202 1.206.174 1.661.105.506-.077 1.56-.638 1.78-1.255.22-.616.22-1.144.154-1.255z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163A11.867 11.867 0 0 1 0 11.989C0 5.371 5.373 0 11.99 0 18.606 0 24 5.371 24 11.989S18.606 24 11.99 24a11.9 11.9 0 0 1-5.642-1.437L.057 24Zm6.597-3.807c1.676.995 3.276 1.591 5.35 1.593 5.448 0 9.884-4.429 9.884-9.88 0-5.45-4.436-9.88-9.884-9.88-5.449 0-9.88 4.43-9.88 9.88 0 2.266.738 3.891 1.977 5.59L3.5 20.5l3.154-.307zm11.387-5.464c-.066-.11-.242-.176-.506-.307-.264-.132-1.56-.77-1.8-.857-.242-.088-.418-.132-.594.132-.176.264-.682.857-.836 1.033-.154.176-.308.198-.572.066-.264-.132-1.116-.41-2.125-1.308-.785-.7-1.314-1.56-1.469-1.823-.154-.264-.017-.407.115-.539.118-.117.264-.308.396-.462.132-.154.176-.264.264-.44.088-.176.044-.33-.022-.462-.066-.132-.594-1.43-.814-1.958-.214-.514-.432-.445-.594-.453l-.506-.009c-.176 0-.462.066-.704.33-.242.264-.924.902-.924 2.202s.946 2.552 1.077 2.73c.132.176 1.862 2.842 4.508 3.986.63.27 1.122.432 1.505.553.632.202 1.206.174 1.661.105.506-.077 1.56-.638 1.78-1.255.22-.616.22-1.144.154-1.255z"/></svg>
       </a>
       <a href="mailto:lou@industry5.pro" aria-label="Email">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 4h20a2 2 0 0 1 2 2v1l-12 7L0 7V6a2 2 0 0 1 2-2zm0 6.236V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-7.764l-9.386 5.52a2 2 0 0 1-2.228 0L2 10.236z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20a2 2 0 0 1 2 2v1l-12 7L0 7V6a2 2 0 0 1 2-2zm0 6.236V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-7.764l-9.386 5.52a2 2 0 0 1-2.228 0L2 10.236z"/></svg>
       </a>
     </div>
   </div>
 </footer>
 
 <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll('#druid-feature .yt-lite').forEach(function(el){
-    var id = el.dataset.id; if(!id) return;
-
-    // crisp poster
-    var hi = new Image();
-    hi.onload = function(){ el.style.backgroundImage = "url('"+hi.src+"')"; };
-    hi.onerror = function(){ el.style.backgroundImage = "url('https://img.youtube.com/vi/"+id+"/sddefault.jpg')"; };
-    hi.src = "https://img.youtube.com/vi/"+id+"/maxresdefault.jpg";
-
-    // click to play INSIDE wrapper
-    el.addEventListener('click', function(){
-      if (el.classList.contains('playing')) return;
-      el.classList.add('playing');
-      var iframe = document.createElement('iframe');
-      iframe.src = "https://www.youtube.com/embed/"+id+"?autoplay=1&rel=0";
-      iframe.setAttribute('allow',"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
-      iframe.allowFullscreen = true;
-      iframe.referrerPolicy = "strict-origin-when-cross-origin";
-      Object.assign(iframe.style,{position:'absolute',inset:'0',width:'100%',height:'100%',border:'0'});
-      el.appendChild(iframe);
-    }, {passive:true});
-  });
-});
-</script>
 <script>
 (function(){
-  // Respect users who prefer reduced motion
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
-
-  function animateNumber(el, target, duration, suffix){
-    if (reduce){ el.textContent = target + (suffix||""); return; }
-    var start = 0, t0 = performance.now();
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function easeOutCubic(t){return 1-Math.pow(1-t,3)}
+  function animateNumber(el,target,duration,suffix){
+    if(reduce){el.textContent=target+(suffix||"");return;}
+    var start=0, t0=performance.now();
     function frame(t){
-      var p = Math.min(1, (t - t0)/duration);
-      var v = Math.round(start + (target - start) * easeOutCubic(p));
-      el.textContent = v + (suffix||"");
-      if (p < 1) requestAnimationFrame(frame);
+      var p=Math.min(1,(t-t0)/duration);
+      var v=Math.round(start+(target-start)*easeOutCubic(p));
+      el.textContent=v+(suffix||"");
+      if(p<1)requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);
   }
-
-  // Observe KPI numbers only in the DRUID feature section
-  var seen = new WeakSet();
-  var io = new IntersectionObserver(function(entries){
+  var seen=new WeakSet();
+  var io=new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
-      if (!entry.isIntersecting) return;
-      var el = entry.target;
-      if (seen.has(el)) return;
+      if(!entry.isIntersecting)return;
+      var el=entry.target;
+      if(seen.has(el))return;
       seen.add(el);
-      var target = parseInt(el.getAttribute('data-target'), 10) || 0;
-      var suffix = el.getAttribute('data-suffix') || '';
-      animateNumber(el, target, 900, suffix);  // ~0.9s per number
+      var target=parseInt(el.getAttribute('data-target'),10)||0;
+      var suffix=el.getAttribute('data-suffix')||'';
+      animateNumber(el,target,900,suffix);
     });
-  }, { root: null, rootMargin: '0px 0px -20% 0px', threshold: 0.4 });
-
-  document.querySelectorAll('#druid-feature .knum').forEach(function(el){
-    io.observe(el);
-  });
+  },{threshold:0.4});
+  document.querySelectorAll('#druid-feature .knum').forEach(function(el){io.observe(el);});
 })();
+
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('#druid-feature .yt-lite').forEach(function(el){
+    var id=el.dataset.id;if(!id)return;
+    var hi=new Image();
+    hi.onload=function(){el.style.backgroundImage="url('"+hi.src+"')";};
+    hi.src="https://img.youtube.com/vi/"+id+"/maxresdefault.jpg";
+    el.addEventListener('click',function(){
+      if(el.classList.contains('playing'))return;
+      el.classList.add('playing');
+      var iframe=document.createElement('iframe');
+      iframe.src="https://www.youtube.com/embed/"+id+"?autoplay=1&rel=0";
+      iframe.setAttribute('allow',"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+      iframe.allowFullscreen=true;
+      iframe.referrerPolicy="strict-origin-when-cross-origin";
+      Object.assign(iframe.style,{position:'absolute',inset:'0',width:'100%',height:'100%',border:'0'});
+      el.appendChild(iframe);
+    },{passive:true});
+  });
+});
 </script>
 
 </body>
