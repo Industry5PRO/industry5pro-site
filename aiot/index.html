@@ -45,8 +45,16 @@
       --cat-infra: #FF4F1F; /* Infrastructure Red/Orange */
     }
     
-    /* --- RESET & BASE --- */
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial; box-sizing: border-box;}
+    /* --- RESET & BASE (UPDATED FOR MOBILE STICKY FIX) --- */
+    html, body {
+      margin: 0; 
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial; 
+      box-sizing: border-box;
+      overflow-x: clip; /* FIX: Prevents horizontal scroll without breaking sticky */
+    }
     *, *:before, *:after { box-sizing: inherit; }
     a{color:inherit;text-decoration:none;transition:color .2s ease;}
     a:hover{text-decoration:none;}
@@ -56,12 +64,16 @@
     section:first-of-type { border-top: none; }
     .anchor{scroll-margin-top:90px}
 
-    /* --- 3. MASTER HEADER & NAV --- */
+    /* --- 3. MASTER HEADER & NAV (UPDATED) --- */
     header {
-      position: sticky; top: 0; z-index: 99999;
+      position: -webkit-sticky; /* Safari Requirement */
+      position: sticky; 
+      top: 0; 
+      z-index: 99999;
       background: linear-gradient(180deg,rgba(27,27,29,0.95),rgba(27,27,29,0.85));
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--line);
+      width: 100%;
     }
     
     .header-center {
