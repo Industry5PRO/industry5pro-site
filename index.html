@@ -239,11 +239,18 @@
     }
     .service-card h3 { color: #fff; margin: 0 0 10px; font-size: 1.25rem; }
     .service-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; flex-grow: 1; }
+    
+    /* Updated: Service Link Glows Gold on Hover */
     .service-link {
       margin-top: 16px; font-weight: 700; color: var(--accent); text-decoration: none;
       border-bottom: 1px dashed transparent; width: fit-content;
+      transition: all 0.2s ease;
     }
-    .service-link:hover { border-bottom-color: var(--accent); }
+    .service-link:hover { 
+        color: var(--gold); 
+        border-bottom-color: var(--gold);
+        text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+    }
 
     @media (max-width: 900px) {
       .services-grid { grid-template-columns: 1fr; }
@@ -261,6 +268,20 @@
     .stat span { font-size: 0.9rem; color: var(--text-muted); margin-top: 4px; }
     
     @media (max-width: 800px) { .about-split { grid-template-columns: 1fr; } }
+
+    /* Latest Thinking Link Styles */
+    .latest-link {
+        color: #fff;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 4px;
+        text-decoration: none;
+        transition: color 0.2s ease, text-shadow 0.2s ease;
+    }
+    .latest-link:hover {
+        color: var(--gold) !important;
+        text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+    }
 
     /* Coming Soon: SDR */
     .sdr-banner {
@@ -319,7 +340,7 @@
           </div>
         </div>
         <figure class="hero-photo">
-          <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora" />
+          <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora" width="380" height="380" />
         </figure>
       </div>
     </section>
@@ -389,21 +410,8 @@
       </div>
       <div style="background: var(--panel); padding: 32px; border-radius: 16px; border: 1px solid var(--card-border);">
         <h3 style="color:#fff; margin-top:0;">Latest Thinking</h3>
-        <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-muted);">
-          
-          <li style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--line);">
-            <a href="/blog#post-reckoning-2025" style="color: #fff; font-weight: 600; display: block; margin-bottom: 4px;">The Reckoning: 2025 is "Just Enough AI"</a>
-            <span style="font-size: 0.9rem;">Moving past hype to pragmatic adoption and ROI.</span>
-          </li>
-          
-          <li style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--line);">
-            <a href="/blog#post-ai-glass-ceiling" style="color: #fff; font-weight: 600; display: block; margin-bottom: 4px;">The AI "Glass Ceiling" is Physics</a>
-            <span style="font-size: 0.9rem;">Why 400G is the only infrastructure test that matters.</span>
-          </li>
-          
-          <li>
-            <a href="/blog" style="color: var(--accent); font-weight: 700; font-size: 0.9rem;">View all insights &rarr;</a>
-          </li>
+        <ul id="latest-thinking-list" style="list-style: none; padding: 0; margin: 0; color: var(--text-muted);">
+          <li style="padding:12px 0;">Loading insights...</li>
         </ul>
       </div>
     </section>
@@ -442,7 +450,48 @@
   </footer>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  (async function updateLatestThinking() {
+    try {
+      const response = await fetch('/blog'); // Fetches your blog page
+      const text = await response.text();
+      
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(text, 'text/html');
+      
+      const articles = doc.querySelectorAll('.grid article');
+      const list = document.getElementById('latest-thinking-list');
+      
+      if (articles.length > 0 && list) {
+        list.innerHTML = ''; // Clear placeholder
+        
+        for (let i = 0; i < 2 && i < articles.length; i++) {
+          const art = articles[i];
+          const title = art.querySelector('h3').innerText;
+          const desc = art.querySelector('p').innerText.substring(0, 60) + '...';
+          const id = art.id;
+          
+          const li = document.createElement('li');
+          li.style.cssText = 'margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--line);';
+          
+          // Use class="latest-link" to apply the CSS Gold Glow
+          li.innerHTML = `
+            <a href="/blog#${id}" class="latest-link">${title}</a>
+            <span style="font-size: 0.9rem;">${desc}</span>
+          `;
+          list.appendChild(li);
+        }
+        
+        const viewAll = document.createElement('li');
+        viewAll.innerHTML = `<a href="/blog" style="color: var(--accent); font-weight: 700; font-size: 0.9rem;">View all insights &rarr;</a>`;
+        list.appendChild(viewAll);
+      }
+    } catch (e) {
+      console.log('Could not fetch latest blog posts:', e);
+    }
+  })();
   </script>
+
 </body>
 </html>
