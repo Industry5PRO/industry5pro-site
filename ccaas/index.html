@@ -369,13 +369,40 @@
       margin: 20px auto 40px;
       max-width: 900px;
     }
+/* --- POTS/ACCORDION STYLES --- */
+details {
+  background: var(--panel); 
+  border: 1px solid var(--card-border); 
+  border-radius: 12px; 
+  padding: 16px 20px;
+  transition: border-color 0.2s ease;
+}
+details:hover { border-color: var(--accent); }
+summary { 
+  font-weight: 700; font-size: 1.15rem; color: #fff; 
+  cursor: pointer; list-style: none; outline: none; 
+  display: flex; justify-content: space-between; align-items: center;
+}
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; color: var(--accent); font-weight: 800; font-size: 1.4rem; }
+details[open] summary::after { content: "-"; }
 
+.pots-content { 
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 32px; 
+  align-items: start; margin-top: 24px; border-top: 1px solid var(--line); padding-top: 24px;
+}
+.pots-cert-box {
+  background: #141414; padding: 24px; border-radius: 12px; 
+  border: 1px solid rgba(255,255,255,0.1);
+}
+@media (max-width: 900px) { .pots-content { grid-template-columns: 1fr; } }
     /* Footer */
     .footer{border-top:1px solid var(--line);margin-top:40px;padding:32px 20px;text-align:center;color:var(--text-muted)}
     .socials{display:flex;gap:16px;justify-content:center;margin-top:16px}
     .socials a{color:#fff;transition:all .2s ease}
     .socials a:hover{color:var(--accent);transform:translateY(-2px);text-shadow:0 0 10px var(--accent)}
     .socials svg{width:24px;height:24px;fill:currentColor}
+  
   </style>
 </head>
 
@@ -543,6 +570,56 @@
           <iframe src="/assets/lumen-cloud-voice-data-sheet.pdf#view=FitH" title="Lumen Cloud Voice Data Sheet" loading="lazy"></iframe>
         </div>
       </section>
+
+      <section class="card" id="pots-replacement">
+  <h2 style="margin-bottom: 20px; font-size: 1.6rem;">Infrastructure Modernization</h2>
+  
+  <details>
+    <summary>POTS Replacement (Fire, Elevator, Fax) — EPIC iO</summary>
+    
+    <div class="pots-content">
+      <div>
+        <h3 style="color:#fff; margin:0 0 12px; font-size:1.3rem;">Compliant LTE/5G POTS Replacement</h3>
+        <p style="color:var(--text-muted); line-height:1.6;">
+          Carriers are killing copper lines, and the cost to maintain the remaining ones is skyrocketing. We deploy a "One Box" solution that converts legacy analog signals (Fire Panels, Elevator Phones, Blue Light Towers) to reliable LTE/5G connectivity.
+        </p>
+        
+        <h4 style="color:#fff; margin:20px 0 10px;">Why this matters now</h4>
+        <ul style="padding-left:20px; color:var(--text-muted); line-height:1.8; margin-bottom:24px;">
+          <li><strong>Compliance:</strong> NFPA 72, UL 864, and ASME A17.1 certified.</li>
+          <li><strong>Reliability:</strong> 24-hour battery backup included (works when power fails).</li>
+          <li><strong>Cost:</strong> Immediate 20-50% savings vs. legacy carrier copper bills.</li>
+        </ul>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Get a POTS Audit</a>
+          <a class="btn btn-secondary" href="/assets/POTS Replacement Solution.pdf" target="_blank" rel="noopener">Download Solution Brief</a>
+        </div>
+      </div>
+
+      <div class="pots-cert-box">
+        <h4 style="color: var(--accent); margin: 0 0 16px; font-size: 1.1rem;">Key Certifications</h4>
+        <ul style="list-style: none; padding: 0; font-size: 0.95rem; color: #e8eef9;">
+            <li style="margin-bottom: 12px; display:flex; gap:10px;">
+              <span>✅</span> <strong>Fire Marshal Approved:</strong> 50 States
+            </li>
+            <li style="margin-bottom: 12px; display:flex; gap:10px;">
+              <span>✅</span> <strong>Elevator Code:</strong> ASME A17.1
+            </li>
+            <li style="margin-bottom: 12px; display:flex; gap:10px;">
+              <span>✅</span> <strong>Healthcare:</strong> HIPAA Compliant Fax
+            </li>
+            <li style="margin-bottom: 12px; display:flex; gap:10px;">
+              <span>✅</span> <strong>Failover:</strong> Dual SIM + WAN backup
+            </li>
+            <li style="display:flex; gap:10px;">
+              <span>✅</span> <strong>Hardware:</strong> Granite EPIK / EPIC iO
+            </li>
+        </ul>
+      </div>
+    </div>
+  </details>
+</section>
 
      <section id="form" class="anchor">
         <div class="form-wrap" style="border:none; background:transparent; padding:0;">
