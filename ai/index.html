@@ -246,16 +246,74 @@
   #druid-feature .knum{ font-variant-numeric: tabular-nums; letter-spacing: .3px; min-width: 2ch; }
   #druid-feature .kpi strong{ margin-right:6px !important; display:inline-block !important; }
 
-  .quad{
-    margin:24px 0;background:#0b111a;border:1px solid rgba(29,223,90,.45);border-radius:14px;padding:18px;
-    box-shadow:0 10px 34px rgba(29,223,90,.12)
-  }
-  .quad-note { color: var(--muted); font-size: 0.95rem; margin-bottom: 16px; }
-  .quad a img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid rgba(29,223,90,.35)}
   .section{margin:28px 0}
   .card-soft{background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px}
   .bbg-embed{ position:relative; width:100%; padding-bottom:56.25%; border:1px solid rgba(255,255,255,.14); border-radius:12px; overflow:hidden; }
   .bbg-embed iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; display:block; }
+  
+  /* QUADRANT STYLES (AI THEME) */
+    .quad-section {
+      margin: 32px 0; 
+      background: #0b111a; 
+      border: 1px solid var(--accent);
+      border-radius: 16px; 
+      padding: 32px 24px;
+      box-shadow: 0 0 30px rgba(29, 223, 90, 0.15);
+    }
+    .quad-section h2 { font-size: 1.6rem; color: #fff; margin: 0 0 24px; }
+    
+    .quadrant-wrap {
+      position: relative;
+      background: radial-gradient(circle at top, #171a24 0, #080910 52%, #040509 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      aspect-ratio: 16 / 9;
+      min-height: 450px;
+      overflow: hidden;
+    }
+    .quad-grid {
+      position: absolute; inset: 12% 8% 12% 8%;
+      background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 10% 10%;
+      border-radius: 4px;
+    }
+    
+    /* Axis Labels */
+    .axis-label { position: absolute; color: var(--text-muted); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+    .axis-y { top: 50%; left: 12px; transform: translateY(-50%) rotate(-90deg); transform-origin: left center; white-space: nowrap; }
+    .axis-x { bottom: 12px; left: 50%; transform: translateX(-50%); white-space: nowrap; }
+    
+    /* Vendor Dots */
+    .vendor-dot {
+      position: absolute; transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      cursor: pointer; transition: z-index 0.2s;
+    }
+    .vendor-dot:hover { z-index: 100; }
+    
+    .dot-mark {
+      width: 16px; height: 16px; border-radius: 50%; border: 2px solid #fff;
+      background: #555; /* Default */
+      box-shadow: 0 0 12px rgba(255,255,255,0.2);
+      transition: transform 0.2s ease;
+    }
+    .vendor-dot:hover .dot-mark { transform: scale(1.4); }
+
+    /* Specific Vendor Colors */
+    .vendor-dot.druid .dot-mark { background: var(--accent); box-shadow: 0 0 16px var(--accent); }
+    .vendor-dot.infrastructure .dot-mark { background: #4285F4; } /* Blue for Google/MSFT */
+    .vendor-dot.voice .dot-mark { background: #FF4F1F; } /* Orange for Poly */
+
+    .dot-label {
+      font-size: 0.85rem; color: #fff; font-weight: 600; white-space: nowrap;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.6); padding: 2px 6px; border-radius: 4px;
+    }
+    
+    .quad-cta-bar {
+      display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between;
+      margin-top: 18px; padding-top: 18px; border-top: 1px dashed rgba(29, 223, 90, 0.3);
+    }
 
   /* FAQ / OBJECTION HANDLING */
   .card-faq {
@@ -264,6 +322,11 @@
       border: 1px solid var(--card-border);
       padding: 24px;
       margin: 24px 0;
+  }
+
+  /* CTA Rail (Intake) */
+  .cta-rail {
+    margin: 32px 0; padding: 0; border-radius: 16px; border: none; background: transparent;
   }
 
   /* Footer */
@@ -310,7 +373,7 @@
           When a platform change is smart, evaluate options with uptime, identity, and compliance in mind. Outcomes first, tools second.
         </p>
         <div class="cta-row">
-          <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform" target="_blank" rel="noopener">Start AI Readiness</a>
+          <a class="btn primary" href="#intake">Start AI Readiness</a>
           <a class="btn btn-outline-green" href="https://www.druidai.com/case-studies" target="_blank" rel="noopener">See DRUID case studies</a>
         </div>
       </div>
@@ -440,12 +503,66 @@
   </div>
   </section>
 
-  <section class="quad" id="injectable-quadrant">
-    <h3 style="margin:0 0 8px">Injectable AI for Omnichannel: Market view</h3>
-    <p class="quad-note">Many teams want AI outcomes without a platform swap. Injectable AI lets you add real time assist, quality, analytics, and voice bots to what you already run. Faster value, lower risk.</p>
-    <a href="/ai" aria-label="Open AI Readiness">
-      <img src="/assets/ai_voice_injectable_quadrant_clean12.png" alt="Injectable AI Omnichannel Quadrant"/>
-    </a>
+  <section class="quad-section" id="injectable-quadrant">
+    <h2>AI Agent Landscape — Complexity vs. Channels</h2>
+    <div class="quadrant-wrap">
+      <div class="quad-grid"></div>
+
+      <div class="axis-label axis-y">Process Complexity & Compliance →</div>
+      <div class="axis-label axis-x">Channel Breadth (Voice ↔ Omnichannel) →</div>
+
+      <div class="vendor-dot druid" style="left: 85%; top: 15%;">
+          <div class="dot-mark"></div>
+          <div class="dot-label">DRUID AI</div>
+      </div>
+      <div class="vendor-dot" style="left: 78%; top: 22%;">
+          <div class="dot-mark"></div>
+          <div class="dot-label">Kore.ai</div>
+      </div>
+      <div class="vendor-dot" style="left: 82%; top: 28%;">
+          <div class="dot-mark"></div>
+          <div class="dot-label">Cognigy</div>
+      </div>
+      <div class="vendor-dot" style="left: 72%; top: 18%;">
+          <div class="dot-mark"></div>
+          <div class="dot-label">Amelia</div>
+      </div>
+
+      <div class="vendor-dot voice" style="left: 25%; top: 30%;">
+          <div class="dot-mark"></div>
+          <div class="dot-label">Poly.ai</div>
+      </div>
+      <div class="vendor-dot voice" style="left: 30%; top: 40%;">
+          <div class="dot-mark"></div>
+          <div class="dot-label">Ello</div>
+      </div>
+
+      <div class="vendor-dot infrastructure" style="left: 80%; top: 75%;">
+          <div class="dot-mark"></div>
+          <div class="dot-label">Microsoft Copilot</div>
+      </div>
+      <div class="vendor-dot infrastructure" style="left: 70%; top: 80%;">
+          <div class="dot-mark"></div>
+          <div class="dot-label">Google CCAI</div>
+      </div>
+      <div class="vendor-dot infrastructure" style="left: 65%; top: 70%;">
+          <div class="dot-mark"></div>
+          <div class="dot-label">AWS Lex</div>
+      </div>
+
+      <div class="vendor-dot" style="left: 55%; top: 55%;">
+          <div class="dot-mark"></div>
+          <div class="dot-label">Yellow.ai</div>
+      </div>
+
+    </div>
+    
+    <div class="quad-cta-bar">
+      <p style="color: var(--text-muted); font-size: 0.92rem; max-width: 700px; margin:0;">
+        <strong>Voice Niche vs. Omni Leader?</strong> Poly.ai is brilliant for phone-only. DRUID wins when the conversation needs to move from Voice to Text to App seamlessly, while handling secure banking/healthcare transactions.
+      </p>
+      <a class="btn primary" style="padding:8px 16px; font-size:0.9rem;" href="https://docs.google.com/forms/d/e/1FAIpQLSexUj8wPwJFCRaHjc6FSsQTSI2k0AXWkGHpl38ujRNcegJuCA/viewform" target="_blank" rel="noopener">Map Your Stack</a>
+    </div>
   </section>
 
   <section class="section" id="erdoes-fii">
@@ -497,6 +614,10 @@
     </div>
   </section>
 
+  <section id="intake" class="cta-rail" style="background:transparent; border:none; padding:0;">
+    <div style="width:100%;height:500px;" data-fillout-id="3ANossxqBKus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div><script src="https://server.fillout.com/embed/v1/"></script>
+  </section>
+
 </main>
 
 <footer class="footer">
@@ -523,55 +644,70 @@
 </footer>
 
 <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('#druid-feature .yt-lite').forEach(function(el){
+    var id = el.dataset.id; if(!id) return;
+
+    // crisp poster
+    var hi = new Image();
+    hi.onload = function(){ el.style.backgroundImage = "url('"+hi.src+"')"; };
+    hi.onerror = function(){ el.style.backgroundImage = "url('https://img.youtube.com/vi/"+id+"/sddefault.jpg')"; };
+    hi.src = "https://img.youtube.com/vi/"+id+"/maxresdefault.jpg";
+
+    // click to play INSIDE wrapper
+    el.addEventListener('click', function(){
+      if (el.classList.contains('playing')) return;
+      el.classList.add('playing');
+      var iframe = document.createElement('iframe');
+      iframe.src = "https://www.youtube.com/embed/"+id+"?autoplay=1&rel=0";
+      iframe.setAttribute('allow',"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
+      Object.assign(iframe.style,{position:'absolute',inset:'0',width:'100%',height:'100%',border:'0'});
+      el.appendChild(iframe);
+    }, {passive:true});
+  });
+});
+</script>
 <script>
 (function(){
-  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function easeOutCubic(t){return 1-Math.pow(1-t,3)}
-  function animateNumber(el,target,duration,suffix){
-    if(reduce){el.textContent=target+(suffix||"");return;}
-    var start=0, t0=performance.now();
+  // Respect users who prefer reduced motion
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
+
+  function animateNumber(el, target, duration, suffix){
+    if (reduce){ el.textContent = target + (suffix||""); return; }
+    var start = 0, t0 = performance.now();
     function frame(t){
-      var p=Math.min(1,(t-t0)/duration);
-      var v=Math.round(start+(target-start)*easeOutCubic(p));
-      el.textContent=v+(suffix||"");
-      if(p<1)requestAnimationFrame(frame);
+      var p = Math.min(1, (t - t0)/duration);
+      var v = Math.round(start + (target - start) * easeOutCubic(p));
+      el.textContent = v + (suffix||"");
+      if (p < 1) requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);
   }
-  var seen=new WeakSet();
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(!entry.isIntersecting)return;
-      var el=entry.target;
-      if(seen.has(el))return;
-      seen.add(el);
-      var target=parseInt(el.getAttribute('data-target'),10)||0;
-      var suffix=el.getAttribute('data-suffix')||'';
-      animateNumber(el,target,900,suffix);
-    });
-  },{threshold:0.4});
-  document.querySelectorAll('#druid-feature .knum').forEach(function(el){io.observe(el);});
-})();
 
-document.addEventListener('DOMContentLoaded',function(){
-  document.querySelectorAll('#druid-feature .yt-lite').forEach(function(el){
-    var id=el.dataset.id;if(!id)return;
-    var hi=new Image();
-    hi.onload=function(){el.style.backgroundImage="url('"+hi.src+"')";};
-    hi.src="https://img.youtube.com/vi/"+id+"/maxresdefault.jpg";
-    el.addEventListener('click',function(){
-      if(el.classList.contains('playing'))return;
-      el.classList.add('playing');
-      var iframe=document.createElement('iframe');
-      iframe.src="https://www.youtube.com/embed/"+id+"?autoplay=1&rel=0";
-      iframe.setAttribute('allow',"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
-      iframe.allowFullscreen=true;
-      iframe.referrerPolicy="strict-origin-when-cross-origin";
-      Object.assign(iframe.style,{position:'absolute',inset:'0',width:'100%',height:'100%',border:'0'});
-      el.appendChild(iframe);
-    },{passive:true});
+  // Observe KPI numbers only in the DRUID feature section
+  var seen = new WeakSet();
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (!entry.isIntersecting) return;
+      var el = entry.target;
+      if (seen.has(el)) return;
+      seen.add(el);
+      var target = parseInt(el.getAttribute('data-target'), 10) || 0;
+      var suffix = el.getAttribute('data-suffix') || '';
+      animateNumber(el, target, 900, suffix);  // ~0.9s per number
+    });
+  }, { root: null, rootMargin: '0px 0px -20% 0px', threshold: 0.4 });
+
+  document.querySelectorAll('#druid-feature .knum').forEach(function(el){
+    io.observe(el);
   });
-});
+})();
 </script>
 
 </body>
