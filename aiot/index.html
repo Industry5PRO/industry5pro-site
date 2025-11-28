@@ -46,7 +46,16 @@
     }
     
     /* --- RESET & BASE --- */
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial; box-sizing: border-box;}
+    html,body{
+        margin:0;
+        padding:0;
+        background:var(--bg);
+        color:var(--text);
+        font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial; 
+        box-sizing: border-box;
+        /* FIX: Remove overflow-x hidden from body to fix sticky */
+        overflow-x: unset; 
+    }
     *, *:before, *:after { box-sizing: inherit; }
     a{color:inherit;text-decoration:none;transition:color .2s ease;}
     a:hover{text-decoration:none;}
@@ -58,10 +67,14 @@
 
     /* --- 3. MASTER HEADER & NAV --- */
     header {
-      position: sticky; top: 0; z-index: 99999;
+      position: -webkit-sticky; /* Safari support */
+      position: sticky; 
+      top: 0; 
+      z-index: 99999;
       background: linear-gradient(180deg,rgba(27,27,29,0.95),rgba(27,27,29,0.85));
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--line);
+      width: 100%;
     }
     
     .header-center {
@@ -294,6 +307,15 @@
     }
     .quad-note { color: var(--text-muted); font-size: 0.92rem; max-width: 700px; }
 
+    /* FAQ / OBJECTION HANDLING */
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid var(--card-border);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    
     /* Paper & Accordions (Categorized) */
     .paper { margin: 32px 0; }
     .paper h2 { font-size: 1.8rem; color: #fff; margin: 0 0 24px; }
@@ -398,11 +420,11 @@
       <nav class="main-nav">
         <a href="/">Home</a>
         <a href="/ai">AI &<br>Omnichannel</a>
-        <a href="/cyber">Security &<br>Backup</a>
+        <a href="/cyber">Security</a>
         <a href="/cloud20">Cloud 2.0 &<br>Network</a>
-        <a href="/ccaas">UC &<br>Contact Center</a>        
-        <a href="/peplink">5G &<br>Satellite</a>
+        <a href="/ccaas">UC &<br>Contact Center</a>
         <a href="/aiot" class="active">AIoT</a>
+        <a href="/peplink">5G &<br>Satellite</a>
         <a href="/ai-sdr.html" class="nav-sdr">AI SDR</a>
         <a href="/blog">Blog</a>
         <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
@@ -417,7 +439,7 @@
           <div class="kicker">Carrier Agnostic AIoT</div>
           <h1>Data Driven Quadrant and Industry Applications</h1>
           <p class="sub">
-            We lead with Aeris for connectivity because the facts support it: multi-MNO eSIM and deep security. For industrial operations, Siemens is our leader with Industrial Edge for on-line inference. For smart cities and retail, EPIC iO delivers the AIoT intelligence layer with DeepInsights. Everyone has a niche. We help you find yours.
+            We lead with <strong>Aeris</strong> for connectivity because the facts support it: platform scale from Ericsson’s IoT stack, multi-MNO eSIM, deep security, and a carrier agnostic approach tailored to each use case. For industrial operations, <strong>Siemens</strong> is our leader with Industrial Edge for on-line inference. For smart cities, retail, and agriculture, <strong>EPIC iO</strong> delivers the AIoT intelligence layer with DeepInsights. Everyone has a niche. We help you find yours.
           </p>
           <div class="cta-row">
             <a class="btn btn-primary" href="#intake">Start AIoT Discovery</a>
@@ -438,7 +460,7 @@
         <div class="axis-label axis-y">Industrial Hardening & Compliance →</div>
         <div class="axis-label axis-x">Edge Intelligence & AI Depth →</div>
 
-        <div class="vendor-dot siemens" style="left: 84%; top: 15%;">
+        <div class="vendor-dot siemens" style="left: 85%; top: 15%;">
             <div class="dot-mark"></div>
             <div class="dot-label">Siemens</div>
         </div>
@@ -472,7 +494,7 @@
       
       <div class="quad-cta-bar">
         <div class="quad-note">Click "Start Discovery" to see where your use case fits. We align the stack to your specific compliance (IEC 62443, HIPAA) and latency needs.</div>
-        <a class="btn btn-primary" style="padding:8px 16px; font-size:0.9rem;" href="#intake">Start Discovery</a>
+        <a class="btn btn-primary" style="padding:8px 16px; font-size:0.9rem;" href="#intake">Request Pricing</a>
       </div>
     </section>
 
@@ -736,8 +758,7 @@
           </div>
         </details>
 
-        <details>
-          <summary>Healthcare — Connected Care & Patient Safety</summary>
+        <details><summary>Healthcare (EPIC iO)</summary>
            <div class="sec siemens-layout">
             <div class="siemens-copy">
               <h3>Intelligent Patient Safety & Asset Tracking</h3>
@@ -952,8 +973,21 @@
       </div>
 
     </section>
+
+    <section class="cta-rail">
+      <div class="cta-rail-inner">
+        <div>
+          <h3>Ready to turn signals into outcomes?</h3>
+          <p>Two fast paths: scope your use case now or talk it through live. We’ll align connectivity, edge, and data for measurable wins.</p>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#intake">Start AIoT Discovery</a>
+          <a class="btn btn-secondary" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
+        </div>
+      </div>
+    </section>
     
-   <section class="card" style="margin-top: 24px;">
+    <section class="card" style="margin-top: 24px;">
       <h2 style="color: #fff; font-size: 1.6rem; margin-bottom: 24px;">Common Questions & Architectural Philosophy</h2>
       
       <div style="display: grid; gap: 20px;">
@@ -981,6 +1015,7 @@
 
       </div>
     </section>
+
     <section id="intake" class="cta-rail" style="background:transparent; border:none; padding:0;">
       <div style="width:100%;height:500px;" data-fillout-id="3ANossxqBKus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div><script src="https://server.fillout.com/embed/v1/"></script>
     </section>
