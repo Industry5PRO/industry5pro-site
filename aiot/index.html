@@ -42,6 +42,7 @@
       --cat-iiot: #FF9F66; /* Industrial Orange tone */
       --cat-aiot: #29EAD7; /* Siemens Cyan */
       --cat-iot: #AAB2FF;  /* Periwinkle/Blue */
+      --cat-infra: #FF4F1F; /* Infrastructure Red/Orange */
     }
     
     /* --- RESET & BASE --- */
@@ -253,6 +254,7 @@
     .cat-iiot { border-color: var(--cat-iiot); color: var(--cat-iiot); }
     .cat-aiot { border-color: var(--cat-aiot); color: var(--cat-aiot); }
     .cat-iot  { border-color: var(--cat-iot);  color: var(--cat-iot); }
+    .cat-infra { border-color: var(--cat-infra); color: var(--cat-infra); }
 
     details {
       border: 1px solid var(--card-border); border-radius: 12px; padding: 16px;
@@ -264,6 +266,7 @@
     .cat-block.iiot details:hover { border-color: var(--cat-iiot); }
     .cat-block.aiot details:hover { border-color: var(--cat-aiot); }
     .cat-block.iot  details:hover { border-color: var(--cat-iot); }
+    .cat-block.infra details:hover { border-color: var(--cat-infra); }
 
     summary { font-weight: 700; font-size: 1.1rem; color: #fff; cursor: pointer; list-style: none; }
     summary::-webkit-details-marker { display: none; }
@@ -277,7 +280,7 @@
       border-radius: 99px; padding: 4px 12px; font-size: 0.85rem; color: var(--text-muted);
     }
 
-    /* Siemens Feature Block */
+    /* Feature Block (Generic for Siemens/Aeris/EPIC) */
     .siemens-layout { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; align-items: start; margin-top: 16px; }
     .siemens-copy h3 { font-size: 1.3rem; margin-bottom: 12px; color: #fff; }
     .kpi-list { list-style: none; padding: 0; margin: 16px 0; color: var(--text-muted); font-size: 0.95rem; }
@@ -297,13 +300,12 @@
       border: 1px solid var(--card-border); cursor: pointer;
     }
     
-    /* --- FIX: Hide iframe initially so button is clickable --- */
     .video-frame iframe { 
       position: absolute; inset: 0; width: 100%; height: 100%; border: 0; 
       display: none; /* Hidden by default */
     }
     
-    .siemens-thumb { width: 100%; height: 100%; object-fit: cover; display: block; border: 0; padding: 0; }
+    .siemens-thumb { width: 100%; height: 100%; object-fit: cover; display: block; border: 0; padding: 0; cursor: pointer; }
     .play-badge {
       position: absolute; left: 16px; bottom: 16px; background: rgba(0,0,0,0.8); color: #fff;
       padding: 6px 12px; border-radius: 99px; font-size: 0.85rem; font-weight: 600;
@@ -385,11 +387,48 @@
     <section class="paper">
       <h2>Micro White Paper — Industry Applications</h2>
 
+      <div class="cat-block infra">
+        <h3 class="cat-header" style="border-color: #FF4F1F; color: #FF4F1F;">Infrastructure Modernization — Critical Comms</h3>
+        <p class="cat-desc">The "unsexy" but critical layer. Replacing aging copper POTS lines for life-safety systems before carriers decommission them.</p>
+        
+        <details open>
+          <summary style="color: #FF4F1F;">POTS Replacement (Fire, Elevator, Fax)</summary>
+          <div class="sec siemens-layout">
+            <div class="siemens-copy">
+              <h3>EPIC iO — Compliant LTE/5G POTS Replacement</h3>
+              <p>
+                Carriers are killing copper lines. The cost to maintain them is skyrocketing. We deploy a "One Box" solution that converts analog signals (Fire Panels, Elevator Phones, Blue Light Towers) to reliable LTE/5G connectivity.
+              </p>
+              <h4>Why this matters now</h4>
+              <ul class="kpi-list">
+                <li><strong>Compliance:</strong> NFPA 72, UL 864, and ASME A17.1 certified for life safety.</li>
+                <li><strong>Reliability:</strong> 24-hour battery backup included (works when power fails).</li>
+                <li><strong>Cost:</strong> Immediate 20-50% savings vs. legacy carrier copper bills.</li>
+              </ul>
+              <div class="cta-row">
+                <a class="btn btn-primary" href="#intake" style="background-color: #FF4F1F; border-color: #FF4F1F;">Get a POTS Audit</a>
+              </div>
+            </div>
+            <div class="siemens-media">
+                <div style="background: #232326; padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                    <h4 style="color: #FF4F1F; margin-top: 0;">Key Certifications</h4>
+                    <ul style="list-style: none; padding: 0; font-size: 0.9rem; color: #aeb8c4;">
+                        <li style="margin-bottom: 8px;">✅ <strong>Fire Marshal Approved:</strong> 50 States</li>
+                        <li style="margin-bottom: 8px;">✅ <strong>Elevator Code:</strong> ASME A17.1</li>
+                        <li style="margin-bottom: 8px;">✅ <strong>Healthcare:</strong> HIPAA Compliant Fax</li>
+                        <li>✅ <strong>Failover:</strong> Dual SIM + WAN backup</li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+        </details>
+      </div>
+
       <div class="cat-block iiot">
         <h3 class="cat-header">IIoT — Industrial Internet of Things</h3>
         <p class="cat-desc">Specialized branch focusing on industrial machines, systems, and operations. High availability, legacy OT integration, and heavy duty automation.</p>
 
-        <details open>
+        <details>
           <summary>Manufacturing (Siemens)</summary>
           <div class="sec siemens-layout">
             <div class="siemens-copy">
@@ -548,9 +587,157 @@
         <h3 class="cat-header">AIoT — Artificial Intelligence of Things</h3>
         <p class="cat-desc">The fusion of IoT with AI. Enabling devices to analyze data, make decisions, and act autonomously at the edge without round-tripping to the cloud.</p>
 
-        <details><summary>Smart City</summary><div class="sec"><div class="kpis"><span class="pill">Response Time</span><span class="pill">Energy Savings</span></div><div>Plays: Smart lighting, ALPR edge, flood sensing, air quality networks.</div></div></details>
-        <details><summary>Healthcare</summary><div class="sec"><div class="kpis"><span class="pill">Uptime</span><span class="pill">Compliance</span></div><div>Plays: Zero-touch onboarding, PHI segmentation, anomaly detection.</div></div></details>
-        <details><summary>Retail & CPG</summary><div class="sec"><div class="kpis"><span class="pill">Shrink</span><span class="pill">Conversion</span></div><div>Plays: CV loss prevention, smart shelves, cooler telemetry.</div></div></details>
+        <details open><summary>Smart City (EPIC iO)</summary>
+          <div class="sec siemens-layout">
+            <div class="siemens-copy">
+              <h3>Smart City — EPIC iO DeepInsights</h3>
+              <p>
+                Safer parks, smarter intersections, and zero-trust connectivity. EPIC iO brings AI intelligence to the edge, processing video and sensor data locally to detect illegal dumping, monitor air quality, and improve public safety without sending streams to the cloud.
+              </p>
+              <h4>What we actually measure</h4>
+              <ul class="kpi-list">
+                <li>Incident response time (automated alerts)</li>
+                <li>Public space utilization and safety</li>
+                <li>Environmental compliance (Air/Water quality)</li>
+              </ul>
+              <div class="cta-row">
+                <a class="btn btn-primary" href="#intake">Start Discovery</a>
+              </div>
+              <div class="siemens-kpi-col">
+                <div class="kpi-item">
+                  <strong class="knum siemens" data-target="75" data-suffix="%">0</strong>
+                  <span>reduction in site incident costs.</span>
+                </div>
+                <div class="kpi-item">
+                  <strong class="knum siemens" data-target="200" data-suffix="%">0</strong>
+                  <span>increase in successful public safety interventions.</span>
+                </div>
+                <div class="kpi-item">
+                  <strong class="knum siemens" data-target="99.9" data-suffix="%">0</strong>
+                  <span>uptime for critical city monitoring assets.</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="siemens-media">
+              <div class="video-card">
+                <h4>The Power of EPIC iO</h4>
+                <div class="video-frame siemens-video" data-yt="49_rET9_Tkc">
+                  <button class="siemens-thumb" type="button">
+                    <img src="https://img.youtube.com/vi/49_rET9_Tkc/maxresdefault.jpg" alt="EPIC iO Power Thumb">
+                    <span class="play-badge">▶ Watch Overview</span>
+                  </button>
+                  <iframe loading="lazy" allow="autoplay; fullscreen"></iframe>
+                </div>
+              </div>
+               <div class="video-card">
+                <h4>DeepInsights AI Demo</h4>
+                <div class="video-frame siemens-video" data-yt="c6Kk9P2gMOo">
+                  <button class="siemens-thumb" type="button">
+                    <img src="https://img.youtube.com/vi/c6Kk9P2gMOo/maxresdefault.jpg" alt="DeepInsights Demo Thumb">
+                    <span class="play-badge">▶ Watch AI Demo</span>
+                  </button>
+                  <iframe loading="lazy" allow="autoplay; fullscreen"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details><summary>Healthcare (EPIC iO)</summary>
+           <div class="sec siemens-layout">
+            <div class="siemens-copy">
+              <h3>Healthcare — EPIC iO Connected Care</h3>
+              <p>
+                Streamline operations with real-time insights. From slip-and-fall detection to cold storage monitoring for vaccines, we help hospitals protect patients and assets while automating compliance reporting (HIPAA).
+              </p>
+              <h4>What we actually measure</h4>
+              <ul class="kpi-list">
+                <li>Patient safety events (Slip/Fall detection)</li>
+                <li>Cold chain temperature compliance (Vaccines)</li>
+                <li>Asset location and utilization</li>
+              </ul>
+              <div class="cta-row">
+                <a class="btn btn-primary" href="#intake">Start Discovery</a>
+                <a class="btn btn-secondary" href="https://www.epicio.com/customer-stories/" target="_blank" rel="noopener">Read Case Studies</a>
+              </div>
+              <div class="siemens-kpi-col">
+                <div class="kpi-item">
+                  <strong class="knum siemens" data-target="100" data-suffix="%">0</strong>
+                  <span>HIPAA compliant data processing.</span>
+                </div>
+                <div class="kpi-item">
+                  <strong class="knum siemens" data-target="30" data-suffix="%">0</strong>
+                  <span>faster response to patient safety incidents.</span>
+                </div>
+                 <div class="kpi-item">
+                  <strong class="knum siemens" data-target="24" data-suffix="/7">0</strong>
+                  <span>automated temperature monitoring.</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="siemens-media">
+              <div class="video-card">
+                <h4>Healthcare Operations Streamlined</h4>
+                <div class="video-frame siemens-video" data-yt="49_rET9_Tkc"> <button class="siemens-thumb" type="button">
+                    <img src="https://img.youtube.com/vi/49_rET9_Tkc/maxresdefault.jpg" alt="EPIC iO Healthcare Thumb">
+                    <span class="play-badge">▶ Watch Overview</span>
+                  </button>
+                  <iframe loading="lazy" allow="autoplay; fullscreen"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details><summary>Retail & CPG (EPIC iO)</summary>
+          <div class="sec siemens-layout">
+            <div class="siemens-copy">
+              <h3>Retail — EPIC iO Store Intelligence</h3>
+              <p>
+                Every second counts. Improve visitor flow, reduce wait times, and instantly detect security threats like loitering or aggression. We turn video feeds into actionable data for Loss Prevention and Operations teams.
+              </p>
+              <h4>What we actually measure</h4>
+              <ul class="kpi-list">
+                <li>Customer dwell time and heatmap</li>
+                <li>Queue length and service speed</li>
+                <li>Known threat detection (Watchlists)</li>
+              </ul>
+              <div class="cta-row">
+                <a class="btn btn-primary" href="#intake">Start Discovery</a>
+                 <a class="btn btn-secondary" href="https://www.epicio.com/industries/retail/" target="_blank" rel="noopener">Retail Solutions</a>
+              </div>
+              <div class="siemens-kpi-col">
+                <div class="kpi-item">
+                  <strong class="knum siemens" data-target="40" data-suffix="%">0</strong>
+                  <span>reduction in checkout wait times.</span>
+                </div>
+                <div class="kpi-item">
+                  <strong class="knum siemens" data-target="99.9" data-suffix="%">0</strong>
+                  <span>uptime for critical security feeds.</span>
+                </div>
+                 <div class="kpi-item">
+                  <strong class="knum siemens" data-target="15" data-suffix="%">0</strong>
+                  <span>increase in conversion via layout optimization.</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="siemens-media">
+              <div class="video-card">
+                <h4>Retail DeepInsights Demo (Dell)</h4>
+                <div class="video-frame siemens-video" data-yt="e_uadQ_Ddao">
+                  <button class="siemens-thumb" type="button">
+                    <img src="https://img.youtube.com/vi/e_uadQ_Ddao/maxresdefault.jpg" alt="Retail Demo Thumb">
+                    <span class="play-badge">▶ Watch Demo</span>
+                  </button>
+                  <iframe loading="lazy" allow="autoplay; fullscreen"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="cat-block iot">
