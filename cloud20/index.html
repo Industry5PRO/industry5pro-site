@@ -324,7 +324,30 @@
     }
     .cta-rail-inner { display:flex; flex-wrap:wrap; gap:16px; align-items:center; justify-content:space-between; }
     .cta-rail h3 { margin:0; color:#fff; font-size:1.3rem; }
-    
+    /* MNS Section & Small CTA */
+.mns-section {
+  margin: 28px 0; padding: 24px; border-radius: 16px; background: var(--panel); 
+  border: 1px solid var(--accent); /* Ice Blue border */
+  box-shadow: 0 0 20px rgba(43, 237, 231, 0.15);
+}
+.mns-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: center; }
+.vendor-logos { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+.vendor-badge { 
+  background: #000; padding: 6px 12px; border-radius: 6px; 
+  font-weight: 700; font-size: 0.85rem; color: #fff; 
+  border: 1px solid rgba(255,255,255,0.2); 
+  display: inline-flex; align-items: center;
+}
+/* The Get Quote Button */
+.cta-badge { 
+  background: var(--accent); color: #0b1220; border-color: var(--accent); 
+  text-decoration: none; transition: all 0.2s ease; cursor: pointer;
+}
+.cta-badge:hover { 
+  background: #fff !important; color: #0b1220 !important; border-color: #fff !important;
+  box-shadow: 0 0 12px rgba(255,255,255,0.6); transform: translateY(-1px);
+}
+@media (max-width: 800px) { .mns-grid { grid-template-columns: 1fr; } }
     /* Footer */
     .footer{border-top:1px solid var(--card-border);margin-top:40px;padding:32px 20px;text-align:center;color:var(--text-muted)}
     .socials{display:flex;gap:16px;justify-content:center;margin-top:16px}
@@ -396,33 +419,34 @@
       </div>
     </section>
     
-<section class="card" id="mns-value">
-      <div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: center;">
-        <div style="flex: 1 1 500px;">
-          <h2 style="font-size: 1.8rem; margin-bottom: 12px; color: #fff;">
-            Managed Network Services (MNS): <span class="highlight">Beyond Connectivity</span>
-          </h2>
-          <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 20px;">
-            Don't just buy the connection—buy the peace of mind. Lumen MNS takes the burden of "Day 2" operations off your IT team. From proactive patching to hardware lifecycle management, we handle the complexity so you focus on innovation.
-          </p>
-          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-             <span style="background: rgba(43, 237, 231, 0.1); color: var(--accent); padding: 6px 12px; border-radius: 6px; font-size: 0.9rem; border: 1px solid rgba(43, 237, 231, 0.3);">Cisco / Meraki</span>
-             <span style="background: rgba(43, 237, 231, 0.1); color: var(--accent); padding: 6px 12px; border-radius: 6px; font-size: 0.9rem; border: 1px solid rgba(43, 237, 231, 0.3);">Juniper</span>
-             <span style="background: rgba(43, 237, 231, 0.1); color: var(--accent); padding: 6px 12px; border-radius: 6px; font-size: 0.9rem; border: 1px solid rgba(43, 237, 231, 0.3);">Fortinet</span>
-             <span style="background: rgba(43, 237, 231, 0.1); color: var(--accent); padding: 6px 12px; border-radius: 6px; font-size: 0.9rem; border: 1px solid rgba(43, 237, 231, 0.3);">Versa</span>
-          </div>
-        </div>
-        
-        <div style="flex: 1 1 300px; background: #161b26; border-radius: 12px; padding: 20px; border: 1px solid var(--line);">
-          <h3 style="color: #fff; margin: 0 0 12px; font-size: 1.1rem;">The "Single Hand to Shake"</h3>
-          <ul style="padding-left: 20px; color: #d5dcef; margin: 0;">
-            <li style="margin-bottom: 10px;"><strong>Agnostic Expertise:</strong> Certified engineers managing your routing and switching gear 24/7.</li>
-            <li style="margin-bottom: 10px;"><strong>Unified SLA:</strong> One vendor for the fiber, the hardware, and the management means no finger-pointing.</li>
-            <li style="margin-bottom: 0;"><strong>OpEx Efficiency:</strong> Shift from heavy CapEx hardware refreshes to a predictable monthly service model.</li>
-          </ul>
-        </div>
+<section class="mns-section">
+  <div class="mns-grid">
+    <div>
+      <h3 style="color: var(--accent); font-size: 1.4rem; margin-bottom: 8px;">Managed Network Services (MNS): Beyond Connectivity</h3>
+      <p style="color: var(--text-muted); line-height: 1.6;">
+        Don't just buy the connection—buy the peace of mind. Lumen MNS takes the burden of "Day 2" operations off your IT team. From proactive patching to hardware lifecycle management, we handle the complexity so you focus on innovation.
+      </p>
+      
+      <h4 style="color: #fff; margin-top: 24px;">The "Single Hand to Shake"</h4>
+      <ul style="color: var(--text-muted); line-height: 1.7; padding-left: 20px;">
+        <li><strong style="color:var(--accent)">Agnostic Expertise:</strong> Certified engineers managing your routing and switching gear 24/7.</li>
+        <li><strong style="color:var(--accent)">Unified SLA:</strong> One vendor for the fiber, the hardware, and the management.</li>
+        <li><strong style="color:var(--accent)">OpEx Efficiency:</strong> Shift from heavy CapEx hardware refreshes to a predictable monthly service model.</li>
+      </ul>
+    </div>
+    
+    <div>
+      <h4 style="color:#fff; font-size:0.9rem; margin-bottom:12px; text-transform:uppercase; letter-spacing:1px; opacity:0.8;">Supported Ecosystems</h4>
+      <div class="vendor-logos">
+        <span class="vendor-badge">Cisco / Meraki</span>
+        <span class="vendor-badge">Juniper</span>
+        <span class="vendor-badge">Fortinet</span>
+        <span class="vendor-badge">Versa</span>
+        <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener" class="vendor-badge cta-badge">Get MNS Quote &rarr;</a>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
     
     <section class="card" id="quadrant">
       <h2>Cloud 2.0 Quadrant: <span class="highlight">NaaS Fabric vs. Edge Compute</span></h2>
