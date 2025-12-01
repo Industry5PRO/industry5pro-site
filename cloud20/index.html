@@ -686,52 +686,58 @@
       }
     });
   
-    // KPI Counter Script
+    // KPI Counter Script (Fixed)
     document.addEventListener("DOMContentLoaded", () => {
-      const kpiSection = document.getElementById("kpi-ticker");
-      if (!kpiSection) return;
+      // Select ANY element with a data-target attribute
+      const kpiCounters = document.querySelectorAll("[data-target]");
+      if (!kpiCounters.length) return;
 
       const animateCounters = (entries, observer) => {
         entries.forEach(entry => {
           if (!entry.isIntersecting) return;
-
-          const counters = entry.target.querySelectorAll("[data-target]");
-          counters.forEach(counter => {
-            const target = +counter.dataset.target;
-            const decimals = counter.dataset.decimals ? +counter.dataset.decimals : 0;
-            const duration = 1500; // 1.5 seconds
-            const stepTime = 30;
-            const steps = Math.ceil(duration / stepTime);
-            const increment = target / steps;
-            let current = 0;
-
-            const updateCount = () => {
-              current += increment;
-              let val = (current >= target) ? target : current;
-              
-              if (decimals > 0) {
-                counter.textContent = val.toFixed(decimals);
-              } else {
-                counter.textContent = Math.ceil(val);
-              }
-
-              if (current < target) {
-                requestAnimationFrame(updateCount);
-              }
-            };
-            updateCount();
-          });
           
-          observer.unobserve(entry.target);
+          const counter = entry.target;
+          const target = parseFloat(counter.getAttribute('data-target'));
+          const decimals = parseInt(counter.getAttribute('data-decimals')) || 0;
+          const suffix = counter.getAttribute('data-suffix') || '';
+          
+          const duration = 1500; // 1.5 seconds
+          const startTime = performance.now();
+
+          const updateCount = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Ease-out function for smooth rolling
+            const ease = 1 - Math.pow(1 - progress, 3);
+            
+            const currentVal = target * ease;
+
+            if (decimals > 0) {
+              counter.textContent = currentVal.toFixed(decimals) + suffix;
+            } else {
+              counter.textContent = Math.ceil(currentVal) + suffix;
+            }
+
+            if (progress < 1) {
+              requestAnimationFrame(updateCount);
+            } else {
+              // Ensure final value is exact
+              counter.textContent = (decimals > 0 ? target.toFixed(decimals) : target) + suffix;
+            }
+          };
+          
+          requestAnimationFrame(updateCount);
+          observer.unobserve(counter);
         });
       };
 
       const observer = new IntersectionObserver(animateCounters, {
         root: null,
-        threshold: 0.5 // Start when 50% of the section is visible
+        threshold: 0.1 // Triggers as soon as 10% is visible
       });
 
-      observer.observe(kpiSection);
+      kpiCounters.forEach(c => observer.observe(c));
     });
 
     // Lite YouTube Embed
