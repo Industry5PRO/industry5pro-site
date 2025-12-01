@@ -225,6 +225,57 @@
       background-color: #fff; color: #0b1220; transform: translateY(-2px);
     }
 
+    /* --- NEW: RESILIENCE MATRIX STYLES --- */
+    .matrix-section h2 { color: #fff; margin-bottom: 24px; font-size: 1.8rem; }
+    .matrix-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .quadrant {
+      background: var(--panel);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .quadrant h3 { margin: 0 0 12px; font-size: 1.4rem; color: #fff; }
+    .quadrant p { color: var(--text-muted); font-size: 0.95rem; margin: 0 0 16px; flex-grow: 1; }
+    .quadrant-link { 
+      font-weight: 700; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; 
+    }
+
+    /* Quadrant Specifics */
+    .q-goal { 
+      border-color: var(--accent); 
+      background: linear-gradient(145deg, rgba(43,237,231,0.05), var(--panel));
+    }
+    .q-goal h3 { color: var(--accent); text-shadow: 0 0 10px rgba(43,237,231,0.3); }
+    .q-goal .quadrant-link { color: var(--accent); }
+    
+    .q-danger { border-color: rgba(255, 106, 19, 0.3); }
+    .q-danger h3 { color: var(--lumen-orange); }
+    .q-danger .quadrant-link { color: var(--lumen-orange); }
+
+    .q-standard .quadrant-link { color: #fff; opacity: 0.7; }
+    .q-standard:hover .quadrant-link { opacity: 1; color: #fff; }
+
+    /* Hover States */
+    .quadrant:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    .q-goal:hover { box-shadow: 0 10px 30px rgba(43, 237, 231, 0.15); }
+
+    /* Matrix Mobile Stack */
+    @media (max-width: 768px) {
+      .matrix-container { grid-template-columns: 1fr; gap: 16px; }
+    }
+
     /* Services Grid */
     .services-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 10px;
@@ -240,7 +291,6 @@
     .service-card h3 { color: #fff; margin: 0 0 10px; font-size: 1.25rem; }
     .service-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; flex-grow: 1; }
     
-    /* Updated: Service Link Glows Gold on Hover */
     .service-link {
       margin-top: 16px; font-weight: 700; color: var(--accent); text-decoration: none;
       border-bottom: 1px dashed transparent; width: fit-content;
@@ -332,7 +382,7 @@
           <div class="kicker">Advisory-First Digital Transformation</div>
           <h1>Outcome Obsessed.<br>Supplier Agnostic.</h1>
           <p class="sub">
-            We audit, architect, and align your infrastructure for the AI era. From Lumen fiber to Veeam recovery and DRUID agents—we bridge the gap between technical capability and P&L impact.
+            The AI era demands more than just software—it demands a resilient foundation. We audit, architect, and align the invisible infrastructure that determines if your tech investment creates value or just consumes power.
           </p>
           <div class="cta-row">
             <a class="btn btn-primary" href="#services">Explore Solutions</a>
@@ -342,6 +392,39 @@
         <figure class="hero-photo">
           <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora" width="380" height="380" />
         </figure>
+      </div>
+    </section>
+
+    <section class="matrix-section">
+      <h2>The Industry 5.0 Resilience Matrix</h2>
+      <p style="color:var(--text-muted); max-width:800px;">Where does your infrastructure stand today? Most organizations are stuck in "Digital Debt" or "Science Projects." We guide you to the upper right: <strong>Resilient Operations</strong>.</p>
+      
+      <div class="matrix-container">
+        
+        <div class="quadrant q-standard">
+          <h3>The Science Project</h3>
+          <p><strong>High Tech / Low Agility.</strong> You have the shiny tools (AI, Cloud), but they aren't integrated. Data is siloed, and ROI is invisible.</p>
+          <a href="/ai" class="quadrant-link">Fix the Integration &rarr;</a>
+        </div>
+
+        <div class="quadrant q-goal">
+          <h3>The Resilient Enterprise</h3>
+          <p><strong>High Tech / High Agility.</strong> The Industry 5.0 Standard. Infrastructure is invisible, secure, and scales automatically with demand.</p>
+          <a href="/case-studies" class="quadrant-link">See the Outcome &rarr;</a>
+        </div>
+
+        <div class="quadrant q-danger">
+          <h3>Digital Debt</h3>
+          <p><strong>Low Tech / Low Agility.</strong> Legacy hardware and manual processes. One cyber attack or market shift away from critical failure.</p>
+          <a href="/cyber" class="quadrant-link">Stop the Bleeding &rarr;</a>
+        </div>
+
+        <div class="quadrant q-standard">
+          <h3>The Local Hero</h3>
+          <p><strong>Low Tech / High Agility.</strong> Great people working hard to overcome bad systems. It works for now, but it doesn't scale.</p>
+          <a href="/ccaas" class="quadrant-link">Scale the Process &rarr;</a>
+        </div>
+
       </div>
     </section>
 
@@ -475,7 +558,6 @@
           const li = document.createElement('li');
           li.style.cssText = 'margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--line);';
           
-          // Use class="latest-link" to apply the CSS Gold Glow
           li.innerHTML = `
             <a href="/blog#${id}" class="latest-link">${title}</a>
             <span style="font-size: 0.9rem;">${desc}</span>
