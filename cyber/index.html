@@ -500,7 +500,34 @@
         <button class="pill outline" id="download-checklist">Download Checklist (.txt)</button>
       </div>
     </section>
+<section class="card" style="margin: 24px 0;">
+      <h2 style="color: #fff; font-size: 1.6rem; margin-bottom: 24px;">Common Questions & Architectural Philosophy</h2>
+      
+      <div style="display: grid; gap: 24px;">
+        
+        <div style="padding-bottom: 20px; border-bottom: 1px solid var(--line);">
+          <h3 style="color: var(--accent); font-size: 1.15rem; margin: 0 0 8px;">"We already have a SOC and EDR. Aren't we safe?"</h3>
+          <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">
+            You are <strong>protected</strong>, but not necessarily <strong>resilient</strong>. Security tools are designed to stop the entry. Resilience is designed to survive the breach. When an attacker uses valid credentials (which happens in 80% of breaches), your EDR won't fire. That is why we build an <strong>Immutable Air Gap</strong>—so you can recover even when the "front door" fails.
+          </p>
+        </div>
 
+        <div style="padding-bottom: 20px; border-bottom: 1px solid var(--line);">
+          <h3 style="color: var(--accent); font-size: 1.15rem; margin: 0 0 8px;">"Why do we need a 'Network' architect for backups?"</h3>
+          <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">
+            <strong>Physics.</strong> Most companies have a "Vault" but a tiny "Pipe." Recovering 500TB of data over a standard 1Gbps internet connection takes weeks. We align <strong>Lumen's</strong> high-bandwidth RapidRoutes with <strong>Commvault's</strong> Cleanroom Recovery to ensure you can re-hydrate your production environment in <em>minutes</em>, not months.
+          </p>
+        </div>
+
+        <div>
+          <h3 style="color: var(--accent); font-size: 1.15rem; margin: 0 0 8px;">"Why engage Industry5 instead of going direct?"</h3>
+          <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">
+            If you go direct, you get two siloed sales teams: one selling fiber, one selling software. Neither cares about your <strong>Recovery Time Objective (RTO)</strong>. We sit in the middle, architecting the <em>entire recovery workflow</em> to ensure the network and storage perform as a single survival engine.
+          </p>
+        </div>
+
+      </div>
+    </section>
   <section id="form" class="anchor">
       <div class="form-wrap" style="border:none; background:transparent; padding:0; margin: 20px auto 40px; max-width: 900px;">
         <div style="width:100%;height:600px;" data-fillout-id="9RayHAWGeDus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
