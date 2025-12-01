@@ -618,7 +618,35 @@ details[open] summary::after { content: "-"; }
   </div>
 
 </section>
+      
+<section class="card" style="margin: 24px 0;">
+      <h2 style="color: #fff; font-size: 1.6rem; margin-bottom: 24px;">Common Questions & Architectural Philosophy</h2>
+      
+      <div style="display: grid; gap: 24px;">
+        
+        <div style="padding-bottom: 20px; border-bottom: 1px solid var(--line);">
+          <h3 style="color: var(--accent); font-size: 1.15rem; margin: 0 0 8px;">"Why shouldn't I just bundle CCaaS with my Carrier?"</h3>
+          <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">
+            Because carriers sell networks, not customer experiences. When you bundle, you often get a generic, "white-labeled" version of a platform (like RingCentral or Genesys) with limited features and slow support. We decouple the **Network** (Lumen Voice) from the **Platform** (NICE/Five9), giving you the best transport <em>and</em> the best features, without the "carrier handcuffs."
+          </p>
+        </div>
 
+        <div style="padding-bottom: 20px; border-bottom: 1px solid var(--line);">
+          <h3 style="color: var(--accent); font-size: 1.15rem; margin: 0 0 8px;">"What about our elevators and fire alarms?"</h3>
+          <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">
+            This is the #1 blocker for cloud migrations. You can't move a fire panel to Zoom. That is why we architect a parallel track: high-speed cloud voice for users, and **Lumen Specialty Lines** (or LTE POTS Replacement) for critical analog devices. We solve the "unsexy" infrastructure so your cloud project doesn't stall.
+          </p>
+        </div>
+
+        <div>
+          <h3 style="color: var(--accent); font-size: 1.15rem; margin: 0 0 8px;">"Why use Industry5 instead of going direct?"</h3>
+          <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">
+            If you go direct to a CCaaS vendor, they will never tell you their weak spots. They will sell you their "AI" even if it's just a basic chatbot. We audit the market against *your* workflows. We know which vendor actually delivers on Agentic AI vs. who just has good marketing. You get the truth, not the brochure.
+          </p>
+        </div>
+
+      </div>
+    </section>
      <section id="form" class="anchor">
         <div class="form-wrap" style="border:none; background:transparent; padding:0;">
           <div style="width:100%;height:600px;" data-fillout-id="x15TgUb6Gnus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
