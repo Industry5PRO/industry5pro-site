@@ -550,7 +550,35 @@
         </article>
       </div>
     </section>
+    
+<section class="card" style="margin: 24px 0;">
+      <h2 style="color: #fff; font-size: 1.6rem; margin-bottom: 24px;">Common Questions & Architectural Philosophy</h2>
+      
+      <div style="display: grid; gap: 24px;">
+        
+        <div style="padding-bottom: 20px; border-bottom: 1px solid var(--line);">
+          <h3 style="color: var(--accent); font-size: 1.15rem; margin: 0 0 8px;">"Is NaaS just a fancy word for MPLS?"</h3>
+          <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">
+            No. MPLS is static; you buy it on a 3-year contract and wait 90 days to install. <strong>Lumen NaaS</strong> is elastic. You spin up a 10G private connection to AWS for an hour to move a massive dataset, then spin it down. You pay for the *capacity you use*, not the port size you installed.
+          </p>
+        </div>
 
+        <div style="padding-bottom: 20px; border-bottom: 1px solid var(--line);">
+          <h3 style="color: var(--accent); font-size: 1.15rem; margin: 0 0 8px;">"How do we stop bleeding money on Cloud Egress?"</h3>
+          <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">
+            Public internet egress fees are the silent killer of cloud budgets. By routing traffic through a private NaaS fabric (like Lumen's), you bypass the public internet entirely. This often reduces egress rates by <strong>40-60%</strong> while simultaneously dropping latency by 30ms. It pays for itself.
+          </p>
+        </div>
+
+        <div>
+          <h3 style="color: var(--accent); font-size: 1.15rem; margin: 0 0 8px;">"Do we really need Edge Compute?"</h3>
+          <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">
+            If your application needs to make a decision in under 10ms (like visual AI or robotic control), the round trip to `us-east-1` is too slow. We deploy <strong>Bare Metal</strong> at the metro edge—putting the compute within 5ms of your users—so you get the speed of on-prem with the flexibility of the cloud.
+          </p>
+        </div>
+
+      </div>
+    </section>
     <section class="cta-rail">
       <div class="cta-rail-inner">
         <div>
