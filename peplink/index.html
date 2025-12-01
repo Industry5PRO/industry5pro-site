@@ -471,7 +471,34 @@
           Not a gotcha chart. We’ll validate placement live against your footprint, SLAs, and budget.
         </p>
       </section>
+<section class="card" style="margin: 24px 0;">
+      <h2 style="color: #fff; font-size: 1.6rem; margin-bottom: 24px;">Common Questions & Architectural Philosophy</h2>
+      
+      <div style="display: grid; gap: 24px;">
+        
+        <div style="padding-bottom: 20px; border-bottom: 1px solid var(--line);">
+          <h3 style="color: var(--accent); font-size: 1.15rem; margin: 0 0 8px;">"Can we really run our whole business on wireless?"</h3>
+          <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">
+            <strong>Yes, but only if you bond it.</strong> A single 5G connection is a point of failure. We use <strong>Peplink SpeedFusion</strong> to bond multiple disparate links (Verizon 5G + Starlink + Local Broadband) into a single, unbreakable pipe. If one carrier drops, your video call doesn't even flicker.
+          </p>
+        </div>
 
+        <div style="padding-bottom: 20px; border-bottom: 1px solid var(--line);">
+          <h3 style="color: var(--accent); font-size: 1.15rem; margin: 0 0 8px;">"Why do we need an architect? Can't we just buy Starlink?"</h3>
+          <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">
+            Starlink is a fantastic circuit, but it's not a corporate network. It lacks static IPs, inbound routing, and granular traffic control. We wrap satellite connections in an <strong>SD-WAN overlay</strong>, giving you the reach of space with the security and control of a private MPLS line.
+          </p>
+        </div>
+
+        <div>
+          <h3 style="color: var(--accent); font-size: 1.15rem; margin: 0 0 8px;">"Won't 5G data overages kill our budget?"</h3>
+          <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">
+            Not with <strong>Traffic Steering</strong>. We configure your edge policies to route bulk traffic (like OS updates or guest Wi-Fi) to cheap wireline or standard broadband, while reserving the high-speed, low-latency cellular path exclusively for mission-critical apps (VoIP, POS, ERP). You pay for performance where it counts.
+          </p>
+        </div>
+
+      </div>
+    </section>
       <section class="card" id="peplink-video">
         <h3 style="margin:0 0 16px; color:#fff; font-size:1.4rem;">See Peplink SpeedFusion in Action</h3>
         <div class="yt-wrap">
