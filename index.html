@@ -535,24 +535,37 @@
   <script>
   document.getElementById('y').textContent = new Date().getFullYear();
 
-  (async function updateLatestThinking() {
+ (async function updateLatestThinking() {
     try {
-      const response = await fetch('/blog'); // Fetches your blog page
+      // 1. Fetch the blog page
+      const response = await fetch('/blog'); 
       const text = await response.text();
       
+      // 2. Parse the HTML
       const parser = new DOMParser();
       const doc = parser.parseFromString(text, 'text/html');
       
-      const articles = doc.querySelectorAll('.grid article');
+      // 3. NEW SELECTOR: Look for 'article.blog-post' (The new feed layout)
+      const articles = doc.querySelectorAll('article.blog-post');
       const list = document.getElementById('latest-thinking-list');
       
       if (articles.length > 0 && list) {
-        list.innerHTML = ''; // Clear placeholder
+        list.innerHTML = ''; // Clear "Loading..." placeholder
         
+        // 4. Loop through the first 2 articles
         for (let i = 0; i < 2 && i < articles.length; i++) {
           const art = articles[i];
-          const title = art.querySelector('h3').innerText;
-          const desc = art.querySelector('p').innerText.substring(0, 60) + '...';
+          
+          // EXTRACT TITLE (Now H2, not H3)
+          const title = art.querySelector('h2').innerText;
+          
+          // EXTRACT SUMMARY (First paragraph of the new blog body)
+          let desc = '';
+          const p = art.querySelector('.blog-body p');
+          if (p) {
+             // Limit to 80 chars so it fits nicely
+             desc = p.innerText.substring(0, 80) + '...';
+          }
           const id = art.id;
           
           const li = document.createElement('li');
@@ -560,17 +573,21 @@
           
           li.innerHTML = `
             <a href="/blog#${id}" class="latest-link">${title}</a>
-            <span style="font-size: 0.9rem;">${desc}</span>
+            <span style="font-size: 0.85rem; display:block; margin-top:4px; opacity:0.8;">${desc}</span>
           `;
           list.appendChild(li);
         }
         
+        // 5. Add "View All" link
         const viewAll = document.createElement('li');
         viewAll.innerHTML = `<a href="/blog" style="color: var(--accent); font-weight: 700; font-size: 0.9rem;">View all insights &rarr;</a>`;
         list.appendChild(viewAll);
       }
     } catch (e) {
       console.log('Could not fetch latest blog posts:', e);
+      // Fallback if fetch fails
+      const list = document.getElementById('latest-thinking-list');
+      if(list) list.innerHTML = '<li style="padding:10px 0;"><a href="/blog" style="color:var(--accent)">Read our latest insights on the Blog &rarr;</a></li>';
     }
   })();
   </script>
