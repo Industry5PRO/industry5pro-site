@@ -89,8 +89,9 @@
       text-decoration: none;
     }
 
-    /* Active State */
-    .main-nav a.active {
+ /* Active State (Now includes Dropdown Trigger) */
+    .main-nav a.active, 
+    .dropdown-trigger.active {
       color: var(--accent);
       text-shadow: 0 0 10px var(--accent);
     }
@@ -401,7 +402,7 @@ details[open] summary.faq-q::after { content: "-"; color: var(--gold); }
         <a href="/" class="nav-link-home">Home</a>
 
         <div class="nav-item">
-          <span class="dropdown-trigger">Core Competencies ▾</span>
+          <span class="dropdown-trigger active">Core Competencies ▾</span>
           <div class="dropdown-menu">
             <a href="/ai">AI & Omnichannel</a>
             <a href="/supermetrics">Analytics & Data</a>
