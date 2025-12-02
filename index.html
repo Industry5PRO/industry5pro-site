@@ -555,7 +555,7 @@
         <div id="audit-result" style="display:none; background:var(--panel); border:1px solid var(--gold); padding:20px; border-radius:12px; margin-top:20px;">
           <h3 id="result-title" style="color:var(--gold); margin:0 0 5px 0;">Calculating...</h3>
           <p id="result-desc" style="font-size:0.9rem; color:#fff; margin-bottom:15px;"></p>
-          <a href="https://calendly.com/industry5pro/30min" class="btn btn-primary" style="width:100%;">Fix My Infrastructure</a>
+          <a id="audit-cta" href="https://calendly.com/industry5pro/30min" class="btn btn-primary" style="width:100%;">Fix My Infrastructure</a>
         </div>
 
       </div>
@@ -566,11 +566,8 @@
         <div style="position:absolute; left:50%; top:0; bottom:0; width:1px; background:rgba(255,255,255,0.1);"></div>
 
         <span style="position:absolute; top:10px; left:10px; color:var(--text-muted); font-size:0.75rem; font-weight:700;">LOCAL HERO</span>
-        
         <span style="position:absolute; top:10px; right:10px; color:var(--accent); font-size:0.75rem; font-weight:700;">RESILIENT ENTERPRISE</span>
-        
         <span style="position:absolute; bottom:10px; left:10px; color:var(--lumen-orange); font-size:0.75rem; font-weight:700;">DIGITAL DEBT</span>
-        
         <span style="position:absolute; bottom:10px; right:10px; color:var(--text-muted); font-size:0.75rem; font-weight:700;">SCIENCE PROJECT</span>
 
         <div id="player-dot" style="position:absolute; bottom:50%; left:50%; width:20px; height:20px; background:var(--gold); border-radius:50%; transform:translate(-50%, 50%); box-shadow:0 0 15px var(--gold); transition:all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);"></div>
@@ -591,32 +588,23 @@
 
   <script>
     function setScore(btn) {
-      // 1. UI Toggle
       let siblings = btn.parentElement.children;
       for(let i=0; i<siblings.length; i++) siblings[i].classList.remove('selected');
       btn.classList.add('selected');
-
-      // 2. Calculate Logic
       recalcPosition();
     }
 
     function recalcPosition() {
       const selected = document.querySelectorAll('.audit-btn.selected');
-      let x = 0; // Tech Maturity (Left to Right)
-      let y = 0; // Resilience (Bottom to Top)
+      let x = 0; 
+      let y = 0;
       
       selected.forEach(btn => {
         const txt = btn.innerText;
-        
-        // X-Axis Triggers (Tech Maturity)
         if(txt.includes('automated') || txt.includes('Proactive')) x += 50;
-        
-        // Y-Axis Triggers (Resilience/Agility)
         if(txt.includes('failover') || txt.includes('plug-and-play')) y += 50;
       });
 
-      // 3. Move Dot
-      // Padding the numbers slightly (10-90%) so it doesn't touch the borders
       const finalX = 10 + (x * 0.8); 
       const finalY = 10 + (y * 0.8);
       
@@ -624,7 +612,6 @@
       dot.style.left = finalX + '%';
       dot.style.bottom = finalY + '%';
 
-      // 4. Show Result (Only if 4 selected)
       if(selected.length >= 4) showResult(x, y);
     }
 
@@ -632,32 +619,34 @@
       const box = document.getElementById('audit-result');
       const title = document.getElementById('result-title');
       const desc = document.getElementById('result-desc');
+      const btn = document.getElementById('audit-cta'); // Targeted Button
       
       box.style.display = 'block';
       
-      // LOGIC MAPPING
-      // Top Right: High X, High Y
+      // LOGIC MAPPING & DYNAMIC BUTTON TEXT
       if(x >= 50 && y >= 50) {
         title.innerText = "Diagnosis: Resilient Enterprise";
         desc.innerText = "You are ready for scale. Let's optimize your cost.";
+        btn.innerText = "Help Me Scale"; // Custom Text
       } 
-      // Bottom Left: Low X, Low Y
       else if (x < 50 && y < 50) {
         title.innerText = "Diagnosis: Digital Debt";
         desc.innerText = "Your foundation is cracking. One breach could be fatal.";
+        btn.innerText = "Fix My Infrastructure";
       } 
-      // Bottom Right: High X, Low Y (Your Scenario)
       else if (x >= 50 && y < 50) {
         title.innerText = "Diagnosis: Science Project";
         desc.innerText = "High tech, low agility. You bought the tools, but they don't integrate.";
+        btn.innerText = "Fix My Infrastructure";
       } 
-      // Top Left: Low X, High Y
       else {
         title.innerText = "Diagnosis: Local Hero";
         desc.innerText = "Manual processes saved by heroics. It works for now, but won't scale.";
+        btn.innerText = "Fix My Infrastructure";
       }
     }
   </script>
+
 </section>
   <footer class="footer">
     <div style="text-align:center; margin-bottom:16px;">
