@@ -57,13 +57,19 @@
 
     /* BRANDING */
     .brand { display: flex; align-items: center; gap: 16px; text-decoration: none; flex-shrink: 0; }
+    
     .brand img.logo {
       width: 75px !important; height: 75px !important; 
       border-radius: 14px; display: block; object-fit: contain; 
-      filter: drop-shadow(0 0 8px rgba(43, 237, 231, 0.5));
+      /* FIX: Now uses var(--accent) so it matches the page color */
+      filter: drop-shadow(0 0 8px var(--accent)); 
       transition: filter 0.3s ease;
     }
-    .brand:hover img.logo { filter: drop-shadow(0 0 14px rgba(43, 237, 231, 0.9)); }
+    
+    .brand:hover img.logo { 
+      /* Brighter glow on hover using the same variable */
+      filter: drop-shadow(0 0 14px var(--accent)); 
+    }
     
     .brand .title {
       font-weight: 800; font-size: 26px; color: #fff; line-height: 1; letter-spacing: 0.2px;
