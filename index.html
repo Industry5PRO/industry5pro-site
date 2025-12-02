@@ -659,7 +659,87 @@
       }
     }
   </script>
+  
+<section style="padding: 80px 24px; border-top: 1px solid var(--line); text-align: center;">
+  <div style="max-width: 800px; margin: 0 auto;">
+    
+    <h2 style="color: #fff; font-size: 2rem; margin-bottom: 16px;">Ready to Architect the Outcome?</h2>
+    <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 1.1rem;">
+      Select your primary focus to book your strategy session.
+    </p>
 
+    <div class="booking-options">
+      <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener" class="btn-path">
+        <span>🔧</span> Fix Infrastructure
+      </a>
+
+      <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener" class="btn-path">
+        <span>🚀</span> Scale with AI
+      </a>
+
+      <a href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener" class="btn-path primary">
+        <span>💎</span> Full Transformation
+      </a>
+    </div>
+
+    <p style="margin-top: 24px; font-size: 0.85rem; color: var(--text-muted); opacity: 0.6;">
+      All paths lead to a 30-minute executive briefing with Lou.
+    </p>
+
+  </div>
+</section>
+
+<style>
+  .booking-options {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-path {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    border: 1px solid var(--card-border);
+    background: var(--panel);
+    color: #fff;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    min-width: 200px; /* Ensures consistent width */
+    justify-content: center;
+  }
+
+  .btn-path:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: 0 4px 20px rgba(43, 237, 231, 0.1);
+  }
+
+  /* The "All of the Above" Button pops more */
+  .btn-path.primary {
+    background: linear-gradient(145deg, var(--panel), rgba(255, 215, 0, 0.1));
+    border-color: rgba(255, 215, 0, 0.3);
+    color: var(--gold);
+  }
+  
+  .btn-path.primary:hover {
+    background: var(--gold);
+    color: #0b1220;
+    box-shadow: 0 4px 25px rgba(255, 215, 0, 0.4);
+  }
+
+  @media (max-width: 700px) {
+    .booking-options { flex-direction: column; align-items: stretch; }
+    .btn-path { width: 100%; }
+  }
+</style>
+  
 </section>
   <footer class="footer">
     <div style="text-align:center; margin-bottom:16px;">
