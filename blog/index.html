@@ -788,23 +788,26 @@ document.addEventListener('DOMContentLoaded', function () {
   const ySpan = document.getElementById('y');
   if(ySpan) ySpan.textContent = new Date().getFullYear();
 
-  // --- 2. FILTER & PAGINATION LOGIC ---
+  // --- 2. FILTER & PAGINATION LOGIC (UPDATED FOR BLOG FEED) ---
   const ITEMS_PER_PAGE = 6; 
   let currentPage = 1;
   let currentFilter = 'all';
 
-  const allCards = Array.from(document.querySelectorAll('article.blog'));
+  // FIX: This now looks for 'article.blog-post' instead of 'article.card'
+  const allCards = Array.from(document.querySelectorAll('article.blog-post'));
+  
   const filterButtons = Array.from(document.querySelectorAll('.filter-btn'));
   const paginationContainer = document.getElementById('pagination-controls');
 
   function getMatchingCards() {
     const normalizedFilter = currentFilter.toLowerCase();
+    // Handles both "All" and "All Articles"
     if (normalizedFilter === 'all' || normalizedFilter === 'all articles') {
       return allCards;
     }
     return allCards.filter(card => {
       const tags = (card.getAttribute('data-tags') || '').toLowerCase();
-      // Simple partial match
+      // Checks if the tag is inside the article's data-tags
       return tags.includes(normalizedFilter);
     });
   }
@@ -819,12 +822,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
     const endIndex = startIndex + ITEMS_PER_PAGE;
     
-    // Reset
+    // Reset - Hide Everything first
     allCards.forEach(card => card.style.display = 'none');
 
-    // Show active slice
+    // Show only the active slice
     const pageSlice = matches.slice(startIndex, endIndex);
-    pageSlice.forEach(card => card.style.display = '');
+    pageSlice.forEach(card => card.style.display = 'block'); // Changed to 'block' for feed layout
 
     renderPagination(totalPages);
   }
@@ -841,6 +844,7 @@ document.addEventListener('DOMContentLoaded', function () {
       btn.addEventListener('click', () => {
         currentPage = pageNum;
         render();
+        // Scrolls back to top of feed smoothly
         document.getElementById('all').scrollIntoView({behavior: 'smooth', block: 'start'});
       });
       return btn;
@@ -853,19 +857,23 @@ document.addEventListener('DOMContentLoaded', function () {
     if (currentPage < totalPages) paginationContainer.appendChild(createBtn('Next →', currentPage + 1));
   }
 
+  // Button Click Listeners
   filterButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
+      // Visual update
       filterButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+      
+      // Logic update
       currentFilter = btn.getAttribute('data-filter') || btn.innerText;
       currentPage = 1; 
       render();
     });
   });
 
+  // Initial Run
   render();
-
   // --- 3. LINKEDIN TOGGLES ---
   document.addEventListener('click', function(e){
     const btn = e.target.closest('.li-view'); 
