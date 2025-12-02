@@ -776,7 +776,7 @@ document.addEventListener('DOMContentLoaded', function () {
   let currentPage = 1;
   let currentFilter = 'all';
 
-  const allCards = Array.from(document.querySelectorAll('article.card'));
+  const allCards = Array.from(document.querySelectorAll('article.blog'));
   const filterButtons = Array.from(document.querySelectorAll('.filter-btn'));
   const paginationContainer = document.getElementById('pagination-controls');
 
@@ -885,7 +885,7 @@ document.addEventListener('DOMContentLoaded', function () {
       return match ? match[1] : null;
     }
 
-    document.querySelectorAll('article.card').forEach(card => {
+    document.querySelectorAll('article.blog').forEach(card => {
       let meta = card.querySelector('.meta');
       if (!meta) {
         meta = document.createElement('p');
