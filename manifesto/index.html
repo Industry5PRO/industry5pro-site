@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <title>The Manifesto | Industry5.pro</title>
+  <meta name="description" content="Why I left the supplier mold to become the outcome architect. Truth over bundles. Resilience over convenience.">
+  <meta name="author" content="Lou Tortora">
+  <link rel="canonical" href="https://industry5.pro/manifesto">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Industry 5.0 Manifesto">
+  <meta property="og:description" content="Truth beats bundles. Why I left the mold to sit on your side of the table.">
+  <meta property="og:image" content="https://industry5.pro/assets/lou-portrait@2x.png">
+
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="/assets/favicon.ico" />
+
+  <style>
+    /* --- CORE VARIABLES (MATCHING INDEX) --- */
+    :root {
+      --bg: #1B1B1D;
+      --panel: #232326;
+      --card-bg: #1B1B1D; 
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text: #e8eef9;
+      --text-muted: #aeb8c4;
+      --line: rgba(255,255,255,0.08);
+      --outline: #2C2C30;
+      --accent: #2BEDE7;           /* Lumen Ice Blue */
+      --gold: #FFD700;             /* Standard Gold */
+    }
+    
+    html, body {
+      margin: 0; padding: 0; background: var(--bg); color: var(--text);
+      font: 16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; 
+      overflow-x: clip;
+    }
+    *, *:before, *:after { box-sizing: inherit; }
+    a{color:inherit;text-decoration:none;transition:color .2s ease;}
+    a:hover{text-decoration:none;}
+    img{max-width:100%;display:block}
+
+    /* HEADER ( streamlined version ) */
+    header {
+      position: sticky; top: 0; z-index: 999;
+      background: linear-gradient(180deg,rgba(27,27,29,0.95),rgba(27,27,29,0.85));
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    .header-center {
+      max-width: 1100px; margin: 0 auto; padding: 14px 18px; 
+      display: flex; align-items: center; justify-content: space-between; 
+    }
+    .brand { display: flex; align-items: center; gap: 16px; font-weight: 800; font-size: 1.5rem; color: #fff; }
+    .brand img { width: 50px; height: 50px; }
+    .nav-link { font-weight: 600; color: var(--text-muted); margin-left: 24px; font-size: 0.9rem; }
+    .nav-link:hover { color: var(--accent); }
+    .nav-link.active { color: var(--gold); }
+
+    /* MANIFESTO CONTENT */
+    .manifesto-wrap { max-width: 740px; margin: 80px auto; padding: 0 24px; }
+    
+    .manifesto-kicker {
+      color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+      font-size: 0.9rem; margin-bottom: 16px; display: block;
+    }
+    
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1.1; color: #fff;
+      margin: 0 0 40px 0; font-weight: 800;
+    }
+
+    .prose p {
+      font-size: 1.25rem; line-height: 1.8; color: #d1d5db; margin-bottom: 32px;
+    }
+    
+    .prose strong { color: #fff; font-weight: 700; }
+    
+    .highlight-box {
+      border-left: 4px solid var(--accent);
+      padding-left: 24px;
+      margin: 40px 0;
+      font-style: italic;
+      color: #fff;
+      font-size: 1.4rem;
+    }
+
+    /* SIGNATURE SECTION */
+    .signature-block {
+      margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--line);
+      display: flex; gap: 24px; align-items: center;
+    }
+    .sig-img {
+      width: 100px; height: 100px; border-radius: 50%; border: 2px solid var(--gold);
+      object-fit: cover;
+    }
+    .sig-text h3 { margin: 0 0 4px 0; color: #fff; font-size: 1.4rem; }
+    .sig-text span { color: var(--accent); font-family: monospace; }
+
+    /* FOOTER */
+    .footer { border-top: 1px solid var(--line); padding: 40px 20px; text-align: center; color: var(--text-muted); margin-top: 80px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-center">
+      <a class="brand" href="/">
+         <img src="/assets/industry5logo.svg" alt="Industry5.pro">
+         <span>Industry5.pro</span>
+      </a>
+      <nav>
+        <a href="/" class="nav-link">Home</a>
+        <a href="/blog" class="nav-link">Insights</a>
+        <a href="https://calendly.com/industry5pro/30min" class="nav-link" style="color:var(--gold);">Book Lou</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="manifesto-wrap">
+    <span class="manifesto-kicker">The Founder's Letter</span>
+    <h1>Truth Over Bundles.</h1>
+
+    <div class="prose">
+      <p>
+        I spent years trying to fit into a mold.
+      </p>
+      <p>
+        The industry tells you to pick a flag. They want you to represent one supplier. They want you to sell the whole bag. They want you to lock the client in.
+      </p>
+      <p>
+        But I kept seeing the cracks in that logic.
+      </p>
+      <p>
+        I saw clients buying "All-in-One" solutions that were mediocre at everything. I saw architectures that looked great on a sales deck but fell apart during a real outage.
+      </p>
+      <p>
+        I realized something critical about my role.
+      </p>
+      <div class="highlight-box">
+        "Just because we can bundle it all together doesn't mean we should."
+      </div>
+      <p>
+        Convenience is the enemy of resilience.
+      </p>
+      <p>
+        I was tired of holding back the truth to protect a vendor's quota. I wanted to be the ultimate go-to guy my clients knew me to be. The one who picks up the phone at 2 AM. The one who says "No" to a bad deal even if it costs me a commission.
+      </p>
+      <p>
+        That is why I built Industry5.pro.
+      </p>
+      <p>
+        We stripped away the supplier bias. We stripped away the need to "fit the mold." We replaced it with a single obsession.
+      </p>
+      <p>
+        <strong>Outcomes.</strong>
+      </p>
+      <p>
+        If the best solution requires three different best-of-breed vendors to ensure you never go down, that is what we build. If the truth is that your legacy fiber cannot handle AI, I will tell you that before you spend a dime on software.
+      </p>
+      <p>
+        This is the Industry 5.0 way. It is human-centric. It is built on trust. And trust requires the courage to speak the truth about your infrastructure.
+      </p>
+      <p>
+        Let's stop buying science projects. Let's build something real.
+      </p>
+    </div>
+
+    <div class="signature-block">
+      <img src="/assets/lou-portrait@2x.png" alt="Lou Tortora" class="sig-img">
+      <div class="sig-text">
+        <h3>Lou Tortora</h3>
+        <span>Founder, Industry5.pro</span>
+      </div>
+    </div>
+
+    <div style="margin-top: 60px; text-align: center;">
+      <a href="https://calendly.com/industry5pro/30min" style="
+        display: inline-block; padding: 16px 32px; background: var(--gold); color: #000; 
+        font-weight: 800; border-radius: 8px; font-size: 1.1rem;">
+        Work With Me
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    &copy; 2025 Industry5.pro. Built on trust. Paid by results.
+  </footer>
+
+</body>
+</html>
