@@ -601,7 +601,9 @@
       
       selected.forEach(btn => {
         const txt = btn.innerText;
+        // Tech Maturity Points
         if(txt.includes('automated') || txt.includes('Proactive')) x += 50;
+        // Resilience Points
         if(txt.includes('failover') || txt.includes('plug-and-play')) y += 50;
       });
 
@@ -619,30 +621,41 @@
       const box = document.getElementById('audit-result');
       const title = document.getElementById('result-title');
       const desc = document.getElementById('result-desc');
-      const btn = document.getElementById('audit-cta'); // Targeted Button
+      const btn = document.getElementById('audit-cta');
       
       box.style.display = 'block';
       
-      // LOGIC MAPPING & DYNAMIC BUTTON TEXT
+      // DEFAULT BUTTON TEXT (Reset to Fix)
+      btn.innerText = "Fix My Infrastructure";
+
+      // 1. Top Right: Resilient Enterprise
       if(x >= 50 && y >= 50) {
         title.innerText = "Diagnosis: Resilient Enterprise";
-        desc.innerText = "You are ready for scale. Let's optimize your cost.";
-        btn.innerText = "Help Me Scale"; // Custom Text
+        
+        // STRICT CHECK: Only "Scale" if 100% Perfect (4/4)
+        if(x === 100 && y === 100) {
+           desc.innerText = "Your foundation is flawless. You are ready for hyper-growth.";
+           btn.innerText = "Help Me Scale";
+        } else {
+           // They are in the quadrant, but missed 1 or 2 items
+           desc.innerText = "You are close, but hidden gaps are creating risk.";
+           btn.innerText = "Fix My Infrastructure"; 
+        }
       } 
+      // 2. Bottom Left: Digital Debt
       else if (x < 50 && y < 50) {
         title.innerText = "Diagnosis: Digital Debt";
         desc.innerText = "Your foundation is cracking. One breach could be fatal.";
-        btn.innerText = "Fix My Infrastructure";
       } 
+      // 3. Bottom Right: Science Project
       else if (x >= 50 && y < 50) {
         title.innerText = "Diagnosis: Science Project";
         desc.innerText = "High tech, low agility. You bought the tools, but they don't integrate.";
-        btn.innerText = "Fix My Infrastructure";
       } 
+      // 4. Top Left: Local Hero
       else {
         title.innerText = "Diagnosis: Local Hero";
         desc.innerText = "Manual processes saved by heroics. It works for now, but won't scale.";
-        btn.innerText = "Fix My Infrastructure";
       }
     }
   </script>
