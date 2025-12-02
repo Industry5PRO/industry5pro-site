@@ -508,7 +508,161 @@
     </section>
 
   </main>
+<section id="audit" style="background:var(--bg); border-top:1px solid var(--outline); padding:60px 0;">
+  <div class="wrap">
+    <div style="text-align:center; margin-bottom:40px;">
+      <h2 style="color:#fff; font-size:2rem; margin-bottom:10px;">Where do you actually stand?</h2>
+      <p style="color:var(--text-muted);">Take the 60-second infrastructure MRI. See your position instantly.</p>
+    </div>
 
+    <div class="audit-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap:40px; align-items:center;">
+      
+      <div class="audit-questions">
+        
+        <div class="q-block" style="margin-bottom:24px;">
+          <p style="color:#fff; font-weight:600; margin-bottom:8px;">1. If your primary cloud provider goes down right now...</p>
+          <div class="options" style="display:flex; gap:10px;">
+            <button class="audit-btn" onclick="setScore('y', 0, this)">We are offline. Panic.</button>
+            <button class="audit-btn" onclick="setScore('y', 50, this)">We failover automatically.</button>
+          </div>
+        </div>
+
+        <div class="q-block" style="margin-bottom:24px;">
+          <p style="color:#fff; font-weight:600; margin-bottom:8px;">2. Your data reporting (Sales/Finance/Ops)...</p>
+          <div class="options" style="display:flex; gap:10px;">
+            <button class="audit-btn" onclick="setScore('x', 0, this)">Is manual spreadsheets.</button>
+            <button class="audit-btn" onclick="setScore('x', 50, this)">Is automated/real-time.</button>
+          </div>
+        </div>
+
+        <div class="q-block" style="margin-bottom:24px;">
+          <p style="color:#fff; font-weight:600; margin-bottom:8px;">3. Adding a new AI feature or tool...</p>
+          <div class="options" style="display:flex; gap:10px;">
+            <button class="audit-btn" onclick="setScore('y', 0, this)">Takes months of integration.</button>
+            <button class="audit-btn" onclick="setScore('y', 50, this)">Is plug-and-play.</button>
+          </div>
+        </div>
+
+        <div class="q-block" style="margin-bottom:24px;">
+          <p style="color:#fff; font-weight:600; margin-bottom:8px;">4. Your network security posture is...</p>
+          <div class="options" style="display:flex; gap:10px;">
+            <button class="audit-btn" onclick="setScore('x', 0, this)">Reactive (Firewalls).</button>
+            <button class="audit-btn" onclick="setScore('x', 50, this)">Proactive (Zero Trust).</button>
+          </div>
+        </div>
+
+        <div id="audit-result" style="display:none; background:var(--panel); border:1px solid var(--gold); padding:20px; border-radius:12px; margin-top:20px;">
+          <h3 id="result-title" style="color:var(--gold); margin:0 0 5px 0;">Calculating...</h3>
+          <p id="result-desc" style="font-size:0.9rem; color:#fff; margin-bottom:15px;"></p>
+          <a href="https://calendly.com/industry5pro/30min" class="btn btn-primary" style="width:100%;">Fix My Infrastructure</a>
+        </div>
+
+      </div>
+
+      <div class="audit-visual" style="position:relative; aspect-ratio:1/1; background:#0f172a; border-radius:20px; border:1px solid var(--line); overflow:hidden;">
+        
+        <div style="position:absolute; top:50%; left:0; right:0; height:1px; background:rgba(255,255,255,0.1);"></div>
+        <div style="position:absolute; left:50%; top:0; bottom:0; width:1px; background:rgba(255,255,255,0.1);"></div>
+
+        <span style="position:absolute; top:10px; left:10px; color:var(--text-muted); font-size:0.75rem; font-weight:700;">SCIENCE PROJECT</span>
+        <span style="position:absolute; top:10px; right:10px; color:var(--accent); font-size:0.75rem; font-weight:700;">RESILIENT ENTERPRISE</span>
+        <span style="position:absolute; bottom:10px; left:10px; color:var(--lumen-orange); font-size:0.75rem; font-weight:700;">DIGITAL DEBT</span>
+        <span style="position:absolute; bottom:10px; right:10px; color:var(--text-muted); font-size:0.75rem; font-weight:700;">LOCAL HERO</span>
+
+        <div id="player-dot" style="position:absolute; bottom:50%; left:50%; width:20px; height:20px; background:var(--gold); border-radius:50%; transform:translate(-50%, 50%); box-shadow:0 0 15px var(--gold); transition:all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <style>
+    .audit-btn {
+      flex:1; padding:10px; background:rgba(255,255,255,0.05); border:1px solid var(--line);
+      color:var(--text-muted); border-radius:6px; cursor:pointer; transition:all 0.2s; font-size:0.85rem;
+    }
+    .audit-btn:hover { border-color:var(--accent); color:#fff; }
+    .audit-btn.selected { background:var(--accent); color:#000; border-color:var(--accent); font-weight:700; }
+    @media (max-width: 768px) { .audit-grid { grid-template-columns: 1fr; } }
+  </style>
+
+  <script>
+    let scoreX = 50; // Start middle
+    let scoreY = 50; // Start middle
+    let answered = { x1:false, x2:false, y1:false, y2:false }; // Track progress
+
+    function setScore(axis, val, btn) {
+      // 1. Visual Selection
+      let siblings = btn.parentElement.children;
+      for(let i=0; i<siblings.length; i++) siblings[i].classList.remove('selected');
+      btn.classList.add('selected');
+
+      // 2. Update Math
+      // We map the 4 questions to simple add/subtract from center
+      // Q1 (Y-axis), Q2 (X-axis), Q3 (Y-axis), Q4 (X-axis)
+      
+      const parentIndex = Array.from(document.querySelectorAll('.q-block')).indexOf(btn.closest('.q-block'));
+      
+      if (parentIndex === 0) scoreY = (scoreY % 50) + val; // Q1 affects Y
+      if (parentIndex === 1) scoreX = (scoreX % 50) + val; // Q2 affects X
+      if (parentIndex === 2) scoreY = (scoreY < 50 ? scoreY : scoreY - 50) + val; // Add logic as needed
+      if (parentIndex === 3) scoreX = (scoreX < 50 ? scoreX : scoreX - 50) + val;
+
+      // Simplification for the "Stupid Easy" logic:
+      // Just recalculate total based on all selected buttons
+      recalcPosition();
+    }
+
+    function recalcPosition() {
+      // Find all selected buttons
+      const selected = document.querySelectorAll('.audit-btn.selected');
+      let x = 0; 
+      let y = 0;
+      
+      // Calculate totals (0-100 scale)
+      selected.forEach(btn => {
+        const txt = btn.innerText;
+        // X Logic
+        if(txt.includes('automated') || txt.includes('Proactive')) x += 50;
+        // Y Logic
+        if(txt.includes('failover') || txt.includes('plug-and-play')) y += 50;
+      });
+
+      // Update Dot Position
+      const dot = document.getElementById('player-dot');
+      // We clamp it slightly so it doesn't hit the absolute edge (10% to 90%)
+      const finalX = 10 + (x * 0.8); 
+      const finalY = 10 + (y * 0.8);
+      
+      dot.style.left = finalX + '%';
+      dot.style.bottom = finalY + '%';
+
+      // Show Result if 4 answered
+      if(selected.length >= 4) showResult(x, y);
+    }
+
+    function showResult(x, y) {
+      const box = document.getElementById('audit-result');
+      const title = document.getElementById('result-title');
+      const desc = document.getElementById('result-desc');
+      
+      box.style.display = 'block';
+      
+      if(x >= 50 && y >= 50) {
+        title.innerText = "You are a Resilient Enterprise.";
+        desc.innerText = "You are ready for scale. Let's optimize your cost.";
+      } else if (x < 50 && y < 50) {
+        title.innerText = "Diagnosis: Digital Debt.";
+        desc.innerText = "Your foundation is cracking. One breach could be fatal.";
+      } else if (x >= 50 && y < 50) {
+        title.innerText = "Diagnosis: Science Project.";
+        desc.innerText = "Great tools, poor integration. You are burning cash.";
+      } else {
+        title.innerText = "Diagnosis: Local Hero.";
+        desc.innerText = "Great effort, but it won't scale. You need automation.";
+      }
+    }
+  </script>
+</section>
   <footer class="footer">
     <div style="text-align:center; margin-bottom:16px;">
       © <span id="y"></span> Industry5.pro | Built on trust. Paid by results.
