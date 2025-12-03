@@ -22,13 +22,14 @@
 <style>
   /* --- CORE VARIABLES (PEPLINK THEME: YELLOW/GOLD) --- */
   :root {
-    --bg: #1B1B1D;
-    --panel: #262626; 
-    --card-bg: #262626; 
-    --card-border: rgba(255, 255, 255, 0.08);
+    /* TRUE BLACK BACKGROUND */
+    --bg: #000000;
+    --panel: #1A1A1A; 
+    --card-bg: #1A1A1A; 
+    --card-border: rgba(255, 255, 255, 0.12);
     --text: #f5f7fb;
     --text-muted: #a9b4c7;
-    --line: rgba(255,255,255,0.08);
+    --line: rgba(255,255,255,0.1);
     --outline: #2C2C30;
 
     /* Page Specific Accents */
@@ -56,7 +57,7 @@
   header {
     position: -webkit-sticky; 
     position: sticky; top: 0; z-index: 99999;
-    background: linear-gradient(180deg,rgba(27,27,29,0.95),rgba(27,27,29,0.85));
+    background: linear-gradient(180deg,rgba(0,0,0,0.95),rgba(0,0,0,0.85));
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--line);
     width: 100%;
@@ -171,14 +172,14 @@
     overflow: hidden;
     border-radius: 16px;
     border: 1px solid var(--card-border);
-    /* MATCHING CHARCOAL BACKGROUND */
-    background-color: #1b1b1d; 
-    min-height: 560px; /* Taller for better video framing */
+    /* MATCHING TRUE BLACK BACKGROUND */
+    background-color: #000000; 
+    min-height: 560px; 
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-bottom: 24px; /* Spacing below hero */
+    margin-bottom: 24px;
   }
 
   .hero-bg-video {
@@ -192,20 +193,20 @@
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(27, 27, 29, 0.75); 
+    /* LIGHTER SCRIM (40%) for brighter video */
+    background: rgba(0, 0, 0, 0.4); 
     z-index: 1;
   }
 
-  /* Content Wrapper floating over video */
+  /* Content Wrapper */
   .hero-content-layer {
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 1000px;
+    max-width: 800px;
     padding: 40px 24px;
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr; /* Text left, Image right */
-    gap: 40px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
   }
 
@@ -215,7 +216,6 @@
     text-shadow: 0 4px 30px rgba(0,0,0,0.9);
     margin-bottom: 20px;
     line-height: 1.1;
-    text-align: left;
   }
 
   .hero-text .lead {
@@ -224,7 +224,6 @@
     text-shadow: 0 2px 10px rgba(0,0,0,0.9);
     margin-bottom: 32px;
     line-height: 1.6;
-    text-align: left;
   }
   
   .hero-text .kicker {
@@ -235,23 +234,13 @@
     text-transform: uppercase;
     margin-bottom: 12px;
     text-shadow: 0 2px 10px rgba(0,0,0,0.9);
-    text-align: left;
   }
 
-  .hero-content-layer .hero-cta {
+  .hero-cta {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 12px;
     flex-wrap: wrap;
-  }
-
-  .hero-hardware img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    /* Deep shadow to lift it off the video */
-    filter: drop-shadow(0 20px 50px rgba(0,0,0,0.8));
-    transform: scale(1.1); /* Make it pop slightly */
   }
 
   /* === HERO BADGE (PCE) === */
@@ -262,18 +251,14 @@
     width: 110px;
     height: auto;
     z-index: 10;
-    
     /* Floating Sticker Effect */
-    border-radius: 12px; /* Softens the corners of the white box */
-    box-shadow: 0 8px 24px rgba(0,0,0,0.6); /* Deep shadow for lift */
-    
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.8));
     transition: transform 0.3s ease;
   }
   .hero-badge:hover {
     transform: scale(1.05) translateY(-2px);
   }
 
-  /* Mobile Stack for Hero */
   @media (max-width: 900px) {
     .hero-content-layer {
       grid-template-columns: 1fr;
@@ -284,9 +269,6 @@
         text-align: center;
     }
     .hero-cta { justify-content: center; }
-    .hero-hardware { order: 2; }
-    .hero-hardware img { transform: scale(1); max-width: 80%; margin: 0 auto; }
-    
     .hero-badge {
         width: 80px;
         bottom: 16px;
@@ -340,8 +322,7 @@
 
   /* --- MODIFIED ICP CARD FOR LUMEN BLUE GLOW --- */
   .icp-card {
-    background: #262626; border-radius: 14px; padding: 16px 18px 14px;
-    /* CHANGED to Lumen Blue */
+    background: #1A1A1A; border-radius: 14px; padding: 16px 18px 14px;
     border: 1px solid rgba(0, 163, 224, 0.85);
     box-shadow: 0 0 24px rgba(0, 163, 224, 0.45);
     display: flex; flex-direction: column;
@@ -440,13 +421,9 @@
             </div>
           </div>
 
-          <div class="hero-hardware">
-            <img src="/assets/ed5d1591eb434f7d50b20da60509f16f5ce9ffd3.png" alt="Starlink and Peplink Hardware Stack" />
-          </div>
-
         </div>
         
-        <img src="/assets/PCE.png" alt="Peplink Certified Engineer" class="hero-badge">
+        <img src="/assets/pce4.png" alt="Peplink Certified Engineer" class="hero-badge">
         
       </section>
 
