@@ -415,10 +415,8 @@
     .socials a:hover{color:var(--accent);transform:translateY(-2px);text-shadow:0 0 10px var(--accent)}
     .socials svg{width:24px;height:24px;fill:currentColor}
 
-    /* --- NEW FEATURED PAPER STYLES --- */
+    /* --- FEATURED PAPER STYLES --- */
     .featured-paper-content {
-        /* NEW: Removed internal grid structure for cleaner mobile flow */
-        
         border: 1px solid var(--card-border); 
         border-radius: 12px; 
         padding: 24px; 
@@ -445,6 +443,8 @@
         gap: 2px;
         height: 70px; /* Consistent height */
         justify-content: center;
+        /* Ensure these pills are slightly separated from the text pills */
+        margin-right: 12px; 
     }
     .pill.metric .knum {
         font-size: 1.4rem;
@@ -591,8 +591,14 @@
                     <strong class="knum siemens" data-target="12" data-suffix="%">0</strong>
                     <span class="label">Increase in Line Throughput & OEE</span>
                 </span>
-                <span class="pill">OEE Compliance</span>
-                <span class="pill">Energy per Unit</span>
+                 <span class="pill metric">
+                    <strong class="knum siemens" data-target="99.9" data-suffix="%">0</strong>
+                    <span class="label">OEE Compliance & Uptime Guarantee</span>
+                </span>
+                <span class="pill metric">
+                    <strong class="knum siemens" data-target="18" data-suffix="%">0</strong>
+                    <span class="label">Reduction in Energy per Unit</span>
+                </span>
             </div>
 
             <h3 style="color:var(--cat-iiot);">Ideal Client Profile (ICP)</h3>
