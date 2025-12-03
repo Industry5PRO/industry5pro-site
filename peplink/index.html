@@ -156,7 +156,7 @@
   /* === PAGE CONTENT STYLES === */
   .page { max-width: 1100px; margin: 0 auto; padding: 24px 20px 40px; }
 
-  /* Cards */
+  /* Standard Card */
   .card {
     background: var(--card-bg);
     border-radius: 16px;
@@ -164,17 +164,24 @@
     padding: 24px;
     margin-bottom: 24px;
   }
+  
+  /* Floating / Borderless Card (For requested sections) */
+  .card.floating {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   .muted { color: var(--text-muted); }
 
   /* VIDEO HERO STYLES */
   .hero-card {
     position: relative;
     overflow: hidden;
-    
-    /* REMOVED BORDER FOR SEAMLESS LOOK */
-    border: none; 
-    
-    /* MATCHING TRUE BLACK BACKGROUND */
+    border-radius: 16px;
+    border: none; /* No border */
     background-color: #000000; 
     min-height: 560px; 
     display: flex;
@@ -195,7 +202,6 @@
   .hero-overlay {
     position: absolute;
     inset: 0;
-    /* LIGHTER SCRIM (40%) for brighter video */
     background: rgba(0, 0, 0, 0.4); 
     z-index: 1;
   }
@@ -253,7 +259,6 @@
     width: 110px;
     height: auto;
     z-index: 10;
-    /* Floating Sticker Effect */
     filter: drop-shadow(0 4px 12px rgba(0,0,0,0.8));
     transition: transform 0.3s ease;
   }
@@ -306,7 +311,7 @@
     box-shadow: 0 0 15px rgba(252,183,27,.6);
   }
 
-  /* Video Wrap (for lower section) */
+  /* Video Wrap */
   .yt-wrap {
     border-radius: 14px;
     border: 1px solid var(--accent);
@@ -322,10 +327,9 @@
   .icp-grid { display: grid; gap: 18px; }
   @media (min-width:900px) { .icp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
-  /* --- MODIFIED ICP CARD FOR LUMEN BLUE GLOW --- */
+  /* ICP Card (Blue Glow) */
   .icp-card {
     background: #262626; border-radius: 14px; padding: 16px 18px 14px;
-    /* CHANGED to Lumen Blue */
     border: 1px solid rgba(0, 163, 224, 0.85);
     box-shadow: 0 0 24px rgba(0, 163, 224, 0.45);
     display: flex; flex-direction: column;
@@ -430,7 +434,7 @@
         
       </section>
 
-      <section class="card" style="margin-top:14px">
+      <section class="card floating" style="margin-top:14px">
         <h2 style="margin:0 0 8px; color: #fff;">Why FWA, why Peplink</h2>
         <p class="muted" style="margin:0; line-height: 1.6;">
           FWA wins where fiber is slow to deploy, sites are mobile, or day-one connectivity is critical. Peplink adds
@@ -575,35 +579,37 @@
           Not a gotcha chart. We’ll validate placement live against your footprint, SLAs, and budget.
         </p>
       </section>
-<section class="card" style="margin: 24px 0;">
-      <h2 style="color: #fff; font-size: 1.6rem; margin-bottom: 24px;">Common Questions & Architectural Philosophy</h2>
-      
-      <div style="display: grid; gap: 24px;">
+
+      <section class="card floating" style="margin: 24px 0;">
+        <h2 style="color: #fff; font-size: 1.6rem; margin-bottom: 24px;">Common Questions & Architectural Philosophy</h2>
         
-        <div style="padding-bottom: 20px; border-bottom: 1px solid var(--line);">
-          <h3 style="color: var(--accent); font-size: 1.15rem; margin: 0 0 8px;">"Can we really run our whole business on wireless?"</h3>
-          <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">
-            <strong>Yes, but only if you bond it.</strong> A single 5G connection is a point of failure. We use <strong>Peplink SpeedFusion</strong> to bond multiple disparate links (Verizon 5G + Starlink + Local Broadband) into a single, unbreakable pipe. If one carrier drops, your video call doesn't even flicker.
-          </p>
-        </div>
+        <div style="display: grid; gap: 24px;">
+          
+          <div style="padding-bottom: 20px; border-bottom: 1px solid var(--line);">
+            <h3 style="color: var(--accent); font-size: 1.15rem; margin: 0 0 8px;">"Can we really run our whole business on wireless?"</h3>
+            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">
+              <strong>Yes, but only if you bond it.</strong> A single 5G connection is a point of failure. We use <strong>Peplink SpeedFusion</strong> to bond multiple disparate links (Verizon 5G + Starlink + Local Broadband) into a single, unbreakable pipe. If one carrier drops, your video call doesn't even flicker.
+            </p>
+          </div>
 
-        <div style="padding-bottom: 20px; border-bottom: 1px solid var(--line);">
-          <h3 style="color: var(--accent); font-size: 1.15rem; margin: 0 0 8px;">"Why do we need an architect? Can't we just buy Starlink?"</h3>
-          <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">
-            Starlink is a fantastic circuit, but it's not a corporate network. It lacks static IPs, inbound routing, and granular traffic control. We wrap satellite connections in an <strong>SD-WAN overlay</strong>, giving you the reach of space with the security and control of a private MPLS line.
-          </p>
-        </div>
+          <div style="padding-bottom: 20px; border-bottom: 1px solid var(--line);">
+            <h3 style="color: var(--accent); font-size: 1.15rem; margin: 0 0 8px;">"Why do we need an architect? Can't we just buy Starlink?"</h3>
+            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">
+              Starlink is a fantastic circuit, but it's not a corporate network. It lacks static IPs, inbound routing, and granular traffic control. We wrap satellite connections in an <strong>SD-WAN overlay</strong>, giving you the reach of space with the security and control of a private MPLS line.
+            </p>
+          </div>
 
-        <div>
-          <h3 style="color: var(--accent); font-size: 1.15rem; margin: 0 0 8px;">"Won't 5G data overages kill our budget?"</h3>
-          <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">
-            Not with <strong>Traffic Steering</strong>. We configure your edge policies to route bulk traffic (like OS updates or guest Wi-Fi) to cheap wireline or standard broadband, while reserving the high-speed, low-latency cellular path exclusively for mission-critical apps (VoIP, POS, ERP). You pay for performance where it counts.
-          </p>
-        </div>
+          <div>
+            <h3 style="color: var(--accent); font-size: 1.15rem; margin: 0 0 8px;">"Won't 5G data overages kill our budget?"</h3>
+            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">
+              Not with <strong>Traffic Steering</strong>. We configure your edge policies to route bulk traffic (like OS updates or guest Wi-Fi) to cheap wireline or standard broadband, while reserving the high-speed, low-latency cellular path exclusively for mission-critical apps (VoIP, POS, ERP). You pay for performance where it counts.
+            </p>
+          </div>
 
-      </div>
-    </section>
-      <section class="card" id="peplink-video">
+        </div>
+      </section>
+
+      <section class="card floating" id="peplink-video">
         <h3 style="margin:0 0 16px; color:#fff; font-size:1.4rem;">See Peplink SpeedFusion in Action</h3>
         <div class="yt-wrap">
           <iframe
@@ -615,9 +621,9 @@
         </div>
       </section>
 
-      <section id="intake" class="card intake" style="padding:0; overflow:hidden;">
-        <h2 style="margin:24px 0 8px 24px; color:#fff;">Get my plan</h2>
-        <p class="muted" style="margin:0 0 12px 24px">
+      <section id="intake" class="card intake floating" style="padding:0; overflow:hidden;">
+        <h2 style="margin:24px 0 8px 0px; color:#fff;">Get my plan</h2>
+        <p class="muted" style="margin:0 0 12px 0px">
           Outline your sites, carriers, and uptime targets. We’ll review your 30-day rollout and ROI live.
         </p>
         <div style="width:100%;height:600px;" data-fillout-id="3ANossxqBKus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div><script src="https://server.fillout.com/embed/v1/"></script>
