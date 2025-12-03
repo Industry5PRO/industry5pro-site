@@ -45,7 +45,7 @@
       --cat-infra: #FF4F1F; /* Infrastructure Red/Orange */
     }
     
-    /* --- RESET & BASE (UPDATED FOR MOBILE STICKY FIX) --- */
+    /* --- RESET & BASE --- */
     html, body {
       margin: 0; 
       padding: 0;
@@ -53,7 +53,7 @@
       color: var(--text);
       font: 16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial; 
       box-sizing: border-box;
-      overflow-x: clip; /* FIX: Prevents horizontal scroll without breaking sticky */
+      overflow-x: clip; 
     }
     *, *:before, *:after { box-sizing: inherit; }
     a{color:inherit;text-decoration:none;transition:color .2s ease;}
@@ -64,9 +64,9 @@
     section:first-of-type { border-top: none; }
     .anchor{scroll-margin-top:90px}
 
-   /* --- 3. MASTER HEADER & NAV (Final Version) --- */
+   /* --- HEADER & NAV --- */
     header {
-      position: -webkit-sticky; /* Safari support */
+      position: -webkit-sticky; 
       position: sticky; top: 0; z-index: 99999;
       background: linear-gradient(180deg,rgba(27,27,29,0.95),rgba(27,27,29,0.85));
       backdrop-filter: blur(8px);
@@ -79,27 +79,21 @@
       display: flex; align-items: center; justify-content: space-between; gap: 20px;
     }
 
-    /* BRANDING */
     .brand { display: flex; align-items: center; gap: 16px; text-decoration: none; flex-shrink: 0; }
-    
     .brand img.logo {
       width: 75px !important; height: 75px !important; 
       border-radius: 14px; display: block; object-fit: contain; 
       background: transparent;
-      /* DYNAMIC GLOW: Uses page accent color */
       filter: drop-shadow(0 0 8px var(--accent)); 
       transition: filter 0.3s ease;
     }
     .brand:hover img.logo { filter: drop-shadow(0 0 14px var(--accent)); }
-    
     .brand .title {
       font-weight: 800; font-size: 26px; color: #fff; line-height: 1; letter-spacing: 0.2px;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,'Helvetica Neue', Arial;
     }
 
-    /* NAV LINKS */
     .main-nav { display: flex; gap: 32px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
-    
     .main-nav a, .dropdown-trigger {
       position: relative; color: #cfe3d4; 
       font-weight: 600; font-size: 1rem; 
@@ -107,249 +101,102 @@
       cursor: pointer; transition: color .15s ease, text-shadow .15s ease;
       text-decoration: none;
     }
-
-    /* Active State */
-    .main-nav a.active {
-      color: var(--accent);
-      text-shadow: 0 0 10px var(--accent);
-    }
-
-    /* Hover Effects */
+    .main-nav a.active { color: var(--accent); text-shadow: 0 0 10px var(--accent); }
     .main-nav a:not(.nav-sdr):not(.btn-book):hover, .dropdown-trigger:hover {
       color: var(--accent); 
       text-shadow: 0 0 6px var(--accent), 0 0 14px var(--accent);
     }
 
-    /* DROPDOWN LOGIC */
     .nav-item { position: relative; display: inline-block; padding-bottom: 20px; margin-bottom: -20px; }
-    
     .dropdown-menu {
       display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
       background: var(--panel); border: 1px solid var(--card-border); border-radius: 12px;
       padding: 12px; min-width: 260px; box-shadow: 0 15px 40px rgba(0,0,0,0.6);
       z-index: 1000; flex-direction: column; gap: 4px;
     }
-    
-    /* Show Dropdown on Hover (Desktop) */
     .nav-item:hover .dropdown-menu { display: flex; }
-    
     .dropdown-menu a {
       padding: 10px 16px; border-radius: 8px; font-size: 0.95rem; color: var(--text-muted);
       text-align: left; white-space: nowrap; display: block;
     }
-    
-    /* Dropdown Item Hover -> Matches Page Color */
     .dropdown-menu a:hover {
-      background: rgba(255,255,255,0.05); 
-      color: var(--accent); 
-      transform: translateX(4px);
-      text-shadow: none;
+      background: rgba(255,255,255,0.05); color: var(--accent); transform: translateX(4px); text-shadow: none;
     }
 
-    /* AI SDR SPECIAL LINK */
-    .nav-sdr {
-      color: #fff !important; font-weight: 800 !important; text-transform: uppercase;
-    }
-    .nav-sdr:hover {
-      color: var(--gold) !important; text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
-      transform: translateY(-1px);
-    }
+    .nav-sdr { color: #fff !important; font-weight: 800 !important; text-transform: uppercase; }
+    .nav-sdr:hover { color: var(--gold) !important; text-shadow: 0 0 10px rgba(255, 215, 0, 0.8); transform: translateY(-1px); }
 
-    /* BOOK LOU BUTTON */
     .btn-book {
       background: var(--accent); color: #0b1220 !important; border: 1px solid var(--accent);
       padding: 10px 24px; border-radius: 8px; font-weight: 700 !important;
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .btn-book:hover {
-      transform: translateY(-2px); 
-      box-shadow: 0 5px 20px var(--accent);
-      color: #0b1220 !important; /* Keep text dark on hover */
+      transform: translateY(-2px); box-shadow: 0 5px 20px var(--accent); color: #0b1220 !important;
     }
 
-    /* MOBILE NAV (Fixes Android Tap Issue) */
     @media (max-width: 1100px) {
       .header-center { flex-direction: column; align-items: flex-start; gap: 16px; }
       .main-nav { gap: 16px 24px; justify-content: flex-start; }
-      
-      /* Reset dropdown styles for mobile flow */
-      .dropdown-menu { 
-        position: static; transform: none; 
-        display: none; /* Hidden by default */
-        border: none; padding-left: 20px; 
-        background: transparent; box-shadow: none; 
-      }
-      
-      /* DISABLE HOVER ON MOBILE (Fixes flickering) */
+      .dropdown-menu { position: static; transform: none; display: none; border: none; padding-left: 20px; background: transparent; box-shadow: none; }
       .nav-item:hover .dropdown-menu { display: none; }
-
-      /* ENABLE CLICK CLASS (Triggered by JS) */
       .nav-item.tap-open .dropdown-menu { display: flex; }
     }
-    /* === PAGE CONTENT STYLES === */
+
+    /* === PAGE CONTENT === */
     .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
 
     /* Hero */
     .hero { padding: 40px 0 20px; border-top: none; }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0,1fr) 420px; /* Wider for bigger pic */
-      gap: 24px;
-      align-items: center;
-    }
-    .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3rem);
-      line-height: 1.1;
-      margin: 0 0 16px 0;
-      color: white;
-      text-shadow: 0 0 20px rgba(41, 234, 215, 0.2);
-    }
-    .kicker {
-      color: var(--accent);
-      font-weight: 700;
-      font-size: .95rem;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-    .sub {
-      font-size: 1.15rem;
-      line-height: 1.6;
-      color: var(--text-muted);
-      max-width: 750px;
-      margin-bottom: 24px;
-    }
-    
-    /* Hero Photo - LOCKED TO 340px */
+    .hero-grid { display: grid; grid-template-columns: minmax(0,1fr) 420px; gap: 24px; align-items: center; }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 3rem); line-height: 1.1; margin: 0 0 16px 0; color: white; text-shadow: 0 0 20px rgba(41, 234, 215, 0.2); }
+    .kicker { color: var(--accent); font-weight: 700; font-size: .95rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 6px; }
+    .sub { font-size: 1.15rem; line-height: 1.6; color: var(--text-muted); max-width: 750px; margin-bottom: 24px; }
     .hero-photo { display: flex; justify-content: flex-end; }
-    .hero-photo img {
-      width: 100%; 
-      max-width: 340px; /* FIXED SIZE */
-      height: auto; 
-      object-fit: contain;
-      filter: drop-shadow(0 10px 20px rgba(0,0,0,.35));
-    }
-
-    @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .hero-photo { display: none; }
-    }
+    .hero-photo img { width: 100%; max-width: 340px; height: auto; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(0,0,0,.35)); }
+    @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } .hero-photo { display: none; } }
 
     /* Buttons */
     .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      padding: 12px 24px; font-size: 1rem; font-weight: 700; border-radius: 12px;
-      text-decoration: none; border: 1px solid transparent; transition: all 0.2s ease; cursor: pointer;
-    }
-    .btn-primary {
-      background-color: var(--accent); color: #0b1220; border-color: var(--accent);
-    }
-    .btn-primary:hover {
-      background-color: #fff; color: #0b1220; transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(41, 234, 215, 0.4);
-    }
-    .btn-secondary {
-      background-color: transparent; color: #fff; border-color: var(--card-border);
-    }
-    .btn-secondary:hover {
-      background-color: #fff; color: #0b1220; transform: translateY(-2px);
-    }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 24px; font-size: 1rem; font-weight: 700; border-radius: 12px; text-decoration: none; border: 1px solid transparent; transition: all 0.2s ease; cursor: pointer; }
+    .btn-primary { background-color: var(--accent); color: #0b1220; border-color: var(--accent); }
+    .btn-primary:hover { background-color: #fff; color: #0b1220; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(41, 234, 215, 0.4); }
+    .btn-secondary { background-color: transparent; color: #fff; border-color: var(--card-border); }
+    .btn-secondary:hover { background-color: #fff; color: #0b1220; transform: translateY(-2px); }
 
-    /* HTML Quadrant Styles */
-    .quad-section {
-      margin: 32px 0; 
-      background: #0b111a; 
-      border: 1px solid var(--accent);
-      border-radius: 16px; 
-      padding: 32px 24px;
-      box-shadow: 0 0 30px rgba(41, 234, 215, 0.15);
-    }
-    .quad-section h2 {
-      font-size: 1.6rem;
-      color: #fff;
-      margin: 0 0 24px;
-    }
-    .quadrant-wrap {
-      position: relative;
-      background: radial-gradient(circle at top, #171a24 0, #080910 52%, #040509 100%);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      aspect-ratio: 16 / 9;
-      min-height: 450px;
-      position: relative;
-      overflow: hidden;
-    }
-    .quad-grid {
-      position: absolute; inset: 12% 8% 12% 8%;
-      background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
-      background-size: 10% 10%;
-      border-radius: 4px;
-    }
-    
-    /* Axis Labels */
+    /* HTML Quadrant */
+    .quad-section { margin: 32px 0; background: #0b111a; border: 1px solid var(--accent); border-radius: 16px; padding: 32px 24px; box-shadow: 0 0 30px rgba(41, 234, 215, 0.15); }
+    .quad-section h2 { font-size: 1.6rem; color: #fff; margin: 0 0 24px; }
+    .quadrant-wrap { position: relative; background: radial-gradient(circle at top, #171a24 0, #080910 52%, #040509 100%); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; aspect-ratio: 16 / 9; min-height: 450px; overflow: hidden; }
+    .quad-grid { position: absolute; inset: 12% 8% 12% 8%; background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 10% 10%; border-radius: 4px; }
     .axis-label { position: absolute; color: var(--text-muted); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
     .axis-y { top: 50%; left: 12px; transform: translateY(-50%) rotate(-90deg); transform-origin: left center; white-space: nowrap; }
     .axis-x { bottom: 12px; left: 50%; transform: translateX(-50%); white-space: nowrap; }
     
-    /* Vendor Dots */
-    .vendor-dot {
-      position: absolute; transform: translate(-50%, -50%);
-      display: flex; flex-direction: column; align-items: center; gap: 6px;
-      cursor: pointer; transition: z-index 0.2s;
-    }
+    .vendor-dot { position: absolute; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer; transition: z-index 0.2s; }
     .vendor-dot:hover { z-index: 100; }
-    
-    .dot-mark {
-      width: 16px; height: 16px; border-radius: 50%; border: 2px solid #fff;
-      background: var(--cat-iot); /* Default color */
-      box-shadow: 0 0 12px rgba(255,255,255,0.2);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+    .dot-mark { width: 16px; height: 16px; border-radius: 50%; border: 2px solid #fff; background: var(--cat-iot); box-shadow: 0 0 12px rgba(255,255,255,0.2); transition: transform 0.2s ease, box-shadow 0.2s ease; }
     .vendor-dot:hover .dot-mark { transform: scale(1.4); }
-
-    /* Vendor Colors */
-    .vendor-dot.siemens .dot-mark { background: var(--cat-iiot); box-shadow: 0 0 12px var(--cat-iiot); } /* Orange */
-    .vendor-dot.epicio .dot-mark { background: var(--cat-aiot); box-shadow: 0 0 12px var(--cat-aiot); }   /* Cyan */
-    .vendor-dot.aeris .dot-mark { background: var(--cat-iot); box-shadow: 0 0 12px var(--cat-iot); }      /* Blue */
-    
-    .dot-label {
-      font-size: 0.85rem; color: #fff; font-weight: 600; white-space: nowrap;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-      background: rgba(0,0,0,0.6); padding: 2px 6px; border-radius: 4px;
-    }
-
-    .quad-cta-bar {
-      display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between;
-      margin-top: 18px; padding-top: 18px; border-top: 1px dashed rgba(41, 234, 215, 0.3);
-    }
+    .vendor-dot.siemens .dot-mark { background: var(--cat-iiot); box-shadow: 0 0 12px var(--cat-iiot); }
+    .vendor-dot.epicio .dot-mark { background: var(--cat-aiot); box-shadow: 0 0 12px var(--cat-aiot); }
+    .vendor-dot.aeris .dot-mark { background: var(--cat-iot); box-shadow: 0 0 12px var(--cat-iot); }
+    .dot-label { font-size: 0.85rem; color: #fff; font-weight: 600; white-space: nowrap; text-shadow: 0 2px 4px rgba(0,0,0,0.8); background: rgba(0,0,0,0.6); padding: 2px 6px; border-radius: 4px; }
+    .quad-cta-bar { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; margin-top: 18px; padding-top: 18px; border-top: 1px dashed rgba(41, 234, 215, 0.3); }
     .quad-note { color: var(--text-muted); font-size: 0.92rem; max-width: 700px; }
 
-    /* Paper & Accordions (Categorized) */
+    /* Paper & Accordions */
     .paper { margin: 32px 0; }
     .paper h2 { font-size: 1.8rem; color: #fff; margin: 0 0 24px; }
-    
-    /* Category Headers */
     .cat-block { margin-bottom: 32px; }
-    .cat-header {
-      font-size: 1.4rem; font-weight: 800; margin: 0 0 6px; 
-      border-left: 4px solid; padding-left: 12px;
-    }
+    .cat-header { font-size: 1.4rem; font-weight: 800; margin: 0 0 6px; border-left: 4px solid; padding-left: 12px; }
     .cat-desc { color: var(--text-muted); margin: 0 0 16px 16px; font-size: 0.95rem; max-width: 700px; }
-    
-    /* Category Colors */
     .cat-iiot { border-color: var(--cat-iiot); color: var(--cat-iiot); }
     .cat-aiot { border-color: var(--cat-aiot); color: var(--cat-aiot); }
     .cat-iot  { border-color: var(--cat-iot);  color: var(--cat-iot); }
     .cat-infra { border-color: var(--cat-infra); color: var(--cat-infra); }
 
-    details {
-      border: 1px solid var(--card-border); border-radius: 12px; padding: 16px;
-      background: var(--panel); margin-bottom: 12px;
-      transition: border-color 0.2s ease;
-    }
+    details { border: 1px solid var(--card-border); border-radius: 12px; padding: 16px; background: var(--panel); margin-bottom: 12px; transition: border-color 0.2s ease; }
     details:hover { border-color: rgba(255,255,255,0.2); }
-    /* Hover color matches category */
     .cat-block.iiot details:hover { border-color: var(--cat-iiot); }
     .cat-block.aiot details:hover { border-color: var(--cat-aiot); }
     .cat-block.iot  details:hover { border-color: var(--cat-iot); }
@@ -361,13 +208,6 @@
     details[open] summary::after { content: "-"; color: #fff; }
     
     .sec { margin-top: 12px; }
-    .kpis { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
-    .pill {
-      display: inline-block; border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 99px; padding: 4px 12px; font-size: 0.85rem; color: var(--text-muted);
-    }
-
-    /* Feature Block (Generic for Siemens/Aeris/EPIC) */
     .siemens-layout { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; align-items: start; margin-top: 16px; }
     .siemens-copy h3 { font-size: 1.3rem; margin-bottom: 12px; color: #fff; }
     .kpi-list { list-style: none; padding: 0; margin: 16px 0; color: var(--text-muted); font-size: 0.95rem; }
@@ -375,35 +215,18 @@
     .siemens-kpi-col { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
     .kpi-item { display: flex; align-items: baseline; gap: 8px; }
     .knum.siemens { font-size: 1.2rem; font-weight: 800; color: var(--accent); }
-    
     @media (max-width: 900px) { .siemens-layout { grid-template-columns: 1fr; } }
 
-    /* Video Cards */
+    /* Video & Thumbnails */
     .siemens-media { display: flex; flex-direction: column; gap: 20px; }
     .video-card h4 { margin: 0 0 8px; color: #fff; font-size: 1rem; }
-    
-    .video-frame {
-      position: relative; aspect-ratio: 16/9; background: #000; border-radius: 12px; overflow: hidden;
-      border: 1px solid var(--card-border); cursor: pointer;
-    }
-    
-    /* --- FIX: Hide iframe initially so button is clickable --- */
-    .video-frame iframe { 
-      position: absolute; inset: 0; width: 100%; height: 100%; border: 0; 
-      display: none; /* Hidden by default */
-    }
-    
+    .video-frame { position: relative; aspect-ratio: 16/9; background: #000; border-radius: 12px; overflow: hidden; border: 1px solid var(--card-border); cursor: pointer; }
+    .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: none; }
     .siemens-thumb { width: 100%; height: 100%; object-fit: cover; display: block; border: 0; padding: 0; cursor: pointer; }
-    .play-badge {
-      position: absolute; left: 16px; bottom: 16px; background: rgba(0,0,0,0.8); color: #fff;
-      padding: 6px 12px; border-radius: 99px; font-size: 0.85rem; font-weight: 600;
-      pointer-events: none;
-    }
+    .play-badge { position: absolute; left: 16px; bottom: 16px; background: rgba(0,0,0,0.8); color: #fff; padding: 6px 12px; border-radius: 99px; font-size: 0.85rem; font-weight: 600; pointer-events: none; }
 
     /* CTA Rail */
-    .cta-rail {
-      margin: 32px 0; padding: 24px; border-radius: 16px; background: var(--panel); border: 1px solid var(--accent);
-    }
+    .cta-rail { margin: 32px 0; padding: 24px; border-radius: 16px; background: var(--panel); border: 1px solid var(--accent); }
     .cta-rail-inner { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; }
     .cta-rail h3 { margin: 0; font-size: 1.4rem; color: #fff; }
     .cta-rail p { margin: 4px 0 0; color: var(--text-muted); max-width: 600px; }
@@ -415,7 +238,7 @@
     .socials a:hover{color:var(--accent);transform:translateY(-2px);text-shadow:0 0 10px var(--accent)}
     .socials svg{width:24px;height:24px;fill:currentColor}
 
-    /* --- FEATURED PAPER STYLES --- */
+    /* --- UPDATED FEATURED PAPER STYLES --- */
     .featured-paper-content {
         border: 1px solid var(--card-border); 
         border-radius: 12px; 
@@ -425,37 +248,68 @@
     }
     
     .featured-paper-content h3 {
-        font-size: 1.1rem;
+        font-size: 1.3rem; /* Slightly larger for sections */
         font-weight: 800;
-        margin: 10px 0 5px 0;
+        margin: 20px 0 10px 0;
+        color: var(--cat-iiot); /* Industrial Orange */
     }
-    
-    /* KPI Metric Pill Styling */
+    .featured-paper-content h3:first-of-type { margin-top: 0; }
+
+    /* Text Blurb Styling (Increased Font + Spacing) */
+    .featured-paper-content p {
+        font-size: 1.1rem; /* Increase font size */
+        line-height: 1.8;  /* Double spacing feel */
+        color: var(--text-muted);
+        margin-bottom: 16px;
+    }
+
+    /* KPI Grid Container */
+    .kpis-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr); /* 5 Columns */
+        gap: 12px;
+        margin-bottom: 30px;
+    }
+
+    /* New Compact Pill Metric */
     .pill.metric {
-        background-color: var(--panel);
-        border-color: var(--cat-iiot); /* Industrial Orange border for Manufacturing */
+        background-color: var(--bg); /* Darker bg inside pill */
+        border: 1px solid var(--cat-iiot);
         color: #fff;
-        font-weight: 700;
-        padding: 8px 14px; 
+        border-radius: 99px;
+        padding: 10px 4px; /* Reduced side padding */
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 2px;
-        height: 70px; /* Consistent height */
         justify-content: center;
-        /* Ensure these pills are slightly separated from the text pills */
-        margin-right: 12px; 
-    }
-    .pill.metric .knum {
-        font-size: 1.4rem;
-        color: var(--accent); /* Siemens Cyan for visibility */
-    }
-    .pill.metric .label {
-        font-size: 0.75rem;
-        font-weight: 500;
-        color: var(--text-muted);
+        gap: 2px;
         text-align: center;
+        height: auto;
+        min-height: 80px; /* Ensure visual uniformity */
+    }
+    
+    .pill.metric .knum {
+        font-size: 1.6rem; /* Big bold number */
         line-height: 1;
+        color: var(--accent); /* Siemens Cyan */
+    }
+    
+    .pill.metric .label {
+        font-size: 0.7rem; /* Smaller text to fit */
+        font-weight: 600;
+        line-height: 1.2;
+        color: var(--text-muted);
+        max-width: 90%;
+    }
+
+    /* Mobile Responsive for KPIs */
+    @media (max-width: 1000px) {
+        .kpis-grid {
+            grid-template-columns: repeat(2, 1fr); /* 2 cols on mobile */
+        }
+        .pill.metric:last-child {
+            grid-column: span 2; /* Center last one if odd */
+        }
     }
   </style>
 </head>
@@ -577,36 +431,38 @@
         <h2>Featured Micro White Paper: Industrial Manufacturing (The Siemens Edge)</h2>
 
         <div class="featured-paper-content">
-            <h3 style="color:var(--cat-iiot); margin-top:0;">Measurable Impact (KPI Metrics)</h3>
-            <div class="kpis" style="margin-bottom: 25px;">
-                <span class="pill metric">
+            <h3>Measurable Impact (KPI Metrics)</h3>
+            <div class="kpis-grid">
+                <div class="pill metric">
                     <strong class="knum siemens" data-target="25" data-suffix="%">0</strong>
-                    <span class="label">Reduction in Unplanned Downtime</span>
-                </span>
-                <span class="pill metric">
+                    <span class="label">Reduced Downtime</span>
+                </div>
+                <div class="pill metric">
                     <strong class="knum siemens" data-target="15" data-suffix="%">0</strong>
-                    <span class="label">Reduction in Scrap & Rework Costs</span>
-                </span>
-                <span class="pill metric">
+                    <span class="label">Reduced Scrap</span>
+                </div>
+                <div class="pill metric">
                     <strong class="knum siemens" data-target="12" data-suffix="%">0</strong>
-                    <span class="label">Increase in Line Throughput & OEE</span>
-                </span>
-                 <span class="pill metric">
+                    <span class="label">Higher Throughput</span>
+                </div>
+                 <div class="pill metric">
                     <strong class="knum siemens" data-target="99.9" data-suffix="%">0</strong>
-                    <span class="label">OEE Compliance & Uptime Guarantee</span>
-                </span>
-                <span class="pill metric">
+                    <span class="label">OEE Compliance</span>
+                </div>
+                <div class="pill metric">
                     <strong class="knum siemens" data-target="18" data-suffix="%">0</strong>
-                    <span class="label">Reduction in Energy per Unit</span>
-                </span>
+                    <span class="label">Energy Efficiency</span>
+                </div>
             </div>
 
-            <h3 style="color:var(--cat-iiot);">Ideal Client Profile (ICP)</h3>
-            <p style="color: var(--text-muted); margin-bottom: 15px;">multi-site plants, PLC heavy, downtime sensitivity, readiness for Private 5G or robust Wi-Fi plus cellular backup.</p>
+            <h3>Ideal Client Profile (ICP)</h3>
+            <p>Multi-site plants, PLC heavy, downtime sensitivity, readiness for Private 5G or robust Wi-Fi plus cellular backup.</p>
             
-            <h3 style="color:var(--cat-iiot);">Plays and Solutions</h3>
-            <p style="color: var(--text-muted); margin-bottom: 5px;">Plays: machine telemetry → lakehouse, predictive maintenance, vision QA at edge, worker safety wearables, AMR/AGV control.</p>
-            <p style="color: var(--text-muted); margin-bottom: 0;">Pattern: eSIM modules → secure APN → CMP → cloud feature store → model serving at line-side gateway.</p>
+            <h3>Plays and Solutions</h3>
+            <p>
+                <strong>Plays:</strong> Machine telemetry → lakehouse, predictive maintenance, vision QA at edge, worker safety wearables, AMR/AGV control.<br>
+                <strong>Pattern:</strong> eSIM modules → secure APN → CMP → cloud feature store → model serving at line-side gateway.
+            </p>
         </div>
     </section>
     <section class="cat-block infra">
@@ -990,7 +846,7 @@
               </ul>
               <div class="cta-row">
                 <a class="btn btn-primary" href="#intake">Start Discovery</a>
-                <a class="btn btn-secondary" href="https://www.aeris.com/resource-library/?_types=case-studies&_topics=fleet-and-telematics" target="_blank" rel="noopener">Read Case Study</a>
+                <a class="btn btn-secondary" href="https://www.aeris.com/resource-library/?_types=case-studies&_topics=fleet-and-telematics" target="_blank" rel="noopener">Read Case Studies</a>
               </div>
               <div class="siemens-kpi-col">
                 <div class="kpi-item">
