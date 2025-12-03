@@ -94,7 +94,7 @@
     
     .brand .title {
       font-weight: 800; font-size: 26px; color: #fff; line-height: 1; letter-spacing: 0.2px;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,'Helvetica Neue', Arial;
     }
 
     /* NAV LINKS */
@@ -417,6 +417,11 @@
 
     /* --- NEW FEATURED PAPER STYLES --- */
     .featured-paper-content {
+        /* NEW: Added a grid to accommodate KPIs side-by-side */
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 30px;
+        
         border: 1px solid var(--card-border); 
         border-radius: 12px; 
         padding: 24px; 
@@ -427,6 +432,12 @@
         font-size: 1.1rem;
         font-weight: 800;
         margin: 10px 0 5px 0;
+    }
+    @media (max-width: 768px) {
+        .featured-paper-content {
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
     }
   </style>
 </head>
@@ -563,6 +574,22 @@
             <h3 style="color:var(--cat-iiot);">Plays and Solutions</h3>
             <p style="color: var(--text-muted); margin-bottom: 5px;">Plays: machine telemetry → lakehouse, predictive maintenance, vision QA at edge, worker safety wearables, AMR/AGV control.</p>
             <p style="color: var(--text-muted); margin-bottom: 0;">Pattern: eSIM modules → secure APN → CMP → cloud feature store → model serving at line-side gateway.</p>
+            
+            <div class="siemens-kpi-col">
+                <h3 style="color:var(--cat-iiot); margin-top:0;">Measurable Impact</h3>
+                <div class="kpi-item">
+                    <strong class="knum siemens" data-target="25" data-suffix="%">0</strong>
+                    <span>reduction in unplanned downtime (MTBF improvement).</span>
+                </div>
+                <div class="kpi-item">
+                    <strong class="knum siemens" data-target="15" data-suffix="%">0</strong>
+                    <span>reduction in scrap and rework costs.</span>
+                </div>
+                <div class="kpi-item">
+                    <strong class="knum siemens" data-target="12" data-suffix="%">0</strong>
+                    <span>increase in line throughput and OEE.</span>
+                </div>
+            </div>
         </div>
     </section>
     <section class="cat-block infra">
@@ -606,6 +633,7 @@
         <h3 class="cat-header">IIoT — Industrial Internet of Things</h3>
         <p class="cat-desc">Specialized branch focusing on industrial machines, systems, and operations. High availability, legacy OT integration, and heavy duty automation.</p>
 
+        
         <details><summary>Utilities and Grid (Aeris)</summary>
           <div class="sec siemens-layout">
             <div class="siemens-copy">
