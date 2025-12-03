@@ -417,10 +417,7 @@
 
     /* --- NEW FEATURED PAPER STYLES --- */
     .featured-paper-content {
-        /* NEW: Added a grid to accommodate KPIs side-by-side */
-        display: grid;
-        grid-template-columns: 1.5fr 1fr;
-        gap: 30px;
+        /* NEW: Removed internal grid structure for cleaner mobile flow */
         
         border: 1px solid var(--card-border); 
         border-radius: 12px; 
@@ -428,16 +425,37 @@
         background: var(--panel); 
         margin: 15px 0 30px;
     }
+    
     .featured-paper-content h3 {
         font-size: 1.1rem;
         font-weight: 800;
         margin: 10px 0 5px 0;
     }
-    @media (max-width: 768px) {
-        .featured-paper-content {
-            grid-template-columns: 1fr;
-            gap: 15px;
-        }
+    
+    /* KPI Metric Pill Styling */
+    .pill.metric {
+        background-color: var(--panel);
+        border-color: var(--cat-iiot); /* Industrial Orange border for Manufacturing */
+        color: #fff;
+        font-weight: 700;
+        padding: 8px 14px; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        height: 70px; /* Consistent height */
+        justify-content: center;
+    }
+    .pill.metric .knum {
+        font-size: 1.4rem;
+        color: var(--accent); /* Siemens Cyan for visibility */
+    }
+    .pill.metric .label {
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: var(--text-muted);
+        text-align: center;
+        line-height: 1;
     }
   </style>
 </head>
@@ -559,37 +577,30 @@
         <h2>Featured Micro White Paper: Industrial Manufacturing (The Siemens Edge)</h2>
 
         <div class="featured-paper-content">
-            <h3 style="color:var(--cat-iiot); margin-top:0;">Key Performance Indicators (KPIs)</h3>
-            <div class="kpis">
-                <span class="pill">OEE (Overall Equipment Effectiveness)</span>
-                <span class="pill">MTBF (Mean Time Between Failures)</span>
-                <span class="pill">Scrap Rate</span>
-                <span class="pill">Throughput</span>
+            <h3 style="color:var(--cat-iiot); margin-top:0;">Measurable Impact (KPI Metrics)</h3>
+            <div class="kpis" style="margin-bottom: 25px;">
+                <span class="pill metric">
+                    <strong class="knum siemens" data-target="25" data-suffix="%">0</strong>
+                    <span class="label">Reduction in Unplanned Downtime</span>
+                </span>
+                <span class="pill metric">
+                    <strong class="knum siemens" data-target="15" data-suffix="%">0</strong>
+                    <span class="label">Reduction in Scrap & Rework Costs</span>
+                </span>
+                <span class="pill metric">
+                    <strong class="knum siemens" data-target="12" data-suffix="%">0</strong>
+                    <span class="label">Increase in Line Throughput & OEE</span>
+                </span>
+                <span class="pill">OEE Compliance</span>
                 <span class="pill">Energy per Unit</span>
             </div>
-            
+
             <h3 style="color:var(--cat-iiot);">Ideal Client Profile (ICP)</h3>
             <p style="color: var(--text-muted); margin-bottom: 15px;">multi-site plants, PLC heavy, downtime sensitivity, readiness for Private 5G or robust Wi-Fi plus cellular backup.</p>
             
             <h3 style="color:var(--cat-iiot);">Plays and Solutions</h3>
             <p style="color: var(--text-muted); margin-bottom: 5px;">Plays: machine telemetry → lakehouse, predictive maintenance, vision QA at edge, worker safety wearables, AMR/AGV control.</p>
             <p style="color: var(--text-muted); margin-bottom: 0;">Pattern: eSIM modules → secure APN → CMP → cloud feature store → model serving at line-side gateway.</p>
-            
-            <div class="siemens-kpi-col">
-                <h3 style="color:var(--cat-iiot); margin-top:0;">Measurable Impact</h3>
-                <div class="kpi-item">
-                    <strong class="knum siemens" data-target="25" data-suffix="%">0</strong>
-                    <span>reduction in unplanned downtime (MTBF improvement).</span>
-                </div>
-                <div class="kpi-item">
-                    <strong class="knum siemens" data-target="15" data-suffix="%">0</strong>
-                    <span>reduction in scrap and rework costs.</span>
-                </div>
-                <div class="kpi-item">
-                    <strong class="knum siemens" data-target="12" data-suffix="%">0</strong>
-                    <span>increase in line throughput and OEE.</span>
-                </div>
-            </div>
         </div>
     </section>
     <section class="cat-block infra">
@@ -973,7 +984,7 @@
               </ul>
               <div class="cta-row">
                 <a class="btn btn-primary" href="#intake">Start Discovery</a>
-                <a class="btn btn-secondary" href="https://www.aeris.com/resource-library/?_types=case-studies&_topics=fleet-and-telematics" target="_blank" rel="noopener">Read Case Studies</a>
+                <a class="btn btn-secondary" href="https://www.aeris.com/resource-library/?_types=case-studies&_topics=fleet-and-telematics" target="_blank" rel="noopener">Read Case Study</a>
               </div>
               <div class="siemens-kpi-col">
                 <div class="kpi-item">
