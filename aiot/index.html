@@ -23,13 +23,14 @@
   <style>
     /* --- CORE VARIABLES (AIoT THEME: SIEMENS GREEN/CYAN) --- */
     :root {
-      --bg: #1B1B1D;
+      /* TRUE BLACK BACKGROUND FOR VIDEO BLEND */
+      --bg: #000000;
       --panel: #232326;
-      --card-bg: #1B1B1D; 
-      --card-border: rgba(255, 255, 255, 0.1);
+      --card-bg: #232326; 
+      --card-border: rgba(255, 255, 255, 0.12);
       --text: #e8eef9;
       --text-muted: #aeb8c4;
-      --line: rgba(255,255,255,0.08);
+      --line: rgba(255,255,255,0.1);
       --outline: #2C2C30;
 
       /* Page Specific Accents */
@@ -64,11 +65,11 @@
     section:first-of-type { border-top: none; }
     .anchor{scroll-margin-top:90px}
 
-   /* --- HEADER & NAV (UPDATED WITH SUB-INDICATOR) --- */
+   /* --- HEADER & NAV --- */
     header {
       position: -webkit-sticky; 
       position: sticky; top: 0; z-index: 99999;
-      background: linear-gradient(180deg,rgba(27,27,29,0.95),rgba(27,27,29,0.85));
+      background: linear-gradient(180deg,rgba(0,0,0,0.95),rgba(0,0,0,0.85));
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--line);
       width: 100%;
@@ -102,29 +103,28 @@
       cursor: pointer; transition: color .15s ease, text-shadow .15s ease;
       text-decoration: none;
     }
-    
+
+    /* Active State */
+    .main-nav a.active {
+      color: var(--accent);
+      text-shadow: 0 0 10px var(--accent);
+    }
+
     /* Hover Effects */
-    .main-nav a:not(.nav-sdr):not(.btn-book):hover, 
-    .dropdown-trigger:hover {
+    .main-nav a:not(.nav-sdr):not(.btn-book):hover, .dropdown-trigger:hover {
       color: var(--accent); 
       text-shadow: 0 0 6px var(--accent), 0 0 14px var(--accent);
     }
 
-    /* DROPDOWN & SUB-INDICATOR LOGIC */
-    .nav-item { 
-      position: relative; display: inline-block; 
-      /* Increased padding to make room for sub-indicator */
-      padding-bottom: 28px; margin-bottom: -28px; 
-    }
+    /* DROPDOWN LOGIC */
+    .nav-item { position: relative; display: inline-block; padding-bottom: 28px; margin-bottom: -28px; }
     
-    /* Floating Sub-Label (The "AIoT & Edge" text) */
     .sub-indicator {
       display: block; position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%);
       font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;
       color: var(--accent); text-shadow: 0 0 12px var(--accent); pointer-events: none;
     }
-    .dropdown-trigger.active { color: #cfe3d4; text-shadow: none; }
-
+    
     .dropdown-menu {
       display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
       background: var(--panel); border: 1px solid var(--card-border); border-radius: 12px;
@@ -140,7 +140,10 @@
     }
     
     .dropdown-menu a:hover {
-      background: rgba(255,255,255,0.05); color: var(--accent); transform: translateX(4px); text-shadow: none;
+      background: rgba(255,255,255,0.05); 
+      color: var(--accent); 
+      transform: translateX(4px);
+      text-shadow: none;
     }
 
     .nav-sdr { color: #fff !important; font-weight: 800 !important; text-transform: uppercase; }
@@ -152,65 +155,185 @@
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .btn-book:hover {
-      transform: translateY(-2px); box-shadow: 0 5px 20px var(--accent); color: #0b1220 !important;
+      transform: translateY(-2px); 
+      box-shadow: 0 5px 20px var(--accent);
+      color: #0b1220 !important; 
     }
 
     @media (max-width: 1100px) {
       .header-center { flex-direction: column; align-items: flex-start; gap: 16px; }
       .main-nav { gap: 16px 24px; justify-content: flex-start; }
       .dropdown-menu { position: static; transform: none; display: none; border: none; padding-left: 20px; background: transparent; box-shadow: none; }
-      
-      /* Hide Hover on Mobile */
       .nav-item:hover .dropdown-menu { display: none; }
       .nav-item.tap-open .dropdown-menu { display: flex; }
-      
-      /* Hide Sub-Indicator on Mobile to save space */
       .sub-indicator { display: none; }
-      
-      /* Reset nav item spacing on mobile */
       .nav-item { padding-bottom: 0; margin-bottom: 0; width: 100%; }
       .dropdown-trigger { display: block; width: 100%; padding: 10px 0; border-bottom: 1px solid var(--line); }
     }
 
-    /* === PAGE CONTENT === */
+    /* === PAGE CONTENT STYLES === */
     .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
 
-    /* Hero */
-    .hero { padding: 40px 0 20px; border-top: none; }
-    .hero-grid { display: grid; grid-template-columns: minmax(0,1fr) 420px; gap: 24px; align-items: center; }
-    .hero h1 { font-size: clamp(2.2rem, 5vw, 3rem); line-height: 1.1; margin: 0 0 16px 0; color: white; text-shadow: 0 0 20px rgba(41, 234, 215, 0.2); }
-    .kicker { color: var(--accent); font-weight: 700; font-size: .95rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 6px; }
-    .sub { font-size: 1.15rem; line-height: 1.6; color: var(--text-muted); max-width: 750px; margin-bottom: 24px; }
-    .hero-photo { display: flex; justify-content: flex-end; }
-    .hero-photo img { width: 100%; max-width: 340px; height: auto; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(0,0,0,.35)); }
-    @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } .hero-photo { display: none; } }
+    /* VIDEO HERO STYLES */
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      border: none; /* Seamless */
+      background-color: #000000; 
+      min-height: 560px; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-bottom: 24px;
+      /* Optional shadow to lift it slightly */
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .hero-bg-video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      /* Subtle scrim to make text readable */
+      background: rgba(0, 0, 0, 0.45); 
+      z-index: 1;
+    }
+
+    .hero-content-layer {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 900px;
+      padding: 40px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-content-layer h1 {
+      font-size: clamp(2.5rem, 6vw, 4.2rem);
+      color: #fff;
+      text-shadow: 0 4px 30px rgba(0,0,0,0.9);
+      margin-bottom: 20px;
+      line-height: 1.1;
+    }
+
+    .hero-content-layer .sub {
+      font-size: 1.3rem;
+      color: #f0f0f0; 
+      text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+      margin-bottom: 32px;
+      line-height: 1.6;
+      max-width: 800px;
+    }
+    
+    .hero-content-layer .kicker {
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+    }
 
     /* Buttons */
-    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 24px; font-size: 1rem; font-weight: 700; border-radius: 12px; text-decoration: none; border: 1px solid transparent; transition: all 0.2s ease; cursor: pointer; }
-    .btn-primary { background-color: var(--accent); color: #0b1220; border-color: var(--accent); }
-    .btn-primary:hover { background-color: #fff; color: #0b1220; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(41, 234, 215, 0.4); }
-    .btn-secondary { background-color: transparent; color: #fff; border-color: var(--card-border); }
-    .btn-secondary:hover { background-color: #fff; color: #0b1220; transform: translateY(-2px); }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 12px 24px; font-size: 1rem; font-weight: 700; border-radius: 12px;
+      text-decoration: none; border: 1px solid transparent; transition: all 0.2s ease; cursor: pointer;
+    }
+    .btn-primary {
+      background-color: var(--accent); color: #0b1220; border-color: var(--accent);
+    }
+    .btn-primary:hover {
+      background-color: #fff; color: #0b1220; transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(41, 234, 215, 0.4);
+    }
+    .btn-secondary {
+      background-color: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
+      color: #fff; border-color: rgba(255,255,255,0.3);
+    }
+    .btn-secondary:hover {
+      background-color: #fff; color: #0b1220; transform: translateY(-2px);
+    }
 
-    /* HTML Quadrant */
-    .quad-section { margin: 32px 0; background: #0b111a; border: 1px solid var(--accent); border-radius: 16px; padding: 32px 24px; box-shadow: 0 0 30px rgba(41, 234, 215, 0.15); }
-    .quad-section h2 { font-size: 1.6rem; color: #fff; margin: 0 0 24px; }
-    .quadrant-wrap { position: relative; background: radial-gradient(circle at top, #171a24 0, #080910 52%, #040509 100%); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; aspect-ratio: 16 / 9; min-height: 450px; overflow: hidden; }
-    .quad-grid { position: absolute; inset: 12% 8% 12% 8%; background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 10% 10%; border-radius: 4px; }
+    /* HTML Quadrant Styles */
+    .quad-section {
+      margin: 32px 0; 
+      background: #0b111a; 
+      border: 1px solid var(--accent);
+      border-radius: 16px; 
+      padding: 32px 24px;
+      box-shadow: 0 0 30px rgba(41, 234, 215, 0.15);
+    }
+    .quad-section h2 {
+      font-size: 1.6rem;
+      color: #fff;
+      margin: 0 0 24px;
+    }
+    .quadrant-wrap {
+      position: relative;
+      background: radial-gradient(circle at top, #171a24 0, #080910 52%, #040509 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      aspect-ratio: 16 / 9;
+      min-height: 450px;
+      position: relative;
+      overflow: hidden;
+    }
+    .quad-grid {
+      position: absolute; inset: 12% 8% 12% 8%;
+      background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 10% 10%;
+      border-radius: 4px;
+    }
+    
+    /* Axis Labels */
     .axis-label { position: absolute; color: var(--text-muted); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
     .axis-y { top: 50%; left: 12px; transform: translateY(-50%) rotate(-90deg); transform-origin: left center; white-space: nowrap; }
     .axis-x { bottom: 12px; left: 50%; transform: translateX(-50%); white-space: nowrap; }
     
-    .vendor-dot { position: absolute; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer; transition: z-index 0.2s; }
+    /* Vendor Dots */
+    .vendor-dot {
+      position: absolute; transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      cursor: pointer; transition: z-index 0.2s;
+    }
     .vendor-dot:hover { z-index: 100; }
-    .dot-mark { width: 16px; height: 16px; border-radius: 50%; border: 2px solid #fff; background: var(--cat-iot); box-shadow: 0 0 12px rgba(255,255,255,0.2); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    
+    .dot-mark {
+      width: 16px; height: 16px; border-radius: 50%; border: 2px solid #fff;
+      background: var(--cat-iot); /* Default color */
+      box-shadow: 0 0 12px rgba(255,255,255,0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
     .vendor-dot:hover .dot-mark { transform: scale(1.4); }
-    .vendor-dot.siemens .dot-mark { background: var(--cat-iiot); box-shadow: 0 0 12px var(--cat-iiot); }
-    .vendor-dot.epicio .dot-mark { background: var(--cat-aiot); box-shadow: 0 0 12px var(--cat-aiot); }
-    .vendor-dot.aeris .dot-mark { background: var(--cat-iot); box-shadow: 0 0 12px var(--cat-iot); }
-    .dot-label { font-size: 0.85rem; color: #fff; font-weight: 600; white-space: nowrap; text-shadow: 0 2px 4px rgba(0,0,0,0.8); background: rgba(0,0,0,0.6); padding: 2px 6px; border-radius: 4px; }
-    .quad-cta-bar { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; margin-top: 18px; padding-top: 18px; border-top: 1px dashed rgba(41, 234, 215, 0.3); }
+
+    /* Vendor Colors */
+    .vendor-dot.siemens .dot-mark { background: var(--cat-iiot); box-shadow: 0 0 12px var(--cat-iiot); } /* Orange */
+    .vendor-dot.epicio .dot-mark { background: var(--cat-aiot); box-shadow: 0 0 12px var(--cat-aiot); }   /* Cyan */
+    .vendor-dot.aeris .dot-mark { background: var(--cat-iot); box-shadow: 0 0 12px var(--cat-iot); }      /* Blue */
+    
+    .dot-label {
+      font-size: 0.85rem; color: #fff; font-weight: 600; white-space: nowrap;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.6); padding: 2px 6px; border-radius: 4px;
+    }
+
+    .quad-cta-bar {
+      display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between;
+      margin-top: 18px; padding-top: 18px; border-top: 1px dashed rgba(41, 234, 215, 0.3);
+    }
     .quad-note { color: var(--text-muted); font-size: 0.92rem; max-width: 700px; }
 
     /* Paper & Accordions */
@@ -267,12 +390,13 @@
     .socials a:hover{color:var(--accent);transform:translateY(-2px);text-shadow:0 0 10px var(--accent)}
     .socials svg{width:24px;height:24px;fill:currentColor}
 
-    /* --- FEATURED PAPER STYLES (SINGLE ROW FIX) --- */
+    /* --- FEATURED PAPER STYLES --- */
     .featured-paper-content {
         border: 1px solid var(--card-border); 
         border-radius: 12px; 
         padding: 24px; 
-        background: var(--panel); 
+        /* MATCHING CHARCOAL BACKGROUND */
+        background: #1B1B1D; 
         margin: 15px 0 30px;
     }
     
@@ -303,7 +427,7 @@
 
     /* New Compact Pill Metric */
     .pill.metric {
-        background-color: var(--bg);
+        background-color: #232326; /* Lighter panel color for contrast */
         border: 1px solid var(--cat-iiot);
         color: #fff;
         border-radius: 99px;
@@ -381,22 +505,25 @@
   </header>
 
   <main class="wrap">
-    <section class="hero">
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <div class="kicker">Carrier Agnostic AIoT</div>
-          <h1>Data Driven Quadrant and Industry Applications</h1>
-          <p class="sub">
-            We lead with Aeris for connectivity because the facts support it: multi-MNO eSIM and deep security. For industrial operations, Siemens is our leader with Industrial Edge for on-line inference. For smart cities and retail, EPIC iO delivers the AIoT intelligence layer with DeepInsights. Everyone has a niche. We help you find yours.
-          </p>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="#intake">Start AIoT Discovery</a>
-            <a class="btn btn-secondary" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
-          </div>
+    
+    <section class="hero-card">
+      <video autoplay loop muted playsinline class="hero-bg-video">
+        <source src="/assets/AIOT.mp4" type="video/mp4">
+      </video>
+
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content-layer">
+        <div class="kicker">Carrier Agnostic AIoT</div>
+        <h1>Data Driven Quadrant and<br><span style="color:var(--accent);">Industry Applications</span></h1>
+        <p class="sub">
+          We lead with Aeris for connectivity because the facts support it: platform scale from Ericsson’s IoT stack, multi MNO eSIM, deep security, and a carrier agnostic approach tailored to each use case. For industrial operations, Siemens is our leader: Industrial Edge for on-line inference, Insights Hub for data, and native SCADA integration. Everyone has a niche. I can help clear the air.
+        </p>
+        
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#intake">Start AIoT Discovery</a>
+          <a class="btn btn-secondary" href="https://calendly.com/industry5pro/30min" target="_blank" rel="noopener">Book Lou</a>
         </div>
-        <figure class="hero-photo">
-          <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora" width="340" height="340" />
-        </figure>
       </div>
     </section>
 
@@ -478,7 +605,7 @@
                     <strong class="knum siemens" data-target="12" data-suffix="%">0</strong>
                     <span class="label">Higher Throughput</span>
                 </div>
-                <div class="pill metric">
+                 <div class="pill metric">
                     <strong class="knum siemens" data-target="99.9" data-suffix="%">0</strong>
                     <span class="label">OEE Compliance</span>
                 </div>
@@ -959,7 +1086,7 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.48 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.5h5V24H0V8.5zM8 8.5h4.8v2.1h.07c.67-1.2 2.3-2.47 4.73-2.47 5.06 0 6 3.33 6 7.66V24h-5v-6.8c0-1.62-.03-3.7-2.25-3.7-2.25 0-2.6 1.76-2.6 3.58V24H8V8.5z"/></svg>
       </a>
       <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
       </a>
       <a href="https://www.facebook.com/profile.php?id=61582481880019" target="_blank" rel="noopener" aria-label="Facebook">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.675 0h-21.35C.592 0 0 .592 0 1.325v21.351C0 23.408.592 24 1.325 24h11.49v-9.294H9.691V11.01h3.124V8.414c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.313h3.587l-.467 3.696h-3.12V24h6.117C23.408 24 24 23.408 24 22.676V1.325C24 .592 23.408 0 22.675 0z"/></svg>
@@ -1011,7 +1138,7 @@
         entries.forEach(function(entry){
           if(!entry.isIntersecting) return;
           var el = entry.target;
-          var target = parseFloat(el.getAttribute('data-target')) || 0;
+          var target = parseInt(el.getAttribute('data-target'), 10) || 0;
           var suffix = el.getAttribute('data-suffix') || '';
           animateNumber(el, target, 1000, suffix);
           io.unobserve(el);
