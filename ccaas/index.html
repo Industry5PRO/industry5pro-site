@@ -58,7 +58,7 @@
     section:first-of-type { border-top: none; }
     .anchor{scroll-margin-top:90px}
 
-    /* --- 3. MASTER HEADER & NAV (UPDATED WITH SUB-INDICATOR) --- */
+    /* --- 3. MASTER HEADER & NAV (Final Version) --- */
     header {
       position: -webkit-sticky; 
       position: sticky; top: 0; z-index: 99999;
@@ -114,7 +114,7 @@
       text-shadow: 0 0 6px var(--accent), 0 0 14px var(--accent);
     }
 
-    /* DROPDOWN & SUB-INDICATOR LOGIC */
+    /* DROPDOWN LOGIC */
     .nav-item { 
       position: relative; display: inline-block; 
       padding-bottom: 28px; margin-bottom: -28px; /* Space for sub-indicator */
@@ -200,45 +200,81 @@
     /* === PAGE CONTENT STYLES === */
     .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
 
-    /* Hero */
-    .hero { padding: 40px 0 0px; border-top: none; }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0,1fr) 420px;
-      gap: 24px;
+    /* NEW VIDEO HERO STYLES */
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      border: none; /* Seamless */
+      /* True Black Background to blend with video */
+      background-color: #000000; 
+      min-height: 600px; /* Taller for cinematic feel */
+      display: flex;
       align-items: center;
+      justify-content: flex-start; /* Align content to the LEFT */
+      text-align: left;
+      margin: 40px 0 24px 0;
     }
-    .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3rem);
+
+    .hero-bg-video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      /* Dark scrim to make text readable over video */
+      background: rgba(0, 0, 0, 0.6); 
+      z-index: 1;
+    }
+
+    /* Left-Aligned Content Layer */
+    .hero-content-layer {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 700px; /* Constrain width so text stays on LEFT */
+      padding: 40px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start; /* Align items to left */
+    }
+
+    .hero-content-layer h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      color: #fff;
+      text-shadow: 0 4px 30px rgba(0,0,0,0.9);
+      margin-bottom: 20px;
       line-height: 1.1;
-      margin: 0 0 16px 0;
-      color: white;
-      text-shadow: 0 0 20px rgba(255, 79, 31, 0.2);
     }
-    .hero .sub-h1 {
+    .hero-content-layer h1 .highlight { color: var(--accent); }
+
+    .hero-content-layer .sub-h1 {
       font-size: 1.25rem;
       line-height: 1.6;
-      color: var(--text-muted);
-      max-width: 750px;
-      margin-bottom: 24px;
-    }
-    .hero .sub-h1 strong { color: var(--accent); }
-
-    .hero-photo { display: flex; justify-content: flex-end; }
-    .hero-photo img {
-      width: 100%; max-width: 420px; height: auto; object-fit: contain;
-      filter: drop-shadow(0 10px 20px rgba(0,0,0,.35));
+      color: #f0f0f0;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+      margin-bottom: 32px;
     }
 
-    @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .hero-photo { display: none; }
-    }
-
-    /* Hero CTAs */
-    .hero-cta-block { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; padding-bottom: 10px; }
+    .hero-cta-block { display: flex; flex-direction: column; gap: 12px; width: 100%; }
     .hero-cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
     
+    /* Responsive Hero for Mobile */
+    @media (max-width: 900px) {
+      .hero-card { justify-content: center; text-align: center; }
+      .hero-content-layer { 
+        align-items: center; 
+        padding: 40px 24px; 
+        max-width: 100%;
+      }
+      .hero-cta-row { justify-content: center; }
+    }
+
     /* Buttons */
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
@@ -253,7 +289,8 @@
       box-shadow: 0 8px 25px rgba(255, 79, 31, 0.3);
     }
     .btn-secondary {
-      background-color: transparent; color: #fff; border-color: var(--card-border);
+      background-color: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+      color: #fff; border-color: rgba(255,255,255,0.3);
     }
     .btn-secondary:hover {
       background-color: #fff; color: #0b1220; transform: translateY(-2px);
@@ -417,35 +454,33 @@
       margin: 20px auto 40px;
       max-width: 900px;
     }
-    
-    /* --- POTS/ACCORDION STYLES --- */
-    details {
-      background: var(--panel); 
-      border: 1px solid var(--card-border); 
-      border-radius: 12px; 
-      padding: 16px 20px;
-      transition: border-color 0.2s ease;
-    }
-    details:hover { border-color: var(--accent); }
-    summary { 
-      font-weight: 700; font-size: 1.15rem; color: #fff; 
-      cursor: pointer; list-style: none; outline: none; 
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    summary::-webkit-details-marker { display: none; }
-    summary::after { content: "+"; color: var(--accent); font-weight: 800; font-size: 1.4rem; }
-    details[open] summary::after { content: "-"; }
+/* --- POTS/ACCORDION STYLES --- */
+details {
+  background: var(--panel); 
+  border: 1px solid var(--card-border); 
+  border-radius: 12px; 
+  padding: 16px 20px;
+  transition: border-color 0.2s ease;
+}
+details:hover { border-color: var(--accent); }
+summary { 
+  font-weight: 700; font-size: 1.15rem; color: #fff; 
+  cursor: pointer; list-style: none; outline: none; 
+  display: flex; justify-content: space-between; align-items: center;
+}
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; color: var(--accent); font-weight: 800; font-size: 1.4rem; }
+details[open] summary::after { content: "-"; }
 
-    .pots-content { 
-      display: grid; grid-template-columns: 1.1fr 1fr; gap: 32px; 
-      align-items: start; margin-top: 24px; border-top: 1px solid var(--line); padding-top: 24px;
-    }
-    .pots-cert-box {
-      background: #141414; padding: 24px; border-radius: 12px; 
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    @media (max-width: 900px) { .pots-content { grid-template-columns: 1fr; } }
-    
+.pots-content { 
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 32px; 
+  align-items: start; margin-top: 24px; border-top: 1px solid var(--line); padding-top: 24px;
+}
+.pots-cert-box {
+  background: #141414; padding: 24px; border-radius: 12px; 
+  border: 1px solid rgba(255,255,255,0.1);
+}
+@media (max-width: 900px) { .pots-content { grid-template-columns: 1fr; } }
     /* Footer */
     .footer{border-top:1px solid var(--line);margin-top:40px;padding:32px 20px;text-align:center;color:var(--text-muted)}
     .socials{display:flex;gap:16px;justify-content:center;margin-top:16px}
@@ -495,29 +530,33 @@
   <main>
     <div class="wrap">
       
-      <section class="hero">
-        <div class="hero-grid">
-          <div>
-            <h1>Stop Buying Bundles.<br><span style="color:var(--accent)">Start Building CX.</span></h1>
-            <p class="sub-h1">
-              Your carrier's "all-in-one" CCaaS bundle isn't an AI strategy—it's a quota. 
-              We are <strong>supplier-agnostic advisors</strong> who audit your stack against your P&L. 
-              First, we prove the impact. Then, we build the solution.
-            </p>
-            <div class="hero-cta-block">
-              <div class="hero-cta-row">
-                <a href="#quadrant" class="btn btn-primary">See the 2025 CCaaS Quadrant</a>
-                <a href="#form" class="btn btn-secondary">Book a CCaaS Audit</a>
-              </div>
-              <div class="hero-cta-row">
-                <a href="#lumen-cloud-voice" class="btn btn-lumen-hero">See Lumen Cloud Voice</a>
-                <a href="#form" class="btn btn-secondary">Book a UC Audit</a>
-              </div>
+      <section class="hero-card">
+        <video autoplay loop muted playsinline class="hero-bg-video">
+          <source src="/assets/CCAAS.mp4" type="video/mp4">
+        </video>
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content-layer">
+          
+          <h1>Stop Buying Bundles.<br><span class="highlight">Start Building CX.</span></h1>
+          <p class="sub-h1">
+            Your carrier's "all-in-one" CCaaS bundle isn't an AI strategy—it's a quota. 
+            We are <strong>supplier-agnostic advisors</strong> who audit your stack against your P&L. 
+            First, we prove the impact. Then, we build the solution.
+          </p>
+          
+          <div class="hero-cta-block">
+            <div class="hero-cta-row">
+              <a href="#quadrant" class="btn btn-primary">See the 2025 CCaaS Quadrant</a>
+              <a href="#form" class="btn btn-secondary">Book a CCaaS Audit</a>
+            </div>
+            <div class="hero-cta-row">
+              <a href="#lumen-cloud-voice" class="btn btn-lumen-hero">See Lumen Cloud Voice</a>
+              <a href="#form" class="btn btn-secondary">Book a UC Audit</a>
             </div>
           </div>
-          <figure class="hero-photo">
-            <img src="/assets/lou-portrait@2x.png" alt="Louis Tortora" />
-          </figure>
+
         </div>
       </section>
 
@@ -728,7 +767,7 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5c0 1.38-1.12 2.5-2.48 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.5h5V24H0V8.5zM8 8.5h4.8v2.1h.07c.67-1.2 2.3-2.47 4.73-2.47 5.06 0 6 3.33 6 7.66V24h-5v-6.8c0-1.62-.03-3.7-2.25-3.7-2.25 0-2.6 1.76-2.6 3.58V24H8V8.5z"/></svg>
       </a>
       <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
       </a>
       <a href="https://www.facebook.com/profile.php?id=61582481880019" target="_blank" rel="noopener" aria-label="Facebook">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M22.675 0h-21.35C.592 0 0 .592 0 1.325v21.351C0 23.408.592 24 1.325 24h11.49v-9.294H9.691V11.01h3.124V8.414c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.313h3.587l-.467 3.696h-3.12V24h6.117C23.408 24 24 23.408 24 22.676V1.325C24 .592 23.408 0 22.675 0z"/></svg>
@@ -743,90 +782,78 @@
   </footer>
 
   <script>
-    // --- Footer Year ---
-    const ySpan = document.getElementById('y');
-    if(ySpan) ySpan.textContent = new Date().getFullYear();
+    document.getElementById('y').textContent = new Date().getFullYear();
 
-    // --- All scripts to run after DOM is loaded ---
+    // KPI Counter Script
     document.addEventListener("DOMContentLoaded", () => {
-    
-      // --- KPI Counter ---
       const kpiSection = document.getElementById("kpi-ticker");
-      if (kpiSection) {
-        const animateCounters = (entries, observer) => {
-          entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-            const counters = entry.target.querySelectorAll("[data-target]");
-            counters.forEach(counter => {
-              const target = +counter.dataset.target;
-              const duration = 1500, stepTime = 30;
-              const steps = Math.ceil(duration / stepTime);
-              const increment = target / steps;
-              let current = 0;
-              const updateCount = () => {
-                current += increment;
-                if (current >= target) { counter.textContent = target; return; }
-                counter.textContent = Math.ceil(current);
-                requestAnimationFrame(updateCount);
-              };
-              updateCount();
-            });
-            observer.unobserve(entry.target);
+      if (!kpiSection) return;
+
+      const animateCounters = (entries, observer) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+
+          const counters = entry.target.querySelectorAll("[data-target]");
+          counters.forEach(counter => {
+            const target = +counter.dataset.target;
+            const duration = 1500;
+            const stepTime = 30;
+            const steps = Math.ceil(duration / stepTime);
+            const increment = target / steps;
+            let current = 0;
+
+            const updateCount = () => {
+              current += increment;
+              if (current >= target) { counter.textContent = target; return; }
+              counter.textContent = Math.ceil(current);
+              requestAnimationFrame(updateCount);
+            };
+            updateCount();
           });
-        };
-        new IntersectionObserver(animateCounters, { threshold: 0.5 }).observe(kpiSection);
-      }
-
-      // --- Viewer Toggle Logic (Handles multiple buttons) ---
-      function initViewerToggle(buttonSelector) {
-        const button = document.querySelector(buttonSelector);
-        if (!button) return;
-
-        button.addEventListener('click', function(e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href');
-          const viewer = document.querySelector(targetId);
-          if (viewer) {
-            const isHidden = viewer.style.display === 'none' || viewer.style.display === '';
-            viewer.style.display = isHidden ? 'block' : 'none';
-            if (isHidden) {
-              viewer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-          }
+          
+          observer.unobserve(entry.target);
         });
-      }
-      
-      // Initialize BOTH viewer buttons
-      initViewerToggle('a[href="#cloud20-whitepaper-viewer"]');
-      initViewerToggle('a[href="#lumen-datasheet-viewer"]');
-    
-    }); // End DOMContentLoaded
+      };
+
+      const observer = new IntersectionObserver(animateCounters, {
+        root: null,
+        threshold: 0.5
+      });
+
+      observer.observe(kpiSection);
+    });
+
+    // Video Viewer Toggle
+    document.querySelector('.btn-secondary[href="#lumen-datasheet-viewer"]').addEventListener('click', function(e) {
+      e.preventDefault();
+      const viewer = document.getElementById('lumen-datasheet-viewer');
+      const isHidden = viewer.style.display === 'none' || viewer.style.display === '';
+      viewer.style.display = isHidden ? 'block' : 'none';
+      if (isHidden) viewer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    // YouTube Embed
+    document.addEventListener('click', function (evt) {
+      const shell = evt.target.closest('.video-shell');
+      if (!shell || shell.classList.contains('is-playing')) return;
+
+      const yt = shell.dataset.youtube;
+      if (!yt) return;
+
+      const iframe = document.createElement('iframe');
+      iframe.src = yt + (yt.includes('?') ? '&' : '?') + 'autoplay=1';
+      iframe.title = 'Lumen Cloud Voice video';
+      iframe.loading = 'lazy';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+
+      shell.innerHTML = '';
+      shell.appendChild(iframe);
+      shell.classList.add('is-playing');
+    });
   </script>
 
   <script>
-  // Swap thumbnail for autoplaying YouTube iframe when clicked
-  document.addEventListener('click', function (evt) {
-    const shell = evt.target.closest('.video-shell');
-    if (!shell || shell.classList.contains('is-playing')) return;
-
-    const yt = shell.dataset.youtube;
-    if (!yt) return;
-
-    const iframe = document.createElement('iframe');
-    iframe.src = yt + (yt.includes('?') ? '&' : '?') + 'autoplay=1';
-    iframe.title = 'Lumen Cloud Voice video';
-    iframe.loading = 'lazy';
-    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
-    iframe.allowFullscreen = true;
-
-    shell.innerHTML = '';
-    shell.appendChild(iframe);
-    shell.classList.add('is-playing');
-  });
-</script>
-
- <script>
   // FIX FOR MOBILE DROPDOWN TAPS
   document.addEventListener('DOMContentLoaded', function() {
     const triggers = document.querySelectorAll('.dropdown-trigger');
