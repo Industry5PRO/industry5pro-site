@@ -240,24 +240,28 @@
 
     .cta-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
 
-    /* Buttons */
+    /* Buttons (Matched to CSS Classes) */
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
       padding: 12px 24px; font-size: 1rem; font-weight: 700; border-radius: 999px;
       text-decoration: none; border: 1px solid transparent; transition: all 0.2s ease; cursor: pointer;
     }
-    .btn-primary {
+    
+    /* Primary Button (Filled) */
+    .btn.primary {
       background-color: var(--accent); color: #0b1220; border-color: var(--accent);
     }
-    .btn-primary:hover {
+    .btn.primary:hover {
       background-color: #fff; color: #0b1220; transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(43, 237, 231, 0.4);
+      box-shadow: 0 8px 25px rgba(43, 237, 231, 0.5); /* Ice Blue Glow */
     }
-    .btn-secondary {
+    
+    /* Secondary Button (Outline/Ghost) */
+    .btn.secondary {
       background-color: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
       color: #fff; border-color: rgba(255,255,255,0.3);
     }
-    .btn-secondary:hover {
+    .btn.secondary:hover {
       background-color: #fff; color: #0b1220; transform: translateY(-2px);
     }
 
@@ -411,7 +415,7 @@
         <div class="kdesc">Faster GTM Insights</div>
       </div>
       <div class="kpi">
-        <div class="knum" data-target="0" data-suffix="%">0%</div>
+        <div class="knum" data-start="100" data-target="0" data-suffix="%">100%</div>
         <div class="kdesc">Manual Data Entry</div>
       </div>
     </section>
@@ -479,11 +483,11 @@
     <section class="card" style="margin-top: 40px; text-align:center;">
       <h3>Advisor’s Note</h3>
       <p style="max-width:700px; margin:0 auto 20px; color:var(--text-muted);">
-        I’m a pro-bono global tech advisor paid by results when we ship a successful pilot. I don’t recommend “a tool” lightly. Supermetrics lets me save hours, prove ROI fast, and focus on outcomes, not cleanup.
+        As a one-man shop, I rely heavy on my partners and engineers. But when it comes to running the business, marketing, updating the website, client meetings, scanning for opportunities, and optimizing my AI SDR / DaaS venture, I can't spend half the day in spreadsheet chaos. I need a single source, single view so I can make my website pretty and watch more cat videos. (Jk but seriously, I can't live without it.)
       </p>
       <div class="cta-row">
         <a class="btn primary" href="https://partners.supermetrics.com/Industry5-StartFreeTrial">Start 14-Day Free Trial</a>
-        <a class="btn secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSe0fuFSqps8oXvKAK6skIT1lS7y6PUv2UzXZ-zqzKIV-hHweg/viewform">Book Scoping Call</a>
+        <a class="btn secondary" href="https://calendly.com/industry5pro/30min">Book Scoping Call</a>
       </div>
     </section>
 
@@ -515,15 +519,19 @@
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // KPI Counters
+    // KPI Counters with custom Start/Roll-down logic
     (function(){
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      function animateNumber(el, target, duration, suffix){
+      function animateNumber(el, target, duration, suffix, startVal){
         if (reduce){ el.textContent = target + (suffix||""); return; }
-        var start = 0, t0 = performance.now();
+        var start = startVal !== undefined ? startVal : 0;
+        var t0 = performance.now();
+        
         function frame(t){
           var p = Math.min(1, (t - t0)/duration);
-          var v = Math.round(start + (target - start) * (1 - Math.pow(1 - p, 3))); // easeOutCubic
+          // easeOutCubic
+          var progress = 1 - Math.pow(1 - p, 3);
+          var v = Math.round(start + (target - start) * progress);
           el.textContent = v + (suffix||"");
           if (p < 1) requestAnimationFrame(frame);
         }
@@ -534,9 +542,14 @@
         entries.forEach(function(entry){
           if(!entry.isIntersecting) return;
           var el = entry.target;
-          var target = parseInt(el.getAttribute('data-target'), 10) || 0;
+          var target = parseFloat(el.getAttribute('data-target')) || 0;
+          var startVal = parseFloat(el.getAttribute('data-start')); 
+          // If data-start is present (like 100), use it, otherwise default 0
+          if(isNaN(startVal)) startVal = 0;
+
           var suffix = el.getAttribute('data-suffix') || '';
-          animateNumber(el, target, 1000, suffix);
+          
+          animateNumber(el, target, 1500, suffix, startVal);
           io.unobserve(el);
         });
       }, {threshold:0.4});
