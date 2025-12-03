@@ -414,6 +414,20 @@
     .socials a{color:#fff;transition:all .2s ease}
     .socials a:hover{color:var(--accent);transform:translateY(-2px);text-shadow:0 0 10px var(--accent)}
     .socials svg{width:24px;height:24px;fill:currentColor}
+
+    /* --- NEW FEATURED PAPER STYLES --- */
+    .featured-paper-content {
+        border: 1px solid var(--card-border); 
+        border-radius: 12px; 
+        padding: 24px; 
+        background: var(--panel); 
+        margin: 15px 0 30px;
+    }
+    .featured-paper-content h3 {
+        font-size: 1.1rem;
+        font-weight: 800;
+        margin: 10px 0 5px 0;
+    }
   </style>
 </head>
 
@@ -517,10 +531,41 @@
       </div>
     </section>
 
+    <section class="menu">
+        <h2>Focused Application & Client Menu (Max 8)</h2>
+        <div class="grid">
+          <a class="chip" href="/blog?tag=manufacturing-aiot#case-studies">1. Industrial Manufacturing</a>
+          <a class="chip" href="/blog?tag=transport-fleet#case-studies">2. Fleet and Mobility</a>
+          <a class="chip" href="/blog?tag=agri-drones#case-studies">3. Agriculture & Drones</a>
+          <a class="chip" href="/blog?tag=logistics-warehousing#case-studies">4. Logistics & Warehousing</a>
+          <a class="chip" href="/blog?tag=utilities-grid#case-studies">5. Utilities and Grid</a>
+          <a class="chip" href="/blog?tag=oil-gas-mining#case-studies">6. Oil, Gas, and Mining</a>
+          <a class="chip" href="/blog?tag=buildings-campus#case-studies">7. Smart Buildings & Campuses</a>
+          <a class="chip" href="/blog?tag=healthcare-med-device#case-studies">8. Healthcare & Med Device</a>
+        </div>
+    </section>
     <section class="paper">
-      <h2>Micro White Paper — Industry Applications</h2>
+        <h2>Featured Micro White Paper: Industrial Manufacturing (The Siemens Edge)</h2>
 
-      <div class="cat-block infra">
+        <div class="featured-paper-content">
+            <h3 style="color:var(--cat-iiot); margin-top:0;">Key Performance Indicators (KPIs)</h3>
+            <div class="kpis">
+                <span class="pill">OEE (Overall Equipment Effectiveness)</span>
+                <span class="pill">MTBF (Mean Time Between Failures)</span>
+                <span class="pill">Scrap Rate</span>
+                <span class="pill">Throughput</span>
+                <span class="pill">Energy per Unit</span>
+            </div>
+            
+            <h3 style="color:var(--cat-iiot);">Ideal Client Profile (ICP)</h3>
+            <p style="color: var(--text-muted); margin-bottom: 15px;">multi-site plants, PLC heavy, downtime sensitivity, readiness for Private 5G or robust Wi-Fi plus cellular backup.</p>
+            
+            <h3 style="color:var(--cat-iiot);">Plays and Solutions</h3>
+            <p style="color: var(--text-muted); margin-bottom: 5px;">Plays: machine telemetry → lakehouse, predictive maintenance, vision QA at edge, worker safety wearables, AMR/AGV control.</p>
+            <p style="color: var(--text-muted); margin-bottom: 0;">Pattern: eSIM modules → secure APN → CMP → cloud feature store → model serving at line-side gateway.</p>
+        </div>
+    </section>
+    <section class="cat-block infra">
         <h3 class="cat-header" style="border-color: #FF4F1F; color: #FF4F1F;">Infrastructure Modernization — Critical Comms</h3>
         <p class="cat-desc">The "unsexy" but critical layer. Replacing aging copper POTS lines for life-safety systems before carriers decommission them.</p>
         
@@ -561,64 +606,6 @@
         <h3 class="cat-header">IIoT — Industrial Internet of Things</h3>
         <p class="cat-desc">Specialized branch focusing on industrial machines, systems, and operations. High availability, legacy OT integration, and heavy duty automation.</p>
 
-        <details>
-          <summary>Manufacturing (Siemens)</summary>
-          <div class="sec siemens-layout">
-            <div class="siemens-copy">
-              <h3>Siemens Insights Hub + Industrial Edge</h3>
-              <p>
-                When you’re trying to bring legacy OT, modern PLCs, and cloud analytics into the same conversation, Siemens is on the shortlist. Insights Hub gives you a cloud-based IoT layer to collect and normalize data. Industrial Edge pushes analytics down to the line for real-time inference.
-              </p>
-              <h4>What we actually measure</h4>
-              <ul class="kpi-list">
-                <li>OEE and line uptime across plants</li>
-                <li>Unplanned downtime, MTTR, and maintenance backlog</li>
-                <li>Scrap, rework, and first-pass yield</li>
-              </ul>
-              <div class="cta-row">
-                <a class="btn btn-primary" href="#intake">Try Insights Hub</a>
-              </div>
-              <div class="siemens-kpi-col">
-                <div class="kpi-item">
-                  <strong class="knum siemens" data-target="99" data-suffix="%">0</strong>
-                  <span>line uptime on critical pilot lines.</span>
-                </div>
-                <div class="kpi-item">
-                  <strong class="knum siemens" data-target="35" data-suffix="%">0</strong>
-                  <span>reduction in unplanned downtime.</span>
-                </div>
-                <div class="kpi-item">
-                  <strong class="knum siemens" data-target="18" data-suffix="%">0</strong>
-                  <span>scrap reduction from first-pass yield visibility.</span>
-                </div>
-              </div>
-            </div>
-            
-            <div class="siemens-media">
-              <div class="video-card">
-                <h4>Insights Hub: Getting Started</h4>
-                <div class="video-frame siemens-video" data-yt="mG8t9-in1xk">
-                  <button class="siemens-thumb" type="button">
-                    <img src="/assets/Insights-Hub-Thumb.jpg" alt="Insights Hub Thumb">
-                    <span class="play-badge">▶ Watch Overview</span>
-                  </button>
-                  <iframe loading="lazy" allow="autoplay; fullscreen"></iframe>
-                </div>
-              </div>
-              <div class="video-card">
-                <h4>Industrial Edge Live Demo</h4>
-                <div class="video-frame siemens-video" data-yt="0gSsyXGQpI0">
-                  <button class="siemens-thumb" type="button">
-                    <img src="/assets/Industrial_edge-thumb.jpg" alt="Industrial Edge Thumb">
-                    <span class="play-badge">▶ Watch Demo</span>
-                  </button>
-                  <iframe loading="lazy" allow="autoplay; fullscreen"></iframe>
-                </div>
-              </div>
-            </div>
-          </div>
-        </details>
-        
         <details><summary>Utilities and Grid (Aeris)</summary>
           <div class="sec siemens-layout">
             <div class="siemens-copy">
@@ -718,7 +705,7 @@
 
       <div class="cat-block aiot">
         <h3 class="cat-header">AIoT — Artificial Intelligence of Things</h3>
-        <p class="cat-desc">The fusion of IoT with AI. Enabling devices to analyze data, make decisions, and act autonomously at the edge without round-tripping to the cloud.</p>
+        <p class="cat-desc">The fusion of IoT with AI. Enabling devices to analyze data, make decisions, and act autonomously at the edge without round-tripping to the cloud. Powered by <strong>EPIC iO</strong>.</p>
 
         <details><summary>Smart City (EPIC iO)</summary>
           <div class="sec siemens-layout">
