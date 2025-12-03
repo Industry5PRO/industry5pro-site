@@ -40,7 +40,15 @@
     }
     
     /* --- RESET & BASE --- */
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial; box-sizing: border-box;}
+    html, body {
+      margin: 0; 
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial; 
+      box-sizing: border-box;
+      overflow-x: clip; 
+    }
     *, *:before, *:after { box-sizing: inherit; }
     a{color:inherit;text-decoration:none;transition:color .2s ease;}
     a:hover{text-decoration:none;}
@@ -50,9 +58,9 @@
     section:first-of-type { border-top: none; }
     .anchor{scroll-margin-top:90px}
 
-    /* --- 3. MASTER HEADER & NAV (Final Version) --- */
+    /* --- 3. MASTER HEADER & NAV (UPDATED WITH SUB-INDICATOR) --- */
     header {
-      position: -webkit-sticky; /* Safari support */
+      position: -webkit-sticky; 
       position: sticky; top: 0; z-index: 99999;
       background: linear-gradient(180deg,rgba(27,27,29,0.95),rgba(27,27,29,0.85));
       backdrop-filter: blur(8px);
@@ -106,8 +114,19 @@
       text-shadow: 0 0 6px var(--accent), 0 0 14px var(--accent);
     }
 
-    /* DROPDOWN LOGIC */
-    .nav-item { position: relative; display: inline-block; padding-bottom: 20px; margin-bottom: -20px; }
+    /* DROPDOWN & SUB-INDICATOR LOGIC */
+    .nav-item { 
+      position: relative; display: inline-block; 
+      padding-bottom: 28px; margin-bottom: -28px; /* Space for sub-indicator */
+    }
+    
+    /* Floating Sub-Label */
+    .sub-indicator {
+      display: block; position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%);
+      font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;
+      color: var(--accent); text-shadow: 0 0 12px var(--accent); pointer-events: none;
+    }
+    .dropdown-trigger.active { color: #cfe3d4; text-shadow: none; }
     
     .dropdown-menu {
       display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
@@ -116,7 +135,6 @@
       z-index: 1000; flex-direction: column; gap: 4px;
     }
     
-    /* Show Dropdown on Hover (Desktop) */
     .nav-item:hover .dropdown-menu { display: flex; }
     
     .dropdown-menu a {
@@ -124,7 +142,6 @@
       text-align: left; white-space: nowrap; display: block;
     }
     
-    /* Dropdown Item Hover -> Matches Page Color */
     .dropdown-menu a:hover {
       background: rgba(255,255,255,0.05); 
       color: var(--accent); 
@@ -166,10 +183,17 @@
         background: transparent; box-shadow: none; 
       }
       
-      /* DISABLE HOVER ON MOBILE (Fixes flickering) */
+      /* Hide Sub-Indicator on Mobile */
+      .sub-indicator { display: none; }
+      
+      /* Reset Nav Item Spacing */
+      .nav-item { padding-bottom: 0; margin-bottom: 0; width: 100%; }
+      .dropdown-trigger { display: block; width: 100%; padding: 10px 0; border-bottom: 1px solid var(--line); cursor: pointer; }
+
+      /* DISABLE HOVER ON MOBILE */
       .nav-item:hover .dropdown-menu { display: none; }
 
-      /* ENABLE CLICK CLASS (Triggered by JS) */
+      /* ENABLE CLICK CLASS */
       .nav-item.tap-open .dropdown-menu { display: flex; }
     }
     
@@ -393,33 +417,35 @@
       margin: 20px auto 40px;
       max-width: 900px;
     }
-/* --- POTS/ACCORDION STYLES --- */
-details {
-  background: var(--panel); 
-  border: 1px solid var(--card-border); 
-  border-radius: 12px; 
-  padding: 16px 20px;
-  transition: border-color 0.2s ease;
-}
-details:hover { border-color: var(--accent); }
-summary { 
-  font-weight: 700; font-size: 1.15rem; color: #fff; 
-  cursor: pointer; list-style: none; outline: none; 
-  display: flex; justify-content: space-between; align-items: center;
-}
-summary::-webkit-details-marker { display: none; }
-summary::after { content: "+"; color: var(--accent); font-weight: 800; font-size: 1.4rem; }
-details[open] summary::after { content: "-"; }
+    
+    /* --- POTS/ACCORDION STYLES --- */
+    details {
+      background: var(--panel); 
+      border: 1px solid var(--card-border); 
+      border-radius: 12px; 
+      padding: 16px 20px;
+      transition: border-color 0.2s ease;
+    }
+    details:hover { border-color: var(--accent); }
+    summary { 
+      font-weight: 700; font-size: 1.15rem; color: #fff; 
+      cursor: pointer; list-style: none; outline: none; 
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; color: var(--accent); font-weight: 800; font-size: 1.4rem; }
+    details[open] summary::after { content: "-"; }
 
-.pots-content { 
-  display: grid; grid-template-columns: 1.1fr 1fr; gap: 32px; 
-  align-items: start; margin-top: 24px; border-top: 1px solid var(--line); padding-top: 24px;
-}
-.pots-cert-box {
-  background: #141414; padding: 24px; border-radius: 12px; 
-  border: 1px solid rgba(255,255,255,0.1);
-}
-@media (max-width: 900px) { .pots-content { grid-template-columns: 1fr; } }
+    .pots-content { 
+      display: grid; grid-template-columns: 1.1fr 1fr; gap: 32px; 
+      align-items: start; margin-top: 24px; border-top: 1px solid var(--line); padding-top: 24px;
+    }
+    .pots-cert-box {
+      background: #141414; padding: 24px; border-radius: 12px; 
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    @media (max-width: 900px) { .pots-content { grid-template-columns: 1fr; } }
+    
     /* Footer */
     .footer{border-top:1px solid var(--line);margin-top:40px;padding:32px 20px;text-align:center;color:var(--text-muted)}
     .socials{display:flex;gap:16px;justify-content:center;margin-top:16px}
@@ -443,13 +469,15 @@ details[open] summary::after { content: "-"; }
         <a href="/" class="nav-link-home">Home</a>
 
         <div class="nav-item">
-          <span class="dropdown-trigger">Core Competencies ▾</span>
+          <span class="dropdown-trigger active">Core Competencies ▾</span>
+          <span class="sub-indicator">UC & CCaaS</span>
+          
           <div class="dropdown-menu">
             <a href="/ai">AI & Omnichannel</a>
             <a href="/supermetrics">Analytics & Data</a>
             <a href="/cyber">Security & Backup</a>
             <a href="/cloud20">Cloud 2.0 & Infra</a>
-            <a href="/ccaas">UC & Contact Center</a>        
+            <a href="/ccaas" style="color:var(--accent)">UC & Contact Center</a>        
             <a href="/peplink">5G & Satellite</a>
             <a href="/aiot">AIoT & Edge</a>
           </div>
@@ -715,78 +743,90 @@ details[open] summary::after { content: "-"; }
   </footer>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    // --- Footer Year ---
+    const ySpan = document.getElementById('y');
+    if(ySpan) ySpan.textContent = new Date().getFullYear();
 
-    // KPI Counter Script
+    // --- All scripts to run after DOM is loaded ---
     document.addEventListener("DOMContentLoaded", () => {
+    
+      // --- KPI Counter ---
       const kpiSection = document.getElementById("kpi-ticker");
-      if (!kpiSection) return;
-
-      const animateCounters = (entries, observer) => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-
-          const counters = entry.target.querySelectorAll("[data-target]");
-          counters.forEach(counter => {
-            const target = +counter.dataset.target;
-            const duration = 1500;
-            const stepTime = 30;
-            const steps = Math.ceil(duration / stepTime);
-            const increment = target / steps;
-            let current = 0;
-
-            const updateCount = () => {
-              current += increment;
-              if (current >= target) { counter.textContent = target; return; }
-              counter.textContent = Math.ceil(current);
-              requestAnimationFrame(updateCount);
-            };
-            updateCount();
+      if (kpiSection) {
+        const animateCounters = (entries, observer) => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const counters = entry.target.querySelectorAll("[data-target]");
+            counters.forEach(counter => {
+              const target = +counter.dataset.target;
+              const duration = 1500, stepTime = 30;
+              const steps = Math.ceil(duration / stepTime);
+              const increment = target / steps;
+              let current = 0;
+              const updateCount = () => {
+                current += increment;
+                if (current >= target) { counter.textContent = target; return; }
+                counter.textContent = Math.ceil(current);
+                requestAnimationFrame(updateCount);
+              };
+              updateCount();
+            });
+            observer.unobserve(entry.target);
           });
-          
-          observer.unobserve(entry.target);
+        };
+        new IntersectionObserver(animateCounters, { threshold: 0.5 }).observe(kpiSection);
+      }
+
+      // --- Viewer Toggle Logic (Handles multiple buttons) ---
+      function initViewerToggle(buttonSelector) {
+        const button = document.querySelector(buttonSelector);
+        if (!button) return;
+
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const viewer = document.querySelector(targetId);
+          if (viewer) {
+            const isHidden = viewer.style.display === 'none' || viewer.style.display === '';
+            viewer.style.display = isHidden ? 'block' : 'none';
+            if (isHidden) {
+              viewer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+          }
         });
-      };
-
-      const observer = new IntersectionObserver(animateCounters, {
-        root: null,
-        threshold: 0.5
-      });
-
-      observer.observe(kpiSection);
-    });
-
-    // Video Viewer Toggle
-    document.querySelector('.btn-secondary[href="#lumen-datasheet-viewer"]').addEventListener('click', function(e) {
-      e.preventDefault();
-      const viewer = document.getElementById('lumen-datasheet-viewer');
-      const isHidden = viewer.style.display === 'none' || viewer.style.display === '';
-      viewer.style.display = isHidden ? 'block' : 'none';
-      if (isHidden) viewer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    });
-
-    // YouTube Embed
-    document.addEventListener('click', function (evt) {
-      const shell = evt.target.closest('.video-shell');
-      if (!shell || shell.classList.contains('is-playing')) return;
-
-      const yt = shell.dataset.youtube;
-      if (!yt) return;
-
-      const iframe = document.createElement('iframe');
-      iframe.src = yt + (yt.includes('?') ? '&' : '?') + 'autoplay=1';
-      iframe.title = 'Lumen Cloud Voice video';
-      iframe.loading = 'lazy';
-      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-      iframe.allowFullscreen = true;
-
-      shell.innerHTML = '';
-      shell.appendChild(iframe);
-      shell.classList.add('is-playing');
-    });
+      }
+      
+      // Initialize BOTH viewer buttons
+      initViewerToggle('a[href="#cloud20-whitepaper-viewer"]');
+      initViewerToggle('a[href="#lumen-datasheet-viewer"]');
+    
+    }); // End DOMContentLoaded
   </script>
 
   <script>
+  // Swap thumbnail for autoplaying YouTube iframe when clicked
+  document.addEventListener('click', function (evt) {
+    const shell = evt.target.closest('.video-shell');
+    if (!shell || shell.classList.contains('is-playing')) return;
+
+    const yt = shell.dataset.youtube;
+    if (!yt) return;
+
+    const iframe = document.createElement('iframe');
+    iframe.src = yt + (yt.includes('?') ? '&' : '?') + 'autoplay=1';
+    iframe.title = 'Lumen Cloud Voice video';
+    iframe.loading = 'lazy';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    iframe.allowFullscreen = true;
+
+    shell.innerHTML = '';
+    shell.appendChild(iframe);
+    shell.classList.add('is-playing');
+  });
+</script>
+
+ <script>
   // FIX FOR MOBILE DROPDOWN TAPS
   document.addEventListener('DOMContentLoaded', function() {
     const triggers = document.querySelectorAll('.dropdown-trigger');
@@ -811,6 +851,6 @@ details[open] summary::after { content: "-"; }
     });
   });
 </script>
-  
+
 </body>
 </html>
