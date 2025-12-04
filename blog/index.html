@@ -220,54 +220,92 @@
     align-items: center;
   }
 
-  /* Hero Text Side - SUPER SIZED */
+/* Hero Text Side - SUPER SIZED & UPDATED */
+  .hero-content {
+    /* added z-index to ensure text sits above video/overlay clearly */
+    position: relative; 
+    z-index: 10;
+  }
+
   .hero h1 {
-    margin: 0 0 24px;
-    /* MASSIVE FONT SIZE */
-    font-size: clamp(4rem, 8vw, 6rem);
-    line-height: 0.95;
+    margin: 0 0 20px;
+    /* MASSIVE FONT SIZE INCREASE */
+    /* Scales from 4.5rem on mobile to 7.5rem on desktop */
+    font-size: clamp(4.5rem, 9vw, 7.5rem);
+    line-height: 0.9;
     color: #fff;
     font-weight: 800;
+    letter-spacing: -2px; /* Tightens the massive headline */
     text-shadow: 0 4px 40px rgba(0,0,0,0.9);
   }
+  
+  /* NEW STYLE FOR: "Advisory for the Infrastructure Era" */
+  .hero .kicker {
+    font-size: 2rem; 
+    color: var(--accent); /* Uses your Ice Blue */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    text-shadow: 0 0 15px rgba(43, 237, 231, 0.5);
+    display: block;
+  }
+
   .hero p {
-    /* MASSIVE BLURB SIZE */
-    font-size: 1.6rem;
+    /* INCREASED BODY TEXT (Was 1.6rem -> Now 2rem) */
+    font-size: 2rem;
     color: #f0f0f0; 
-    line-height: 1.5;
+    line-height: 1.4;
     margin: 0;
+    max-width: 90%; /* Keeps lines from getting too long to read */
     text-shadow: 0 2px 10px rgba(0,0,0,0.9);
   }
   
-  /* "Coming Soon" - Slightly smaller */
+  /* "Coming Soon" - INCREASED (Was 1.1rem -> Now 1.5rem) */
   .coming-soon {
     display: block;
-    margin-top: 24px;
-    font-size: 1.1rem;
-    opacity: 0.9;
-    color: #dfe7f3;
+    margin-top: 30px;
+    font-size: 1.5rem;
+    opacity: 1;
+    color: var(--gold); /* Highlighted in Gold to pop */
     font-weight: 600;
   }
 
+  /* BUTTON - INCREASED (Was 1.25rem -> Now 1.6rem) */
   .hero .pill-faq {
     display: inline-block;
-    margin-top: 32px;
-    background: rgba(0,0,0,0.5); /* Box background for legibility */
-    border: 1px solid var(--accent);
-    padding: 14px 30px;
+    margin-top: 40px;
+    background: rgba(0,0,0,0.6); 
+    border: 2px solid var(--accent); /* Thicker border */
+    padding: 18px 45px; /* Larger hit area */
     border-radius: 99px;
     color: var(--accent);
     font-weight: 800;
-    font-size: 1.25rem; /* BIGGER BUTTON */
+    font-size: 1.6rem; 
     text-shadow: 0 2px 4px rgba(0,0,0,0.8);
     text-decoration: none;
     transition: all 0.2s ease;
   }
+  
   .hero .pill-faq:hover {
       background: var(--accent);
       color: #000;
-      transform: translateY(-2px);
-      box-shadow: 0 0 20px var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 0 30px var(--accent); /* Stronger glow on hover */
+  }
+
+  /* MOBILE ADJUSTMENT - Keeps the huge text readable on phones */
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+    .hero-card { min-height: auto; padding: 60px 0; }
+    
+    .hero h1 { text-align: center; } 
+    /* Slightly smaller body text on mobile so it fits the screen */
+    .hero p { text-align: center; font-size: 1.4rem; max-width: 100%; }
+    .hero .kicker { text-align: center; font-size: 1.4rem; }
+    
+    .hero .pill-faq { display: block; text-align: center; margin-left:auto; margin-right:auto; width: fit-content; font-size: 1.3rem; }
+    .hero-series-card { margin-top: 20px; }
   }
 
   /* Series Card (Right Side) - Glassmorphism */
