@@ -326,7 +326,7 @@
               <div class="kpi-grid">
                 <div class="kpi-item"><span class="kpi-num" data-target="60">%</span><span class="kpi-label">Faster Provisioning</span></div>
                 <div class="kpi-item"><span class="kpi-num" data-target="100">%</span><span class="kpi-label">Flexible Billing</span></div>
-                <div class="kpi-item"><span class="kpi-num" data-target="0"></span><span class="kpi-label">Term Commitment</span></div>
+                <div class="kpi-item"><span class="kpi-num" data-start="36" data-target="0">36</span><span class="kpi-label">Month Term</span></div>
               </div>
               <a href="#intake" class="ai-cta-pill">Get NaaS Pricing &rarr;</a>
             </div>
@@ -347,7 +347,7 @@
               <p><strong>The "Speed".</strong> For AI inference and real-time apps, the round trip to `us-east-1` is too slow. We deploy Bare Metal compute in the metro edge (5ms from users), removing the jitter of the public internet.</p>
               <div class="kpi-grid">
                 <div class="kpi-item"><span class="kpi-num" data-target="5">ms</span><span class="kpi-label">Latency Target</span></div>
-                <div class="kpi-item"><span class="kpi-num" data-target="95">%</span><span class="kpi-label">US Coverage</span></div>
+                <div class="kpi-item"><span class="kpi-num" data-target="60">+</span><span class="kpi-label">Countries Served</span></div>
                 <div class="kpi-item"><span class="kpi-num" data-target="0"></span><span class="kpi-label">Virtualization Tax</span></div>
               </div>
               <a href="#intake" class="ai-cta-pill">Deploy at the Edge &rarr;</a>
@@ -525,25 +525,37 @@ document.addEventListener('DOMContentLoaded', function(){
     }
   });
 
-  // 2. Rolling KPIs
+  // 2. Rolling KPIs (UP AND DOWN LOGIC)
   const io = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       const el = entry.target;
+      
+      // Get Start and Target values
+      const start = parseFloat(el.getAttribute('data-start')) || 0;
       const target = parseFloat(el.getAttribute('data-target')) || 0;
-      // Preserve non-numeric characters (%, /7, etc)
+      
+      // Preserve non-numeric characters (%, +, etc)
       const text = el.innerText.replace(/[0-9]/g, ''); 
       
-      let count = 0;
+      let current = start;
       const animate = () => {
-        if(count < target) {
-          count++;
-          el.innerText = count + text;
+        if (current < target) {
+          current++;
+          el.innerText = current + text;
+          requestAnimationFrame(animate);
+        } else if (current > target) {
+          current--; // Count down logic
+          el.innerText = current + text;
           requestAnimationFrame(animate);
         } else {
           el.innerText = target + text;
         }
       };
+      
+      // Set initial value immediately
+      el.innerText = start + text;
+      
       animate();
       io.unobserve(el);
     });
