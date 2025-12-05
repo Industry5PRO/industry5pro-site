@@ -9,7 +9,6 @@
             --bg-color: #0f172a; /* Dark Slate */
             --card-bg: #1e293b;
             --accent: #3b82f6;   /* Tech Blue */
-            --accent-glow: rgba(59, 130, 246, 0.5);
             --accent-hover: #2563eb;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
@@ -32,10 +31,10 @@
             min-height: 100vh;
         }
 
-        /* --- Navigation (Preserved) --- */
+        /* --- Navigation (KEPT EXACTLY AS IS) --- */
         nav {
             display: flex;
-            justify-content: center;
+            justify-content: center; 
             align-items: center;
             padding: 1.5rem 5%;
             background-color: rgba(15, 23, 42, 0.95);
@@ -47,7 +46,7 @@
         }
 
         .logo {
-            font-size: 2rem;
+            font-size: 2rem; 
             font-weight: 800;
             letter-spacing: -0.5px;
             color: var(--text-main);
@@ -69,7 +68,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 5rem 5% 4rem 5%;
+            padding: 5rem 5% 3rem 5%;
             text-align: center;
             flex: 1;
         }
@@ -80,7 +79,7 @@
             margin-bottom: 1.5rem;
             max-width: 900px;
             line-height: 1.1;
-            background: linear-gradient(to right, #fff, #cbd5e1);
+            background: linear-gradient(to right, #fff, #94a3b8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -89,27 +88,26 @@
             font-size: 1.35rem;
             color: var(--text-muted);
             margin-bottom: 3rem;
-            max-width: 700px;
+            max-width: 650px;
         }
 
-        /* --- Video Container (Enhanced) --- */
+        /* --- Video Container (Enhanced for "Neatness" only) --- */
         .media-container {
             width: 100%;
-            max-width: 900px;
+            max-width: 1000px;
             background: var(--card-bg);
             border-radius: 16px;
-            padding: 1px; /* Thin bezel */
-            /* The Backdrop Glow Effect */
-            box-shadow: 0 0 40px -10px var(--accent-glow), 0 20px 40px -10px rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(59, 130, 246, 0.3); /* Subtle blue border */
-            margin-bottom: 3.5rem;
+            padding: 8px; 
+            /* Added a subtle blue glow to match the 'Energy' theme */
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.2), 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+            border: 1px solid #334155;
+            margin-bottom: 3rem;
             overflow: hidden;
-            position: relative;
         }
 
         video {
             display: block;
-            border-radius: 15px; /* Matches container minus padding */
+            border-radius: 12px;
             width: 100%;
             height: auto;
             background: #000;
@@ -120,7 +118,7 @@
             display: inline-block;
             background-color: var(--accent);
             color: white;
-            padding: 1rem 3rem;
+            padding: 1rem 2.5rem;
             font-size: 1.2rem;
             font-weight: 600;
             border-radius: 8px;
@@ -132,10 +130,10 @@
         .cta-button:hover {
             transform: translateY(-2px);
             background-color: var(--accent-hover);
-            box-shadow: 0 6px 25px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.23);
         }
 
-        /* --- Footer (Preserved) --- */
+        /* --- Footer (KEPT EXACTLY AS IS) --- */
         footer {
             background-color: var(--footer-bg);
             border-top: 1px solid #1e293b;
@@ -194,8 +192,7 @@
 
     <header class="hero">
         <h1>The Physics Layer of<br>Modern Data Strategy</h1>
-        
-        <p>Before you automate outreach, you must validate the source. We use Supermetrics to structure the data that fuels your AI SDR—ensuring every interaction is intelligent, contextual, and accurate.</p>
+        <p>Before you automate the outreach, you must validate the source. We use Supermetrics to build the foundation of our AI-driven SDR engines.</p>
 
         <div class="media-container">
             <video width="100%" height="auto" autoplay loop muted playsinline>
