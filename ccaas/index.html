@@ -487,7 +487,35 @@ details[open] summary::after { content: "-"; }
     .socials a{color:#fff;transition:all .2s ease}
     .socials a:hover{color:var(--accent);transform:translateY(-2px);text-shadow:0 0 10px var(--accent)}
     .socials svg{width:24px;height:24px;fill:currentColor}
-  
+
+    /* --- MOBILE EDGE-TO-EDGE HERO FIX --- */
+    @media (max-width: 768px) {
+      .hero-card {
+        /* Force full screen width, ignoring parent padding */
+        width: 100vw;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        
+        /* Remove rounded corners and side gaps */
+        border-radius: 0;
+        border: none;
+        
+        /* Pull it up to touch the header seamlessly */
+        margin-top: 0; 
+        margin-bottom: 30px;
+        
+        /* Adjust height if needed for mobile aspect ratio */
+        min-height: 550px;
+      }
+      
+      /* Ensure text doesn't hit the very edge of the screen */
+      .hero-content-layer {
+        padding-left: 20px;
+        padding-right: 20px;
+        width: 100%;
+      }
+    }
+    
   </style>
 </head>
 
