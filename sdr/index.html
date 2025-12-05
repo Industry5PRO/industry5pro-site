@@ -31,7 +31,10 @@
       --text-muted: #aeb8c4;
       --line: rgba(255,255,255,0.08);
       --outline: #2C2C30;
-      --accent: #FFD700; /* Gold for AI SDR */
+      
+      /* THEME COLORS */
+      --accent: #38bdf8;   /* Industry5 Ice Blue */
+      --gold: #FFD700;     /* Waitlist Button Yellow */
     }
     
     /* --- RESET & BASE --- */
@@ -45,9 +48,9 @@
     section:first-of-type { border-top: none; }
     .anchor{scroll-margin-top:90px}
 
-    /* --- 3. MASTER HEADER & NAV (Final Version) --- */
+    /* --- MASTER HEADER & NAV --- */
     header {
-      position: -webkit-sticky; /* Safari support */
+      position: -webkit-sticky; 
       position: sticky; top: 0; z-index: 99999;
       background: linear-gradient(180deg,rgba(27,27,29,0.95),rgba(27,27,29,0.85));
       backdrop-filter: blur(8px);
@@ -56,7 +59,8 @@
     }
     
     .header-center {
-      max-width: 1100px; margin: 0 auto; padding: 14px 18px; 
+      max-width: 1200px; /* Matched to new page width */
+      margin: 0 auto; padding: 14px 18px; 
       display: flex; align-items: center; justify-content: space-between; gap: 20px;
     }
 
@@ -67,7 +71,6 @@
       width: 75px !important; height: 75px !important; 
       border-radius: 14px; display: block; object-fit: contain; 
       background: transparent;
-      /* DYNAMIC GLOW: Uses page accent color */
       filter: drop-shadow(0 0 8px var(--accent)); 
       transition: filter 0.3s ease;
     }
@@ -89,12 +92,6 @@
       text-decoration: none;
     }
 
-    /* Active State */
-    .main-nav a.active {
-      color: var(--accent);
-      text-shadow: 0 0 10px var(--accent);
-    }
-
     /* Hover Effects */
     .main-nav a:not(.nav-sdr):not(.btn-book):hover, .dropdown-trigger:hover {
       color: var(--accent); 
@@ -111,7 +108,6 @@
       z-index: 1000; flex-direction: column; gap: 4px;
     }
     
-    /* Show Dropdown on Hover (Desktop) */
     .nav-item:hover .dropdown-menu { display: flex; }
     
     .dropdown-menu a {
@@ -119,20 +115,21 @@
       text-align: left; white-space: nowrap; display: block;
     }
     
-    /* Dropdown Item Hover -> Matches Page Color */
     .dropdown-menu a:hover {
-      background: rgba(255,255,255,0.05); 
+      background: rgba(56, 189, 248, 0.1); 
       color: var(--accent); 
       transform: translateX(4px);
       text-shadow: none;
     }
 
-    /* AI SDR SPECIAL LINK */
+    /* AI SDR SPECIAL LINK - FROZEN ICE BLUE */
     .nav-sdr {
-      color: #fff !important; font-weight: 800 !important; text-transform: uppercase;
+      color: var(--accent) !important; /* Forces Ice Blue */
+      font-weight: 800 !important; text-transform: uppercase;
+      text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
     }
     .nav-sdr:hover {
-      color: var(--gold) !important; text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+      text-shadow: 0 0 15px var(--accent);
       transform: translateY(-1px);
     }
 
@@ -145,34 +142,27 @@
     .btn-book:hover {
       transform: translateY(-2px); 
       box-shadow: 0 5px 20px var(--accent);
-      color: #0b1220 !important; /* Keep text dark on hover */
     }
 
-    /* MOBILE NAV (Fixes Android Tap Issue) */
+    /* MOBILE NAV */
     @media (max-width: 1100px) {
       .header-center { flex-direction: column; align-items: flex-start; gap: 16px; }
       .main-nav { gap: 16px 24px; justify-content: flex-start; }
-      
-      /* Reset dropdown styles for mobile flow */
-      .dropdown-menu { 
-        position: static; transform: none; 
-        display: none; /* Hidden by default */
-        border: none; padding-left: 20px; 
-        background: transparent; box-shadow: none; 
-      }
-      
-      /* DISABLE HOVER ON MOBILE (Fixes flickering) */
+      .dropdown-menu { position: static; transform: none; display: none; border: none; padding-left: 20px; background: transparent; box-shadow: none; }
       .nav-item:hover .dropdown-menu { display: none; }
-
-      /* ENABLE CLICK CLASS (Triggered by JS) */
       .nav-item.tap-open .dropdown-menu { display: flex; }
     }
+
     /* === PAGE CONTENT STYLES === */
-    .wrap { max-width: 900px; margin: 0 auto; padding: 0 24px; text-align: center; }
+    /* Increased Max-Width to make video bigger */
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; text-align: center; }
+
+    /* Constrain Text so it doesn't get too wide despite the wider container */
+    .hero-text-limit { max-width: 800px; margin: 0 auto; }
 
     /* Hero */
     .hero { 
-        padding: 100px 0 80px; 
+        padding: 80px 0 80px; 
         border-top: none; 
         min-height: 60vh;
         display: flex;
@@ -201,7 +191,7 @@
       margin: 0 auto 40px auto;
     }
     
-    /* Animated Logo Pulse */
+    /* Animated Logo Pulse - Updated to Ice Blue */
     .hero-logo { 
       margin: 0 auto 30px; 
       width: 120px; 
@@ -211,36 +201,42 @@
       align-items: center;
       justify-content: center;
       background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 215, 0, 0.3);
-      box-shadow: 0 0 30px rgba(255,215,0,0.15);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      box-shadow: 0 0 30px rgba(56, 189, 248, 0.15);
       animation: pulse 3s infinite;
     }
     @keyframes pulse {
-        0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); }
-        70% { box-shadow: 0 0 0 20px rgba(255, 215, 0, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+        0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.4); }
+        70% { box-shadow: 0 0 0 20px rgba(56, 189, 248, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
     }
 
     /* Buttons */
     .cta-row { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+    
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
       padding: 14px 32px; font-size: 1.1rem; font-weight: 700; border-radius: 12px;
       text-decoration: none; border: 1px solid transparent; transition: all 0.2s ease; cursor: pointer;
     }
+    
+    /* PRIMARY = YELLOW (Waitlist) */
     .btn-primary {
-      background-color: var(--accent); color: #0b1220; border-color: var(--accent);
-      box-shadow: 0 0 20px rgba(255,215,0,0.25);
+      background-color: var(--gold); color: #0b1220; border-color: var(--gold);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.25);
     }
     .btn-primary:hover {
       background-color: #fff; color: #0b1220; transform: translateY(-2px);
-      box-shadow: 0 0 30px rgba(255,215,0,0.5);
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
     }
+
+    /* SECONDARY = ICE BLUE (Back to Home) */
     .btn-secondary {
       background-color: transparent; color: var(--accent); border: 1px solid var(--accent);
     }
     .btn-secondary:hover {
-      background-color: rgba(255, 215, 0, 0.1); transform: translateY(-2px);
+      background-color: var(--accent); color: #fff; transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
     }
 
     /* Video Container Styling */
@@ -250,7 +246,9 @@
       border-radius: 16px;
       padding: 8px;
       background: var(--panel);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.05); /* Subtle gold glow */
+      /* Ice Blue Glow */
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 30px rgba(56, 189, 248, 0.1); 
+      width: 100%;
     }
 
     .video-showcase video {
@@ -280,8 +278,7 @@
       </a>
       
       <nav class="main-nav">
-        <a href="/" class="nav-link-home">Home</a>
-
+        
         <div class="nav-item">
           <span class="dropdown-trigger">Core Competencies ▾</span>
           <div class="dropdown-menu">
@@ -306,22 +303,25 @@
 
   <main class="wrap">
     <section class="hero">
-      <div class="hero-logo">
-         <img src="/assets/industry5logo.svg" alt="AI Loading" width="80" height="80">
-      </div>
       
-      <div class="kicker">Coming Soon</div>
-      
-      <h1>The End of <span style="color:var(--accent)">Generic Outreach</span></h1>
-      
-      <p class="sub">
-        An autonomous outbound engine that researches, writes, and converts—without the burnout. 
-        <br>Designed for the enterprise. Powered by Industry5.pro.
-      </p>
-      
-      <div class="cta-row">
-        <a href="mailto:lou@industry5.pro?subject=AI%20SDR%20Waitlist" class="btn btn-primary">Join the Waitlist</a>
-        <a href="/" class="btn btn-secondary">Back to Home</a>
+      <div class="hero-text-limit">
+        <div class="hero-logo">
+           <img src="/assets/industry5logo.svg" alt="AI Loading" width="80" height="80">
+        </div>
+        
+        <div class="kicker">Coming Soon</div>
+        
+        <h1>The End of <span style="color:var(--accent)">Generic Outreach</span></h1>
+        
+        <p class="sub">
+          An autonomous outbound engine that researches, writes, and converts—without the burnout. 
+          <br>Designed for the enterprise. Powered by Industry5.pro.
+        </p>
+        
+        <div class="cta-row">
+          <a href="mailto:lou@industry5.pro?subject=AI%20SDR%20Waitlist" class="btn btn-primary">Join the Waitlist</a>
+          <a href="/" class="btn btn-secondary">Back to Home</a>
+        </div>
       </div>
 
       <div class="video-showcase">
@@ -330,7 +330,8 @@
           Your browser does not support the video tag.
         </video>
       </div>
-      </section>
+
+    </section>
   </main>
 
   <footer class="footer">
