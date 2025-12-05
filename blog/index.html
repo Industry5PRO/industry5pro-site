@@ -447,6 +447,35 @@ details[open] summary.faq-q::after { content: "-"; color: var(--gold); }
   margin-top: 12px; color: var(--muted); font-size: 0.95rem; line-height: 1.6;
   border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px;
 }
+
+  /* --- MOBILE EDGE-TO-EDGE HERO FIX --- */
+    @media (max-width: 768px) {
+      .hero-card {
+        /* Force full screen width, ignoring parent padding */
+        width: 100vw;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        
+        /* Remove rounded corners and side gaps */
+        border-radius: 0;
+        border: none;
+        
+        /* Pull it up to touch the header seamlessly */
+        margin-top: 0; 
+        margin-bottom: 30px;
+        
+        /* Adjust height if needed for mobile aspect ratio */
+        min-height: 550px;
+      }
+      
+      /* Ensure text doesn't hit the very edge of the screen */
+      .hero-content-layer {
+        padding-left: 20px;
+        padding-right: 20px;
+        width: 100%;
+      }
+    }
+  
 </style>
 </head>
 <body>
