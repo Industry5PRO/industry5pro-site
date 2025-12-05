@@ -251,20 +251,26 @@
     flex-wrap: wrap;
   }
 
-  /* === HERO BADGE (PCE) === */
-  .hero-badge {
-    position: absolute;
-    bottom: 24px;
-    right: 24px;
-    width: 110px;
-    height: auto;
-    z-index: 10;
-    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.8));
-    transition: transform 0.3s ease;
-  }
-  .hero-badge:hover {
-    transform: scale(1.05) translateY(-2px);
-  }
+.hero-badge {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      width: 110px;
+      height: auto;
+      z-index: 10;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.8));
+      
+      /* THIS ADDS THE MEDIUM-SLOW TWIRL (8 Seconds) */
+      animation: badgeTwirl 8s linear infinite;
+      
+      /* This makes the 3D effect look real */
+      transform-style: preserve-3d;
+    }
+    
+    /* Optional: Pause the twirl when you hover over it */
+    .hero-badge:hover {
+      animation-play-state: paused;
+    }
 
   @media (max-width: 900px) {
     .hero-content-layer {
@@ -389,6 +395,12 @@
         padding-right: 20px;
         width: 100%;
       }
+    }
+
+  /* Define the Twirl Animation */
+    @keyframes badgeTwirl {
+      0% { transform: rotateY(0deg); }
+      100% { transform: rotateY(360deg); }
     }
   
 </style>
