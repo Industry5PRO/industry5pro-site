@@ -542,6 +542,103 @@
       </div>
     </section>
 
+  <section class="reviews-section" style="margin: 60px auto; max-width: 1100px; padding: 0 18px;">
+  <div style="display:flex; justify-content:space-between; align-items:end; margin-bottom: 24px;">
+    <h2 style="color:#fff; margin:0; font-size:1.8rem;">Trusted by Leaders</h2>
+    <a href="https://www.linkedin.com/in/louis-tortora7/details/recommendations/" target="_blank" style="font-size:0.9rem; color:var(--text-muted); text-decoration:underline;">View on LinkedIn &rarr;</a>
+  </div>
+
+  <div class="reviews-grid">
+    
+    <div class="review-card">
+      <div class="quote-icon">“</div>
+      <p>Louis has high Integrity and will not sell something that is not right for you. He is my GO TO GUY! Please feel free to reach out to me at any time for a reference on Louis. My cell is 386-916-7773.</p>
+      <div class="review-meta">
+        <strong>Chris Townsend</strong>
+        <span>Owner, Be Active Mobility</span>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="quote-icon">“</div>
+      <p>Outstanding communicator, ultra responsive and an absolute professional. I could always count on a quick response while pushing orders for dozens of medical and veterinary facilities.</p>
+      <div class="review-meta">
+        <strong>Ryan Janes</strong>
+        <span>Director of IT, Highlight Healthcare</span>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="quote-icon">“</div>
+      <p>An absolute rockstar Solution Engineer. Whether managing network migrations or helping clients understand IoT technologies, Louis creates the best experience possible.</p>
+      <div class="review-meta">
+        <strong>Tom Turner</strong>
+        <span>Certified Customer Success Manager</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .review-card {
+    background: var(--panel);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .review-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+  }
+  .quote-icon {
+    font-size: 4rem;
+    line-height: 1;
+    color: rgba(43, 237, 231, 0.2); /* Ice Blue tint */
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-family: serif;
+    pointer-events: none;
+  }
+  .review-card p {
+    color: #d1d5db;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+    font-style: italic;
+  }
+  .review-meta {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 12px;
+  }
+  .review-meta strong {
+    display: block;
+    color: #fff;
+    font-size: 0.95rem;
+  }
+  .review-meta span {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+  @media (max-width: 900px) {
+    .reviews-grid { grid-template-columns: 1fr; }
+  }
+</style>
+    
     <section class="about-split">
       <div class="about-text">
         <h2>Paid by results, not suppliers.</h2>
