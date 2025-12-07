@@ -123,19 +123,25 @@
     }
     .btn-book:hover { transform: translateY(-2px); box-shadow: 0 5px 15px var(--accent); }
 
-    /* MOBILE NAV FIXES */
+  /* MOBILE NAV FIXES */
     @media (max-width: 1100px) {
       .header-center { flex-direction: column; align-items: flex-start; gap: 16px; }
-      .main-nav { flex-wrap: wrap; gap: 16px 24px; width: 100%; }
       
-      .nav-item { width: 100%; padding-bottom: 0; margin-bottom: 0; }
+      /* Use space-between to push items to edges, gap handles the middle */
+      .main-nav { flex-wrap: wrap; gap: 12px; width: 100%; justify-content: space-between; }
       
-      /* Ensure the trigger covers full width for easier tapping */
+      /* 1. Stop Nav Item from taking full width so AI SDR can sit next to it */
+      .nav-item { width: auto; padding-bottom: 0; margin-bottom: 0; }
+      
+      /* 2. Adjust trigger to sit inline */
       .dropdown-trigger {
-          display: block;
-          width: 100%;
-          padding: 12px 0; /* Larger tap target */
+          display: inline-block;
+          width: auto;
+          padding: 10px 0; 
       }
+
+      /* 3. Force Book Button to its own 3rd row */
+      .btn-book { width: 100%; text-align: center; margin-top: 8px; }
 
       /* Reset dropdown to hidden by default */
       .dropdown-menu { 
@@ -153,8 +159,10 @@
 
       /* ENABLE CLICK CLASS (Force open) */
       .nav-item.tap-open .dropdown-menu { display: flex !important; }
+      
+      /* Force dropdown to break to new line when open (optional polish) */
+      .nav-item.tap-open { width: 100%; order: 10; } 
     }
-
     /* MANIFESTO CONTENT */
     .manifesto-wrap { max-width: 740px; margin: 80px auto; padding: 0 24px; position: relative; z-index: 1; }
     
@@ -223,15 +231,13 @@
          <span class="title">Industry5.pro</span>
       </a>
       
-      <nav class="main-nav">
-        <a href="/">Home</a>
-
+     <nav class="main-nav">
         <div class="nav-item">
           <span class="dropdown-trigger">Core Competencies ▾</span>
           <div class="dropdown-menu">
             <a href="/ai">AI & Omnichannel</a>
             <a href="/supermetrics">Analytics & Data</a>
-            <a href="/cyber">Security & Backups</a>
+            <a href="/cyber">Security & Backup</a>
             <a href="/cloud20">Cloud 2.0 & Infra</a>
             <a href="/ccaas">UC & Contact Center</a>        
             <a href="/peplink">5G & Satellite</a>
@@ -245,6 +251,7 @@
         
         <a href="https://calendly.com/industry5pro/30min" class="btn-book" target="_blank" rel="noopener">Book Lou</a>
       </nav>
+
     </div>
   </header>
 
