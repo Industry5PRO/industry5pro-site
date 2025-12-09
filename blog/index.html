@@ -476,65 +476,79 @@ details[open] summary.faq-q::after { content: "-"; color: var(--gold); }
       }
     }
 
- /* --- MOBILE NAV OVERHAUL (Enterprise Layout) --- */
+ /* --- MOBILE NAV FINAL POLISH (Tight & Large) --- */
   @media (max-width: 1100px) {
     
-    /* 1. TIGHTEN THE HEADER (Remove Blue Gap) */
-    .header-center {
-      padding-bottom: 8px !important; /* Reduces space below buttons */
-      gap: 12px !important; /* Brings Nav closer to Logo */
-    }
-
-    /* 2. REMOVE HOME BUTTON */
+    /* 1. REMOVE HOME LINK */
     .nav-link-home { display: none !important; }
 
-    /* 3. NEW GRID LAYOUT */
-    .main-nav {
-      display: grid !important;
-      /* create 3 columns: 1.5 fraction (Core), 1 fraction, 1 fraction */
-      grid-template-columns: 1.4fr 0.8fr 1fr; 
-      gap: 12px 8px; /* 12px vertical gap, 8px horizontal gap */
-      width: 100%;
-      justify-content: stretch;
+    /* 2. HEADER CONTAINER - Remove padding to pull things up */
+    .header-center {
+      padding-bottom: 6px !important; 
+      gap: 8px !important;
     }
 
-    /* ROW 1: Core Competencies | AI SDR | Manifesto */
+    /* 3. HERO CARD GAP FIX - Pulls the video up to touch the header */
+    .hero-card {
+      margin-top: 0 !important;
+    }
+
+    /* 4. THE GRID - "max-content" forces columns to shrink to text width */
+    .main-nav {
+      display: grid !important;
+      /* Col 1 & 2 shrink to fit text exactly. Col 3 takes remaining space. */
+      grid-template-columns: max-content max-content 1fr;
+      column-gap: 20px; /* Controls distance between "Services" and "AI SDR" */
+      row-gap: 14px;    /* Space between the two rows */
+      width: 100%;
+      align-items: center;
+    }
+
+    /* 5. NAV ITEM RESET - Kill desktop spacing */
     .nav-item {
+      padding: 0 !important; margin: 0 !important;
+      width: fit-content; /* Ensure container doesn't hog space */
       grid-column: 1 / 2;
-      justify-self: start;
     }
     
-    /* Tweaking "Core Competencies" text size to fit */
+    /* ROW 1: Services | AI SDR | Manifesto */
     .dropdown-trigger {
-      font-size: 0.85rem !important; 
+      font-size: 1rem !important; /* Larger Font */
       white-space: nowrap;
     }
 
     .nav-sdr {
       grid-column: 2 / 3;
-      font-size: 0.85rem !important;
-      justify-self: center;
+      font-size: 1rem !important; /* Larger Font */
+      justify-self: start !important; /* Force Left against Services */
+      padding: 0 !important;
     }
 
     .nav-link-manifesto {
       grid-column: 3 / 4;
-      font-size: 0.85rem !important;
-      justify-self: end;
+      font-size: 1rem !important; /* Larger Font */
+      justify-self: end; /* Pushes to far right edge */
     }
 
-    /* ROW 2: Insights | Book Lou (Wide) */
+    /* ROW 2: Insights | Book Lou */
     .nav-link-blog {
-      grid-column: 1 / 2; /* Keeps Insights on the left */
+      grid-column: 1 / 2; 
+      font-size: 1rem !important; /* Larger Font */
       justify-self: start;
-      align-self: center;
-      font-size: 0.95rem !important;
     }
 
+    /* BOOK LOU - Starts at Col 2 (aligned with AI SDR) and spans to end */
     .btn-book {
-      grid-column: 2 / 4; /* Spans the remaining 2 columns to the right */
-      width: 100%; /* Stretches to fill the space */
+      grid-column: 2 / 4; 
+      width: 100%; 
+      font-size: 1.1rem !important; /* Largest Font for Action */
+      padding: 12px 0 !important;
+      
+      /* Center text within the pill */
       text-align: center;
-      padding: 10px 0 !important; /* Vertical padding adjustment */
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
   
