@@ -59,11 +59,10 @@
     section:first-of-type { border-top: none; }
     .anchor{scroll-margin-top:90px}
 
-/* --- MASTER HEADER & NAV (Matches Manifesto/Insights) --- */
+/* --- MASTER HEADER & NAV --- */
     header {
       position: -webkit-sticky; /* Safari support */
       position: sticky; top: 0; z-index: 99999;
-      /* Adjust this background color if your Home page needs a different transparency */
       background: linear-gradient(180deg,rgba(0,0,0,0.95),rgba(0,0,0,0.85));
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--line);
@@ -142,24 +141,107 @@
     }
     .btn-book:hover { transform: translateY(-2px); box-shadow: 0 5px 20px var(--accent); }
 
-    /* --- MOBILE STACK FIX --- */
+    /* --- MOBILE NAV FINAL: HOME PAGE EDITION --- */
     @media (max-width: 1100px) {
-      .header-center { flex-direction: column; align-items: flex-start; gap: 16px; }
       
-      /* Mobile Nav Width Fix */
-      .main-nav { gap: 16px 24px; justify-content: flex-start; width: 100%; }
-      .nav-item { width: 100%; padding-bottom: 0; margin-bottom: 0; }
-      
-      /* Mobile Dropdown Trigger Styling */
-      .dropdown-trigger { display: block; width: 100%; padding: 10px 0; border-bottom: 1px solid var(--line); cursor: pointer; text-align: left; }
-      
-      /* Reset dropdown styles for mobile flow */
-      .dropdown-menu { 
-        position: static; transform: none; display: none; border: none; 
-        padding-left: 20px; background: transparent; box-shadow: none; 
+      /* 1. TIGHTEN HEADER & REMOVE PADDING */
+      .header-center {
+        padding-bottom: 0 !important;
+        gap: 12px !important;
+      }
+
+      /* 2. GAP KILLER (HERO VIDEO SPECIFIC) */
+      .hero-card {
+        /* Remove top margin so it touches header */
+        margin-top: 0 !important; 
+        /* Flatten top corners for seamless join */
+        border-top-left-radius: 0 !important;
+        border-top-right-radius: 0 !important;
+        
+        /* Force Edge-to-Edge Width (ignores parent padding) */
+        width: 100vw !important;
+        margin-left: 50% !important;
+        transform: translateX(-50%) !important;
+        border: none !important;
       }
       
-      /* Disable Hover, Enable Click */
+      /* Ensure text container has padding on mobile since card is full width */
+      .hero-content-layer {
+        padding-left: 20px;
+        padding-right: 20px;
+        width: 100%;
+      }
+
+      /* 3. THE GRID: 4 Columns Top, 1 Row Bottom */
+      .main-nav {
+        display: grid !important;
+        /* 4 Columns: Services | AI SDR | Manifesto | Insights */
+        grid-template-columns: min-content min-content min-content min-content;
+        justify-content: space-between; 
+        width: 100%;
+        align-items: center;
+        row-gap: 12px;
+        margin-bottom: 4px; /* Tiny buffer before the header border */
+      }
+
+      /* 4. NAV ITEM RESET */
+      .nav-item {
+        padding: 0 !important; margin: 0 !important;
+        grid-column: 1 / 2; /* Services goes to col 1 */
+      }
+      
+      /* Mobile Dropdown Fixes */
+      .dropdown-trigger {
+        font-size: 0.85rem !important; 
+        white-space: nowrap;
+        border-bottom: none !important; /* Remove line from old mobile style */
+      }
+      .dropdown-menu { 
+        position: static; transform: none; display: none; border: none; 
+        padding-left: 0; background: transparent; box-shadow: none; 
+        margin-top: 10px; grid-column: 1 / -1; /* Make dropdown span full width if opened */
+      }
+      
+      /* --- ROW 1: THE LINKS --- */
+      
+      /* 2. AI SDR */
+      .nav-sdr {
+        grid-column: 2 / 3;
+        font-size: 0.85rem !important;
+        white-space: nowrap;
+      }
+
+      /* 3. Manifesto */
+      .nav-link-manifesto {
+        grid-column: 3 / 4;
+        font-size: 0.85rem !important;
+        white-space: nowrap;
+      }
+
+      /* 4. Insights */
+      .nav-link-blog {
+        grid-column: 4 / 5; 
+        font-size: 0.85rem !important;
+        white-space: nowrap;
+      }
+
+      /* --- ROW 2: THE ACTION --- */
+      
+      /* Book Lou (Edge-to-Edge) */
+      .btn-book {
+        grid-column: 1 / -1; 
+        width: 100%; 
+        font-size: 1.1rem !important; 
+        padding: 12px 0 !important;
+        border-radius: 6px;
+        
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Disable Hover, Enable Click for Dropdown */
       .nav-item:hover .dropdown-menu { display: none; }
       .nav-item.tap-open .dropdown-menu { display: flex; }
     }
@@ -194,7 +276,6 @@
     .hero-overlay {
       position: absolute;
       inset: 0;
-      /* Dark scrim for text readability */
       background: rgba(0, 0, 0, 0.6); 
       z-index: 1;
     }
@@ -382,34 +463,6 @@
     .socials a{color:#fff;transition:all .2s ease}
     .socials a:hover{color:var(--accent);transform:translateY(-2px);text-shadow:0 0 10px var(--accent)}
     .socials svg{width:24px;height:24px;fill:currentColor}
-
-    /* --- MOBILE EDGE-TO-EDGE HERO FIX --- */
-    @media (max-width: 768px) {
-      .hero-card {
-        /* Force full screen width, ignoring parent padding */
-        width: 100vw;
-        margin-left: 50%;
-        transform: translateX(-50%);
-        
-        /* Remove rounded corners and side gaps */
-        border-radius: 0;
-        border: none;
-        
-        /* Pull it up to touch the header seamlessly */
-        margin-top: 0; 
-        margin-bottom: 30px;
-        
-        /* Adjust height if needed for mobile aspect ratio */
-        min-height: 550px;
-      }
-      
-      /* Ensure text doesn't hit the very edge of the screen */
-      .hero-content-layer {
-        padding-left: 20px;
-        padding-right: 20px;
-        width: 100%;
-      }
-    }
     
   </style>
 </head>
@@ -424,7 +477,7 @@
       
       <nav class="main-nav">
         <div class="nav-item">
-          <span class="dropdown-trigger">Core Competencies ▾</span>
+          <span class="dropdown-trigger">Services ▾</span>
           
           <div class="dropdown-menu">
             <a href="/ai">AI & Omnichannel</a>
@@ -941,35 +994,23 @@
 
  (async function updateLatestThinking() {
     try {
-      // 1. Fetch the blog page
       const response = await fetch('/blog'); 
       const text = await response.text();
-      
-      // 2. Parse the HTML
       const parser = new DOMParser();
       const doc = parser.parseFromString(text, 'text/html');
       
-      // 3. NEW SELECTOR: Look for 'article.blog-post' (The new feed layout)
       const articles = doc.querySelectorAll('article.blog-post');
       const list = document.getElementById('latest-thinking-list');
       
       if (articles.length > 0 && list) {
-        list.innerHTML = ''; // Clear "Loading..." placeholder
+        list.innerHTML = '';
         
-        // 4. Loop through the first 2 articles
         for (let i = 0; i < 2 && i < articles.length; i++) {
           const art = articles[i];
-          
-          // EXTRACT TITLE (Now H2, not H3)
           const title = art.querySelector('h2').innerText;
-          
-          // EXTRACT SUMMARY (First paragraph of the new blog body)
           let desc = '';
           const p = art.querySelector('.blog-body p');
-          if (p) {
-             // Limit to 80 chars so it fits nicely
-             desc = p.innerText.substring(0, 80) + '...';
-          }
+          if (p) desc = p.innerText.substring(0, 80) + '...';
           const id = art.id;
           
           const li = document.createElement('li');
@@ -982,14 +1023,12 @@
           list.appendChild(li);
         }
         
-        // 5. Add "View All" link
         const viewAll = document.createElement('li');
         viewAll.innerHTML = `<a href="/blog" style="color: var(--accent); font-weight: 700; font-size: 0.9rem;">View all insights &rarr;</a>`;
         list.appendChild(viewAll);
       }
     } catch (e) {
       console.log('Could not fetch latest blog posts:', e);
-      // Fallback if fetch fails
       const list = document.getElementById('latest-thinking-list');
       if(list) list.innerHTML = '<li style="padding:10px 0;"><a href="/blog" style="color:var(--accent)">Read our latest insights on the Blog &rarr;</a></li>';
     }
