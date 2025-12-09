@@ -105,45 +105,72 @@
     }
     .btn-book:hover { transform: translateY(-2px); box-shadow: 0 5px 20px var(--accent); color: #0b1220 !important; }
 
-    /* --- 4. MOBILE NAV FIX (3 ROWS) --- */
+    /* --- 4. MOBILE NAV FINAL (COMMAND CENTER) --- */
     @media (max-width: 1100px) {
-      .header-center { flex-direction: column; align-items: flex-start; gap: 12px; }
       
-      /* Allow items to flow in rows */
-      .main-nav { 
-        gap: 12px 16px; 
-        justify-content: flex-start; 
-        width: 100%; 
-        flex-direction: row; /* Force row flow */
-        flex-wrap: wrap;     /* Allow wrapping */
-        align-items: center; 
+      /* 1. HIDE HOME & STACK HEADER */
+      .nav-link-home { display: none !important; }
+
+      .header-center {
+        flex-direction: column !important; 
+        align-items: flex-start !important;
+        padding-bottom: 0 !important;
+        gap: 12px !important;
       }
+
+      /* 2. THE GRID */
+      .main-nav {
+        display: grid !important;
+        grid-template-columns: auto auto auto auto;
+        justify-content: space-between; 
+        column-gap: 4px;
+        width: 100%;
+        align-items: center;
+        row-gap: 12px;
+        margin-bottom: 4px; 
+      }
+
+      /* Reset Nav Item wrapper */
+      .nav-item { padding: 0 !important; margin: 0 !important; grid-column: 1 / 2; }
       
-      /* 1. Core Competencies (Closed) - Fits inline */
-      .nav-item { 
-        width: auto; padding-bottom: 0; margin-bottom: 0; flex: 0 0 auto;
-      }
-      .dropdown-trigger { 
-        display: inline-block; width: auto; padding: 8px 0; 
-        border-bottom: none; cursor: pointer; text-align: left; 
-      }
-      
-      /* 2. When Opened (Accordion Style) */
-      .nav-item.tap-open {
-        width: 100%; border-bottom: 1px solid var(--line); margin-bottom: 8px; order: 10;
-      }
-      .nav-item.tap-open .dropdown-trigger { display: block; width: 100%; margin-bottom: 8px; }
-      
-      /* 3. Dropdown Menu (Hidden by default) */
+      /* Mobile Dropdown Fixes */
       .dropdown-menu { 
         position: static; transform: none; display: none; border: none; 
-        padding-left: 20px; background: transparent; box-shadow: none; width: 100%;
+        padding-left: 0; background: transparent; box-shadow: none; 
+        margin-top: 10px; grid-column: 1 / -1; 
       }
-      .nav-item:hover .dropdown-menu { display: none; }
-      .nav-item.tap-open .dropdown-menu { display: flex; }
+      
+      /* ROW 1: LINKS - 0.95rem */
+      .dropdown-trigger { font-size: 0.95rem !important; white-space: nowrap; border-bottom: none !important; padding: 0 !important; display: inline-block; width: auto; text-align: left; }
+      
+      .nav-sdr { grid-column: 2 / 3; font-size: 0.95rem !important; white-space: nowrap; }
+      .nav-link-manifesto { grid-column: 3 / 4; font-size: 0.95rem !important; white-space: nowrap; }
+      .nav-link-blog { grid-column: 4 / 5; font-size: 0.95rem !important; white-space: nowrap; }
 
-      /* 4. Compact Book Button */
-      .btn-book { padding: 8px 16px; font-size: 0.9rem; }
+      /* ROW 2: ACTION BAR */
+      .btn-book {
+        grid-column: 1 / -1; width: 100%; font-size: 1.1rem !important; 
+        padding: 12px 0 !important; border-radius: 6px; margin-top: 0 !important;
+        text-align: center; display: flex; align-items: center; justify-content: center;
+      }
+
+      /* GAP KILLER (VIDEO HERO SPECIFIC) */
+      /* Snaps the video tight to the header */
+      .hero-card {
+        margin-top: 0 !important; 
+        border-top-left-radius: 0 !important;
+        border-top-right-radius: 0 !important;
+        width: 100vw !important;
+        margin-left: 50% !important;
+        transform: translateX(-50%) !important;
+        border: none !important;
+      }
+      .hero-content-layer { padding-left: 20px; padding-right: 20px; width: 100%; }
+
+      /* Interaction */
+      .nav-item:hover .dropdown-menu { display: none; }
+      .nav-item.tap-open .dropdown-menu { display: flex !important; }
+      .nav-item.tap-open { width: 100%; grid-column: 1 / -1; }
     }
     
     /* --- 5. HERO CARD (VIDEO) --- */
@@ -293,7 +320,7 @@
       </a>
       <nav class="main-nav">
         <div class="nav-item">
-          <span class="dropdown-trigger active">Core Competencies ▾</span>
+          <span class="dropdown-trigger active">Services ▾</span>
           
           <div class="dropdown-menu">
             <a href="/ai">AI & Omnichannel</a>
@@ -506,7 +533,7 @@
       © <span id="y"></span> Industry5.pro | Built on trust. Paid by results.
     </div>
     <div class="socials" aria-label="Follow Industry5.pro">
-      <a href="https://www.linkedin.com/in/louis-tortora7/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <a href="https://www.linkedin.com/in/louis-tortora5/" target="_blank" rel="noopener" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.48 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.5h5V24H0V8.5zM8 8.5h4.8v2.1h.07c.67-1.2 2.3-2.47 4.73-2.47 5.06 0 6 3.33 6 7.66V24h-5v-6.8c0-1.62-.03-3.7-2.25-3.7-2.25 0-2.6 1.76-2.6 3.58V24H8V8.5z"/></svg>
       </a>
       <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener" aria-label="Instagram">
