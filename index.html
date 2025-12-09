@@ -142,94 +142,9 @@
     }
     .btn-book:hover { transform: translateY(-2px); box-shadow: 0 5px 20px var(--accent); }
 
-   /* --- MOBILE NAV FINAL: HOME PAGE EDITION --- */
-  @media (max-width: 1100px) {
-    
-    /* 1. TIGHTEN HEADER & REMOVE PADDING */
-    /* This brings the nav items right to the bottom edge */
-    .header-center {
-      padding-bottom: 0 !important;
-      gap: 12px !important;
-    }
-
-    /* 2. GAP KILLER (HERO VIDEO SPECIFIC) */
-    .hero-card {
-      /* Remove top margin so it touches header */
-      margin-top: 0 !important; 
-      /* Flatten top corners for seamless join */
-      border-top-left-radius: 0 !important;
-      border-top-right-radius: 0 !important;
-      
-      /* Force Edge-to-Edge Width (ignores parent padding) */
-      width: 100vw !important;
-      margin-left: 50% !important;
-      transform: translateX(-50%) !important;
-      border: none !important;
-    }
-
-    /* 3. THE GRID: 4 Columns Top, 1 Row Bottom */
-    .main-nav {
-      display: grid !important;
-      /* 4 Columns: Services | AI SDR | Manifesto | Insights */
-      grid-template-columns: min-content min-content min-content min-content;
-      justify-content: space-between; 
-      width: 100%;
-      align-items: center;
-      row-gap: 12px;
-      margin-bottom: 4px; /* Tiny buffer before the header border */
-    }
-
-    /* 4. NAV ITEM RESET */
-    .nav-item {
-      padding: 0 !important; margin: 0 !important;
-      grid-column: 1 / 2; /* Services goes to col 1 */
-    }
-    
-    /* --- ROW 1: THE LINKS --- */
-    
-    /* 1. Services */
-    .dropdown-trigger {
-      font-size: 0.85rem !important; 
-      white-space: nowrap;
-    }
-
-    /* 2. AI SDR */
-    .nav-sdr {
-      grid-column: 2 / 3;
-      font-size: 0.85rem !important;
-      white-space: nowrap;
-    }
-
-    /* 3. Manifesto */
-    .nav-link-manifesto {
-      grid-column: 3 / 4;
-      font-size: 0.85rem !important;
-      white-space: nowrap;
-    }
-
-    /* 4. Insights */
-    .nav-link-blog {
-      grid-column: 4 / 5; 
-      font-size: 0.85rem !important;
-      white-space: nowrap;
-    }
-
-    /* --- ROW 2: THE ACTION --- */
-    
-    /* Book Lou (Edge-to-Edge) */
-    .btn-book {
-      grid-column: 1 / -1; 
-      width: 100%; 
-      font-size: 1.1rem !important; 
-      padding: 12px 0 !important;
-      border-radius: 6px;
-      
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  }
+    /* --- MOBILE STACK FIX --- */
+    @media (max-width: 1100px) {
+      .header-center { flex-direction: column; align-items: flex-start; gap: 16px; }
       
       /* Mobile Nav Width Fix */
       .main-nav { gap: 16px 24px; justify-content: flex-start; width: 100%; }
@@ -495,7 +410,6 @@
         width: 100%;
       }
     }
-
     
   </style>
 </head>
@@ -510,7 +424,7 @@
       
       <nav class="main-nav">
         <div class="nav-item">
-          <span class="dropdown-trigger">Services ▾</span>
+          <span class="dropdown-trigger">Core Competencies ▾</span>
           
           <div class="dropdown-menu">
             <a href="/ai">AI & Omnichannel</a>
