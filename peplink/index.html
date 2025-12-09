@@ -142,15 +142,73 @@
     transform: translateY(-2px); box-shadow: 0 5px 20px var(--accent); color: #0b1220 !important;
   }
 
+  /* --- MOBILE NAV FINAL (COMMAND CENTER) --- */
   @media (max-width: 1100px) {
-    .header-center { flex-direction: column; align-items: flex-start; gap: 16px; }
-    .main-nav { gap: 16px 24px; justify-content: flex-start; }
-    .dropdown-menu { position: static; transform: none; display: none; border: none; padding-left: 20px; background: transparent; box-shadow: none; }
+    
+    /* 1. STACK HEADER VERTICALLY */
+    .header-center {
+      flex-direction: column !important; 
+      align-items: flex-start !important;
+      padding-bottom: 0 !important;
+      gap: 12px !important;
+    }
+
+    /* 2. THE GRID */
+    .main-nav {
+      display: grid !important;
+      grid-template-columns: auto auto auto auto;
+      justify-content: space-between; 
+      column-gap: 4px;
+      width: 100%;
+      align-items: center;
+      row-gap: 12px;
+      margin-bottom: 4px; 
+    }
+
+    /* Reset Nav Item wrapper */
+    .nav-item { padding: 0 !important; margin: 0 !important; grid-column: 1 / 2; }
+    
+    /* Hide the desktop sub-indicator */
+    .sub-indicator { display: none !important; }
+
+    /* Mobile Dropdown Fixes */
+    .dropdown-menu { 
+      position: static; transform: none; display: none; border: none; 
+      padding-left: 0; background: transparent; box-shadow: none; 
+      margin-top: 10px; grid-column: 1 / -1; 
+    }
+    
+    /* ROW 1: LINKS - 0.95rem */
+    .dropdown-trigger { font-size: 0.95rem !important; white-space: nowrap; border-bottom: none !important; padding: 0 !important; display: inline-block; width: auto; text-align: left; }
+    
+    .nav-sdr { grid-column: 2 / 3; font-size: 0.95rem !important; white-space: nowrap; }
+    .nav-link-manifesto { grid-column: 3 / 4; font-size: 0.95rem !important; white-space: nowrap; }
+    .nav-link-blog { grid-column: 4 / 5; font-size: 0.95rem !important; white-space: nowrap; }
+
+    /* ROW 2: ACTION BAR */
+    .btn-book {
+      grid-column: 1 / -1; width: 100%; font-size: 1.1rem !important; 
+      padding: 12px 0 !important; border-radius: 6px; margin-top: 0 !important;
+      text-align: center; display: flex; align-items: center; justify-content: center;
+    }
+
+    /* GAP KILLER (VIDEO HERO SPECIFIC) */
+    /* Snaps the video tight to the header */
+    .hero-card {
+      margin-top: 0 !important; 
+      border-top-left-radius: 0 !important;
+      border-top-right-radius: 0 !important;
+      width: 100vw !important;
+      margin-left: 50% !important;
+      transform: translateX(-50%) !important;
+      border: none !important;
+    }
+    .hero-content-layer { padding-left: 20px; padding-right: 20px; width: 100%; }
+
+    /* Interaction */
     .nav-item:hover .dropdown-menu { display: none; }
-    .nav-item.tap-open .dropdown-menu { display: flex; }
-    .sub-indicator { display: none; }
-    .nav-item { padding-bottom: 0; margin-bottom: 0; width: 100%; }
-    .dropdown-trigger { display: block; width: 100%; padding: 10px 0; border-bottom: 1px solid var(--line); }
+    .nav-item.tap-open .dropdown-menu { display: flex !important; }
+    .nav-item.tap-open { width: 100%; grid-column: 1 / -1; }
   }
 
   /* === PAGE CONTENT STYLES === */
@@ -404,10 +462,8 @@
       </a>
       
       <nav class="main-nav">
-        <a href="/" class="nav-link-home">Home</a>
-
         <div class="nav-item">
-          <span class="dropdown-trigger active">Core Competencies ▾</span>
+          <span class="dropdown-trigger active">Services ▾</span>
           <span class="sub-indicator">5G & Satellite</span>
           
           <div class="dropdown-menu">
@@ -662,7 +718,7 @@
           © <span id="y"></span> Industry5.pro | Built on trust. Paid by results.
         </div>
         <div class="socials" aria-label="Follow Industry5.pro">
-          <a href="https://www.linkedin.com/in/louis-tortora7/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/louis-tortora5/" target="_blank" rel="noopener" aria-label="LinkedIn">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.48 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.5h5V24H0V8.5zM8 8.5h4.8v2.1h.07c.67-1.2 2.3-2.47 4.73-2.47 5.06 0 6 3.33 6 7.66V24h-5v-6.8c0-1.62-.03-3.7-2.25-3.7-2.25 0-2.6 1.76-2.6 3.58V24H8V8.5z"/></svg>
           </a>
           <a href="https://www.instagram.com/industry5pro/" target="_blank" rel="noopener" aria-label="Instagram">
@@ -673,6 +729,9 @@
           </a>
           <a href="https://wa.me/14076945495" target="_blank" rel="noopener" aria-label="WhatsApp">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163A11.867 11.867 0 0 1 0 11.989C0 5.371 5.373 0 11.99 0 18.606 0 24 5.371 24 11.989S18.606 24 11.99 24a11.9 11.9 0 0 1-5.642-1.437L.057 24Zm6.597-3.807c1.676.995 3.276 1.591 5.35 1.593 5.448 0 9.884-4.429 9.884-9.88 0-5.45-4.436-9.88-9.884-9.88-5.449 0-9.88 4.43-9.88 9.88 0 2.266.738 3.891 1.977 5.59L3.5 20.5l3.154-.307zm11.387-5.464c-.066-.11-.242-.176-.506-.307-.264-.132-1.56-.77-1.8-.857-.242-.088-.418-.132-.594.132-.176.264-.682.857-.836 1.033-.154.176-.308.198-.572.066-.264-.132-1.116-.41-2.125-1.308-.785-.7-1.314-1.56-1.469-1.823-.154-.264-.017-.407.115-.539.118-.117.264-.308.396-.462.132-.154.176-.264.264-.44.088-.176.044-.33-.022-.462-.066-.132-.594-1.43-.814-1.958-.214-.514-.432-.445-.594-.453l-.506-.009c-.176 0-.462.066-.704.33-.242.264-.924.902-.924 2.202s.946 2.552 1.077 2.73c.132.176 1.862 2.842 4.508 3.986.63.27 1.122.432 1.505.553.632.202 1.206.174 1.661.105.506-.077 1.56-.638 1.78-1.255.22-.616.22-1.144.154-1.255z"/></svg>
+          </a>
+          <a href="mailto:lou@industry5.pro" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20a2 2 0 0 1 2 2v1l-12 7L0 7V6a2 2 0 0 1 2-2zm0 6.236V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-7.764l-9.386 5.52a2 2 0 0 1-2.228 0L2 10.236z"/></svg>
           </a>
         </div>
       </footer>
