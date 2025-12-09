@@ -475,6 +475,68 @@ details[open] summary.faq-q::after { content: "-"; color: var(--gold); }
         width: 100%;
       }
     }
+
+  /* --- MOBILE NAV OVERHAUL (Enterprise Layout) --- */
+  @media (max-width: 1100px) {
+    
+    /* 1. TIGHTEN THE HEADER (Remove Blue Gap) */
+    .header-center {
+      padding-bottom: 8px !important; /* Reduces space below buttons */
+      gap: 12px !important; /* Brings Nav closer to Logo */
+    }
+
+    /* 2. REMOVE HOME BUTTON */
+    .nav-link-home { display: none !important; }
+
+    /* 3. NEW GRID LAYOUT */
+    .main-nav {
+      display: grid !important;
+      /* create 3 columns: 1.5 fraction (Core), 1 fraction, 1 fraction */
+      grid-template-columns: 1.4fr 0.8fr 1fr; 
+      gap: 12px 8px; /* 12px vertical gap, 8px horizontal gap */
+      width: 100%;
+      justify-content: stretch;
+    }
+
+    /* ROW 1: Core Competencies | AI SDR | Manifesto */
+    .nav-item {
+      grid-column: 1 / 2;
+      justify-self: start;
+    }
+    
+    /* Tweaking "Core Competencies" text size to fit */
+    .dropdown-trigger {
+      font-size: 0.85rem !important; 
+      white-space: nowrap;
+    }
+
+    .nav-sdr {
+      grid-column: 2 / 3;
+      font-size: 0.85rem !important;
+      justify-self: center;
+    }
+
+    .nav-link-manifesto {
+      grid-column: 3 / 4;
+      font-size: 0.85rem !important;
+      justify-self: end;
+    }
+
+    /* ROW 2: Insights | Book Lou (Wide) */
+    .nav-link-blog {
+      grid-column: 1 / 2; /* Keeps Insights on the left */
+      justify-self: start;
+      align-self: center;
+      font-size: 0.95rem !important;
+    }
+
+    .btn-book {
+      grid-column: 2 / 4; /* Spans the remaining 2 columns to the right */
+      width: 100%; /* Stretches to fill the space */
+      text-align: center;
+      padding: 10px 0 !important; /* Vertical padding adjustment */
+    }
+  }
   
 </style>
 </head>
