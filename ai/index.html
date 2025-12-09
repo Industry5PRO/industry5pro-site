@@ -148,27 +148,72 @@
   }
   .btn-book:hover { transform: translateY(-2px); box-shadow: 0 5px 20px var(--accent); }
 
-  /* MOBILE NAV FIXES */
+  /* --- MOBILE NAV FINAL (COMMAND CENTER) --- */
   @media (max-width: 1100px) {
-    .header-center { flex-direction: column; align-items: flex-start; gap: 16px; }
-    .main-nav { gap: 16px 24px; justify-content: flex-start; width: 100%; }
     
-    .nav-item { width: 100%; padding-bottom: 0; margin-bottom: 0; }
-    .dropdown-trigger { 
-      display: block; width: 100%; padding: 10px 0; border-bottom: 1px solid var(--line); 
-      cursor: pointer;
+    /* 1. STACK HEADER VERTICALLY */
+    .header-center {
+      flex-direction: column !important; 
+      align-items: flex-start !important;
+      padding-bottom: 0 !important;
+      gap: 12px !important;
     }
+
+    /* 2. THE GRID */
+    .main-nav {
+      display: grid !important;
+      grid-template-columns: auto auto auto auto;
+      justify-content: space-between; 
+      column-gap: 4px;
+      width: 100%;
+      align-items: center;
+      row-gap: 12px;
+      margin-bottom: 4px; 
+    }
+
+    .nav-item { padding: 0 !important; margin: 0 !important; grid-column: 1 / 2; }
     
+    /* Mobile Dropdown Fixes */
     .dropdown-menu { 
-      position: static; transform: none; display: none; 
-      border: none; padding: 10px 0 10px 20px; 
-      background: transparent; box-shadow: none; 
+      position: static; transform: none; display: none; border: none; 
+      padding-left: 0; background: transparent; box-shadow: none; 
+      margin-top: 10px; grid-column: 1 / -1; 
     }
     
-    /* Disable Hover on Mobile */
-    .nav-item:hover .dropdown-menu { display: none; }
-    .nav-item.tap-open .dropdown-menu { display: flex; }
+    /* ROW 1: LINKS - 0.95rem */
+    .dropdown-trigger { font-size: 0.95rem !important; white-space: nowrap; border-bottom: none !important; padding: 0 !important; display: inline-block; width: auto; }
+    
+    .nav-sdr { grid-column: 2 / 3; font-size: 0.95rem !important; white-space: nowrap; }
+    .nav-link-manifesto { grid-column: 3 / 4; font-size: 0.95rem !important; white-space: nowrap; }
+    .nav-link-blog { grid-column: 4 / 5; font-size: 0.95rem !important; white-space: nowrap; }
+
+    /* ROW 2: ACTION BAR */
+    .btn-book {
+      grid-column: 1 / -1; width: 100%; font-size: 1.1rem !important; 
+      padding: 12px 0 !important; border-radius: 6px; margin-top: 0 !important;
+      text-align: center; display: flex; align-items: center; justify-content: center;
+    }
+
+    /* GAP KILLER (VIDEO HERO SPECIFIC) */
+    /* Snaps the video tight to the header */
+    .hero-card {
+      margin-top: 0 !important; 
+      border-top-left-radius: 0 !important;
+      border-top-right-radius: 0 !important;
+      width: 100vw !important;
+      margin-left: 50% !important;
+      transform: translateX(-50%) !important;
+      border: none !important;
+    }
+    .hero-content-layer { padding-left: 20px; padding-right: 20px; width: 100%; }
+
+    /* Hide the Desktop Sub-Indicator on Mobile to clear space */
     .sub-indicator { display: none; }
+
+    /* Interaction */
+    .nav-item:hover .dropdown-menu { display: none; }
+    .nav-item.tap-open .dropdown-menu { display: flex !important; }
+    .nav-item.tap-open { width: 100%; grid-column: 1 / -1; }
   }
 
   /* === 4. CONTENT STYLES === */
@@ -351,7 +396,7 @@
       
       <nav class="main-nav">
         <div class="nav-item">
-          <span class="dropdown-trigger active">Core Competencies ▾</span>
+          <span class="dropdown-trigger active">Services ▾</span>
           <span class="sub-indicator">AI & Omnichannel</span>
           
           <div class="dropdown-menu">
@@ -367,9 +412,9 @@
 
         <a href="/sdr" class="nav-sdr">AI SDR</a>
         <a href="/manifesto" class="nav-link-manifesto">Manifesto</a>
+        <a href="/blog" class="nav-link-blog">Insights</a>
         
         <a href="https://calendly.com/industry5pro/30min" class="btn-book" target="_blank" rel="noopener">Book Lou</a>
-        <a href="/blog" class="nav-link-blog">Insights</a>
       </nav>
     </div>
 </header>
