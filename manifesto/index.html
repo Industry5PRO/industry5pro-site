@@ -16,10 +16,14 @@
 
   <meta name="color-scheme" content="dark">
   <link rel="icon" href="/assets/favicon.ico" />
-<!-- Vercel Speed Insights -->
-
-<script defer src="https://cdn.vercel-analytics.com/v1/speed-insights.js"></script>
   
+  <script defer src="https://cdn.vercel-analytics.com/v1/speed-insights.js"></script>
+
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+
   <style>
     /* --- CORE VARIABLES --- */
     :root {
@@ -286,11 +290,24 @@
     
     <div class="personal-section prose">
       <h2>The Human Element</h2>
-      <p>Behind the architecture audits and the strategy, I am Lou Tortora—a 25-year veteran of the Telco and Industry 4.0 sectors. But more importantly, I am a husband to my wife Tanya and a father to a blended family of eight beautiful children—five of mine and three of hers.</p>
-      <p>Time is of great value in my home. While I am obsessed with optimizing your infrastructure for speed and resilience, I know the value of unplugging. </p>
-      <p><strong>My kids are what drive me.</strong> Just being in their presence, watching them grow and take on the values I’ve tried to instill in them is a daily source of zenful awe.</p>
-      <p>My "reset" button is simple: laughing at <em>Spaceballs</em> reruns, riding my bike through a quiet nature trail, or just breathing in the fresh ocean air of the West Florida beaches.</p>
-      <p><strong>God at the center.</strong> That foundation guides how I serve my family and my clients—with integrity, gratitude, and a focus on what truly matters.</p>
+      <p>
+        Behind the architecture audits and the strategy, I am Lou Tortora—a 25-year veteran of the Telco and Industry 4.0 sectors. But more importantly, I am a husband to my wife Tanya and a father to a blended family of eight beautiful children—five of mine and three of hers.
+      </p>
+      <p>
+        <strong>My roots run deep.</strong> Born in New Jersey in 1980 to parents who married in Elizabeth in 1978, I am a product of their sacrifice. My mother is a naturalized Cuban American, and my father is a naturalized Uruguayan of Italian descent. As an American, I enjoy the fruits of the labor they sacrificed for me to be here.
+      </p>
+      <p>
+        I was raised in Florida after moving here in 1989 and am a proud graduate of Coral Springs High. While my adult life saw me venture back north to Jersey and through Georgia, Florida called me home in 2006. I’ve been planting roots here ever since.
+      </p>
+      <p>
+        <strong>My kids are what drive me.</strong> Just being in their presence, watching them grow and take on the values I’ve tried to instill in them is a daily source of zenful awe. While I am obsessed with optimizing your infrastructure for speed and resilience, I know the value of unplugging.
+      </p>
+      <p>
+        My "reset" button is simple: laughing at <em>Spaceballs</em> reruns, riding my bike through a quiet nature trail, or just breathing in the fresh ocean air of the West Florida beaches.
+      </p>
+      <p>
+        <strong>God at the center.</strong> That foundation guides how I serve my family and my clients—with integrity, gratitude, and a focus on what truly matters.
+      </p>
     </div>
 
    <div class="signature-block">
@@ -332,23 +349,34 @@
   // FIX FOR MOBILE DROPDOWN TAPS
   document.addEventListener('DOMContentLoaded', function() {
     const triggers = document.querySelectorAll('.dropdown-trigger');
+    
     triggers.forEach(trigger => {
       trigger.addEventListener('click', function(e) {
+        // Only run this logic on mobile screens (matches CSS breakpoint)
         if (window.innerWidth <= 1100) {
-          e.preventDefault(); e.stopPropagation();
+          e.preventDefault(); // Stop it from jumping
+          e.stopPropagation(); // Stop it from bubbling
+          
           const parent = this.closest('.nav-item');
+          
+          // Toggle the class that keeps it open
           if (parent.classList.contains('tap-open')) {
             parent.classList.remove('tap-open');
           } else {
+            // Close any others first (optional, keeps it clean)
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('tap-open'));
             parent.classList.add('tap-open');
           }
         }
       });
     });
+
+    // Close menu if tapping anywhere else on the screen
     document.addEventListener('click', function(e) {
-      if (window.innerWidth <= 1100 && !e.target.closest('.nav-item')) {
-        document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('tap-open'));
+      if (window.innerWidth <= 1100) {
+        if (!e.target.closest('.nav-item')) {
+          document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('tap-open'));
+        }
       }
     });
   });
